@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_draw_handler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::DrawHandler</compoundname>
+    <derivedcompoundref refid="classopenage_1_1_game_renderer" prot="private" virt="non-virtual">openage::GameRenderer</derivedcompoundref>
+    <includes refid="handlers_8h" local="no">handlers.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_draw_handler_1a18b5457409d12c306c63135e94e5bfb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::DrawHandler::~DrawHandler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DrawHandler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="19" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_draw_handler_1a95c62d6a9b360af162a7506b96b6aa46" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::DrawHandler::on_draw</definition>
+        <argsstring>()=0</argsstring>
+        <name>on_draw</name>
+        <reimplementedby refid="classopenage_1_1_game_renderer_1a0cc83cf1a6697522d581d220661081a4">on_draw</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the drawing action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="24" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>superclass for all possible drawing operations in the game. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1124">
+        <label>openage::DrawHandler</label>
+        <link refid="classopenage_1_1_draw_handler"/>
+      </node>
+      <node id="1125">
+        <label>openage::GameRenderer</label>
+        <link refid="classopenage_1_1_game_renderer"/>
+        <childnode refid="1124" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1126">
+        <label>openage::DrawHandler</label>
+        <link refid="classopenage_1_1_draw_handler"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/handlers.h" line="17" column="1" bodyfile="libopenage/handlers.h" bodystart="17" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_draw_handler_1a95c62d6a9b360af162a7506b96b6aa46" prot="public" virt="pure-virtual"><scope>openage::DrawHandler</scope><name>on_draw</name></member>
+      <member refid="classopenage_1_1_draw_handler_1a18b5457409d12c306c63135e94e5bfb7" prot="public" virt="virtual"><scope>openage::DrawHandler</scope><name>~DrawHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

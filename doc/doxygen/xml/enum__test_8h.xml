@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="enum__test_8h" kind="file" language="C++">
+    <compoundname>enum_test.h</compoundname>
+    <includes refid="enum_8h" local="yes">enum.h</includes>
+    <includedby refid="enum__test_8cpp" local="yes">libopenage/util/enum_test.cpp</includedby>
+    <incdepgraph>
+      <node id="28746">
+        <label>string</label>
+      </node>
+      <node id="28740">
+        <label>libopenage/util/enum_test.h</label>
+        <link refid="enum__test_8h"/>
+        <childnode refid="28741" relation="include">
+        </childnode>
+      </node>
+      <node id="28743">
+        <label>typeinfo</label>
+      </node>
+      <node id="28745">
+        <label>ciso646</label>
+      </node>
+      <node id="28744">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28745" relation="include">
+        </childnode>
+        <childnode refid="28746" relation="include">
+        </childnode>
+        <childnode refid="28747" relation="include">
+        </childnode>
+      </node>
+      <node id="28747">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28747" relation="include">
+        </childnode>
+      </node>
+      <node id="28742">
+        <label>iostream</label>
+      </node>
+      <node id="28741">
+        <label>enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="28742" relation="include">
+        </childnode>
+        <childnode refid="28743" relation="include">
+        </childnode>
+        <childnode refid="28744" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="28749">
+        <label>libopenage/util/enum_test.cpp</label>
+        <link refid="enum__test_8cpp"/>
+      </node>
+      <node id="28748">
+        <label>libopenage/util/enum_test.h</label>
+        <link refid="enum__test_8h"/>
+        <childnode refid="28749" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1util_1_1tests_1_1testenum__value" prot="public">openage::util::tests::testenum_value</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1tests_1_1testenum" prot="public">openage::util::tests::testenum</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.enum<sp/>cimport<sp/>Enum,<sp/>EnumValue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="enum_8h" kindref="compound">enum.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structopenage_1_1util_1_1tests_1_1testenum__value" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref><sp/>:<sp/><ref refid="classopenage_1_1util_1_1_enum_value" kindref="compound">EnumValue</ref>&lt;testenum_value&gt;<sp/>{</highlight></codeline>
+<codeline lineno="21" refid="structopenage_1_1util_1_1tests_1_1testenum__value_1a49ca4a45f83e5d6dec04bd0887f0924a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structopenage_1_1util_1_1tests_1_1testenum__value_1a49ca4a45f83e5d6dec04bd0887f0924a" kindref="member">stuff</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structopenage_1_1util_1_1tests_1_1testenum__value_1a9e183b97bc101efff9981c266b9c3514" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structopenage_1_1util_1_1tests_1_1testenum__value_1a9e183b97bc101efff9981c266b9c3514" kindref="member">get_stuff</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stuff;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="structopenage_1_1util_1_1tests_1_1testenum" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum" kindref="compound">testenum</ref><sp/>:<sp/><ref refid="classopenage_1_1util_1_1_enum" kindref="compound">Enum</ref>&lt;testenum_value&gt;<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>always<sp/>required<sp/>for<sp/>classes<sp/>which<sp/>inherit<sp/>from<sp/>Enum.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>allows<sp/>the<sp/>constructors<sp/>to<sp/>work<sp/>as<sp/>expected.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_enum" kindref="compound">util::Enum&lt;testenum_value&gt;::Enum</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>default<sp/>constructor<sp/>for<sp/>testenum.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>needed<sp/>if<sp/>we<sp/>wish<sp/>to<sp/>allow<sp/>use<sp/>from<sp/>Cython.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initializes<sp/>the<sp/>testenum<sp/>to<sp/>an<sp/>internal<sp/>UNDEFINED<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum" kindref="compound">testenum</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref><sp/>foo{{</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>1},<sp/></highlight><highlight class="stringliteral">&quot;foooooooooooooooooo&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48" refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref><sp/>bar{{</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>2},<sp/></highlight><highlight class="stringliteral">&quot;barrrrrrrrrrrrrrrrr&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/enum_test.h"/>
+  </compounddef>
+</doxygen>

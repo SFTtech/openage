@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__texture__handle_8h" kind="file" language="C++">
+    <compoundname>gui_texture_handle.h</compoundname>
+    <includes local="no">QSize</includes>
+    <includedby refid="gui__filled__texture__handles_8cpp" local="yes">libopenage/gui/integration/private/gui_filled_texture_handles.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</includedby>
+    <includedby refid="gui__texture__factory_8h" local="yes">libopenage/gui/integration/private/gui_texture_factory.h</includedby>
+    <includedby refid="gui__texture_8h" local="yes">libopenage/gui/integration/private/gui_texture.h</includedby>
+    <includedby refid="gui__texture__handle_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_handle.cpp</includedby>
+    <incdepgraph>
+      <node id="14717">
+        <label>libopenage/gui/integration/private/gui_texture_handle.h</label>
+        <link refid="gui__texture__handle_8h"/>
+        <childnode refid="14718" relation="include">
+        </childnode>
+      </node>
+      <node id="14718">
+        <label>QSize</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14724">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="14732">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="14720">
+        <label>libopenage/gui/integration/private/gui_filled_texture_handles.cpp</label>
+        <link refid="gui__filled__texture__handles_8cpp"/>
+      </node>
+      <node id="14719">
+        <label>libopenage/gui/integration/private/gui_texture_handle.h</label>
+        <link refid="gui__texture__handle_8h"/>
+        <childnode refid="14720" relation="include">
+        </childnode>
+        <childnode refid="14721" relation="include">
+        </childnode>
+        <childnode refid="14734" relation="include">
+        </childnode>
+        <childnode refid="14735" relation="include">
+        </childnode>
+        <childnode refid="14737" relation="include">
+        </childnode>
+      </node>
+      <node id="14731">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="14725">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <link refid="gui__game__spec__image__provider_8cpp"/>
+      </node>
+      <node id="14733">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="14728">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="14726">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8h"/>
+        <childnode refid="14727" relation="include">
+        </childnode>
+        <childnode refid="14729" relation="include">
+        </childnode>
+        <childnode refid="14730" relation="include">
+        </childnode>
+      </node>
+      <node id="14736">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+      <node id="14729">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="14737">
+        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <link refid="gui__texture__handle_8cpp"/>
+      </node>
+      <node id="14730">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8h"/>
+        <childnode refid="14731" relation="include">
+        </childnode>
+        <childnode refid="14724" relation="include">
+        </childnode>
+        <childnode refid="14725" relation="include">
+        </childnode>
+      </node>
+      <node id="14735">
+        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <link refid="gui__texture_8h"/>
+        <childnode refid="14736" relation="include">
+        </childnode>
+        <childnode refid="14733" relation="include">
+        </childnode>
+      </node>
+      <node id="14721">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</label>
+        <link refid="gui__game__spec__image__provider__impl_8h"/>
+        <childnode refid="14722" relation="include">
+        </childnode>
+        <childnode refid="14726" relation="include">
+        </childnode>
+        <childnode refid="14732" relation="include">
+        </childnode>
+        <childnode refid="14724" relation="include">
+        </childnode>
+        <childnode refid="14733" relation="include">
+        </childnode>
+      </node>
+      <node id="14722">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8h"/>
+        <childnode refid="14723" relation="include">
+        </childnode>
+        <childnode refid="14724" relation="include">
+        </childnode>
+        <childnode refid="14725" relation="include">
+        </childnode>
+      </node>
+      <node id="14734">
+        <label>libopenage/gui/integration/private/gui_texture_factory.h</label>
+        <link refid="gui__texture__factory_8h"/>
+        <childnode refid="14729" relation="include">
+        </childnode>
+        <childnode refid="14732" relation="include">
+        </childnode>
+        <childnode refid="14733" relation="include">
+        </childnode>
+      </node>
+      <node id="14727">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8h"/>
+        <childnode refid="14728" relation="include">
+        </childnode>
+        <childnode refid="14724" relation="include">
+        </childnode>
+        <childnode refid="14725" relation="include">
+        </childnode>
+      </node>
+      <node id="14723">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_texture_handle" prot="public">openage::gui::TextureHandle</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_sized_texture_handle" prot="public">openage::gui::SizedTextureHandle</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QSize&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Texture;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1gui_1_1_texture_handle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture" kindref="compound">openage::Texture</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" kindref="member">texture</ref>;</highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" kindref="member">subid</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1gui_1_1_sized_texture_handle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle_1ada6a4added07890f41b4fbbba74e05dc" kindref="member">SizedTextureHandle</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle_1ada6a4added07890f41b4fbbba74e05dc" kindref="member">SizedTextureHandle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>&amp;handle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;<ref refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QSize<sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" kindref="member">isAtlasTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>&amp;texture_handle);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">QSize<sp/><ref refid="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" kindref="member">textureSize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/>&amp;texture_handle);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">QSize<sp/><ref refid="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" kindref="member">native_size</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>&amp;texture_handle);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">QSize<sp/><ref refid="namespaceopenage_1_1gui_1a1ed7c99cf0d2a47548927d8d688b0c42" kindref="member">aspect_fit_size</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/>&amp;texture_handle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;requested_size);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_texture_handle.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,857 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_terrain" kind="class" language="C++" prot="public">
+    <compoundname>openage::Terrain</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_terrain_1a59ab681b936ea55851dcbffb4e90b7a0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::Terrain::infinite</definition>
+        <argsstring></argsstring>
+        <name>infinite</name>
+        <briefdescription>
+<para>chunks are automagically created as soon as they are referenced </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="180" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_terrain_1aa0970b751b0d154bfa6be8c4f6dc850d" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref> *</type>
+        <definition>terrain_meta* openage::Terrain::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>terrain meta data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="398" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="398" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_1addad1085e0e15e34f8abf6ec270d5137" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref>, <ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *, <ref refid="structopenage_1_1coord__chunk__hash" kindref="compound">coord_chunk_hash</ref> &gt;</type>
+        <definition>std::unordered_map&lt;coord::chunk, TerrainChunk *, coord_chunk_hash&gt; openage::Terrain::chunks</definition>
+        <argsstring></argsstring>
+        <name>chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>maps chunk coordinates to chunks. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="403" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="403" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a2cd98e5c07d94c82f4ccccf507885895" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Terrain::Terrain</definition>
+        <argsstring>(terrain_meta *meta, bool is_infinite)</argsstring>
+        <name>Terrain</name>
+        <param>
+          <type><ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_infinite</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="177" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="31" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a4855244807ea15873a7ecd3f25dcfc34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Terrain::~Terrain</definition>
+        <argsstring>()</argsstring>
+        <name>~Terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="178" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="45" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a143090daace4caa26b8f0e9af5b4b69c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &gt;</type>
+        <definition>std::vector&lt; coord::chunk &gt; openage::Terrain::used_chunks</definition>
+        <argsstring>() const</argsstring>
+        <name>used_chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a list of all referenced chunks </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="188" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1ac5f73cac07115849392bb22598ae8fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Terrain::fill</definition>
+        <argsstring>(const int *data, const coord::tile_delta &amp;size)</argsstring>
+        <name>fill</name>
+        <param>
+          <type>const int *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>fill the terrain with given terrain_id values. <simplesect kind="return"><para>whether the data filled on the terrain was cut because of the terrains size limit. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="195" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="64" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1af40a0b5e61397331f4efc9543f7fdd44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Terrain::attach_chunk</definition>
+        <argsstring>(TerrainChunk *new_chunk, const coord::chunk &amp;position, bool manual=true)</argsstring>
+        <name>attach_chunk</name>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *</type>
+          <declname>new_chunk</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>manual</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attach a chunk to the terrain, to a given position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>new_chunk</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The chunk to be attached </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The chunk position where the chunk will be placed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>manually_created</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Was this chunk created manually? If true, it will not be free&apos;d automatically </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="204" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="82" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a6e0db07445c5dcc346c5e9d28458c516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *</type>
+        <definition>TerrainChunk * openage::Terrain::get_chunk</definition>
+        <argsstring>(const coord::chunk &amp;position)</argsstring>
+        <name>get_chunk</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a terrain chunk by a given chunk position.</para>
+<para><simplesect kind="return"><para>the chunk if exists, nullptr else </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="211" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="109" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a3c3153682d7a70b539ff15f492e0f06b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *</type>
+        <definition>TerrainChunk * openage::Terrain::get_chunk</definition>
+        <argsstring>(const coord::tile &amp;position)</argsstring>
+        <name>get_chunk</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a terrain chunk by a given tile position.</para>
+<para><simplesect kind="return"><para>the chunk it exists, nullptr else </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="218" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="120" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a7837ff925b6c466824b2388e55c198f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *</type>
+        <definition>TerrainChunk * openage::Terrain::get_create_chunk</definition>
+        <argsstring>(const coord::chunk &amp;position)</argsstring>
+        <name>get_create_chunk</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get or create a terrain chunk for a given chunk position.</para>
+<para><simplesect kind="return"><para>the (maybe newly created) chunk </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="225" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="124" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a9fc8a00464422b06cd5ea0dbda4c7d2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref> *</type>
+        <definition>TerrainChunk * openage::Terrain::get_create_chunk</definition>
+        <argsstring>(const coord::tile &amp;position)</argsstring>
+        <name>get_create_chunk</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get or create a terrain chunk for a given tile position.</para>
+<para><simplesect kind="return"><para>the (maybe newly created) chunk </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="232" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a437d04e21933a02a08861b50a585135e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref> *</type>
+        <definition>TileContent * openage::Terrain::get_data</definition>
+        <argsstring>(const coord::tile &amp;position)</argsstring>
+        <name>get_data</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return tile data for the given position.</para>
+<para>the only reason the chunks exist, is because of this data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="239" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="137" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1aa4d53dc392a6fd6da85ba49625d70478" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>TerrainObject * openage::Terrain::obj_at_point</definition>
+        <argsstring>(const coord::phys3 &amp;point)</argsstring>
+        <name>obj_at_point</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>an object which contains the given point, null otherwise </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="244" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="146" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a9ce94c372f7e86310506844b352fb20c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structopenage_1_1chunk__neighbors" kindref="compound">chunk_neighbors</ref></type>
+        <definition>struct chunk_neighbors openage::Terrain::get_chunk_neighbors</definition>
+        <argsstring>(const coord::chunk &amp;position)</argsstring>
+        <name>get_chunk_neighbors</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the neighbor chunks of a given chunk.</para>
+<para>chunk neighbor ids: 0 / &lt;- ne 7 1 6 @ 2 5 3 4 \ &lt;- se</para>
+<para>ne se 0: 1 -1 1: 1 0 2: 1 1 3: 0 1 4: -1 1 5: -1 0 6: -1 -1 7: 0 -1</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position of the center chunk. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="244" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="212" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a88ec2ee796cfe5d6c97570ad73db43cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned openage::Terrain::get_subtexture_id</definition>
+        <argsstring>(const coord::tile &amp;pos, unsigned atlas_size)</argsstring>
+        <name>get_subtexture_id</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>atlas_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the subtexture offset id for a given tile position. the maximum offset is determined by the atlas size.</para>
+<para>this function returns always the right value, so that neighbor tiles of the same terrain (like grass-grass) are matching (without blendomatic). -&gt; e.g. grass only map. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="279" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="202" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1ab9457472de4a25ef737684e27d1d5810" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" kindref="member">tile_state</ref></type>
+        <definition>tile_state openage::Terrain::check_tile</definition>
+        <argsstring>(const coord::tile &amp;position)</argsstring>
+        <name>check_tile</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks the creation state and premissions of a given tile position. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="284" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="254" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1aa0e35745e96c0b263a74dcf2ec2abffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Terrain::check_tile_position</definition>
+        <argsstring>(const coord::tile &amp;position)</argsstring>
+        <name>check_tile_position</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks whether the given tile position is allowed to exist on this terrain. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="290" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="269" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a76cd02c887a27a6c91331573ecb84907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Terrain::validate_terrain</definition>
+        <argsstring>(terrain_t terrain_id)</argsstring>
+        <name>validate_terrain</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>validate whether the given terrain id is available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="295" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="164" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1adfa825aeaadbb2ce0a8dd13c335ffee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Terrain::validate_mask</definition>
+        <argsstring>(ssize_t mask_id)</argsstring>
+        <name>validate_mask</name>
+        <param>
+          <type>ssize_t</type>
+          <declname>mask_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>validate whether the given mask id is available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="300" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="173" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a0de0b286ad2d9129d42b4f64e3ed9ffd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Terrain::priority</definition>
+        <argsstring>(terrain_t terrain_id)</argsstring>
+        <name>priority</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the blending priority for a given terrain id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="305" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1ae5704a3d8f41acd79c3c3dca6f284ce7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Terrain::blendmode</definition>
+        <argsstring>(terrain_t terrain_id)</argsstring>
+        <name>blendmode</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the blending mode/blendomatic mask set for a given terrain id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="310" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="187" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a6e394fadeb8534aef0c7098939f25b23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture * openage::Terrain::texture</definition>
+        <argsstring>(terrain_t terrain_id)</argsstring>
+        <name>texture</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the terrain texture for a given terrain id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="315" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="192" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a30da324d9ca8573bb3ac45bb12166298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture * openage::Terrain::blending_mask</definition>
+        <argsstring>(ssize_t mask_id)</argsstring>
+        <name>blending_mask</name>
+        <param>
+          <type>ssize_t</type>
+          <declname>mask_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the blendomatic mask with the given mask id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="320" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1aac2534a0373a7bbd8efdcf659977a881" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Terrain::get_blending_mode</definition>
+        <argsstring>(terrain_t base_id, terrain_t neighbor_id)</argsstring>
+        <name>get_blending_mode</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>base_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+          <declname>neighbor_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the blending mode id for two given neighbor ids. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="325" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="226" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Terrain::draw</definition>
+        <argsstring>(Engine *engine, RenderOptions *settings)</argsstring>
+        <name>draw</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_render_options" kindref="compound">RenderOptions</ref> *</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>draw the currently visible terrain area on screen. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the engine where the terrain should be drawn to. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="331" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="278" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1ab0736d57ce5014c9caea96125ad87b0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structopenage_1_1terrain__render__data" kindref="compound">terrain_render_data</ref></type>
+        <definition>struct terrain_render_data openage::Terrain::create_draw_advice</definition>
+        <argsstring>(const coord::tile &amp;ab, const coord::tile &amp;cd, const coord::tile &amp;ef, const coord::tile &amp;gh, bool blending_enabled)</argsstring>
+        <name>create_draw_advice</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>ab</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>cd</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>ef</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &amp;</type>
+          <declname>gh</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>blending_enabled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create the drawing instruction data.</para>
+<para>created draw data according to the given tile boundaries.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ab</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper left tile </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper right tile </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ef</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower right tile </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower left tile</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a drawing instruction struct that contains all information for rendering </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="331" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="329" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structopenage_1_1tile__draw__data" kindref="compound">tile_draw_data</ref></type>
+        <definition>struct tile_draw_data openage::Terrain::create_tile_advice</definition>
+        <argsstring>(coord::tile position, bool blending_enabled)</argsstring>
+        <name>create_tile_advice</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>blending_enabled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create rendering and blending information for a single tile on the terrain. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="331" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="402" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1adf4e2cfb2010657a5384efc6c37a9748" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Terrain::get_neighbors</definition>
+        <argsstring>(coord::tile basepos, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id)</argsstring>
+        <name>get_neighbors</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>basepos</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1neighbor__tile" kindref="compound">neighbor_tile</ref> *</type>
+          <declname>neigh_tiles</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1influence" kindref="compound">influence</ref> *</type>
+          <declname>influences_by_terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gather neighbors of a given base tile.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>basepos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the base position, around which the neighbors will be fetched </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>neigh_tiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the destination buffer where the neighbors will be stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>influences_by_terrain_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>influence buffer that is reset in the same step </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="364" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="467" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structopenage_1_1influence__group" kindref="compound">influence_group</ref></type>
+        <definition>struct influence_group openage::Terrain::calculate_influences</definition>
+        <argsstring>(struct tile_data *base_tile, struct neighbor_tile *neigh_tiles, struct influence *influences_by_terrain_id)</argsstring>
+        <name>calculate_influences</name>
+        <param>
+          <type>struct <ref refid="structopenage_1_1tile__data" kindref="compound">tile_data</ref> *</type>
+          <declname>base_tile</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1neighbor__tile" kindref="compound">neighbor_tile</ref> *</type>
+          <declname>neigh_tiles</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1influence" kindref="compound">influence</ref> *</type>
+          <declname>influences_by_terrain_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>look at neighbor tiles around the base_tile, and store the influence bits.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>base_tile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the base tile for which influences are calculated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>neigh_tiles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the neigbors of base_tile </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>influences_by_terrain_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>influences will be stored to this buffer, as bitmasks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an influence group that describes the maximum 8 possible influences on the base_tile </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="364" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="500" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Terrain::calculate_masks</definition>
+        <argsstring>(coord::tile position, struct tile_draw_data *tile_data, struct influence_group *influences)</argsstring>
+        <name>calculate_masks</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1tile__draw__data" kindref="compound">tile_draw_data</ref> *</type>
+          <declname>tile_data</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structopenage_1_1influence__group" kindref="compound">influence_group</ref> *</type>
+          <declname>influences</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>calculate blending masks for a given tile position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the base tile position, for which the masks are calculated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="structopenage_1_1tile__data" kindref="compound">tile_data</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer where the created drawing layers will be stored in </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>influences</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer where calculated influences were stored to</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" kindref="member">calculate_influences</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="389" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="595" bodyend="746"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the terrain class is the main top-management interface for dealing with cost-benefit analysis to maximize company profits.</para>
+<para>actually this is just the entrypoint and container for the terrain chunks. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4341">
+        <label>openage::terrain_meta</label>
+        <link refid="structopenage_1_1terrain__meta"/>
+      </node>
+      <node id="4340">
+        <label>openage::Terrain</label>
+        <link refid="classopenage_1_1_terrain"/>
+        <childnode refid="4341" relation="usage">
+          <edgelabel>-meta</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="175" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="175" bodyend="405"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_terrain_1af40a0b5e61397331f4efc9543f7fdd44" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>attach_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_1a30da324d9ca8573bb3ac45bb12166298" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>blending_mask</name></member>
+      <member refid="classopenage_1_1_terrain_1ae5704a3d8f41acd79c3c3dca6f284ce7" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>blendmode</name></member>
+      <member refid="classopenage_1_1_terrain_1a202cab41ccd1d5af5e0e7a5e658f3f30" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>calculate_influences</name></member>
+      <member refid="classopenage_1_1_terrain_1a72f81eb7623d4ade8272f8163bfcb4d9" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>calculate_masks</name></member>
+      <member refid="classopenage_1_1_terrain_1ab9457472de4a25ef737684e27d1d5810" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>check_tile</name></member>
+      <member refid="classopenage_1_1_terrain_1aa0e35745e96c0b263a74dcf2ec2abffb" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>check_tile_position</name></member>
+      <member refid="classopenage_1_1_terrain_1addad1085e0e15e34f8abf6ec270d5137" prot="private" virt="non-virtual"><scope>openage::Terrain</scope><name>chunks</name></member>
+      <member refid="classopenage_1_1_terrain_1ab0736d57ce5014c9caea96125ad87b0d" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>create_draw_advice</name></member>
+      <member refid="classopenage_1_1_terrain_1a16e91ba2a775715dc81088e47e508786" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>create_tile_advice</name></member>
+      <member refid="classopenage_1_1_terrain_1ae8e6bd38cdaa86dcff31251de1c6deec" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_terrain_1ac5f73cac07115849392bb22598ae8fba" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>fill</name></member>
+      <member refid="classopenage_1_1_terrain_1aac2534a0373a7bbd8efdcf659977a881" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_blending_mode</name></member>
+      <member refid="classopenage_1_1_terrain_1a6e0db07445c5dcc346c5e9d28458c516" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_1a3c3153682d7a70b539ff15f492e0f06b" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_1a9ce94c372f7e86310506844b352fb20c" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_chunk_neighbors</name></member>
+      <member refid="classopenage_1_1_terrain_1a7837ff925b6c466824b2388e55c198f4" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_create_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_1a9fc8a00464422b06cd5ea0dbda4c7d2f" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_create_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_1a437d04e21933a02a08861b50a585135e" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1_terrain_1adf4e2cfb2010657a5384efc6c37a9748" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_neighbors</name></member>
+      <member refid="classopenage_1_1_terrain_1a88ec2ee796cfe5d6c97570ad73db43cc" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>get_subtexture_id</name></member>
+      <member refid="classopenage_1_1_terrain_1a59ab681b936ea55851dcbffb4e90b7a0" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>infinite</name></member>
+      <member refid="classopenage_1_1_terrain_1aa0970b751b0d154bfa6be8c4f6dc850d" prot="private" virt="non-virtual"><scope>openage::Terrain</scope><name>meta</name></member>
+      <member refid="classopenage_1_1_terrain_1aa4d53dc392a6fd6da85ba49625d70478" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>obj_at_point</name></member>
+      <member refid="classopenage_1_1_terrain_1a0de0b286ad2d9129d42b4f64e3ed9ffd" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>priority</name></member>
+      <member refid="classopenage_1_1_terrain_1a2cd98e5c07d94c82f4ccccf507885895" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>Terrain</name></member>
+      <member refid="classopenage_1_1_terrain_1a6e394fadeb8534aef0c7098939f25b23" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>texture</name></member>
+      <member refid="classopenage_1_1_terrain_1a143090daace4caa26b8f0e9af5b4b69c" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>used_chunks</name></member>
+      <member refid="classopenage_1_1_terrain_1adfa825aeaadbb2ce0a8dd13c335ffee1" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>validate_mask</name></member>
+      <member refid="classopenage_1_1_terrain_1a76cd02c887a27a6c91331573ecb84907" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>validate_terrain</name></member>
+      <member refid="classopenage_1_1_terrain_1a4855244807ea15873a7ecd3f25dcfc34" prot="public" virt="non-virtual"><scope>openage::Terrain</scope><name>~Terrain</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

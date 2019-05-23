@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="program_8cpp" kind="file" language="C++">
+    <compoundname>program.cpp</compoundname>
+    <includes refid="program_8h" local="yes">program.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">iostream</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
+    <includes refid="file_8h" local="yes">../util/file.h</includes>
+    <includes refid="strings_8h" local="yes">../util/strings.h</includes>
+    <includes refid="shader_2shader_8h" local="yes">shader.h</includes>
+    <incdepgraph>
+      <node id="24063">
+        <label>list</label>
+      </node>
+      <node id="24053">
+        <label>atomic</label>
+      </node>
+      <node id="24059">
+        <label>iomanip</label>
+      </node>
+      <node id="24058">
+        <label>functional</label>
+      </node>
+      <node id="24076">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="24058" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+      </node>
+      <node id="24048">
+        <label>cstdint</label>
+      </node>
+      <node id="24037">
+        <label>stdlib.h</label>
+      </node>
+      <node id="24056">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="24057" relation="include">
+        </childnode>
+        <childnode refid="24058" relation="include">
+        </childnode>
+        <childnode refid="24059" relation="include">
+        </childnode>
+        <childnode refid="24041" relation="include">
+        </childnode>
+        <childnode refid="24060" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24061" relation="include">
+        </childnode>
+      </node>
+      <node id="24075">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="24040" relation="include">
+        </childnode>
+      </node>
+      <node id="24042">
+        <label>stdexcept</label>
+      </node>
+      <node id="24074">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="24062">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="24063" relation="include">
+        </childnode>
+        <childnode refid="24064" relation="include">
+        </childnode>
+        <childnode refid="24065" relation="include">
+        </childnode>
+      </node>
+      <node id="24057">
+        <label>cstdarg</label>
+      </node>
+      <node id="24043">
+        <label>string</label>
+      </node>
+      <node id="24047">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="24048" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24049" relation="include">
+        </childnode>
+        <childnode refid="24050" relation="include">
+        </childnode>
+        <childnode refid="24052" relation="include">
+        </childnode>
+        <childnode refid="24062" relation="include">
+        </childnode>
+        <childnode refid="24065" relation="include">
+        </childnode>
+      </node>
+      <node id="24050">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="24051" relation="include">
+        </childnode>
+      </node>
+      <node id="24052">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="24053" relation="include">
+        </childnode>
+        <childnode refid="24041" relation="include">
+        </childnode>
+        <childnode refid="24054" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+        <childnode refid="24055" relation="include">
+        </childnode>
+        <childnode refid="24056" relation="include">
+        </childnode>
+      </node>
+      <node id="24034">
+        <label>libopenage/shader/program.cpp</label>
+        <link refid="program_8cpp"/>
+        <childnode refid="24035" relation="include">
+        </childnode>
+        <childnode refid="24037" relation="include">
+        </childnode>
+        <childnode refid="24038" relation="include">
+        </childnode>
+        <childnode refid="24039" relation="include">
+        </childnode>
+        <childnode refid="24040" relation="include">
+        </childnode>
+        <childnode refid="24068" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+        <childnode refid="24069" relation="include">
+        </childnode>
+        <childnode refid="24056" relation="include">
+        </childnode>
+        <childnode refid="24077" relation="include">
+        </childnode>
+      </node>
+      <node id="24071">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="24048" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24061" relation="include">
+        </childnode>
+        <childnode refid="24072" relation="include">
+        </childnode>
+        <childnode refid="24073" relation="include">
+        </childnode>
+      </node>
+      <node id="24040">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="24039" relation="include">
+        </childnode>
+        <childnode refid="24041" relation="include">
+        </childnode>
+        <childnode refid="24042" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+        <childnode refid="24047" relation="include">
+        </childnode>
+      </node>
+      <node id="24067">
+        <label>typeinfo</label>
+      </node>
+      <node id="24061">
+        <label>vector</label>
+      </node>
+      <node id="24068">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="24065" relation="include">
+        </childnode>
+        <childnode refid="24047" relation="include">
+        </childnode>
+      </node>
+      <node id="24045">
+        <label>ciso646</label>
+      </node>
+      <node id="24035">
+        <label>program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="24036" relation="include">
+        </childnode>
+      </node>
+      <node id="24060">
+        <label>sstream</label>
+      </node>
+      <node id="24044">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="24045" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24046" relation="include">
+        </childnode>
+      </node>
+      <node id="24069">
+        <label>../util/file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="24041" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24061" relation="include">
+        </childnode>
+        <childnode refid="24070" relation="include">
+        </childnode>
+        <childnode refid="24071" relation="include">
+        </childnode>
+      </node>
+      <node id="24046">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="24046" relation="include">
+        </childnode>
+      </node>
+      <node id="24036">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="24055">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="24039" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+      </node>
+      <node id="24065">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="24066" relation="include">
+        </childnode>
+      </node>
+      <node id="24070">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="24039" relation="include">
+        </childnode>
+        <childnode refid="24043" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+      </node>
+      <node id="24051">
+        <label>cstdlib</label>
+      </node>
+      <node id="24039">
+        <label>iostream</label>
+      </node>
+      <node id="24077">
+        <label>shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="24078" relation="include">
+        </childnode>
+        <childnode refid="24036" relation="include">
+        </childnode>
+      </node>
+      <node id="24073">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="24058" relation="include">
+        </childnode>
+        <childnode refid="24064" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+        <childnode refid="24074" relation="include">
+        </childnode>
+        <childnode refid="24075" relation="include">
+        </childnode>
+        <childnode refid="24076" relation="include">
+        </childnode>
+      </node>
+      <node id="24064">
+        <label>mutex</label>
+      </node>
+      <node id="24072">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="24054">
+        <label>type_traits</label>
+      </node>
+      <node id="24049">
+        <label>config.h</label>
+      </node>
+      <node id="24038">
+        <label>stdio.h</label>
+      </node>
+      <node id="24041">
+        <label>memory</label>
+      </node>
+      <node id="24078">
+        <label>initializer_list</label>
+      </node>
+      <node id="24066">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="24039" relation="include">
+        </childnode>
+        <childnode refid="24067" relation="include">
+        </childnode>
+        <childnode refid="24044" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1shader">openage::shader</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="program_8h" kindref="compound">program.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/compiler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/file.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/strings.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="shader_2shader_8h" kindref="compound">shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">shader<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1shader_1_1_program_1a07f2803e87f34457092fcdfb08691a1f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1shader_1_1_program_1a07f2803e87f34457092fcdfb08691a1f" kindref="member">Program::Program</ref>()<sp/>:<sp/>is_linked(false),<sp/>vert(nullptr),<sp/>frag(nullptr),<sp/>geom(nullptr)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>glCreateProgram();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1shader_1_1_program_1a5b91b2431b7807771b0d97b19e52c09c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1shader_1_1_program_1a07f2803e87f34457092fcdfb08691a1f" kindref="member">Program::Program</ref>(<ref refid="classopenage_1_1shader_1_1_shader" kindref="compound">Shader</ref><sp/>*s0,<sp/><ref refid="classopenage_1_1shader_1_1_shader" kindref="compound">Shader</ref><sp/>*s1)<sp/>:<sp/><ref refid="classopenage_1_1shader_1_1_program" kindref="compound">Program</ref>{}<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;attach_shader(s0);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;attach_shader(s1);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1shader_1_1_program_1a90c7629f450f93e8559cbe4a414f55c1" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1shader_1_1_program_1a90c7629f450f93e8559cbe4a414f55c1" kindref="member">Program::~Program</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>glDeleteProgram(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1shader_1_1_program_1a1ce9b29209dd9627480208604b2af536" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1a1ce9b29209dd9627480208604b2af536" kindref="member">Program::attach_shader</ref>(<ref refid="classopenage_1_1shader_1_1_shader" kindref="compound">Shader</ref><sp/>*s)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(s-&gt;<ref refid="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_VERTEX_SHADER:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ae407c99119d5d6a7e726b57b33ab56c9" kindref="member">vert</ref><sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_FRAGMENT_SHADER:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a24b22da95e0ca9ace143180d39a19b91" kindref="member">frag</ref><sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_GEOMETRY_SHADER:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a2b7a73602a65071c281ae7299addcfbc" kindref="member">geom</ref><sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>glAttachShader(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>s-&gt;<ref refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classopenage_1_1shader_1_1_program_1aa1776f13c5e6a6de8b21ecabee9962dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1aa1776f13c5e6a6de8b21ecabee9962dc" kindref="member">Program::link</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>glLinkProgram(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ae0fd13dc3273cf93aa6330973c478e66" kindref="member">check</ref>(GL_LINK_STATUS);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>glValidateProgram(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ae0fd13dc3273cf93aa6330973c478e66" kindref="member">check</ref>(GL_VALIDATE_STATUS);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a1c199fb97b3c0a139ed8d8950731823e" kindref="member">is_linked</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a922c3cba1c006ebbed9cf81261ed79bf" kindref="member">post_link_hook</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ae407c99119d5d6a7e726b57b33ab56c9" kindref="member">vert</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDetachShader(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ae407c99119d5d6a7e726b57b33ab56c9" kindref="member">vert</ref>-&gt;<ref refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a24b22da95e0ca9ace143180d39a19b91" kindref="member">frag</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDetachShader(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a24b22da95e0ca9ace143180d39a19b91" kindref="member">frag</ref>-&gt;<ref refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a2b7a73602a65071c281ae7299addcfbc" kindref="member">geom</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDetachShader(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a2b7a73602a65071c281ae7299addcfbc" kindref="member">geom</ref>-&gt;<ref refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" kindref="member">id</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1shader_1_1_program_1ae0fd13dc3273cf93aa6330973c478e66" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1ae0fd13dc3273cf93aa6330973c478e66" kindref="member">Program::check</ref>(GLenum<sp/>what_to_check)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>status;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetProgramiv(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>what_to_check,<sp/>&amp;status);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>GL_TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/>loglen;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetProgramiv(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>GL_INFO_LOG_LENGTH,<sp/>&amp;loglen);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*infolog<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[loglen];</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetProgramInfoLog(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>loglen,<sp/>NULL,<sp/>infolog);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*what_str;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(what_to_check)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_LINK_STATUS:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>what_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;linking&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_VALIDATE_STATUS:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>what_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;validation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_COMPILE_STATUS:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>what_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;compiliation&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>what_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&lt;unknown<sp/>task&gt;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>errormsg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errormsg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Program<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>what_str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>failed\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>infolog;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>infolog;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(errormsg);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classopenage_1_1shader_1_1_program_1ab36b7c92db2a3e3ce76b79e0451b6978" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1ab36b7c92db2a3e3ce76b79e0451b6978" kindref="member">Program::use</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>glUseProgram(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1shader_1_1_program_1abfd70a48ce216cf044f558328f8dfa4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1abfd70a48ce216cf044f558328f8dfa4e" kindref="member">Program::stopusing</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>glUseProgram(static_cast&lt;GLuint&gt;(0));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classopenage_1_1shader_1_1_program_1aecded60710ed9a7afb034bf0c402bd97" refkind="member"><highlight class="normal">GLint<sp/><ref refid="classopenage_1_1shader_1_1_program_1aecded60710ed9a7afb034bf0c402bd97" kindref="member">Program::get_uniform_id</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>glGetUniformLocation(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>name);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classopenage_1_1shader_1_1_program_1a99b5e69d6cc3b17b942c5314c148731a" refkind="member"><highlight class="normal">GLint<sp/><ref refid="classopenage_1_1shader_1_1_program_1a99b5e69d6cc3b17b942c5314c148731a" kindref="member">Program::get_attribute_id</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(!this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a1c199fb97b3c0a139ed8d8950731823e" kindref="member">is_linked</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attribute<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>name<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>was<sp/>queried<sp/>before<sp/>program<sp/>was<sp/>linked!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>aid<sp/>=<sp/>glGetAttribLocation(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>name);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(aid<sp/>==<sp/>-1))<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a0776d2eae35983b4c4a9ccd82a30d8e4" kindref="member">dump_active_attributes</ref>();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attribute<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>queried<sp/>but<sp/>not<sp/>found<sp/>or<sp/>active&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>(pwnt<sp/>by<sp/>the<sp/>compiler).&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>aid;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classopenage_1_1shader_1_1_program_1a588b6b44da195cb0b83dabe74561f1ee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1a588b6b44da195cb0b83dabe74561f1ee" kindref="member">Program::set_attribute_id</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/>GLuint<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a1c199fb97b3c0a139ed8d8950731823e" kindref="member">is_linked</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glBindAttribLocation(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>name);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO:<sp/>maybe<sp/>enable<sp/>overwriting,<sp/>but<sp/>after<sp/>that<sp/>relink<sp/>the<sp/>program</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;assigned<sp/>attribute<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>after<sp/>program<sp/>was<sp/>linked!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classopenage_1_1shader_1_1_program_1a0776d2eae35983b4c4a9ccd82a30d8e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1a0776d2eae35983b4c4a9ccd82a30d8e4" kindref="member">Program::dump_active_attributes</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Dumping<sp/>shader<sp/>program<sp/>active<sp/>attribute<sp/>list:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>num_attribs;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetProgramiv(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>GL_ACTIVE_ATTRIBUTES,<sp/>&amp;num_attribs);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>attrib_max_length;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetProgramiv(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>GL_ACTIVE_ATTRIBUTE_MAX_LENGTH,<sp/>&amp;attrib_max_length);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>num_attribs;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLsizei<sp/>attrib_length;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/>attrib_size;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLenum<sp/>attrib_type;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*attrib_name<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[attrib_max_length];</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetActiveAttrib(this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>i,<sp/>attrib_max_length,<sp/>&amp;attrib_length,<sp/>&amp;attrib_size,<sp/>&amp;attrib_type,<sp/>attrib_name);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;-&gt;<sp/>attribute<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>attrib_name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>type=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>attrib_type<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>size=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>attrib_size;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>attrib_name;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="classopenage_1_1shader_1_1_program_1a922c3cba1c006ebbed9cf81261ed79bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1shader_1_1_program_1a922c3cba1c006ebbed9cf81261ed79bf" kindref="member">Program::post_link_hook</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ad0d5148a261f1087eae30c200ea54094" kindref="member">pos_id</ref><sp/><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a99b5e69d6cc3b17b942c5314c148731a" kindref="member">get_attribute_id</ref>(</highlight><highlight class="stringliteral">&quot;vertex_position&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1a5ac2b6a9c801c842d9aff679809c99f5" kindref="member">mvpm_id</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1shader_1_1_program_1aecded60710ed9a7afb034bf0c402bd97" kindref="member">get_uniform_id</ref>(</highlight><highlight class="stringliteral">&quot;mvp_matrix&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::shader</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/shader/program.cpp"/>
+  </compounddef>
+</doxygen>

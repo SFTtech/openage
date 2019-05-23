@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1job_1_1_job_state_base" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::job::JobStateBase</compoundname>
+    <derivedcompoundref refid="classopenage_1_1job_1_1_typed_job_state_base" prot="public" virt="non-virtual">openage::job::TypedJobStateBase&lt; T &gt;</derivedcompoundref>
+    <includes refid="job__state__base_8h" local="no">job_state_base.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1a95e1cb836c2404c1166803684c5997de" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::job::JobStateBase::~JobStateBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~JobStateBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_state_base.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1a031e479cce5b10af52a28ccb5301b588" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::job::JobStateBase::execute</definition>
+        <argsstring>(should_abort_t should_abort)=0</argsstring>
+        <name>execute</name>
+        <reimplementedby refid="classopenage_1_1job_1_1_typed_job_state_base_1a417161d234770ebadb0f98ecf1fece50">execute</reimplementedby>
+        <param>
+          <type><ref refid="namespaceopenage_1_1job_1aa67062d8c4a001038067eb490177604b" kindref="member">should_abort_t</ref></type>
+          <declname>should_abort</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function executes the job. It returns whether the job has been aborted. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_state_base.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1ae5c8164b998e8a1ba780c3114e4492b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::job::JobStateBase::execute_callback</definition>
+        <argsstring>()=0</argsstring>
+        <name>execute_callback</name>
+        <reimplementedby refid="classopenage_1_1job_1_1_typed_job_state_base_1a4c8a6b1c64e615799feafc50842dd93c">execute_callback</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Executes the job&apos;s callback, if a callback function has been provided while constructing this job. This function may only be called if the job has already finished. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_state_base.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_state_base_1aee0926a562a65f87308e1eda7d14040c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t openage::job::JobStateBase::get_thread_id</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_thread_id</name>
+        <reimplementedby refid="classopenage_1_1job_1_1_typed_job_state_base_1abae19bb907d061aa9707b6ba619fe631">get_thread_id</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the id of the thread that has created this job. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_state_base.h" line="38" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An abstract base class for a shared state of a job. A job state keeps track of its execution state and store&apos;s the job&apos;s result. Further it keeps track of exceptions that occurred during the job&apos;s execution. The real shared state implementation is done in templated subclasses. This is necessary to support arbitrary result types. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3040">
+        <label>openage::job::JobState&lt; T &gt;</label>
+        <link refid="classopenage_1_1job_1_1_job_state"/>
+        <childnode refid="3038" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3039">
+        <label>openage::job::AbortableJobState&lt; T &gt;</label>
+        <link refid="classopenage_1_1job_1_1_abortable_job_state"/>
+        <childnode refid="3038" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3038">
+        <label>openage::job::TypedJobStateBase&lt; T &gt;</label>
+        <link refid="classopenage_1_1job_1_1_typed_job_state_base"/>
+        <childnode refid="3037" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3037">
+        <label>openage::job::JobStateBase</label>
+        <link refid="classopenage_1_1job_1_1_job_state_base"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3041">
+        <label>openage::job::JobStateBase</label>
+        <link refid="classopenage_1_1job_1_1_job_state_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/job/job_state_base.h" line="19" column="1" bodyfile="libopenage/job/job_state_base.h" bodystart="19" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1job_1_1_job_state_base_1a031e479cce5b10af52a28ccb5301b588" prot="public" virt="pure-virtual"><scope>openage::job::JobStateBase</scope><name>execute</name></member>
+      <member refid="classopenage_1_1job_1_1_job_state_base_1ae5c8164b998e8a1ba780c3114e4492b4" prot="public" virt="pure-virtual"><scope>openage::job::JobStateBase</scope><name>execute_callback</name></member>
+      <member refid="classopenage_1_1job_1_1_job_state_base_1aee0926a562a65f87308e1eda7d14040c" prot="public" virt="pure-virtual"><scope>openage::job::JobStateBase</scope><name>get_thread_id</name></member>
+      <member refid="classopenage_1_1job_1_1_job_state_base_1a95e1cb836c2404c1166803684c5997de" prot="public" virt="virtual"><scope>openage::job::JobStateBase</scope><name>~JobStateBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

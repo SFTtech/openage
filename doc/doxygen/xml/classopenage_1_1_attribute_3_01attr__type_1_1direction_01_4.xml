@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::direction &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_unshared_attribute_container" prot="public" virt="non-virtual">openage::UnsharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1aa52de93cde4b144ac39e9660b27b1008" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref></type>
+        <definition>coord::phys3_delta openage::Attribute&lt; attr_type::direction &gt;::unit_dir</definition>
+        <argsstring></argsstring>
+        <name>unit_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="425" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1a2964f0e4f576f04bcde5f8313947dd8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::direction &gt;::Attribute</definition>
+        <argsstring>(coord::phys3_delta dir)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref></type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="416" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="416" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1ac53cd250cbe66618e55ccd1a2c52ccdf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::direction &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="421" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="421" bodyend="423"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="414">
+        <label>openage::Attribute&lt; attr_type::direction &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4"/>
+        <childnode refid="415" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="416" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="420">
+        <label>openage::coord::phys3_delta</label>
+        <link refid="structopenage_1_1coord_1_1phys3__delta"/>
+        <childnode refid="421" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="417">
+        <label>openage::Attribute&lt; attr_type::direction &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4"/>
+        <childnode refid="418" relation="public-inheritance">
+        </childnode>
+        <childnode refid="420" relation="usage">
+          <edgelabel>+unit_dir</edgelabel>
+        </childnode>
+      </node>
+      <node id="418">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="419" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="419">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="421">
+        <label>CoordNeSeUpRelative&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="414" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="414" bodyend="426"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1a2964f0e4f576f04bcde5f8313947dd8b" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1ac53cd250cbe66618e55ccd1a2c52ccdf" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a37a9c89f4d60700087ac55df3bbf38d9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4_1aa52de93cde4b144ac39e9660b27b1008" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>unit_dir</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a4b609bc0e8a94749f0810e3e3228a8d6" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>UnsharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::direction &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,846 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="civilisation_8cpp" kind="file" language="C++">
+    <compoundname>civilisation.cpp</compoundname>
+    <includes refid="civilisation_8h" local="yes">civilisation.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="unit__type_8h" local="yes">../unit/unit_type.h</includes>
+    <incdepgraph>
+      <node id="8846">
+        <label>list</label>
+      </node>
+      <node id="8823">
+        <label>atomic</label>
+      </node>
+      <node id="8872">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="8873" relation="include">
+        </childnode>
+        <childnode refid="8874" relation="include">
+        </childnode>
+        <childnode refid="8875" relation="include">
+        </childnode>
+        <childnode refid="8843" relation="include">
+        </childnode>
+        <childnode refid="8876" relation="include">
+        </childnode>
+        <childnode refid="8877" relation="include">
+        </childnode>
+        <childnode refid="8839" relation="include">
+        </childnode>
+        <childnode refid="8878" relation="include">
+        </childnode>
+      </node>
+      <node id="8843">
+        <label>iomanip</label>
+      </node>
+      <node id="8824">
+        <label>functional</label>
+      </node>
+      <node id="8876">
+        <label>limits</label>
+      </node>
+      <node id="8871">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="8834" relation="include">
+        </childnode>
+        <childnode refid="8872" relation="include">
+        </childnode>
+      </node>
+      <node id="8819">
+        <label>game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="8820" relation="include">
+        </childnode>
+        <childnode refid="8854" relation="include">
+        </childnode>
+        <childnode refid="8855" relation="include">
+        </childnode>
+        <childnode refid="8856" relation="include">
+        </childnode>
+        <childnode refid="8893" relation="include">
+        </childnode>
+        <childnode refid="8894" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8896" relation="include">
+        </childnode>
+      </node>
+      <node id="8887">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="8888" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8889" relation="include">
+        </childnode>
+        <childnode refid="8884" relation="include">
+        </childnode>
+        <childnode refid="8886" relation="include">
+        </childnode>
+        <childnode refid="8890" relation="include">
+        </childnode>
+        <childnode refid="8891" relation="include">
+        </childnode>
+        <childnode refid="8860" relation="include">
+        </childnode>
+      </node>
+      <node id="8866">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+      </node>
+      <node id="8896">
+        <label>QObject</label>
+      </node>
+      <node id="8834">
+        <label>cstdint</label>
+      </node>
+      <node id="8815">
+        <label>civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8819" relation="include">
+        </childnode>
+      </node>
+      <node id="8881">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="8841">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="8842" relation="include">
+        </childnode>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8843" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8844" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+      </node>
+      <node id="8851">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="8829" relation="include">
+        </childnode>
+      </node>
+      <node id="8865">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="8827" relation="include">
+        </childnode>
+      </node>
+      <node id="8875">
+        <label>cmath</label>
+      </node>
+      <node id="8854">
+        <label>../gamedata/gamedata.gen.h</label>
+      </node>
+      <node id="8829">
+        <label>stdexcept</label>
+      </node>
+      <node id="8864">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="8909">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="8834" relation="include">
+        </childnode>
+      </node>
+      <node id="8901">
+        <label>attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="8902" relation="include">
+        </childnode>
+        <childnode refid="8903" relation="include">
+        </childnode>
+      </node>
+      <node id="8859">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="8835" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8860" relation="include">
+        </childnode>
+      </node>
+      <node id="8845">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="8846" relation="include">
+        </childnode>
+        <childnode refid="8847" relation="include">
+        </childnode>
+        <childnode refid="8848" relation="include">
+        </childnode>
+      </node>
+      <node id="8842">
+        <label>cstdarg</label>
+      </node>
+      <node id="8817">
+        <label>string</label>
+      </node>
+      <node id="8833">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="8834" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8835" relation="include">
+        </childnode>
+        <childnode refid="8836" relation="include">
+        </childnode>
+        <childnode refid="8838" relation="include">
+        </childnode>
+        <childnode refid="8845" relation="include">
+        </childnode>
+        <childnode refid="8848" relation="include">
+        </childnode>
+      </node>
+      <node id="8836">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="8837" relation="include">
+        </childnode>
+      </node>
+      <node id="8838">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="8823" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8839" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+        <childnode refid="8840" relation="include">
+        </childnode>
+        <childnode refid="8841" relation="include">
+        </childnode>
+      </node>
+      <node id="8902">
+        <label>map</label>
+      </node>
+      <node id="8904">
+        <label>../gamedata/unit.gen.h</label>
+      </node>
+      <node id="8907">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="8908" relation="include">
+        </childnode>
+        <childnode refid="8884" relation="include">
+        </childnode>
+      </node>
+      <node id="8821">
+        <label>exception</label>
+      </node>
+      <node id="8826">
+        <label>stddef.h</label>
+      </node>
+      <node id="8895">
+        <label>fstream</label>
+      </node>
+      <node id="8877">
+        <label>ostream</label>
+      </node>
+      <node id="8905">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8826" relation="include">
+        </childnode>
+        <childnode refid="8886" relation="include">
+        </childnode>
+        <childnode refid="8883" relation="include">
+        </childnode>
+      </node>
+      <node id="8861">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="8834" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8862" relation="include">
+        </childnode>
+        <childnode refid="8863" relation="include">
+        </childnode>
+      </node>
+      <node id="8879">
+        <label>limits.h</label>
+      </node>
+      <node id="8827">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="8828" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8829" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+        <childnode refid="8833" relation="include">
+        </childnode>
+      </node>
+      <node id="8878">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="8873" relation="include">
+        </childnode>
+        <childnode refid="8879" relation="include">
+        </childnode>
+        <childnode refid="8875" relation="include">
+        </childnode>
+        <childnode refid="8880" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8827" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+      </node>
+      <node id="8894">
+        <label>../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="8837" relation="include">
+        </childnode>
+        <childnode refid="8880" relation="include">
+        </childnode>
+        <childnode refid="8895" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8827" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+        <childnode refid="8869" relation="include">
+        </childnode>
+        <childnode refid="8860" relation="include">
+        </childnode>
+      </node>
+      <node id="8882">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="8908">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="8850">
+        <label>typeinfo</label>
+      </node>
+      <node id="8893">
+        <label>../unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="8834" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8883" relation="include">
+        </childnode>
+        <childnode refid="8855" relation="include">
+        </childnode>
+      </node>
+      <node id="8885">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="8906">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8886" relation="include">
+        </childnode>
+        <childnode refid="8907" relation="include">
+        </childnode>
+        <childnode refid="8909" relation="include">
+        </childnode>
+      </node>
+      <node id="8853">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+      </node>
+      <node id="8818">
+        <label>vector</label>
+      </node>
+      <node id="8897">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="8848" relation="include">
+        </childnode>
+        <childnode refid="8833" relation="include">
+        </childnode>
+      </node>
+      <node id="8831">
+        <label>ciso646</label>
+      </node>
+      <node id="8822">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="8823" relation="include">
+        </childnode>
+        <childnode refid="8821" relation="include">
+        </childnode>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8825" relation="include">
+        </childnode>
+        <childnode refid="8827" relation="include">
+        </childnode>
+        <childnode refid="8851" relation="include">
+        </childnode>
+        <childnode refid="8852" relation="include">
+        </childnode>
+        <childnode refid="8853" relation="include">
+        </childnode>
+      </node>
+      <node id="8890">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="8888" relation="include">
+        </childnode>
+      </node>
+      <node id="8844">
+        <label>sstream</label>
+      </node>
+      <node id="8830">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="8831" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8832" relation="include">
+        </childnode>
+      </node>
+      <node id="8867">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8868" relation="include">
+        </childnode>
+        <childnode refid="8861" relation="include">
+        </childnode>
+      </node>
+      <node id="8832">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="8832" relation="include">
+        </childnode>
+      </node>
+      <node id="8900">
+        <label>resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+      </node>
+      <node id="8888">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="8840">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="8828" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+      </node>
+      <node id="8848">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="8849" relation="include">
+        </childnode>
+      </node>
+      <node id="8884">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="8885" relation="include">
+        </childnode>
+        <childnode refid="8871" relation="include">
+        </childnode>
+      </node>
+      <node id="8869">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="8889">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="8868">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="8828" relation="include">
+        </childnode>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+      </node>
+      <node id="8837">
+        <label>cstdlib</label>
+      </node>
+      <node id="8828">
+        <label>iostream</label>
+      </node>
+      <node id="8820">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="8821" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8822" relation="include">
+        </childnode>
+      </node>
+      <node id="8891">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="8892" relation="include">
+        </childnode>
+        <childnode refid="8888" relation="include">
+        </childnode>
+      </node>
+      <node id="8858">
+        <label>unordered_map</label>
+      </node>
+      <node id="8863">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8847" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+        <childnode refid="8864" relation="include">
+        </childnode>
+        <childnode refid="8865" relation="include">
+        </childnode>
+        <childnode refid="8866" relation="include">
+        </childnode>
+      </node>
+      <node id="8874">
+        <label>climits</label>
+      </node>
+      <node id="8903">
+        <label>attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8902" relation="include">
+        </childnode>
+        <childnode refid="8873" relation="include">
+        </childnode>
+        <childnode refid="8886" relation="include">
+        </childnode>
+        <childnode refid="8904" relation="include">
+        </childnode>
+        <childnode refid="8905" relation="include">
+        </childnode>
+        <childnode refid="8900" relation="include">
+        </childnode>
+        <childnode refid="8906" relation="include">
+        </childnode>
+      </node>
+      <node id="8847">
+        <label>mutex</label>
+      </node>
+      <node id="8870">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="8871" relation="include">
+        </childnode>
+        <childnode refid="8881" relation="include">
+        </childnode>
+        <childnode refid="8882" relation="include">
+        </childnode>
+      </node>
+      <node id="8825">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="8826" relation="include">
+        </childnode>
+      </node>
+      <node id="8860">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="8817" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8861" relation="include">
+        </childnode>
+        <childnode refid="8867" relation="include">
+        </childnode>
+        <childnode refid="8869" relation="include">
+        </childnode>
+      </node>
+      <node id="8898">
+        <label>../unit/unit_type.h</label>
+        <link refid="unit__type_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8883" relation="include">
+        </childnode>
+        <childnode refid="8899" relation="include">
+        </childnode>
+        <childnode refid="8901" relation="include">
+        </childnode>
+      </node>
+      <node id="8886">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="8871" relation="include">
+        </childnode>
+        <childnode refid="8881" relation="include">
+        </childnode>
+        <childnode refid="8882" relation="include">
+        </childnode>
+        <childnode refid="8878" relation="include">
+        </childnode>
+      </node>
+      <node id="8862">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="8839">
+        <label>type_traits</label>
+      </node>
+      <node id="8857">
+        <label>set</label>
+      </node>
+      <node id="8835">
+        <label>config.h</label>
+      </node>
+      <node id="8873">
+        <label>algorithm</label>
+      </node>
+      <node id="8852">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8853" relation="include">
+        </childnode>
+      </node>
+      <node id="8814">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+        <childnode refid="8815" relation="include">
+        </childnode>
+        <childnode refid="8897" relation="include">
+        </childnode>
+        <childnode refid="8898" relation="include">
+        </childnode>
+      </node>
+      <node id="8883">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="8878" relation="include">
+        </childnode>
+        <childnode refid="8871" relation="include">
+        </childnode>
+        <childnode refid="8881" relation="include">
+        </childnode>
+        <childnode refid="8882" relation="include">
+        </childnode>
+      </node>
+      <node id="8899">
+        <label>../gamestate/cost.h</label>
+        <link refid="cost_8h"/>
+        <childnode refid="8900" relation="include">
+        </childnode>
+      </node>
+      <node id="8880">
+        <label>cstring</label>
+      </node>
+      <node id="8855">
+        <label>../gamedata/graphic.gen.h</label>
+      </node>
+      <node id="8856">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="8824" relation="include">
+        </childnode>
+        <childnode refid="8816" relation="include">
+        </childnode>
+        <childnode refid="8826" relation="include">
+        </childnode>
+        <childnode refid="8857" relation="include">
+        </childnode>
+        <childnode refid="8858" relation="include">
+        </childnode>
+        <childnode refid="8818" relation="include">
+        </childnode>
+        <childnode refid="8859" relation="include">
+        </childnode>
+        <childnode refid="8870" relation="include">
+        </childnode>
+        <childnode refid="8883" relation="include">
+        </childnode>
+        <childnode refid="8884" relation="include">
+        </childnode>
+        <childnode refid="8886" relation="include">
+        </childnode>
+        <childnode refid="8887" relation="include">
+        </childnode>
+        <childnode refid="8878" relation="include">
+        </childnode>
+      </node>
+      <node id="8816">
+        <label>memory</label>
+      </node>
+      <node id="8892">
+        <label>initializer_list</label>
+      </node>
+      <node id="8849">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="8828" relation="include">
+        </childnode>
+        <childnode refid="8850" relation="include">
+        </childnode>
+        <childnode refid="8830" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="civilisation_8h" kindref="compound">civilisation.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../unit/unit_type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classopenage_1_1_civilisation_1ad42026f252bdf28b9d48b39a8535e2a3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_civilisation_1ad42026f252bdf28b9d48b39a8535e2a3" kindref="member">Civilisation::Civilisation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>&amp;spec,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>civ_id{</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>civ_name{spec.get_civ_name(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)}<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;initialise_unit_types(spec);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1_civilisation_1acc3a4d02c42d7f8eda5b9b87175f4613" refkind="member"><highlight class="normal">std::vector&lt;std::shared_ptr&lt;UnitTypeMeta&gt;&gt;<sp/><ref refid="classopenage_1_1_civilisation_1acc3a4d02c42d7f8eda5b9b87175f4613" kindref="member">Civilisation::object_meta</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_civilisation_1a12246fe137d4a5cccb044eb2f1c6932b" kindref="member">civ_objects</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1_civilisation_1aa8c2247f2c5b183fc77ae550307ef426" refkind="member"><highlight class="normal">std::vector&lt;index_t&gt;<sp/><ref refid="classopenage_1_1_civilisation_1aa8c2247f2c5b183fc77ae550307ef426" kindref="member">Civilisation::get_category</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;c)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cat<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a0472503729127b8d20d0f3708491952f" kindref="member">categories</ref>.find(c);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cat<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a0472503729127b8d20d0f3708491952f" kindref="member">categories</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::vector&lt;index_t&gt;();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cat-&gt;second;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1_civilisation_1a55ec689e9aed7d40b9d0aa7e2c478d96" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1_civilisation_1a55ec689e9aed7d40b9d0aa7e2c478d96" kindref="member">Civilisation::get_type_categories</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1ade8432645da979f0ca6cb1c53ef030d9" kindref="member">all_categories</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::building_unit<sp/>*<ref refid="classopenage_1_1_civilisation_1aac6dfa467902f19637b13afcbe2c927b" kindref="member">Civilisation::get_building_data</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>unit_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_civilisation_1adc0e6636a587343c1e728e4a374eaed8" kindref="member">buildings</ref>.count(unit_id)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>ignoring<sp/>unit_id:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>unit_id);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1adc0e6636a587343c1e728e4a374eaed8" kindref="member">buildings</ref>.at(unit_id);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_civilisation_1abdf1eb9f96df9f35741f8f6bb763c403" kindref="member">Civilisation::initialise_unit_types</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>&amp;spec)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Init<sp/>units<sp/>of<sp/>civilisation<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1_civilisation_1abfe7c1fb0da5297fe076417bda22e711" kindref="member">civ_name</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>spec.<ref refid="classopenage_1_1_game_spec_1ab009229f56624608b53820adf2895cbc" kindref="member">create_unit_types</ref>(this-&gt;<ref refid="classopenage_1_1_civilisation_1a12246fe137d4a5cccb044eb2f1c6932b" kindref="member">civ_objects</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a2f86a0247609bab4d68b2d918b96c49a" kindref="member">civ_id</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;type<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a12246fe137d4a5cccb044eb2f1c6932b" kindref="member">civ_objects</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a7ea9f34ae76ff29cbcce2ce4cb7da55f" kindref="member">add_to_category</ref>(type-&gt;name(),<sp/>type-&gt;id());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1_civilisation_1a7ea9f34ae76ff29cbcce2ce4cb7da55f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_civilisation_1a7ea9f34ae76ff29cbcce2ce4cb7da55f" kindref="member">Civilisation::add_to_category</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;c,<sp/><ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_civilisation_1a0472503729127b8d20d0f3708491952f" kindref="member">categories</ref>.count(c)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1ade8432645da979f0ca6cb1c53ef030d9" kindref="member">all_categories</ref>.push_back(c);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a0472503729127b8d20d0f3708491952f" kindref="member">categories</ref>[c]<sp/>=<sp/>std::vector&lt;index_t&gt;();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_civilisation_1a0472503729127b8d20d0f3708491952f" kindref="member">categories</ref>[c].push_back(type);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/civilisation.cpp"/>
+  </compounddef>
+</doxygen>

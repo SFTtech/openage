@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="setup_8cpp" kind="file" language="C++">
+    <compoundname>setup.cpp</compoundname>
+    <includes refid="setup_8h" local="yes">setup.h</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">set</includes>
+    <includes local="no">map</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
+    <incdepgraph>
+      <node id="20228">
+        <label>list</label>
+      </node>
+      <node id="20219">
+        <label>atomic</label>
+      </node>
+      <node id="20224">
+        <label>iomanip</label>
+      </node>
+      <node id="20201">
+        <label>functional</label>
+      </node>
+      <node id="20200">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="20201" relation="include">
+        </childnode>
+        <childnode refid="20202" relation="include">
+        </childnode>
+      </node>
+      <node id="20214">
+        <label>cstdint</label>
+      </node>
+      <node id="20222">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20223" relation="include">
+        </childnode>
+        <childnode refid="20201" relation="include">
+        </childnode>
+        <childnode refid="20224" relation="include">
+        </childnode>
+        <childnode refid="20211" relation="include">
+        </childnode>
+        <childnode refid="20225" relation="include">
+        </childnode>
+        <childnode refid="20204" relation="include">
+        </childnode>
+        <childnode refid="20226" relation="include">
+        </childnode>
+      </node>
+      <node id="20212">
+        <label>stdexcept</label>
+      </node>
+      <node id="20227">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20228" relation="include">
+        </childnode>
+        <childnode refid="20206" relation="include">
+        </childnode>
+        <childnode refid="20229" relation="include">
+        </childnode>
+      </node>
+      <node id="20223">
+        <label>cstdarg</label>
+      </node>
+      <node id="20204">
+        <label>string</label>
+      </node>
+      <node id="20213">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20214" relation="include">
+        </childnode>
+        <childnode refid="20204" relation="include">
+        </childnode>
+        <childnode refid="20215" relation="include">
+        </childnode>
+        <childnode refid="20216" relation="include">
+        </childnode>
+        <childnode refid="20218" relation="include">
+        </childnode>
+        <childnode refid="20227" relation="include">
+        </childnode>
+        <childnode refid="20229" relation="include">
+        </childnode>
+      </node>
+      <node id="20216">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20217" relation="include">
+        </childnode>
+      </node>
+      <node id="20218">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20219" relation="include">
+        </childnode>
+        <childnode refid="20211" relation="include">
+        </childnode>
+        <childnode refid="20220" relation="include">
+        </childnode>
+        <childnode refid="20202" relation="include">
+        </childnode>
+        <childnode refid="20221" relation="include">
+        </childnode>
+        <childnode refid="20222" relation="include">
+        </childnode>
+      </node>
+      <node id="20208">
+        <label>map</label>
+      </node>
+      <node id="20209">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20210" relation="include">
+        </childnode>
+        <childnode refid="20211" relation="include">
+        </childnode>
+        <childnode refid="20212" relation="include">
+        </childnode>
+        <childnode refid="20204" relation="include">
+        </childnode>
+        <childnode refid="20202" relation="include">
+        </childnode>
+        <childnode refid="20213" relation="include">
+        </childnode>
+      </node>
+      <node id="20231">
+        <label>typeinfo</label>
+      </node>
+      <node id="20226">
+        <label>vector</label>
+      </node>
+      <node id="20203">
+        <label>ciso646</label>
+      </node>
+      <node id="20225">
+        <label>sstream</label>
+      </node>
+      <node id="20202">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20203" relation="include">
+        </childnode>
+        <childnode refid="20204" relation="include">
+        </childnode>
+        <childnode refid="20205" relation="include">
+        </childnode>
+      </node>
+      <node id="20205">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20205" relation="include">
+        </childnode>
+      </node>
+      <node id="20221">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20210" relation="include">
+        </childnode>
+        <childnode refid="20204" relation="include">
+        </childnode>
+      </node>
+      <node id="20229">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20230" relation="include">
+        </childnode>
+      </node>
+      <node id="20217">
+        <label>cstdlib</label>
+      </node>
+      <node id="20210">
+        <label>iostream</label>
+      </node>
+      <node id="20206">
+        <label>mutex</label>
+      </node>
+      <node id="20220">
+        <label>type_traits</label>
+      </node>
+      <node id="20207">
+        <label>set</label>
+      </node>
+      <node id="20215">
+        <label>config.h</label>
+      </node>
+      <node id="20199">
+        <label>libopenage/pyinterface/setup.cpp</label>
+        <link refid="setup_8cpp"/>
+        <childnode refid="20200" relation="include">
+        </childnode>
+        <childnode refid="20206" relation="include">
+        </childnode>
+        <childnode refid="20207" relation="include">
+        </childnode>
+        <childnode refid="20208" relation="include">
+        </childnode>
+        <childnode refid="20209" relation="include">
+        </childnode>
+        <childnode refid="20202" relation="include">
+        </childnode>
+      </node>
+      <node id="20211">
+        <label>memory</label>
+      </node>
+      <node id="20230">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20210" relation="include">
+        </childnode>
+        <childnode refid="20231" relation="include">
+        </childnode>
+        <childnode refid="20202" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="22" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" prot="public" static="no" mutable="no">
+        <type>std::map&lt; void *, std::function&lt; bool()&gt; &gt;</type>
+        <definition>std::map&lt;void *, std::function&lt;bool ()&gt; &gt; map</definition>
+        <argsstring></argsstring>
+        <name>map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="25" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="setup_8cpp_1a72d863a2c441cc15b23670e4cf9cfb02" prot="public" static="no" mutable="no">
+        <type>std::set&lt; void * &gt;</type>
+        <definition>std::set&lt;void *&gt; destroyed_components</definition>
+        <argsstring></argsstring>
+        <name>destroyed_components</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="28" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="setup_8cpp_1a9df65dc74cf0e679af16311b54d2219d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool check_performed</definition>
+        <argsstring></argsstring>
+        <name>check_performed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="31" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="setup_8h" kindref="compound">setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/compiler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pyinterface<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>no<sp/>need<sp/>for<sp/>these<sp/>global<sp/>objects<sp/>to<sp/>have<sp/>any<sp/>linkage.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">state<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>secures<sp/>the<sp/>state<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>holds<sp/>the<sp/>checker<sp/>function<sp/>for<sp/>each<sp/>component</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>std::function&lt;bool<sp/>()&gt;&gt;<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>holds<sp/>the<sp/>components<sp/>that<sp/>have<sp/>been<sp/>destroyed<sp/>so<sp/>far</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="setup_8cpp_1a72d863a2c441cc15b23670e4cf9cfb02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set&lt;void<sp/>*&gt;<sp/><ref refid="setup_8cpp_1a72d863a2c441cc15b23670e4cf9cfb02" kindref="member">destroyed_components</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>to<sp/>true<sp/>once<sp/>the<sp/>check<sp/>has<sp/>run<sp/>for<sp/>the<sp/>first<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="setup_8cpp_1a9df65dc74cf0e679af16311b54d2219d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="setup_8cpp_1a9df65dc74cf0e679af16311b54d2219d" kindref="member">check_performed</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>returns<sp/>the<sp/>global<sp/>singleton<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>state<sp/>&amp;get()<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>state<sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>{{},<sp/>{},<sp/>{},<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" kindref="member">add_py_if_component</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*thisptr,<sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>()&gt;<sp/>checker)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>&amp;checkers<sp/>=<sp/>state::get();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{checkers.lock};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>enforce<sp/>that<sp/>the<sp/>object<sp/>has<sp/>an<sp/>associated<sp/>symbol<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(not<sp/><ref refid="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" kindref="member">util::is_symbol</ref>(thisptr)))<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>instantiate<sp/>py<sp/>interface<sp/>component<sp/>as<sp/>non-global<sp/>object.<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attempted<sp/>instantiation<sp/>at<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">util::symbol_name</ref>(thisptr)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.map[thisptr]<sp/>=<sp/>checker;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" kindref="member">destroy_py_if_component</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*thisptr)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>&amp;checkers<sp/>=<sp/>state::get();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{checkers.lock};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.destroyed_components.insert(thisptr);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.map.erase(thisptr);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" kindref="member">check</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>&amp;checkers<sp/>=<sp/>state::get();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{checkers.lock};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checkers.check_performed)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;py<sp/>interface<sp/>initialization<sp/>check<sp/>has<sp/>already<sp/>been<sp/>performed.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;fix<sp/>your<sp/>init<sp/>code.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.check_performed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>error_found<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Fix<sp/>your<sp/>init<sp/>code:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>checkers.destroyed_components.empty())<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Py<sp/>interface<sp/>components<sp/>have<sp/>been<sp/>de-initialized<sp/>before<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;initialization<sp/>had<sp/>even<sp/>been<sp/>completed:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*thisptr<sp/>:<sp/>checkers.destroyed_components)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">util::symbol_name</ref>(thisptr);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_found<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.destroyed_components.clear();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>first<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;checker<sp/>:<sp/>checkers.map)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>checker.second())<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(first)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>following<sp/>components<sp/>have<sp/>not<sp/>been<sp/>initialized:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>first<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_found<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">util::symbol_name</ref>(checker.first);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>checkers.map.clear();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error_found)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(msg);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/setup.cpp"/>
+  </compounddef>
+</doxygen>

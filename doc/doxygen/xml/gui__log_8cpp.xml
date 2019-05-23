@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__log_8cpp" kind="file" language="C++">
+    <compoundname>gui_log.cpp</compoundname>
+    <includes refid="gui__log_8h" local="yes">../../integration/private/gui_log.h</includes>
+    <includes local="no">QString</includes>
+    <includes refid="log_8h" local="yes">../../../log/log.h</includes>
+    <incdepgraph>
+      <node id="14449">
+        <label>list</label>
+      </node>
+      <node id="14438">
+        <label>atomic</label>
+      </node>
+      <node id="14445">
+        <label>iomanip</label>
+      </node>
+      <node id="14444">
+        <label>functional</label>
+      </node>
+      <node id="14433">
+        <label>cstdint</label>
+      </node>
+      <node id="14442">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="14443" relation="include">
+        </childnode>
+        <childnode refid="14444" relation="include">
+        </childnode>
+        <childnode refid="14445" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+        <childnode refid="14446" relation="include">
+        </childnode>
+        <childnode refid="14430" relation="include">
+        </childnode>
+        <childnode refid="14447" relation="include">
+        </childnode>
+      </node>
+      <node id="14448">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="14449" relation="include">
+        </childnode>
+        <childnode refid="14450" relation="include">
+        </childnode>
+        <childnode refid="14424" relation="include">
+        </childnode>
+      </node>
+      <node id="14443">
+        <label>cstdarg</label>
+      </node>
+      <node id="14430">
+        <label>string</label>
+      </node>
+      <node id="14432">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="14433" relation="include">
+        </childnode>
+        <childnode refid="14430" relation="include">
+        </childnode>
+        <childnode refid="14434" relation="include">
+        </childnode>
+        <childnode refid="14435" relation="include">
+        </childnode>
+        <childnode refid="14437" relation="include">
+        </childnode>
+        <childnode refid="14448" relation="include">
+        </childnode>
+        <childnode refid="14424" relation="include">
+        </childnode>
+      </node>
+      <node id="14435">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="14436" relation="include">
+        </childnode>
+      </node>
+      <node id="14437">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="14438" relation="include">
+        </childnode>
+        <childnode refid="14439" relation="include">
+        </childnode>
+        <childnode refid="14440" relation="include">
+        </childnode>
+        <childnode refid="14428" relation="include">
+        </childnode>
+        <childnode refid="14441" relation="include">
+        </childnode>
+        <childnode refid="14442" relation="include">
+        </childnode>
+      </node>
+      <node id="14421">
+        <label>QtGlobal</label>
+      </node>
+      <node id="14427">
+        <label>typeinfo</label>
+      </node>
+      <node id="14447">
+        <label>vector</label>
+      </node>
+      <node id="14423">
+        <label>../../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="14424" relation="include">
+        </childnode>
+        <childnode refid="14432" relation="include">
+        </childnode>
+      </node>
+      <node id="14429">
+        <label>ciso646</label>
+      </node>
+      <node id="14446">
+        <label>sstream</label>
+      </node>
+      <node id="14428">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="14429" relation="include">
+        </childnode>
+        <childnode refid="14430" relation="include">
+        </childnode>
+        <childnode refid="14431" relation="include">
+        </childnode>
+      </node>
+      <node id="14422">
+        <label>QString</label>
+      </node>
+      <node id="14431">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="14431" relation="include">
+        </childnode>
+      </node>
+      <node id="14441">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="14426" relation="include">
+        </childnode>
+        <childnode refid="14430" relation="include">
+        </childnode>
+      </node>
+      <node id="14424">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="14425" relation="include">
+        </childnode>
+      </node>
+      <node id="14436">
+        <label>cstdlib</label>
+      </node>
+      <node id="14426">
+        <label>iostream</label>
+      </node>
+      <node id="14419">
+        <label>libopenage/gui/integration/private/gui_log.cpp</label>
+        <link refid="gui__log_8cpp"/>
+        <childnode refid="14420" relation="include">
+        </childnode>
+        <childnode refid="14422" relation="include">
+        </childnode>
+        <childnode refid="14423" relation="include">
+        </childnode>
+      </node>
+      <node id="14420">
+        <label>../../integration/private/gui_log.h</label>
+        <link refid="gui__log_8h"/>
+        <childnode refid="14421" relation="include">
+        </childnode>
+      </node>
+      <node id="14450">
+        <label>mutex</label>
+      </node>
+      <node id="14440">
+        <label>type_traits</label>
+      </node>
+      <node id="14434">
+        <label>config.h</label>
+      </node>
+      <node id="14439">
+        <label>memory</label>
+      </node>
+      <node id="14425">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="14426" relation="include">
+        </childnode>
+        <childnode refid="14427" relation="include">
+        </childnode>
+        <childnode refid="14428" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../integration/private/gui_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QString&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" kindref="member">gui_log</ref>(QtMsgType<sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QMessageLogContext<sp/>&amp;context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;msg)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1log_1_1level" kindref="compound">log::level</ref><sp/>msg_lvl;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>QtDebugMsg:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::dbg;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>QtInfoMsg:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::info;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>QtWarningMsg:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::warn;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>QtCriticalMsg:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::err;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>QtFatalMsg:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::crit;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl<sp/>=<sp/>log::level::warn;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_message_builder" kindref="compound">log::MessageBuilder</ref><sp/>builder{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context.file<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>context.file<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&lt;unknown<sp/>file&gt;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;unsigned&gt;(context.line),</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context.function<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>context.function<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&lt;unknown<sp/>function&gt;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg_lvl</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>maybe<sp/>it&apos;s<sp/>not<sp/>UTF-8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Qt<sp/>should<sp/>become<sp/>a<sp/>LogSource</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(builder<sp/>&lt;&lt;<sp/>msg.toUtf8().data());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type<sp/>==<sp/>QtFatalMsg)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_log.cpp"/>
+  </compounddef>
+</doxygen>

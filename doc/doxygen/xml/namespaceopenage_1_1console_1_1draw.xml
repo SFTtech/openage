@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1console_1_1draw" kind="namespace" language="C++">
+    <compoundname>openage::console::draw</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1ad603edf799bbe6017b89fd25a6ed4512" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::draw::to_opengl</definition>
+        <argsstring>(Engine *engine, Console *console)</argsstring>
+        <name>to_opengl</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1console_1_1_console" kindref="compound">Console</ref> *</type>
+          <declname>console</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>experimental and totally inefficient opengl draw of a terminal buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/draw.cpp" line="22" column="1" bodyfile="libopenage/console/draw.cpp" bodystart="22" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1console_1_1draw_1a7375ee96f4d8df916d1b34cb806c3e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::draw::to_terminal</definition>
+        <argsstring>(Buf *buf, util::FD *fd, bool clear)</argsstring>
+        <name>to_terminal</name>
+        <param>
+          <type><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">util::FD</ref> *</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>clear</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>very early and inefficient printing of the console to a pty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/draw.cpp" line="91" column="1" bodyfile="libopenage/console/draw.cpp" bodystart="91" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/console/draw.cpp" line="20" column="1"/>
+  </compounddef>
+</doxygen>

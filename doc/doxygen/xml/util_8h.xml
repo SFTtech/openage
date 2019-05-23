@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="util_8h" kind="file" language="C++">
+    <compoundname>util.h</compoundname>
+    <includes local="no">vulkan/vulkan.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includedby refid="graphics__device_8cpp" local="yes">libopenage/renderer/vulkan/graphics_device.cpp</includedby>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <includedby refid="windowvk_8cpp" local="yes">libopenage/renderer/vulkan/windowvk.cpp</includedby>
+    <incdepgraph>
+      <node id="23729">
+        <label>list</label>
+      </node>
+      <node id="23719">
+        <label>atomic</label>
+      </node>
+      <node id="23725">
+        <label>iomanip</label>
+      </node>
+      <node id="23724">
+        <label>functional</label>
+      </node>
+      <node id="23714">
+        <label>cstdint</label>
+      </node>
+      <node id="23722">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23723" relation="include">
+        </childnode>
+        <childnode refid="23724" relation="include">
+        </childnode>
+        <childnode refid="23725" relation="include">
+        </childnode>
+        <childnode refid="23707" relation="include">
+        </childnode>
+        <childnode refid="23726" relation="include">
+        </childnode>
+        <childnode refid="23709" relation="include">
+        </childnode>
+        <childnode refid="23727" relation="include">
+        </childnode>
+      </node>
+      <node id="23708">
+        <label>stdexcept</label>
+      </node>
+      <node id="23728">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23729" relation="include">
+        </childnode>
+        <childnode refid="23730" relation="include">
+        </childnode>
+        <childnode refid="23731" relation="include">
+        </childnode>
+      </node>
+      <node id="23723">
+        <label>cstdarg</label>
+      </node>
+      <node id="23709">
+        <label>string</label>
+      </node>
+      <node id="23713">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23714" relation="include">
+        </childnode>
+        <childnode refid="23709" relation="include">
+        </childnode>
+        <childnode refid="23715" relation="include">
+        </childnode>
+        <childnode refid="23716" relation="include">
+        </childnode>
+        <childnode refid="23718" relation="include">
+        </childnode>
+        <childnode refid="23728" relation="include">
+        </childnode>
+        <childnode refid="23731" relation="include">
+        </childnode>
+      </node>
+      <node id="23716">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23717" relation="include">
+        </childnode>
+      </node>
+      <node id="23718">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23719" relation="include">
+        </childnode>
+        <childnode refid="23707" relation="include">
+        </childnode>
+        <childnode refid="23720" relation="include">
+        </childnode>
+        <childnode refid="23710" relation="include">
+        </childnode>
+        <childnode refid="23721" relation="include">
+        </childnode>
+        <childnode refid="23722" relation="include">
+        </childnode>
+      </node>
+      <node id="23705">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23706" relation="include">
+        </childnode>
+        <childnode refid="23707" relation="include">
+        </childnode>
+        <childnode refid="23708" relation="include">
+        </childnode>
+        <childnode refid="23709" relation="include">
+        </childnode>
+        <childnode refid="23710" relation="include">
+        </childnode>
+        <childnode refid="23713" relation="include">
+        </childnode>
+      </node>
+      <node id="23733">
+        <label>typeinfo</label>
+      </node>
+      <node id="23703">
+        <label>libopenage/renderer/vulkan/util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="23704" relation="include">
+        </childnode>
+        <childnode refid="23705" relation="include">
+        </childnode>
+      </node>
+      <node id="23727">
+        <label>vector</label>
+      </node>
+      <node id="23711">
+        <label>ciso646</label>
+      </node>
+      <node id="23704">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="23726">
+        <label>sstream</label>
+      </node>
+      <node id="23710">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23711" relation="include">
+        </childnode>
+        <childnode refid="23709" relation="include">
+        </childnode>
+        <childnode refid="23712" relation="include">
+        </childnode>
+      </node>
+      <node id="23712">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23712" relation="include">
+        </childnode>
+      </node>
+      <node id="23721">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23706" relation="include">
+        </childnode>
+        <childnode refid="23709" relation="include">
+        </childnode>
+      </node>
+      <node id="23731">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23732" relation="include">
+        </childnode>
+      </node>
+      <node id="23717">
+        <label>cstdlib</label>
+      </node>
+      <node id="23706">
+        <label>iostream</label>
+      </node>
+      <node id="23730">
+        <label>mutex</label>
+      </node>
+      <node id="23720">
+        <label>type_traits</label>
+      </node>
+      <node id="23715">
+        <label>config.h</label>
+      </node>
+      <node id="23707">
+        <label>memory</label>
+      </node>
+      <node id="23732">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23706" relation="include">
+        </childnode>
+        <childnode refid="23733" relation="include">
+        </childnode>
+        <childnode refid="23710" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="23734">
+        <label>libopenage/renderer/vulkan/util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="23735" relation="include">
+        </childnode>
+        <childnode refid="23736" relation="include">
+        </childnode>
+        <childnode refid="23737" relation="include">
+        </childnode>
+      </node>
+      <node id="23736">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="23737">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+      </node>
+      <node id="23735">
+        <label>libopenage/renderer/vulkan/graphics_device.cpp</label>
+        <link refid="graphics__device_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" prot="public" static="no">
+        <name>VK_CALL_CHECKED</name>
+        <param><defname>fun</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>{ \
+		VkResult res = fun(__VA_ARGS__); \
+		if (res != VK_SUCCESS) { \
+			throw Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err) &lt;&lt; &quot;Call to Vulkan function &quot; &lt;&lt; #fun &lt;&lt; &quot; failed with &quot; &lt;&lt; res &lt;&lt; &quot;.&quot;); \
+		} \
+	}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/util.h" line="50" column="9" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename R2</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; R &gt;</type>
+        <definition>std::vector&lt;R&gt; vk_do_ritual</definition>
+        <argsstring>(R2(*func)(uint32_t *, R *))</argsstring>
+        <name>vk_do_ritual</name>
+        <param>
+          <type>R2(*)(uint32_t *, R *)</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/util.h" line="11" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="11" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8h_1ad139950708720dce4f6806582d17adc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename R2</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; R &gt;</type>
+        <definition>std::vector&lt;R&gt; vk_do_ritual</definition>
+        <argsstring>(R2(*func)(T, uint32_t *, R *), T2 &amp;&amp;a)</argsstring>
+        <name>vk_do_ritual</name>
+        <param>
+          <type>R2(*)(T, uint32_t *, R *)</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>T2 &amp;&amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/util.h" line="21" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="21" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8h_1a759a7a67d5cd01418b63fca588b38c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename U2</type>
+          </param>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename R2</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; R &gt;</type>
+        <definition>std::vector&lt;R&gt; vk_do_ritual</definition>
+        <argsstring>(R2(*func)(T, U, uint32_t *, R *), T2 &amp;&amp;a, U2 &amp;&amp;b)</argsstring>
+        <name>vk_do_ritual</name>
+        <param>
+          <type>R2(*)(T, U, uint32_t *, R *)</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>T2 &amp;&amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>U2 &amp;&amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/util.h" line="31" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="31" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="util_8h_1a6e37a1b4f9c78bcf7476f9a4552fce52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename T2</type>
+          </param>
+          <param>
+            <type>typename U</type>
+          </param>
+          <param>
+            <type>typename U2</type>
+          </param>
+          <param>
+            <type>typename V</type>
+          </param>
+          <param>
+            <type>typename V2</type>
+          </param>
+          <param>
+            <type>typename R</type>
+          </param>
+          <param>
+            <type>typename R2</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; R &gt;</type>
+        <definition>std::vector&lt;R&gt; vk_do_ritual</definition>
+        <argsstring>(R2(*func)(T, U, V, uint32_t *, R *), T2 &amp;&amp;a, U2 &amp;&amp;b, V2 &amp;&amp;c)</argsstring>
+        <name>vk_do_ritual</name>
+        <param>
+          <type>R2(*)(T, U, V, uint32_t *, R *)</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>T2 &amp;&amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>U2 &amp;&amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>V2 &amp;&amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/util.h" line="41" column="1" bodyfile="libopenage/renderer/vulkan/util.h" bodystart="41" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vulkan/vulkan.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R2&gt;</highlight></codeline>
+<codeline lineno="11" refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" refkind="member"><highlight class="normal">std::vector&lt;R&gt;<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(R2<sp/>(*func)(uint32_t*,<sp/>R*))<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>func(&amp;count,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;R&gt;<sp/>ret(count);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>func(&amp;count,<sp/>ret.data());</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R2&gt;</highlight></codeline>
+<codeline lineno="21" refid="util_8h_1ad139950708720dce4f6806582d17adc0" refkind="member"><highlight class="normal">std::vector&lt;R&gt;<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(R2<sp/>(*func)(T,<sp/>uint32_t*,<sp/>R*),<sp/>T2&amp;&amp;<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>&amp;count,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;R&gt;<sp/>ret(count);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>&amp;count,<sp/>ret.data());</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R2&gt;</highlight></codeline>
+<codeline lineno="31" refid="util_8h_1a759a7a67d5cd01418b63fca588b38c56" refkind="member"><highlight class="normal">std::vector&lt;R&gt;<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(R2<sp/>(*func)(T,<sp/>U,<sp/>uint32_t*,<sp/>R*),<sp/>T2&amp;&amp;<sp/>a,<sp/>U2&amp;&amp;<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>std::forward&lt;U2&gt;(b),<sp/>&amp;count,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;R&gt;<sp/>ret(count);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>std::forward&lt;U2&gt;(b),<sp/>&amp;count,<sp/>ret.data());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>R2&gt;</highlight></codeline>
+<codeline lineno="41" refid="util_8h_1a6e37a1b4f9c78bcf7476f9a4552fce52" refkind="member"><highlight class="normal">std::vector&lt;R&gt;<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(R2<sp/>(*func)(T,<sp/>U,<sp/>V,<sp/>uint32_t*,<sp/>R*),<sp/>T2&amp;&amp;<sp/>a,<sp/>U2&amp;&amp;<sp/>b,<sp/>V2&amp;&amp;<sp/>c)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>std::forward&lt;U2&gt;(b),<sp/>std::forward&lt;V2&gt;(c),<sp/>&amp;count,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;R&gt;<sp/>ret(count);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>func(std::forward&lt;T2&gt;(a),<sp/>std::forward&lt;U2&gt;(b),<sp/>std::forward&lt;V2&gt;(c),<sp/>&amp;count,<sp/>ret.data());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VK_CALL_CHECKED(fun,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkResult<sp/>res<sp/>=<sp/>fun(__VA_ARGS__);<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(res<sp/>!=<sp/>VK_SUCCESS)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>Error(MSG(err)<sp/>&lt;&lt;<sp/>&quot;Call<sp/>to<sp/>Vulkan<sp/>function<sp/>&quot;<sp/>&lt;&lt;<sp/>#fun<sp/>&lt;&lt;<sp/>&quot;<sp/>failed<sp/>with<sp/>&quot;<sp/>&lt;&lt;<sp/>res<sp/>&lt;&lt;<sp/>&quot;.&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/util.h"/>
+  </compounddef>
+</doxygen>

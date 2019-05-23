@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__renderer_8h" kind="file" language="C++">
+    <compoundname>gui_renderer.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">GL/gl.h</includes>
+    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__renderer__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_renderer_impl.cpp</includedby>
+    <includedby refid="gui__renderer_8cpp" local="yes">libopenage/gui/guisys/public/gui_renderer.cpp</includedby>
+    <incdepgraph>
+      <node id="13597">
+        <label>libopenage/gui/guisys/public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="13598" relation="include">
+        </childnode>
+        <childnode refid="13599" relation="include">
+        </childnode>
+      </node>
+      <node id="13599">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="13598">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13605">
+        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <link refid="gui__renderer__impl_8cpp"/>
+      </node>
+      <node id="13603">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="13604">
+        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <link refid="gui__input__impl_8cpp"/>
+      </node>
+      <node id="13602">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="13600">
+        <label>libopenage/gui/guisys/public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="13601" relation="include">
+        </childnode>
+        <childnode refid="13604" relation="include">
+        </childnode>
+        <childnode refid="13605" relation="include">
+        </childnode>
+        <childnode refid="13606" relation="include">
+        </childnode>
+      </node>
+      <node id="13601">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="13602" relation="include">
+        </childnode>
+        <childnode refid="13603" relation="include">
+        </childnode>
+      </node>
+      <node id="13606">
+        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <link refid="gui__renderer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_renderer" prot="public">qtsdl::GuiRenderer</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NOMINMAX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;windows.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenGL/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">SDL_Window;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiRendererImpl;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classqtsdl_1_1_gui_renderer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>allow<sp/>FBO<sp/>variant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" kindref="member">GuiRenderer</ref>(SDL_Window<sp/>*window);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" kindref="member">~GuiRenderer</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classqtsdl_1_1_gui_renderer_1a0deb3d159f4f59d24ac14369a05b3959" kindref="member">render</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_1a2a23a8da34f7623c3060e788468210e9" kindref="member">resize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>w,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>h);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36" refid="classqtsdl_1_1_gui_renderer_1ab1747501362ffdb75cb21fd446a03885" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;GuiRendererImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" kindref="member">impl</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_renderer.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1datastructure_1_1_concurrent_queue" kind="class" language="C++" prot="public">
+    <compoundname>openage::datastructure::ConcurrentQueue</compoundname>
+    <includes refid="concurrent__queue_8h" local="no">concurrent_queue.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classopenage_1_1datastructure_1_1_concurrent_queue_1a7670bfb41573e5be70fdbe94d21324bf" prot="private" static="no">
+        <type>std::recursive_mutex</type>
+        <definition>using openage::datastructure::ConcurrentQueue&lt; T &gt;::mutex_t =  std::recursive_mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of mutex used for the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="24" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_concurrent_queue_1a2beddd3e8f45546f8925c256b5d524dc" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; T &gt;</type>
+        <definition>std::queue&lt;T&gt; openage::datastructure::ConcurrentQueue&lt; T &gt;::queue</definition>
+        <argsstring></argsstring>
+        <name>queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internally used queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="79" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a7670bfb41573e5be70fdbe94d21324bf" kindref="member">mutex_t</ref></type>
+        <definition>mutex_t openage::datastructure::ConcurrentQueue&lt; T &gt;::mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The mutex to synchronize the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="82" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_concurrent_queue_1ad671d49bbf03d0412a5f0ec4e1b539d5" prot="private" static="no" mutable="no">
+        <type>std::condition_variable_any</type>
+        <definition>std::condition_variable_any openage::datastructure::ConcurrentQueue&lt; T &gt;::elements_available</definition>
+        <argsstring></argsstring>
+        <name>elements_available</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Condition variable to signal, whether elements are avaiable from the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="88" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1af9b0d0bc8cea20b87178f1be1d9fc005" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::ConcurrentQueue&lt; T &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes all elements from the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="28" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1aa78ec939e767d66a811046c3165e63c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::datastructure::ConcurrentQueue&lt; T &gt;::empty</definition>
+        <argsstring>()</argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns whether the queue is empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="36" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1ac425a78bff1d289707da09d6a14922dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; openage::datastructure::ConcurrentQueue&lt; T &gt;::front</definition>
+        <argsstring>()</argsstring>
+        <name>front</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the front item of the queue without removing it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="42" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="42" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1aec749002b655d28b0aa5f99a802a0008" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; openage::datastructure::ConcurrentQueue&lt; T &gt;::pop</definition>
+        <argsstring>()</argsstring>
+        <name>pop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes the front item of the queue and returns it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="51" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="51" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1a1c71a5b5a99e60590130d2afe866137c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::ConcurrentQueue&lt; T &gt;::push</definition>
+        <argsstring>(const T &amp;item)</argsstring>
+        <name>push</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Appends the given item to the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="62" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_concurrent_queue_1a245e3f0f06675868d5854f135cc6ed48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_lock&lt; <ref refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a7670bfb41573e5be70fdbe94d21324bf" kindref="member">mutex_t</ref> &gt;</type>
+        <definition>std::unique_lock&lt;mutex_t&gt; openage::datastructure::ConcurrentQueue&lt; T &gt;::lock</definition>
+        <argsstring>()</argsstring>
+        <name>lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return a lock to the queue so multiple of the above operations can be done sequentially </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/concurrent_queue.h" line="73" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="73" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A threadsafe queue. Wraps the std::queue with a mutex.</para>
+<para>Supports waiting for data from another thread. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="815">
+        <label>openage::datastructure::ConcurrentQueue&lt; T &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_concurrent_queue"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/concurrent_queue.h" line="20" column="1" bodyfile="libopenage/datastructure/concurrent_queue.h" bodystart="20" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1af9b0d0bc8cea20b87178f1be1d9fc005" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>clear</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1ad671d49bbf03d0412a5f0ec4e1b539d5" prot="private" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>elements_available</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1aa78ec939e767d66a811046c3165e63c5" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>empty</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1ac425a78bff1d289707da09d6a14922dc" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>front</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a245e3f0f06675868d5854f135cc6ed48" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>lock</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a78c18ef183f2c0a1b4fdbd07f1523f20" prot="private" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>mutex</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a7670bfb41573e5be70fdbe94d21324bf" prot="private" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>mutex_t</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1aec749002b655d28b0aa5f99a802a0008" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>pop</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a1c71a5b5a99e60590130d2afe866137c" prot="public" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>push</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_concurrent_queue_1a2beddd3e8f45546f8925c256b5d524dc" prot="private" virt="non-virtual"><scope>openage::datastructure::ConcurrentQueue</scope><name>queue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

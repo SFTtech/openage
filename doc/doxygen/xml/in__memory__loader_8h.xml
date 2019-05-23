@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="in__memory__loader_8h" kind="file" language="C++">
+    <compoundname>in_memory_loader.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">tuple</includes>
+    <includes refid="format_8h" local="yes">format.h</includes>
+    <includes refid="audio_2types_8h" local="yes">types.h</includes>
+    <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
+    <includedby refid="in__memory__loader_8cpp" local="yes">libopenage/audio/in_memory_loader.cpp</includedby>
+    <includedby refid="opus__in__memory__loader_8h" local="yes">libopenage/audio/opus_in_memory_loader.h</includedby>
+    <includedby refid="in__memory__resource_8cpp" local="yes">libopenage/audio/in_memory_resource.cpp</includedby>
+    <incdepgraph>
+      <node id="1335">
+        <label>list</label>
+      </node>
+      <node id="1327">
+        <label>atomic</label>
+      </node>
+      <node id="1332">
+        <label>iomanip</label>
+      </node>
+      <node id="1306">
+        <label>functional</label>
+      </node>
+      <node id="1339">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="1306" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+      </node>
+      <node id="1310">
+        <label>cstdint</label>
+      </node>
+      <node id="1330">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="1331" relation="include">
+        </childnode>
+        <childnode refid="1306" relation="include">
+        </childnode>
+        <childnode refid="1332" relation="include">
+        </childnode>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1333" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1307" relation="include">
+        </childnode>
+      </node>
+      <node id="1318">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="1319" relation="include">
+        </childnode>
+      </node>
+      <node id="1321">
+        <label>stdexcept</label>
+      </node>
+      <node id="1317">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="1334">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="1335" relation="include">
+        </childnode>
+        <childnode refid="1313" relation="include">
+        </childnode>
+        <childnode refid="1336" relation="include">
+        </childnode>
+      </node>
+      <node id="1331">
+        <label>cstdarg</label>
+      </node>
+      <node id="1301">
+        <label>string</label>
+      </node>
+      <node id="1322">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="1310" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1323" relation="include">
+        </childnode>
+        <childnode refid="1324" relation="include">
+        </childnode>
+        <childnode refid="1326" relation="include">
+        </childnode>
+        <childnode refid="1334" relation="include">
+        </childnode>
+        <childnode refid="1336" relation="include">
+        </childnode>
+      </node>
+      <node id="1324">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="1325" relation="include">
+        </childnode>
+      </node>
+      <node id="1326">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="1327" relation="include">
+        </childnode>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1328" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1329" relation="include">
+        </childnode>
+        <childnode refid="1330" relation="include">
+        </childnode>
+      </node>
+      <node id="1304">
+        <label>ostream</label>
+      </node>
+      <node id="1309">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="1310" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1307" relation="include">
+        </childnode>
+        <childnode refid="1311" relation="include">
+        </childnode>
+        <childnode refid="1312" relation="include">
+        </childnode>
+      </node>
+      <node id="1305">
+        <label>types.h</label>
+        <link refid="audio_2types_8h"/>
+        <childnode refid="1306" relation="include">
+        </childnode>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1307" relation="include">
+        </childnode>
+      </node>
+      <node id="1319">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="1320" relation="include">
+        </childnode>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1321" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1322" relation="include">
+        </childnode>
+      </node>
+      <node id="1338">
+        <label>typeinfo</label>
+      </node>
+      <node id="1302">
+        <label>tuple</label>
+      </node>
+      <node id="1303">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="1304" relation="include">
+        </childnode>
+      </node>
+      <node id="1307">
+        <label>vector</label>
+      </node>
+      <node id="1315">
+        <label>ciso646</label>
+      </node>
+      <node id="1299">
+        <label>libopenage/audio/in_memory_loader.h</label>
+        <link refid="in__memory__loader_8h"/>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1302" relation="include">
+        </childnode>
+        <childnode refid="1303" relation="include">
+        </childnode>
+        <childnode refid="1305" relation="include">
+        </childnode>
+        <childnode refid="1308" relation="include">
+        </childnode>
+      </node>
+      <node id="1333">
+        <label>sstream</label>
+      </node>
+      <node id="1314">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="1315" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1316" relation="include">
+        </childnode>
+      </node>
+      <node id="1340">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1307" relation="include">
+        </childnode>
+        <childnode refid="1341" relation="include">
+        </childnode>
+        <childnode refid="1309" relation="include">
+        </childnode>
+      </node>
+      <node id="1316">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="1316" relation="include">
+        </childnode>
+      </node>
+      <node id="1329">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="1320" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+      </node>
+      <node id="1336">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="1337" relation="include">
+        </childnode>
+      </node>
+      <node id="1342">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="1341">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="1320" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+      </node>
+      <node id="1325">
+        <label>cstdlib</label>
+      </node>
+      <node id="1320">
+        <label>iostream</label>
+      </node>
+      <node id="1312">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="1306" relation="include">
+        </childnode>
+        <childnode refid="1313" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1317" relation="include">
+        </childnode>
+        <childnode refid="1318" relation="include">
+        </childnode>
+        <childnode refid="1339" relation="include">
+        </childnode>
+      </node>
+      <node id="1313">
+        <label>mutex</label>
+      </node>
+      <node id="1308">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="1301" relation="include">
+        </childnode>
+        <childnode refid="1307" relation="include">
+        </childnode>
+        <childnode refid="1309" relation="include">
+        </childnode>
+        <childnode refid="1340" relation="include">
+        </childnode>
+        <childnode refid="1342" relation="include">
+        </childnode>
+      </node>
+      <node id="1311">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="1328">
+        <label>type_traits</label>
+      </node>
+      <node id="1323">
+        <label>config.h</label>
+      </node>
+      <node id="1300">
+        <label>memory</label>
+      </node>
+      <node id="1337">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="1320" relation="include">
+        </childnode>
+        <childnode refid="1338" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1345">
+        <label>libopenage/audio/opus_in_memory_loader.h</label>
+        <link refid="opus__in__memory__loader_8h"/>
+        <childnode refid="1344" relation="include">
+        </childnode>
+        <childnode refid="1346" relation="include">
+        </childnode>
+      </node>
+      <node id="1344">
+        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <link refid="in__memory__loader_8cpp"/>
+      </node>
+      <node id="1346">
+        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <link refid="opus__in__memory__loader_8cpp"/>
+      </node>
+      <node id="1347">
+        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <link refid="in__memory__resource_8cpp"/>
+      </node>
+      <node id="1343">
+        <label>libopenage/audio/in_memory_loader.h</label>
+        <link refid="in__memory__loader_8h"/>
+        <childnode refid="1344" relation="include">
+        </childnode>
+        <childnode refid="1345" relation="include">
+        </childnode>
+        <childnode refid="1347" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1audio_1_1_in_memory_loader" prot="public">openage::audio::InMemoryLoader</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="format_8h" kindref="compound">format.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio_2types_8h" kindref="compound">types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1audio_1_1_in_memory_loader" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_in_memory_loader" kindref="compound">InMemoryLoader</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>resource&apos;s<sp/>location<sp/>in<sp/>the<sp/>filesystem.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/><ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" kindref="member">path</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a3536ee6d4dca2592db0c32a11dc7abb6" kindref="member">InMemoryLoader</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;<ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" kindref="member">path</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a5cbd6811e3cda841534d6c5c11b95885" kindref="member">~InMemoryLoader</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1abecf0cfa190370ef1cf7d58608928409" kindref="member">pcm_data_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a3e774f8c61f668dc217e5deb465a0cf5" kindref="member">get_resource</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;InMemoryLoader&gt;<sp/><ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a19344fe6babb4d670c042430ccae8d02" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;<ref refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" kindref="member">path</ref>,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref><sp/>format);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/in_memory_loader.h"/>
+  </compounddef>
+</doxygen>

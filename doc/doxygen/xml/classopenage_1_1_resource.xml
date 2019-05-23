@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_resource" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::Resource</compoundname>
+    <derivedcompoundref refid="classopenage_1_1_resource_producer" prot="public" virt="non-virtual">openage::ResourceProducer</derivedcompoundref>
+    <includes refid="gamestate_2resource_8h" local="no">resource.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_resource_1af30f3accb06b5b3b117247e07b4bfc6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Resource::Resource</definition>
+        <argsstring>()</argsstring>
+        <name>Resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="18" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_1a1993c4e839fd6ed11d8bd6307f329716" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int openage::Resource::id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>id</name>
+        <reimplementedby refid="classopenage_1_1_resource_producer_1a5e33b687de15c8d5b64edceba8c79d4a">id</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_1a5867567cf6c177472acd0d9f73cc9a89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string openage::Resource::name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <reimplementedby refid="classopenage_1_1_resource_producer_1a6d8c9b7625fba6de6f95a2d582843c8b">name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="22" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A resource </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4090">
+        <label>openage::Resource</label>
+        <link refid="classopenage_1_1_resource"/>
+      </node>
+      <node id="4091">
+        <label>openage::ResourceProducer</label>
+        <link refid="classopenage_1_1_resource_producer"/>
+        <childnode refid="4090" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4092">
+        <label>openage::Resource</label>
+        <link refid="classopenage_1_1_resource"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/resource.h" line="15" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="15" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_resource_1a1993c4e839fd6ed11d8bd6307f329716" prot="public" virt="pure-virtual"><scope>openage::Resource</scope><name>id</name></member>
+      <member refid="classopenage_1_1_resource_1a5867567cf6c177472acd0d9f73cc9a89" prot="public" virt="pure-virtual"><scope>openage::Resource</scope><name>name</name></member>
+      <member refid="classopenage_1_1_resource_1af30f3accb06b5b3b117247e07b4bfc6e" prot="public" virt="non-virtual"><scope>openage::Resource</scope><name>Resource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

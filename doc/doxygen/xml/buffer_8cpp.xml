@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="buffer_8cpp" kind="file" language="C++">
+    <compoundname>buffer.cpp</compoundname>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <incdepgraph>
+      <node id="20871">
+        <label>list</label>
+      </node>
+      <node id="20862">
+        <label>atomic</label>
+      </node>
+      <node id="20867">
+        <label>iomanip</label>
+      </node>
+      <node id="20846">
+        <label>functional</label>
+      </node>
+      <node id="20857">
+        <label>cstdint</label>
+      </node>
+      <node id="20865">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20866" relation="include">
+        </childnode>
+        <childnode refid="20846" relation="include">
+        </childnode>
+        <childnode refid="20867" relation="include">
+        </childnode>
+        <childnode refid="20850" relation="include">
+        </childnode>
+        <childnode refid="20868" relation="include">
+        </childnode>
+        <childnode refid="20852" relation="include">
+        </childnode>
+        <childnode refid="20869" relation="include">
+        </childnode>
+      </node>
+      <node id="20851">
+        <label>stdexcept</label>
+      </node>
+      <node id="20870">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20871" relation="include">
+        </childnode>
+        <childnode refid="20872" relation="include">
+        </childnode>
+        <childnode refid="20873" relation="include">
+        </childnode>
+      </node>
+      <node id="20866">
+        <label>cstdarg</label>
+      </node>
+      <node id="20852">
+        <label>string</label>
+      </node>
+      <node id="20856">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20857" relation="include">
+        </childnode>
+        <childnode refid="20852" relation="include">
+        </childnode>
+        <childnode refid="20858" relation="include">
+        </childnode>
+        <childnode refid="20859" relation="include">
+        </childnode>
+        <childnode refid="20861" relation="include">
+        </childnode>
+        <childnode refid="20870" relation="include">
+        </childnode>
+        <childnode refid="20873" relation="include">
+        </childnode>
+      </node>
+      <node id="20859">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20860" relation="include">
+        </childnode>
+      </node>
+      <node id="20861">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20862" relation="include">
+        </childnode>
+        <childnode refid="20850" relation="include">
+        </childnode>
+        <childnode refid="20863" relation="include">
+        </childnode>
+        <childnode refid="20853" relation="include">
+        </childnode>
+        <childnode refid="20864" relation="include">
+        </childnode>
+        <childnode refid="20865" relation="include">
+        </childnode>
+      </node>
+      <node id="20848">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20849" relation="include">
+        </childnode>
+        <childnode refid="20850" relation="include">
+        </childnode>
+        <childnode refid="20851" relation="include">
+        </childnode>
+        <childnode refid="20852" relation="include">
+        </childnode>
+        <childnode refid="20853" relation="include">
+        </childnode>
+        <childnode refid="20856" relation="include">
+        </childnode>
+      </node>
+      <node id="20875">
+        <label>typeinfo</label>
+      </node>
+      <node id="20842">
+        <label>libopenage/renderer/opengl/buffer.cpp</label>
+        <link refid="buffer_8cpp"/>
+        <childnode refid="20843" relation="include">
+        </childnode>
+        <childnode refid="20848" relation="include">
+        </childnode>
+      </node>
+      <node id="20845">
+        <label>optional</label>
+      </node>
+      <node id="20869">
+        <label>vector</label>
+      </node>
+      <node id="20854">
+        <label>ciso646</label>
+      </node>
+      <node id="20868">
+        <label>sstream</label>
+      </node>
+      <node id="20853">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20854" relation="include">
+        </childnode>
+        <childnode refid="20852" relation="include">
+        </childnode>
+        <childnode refid="20855" relation="include">
+        </childnode>
+      </node>
+      <node id="20855">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20855" relation="include">
+        </childnode>
+      </node>
+      <node id="20847">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="20864">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20849" relation="include">
+        </childnode>
+        <childnode refid="20852" relation="include">
+        </childnode>
+      </node>
+      <node id="20873">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20874" relation="include">
+        </childnode>
+      </node>
+      <node id="20860">
+        <label>cstdlib</label>
+      </node>
+      <node id="20849">
+        <label>iostream</label>
+      </node>
+      <node id="20872">
+        <label>mutex</label>
+      </node>
+      <node id="20844">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="20845" relation="include">
+        </childnode>
+        <childnode refid="20846" relation="include">
+        </childnode>
+        <childnode refid="20847" relation="include">
+        </childnode>
+      </node>
+      <node id="20863">
+        <label>type_traits</label>
+      </node>
+      <node id="20858">
+        <label>config.h</label>
+      </node>
+      <node id="20843">
+        <label>buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="20844" relation="include">
+        </childnode>
+      </node>
+      <node id="20850">
+        <label>memory</label>
+      </node>
+      <node id="20874">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20849" relation="include">
+        </childnode>
+        <childnode refid="20875" relation="include">
+        </childnode>
+        <childnode refid="20853" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="buffer_8h" kindref="compound">buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="10" refid="namespaceopenage_1_1renderer_1_1opengl" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1aeddc8478dbd3daaf4de76c109a88a8bb" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1aeddc8478dbd3daaf4de76c109a88a8bb" kindref="member">GlBuffer::GlBuffer</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/>GLenum<sp/>usage)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref>([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteBuffers(1,<sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>size(size)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenBuffers(1,<sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" kindref="member">bind</ref>(GL_COPY_WRITE_BUFFER);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferData(GL_COPY_WRITE_BUFFER,<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>usage);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a904c48814ba7acaf8f93ce4963d11cdc" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1aeddc8478dbd3daaf4de76c109a88a8bb" kindref="member">GlBuffer::GlBuffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/>GLenum<sp/>usage)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref>([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteBuffers(1,<sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>size(size)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenBuffers(1,<sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" kindref="member">bind</ref>(GL_COPY_WRITE_BUFFER);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferData(GL_COPY_WRITE_BUFFER,<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>,<sp/>data,<sp/>usage);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" kindref="member">GlBuffer::get_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" kindref="member">GlBuffer::upload_data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(offset<sp/>+<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref><sp/>&gt;<sp/>this-&gt;size))<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>upload<sp/>more<sp/>data<sp/>to<sp/>OpenGL<sp/>buffer<sp/>than<sp/>can<sp/>fit.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" kindref="member">bind</ref>(GL_COPY_WRITE_BUFFER);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferSubData(GL_COPY_WRITE_BUFFER,<sp/>offset,<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>,<sp/>data);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" kindref="member">GlBuffer::bind</ref>(GLenum<sp/>target)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(!</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>)))<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;OpenGL<sp/>buffer<sp/>has<sp/>been<sp/>moved<sp/>out<sp/>of.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(target,<sp/>*this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/buffer.cpp"/>
+  </compounddef>
+</doxygen>

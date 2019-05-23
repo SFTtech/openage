@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_shadow" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::Shadow</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_inherits" prot="public" virt="non-virtual">qtsdl::Inherits&lt; T, P &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::Shadow&lt; T &gt;::Shadow</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>Shadow</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="346" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="346" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::Shadow&lt; T &gt;::get</definition>
+        <argsstring>(NullClass)</argsstring>
+        <name>get</name>
+        <param>
+          <type>NullClass</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="351" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::Shadow&lt; T &gt;::i</definition>
+        <argsstring>(NullClass)</argsstring>
+        <name>i</name>
+        <param>
+          <type>NullClass</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="352" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_shadow_1a6701a7a35ed1c41d1c0ae2927e4fbc39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::Shadow&lt; T &gt;::s</definition>
+        <argsstring>(NullClass)</argsstring>
+        <name>s</name>
+        <param>
+          <type>NullClass</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="353" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_shadow_1a77412ce3729150d91b32364e2addbb40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::Shadow&lt; T &gt;::sf</definition>
+        <argsstring>(NullClass)</argsstring>
+        <name>sf</name>
+        <param>
+          <type>NullClass</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="354" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Shadows inherited member functions. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4151">
+        <label>T</label>
+      </node>
+      <node id="4150">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="4151" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4152">
+        <label>qtsdl::Inherits&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="4150" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4154">
+        <label>T</label>
+      </node>
+      <node id="4153">
+        <label>qtsdl::Shadow&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="4154" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="344" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="344" bodyend="355"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a6701a7a35ed1c41d1c0ae2927e4fbc39" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a77412ce3729150d91b32364e2addbb40" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" prot="public" virt="non-virtual"><scope>qtsdl::Shadow</scope><name>Shadow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

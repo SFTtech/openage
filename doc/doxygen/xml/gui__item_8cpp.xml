@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__item_8cpp" kind="file" language="C++">
+    <compoundname>gui_item.cpp</compoundname>
+    <includes refid="gui__item_8h" local="yes">gui_item.h</includes>
+    <incdepgraph>
+      <node id="12648">
+        <label>functional</label>
+      </node>
+      <node id="12652">
+        <label>QObject</label>
+      </node>
+      <node id="12647">
+        <label>cassert</label>
+      </node>
+      <node id="12653">
+        <label>QMetaType</label>
+      </node>
+      <node id="12657">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12658" relation="include">
+        </childnode>
+        <childnode refid="12648" relation="include">
+        </childnode>
+      </node>
+      <node id="12645">
+        <label>gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12646" relation="include">
+        </childnode>
+        <childnode refid="12647" relation="include">
+        </childnode>
+        <childnode refid="12648" relation="include">
+        </childnode>
+        <childnode refid="12649" relation="include">
+        </childnode>
+        <childnode refid="12650" relation="include">
+        </childnode>
+        <childnode refid="12651" relation="include">
+        </childnode>
+        <childnode refid="12652" relation="include">
+        </childnode>
+        <childnode refid="12653" relation="include">
+        </childnode>
+        <childnode refid="12654" relation="include">
+        </childnode>
+        <childnode refid="12655" relation="include">
+        </childnode>
+        <childnode refid="12656" relation="include">
+        </childnode>
+        <childnode refid="12657" relation="include">
+        </childnode>
+        <childnode refid="12659" relation="include">
+        </childnode>
+        <childnode refid="12660" relation="include">
+        </childnode>
+      </node>
+      <node id="12660">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12649" relation="include">
+        </childnode>
+        <childnode refid="12659" relation="include">
+        </childnode>
+      </node>
+      <node id="12644">
+        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <link refid="gui__item_8cpp"/>
+        <childnode refid="12645" relation="include">
+        </childnode>
+      </node>
+      <node id="12650">
+        <label>typeinfo</label>
+      </node>
+      <node id="12655">
+        <label>QDebug</label>
+      </node>
+      <node id="12658">
+        <label>vector</label>
+      </node>
+      <node id="12654">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12651">
+        <label>utility</label>
+      </node>
+      <node id="12659">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12647" relation="include">
+        </childnode>
+      </node>
+      <node id="12649">
+        <label>type_traits</label>
+      </node>
+      <node id="12656">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12648" relation="include">
+        </childnode>
+        <childnode refid="12652" relation="include">
+        </childnode>
+      </node>
+      <node id="12646">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__item_8h" kindref="compound">gui_item.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="namespaceqtsdl_1adfa85f2323dd14fc4cd2381acab77960" refkind="member"><highlight class="normal">QString<sp/><ref refid="namespaceqtsdl_1adfa85f2323dd14fc4cd2381acab77960" kindref="member">name_tidier</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>cleaner_name<sp/>=<sp/>QString::fromLatin1(name);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>cleaner_name.remove(QRegularExpression(</highlight><highlight class="stringliteral">&quot;qtsdl|PersistentCoreHolder&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cleaner_name;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" kindref="member">GuiItemQObject::GuiItemQObject</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{parent},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref>{}<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_item.cpp"/>
+  </compounddef>
+</doxygen>

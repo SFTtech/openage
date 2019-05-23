@@ -1,0 +1,1281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dynamic__resource_8cpp" kind="file" language="C++">
+    <compoundname>dynamic_resource.cpp</compoundname>
+    <includes refid="dynamic__resource_8h" local="yes">dynamic_resource.h</includes>
+    <includes refid="audio__manager_8h" local="yes">audio_manager.h</includes>
+    <includes refid="engine_8h" local="yes">../engine.h</includes>
+    <includes refid="job__manager_8h" local="yes">../job/job_manager.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <incdepgraph>
+      <node id="514">
+        <label>list</label>
+      </node>
+      <node id="476">
+        <label>atomic</label>
+      </node>
+      <node id="550">
+        <label>coord/coordmanager.h</label>
+        <link refid="coordmanager_8h"/>
+        <childnode refid="551" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+        <childnode refid="565" relation="include">
+        </childnode>
+      </node>
+      <node id="558">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="553" relation="include">
+        </childnode>
+        <childnode refid="559" relation="include">
+        </childnode>
+        <childnode refid="555" relation="include">
+        </childnode>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="560" relation="include">
+        </childnode>
+        <childnode refid="486" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+      </node>
+      <node id="511">
+        <label>iomanip</label>
+      </node>
+      <node id="488">
+        <label>functional</label>
+      </node>
+      <node id="527">
+        <label>queue</label>
+      </node>
+      <node id="522">
+        <label>resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+        <childnode refid="523" relation="include">
+        </childnode>
+        <childnode refid="487" relation="include">
+        </childnode>
+      </node>
+      <node id="560">
+        <label>limits</label>
+      </node>
+      <node id="557">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="558" relation="include">
+        </childnode>
+      </node>
+      <node id="570">
+        <label>guisys/public/gui_singleton_items_info.h</label>
+        <link refid="gui__singleton__items__info_8h"/>
+      </node>
+      <node id="543">
+        <label>hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+      </node>
+      <node id="518">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+      </node>
+      <node id="546">
+        <label>QObject</label>
+      </node>
+      <node id="573">
+        <label>input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="574" relation="include">
+        </childnode>
+        <childnode refid="575" relation="include">
+        </childnode>
+        <childnode refid="577" relation="include">
+        </childnode>
+      </node>
+      <node id="491">
+        <label>cstdint</label>
+      </node>
+      <node id="561">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="567">
+        <label>stdlib.h</label>
+      </node>
+      <node id="525">
+        <label>../datastructure/concurrent_queue.h</label>
+        <link refid="concurrent__queue_8h"/>
+        <childnode refid="526" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="527" relation="include">
+        </childnode>
+        <childnode refid="528" relation="include">
+        </childnode>
+      </node>
+      <node id="593">
+        <label>screenshot.h</label>
+        <link refid="screenshot_8h"/>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="594" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+      </node>
+      <node id="509">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="510" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="511" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+      </node>
+      <node id="534">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="501" relation="include">
+        </childnode>
+      </node>
+      <node id="538">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="534" relation="include">
+        </childnode>
+        <childnode refid="531" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+      </node>
+      <node id="499">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="500" relation="include">
+        </childnode>
+      </node>
+      <node id="481">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+      </node>
+      <node id="555">
+        <label>cmath</label>
+      </node>
+      <node id="501">
+        <label>stdexcept</label>
+      </node>
+      <node id="498">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="584">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+      </node>
+      <node id="589">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="590" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="551" relation="include">
+        </childnode>
+        <childnode refid="591" relation="include">
+        </childnode>
+      </node>
+      <node id="513">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="514" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+      </node>
+      <node id="510">
+        <label>cstdarg</label>
+      </node>
+      <node id="484">
+        <label>string</label>
+      </node>
+      <node id="502">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="503" relation="include">
+        </childnode>
+        <childnode refid="504" relation="include">
+        </childnode>
+        <childnode refid="506" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+        <childnode refid="515" relation="include">
+        </childnode>
+      </node>
+      <node id="504">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="505" relation="include">
+        </childnode>
+      </node>
+      <node id="506">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="508" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+      </node>
+      <node id="580">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="576">
+        <label>unordered_set</label>
+      </node>
+      <node id="566">
+        <label>cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="567" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="568" relation="include">
+        </childnode>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+      </node>
+      <node id="571">
+        <label>handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+      </node>
+      <node id="530">
+        <label>exception</label>
+      </node>
+      <node id="533">
+        <label>stddef.h</label>
+      </node>
+      <node id="549">
+        <label>fstream</label>
+      </node>
+      <node id="486">
+        <label>ostream</label>
+      </node>
+      <node id="569">
+        <label>gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="570" relation="include">
+        </childnode>
+      </node>
+      <node id="572">
+        <label>job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="526" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="527" relation="include">
+        </childnode>
+        <childnode refid="528" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="538" relation="include">
+        </childnode>
+        <childnode refid="529" relation="include">
+        </childnode>
+        <childnode refid="537" relation="include">
+        </childnode>
+        <childnode refid="539" relation="include">
+        </childnode>
+        <childnode refid="535" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+      </node>
+      <node id="490">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="492" relation="include">
+        </childnode>
+        <childnode refid="493" relation="include">
+        </childnode>
+      </node>
+      <node id="487">
+        <label>types.h</label>
+        <link refid="audio_2types_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+      </node>
+      <node id="483">
+        <label>dynamic_loader.h</label>
+        <link refid="dynamic__loader_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="485" relation="include">
+        </childnode>
+        <childnode refid="487" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+      </node>
+      <node id="554">
+        <label>limits.h</label>
+      </node>
+      <node id="523">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+        <childnode refid="485" relation="include">
+        </childnode>
+        <childnode refid="524" relation="include">
+        </childnode>
+      </node>
+      <node id="500">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+      </node>
+      <node id="552">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="553" relation="include">
+        </childnode>
+        <childnode refid="554" relation="include">
+        </childnode>
+        <childnode refid="555" relation="include">
+        </childnode>
+        <childnode refid="556" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+      </node>
+      <node id="474">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="541" relation="include">
+        </childnode>
+        <childnode refid="545" relation="include">
+        </childnode>
+        <childnode refid="572" relation="include">
+        </childnode>
+        <childnode refid="547" relation="include">
+        </childnode>
+      </node>
+      <node id="577">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="578" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="574" relation="include">
+        </childnode>
+        <childnode refid="575" relation="include">
+        </childnode>
+      </node>
+      <node id="562">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="542">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="540">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="526" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="527" relation="include">
+        </childnode>
+        <childnode refid="528" relation="include">
+        </childnode>
+        <childnode refid="535" relation="include">
+        </childnode>
+      </node>
+      <node id="581">
+        <label>util/externalprofiler.h</label>
+        <link refid="externalprofiler_8h"/>
+      </node>
+      <node id="526">
+        <label>condition_variable</label>
+      </node>
+      <node id="517">
+        <label>typeinfo</label>
+      </node>
+      <node id="541">
+        <label>audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+        <childnode refid="543" relation="include">
+        </childnode>
+        <childnode refid="544" relation="include">
+        </childnode>
+        <childnode refid="523" relation="include">
+        </childnode>
+      </node>
+      <node id="544">
+        <label>sound.h</label>
+        <link refid="sound_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+      </node>
+      <node id="590">
+        <label>bitset</label>
+      </node>
+      <node id="537">
+        <label>../job/job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="538" relation="include">
+        </childnode>
+        <childnode refid="529" relation="include">
+        </childnode>
+        <childnode refid="539" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+        <childnode refid="540" relation="include">
+        </childnode>
+      </node>
+      <node id="564">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="478">
+        <label>tuple</label>
+      </node>
+      <node id="594">
+        <label>ctime</label>
+      </node>
+      <node id="545">
+        <label>../engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="542" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="546" relation="include">
+        </childnode>
+        <childnode refid="547" relation="include">
+        </childnode>
+        <childnode refid="548" relation="include">
+        </childnode>
+        <childnode refid="541" relation="include">
+        </childnode>
+        <childnode refid="550" relation="include">
+        </childnode>
+        <childnode refid="551" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+        <childnode refid="566" relation="include">
+        </childnode>
+        <childnode refid="569" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="572" relation="include">
+        </childnode>
+        <childnode refid="573" relation="include">
+        </childnode>
+        <childnode refid="574" relation="include">
+        </childnode>
+        <childnode refid="579" relation="include">
+        </childnode>
+        <childnode refid="581" relation="include">
+        </childnode>
+        <childnode refid="582" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="585" relation="include">
+        </childnode>
+        <childnode refid="588" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+        <childnode refid="593" relation="include">
+        </childnode>
+      </node>
+      <node id="485">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="486" relation="include">
+        </childnode>
+      </node>
+      <node id="475">
+        <label>dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+        <childnode refid="483" relation="include">
+        </childnode>
+        <childnode refid="485" relation="include">
+        </childnode>
+        <childnode refid="522" relation="include">
+        </childnode>
+        <childnode refid="487" relation="include">
+        </childnode>
+        <childnode refid="525" relation="include">
+        </childnode>
+        <childnode refid="529" relation="include">
+        </childnode>
+        <childnode refid="537" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+      </node>
+      <node id="592">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="565" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="584" relation="include">
+        </childnode>
+      </node>
+      <node id="536">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+      </node>
+      <node id="578">
+        <label>stack</label>
+      </node>
+      <node id="480">
+        <label>vector</label>
+      </node>
+      <node id="547">
+        <label>log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="515" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+      </node>
+      <node id="496">
+        <label>ciso646</label>
+      </node>
+      <node id="574">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+        <childnode refid="575" relation="include">
+        </childnode>
+      </node>
+      <node id="531">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="530" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="532" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="534" relation="include">
+        </childnode>
+        <childnode refid="535" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+      </node>
+      <node id="568">
+        <label>utility</label>
+      </node>
+      <node id="586">
+        <label>array</label>
+      </node>
+      <node id="512">
+        <label>sstream</label>
+      </node>
+      <node id="495">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+      </node>
+      <node id="519">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="520" relation="include">
+        </childnode>
+        <childnode refid="490" relation="include">
+        </childnode>
+      </node>
+      <node id="497">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="497" relation="include">
+        </childnode>
+      </node>
+      <node id="591">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="508">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="515">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="516" relation="include">
+        </childnode>
+      </node>
+      <node id="563">
+        <label>pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="564" relation="include">
+        </childnode>
+        <childnode refid="557" relation="include">
+        </childnode>
+      </node>
+      <node id="521">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="520">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+      </node>
+      <node id="505">
+        <label>cstdlib</label>
+      </node>
+      <node id="482">
+        <label>iostream</label>
+      </node>
+      <node id="579">
+        <label>options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="580" relation="include">
+        </childnode>
+      </node>
+      <node id="588">
+        <label>unit/selection.h</label>
+        <link refid="selection_8h"/>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="563" relation="include">
+        </childnode>
+        <childnode refid="571" relation="include">
+        </childnode>
+        <childnode refid="589" relation="include">
+        </childnode>
+        <childnode refid="592" relation="include">
+        </childnode>
+      </node>
+      <node id="529">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="530" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="531" relation="include">
+        </childnode>
+      </node>
+      <node id="479">
+        <label>unordered_map</label>
+      </node>
+      <node id="539">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="531" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+      </node>
+      <node id="493">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+        <childnode refid="518" relation="include">
+        </childnode>
+      </node>
+      <node id="559">
+        <label>climits</label>
+      </node>
+      <node id="494">
+        <label>mutex</label>
+      </node>
+      <node id="587">
+        <label>chrono</label>
+      </node>
+      <node id="532">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="533" relation="include">
+        </childnode>
+      </node>
+      <node id="528">
+        <label>thread</label>
+      </node>
+      <node id="489">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="490" relation="include">
+        </childnode>
+        <childnode refid="519" relation="include">
+        </childnode>
+        <childnode refid="521" relation="include">
+        </childnode>
+      </node>
+      <node id="575">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="576" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="542" relation="include">
+        </childnode>
+      </node>
+      <node id="565">
+        <label>tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="557" relation="include">
+        </childnode>
+        <childnode refid="561" relation="include">
+        </childnode>
+        <childnode refid="562" relation="include">
+        </childnode>
+        <childnode refid="552" relation="include">
+        </childnode>
+      </node>
+      <node id="492">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="585">
+        <label>util/profiler.h</label>
+        <link refid="profiler_8h"/>
+        <childnode refid="586" relation="include">
+        </childnode>
+        <childnode refid="587" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="507">
+        <label>type_traits</label>
+      </node>
+      <node id="503">
+        <label>config.h</label>
+      </node>
+      <node id="524">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="486" relation="include">
+        </childnode>
+      </node>
+      <node id="553">
+        <label>algorithm</label>
+      </node>
+      <node id="535">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="536" relation="include">
+        </childnode>
+      </node>
+      <node id="551">
+        <label>phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="552" relation="include">
+        </childnode>
+        <childnode refid="557" relation="include">
+        </childnode>
+        <childnode refid="561" relation="include">
+        </childnode>
+        <childnode refid="562" relation="include">
+        </childnode>
+      </node>
+      <node id="556">
+        <label>cstring</label>
+      </node>
+      <node id="548">
+        <label>log/file_logsink.h</label>
+        <link refid="file__logsink_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="549" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+      </node>
+      <node id="583">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="584" relation="include">
+        </childnode>
+      </node>
+      <node id="477">
+        <label>memory</label>
+      </node>
+      <node id="582">
+        <label>util/fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="583" relation="include">
+        </childnode>
+      </node>
+      <node id="516">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="517" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__resource_8h" kindref="compound">dynamic_resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio__manager_8h" kindref="compound">audio_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../job/job_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" kindref="member">chunk_info_t::chunk_info_t</ref>(<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" kindref="member">chunk_info_t::state_t</ref><sp/>state,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>state{<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" kindref="member">state</ref>},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>size{0},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer{std::make_unique&lt;int16_t[]&gt;(buffer_size)}<sp/>{}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1audio_1_1_dynamic_resource_1a890bf6e35b0070abdfa414e29931e989" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a890bf6e35b0070abdfa414e29931e989" kindref="member">DynamicResource::DynamicResource</ref>(<ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref><sp/>*manager,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/>category,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;path,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref><sp/>format,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>preload_amount,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" kindref="member">chunk_size</ref>,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_chunks)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref>{<ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>,<sp/><ref refid="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" kindref="member">category</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>path{path},</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>format{format},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>preload_amount{preload_amount},</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" kindref="member">chunk_size</ref>{<ref refid="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" kindref="member">chunk_size</ref>},</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>max_chunks{max_chunks},</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>use_count{0}<sp/>{}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c" kindref="member">DynamicResource::use</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>resource<sp/>is<sp/>new<sp/>in<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialize_use<sp/>=<sp/>(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" kindref="member">use_count</ref><sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" kindref="member">use_count</ref><sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initialize_use)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>loading<sp/>job<sp/>group</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" kindref="member">loading_job_group</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1add5dcdf1895b883af210f102e4e64199" kindref="member">get_job_manager</ref>()-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a26dd9d9c12b38ca0d7bf4c7e3c17ee36" kindref="member">create_job_group</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>fixed<sp/>amount<sp/>of<sp/>chunk<sp/>loading<sp/>buffers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" kindref="member">max_chunks</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.push(</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;chunk_info_t&gt;(</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" kindref="member">chunk_info_t::state_t::EMPTY</ref>,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>loader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" kindref="member">loader</ref><sp/>=<sp/><ref refid="classopenage_1_1audio_1_1_dynamic_loader_1a112547e0d5b12a174840c036b80b9aad" kindref="member">DynamicLoader::create</ref>(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" kindref="member">path</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" kindref="member">format</ref>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904" kindref="member">DynamicResource::stop_using</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>resource<sp/>is<sp/>not<sp/>used<sp/>anymore</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((--this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" kindref="member">use_count</ref>)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>the<sp/>chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.clear();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>chunk<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.clear();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1audio_1_1audio__chunk__t" kindref="compound">audio_chunk_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0" kindref="member">DynamicResource::get_data</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_length)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_index<sp/>=<sp/>position<sp/>/<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>chunk_offset<sp/>=<sp/>position<sp/>%<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>audio<sp/>chunk<sp/>is<sp/>currently<sp/>loading<sp/>or<sp/>already<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_map_it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.find(resource_chunk_index);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk_map_it<sp/>!=<sp/>std::end(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_info<sp/>=<sp/>chunk_map_it-&gt;second;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int16_t<sp/>*data<sp/>=<sp/>chunk_info-&gt;buffer.get()<sp/>+<sp/>chunk_offset;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(chunk_info-&gt;state.load())<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" kindref="member">chunk_info_t::state_t::EMPTY</ref>:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.erase(chunk_map_it);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>signal<sp/>end<sp/>of<sp/>stream</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27af9f6955ebca09a484157c05f80acd65e" kindref="member">chunk_info_t::state_t::LOADING</ref>:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>signal<sp/>that<sp/>resource<sp/>is<sp/>not<sp/>ready<sp/>yet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>1};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27a2baa69eafc7204f3bd8648eba580c489" kindref="member">chunk_info_t::state_t::READY</ref>:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>to<sp/>preload<sp/>the<sp/>next<sp/>chunks!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" kindref="member">start_preloading</ref>(resource_chunk_index);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>actual<sp/>data<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk_info-&gt;size<sp/>-<sp/>chunk_offset<sp/>&gt;=<sp/>data_length)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{data,<sp/>data_length};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{data,<sp/>chunk_info-&gt;size<sp/>-<sp/>chunk_offset};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>guard<sp/>the<sp/>.empty(),<sp/>.front()<sp/>and<sp/>.pop()<sp/>calls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_info_lock<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.lock();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>don&apos;t<sp/>have<sp/>next<sp/>data<sp/>to<sp/>load!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;chunk<sp/>decay<sp/>queue<sp/>ran<sp/>dry,<sp/>resource<sp/>is<sp/>dying.&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>obtain<sp/>a<sp/>chunk<sp/>info<sp/>element<sp/>to<sp/>be<sp/>used<sp/>and<sp/>overwritten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_info<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.front();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.pop();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>chunk_info_lock.unlock();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>map<sp/>it<sp/>to<sp/>the<sp/>corresponding<sp/>resource<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.insert({resource_chunk_index,<sp/>chunk_info});</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>a<sp/>background<sp/>job<sp/>to<sp/>get<sp/>the<sp/>data<sp/>of<sp/>that<sp/>chunk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_offset<sp/>=<sp/>resource_chunk_index<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" kindref="member">load_chunk_async</ref>(chunk_info,<sp/>resource_chunk_offset);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>also<sp/>load<sp/>more<sp/>chunks<sp/>starting<sp/>at<sp/>the<sp/>current<sp/>chunk<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" kindref="member">start_preloading</ref>(resource_chunk_index);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>1};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" kindref="member">DynamicResource::start_preloading</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_index)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_offset<sp/>=<sp/>resource_chunk_index<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>the<sp/>current<sp/>index,<sp/>enqueue<sp/>the<sp/>load<sp/>of<sp/>`threshold`<sp/>more<sp/>chunks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" kindref="member">preload_amount</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resource_chunk_index<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resource_chunk_offset<sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_map_it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.find(resource_chunk_index);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>chunk<sp/>is<sp/>either<sp/>in<sp/>loading<sp/>state<sp/>or<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>do<sp/>this<sp/>to<sp/>no<sp/>longer<sp/>preload<sp/>if<sp/>the<sp/>stream<sp/>is<sp/>at<sp/>its<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk_map_it<sp/>!=<sp/>std::end(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_info<sp/>=<sp/>chunk_map_it-&gt;second;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk_info-&gt;state.load()<sp/>==<sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" kindref="member">chunk_info_t::state_t::EMPTY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.erase(chunk_map_it);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>encountered<sp/>the<sp/>end<sp/>of<sp/>stream!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>else,<sp/>the<sp/>chunk<sp/>is<sp/>known<sp/>already<sp/>and<sp/>loading<sp/>or<sp/>even<sp/>loaded,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>need<sp/>to<sp/>trigger<sp/>the<sp/>load.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>chunk<sp/>is<sp/>unknown<sp/>yet,<sp/>so<sp/>let&apos;s<sp/>load<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>decay_queue_lock<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.lock();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>obtain<sp/>the<sp/>least-recently-used<sp/>chunk<sp/>to<sp/>overwrite.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>local_chunk_info<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.front();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.pop();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>decay_queue_lock.unlock();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>.insert({resource_chunk_index,<sp/>local_chunk_info});</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" kindref="member">load_chunk_async</ref>(local_chunk_info,<sp/>resource_chunk_offset);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" kindref="member">DynamicResource::load_chunk_async</ref>(std::shared_ptr&lt;chunk_info_t&gt;<sp/>chunk_info,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_offset)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>chunk_info-&gt;state.store(<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27af9f6955ebca09a484157c05f80acd65e" kindref="member">chunk_info_t::state_t::LOADING</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>`chunk_info`<sp/>will<sp/>stay<sp/>out<sp/>of<sp/>the<sp/>`decay_queue`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>until<sp/>it<sp/>was<sp/>loaded.<sp/>So<sp/>it&apos;s<sp/>possible<sp/>the<sp/>queue<sp/>runs<sp/>dry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" kindref="member">loader</ref>,<sp/></highlight><highlight class="stringliteral">&quot;tried<sp/>to<sp/>load<sp/>chunk<sp/>without<sp/>audio<sp/>loader!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>loading_function<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">,chunk_info,resource_chunk_offset]()<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int16_t<sp/>*buffer<sp/>=<sp/>chunk_info-&gt;buffer.get();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>loaded<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" kindref="member">loader</ref>-&gt;load_chunk(buffer,<sp/>resource_chunk_offset,<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(loaded<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>chunk_info-&gt;state.store(<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" kindref="member">chunk_info_t::state_t::EMPTY</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.push(chunk_info);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>chunk_info-&gt;state.store(<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27a2baa69eafc7204f3bd8648eba580c489" kindref="member">chunk_info_t::state_t::READY</ref>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>chunk_info-&gt;size<sp/>=<sp/>loaded;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>.push(chunk_info);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>as<sp/>the<sp/>job<sp/>manager<sp/>currently<sp/>does<sp/>not<sp/>support<sp/>executing<sp/>void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>functions,<sp/>we<sp/>return<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" kindref="member">loading_job_group</ref>.<ref refid="classopenage_1_1job_1_1_job_group_1a793449eefa0dcc327cd2dc8bdd4144bc" kindref="member">enqueue</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;(loading_function);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/dynamic_resource.cpp"/>
+  </compounddef>
+</doxygen>

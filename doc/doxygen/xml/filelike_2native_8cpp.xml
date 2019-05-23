@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="filelike_2native_8cpp" kind="file" language="C++">
+    <compoundname>native.cpp</compoundname>
+    <includes refid="filelike_2native_8h" local="yes">native.h</includes>
+    <includes local="no">sstream</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <incdepgraph>
+      <node id="29657">
+        <label>list</label>
+      </node>
+      <node id="29648">
+        <label>atomic</label>
+      </node>
+      <node id="29654">
+        <label>iomanip</label>
+      </node>
+      <node id="29653">
+        <label>functional</label>
+      </node>
+      <node id="29643">
+        <label>cstdint</label>
+      </node>
+      <node id="29651">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="29652" relation="include">
+        </childnode>
+        <childnode refid="29653" relation="include">
+        </childnode>
+        <childnode refid="29654" relation="include">
+        </childnode>
+        <childnode refid="29633" relation="include">
+        </childnode>
+        <childnode refid="29639" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29655" relation="include">
+        </childnode>
+      </node>
+      <node id="29641">
+        <label>stdexcept</label>
+      </node>
+      <node id="29656">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="29657" relation="include">
+        </childnode>
+        <childnode refid="29658" relation="include">
+        </childnode>
+        <childnode refid="29659" relation="include">
+        </childnode>
+      </node>
+      <node id="29652">
+        <label>cstdarg</label>
+      </node>
+      <node id="29634">
+        <label>string</label>
+      </node>
+      <node id="29642">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="29643" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29644" relation="include">
+        </childnode>
+        <childnode refid="29645" relation="include">
+        </childnode>
+        <childnode refid="29647" relation="include">
+        </childnode>
+        <childnode refid="29656" relation="include">
+        </childnode>
+        <childnode refid="29659" relation="include">
+        </childnode>
+      </node>
+      <node id="29645">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="29646" relation="include">
+        </childnode>
+      </node>
+      <node id="29647">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="29648" relation="include">
+        </childnode>
+        <childnode refid="29633" relation="include">
+        </childnode>
+        <childnode refid="29649" relation="include">
+        </childnode>
+        <childnode refid="29636" relation="include">
+        </childnode>
+        <childnode refid="29650" relation="include">
+        </childnode>
+        <childnode refid="29651" relation="include">
+        </childnode>
+      </node>
+      <node id="29631">
+        <label>fstream</label>
+      </node>
+      <node id="29629">
+        <label>libopenage/util/filelike/native.cpp</label>
+        <link refid="filelike_2native_8cpp"/>
+        <childnode refid="29630" relation="include">
+        </childnode>
+        <childnode refid="29639" relation="include">
+        </childnode>
+        <childnode refid="29640" relation="include">
+        </childnode>
+      </node>
+      <node id="29640">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="29632" relation="include">
+        </childnode>
+        <childnode refid="29633" relation="include">
+        </childnode>
+        <childnode refid="29641" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29636" relation="include">
+        </childnode>
+        <childnode refid="29642" relation="include">
+        </childnode>
+      </node>
+      <node id="29630">
+        <label>native.h</label>
+        <link refid="filelike_2native_8h"/>
+        <childnode refid="29631" relation="include">
+        </childnode>
+        <childnode refid="29632" relation="include">
+        </childnode>
+        <childnode refid="29633" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29635" relation="include">
+        </childnode>
+      </node>
+      <node id="29661">
+        <label>typeinfo</label>
+      </node>
+      <node id="29655">
+        <label>vector</label>
+      </node>
+      <node id="29637">
+        <label>ciso646</label>
+      </node>
+      <node id="29639">
+        <label>sstream</label>
+      </node>
+      <node id="29636">
+        <label>../compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="29637" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29638" relation="include">
+        </childnode>
+      </node>
+      <node id="29638">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="29638" relation="include">
+        </childnode>
+      </node>
+      <node id="29650">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="29632" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+      </node>
+      <node id="29659">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="29660" relation="include">
+        </childnode>
+      </node>
+      <node id="29635">
+        <label>filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="29632" relation="include">
+        </childnode>
+        <childnode refid="29634" relation="include">
+        </childnode>
+        <childnode refid="29636" relation="include">
+        </childnode>
+      </node>
+      <node id="29646">
+        <label>cstdlib</label>
+      </node>
+      <node id="29632">
+        <label>iostream</label>
+      </node>
+      <node id="29658">
+        <label>mutex</label>
+      </node>
+      <node id="29649">
+        <label>type_traits</label>
+      </node>
+      <node id="29644">
+        <label>config.h</label>
+      </node>
+      <node id="29633">
+        <label>memory</label>
+      </node>
+      <node id="29660">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="29632" relation="include">
+        </childnode>
+        <childnode refid="29661" relation="include">
+        </childnode>
+        <childnode refid="29636" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike">openage::util::filelike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filelike_2native_8h" kindref="compound">native.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">filelike<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1util_1_1filelike_1_1_native_1a0ec601f49efb22ab663fa3f9b0179636" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a0ec601f49efb22ab663fa3f9b0179636" kindref="member">Native::Native</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path,<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">mode_t</ref><sp/>mode)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>path{<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" kindref="member">path</ref>},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>mode{mode}<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ios_base::openmode<sp/>open_mode;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(this-&gt;mode)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>mode_t::R:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>open_mode<sp/>=<sp/>std::ios_base::in;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>mode_t::W:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>open_mode<sp/>=<sp/>std::ios_base::out;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>mode_t::RW:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>open_mode<sp/>=<sp/>std::ios_base::in<sp/>|<sp/>std::ios_base::out;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>mode_t::A:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>open_mode<sp/>=<sp/>std::ios_base::out<sp/>|<sp/>std::ios_base::ate;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>mode_t::AR:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>open_mode<sp/>=<sp/>std::ios_base::in<sp/>|<sp/>std::ios_base::out<sp/>|<sp/>std::ios_base::ate;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>open<sp/>mode&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Open<sp/>in<sp/>binary<sp/>mode<sp/>to<sp/>avoid<sp/>stupid<sp/>behaviour<sp/>on<sp/>Windows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>open_mode<sp/>|=<sp/>std::ios_base::binary;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;file.open(this-&gt;path,<sp/>open_mode);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;file.is_open())<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;file<sp/>not<sp/>found:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>path};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classopenage_1_1util_1_1filelike_1_1_native_1a26abd11b4f1a66317a2c4797d7216dbb" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a26abd11b4f1a66317a2c4797d7216dbb" kindref="member">Native::~Native</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" kindref="member">Native::read</ref>(ssize_t<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>whole<sp/>file:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref><sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>ret;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>remaining<sp/>size<sp/>and<sp/>prepare<sp/>the<sp/>string<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>avoid<sp/>resizing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.tellg();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.seekg(0,<sp/>std::ios::end);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.reserve(static_cast&lt;size_t&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.tellg())<sp/>-<sp/>pos);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.seekg(pos,<sp/>std::ios::beg);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.assign(std::istreambuf_iterator&lt;char&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>),</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::istreambuf_iterator&lt;char&gt;());</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>`max`<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>string<sp/>with<sp/>required<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>ret;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.resize(<ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>read<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.read(&amp;ret[0],<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" kindref="member">Native::read_to</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>ssize_t<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.readsome(reinterpret_cast&lt;std::fstream::char_type<sp/>*&gt;(buf),<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.gcount();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" kindref="member">Native::readable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" kindref="member">mode</ref><sp/>==<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" kindref="member">mode_t::R</ref><sp/>or</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" kindref="member">mode</ref><sp/>==<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee" kindref="member">mode_t::RW</ref>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" kindref="member">Native::write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;data)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.write(data.c_str(),<sp/>data.size());</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" kindref="member">Native::writable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" kindref="member">mode</ref><sp/>==<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a61e9c06ea9a85a5088a499df6458d276" kindref="member">mode_t::W</ref><sp/>or</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" kindref="member">mode</ref><sp/>==<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee" kindref="member">mode_t::RW</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" kindref="member">Native::seek</ref>(ssize_t<sp/>offset,<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref><sp/>how)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ios::seekdir<sp/>where;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(how)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" kindref="member">seek_t::SET</ref>:</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>where<sp/>=<sp/>std::ios::beg;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aaf32924c53f864144ab34d1f7c12a0d4a" kindref="member">seek_t::CUR</ref>:</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>where<sp/>=<sp/>std::ios::cur;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aab1a326c06d88bf042f73d70f50197905" kindref="member">seek_t::END</ref>:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>where<sp/>=<sp/>std::ios::end;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;invalid<sp/>seek<sp/>mode&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.seekg(offset,<sp/>where);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a" kindref="member">Native::seekable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" kindref="member">Native::tell</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.tellg();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" kindref="member">Native::close</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.close();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" kindref="member">Native::flush</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.flush();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" refkind="member"><highlight class="normal">ssize_t<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" kindref="member">Native::get_size</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remember<sp/>where<sp/>we<sp/>were</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.tellg();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>go<sp/>to<sp/>the<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.seekg(0,<sp/>std::ios::end);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>ssize_t<sp/>size<sp/>=<sp/>static_cast&lt;ssize_t&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.tellg());</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>to<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" kindref="member">file</ref>.seekg(pos,<sp/>std::ios::beg);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>size;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" kindref="member">Native::repr</ref>(std::ostream<sp/>&amp;stream)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Native(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" kindref="member">path</ref><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/filelike/native.cpp"/>
+  </compounddef>
+</doxygen>

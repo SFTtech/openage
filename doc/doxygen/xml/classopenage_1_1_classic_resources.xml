@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_classic_resources" kind="class" language="C++" prot="public">
+    <compoundname>openage::ClassicResources</compoundname>
+    <basecompoundref refid="classopenage_1_1_resources" prot="public" virt="non-virtual">openage::Resources</basecompoundref>
+    <includes refid="gamestate_2resource_8h" local="no">resource.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_classic_resources_1a5bf598b8490c8bd8c082cf70a1bec2cc" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_resource_producer" kindref="compound">ResourceProducer</ref></type>
+        <definition>const ResourceProducer openage::ClassicResources::resources[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="90" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::ClassicResources::ClassicResources</definition>
+        <argsstring>()</argsstring>
+        <name>ClassicResources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="76" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_classic_resources_1ad327fe1078eddae4ff9d2a798f0770e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::ClassicResources::get_count</definition>
+        <argsstring>() const override</argsstring>
+        <name>get_count</name>
+        <reimplements refid="classopenage_1_1_resources_1abec1193935e5d41c0306402394bae78f">get_count</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="84" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_classic_resources_1a5ffbbbb523556aa031a996a45e7c4e85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
+        <definition>const Resource&amp; openage::ClassicResources::get_resource</definition>
+        <argsstring>(int id) const override</argsstring>
+        <name>get_resource</name>
+        <reimplements refid="classopenage_1_1_resources_1acb1b42c34ac0a283335675ad02f634e5">get_resource</reimplements>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="86" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="775">
+        <label>openage::ClassicResources</label>
+        <link refid="classopenage_1_1_classic_resources"/>
+        <childnode refid="776" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="776">
+        <label>openage::Resources</label>
+        <link refid="classopenage_1_1_resources"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="780">
+        <label>openage::Resource</label>
+        <link refid="classopenage_1_1_resource"/>
+      </node>
+      <node id="779">
+        <label>openage::ResourceProducer</label>
+        <link refid="classopenage_1_1_resource_producer"/>
+        <childnode refid="780" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="777">
+        <label>openage::ClassicResources</label>
+        <link refid="classopenage_1_1_classic_resources"/>
+        <childnode refid="778" relation="public-inheritance">
+        </childnode>
+        <childnode refid="779" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="778">
+        <label>openage::Resources</label>
+        <link refid="classopenage_1_1_resources"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/resource.h" line="73" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="73" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_classic_resources_1ad4e3072c25152ca7e9ced84dee820cbb" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>ClassicResources</name></member>
+      <member refid="classopenage_1_1_resources_1aef4b5371e4af7c303ca4d87d5970280c" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>create_bundle</name></member>
+      <member refid="classopenage_1_1_resources_1ad584e40009c2ea92442927cc374233dc" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>food</name></member>
+      <member refid="classopenage_1_1_classic_resources_1ad327fe1078eddae4ff9d2a798f0770e8" prot="public" virt="virtual"><scope>openage::ClassicResources</scope><name>get_count</name></member>
+      <member refid="classopenage_1_1_classic_resources_1a5ffbbbb523556aa031a996a45e7c4e85" prot="public" virt="virtual"><scope>openage::ClassicResources</scope><name>get_resource</name></member>
+      <member refid="classopenage_1_1_resources_1a945eff3d7ffb4da7c2edba3c92bcd86a" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>gold</name></member>
+      <member refid="classopenage_1_1_classic_resources_1a5bf598b8490c8bd8c082cf70a1bec2cc" prot="private" virt="non-virtual"><scope>openage::ClassicResources</scope><name>resources</name></member>
+      <member refid="classopenage_1_1_resources_1a5191663bd169c005391dd44f8751d583" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>Resources</name></member>
+      <member refid="classopenage_1_1_resources_1a5dd4addc058637a117d8a5a23ef64d29" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>stone</name></member>
+      <member refid="classopenage_1_1_resources_1a27ddc9d16912c2781fa62b4038f4c3c3" prot="public" virt="non-virtual"><scope>openage::ClassicResources</scope><name>wood</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

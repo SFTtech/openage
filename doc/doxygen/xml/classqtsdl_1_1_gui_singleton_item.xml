@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_singleton_item" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiSingletonItem</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_link" prot="public" virt="non-virtual">qtsdl::GuiItemLink</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_engine_link" prot="public" virt="non-virtual">openage::gui::EngineLink</derivedcompoundref>
+    <includes refid="gui__singleton__item_8h" local="no">gui_singleton_item.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_singleton_item_1afa0cc1ceeabd19dbab913e655a690641" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiSingletonItem::GuiSingletonItem</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>GuiSingletonItem</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_singleton_item.h" line="15" column="1" bodyfile="libopenage/gui/guisys/link/gui_singleton_item.cpp" bodystart="7" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_singleton_item_1a2ea57bca7b78f265f506ba3d4f53f6eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::GuiSingletonItem::~GuiSingletonItem</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiSingletonItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_singleton_item.h" line="16" column="1" bodyfile="libopenage/gui/guisys/link/gui_singleton_item.cpp" bodystart="13" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2767">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2766">
+        <label>QObject</label>
+      </node>
+      <node id="2765">
+        <label>qtsdl::GuiSingletonItem</label>
+        <link refid="classqtsdl_1_1_gui_singleton_item"/>
+        <childnode refid="2766" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2768">
+        <label>openage::gui::EngineLink</label>
+        <link refid="classopenage_1_1gui_1_1_engine_link"/>
+        <childnode refid="2765" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2771">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2770">
+        <label>QObject</label>
+      </node>
+      <node id="2769">
+        <label>qtsdl::GuiSingletonItem</label>
+        <link refid="classqtsdl_1_1_gui_singleton_item"/>
+        <childnode refid="2770" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2771" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_singleton_item.h" line="11" column="1" bodyfile="libopenage/gui/guisys/link/gui_singleton_item.h" bodystart="11" bodyend="17"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_singleton_item_1afa0cc1ceeabd19dbab913e655a690641" prot="public" virt="non-virtual"><scope>qtsdl::GuiSingletonItem</scope><name>GuiSingletonItem</name></member>
+      <member refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" prot="public" virt="virtual"><scope>qtsdl::GuiSingletonItem</scope><name>~GuiItemLink</name></member>
+      <member refid="classqtsdl_1_1_gui_singleton_item_1a2ea57bca7b78f265f506ba3d4f53f6eb" prot="public" virt="virtual"><scope>qtsdl::GuiSingletonItem</scope><name>~GuiSingletonItem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

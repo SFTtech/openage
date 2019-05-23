@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::coord::phys3 &gt;</compoundname>
+    <includes refid="phys_8h" local="no">phys.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4_1af680679a5d1eeeeb4e6b1226d60c9140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; openage::coord::phys3 &gt;::operator()</definition>
+        <argsstring>(const openage::coord::phys3 &amp;pos) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">openage::coord::phys3</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="76" column="1" bodyfile="libopenage/coord/phys.h" bodystart="76" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2821">
+        <label>std::hash&lt; openage::coord::phys3 &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/phys.h" line="75" column="1" bodyfile="libopenage/coord/phys.h" bodystart="75" bodyend="83"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4_1af680679a5d1eeeeb4e6b1226d60c9140" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::coord::phys3 &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1job_1_1_job_group" kind="class" language="C++" prot="public">
+    <compoundname>openage::job::JobGroup</compoundname>
+    <includes refid="job__group_8h" local="no">job_group.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_job_group_1af6a7632ccf4dbd8da7fc9360ead870ef" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1job_1_1_worker" kindref="compound">Worker</ref> *</type>
+        <definition>Worker* openage::job::JobGroup::parent_worker</definition>
+        <argsstring></argsstring>
+        <name>parent_worker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The parent worker that executes all jobs from this job group. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="27" column="1" bodyfile="libopenage/job/job_group.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1job_1_1_job_group_1a22d5e96819bc7c0bff8d135a21e67b42" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class JobManager</definition>
+        <argsstring></argsstring>
+        <name>JobManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The job manager must be a friend of the worker in order to call the private constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="83" column="1" bodyfile="libopenage/job/job_group.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_group_1aa837e1d54351d5250163e288afd605bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::JobGroup::JobGroup</definition>
+        <argsstring>()</argsstring>
+        <name>JobGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new empty job group with no parent worker. Should only be used as dummy object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="34" column="1" bodyfile="libopenage/job/job_group.cpp" bodystart="8" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_group_1a793449eefa0dcc327cd2dc8bdd4144bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&lt; T &gt;</type>
+        <definition>Job&lt;T&gt; openage::job::JobGroup::enqueue</definition>
+        <argsstring>(job_function_t&lt; T &gt; function, callback_function_t&lt; T &gt; callback={})</argsstring>
+        <name>enqueue</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1job_1a3e3a23d8e117aba5577c273f75ed630e" kindref="member">job_function_t</ref>&lt; T &gt;</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1job_1a9e457e59ab065783dbb679ab82cfdfa4" kindref="member">callback_function_t</ref>&lt; T &gt;</type>
+          <declname>callback</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enqueues the given function into the job group&apos;s worker thread. A lightweight job object is returned, that allows to keep track of the job&apos;s state.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function that is executed as background job </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function that is executed, when the background job has finished </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="46" column="1" bodyfile="libopenage/job/job_group.h" bodystart="46" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_group_1a347b8e3abb874668f5c5bd8a5468a0b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref>&lt; T &gt;</type>
+        <definition>Job&lt;T&gt; openage::job::JobGroup::enqueue</definition>
+        <argsstring>(abortable_function_t&lt; T &gt; function, callback_function_t&lt; T &gt; callback={})</argsstring>
+        <name>enqueue</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1job_1aae93538aa9f8440cd9bbd3fe67d88e75" kindref="member">abortable_function_t</ref>&lt; T &gt;</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1job_1a9e457e59ab065783dbb679ab82cfdfa4" kindref="member">callback_function_t</ref>&lt; T &gt;</type>
+          <declname>callback</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enqueues the given function into the job group&apos;s worker thread. A lightweight job object is returned, that allows to keep track of the job&apos;s state.The passed function must accept a function object that returns, whether the job should be aborted at any time. Further it must accept a function that can be used to abort the execution of the function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function that is executed as background job </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callback function that is executed, when the background job has finished </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="67" column="1" bodyfile="libopenage/job/job_group.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_group_1a2c8b676ea02ea4cbe16121a393c1903a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::JobGroup::JobGroup</definition>
+        <argsstring>(Worker *parent_worker)</argsstring>
+        <name>JobGroup</name>
+        <param>
+          <type><ref refid="classopenage_1_1job_1_1_worker" kindref="compound">Worker</ref> *</type>
+          <declname>parent_worker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new job group with the given parent worker. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_group.h" line="77" column="1" bodyfile="libopenage/job/job_group.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A job group is a proxy object that forwards job&apos;s to a single worker thread. It can be used the assure that multiple jobs are executed on the same background thread. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3027">
+        <label>openage::job::Worker</label>
+        <link refid="classopenage_1_1job_1_1_worker"/>
+        <childnode refid="3028" relation="usage">
+          <edgelabel>-manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="3028">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="3026">
+        <label>openage::job::JobGroup</label>
+        <link refid="classopenage_1_1job_1_1_job_group"/>
+        <childnode refid="3027" relation="usage">
+          <edgelabel>-parent_worker</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/job/job_group.h" line="24" column="1" bodyfile="libopenage/job/job_group.h" bodystart="24" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1job_1_1_job_group_1a793449eefa0dcc327cd2dc8bdd4144bc" prot="public" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>enqueue</name></member>
+      <member refid="classopenage_1_1job_1_1_job_group_1a347b8e3abb874668f5c5bd8a5468a0b2" prot="public" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>enqueue</name></member>
+      <member refid="classopenage_1_1job_1_1_job_group_1aa837e1d54351d5250163e288afd605bf" prot="public" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>JobGroup</name></member>
+      <member refid="classopenage_1_1job_1_1_job_group_1a2c8b676ea02ea4cbe16121a393c1903a" prot="private" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>JobGroup</name></member>
+      <member refid="classopenage_1_1job_1_1_job_group_1a22d5e96819bc7c0bff8d135a21e67b42" prot="private" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>JobManager</name></member>
+      <member refid="classopenage_1_1job_1_1_job_group_1af6a7632ccf4dbd8da7fc9360ead870ef" prot="private" virt="non-virtual"><scope>openage::job::JobGroup</scope><name>parent_worker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

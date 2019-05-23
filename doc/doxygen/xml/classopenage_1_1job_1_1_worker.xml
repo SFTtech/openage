@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1job_1_1_worker" kind="class" language="C++" prot="public">
+    <compoundname>openage::job::Worker</compoundname>
+    <includes refid="worker_8h" local="no">worker.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1ac9734f149754c8bc51b19d6cc57902c0" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">JobManager</ref> *</type>
+        <definition>JobManager* openage::job::Worker::manager</definition>
+        <argsstring></argsstring>
+        <name>manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The parent job manager, this worker is fetching jobs from. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="25" column="1" bodyfile="libopenage/job/worker.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::job::Worker::is_running</definition>
+        <argsstring></argsstring>
+        <name>is_running</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether this worker thread is still running. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="28" column="1" bodyfile="libopenage/job/worker.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a7248896af6a7ddd2492c3027660c5877" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; std::thread &gt;</type>
+        <definition>std::unique_ptr&lt;std::thread&gt; openage::job::Worker::executor</definition>
+        <argsstring></argsstring>
+        <name>executor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The executing thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="31" column="1" bodyfile="libopenage/job/worker.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex openage::job::Worker::pending_jobs_mutex</definition>
+        <argsstring></argsstring>
+        <name>pending_jobs_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A mutex to synchronize the internal pending jobs queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="34" column="1" bodyfile="libopenage/job/worker.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a81131cf6e31018ec29632a6b41a79131" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_job_state_base" kindref="compound">JobStateBase</ref> &gt; &gt;</type>
+        <definition>std::queue&lt;std::shared_ptr&lt;JobStateBase&gt; &gt; openage::job::Worker::pending_jobs</definition>
+        <argsstring></argsstring>
+        <name>pending_jobs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A queue of jobs that are to be executed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="37" column="1" bodyfile="libopenage/job/worker.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_worker_1a1f7ff0ab3111361665027316908c2435" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable openage::job::Worker::jobs_available</definition>
+        <argsstring></argsstring>
+        <name>jobs_available</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A condition variable to wait for new jobs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="40" column="1" bodyfile="libopenage/job/worker.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a42630ad642f1e2e86c5cebed33a8b8a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::Worker::Worker</definition>
+        <argsstring>(JobManager *manager)</argsstring>
+        <name>Worker</name>
+        <param>
+          <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">JobManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a new worker with the parent job manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="44" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="12" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1af3de40f8c10bf00d40fedc3b0c4092bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::Worker::~Worker</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Worker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="47" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Starts this worker. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="50" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stops this worker. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="53" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="25" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1afc0a09d080ea20c9e5b9466f04acb9f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::join</definition>
+        <argsstring>()</argsstring>
+        <name>join</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Joins the internal executing thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="56" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::enqueue</definition>
+        <argsstring>(std::shared_ptr&lt; JobStateBase &gt; job)</argsstring>
+        <name>enqueue</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_job_state_base" kindref="compound">JobStateBase</ref> &gt;</type>
+          <declname>job</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds the given job to the internal pending job queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="59" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::notify</definition>
+        <argsstring>()</argsstring>
+        <name>notify</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Notifies this worker, that new jobs are available. This method is although called from the parent job manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="65" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::execute_job</definition>
+        <argsstring>(std::shared_ptr&lt; JobStateBase &gt; &amp;job)</argsstring>
+        <name>execute_job</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_job_state_base" kindref="compound">JobStateBase</ref> &gt; &amp;</type>
+          <declname>job</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Executes the given job and tells the parent job manager, when it has finished. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="72" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="51" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::Worker::process</definition>
+        <argsstring>()</argsstring>
+        <name>process</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetches pending jobs from the parent job manager and from the internal pending job queue and executes them. If no jobs are available the internal execution thread is wait using a condition variable. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/worker.h" line="79" column="1" bodyfile="libopenage/job/worker.cpp" bodystart="65" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A worker encapsulates the execution of multiple jobs in a single background thread. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4970">
+        <label>openage::job::Worker</label>
+        <link refid="classopenage_1_1job_1_1_worker"/>
+        <childnode refid="4971" relation="usage">
+          <edgelabel>-manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4971">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/job/worker.h" line="22" column="1" bodyfile="libopenage/job/worker.h" bodystart="22" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1job_1_1_worker_1ace257fda681faf0b5c87e9296da18b7c" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>enqueue</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a2546565a41969f4bb1d62773239e20c4" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>execute_job</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a7248896af6a7ddd2492c3027660c5877" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>executor</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1ab639eed2b93e58c7393b40103fb3cc5a" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>is_running</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a1f7ff0ab3111361665027316908c2435" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>jobs_available</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1afc0a09d080ea20c9e5b9466f04acb9f5" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>join</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1ac9734f149754c8bc51b19d6cc57902c0" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>manager</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a3a1cffa81bce40320896181ac63205cb" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>notify</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a81131cf6e31018ec29632a6b41a79131" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>pending_jobs</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a6c96492e8ac3a987e0532b0e81685b77" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>pending_jobs_mutex</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a72be0e0fe2e2fd9fd5d9c994b3d0bdf4" prot="private" virt="non-virtual"><scope>openage::job::Worker</scope><name>process</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a3a0d1ce7031d428efce6c42b083ffd05" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>start</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1ab80cb2f4e936dc069dadf979b90bcfc6" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>stop</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1a42630ad642f1e2e86c5cebed33a8b8a1" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>Worker</name></member>
+      <member refid="classopenage_1_1job_1_1_worker_1af3de40f8c10bf00d40fedc3b0c4092bb" prot="public" virt="non-virtual"><scope>openage::job::Worker</scope><name>~Worker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

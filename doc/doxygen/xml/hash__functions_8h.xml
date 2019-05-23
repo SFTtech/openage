@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hash__functions_8h" kind="file" language="C++">
+    <compoundname>hash_functions.h</compoundname>
+    <includes local="no">tuple</includes>
+    <includes refid="category_8h" local="yes">category.h</includes>
+    <includedby refid="audio__manager_8h" local="yes">libopenage/audio/audio_manager.h</includedby>
+    <includedby refid="audio__manager_8cpp" local="yes">libopenage/audio/audio_manager.cpp</includedby>
+    <incdepgraph>
+      <node id="1220">
+        <label>libopenage/audio/hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="1221" relation="include">
+        </childnode>
+        <childnode refid="1222" relation="include">
+        </childnode>
+      </node>
+      <node id="1222">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="1223" relation="include">
+        </childnode>
+      </node>
+      <node id="1221">
+        <label>tuple</label>
+      </node>
+      <node id="1223">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1229">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="1250">
+        <label>libopenage/audio/sound.cpp</label>
+        <link refid="sound_8cpp"/>
+      </node>
+      <node id="1224">
+        <label>libopenage/audio/hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="1225" relation="include">
+        </childnode>
+        <childnode refid="1226" relation="include">
+        </childnode>
+      </node>
+      <node id="1242">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="1248">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="1246">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="1234">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="1236">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="1241">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1240">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="1227">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="1230">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="1245">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="1225">
+        <label>libopenage/audio/audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="1226" relation="include">
+        </childnode>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1228" relation="include">
+        </childnode>
+        <childnode refid="1250" relation="include">
+        </childnode>
+      </node>
+      <node id="1247">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="1237">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="1232">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="1228">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1230" relation="include">
+        </childnode>
+        <childnode refid="1231" relation="include">
+        </childnode>
+        <childnode refid="1232" relation="include">
+        </childnode>
+        <childnode refid="1233" relation="include">
+        </childnode>
+        <childnode refid="1234" relation="include">
+        </childnode>
+        <childnode refid="1235" relation="include">
+        </childnode>
+        <childnode refid="1236" relation="include">
+        </childnode>
+        <childnode refid="1237" relation="include">
+        </childnode>
+        <childnode refid="1238" relation="include">
+        </childnode>
+        <childnode refid="1239" relation="include">
+        </childnode>
+        <childnode refid="1240" relation="include">
+        </childnode>
+        <childnode refid="1241" relation="include">
+        </childnode>
+        <childnode refid="1242" relation="include">
+        </childnode>
+        <childnode refid="1243" relation="include">
+        </childnode>
+        <childnode refid="1244" relation="include">
+        </childnode>
+        <childnode refid="1245" relation="include">
+        </childnode>
+        <childnode refid="1246" relation="include">
+        </childnode>
+        <childnode refid="1247" relation="include">
+        </childnode>
+        <childnode refid="1248" relation="include">
+        </childnode>
+        <childnode refid="1249" relation="include">
+        </childnode>
+      </node>
+      <node id="1244">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="1249">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="1243">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="1226">
+        <label>libopenage/audio/audio_manager.cpp</label>
+        <link refid="audio__manager_8cpp"/>
+      </node>
+      <node id="1238">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="1235">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="1231">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="1239">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="1233">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4" prot="public">std::hash&lt;::openage::audio::category_t &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01std_1_1tuple_3_1_1openage_1_1audio_1_1category__t_00_01int_01_4_01_4" prot="public">std::hash&lt; std::tuple&lt;::openage::audio::category_t, int &gt; &gt;</innerclass>
+    <innernamespace refid="namespacestd">std</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="category_8h" kindref="compound">category.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespacestd" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="12" refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>&lt;::<ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">openage::audio::category_t</ref>&gt;<sp/>{</highlight></codeline>
+<codeline lineno="13" refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4_1a8b7cf7bb4c4e4a280a90996d8c8cdd60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4_1a8b7cf7bb4c4e4a280a90996d8c8cdd60" kindref="member">operator()</ref>(<ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">const ::openage::audio::category_t</ref><sp/>&amp;c)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;int&gt;(c);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="19" refid="structstd_1_1hash_3_01std_1_1tuple_3_1_1openage_1_1audio_1_1category__t_00_01int_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>&lt;<ref refid="namespacestd" kindref="compound">std</ref>::tuple&lt;::openage::audio::category_t,int&gt;&gt;<sp/>{</highlight></codeline>
+<codeline lineno="20" refid="structstd_1_1hash_3_01std_1_1tuple_3_1_1openage_1_1audio_1_1category__t_00_01int_01_4_01_4_1a4e7c90563efcb5571c2c37b719478edf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structstd_1_1hash_3_01std_1_1tuple_3_1_1openage_1_1audio_1_1category__t_00_01int_01_4_01_4_1a4e7c90563efcb5571c2c37b719478edf" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::tuple&lt;::openage::audio::category_t,int&gt;<sp/>&amp;t)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;size_t&gt;(std::get&lt;0&gt;(t))<sp/>&lt;&lt;<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(size_t)<sp/>*<sp/>8<sp/>-<sp/>2)<sp/>|<sp/>std::get&lt;1&gt;(t);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/hash_functions.h"/>
+  </compounddef>
+</doxygen>

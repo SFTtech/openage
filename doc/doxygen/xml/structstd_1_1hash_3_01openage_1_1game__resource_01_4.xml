@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1game__resource_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::game_resource &gt;</compoundname>
+    <includes refid="gamestate_2resource_8h" local="no">resource.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a23a4728a16d931b5bae5c612c24c1385" prot="public" static="no">
+        <type><ref refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a23a4728a16d931b5bae5c612c24c1385" kindref="member">underlying_type</ref>&lt; <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">openage::game_resource</ref> &gt;::type</type>
+        <definition>typedef underlying_type&lt;openage::game_resource&gt;::type std::hash&lt; openage::game_resource &gt;::underlying_type</definition>
+        <argsstring></argsstring>
+        <name>underlying_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="201" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a635c3e575f260499cb87d2813f613b75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; openage::game_resource &gt;::operator()</definition>
+        <argsstring>(const openage::game_resource &amp;arg) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">openage::game_resource</ref> &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="203" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="203" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>hasher for game resource </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2827">
+        <label>std::hash&lt; openage::game_resource &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/resource.h" line="200" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="200" bodyend="207"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a635c3e575f260499cb87d2813f613b75" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::game_resource &gt;</scope><name>operator()</name></member>
+      <member refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4_1a23a4728a16d931b5bae5c612c24c1385" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::game_resource &gt;</scope><name>underlying_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

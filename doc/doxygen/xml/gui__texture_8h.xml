@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__texture_8h" kind="file" language="C++">
+    <compoundname>gui_texture.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">QSGTexture</includes>
+    <includes refid="gui__texture__handle_8h" local="yes">gui_texture_handle.h</includes>
+    <includedby refid="gui__texture_8cpp" local="yes">libopenage/gui/integration/private/gui_texture.cpp</includedby>
+    <includedby refid="gui__texture__factory_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
+    <incdepgraph>
+      <node id="14555">
+        <label>gui_texture_handle.h</label>
+        <link refid="gui__texture__handle_8h"/>
+        <childnode refid="14556" relation="include">
+        </childnode>
+      </node>
+      <node id="14554">
+        <label>QSGTexture</label>
+      </node>
+      <node id="14556">
+        <label>QSize</label>
+      </node>
+      <node id="14552">
+        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <link refid="gui__texture_8h"/>
+        <childnode refid="14553" relation="include">
+        </childnode>
+        <childnode refid="14554" relation="include">
+        </childnode>
+        <childnode refid="14555" relation="include">
+        </childnode>
+      </node>
+      <node id="14553">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14559">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="14558">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+      <node id="14557">
+        <label>libopenage/gui/integration/private/gui_texture.h</label>
+        <link refid="gui__texture_8h"/>
+        <childnode refid="14558" relation="include">
+        </childnode>
+        <childnode refid="14559" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_texture" prot="public">openage::gui::GuiTexture</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QSGTexture&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__texture__handle_8h" kindref="compound">gui_texture_handle.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1gui_1_1_gui_texture" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_texture" kindref="compound">GuiTexture</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QSGTexture<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1ac2d56de7a7c3830e023fcdd2c1ed3c84" kindref="member">GuiTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_gui_texture_1a9702dd3e2fe6bb1b0a488c3c674a3d31" kindref="member">texture_handle</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a28467f551f6f209eeda541ecc0b0005c" kindref="member">~GuiTexture</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a627ea5f09fd50329525003cd235dea0d" kindref="member">bind</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a98bd617d33823fa3fe0997ce46ef12fa" kindref="member">hasAlphaChannel</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a8935c00cb718d09c7da1661a038ce3c9" kindref="member">hasMipmaps</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1aa857182d062f11dc1d300e5965596511" kindref="member">isAtlasTexture</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QSGTexture*<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1acabd4037e0b47cda554ae353c2c3be3e" kindref="member">removedFromAtlas</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QRectF<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1afee0e8d811d508b6e16ae7ab4cf2c4a3" kindref="member">normalizedTextureSubRect</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1aae0bd80c66326d89472b98043e40ce4f" kindref="member">textureId</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QSize<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a1cf359edf8b8ca23bd7c445d44ecc5f2" kindref="member">textureSize</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1gui_1_1_gui_texture_1a9702dd3e2fe6bb1b0a488c3c674a3d31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a9702dd3e2fe6bb1b0a488c3c674a3d31" kindref="member">texture_handle</ref>;</highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1gui_1_1_gui_texture_1a02f579956e3f4234fef014c569bd1b21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;QSGTexture&gt;<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_1a02f579956e3f4234fef014c569bd1b21" kindref="member">standalone</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_texture.h"/>
+  </compounddef>
+</doxygen>

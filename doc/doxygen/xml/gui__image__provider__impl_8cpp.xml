@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__image__provider__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_image_provider_impl.cpp</compoundname>
+    <includes refid="gui__image__provider__impl_8h" local="yes">gui_image_provider_impl.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes refid="gui__image__provider_8h" local="yes">../public/gui_image_provider.h</includes>
+    <incdepgraph>
+      <node id="13099">
+        <label>functional</label>
+      </node>
+      <node id="13093">
+        <label>gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="13094" relation="include">
+        </childnode>
+        <childnode refid="13095" relation="include">
+        </childnode>
+        <childnode refid="13096" relation="include">
+        </childnode>
+      </node>
+      <node id="13095">
+        <label>vector</label>
+      </node>
+      <node id="13092">
+        <label>libopenage/gui/guisys/private/gui_image_provider_impl.cpp</label>
+        <link refid="gui__image__provider__impl_8cpp"/>
+        <childnode refid="13093" relation="include">
+        </childnode>
+        <childnode refid="13097" relation="include">
+        </childnode>
+        <childnode refid="13098" relation="include">
+        </childnode>
+      </node>
+      <node id="13096">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="13098">
+        <label>../public/gui_image_provider.h</label>
+        <link refid="gui__image__provider_8h"/>
+        <childnode refid="13094" relation="include">
+        </childnode>
+        <childnode refid="13099" relation="include">
+        </childnode>
+      </node>
+      <node id="13097">
+        <label>algorithm</label>
+      </node>
+      <node id="13094">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__image__provider__impl_8h" kindref="compound">gui_image_provider_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_image_provider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" kindref="member">GuiImageProviderImpl::GuiImageProviderImpl</ref>()</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>QQuickImageProvider{QQmlImageProviderBase::Texture,<sp/>QQuickImageProvider::ForceAsynchronousImageLoading}<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" kindref="member">GuiImageProviderImpl::~GuiImageProviderImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" refkind="member"><highlight class="normal">std::unique_ptr&lt;GuiImageProviderImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" kindref="member">GuiImageProviderImpl::take_ownership</ref>(<ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref><sp/>*image_provider)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;GuiImageProviderImpl&gt;<sp/>ptr{image_provider-&gt;<ref refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" kindref="member">impl</ref>.release()};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>image_provider-&gt;<ref refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" kindref="member">impl</ref><sp/>=<sp/>decltype(image_provider-&gt;<ref refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" kindref="member">impl</ref>)<sp/>{ptr.get(),<sp/>[]<sp/>(<ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref>*)<sp/>{}};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" refkind="member"><highlight class="normal">std::vector&lt;std::unique_ptr&lt;GuiImageProviderImpl&gt;&gt;<sp/><ref refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" kindref="member">GuiImageProviderImpl::take_ownership</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;GuiImageProvider*&gt;<sp/>&amp;image_providers)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;GuiImageProviderImpl&gt;&gt;<sp/>image_provider_owning_ptrs(image_providers.size());</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::transform(std::begin(image_providers),<sp/>std::end(image_providers),<sp/>std::begin(image_provider_owning_ptrs),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::unique_ptr&lt;GuiImageProviderImpl&gt;(*)(<ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref>*)</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" kindref="member">GuiImageProviderImpl::take_ownership</ref>));</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>image_provider_owning_ptrs;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_image_provider_impl.cpp"/>
+  </compounddef>
+</doxygen>

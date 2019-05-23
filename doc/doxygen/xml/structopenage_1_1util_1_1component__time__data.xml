@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1component__time__data" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::component_time_data</compoundname>
+    <includes refid="profiler_8h" local="no">profiler.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::component_time_data::display_name</definition>
+        <argsstring></argsstring>
+        <name>display_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="32" column="1" bodyfile="libopenage/util/profiler.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref></type>
+        <definition>color openage::util::component_time_data::drawing_color</definition>
+        <argsstring></argsstring>
+        <name>drawing_color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="33" column="1" bodyfile="libopenage/util/profiler.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" prot="public" static="no" mutable="no">
+        <type>std::chrono::high_resolution_clock::time_point</type>
+        <definition>std::chrono::high_resolution_clock::time_point openage::util::component_time_data::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="34" column="1" bodyfile="libopenage/util/profiler.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1aa402b4fc03b0e127153d43750ef848ea" prot="public" static="no" mutable="no">
+        <type>std::chrono::high_resolution_clock::duration</type>
+        <definition>std::chrono::high_resolution_clock::duration openage::util::component_time_data::duration</definition>
+        <argsstring></argsstring>
+        <name>duration</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="35" column="1" bodyfile="libopenage/util/profiler.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" prot="public" static="no" mutable="no">
+        <type>std::array&lt; double, <ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref> &gt;</type>
+        <definition>std::array&lt;double, MAX_DURATION_HISTORY&gt; openage::util::component_time_data::history</definition>
+        <argsstring></argsstring>
+        <name>history</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="36" column="1" bodyfile="libopenage/util/profiler.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="812">
+        <label>openage::util::component_time_data</label>
+        <link refid="structopenage_1_1util_1_1component__time__data"/>
+        <childnode refid="813" relation="usage">
+          <edgelabel>+drawing_color</edgelabel>
+        </childnode>
+      </node>
+      <node id="813">
+        <label>openage::util::color</label>
+        <link refid="structopenage_1_1util_1_1color"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/profiler.h" line="31" column="1" bodyfile="libopenage/util/profiler.h" bodystart="31" bodyend="37"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>display_name</name></member>
+      <member refid="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>drawing_color</name></member>
+      <member refid="structopenage_1_1util_1_1component__time__data_1aa402b4fc03b0e127153d43750ef848ea" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>duration</name></member>
+      <member refid="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>history</name></member>
+      <member refid="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" prot="public" virt="non-virtual"><scope>openage::util::component_time_data</scope><name>start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

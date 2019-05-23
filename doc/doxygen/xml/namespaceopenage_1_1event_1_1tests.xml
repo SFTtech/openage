@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1event_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::event::tests</compoundname>
+    <innerclass refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class" prot="public">openage::event::tests::EventTypeTestClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1tests_1_1_test_event_class" prot="public">openage::event::tests::TestEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two" prot="public">openage::event::tests::TestEventClassTwo</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1tests_1_1_test_state" prot="public">openage::event::tests::TestState</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1event_1_1tests_1ab950ba5156aefba0f5ecaab970fcc1aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::tests::eventtrigger</definition>
+        <argsstring>()</argsstring>
+        <name>eventtrigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="228" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="228" bodyend="554"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/event/tests.cpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

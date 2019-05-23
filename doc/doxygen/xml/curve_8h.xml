@@ -1,0 +1,639 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="curve_8h" kind="file" language="C++">
+    <compoundname>curve.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes refid="fixed__point_8h" local="yes">../util/fixed_point.h</includes>
+    <includedby refid="eventtarget_8h" local="yes">libopenage/event/eventtarget.h</includedby>
+    <includedby refid="keyframe__container_8h" local="yes">libopenage/curve/keyframe_container.h</includedby>
+    <includedby refid="event_2loop_8h" local="yes">libopenage/event/loop.h</includedby>
+    <includedby refid="eventclass_8h" local="yes">libopenage/event/eventclass.h</includedby>
+    <includedby refid="eventqueue_8h" local="yes">libopenage/event/eventqueue.h</includedby>
+    <includedby refid="event_2event_8h" local="yes">libopenage/event/event.h</includedby>
+    <includedby refid="curve_8cpp" local="yes">libopenage/curve/curve.cpp</includedby>
+    <includedby refid="iterator_8h" local="yes">libopenage/curve/iterator.h</includedby>
+    <includedby refid="map_8h" local="yes">libopenage/curve/map.h</includedby>
+    <includedby refid="map__filter__iterator_8h" local="yes">libopenage/curve/map_filter_iterator.h</includedby>
+    <includedby refid="queue_8h" local="yes">libopenage/curve/queue.h</includedby>
+    <includedby refid="queue__filter__iterator_8h" local="yes">libopenage/curve/queue_filter_iterator.h</includedby>
+    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
+    <includedby refid="curve__types_8cpp" local="yes">libopenage/curve/tests/curve_types.cpp</includedby>
+    <includedby refid="physics_8h" local="yes">libopenage/event/demo/physics.h</includedby>
+    <incdepgraph>
+      <node id="4591">
+        <label>list</label>
+      </node>
+      <node id="4584">
+        <label>atomic</label>
+      </node>
+      <node id="4559">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4560" relation="include">
+        </childnode>
+        <childnode refid="4561" relation="include">
+        </childnode>
+        <childnode refid="4562" relation="include">
+        </childnode>
+        <childnode refid="4563" relation="include">
+        </childnode>
+        <childnode refid="4564" relation="include">
+        </childnode>
+        <childnode refid="4565" relation="include">
+        </childnode>
+        <childnode refid="4566" relation="include">
+        </childnode>
+        <childnode refid="4567" relation="include">
+        </childnode>
+      </node>
+      <node id="4588">
+        <label>functional</label>
+      </node>
+      <node id="4563">
+        <label>iomanip</label>
+      </node>
+      <node id="4564">
+        <label>limits</label>
+      </node>
+      <node id="4558">
+        <label>cstdint</label>
+      </node>
+      <node id="4586">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="4587" relation="include">
+        </childnode>
+        <childnode refid="4588" relation="include">
+        </childnode>
+        <childnode refid="4563" relation="include">
+        </childnode>
+        <childnode refid="4572" relation="include">
+        </childnode>
+        <childnode refid="4589" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+        <childnode refid="4571" relation="include">
+        </childnode>
+      </node>
+      <node id="4562">
+        <label>cmath</label>
+      </node>
+      <node id="4575">
+        <label>stdexcept</label>
+      </node>
+      <node id="4557">
+        <label>libopenage/curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4558" relation="include">
+        </childnode>
+        <childnode refid="4559" relation="include">
+        </childnode>
+      </node>
+      <node id="4590">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="4591" relation="include">
+        </childnode>
+        <childnode refid="4592" relation="include">
+        </childnode>
+        <childnode refid="4593" relation="include">
+        </childnode>
+      </node>
+      <node id="4587">
+        <label>cstdarg</label>
+      </node>
+      <node id="4570">
+        <label>string</label>
+      </node>
+      <node id="4579">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4558" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+        <childnode refid="4580" relation="include">
+        </childnode>
+        <childnode refid="4581" relation="include">
+        </childnode>
+        <childnode refid="4583" relation="include">
+        </childnode>
+        <childnode refid="4590" relation="include">
+        </childnode>
+        <childnode refid="4593" relation="include">
+        </childnode>
+      </node>
+      <node id="4581">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="4582" relation="include">
+        </childnode>
+      </node>
+      <node id="4583">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="4584" relation="include">
+        </childnode>
+        <childnode refid="4572" relation="include">
+        </childnode>
+        <childnode refid="4566" relation="include">
+        </childnode>
+        <childnode refid="4576" relation="include">
+        </childnode>
+        <childnode refid="4585" relation="include">
+        </childnode>
+        <childnode refid="4586" relation="include">
+        </childnode>
+      </node>
+      <node id="4565">
+        <label>ostream</label>
+      </node>
+      <node id="4568">
+        <label>limits.h</label>
+      </node>
+      <node id="4573">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4574" relation="include">
+        </childnode>
+        <childnode refid="4572" relation="include">
+        </childnode>
+        <childnode refid="4575" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+        <childnode refid="4576" relation="include">
+        </childnode>
+        <childnode refid="4579" relation="include">
+        </childnode>
+      </node>
+      <node id="4567">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4560" relation="include">
+        </childnode>
+        <childnode refid="4568" relation="include">
+        </childnode>
+        <childnode refid="4562" relation="include">
+        </childnode>
+        <childnode refid="4569" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+        <childnode refid="4571" relation="include">
+        </childnode>
+        <childnode refid="4572" relation="include">
+        </childnode>
+        <childnode refid="4573" relation="include">
+        </childnode>
+        <childnode refid="4576" relation="include">
+        </childnode>
+      </node>
+      <node id="4595">
+        <label>typeinfo</label>
+      </node>
+      <node id="4571">
+        <label>vector</label>
+      </node>
+      <node id="4577">
+        <label>ciso646</label>
+      </node>
+      <node id="4589">
+        <label>sstream</label>
+      </node>
+      <node id="4576">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="4577" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+        <childnode refid="4578" relation="include">
+        </childnode>
+      </node>
+      <node id="4578">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="4578" relation="include">
+        </childnode>
+      </node>
+      <node id="4585">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4574" relation="include">
+        </childnode>
+        <childnode refid="4570" relation="include">
+        </childnode>
+      </node>
+      <node id="4593">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="4594" relation="include">
+        </childnode>
+      </node>
+      <node id="4582">
+        <label>cstdlib</label>
+      </node>
+      <node id="4574">
+        <label>iostream</label>
+      </node>
+      <node id="4561">
+        <label>climits</label>
+      </node>
+      <node id="4592">
+        <label>mutex</label>
+      </node>
+      <node id="4566">
+        <label>type_traits</label>
+      </node>
+      <node id="4580">
+        <label>config.h</label>
+      </node>
+      <node id="4560">
+        <label>algorithm</label>
+      </node>
+      <node id="4569">
+        <label>cstring</label>
+      </node>
+      <node id="4572">
+        <label>memory</label>
+      </node>
+      <node id="4594">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4574" relation="include">
+        </childnode>
+        <childnode refid="4595" relation="include">
+        </childnode>
+        <childnode refid="4576" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4624">
+        <label>libopenage/event/eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="4625" relation="include">
+        </childnode>
+        <childnode refid="4626" relation="include">
+        </childnode>
+        <childnode refid="4621" relation="include">
+        </childnode>
+        <childnode refid="4622" relation="include">
+        </childnode>
+        <childnode refid="4623" relation="include">
+        </childnode>
+        <childnode refid="4617" relation="include">
+        </childnode>
+        <childnode refid="4618" relation="include">
+        </childnode>
+      </node>
+      <node id="4630">
+        <label>libopenage/curve/iterator.cpp</label>
+        <link refid="iterator_8cpp"/>
+      </node>
+      <node id="4622">
+        <label>libopenage/event/eventclass.cpp</label>
+        <link refid="eventclass_8cpp"/>
+      </node>
+      <node id="4625">
+        <label>libopenage/event/eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="4614" relation="include">
+        </childnode>
+        <childnode refid="4623" relation="include">
+        </childnode>
+        <childnode refid="4618" relation="include">
+        </childnode>
+      </node>
+      <node id="4607">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="4617">
+        <label>libopenage/event/eventtarget.cpp</label>
+        <link refid="eventtarget_8cpp"/>
+      </node>
+      <node id="4614">
+        <label>libopenage/event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="4615" relation="include">
+        </childnode>
+        <childnode refid="4602" relation="include">
+        </childnode>
+        <childnode refid="4603" relation="include">
+        </childnode>
+        <childnode refid="4617" relation="include">
+        </childnode>
+        <childnode refid="4618" relation="include">
+        </childnode>
+        <childnode refid="4619" relation="include">
+        </childnode>
+      </node>
+      <node id="4628">
+        <label>libopenage/curve/curve.cpp</label>
+        <link refid="curve_8cpp"/>
+      </node>
+      <node id="4602">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="4629">
+        <label>libopenage/curve/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="4630" relation="include">
+        </childnode>
+        <childnode refid="4631" relation="include">
+        </childnode>
+        <childnode refid="4635" relation="include">
+        </childnode>
+      </node>
+      <node id="4618">
+        <label>libopenage/event/loop.cpp</label>
+        <link refid="loop_8cpp"/>
+      </node>
+      <node id="4609">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="4605">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="4611">
+        <label>libopenage/curve/discrete.cpp</label>
+        <link refid="discrete_8cpp"/>
+      </node>
+      <node id="4636">
+        <label>libopenage/curve/queue.h</label>
+        <link refid="queue_8h"/>
+        <childnode refid="4637" relation="include">
+        </childnode>
+        <childnode refid="4601" relation="include">
+        </childnode>
+      </node>
+      <node id="4634">
+        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <link refid="map__filter__iterator_8cpp"/>
+      </node>
+      <node id="4632">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="4633" relation="include">
+        </childnode>
+        <childnode refid="4601" relation="include">
+        </childnode>
+      </node>
+      <node id="4621">
+        <label>libopenage/event/event.cpp</label>
+        <link refid="event_2event_8cpp"/>
+      </node>
+      <node id="4613">
+        <label>libopenage/event/eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="4614" relation="include">
+        </childnode>
+        <childnode refid="4620" relation="include">
+        </childnode>
+      </node>
+      <node id="4596">
+        <label>libopenage/curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4597" relation="include">
+        </childnode>
+        <childnode refid="4615" relation="include">
+        </childnode>
+        <childnode refid="4614" relation="include">
+        </childnode>
+        <childnode refid="4624" relation="include">
+        </childnode>
+        <childnode refid="4625" relation="include">
+        </childnode>
+        <childnode refid="4626" relation="include">
+        </childnode>
+        <childnode refid="4628" relation="include">
+        </childnode>
+        <childnode refid="4629" relation="include">
+        </childnode>
+        <childnode refid="4632" relation="include">
+        </childnode>
+        <childnode refid="4631" relation="include">
+        </childnode>
+        <childnode refid="4636" relation="include">
+        </childnode>
+        <childnode refid="4635" relation="include">
+        </childnode>
+        <childnode refid="4601" relation="include">
+        </childnode>
+        <childnode refid="4602" relation="include">
+        </childnode>
+        <childnode refid="4608" relation="include">
+        </childnode>
+      </node>
+      <node id="4598">
+        <label>libopenage/curve/value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="4599" relation="include">
+        </childnode>
+        <childnode refid="4610" relation="include">
+        </childnode>
+        <childnode refid="4612" relation="include">
+        </childnode>
+      </node>
+      <node id="4635">
+        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <link refid="queue__filter__iterator_8h"/>
+        <childnode refid="4636" relation="include">
+        </childnode>
+        <childnode refid="4638" relation="include">
+        </childnode>
+      </node>
+      <node id="4637">
+        <label>libopenage/curve/queue.cpp</label>
+        <link refid="queue_8cpp"/>
+      </node>
+      <node id="4608">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="4606" relation="include">
+        </childnode>
+        <childnode refid="4609" relation="include">
+        </childnode>
+      </node>
+      <node id="4633">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+      </node>
+      <node id="4623">
+        <label>libopenage/event/eventqueue.cpp</label>
+        <link refid="eventqueue_8cpp"/>
+      </node>
+      <node id="4616">
+        <label>libopenage/curve/keyframe_container.cpp</label>
+        <link refid="keyframe__container_8cpp"/>
+      </node>
+      <node id="4599">
+        <label>libopenage/curve/continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="4600" relation="include">
+        </childnode>
+        <childnode refid="4601" relation="include">
+        </childnode>
+        <childnode refid="4602" relation="include">
+        </childnode>
+        <childnode refid="4603" relation="include">
+        </childnode>
+      </node>
+      <node id="4606">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="4620">
+        <label>libopenage/event/eventfilter.cpp</label>
+        <link refid="eventfilter_8cpp"/>
+      </node>
+      <node id="4615">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="4598" relation="include">
+        </childnode>
+        <childnode refid="4616" relation="include">
+        </childnode>
+        <childnode refid="4602" relation="include">
+        </childnode>
+      </node>
+      <node id="4597">
+        <label>libopenage/event/eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="4598" relation="include">
+        </childnode>
+        <childnode refid="4613" relation="include">
+        </childnode>
+        <childnode refid="4603" relation="include">
+        </childnode>
+        <childnode refid="4621" relation="include">
+        </childnode>
+        <childnode refid="4622" relation="include">
+        </childnode>
+        <childnode refid="4623" relation="include">
+        </childnode>
+        <childnode refid="4617" relation="include">
+        </childnode>
+        <childnode refid="4618" relation="include">
+        </childnode>
+        <childnode refid="4619" relation="include">
+        </childnode>
+      </node>
+      <node id="4604">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="4605" relation="include">
+        </childnode>
+        <childnode refid="4606" relation="include">
+        </childnode>
+      </node>
+      <node id="4619">
+        <label>libopenage/event/tests.cpp</label>
+        <link refid="event_2tests_8cpp"/>
+      </node>
+      <node id="4638">
+        <label>libopenage/curve/queue_filter_iterator.cpp</label>
+        <link refid="queue__filter__iterator_8cpp"/>
+      </node>
+      <node id="4626">
+        <label>libopenage/event/event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="4614" relation="include">
+        </childnode>
+        <childnode refid="4606" relation="include">
+        </childnode>
+        <childnode refid="4621" relation="include">
+        </childnode>
+        <childnode refid="4622" relation="include">
+        </childnode>
+        <childnode refid="4623" relation="include">
+        </childnode>
+        <childnode refid="4627" relation="include">
+        </childnode>
+        <childnode refid="4617" relation="include">
+        </childnode>
+        <childnode refid="4618" relation="include">
+        </childnode>
+        <childnode refid="4619" relation="include">
+        </childnode>
+      </node>
+      <node id="4610">
+        <label>libopenage/curve/discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="4611" relation="include">
+        </childnode>
+        <childnode refid="4601" relation="include">
+        </childnode>
+        <childnode refid="4602" relation="include">
+        </childnode>
+        <childnode refid="4603" relation="include">
+        </childnode>
+      </node>
+      <node id="4612">
+        <label>libopenage/curve/value_container.cpp</label>
+        <link refid="value__container_8cpp"/>
+      </node>
+      <node id="4603">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="4604" relation="include">
+        </childnode>
+        <childnode refid="4607" relation="include">
+        </childnode>
+        <childnode refid="4606" relation="include">
+        </childnode>
+        <childnode refid="4608" relation="include">
+        </childnode>
+      </node>
+      <node id="4627">
+        <label>libopenage/event/eventstore.cpp</label>
+        <link refid="eventstore_8cpp"/>
+      </node>
+      <node id="4601">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="4600">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+      </node>
+      <node id="4631">
+        <label>libopenage/curve/map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="4632" relation="include">
+        </childnode>
+        <childnode refid="4634" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/fixed_point.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">util::FixedPoint&lt;int64_t, 16&gt;</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/curve.h"/>
+  </compounddef>
+</doxygen>

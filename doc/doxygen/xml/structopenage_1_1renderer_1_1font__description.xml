@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1font__description" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::font_description</compoundname>
+    <includes refid="font_8h" local="no">font.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::font_description::font_file</definition>
+        <argsstring></argsstring>
+        <name>font_file</name>
+        <briefdescription>
+<para>Path to the font&apos;s file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="53" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::font_description::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>Points size of the font. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="54" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref></type>
+        <definition>font_direction openage::renderer::font_description::direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <briefdescription>
+<para>The direction of the font. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="55" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::font_description::language</definition>
+        <argsstring></argsstring>
+        <name>language</name>
+        <briefdescription>
+<para>Language of the font. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="56" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::font_description::script</definition>
+        <argsstring></argsstring>
+        <name>script</name>
+        <briefdescription>
+<para>The font&apos;s script. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="57" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::font_description::font_description</definition>
+        <argsstring>(const std::string &amp;font_file, unsigned int size, font_direction direction=font_direction::left_to_right, const std::string &amp;language=&quot;en&quot;, const std::string &amp;script=&quot;Latn&quot;)</argsstring>
+        <name>font_description</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>font_file</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1" kindref="member">font_direction::left_to_right</ref></defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>language</declname>
+          <defval>&quot;en&quot;</defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>script</declname>
+          <defval>&quot;Latn&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to fon&apos;t font. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the font in points. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The direction of font. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font&apos;s language. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>script</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font&apos;s script. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="68" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="16" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1a9b6afa901b4a5a7b433aa014ce4b6929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::font_description::font_description</definition>
+        <argsstring>(const char *family, const char *style, unsigned int size)</argsstring>
+        <name>font_description</name>
+        <param>
+          <type>const char *</type>
+          <declname>family</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>style</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> instance.</para>
+<para>This constructor uses fontconfig to determine a font file for the specified font family and style.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>family</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font family. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font style. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the font in points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="83" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ada904c63747e9a67fb9c96e1d5deb936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::font_description::font_description</definition>
+        <argsstring>(const font_description &amp;other)</argsstring>
+        <name>font_description</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="85" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="48" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+        <definition>font_description &amp; openage::renderer::font_description::operator=</definition>
+        <argsstring>(const font_description &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="87" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="36" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::font_description::operator==</definition>
+        <argsstring>(const font_description &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="89" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="58" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1font__description_1a45b83b3fdb4f1492dec92ab44847ae01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::font_description::operator!=</definition>
+        <argsstring>(const font_description &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="91" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Description for a font.</para>
+<para>An instance of <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> is capable of uniquely distinguishing a font. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1506">
+        <label>openage::renderer::font_description</label>
+        <link refid="structopenage_1_1renderer_1_1font__description"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font.h" line="52" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="52" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>direction</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>font_description</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a9b6afa901b4a5a7b433aa014ce4b6929" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>font_description</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1ada904c63747e9a67fb9c96e1d5deb936" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>font_description</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>font_file</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>language</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a45b83b3fdb4f1492dec92ab44847ae01" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>operator!=</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>operator=</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>operator==</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>script</name></member>
+      <member refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" prot="public" virt="non-virtual"><scope>openage::renderer::font_description</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

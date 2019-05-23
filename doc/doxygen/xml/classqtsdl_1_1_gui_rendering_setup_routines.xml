@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_rendering_setup_routines" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiRenderingSetupRoutines</compoundname>
+    <includes refid="gui__rendering__setup__routines_8h" local="no">gui_rendering_setup_routines.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_rendering_setup_routines_1a920da8c381b83e39adf1370efd67d4f0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiRenderingCtxActivator</definition>
+        <argsstring></argsstring>
+        <name>GuiRenderingCtxActivator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_ctx_extraction_mode" kindref="compound">CtxExtractionMode</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;CtxExtractionMode&gt; qtsdl::GuiRenderingSetupRoutines::ctx_extraction_mode</definition>
+        <argsstring></argsstring>
+        <name>ctx_extraction_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1aeefd59c38fe8d9ac2bae03c690497b70" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingSetupRoutines::GuiRenderingSetupRoutines</definition>
+        <argsstring>(SDL_Window *window)</argsstring>
+        <name>GuiRenderingSetupRoutines</name>
+        <param>
+          <type>SDL_Window *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="25" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="13" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1a5a11aab18d8dab01d045bd9121208a00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiRenderingSetupRoutines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="28" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QOpenGLContext *</type>
+        <definition>QOpenGLContext * qtsdl::GuiRenderingSetupRoutines::get_ctx</definition>
+        <argsstring>()</argsstring>
+        <name>get_ctx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRenderingSetupRoutines::pre_render</definition>
+        <argsstring>()</argsstring>
+        <name>pre_render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="32" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRenderingSetupRoutines::post_render</definition>
+        <argsstring>()</argsstring>
+        <name>post_render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="33" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Returns a GL context usable by Qt classes. Provides pre- and post-rendering functions to make the context usable for GUI rendering. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2760">
+        <label>qtsdl::GuiRenderingSetupRoutines</label>
+        <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="23" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="23" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>ctx_extraction_mode</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>get_ctx</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1a920da8c381b83e39adf1370efd67d4f0" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>GuiRenderingCtxActivator</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1aeefd59c38fe8d9ac2bae03c690497b70" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>GuiRenderingSetupRoutines</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>post_render</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>pre_render</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_setup_routines_1a5a11aab18d8dab01d045bd9121208a00" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingSetupRoutines</scope><name>~GuiRenderingSetupRoutines</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

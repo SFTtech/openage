@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1demo_1_1_a_i_input" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::demo::AIInput</compoundname>
+    <includes refid="aicontroller_8h" local="no">aicontroller.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1demo_1_1_a_i_input_1a069fd4bdb12c048f6c5e8a46c5cc19de" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_event" kindref="compound">PongEvent</ref> &gt;</type>
+        <definition>std::vector&lt;PongEvent&gt; openage::event::demo::AIInput::commands</definition>
+        <argsstring></argsstring>
+        <name>commands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/aicontroller.h" line="20" column="1" bodyfile="libopenage/event/demo/aicontroller.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_a_i_input_1abebd72cf34d6cf5c8042782560241047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_event" kindref="compound">PongEvent</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; PongEvent &gt; &amp; openage::event::demo::AIInput::get_inputs</definition>
+        <argsstring>(const std::shared_ptr&lt; PongPlayer &gt; &amp;player, const std::shared_ptr&lt; PongBall &gt; &amp;ball, const curve::time_t &amp;now)</argsstring>
+        <name>get_inputs</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_player" kindref="compound">PongPlayer</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_ball" kindref="compound">PongBall</ref> &gt; &amp;</type>
+          <declname>ball</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>now</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/aicontroller.h" line="13" column="1" bodyfile="libopenage/event/demo/aicontroller.cpp" bodystart="7" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="189">
+        <label>openage::event::demo::AIInput</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_a_i_input"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/demo/aicontroller.h" line="11" column="1" bodyfile="libopenage/event/demo/aicontroller.h" bodystart="11" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1a069fd4bdb12c048f6c5e8a46c5cc19de" prot="private" virt="non-virtual"><scope>openage::event::demo::AIInput</scope><name>commands</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_a_i_input_1abebd72cf34d6cf5c8042782560241047" prot="public" virt="non-virtual"><scope>openage::event::demo::AIInput</scope><name>get_inputs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

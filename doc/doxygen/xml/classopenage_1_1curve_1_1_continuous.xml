@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_continuous" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::Continuous</compoundname>
+    <basecompoundref refid="classopenage_1_1curve_1_1_value_container" prot="public" virt="non-virtual">openage::curve::ValueContainer&lt; T &gt;</basecompoundref>
+    <includes refid="continuous_8h" local="no">continuous.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>T</type>
+        <definition>T openage::curve::Continuous&lt; T &gt;::get</definition>
+        <argsstring>(const time_t &amp;) const override</argsstring>
+        <name>get</name>
+        <reimplements refid="classopenage_1_1curve_1_1_value_container_1af35f74af0eb47d6c852c5b8f8f83ae60">get</reimplements>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>will interpolate between the keyframes linearly based on the time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/continuous.h" line="26" column="1" bodyfile="libopenage/curve/continuous.h" bodystart="32" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous</ref> Datatype. Stores a value container with continuous access. The bound template type T has to implement <computeroutput>operator+(T)</computeroutput> and <computeroutput>operator*(time_t)</computeroutput>. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="878">
+        <label>openage::curve::Continuous&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_continuous"/>
+        <childnode refid="879" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="880">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+      <node id="879">
+        <label>openage::curve::ValueContainer&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_value_container"/>
+        <childnode refid="880" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="881">
+        <label>openage::curve::Continuous&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_continuous"/>
+        <childnode refid="882" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="883">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+      <node id="882">
+        <label>openage::curve::ValueContainer&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_value_container"/>
+        <childnode refid="883" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/continuous.h" line="20" column="1" bodyfile="libopenage/curve/continuous.h" bodystart="20" bodyend="27"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>_id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>add_dependent</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>changes</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a565150e1c3965878953bca2afa1c1ad2" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>container</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1abe6736c7ec9aeba96a045c9e517bdf66" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>EventTarget</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>frame</name></member>
+      <member refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>get</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa4ccad0b4eae016862241e5a662575c6" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>id</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af307dc2d35246999cea18dfb1d478be9" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>last_element</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>next_frame</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a21af7f25367a85a49ed2d2391d8ffd3f" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>operator()</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>set_insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>set_last</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" prot="public" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>show_dependents</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a10a6498be4aac6daa9c254fbb59cd5cb" prot="public" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>single_change_notifier</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" prot="protected" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>trigger</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa901d833956ff09b5fa00f3fb126e8fb" prot="public" virt="non-virtual"><scope>openage::curve::Continuous</scope><name>ValueContainer</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1af2ea4d43df8ac5dad62ce41a5a300dca" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>~EventTarget</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa72ebf92805c7aed981f9c3fbf2c7efb" prot="public" virt="virtual"><scope>openage::curve::Continuous</scope><name>~ValueContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

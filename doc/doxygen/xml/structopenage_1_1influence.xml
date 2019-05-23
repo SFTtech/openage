@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1influence" kind="struct" language="C++" prot="public">
+    <compoundname>openage::influence</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1influence_1ae2f8c30c2afb451327be4a424c1d34a0" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t openage::influence::direction</definition>
+        <argsstring></argsstring>
+        <name>direction</name>
+        <briefdescription>
+<para>bitmask for influence directions, bit 0 = neighbor 0, etc. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="93" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1influence_1a6e1779e4d13ae850ab47cd4d2f4262fb" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::influence::priority</definition>
+        <argsstring></argsstring>
+        <name>priority</name>
+        <briefdescription>
+<para>the blending priority for this influence </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="94" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1influence_1a73ce7fff36bf30903eb10c0d74415675" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+        <definition>terrain_t openage::influence::terrain_id</definition>
+        <argsstring></argsstring>
+        <name>terrain_id</name>
+        <briefdescription>
+<para>the terrain id of the influence </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="95" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>storage for influences by neighbor tiles. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2953">
+        <label>openage::influence</label>
+        <link refid="structopenage_1_1influence"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="92" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="92" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1influence_1ae2f8c30c2afb451327be4a424c1d34a0" prot="public" virt="non-virtual"><scope>openage::influence</scope><name>direction</name></member>
+      <member refid="structopenage_1_1influence_1a6e1779e4d13ae850ab47cd4d2f4262fb" prot="public" virt="non-virtual"><scope>openage::influence</scope><name>priority</name></member>
+      <member refid="structopenage_1_1influence_1a73ce7fff36bf30903eb10c0d74415675" prot="public" virt="non-virtual"><scope>openage::influence</scope><name>terrain_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

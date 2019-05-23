@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::demo::BallReflectPanel</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_dependency_event_class" prot="public" virt="non-virtual">openage::event::DependencyEventClass</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a4ff75fb0a97d1a13c02ed2c148125779" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::demo::BallReflectPanel::BallReflectPanel</definition>
+        <argsstring>()</argsstring>
+        <name>BallReflectPanel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="119" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a031ec32c576b33298fdb75dee692de8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::BallReflectPanel::setup_event</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;gstate) override</argsstring>
+        <name>setup_event</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e">setup_event</reimplements>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. The job of the setup function is to add all dependencies with other event targets found in state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="123" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="123" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::BallReflectPanel::invoke</definition>
+        <argsstring>(Loop &amp;mgr, const std::shared_ptr&lt; EventTarget &gt; &amp;, const std::shared_ptr&lt; State &gt; &amp;gstate, const curve::time_t &amp;now, const EventClass::param_map &amp;) override</argsstring>
+        <name>invoke</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c">invoke</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method implements the effects of the event. It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
+<para>Called from the <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="138" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="138" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::demo::BallReflectPanel::predict_invoke_time</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;gstate, const curve::time_t &amp;now) override</argsstring>
+        <name>predict_invoke_time</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b">predict_invoke_time</reimplements>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the target the event was created for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the state this shall work on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>at</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the time when the change happened, from there on it shall be calculated onwards</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>.</para>
+<para>If the time is lower than the previous time, then dependencies may not be resolved perfectly anymore (if other events have already been calculated before that). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="215" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="215" bodyend="262"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="556">
+        <label>openage::event::demo::BallReflectPanel</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
+        <childnode refid="557" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="558">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="557">
+        <label>openage::event::DependencyEventClass</label>
+        <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
+        <childnode refid="558" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="559">
+        <label>openage::event::demo::BallReflectPanel</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
+        <childnode refid="560" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="561">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="560">
+        <label>openage::event::DependencyEventClass</label>
+        <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
+        <childnode refid="561" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/demo/physics.cpp" line="117" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="117" bodyend="263"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a4ff75fb0a97d1a13c02ed2c148125779" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>BallReflectPanel</name></member>
+      <member refid="classopenage_1_1event_1_1_dependency_event_class_1a51e8b8a3e46c9bebecd84b84e8dd049d" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>DependencyEventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>EventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70" prot="public" virt="virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>invoke</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992" prot="public" virt="virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>predict_invoke_time</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a031ec32c576b33298fdb75dee692de8b" prot="public" virt="virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>setup_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>trigger_type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" prot="public" virt="non-virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" virt="virtual"><scope>openage::event::demo::BallReflectPanel</scope><name>~EventClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

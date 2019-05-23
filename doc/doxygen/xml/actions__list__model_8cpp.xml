@@ -1,0 +1,1322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="actions__list__model_8cpp" kind="file" language="C++">
+    <compoundname>actions_list_model.cpp</compoundname>
+    <includes refid="actions__list__model_8h" local="yes">actions_list_model.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="game__control__link_8h" local="yes">game_control_link.h</includes>
+    <includes local="no">QtQml</includes>
+    <incdepgraph>
+      <node id="10662">
+        <label>list</label>
+      </node>
+      <node id="10748">
+        <label>QMap</label>
+      </node>
+      <node id="10655">
+        <label>atomic</label>
+      </node>
+      <node id="10631">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="10632" relation="include">
+        </childnode>
+        <childnode refid="10633" relation="include">
+        </childnode>
+        <childnode refid="10634" relation="include">
+        </childnode>
+        <childnode refid="10635" relation="include">
+        </childnode>
+        <childnode refid="10636" relation="include">
+        </childnode>
+        <childnode refid="10637" relation="include">
+        </childnode>
+        <childnode refid="10638" relation="include">
+        </childnode>
+        <childnode refid="10639" relation="include">
+        </childnode>
+      </node>
+      <node id="10659">
+        <label>functional</label>
+      </node>
+      <node id="10635">
+        <label>iomanip</label>
+      </node>
+      <node id="10636">
+        <label>limits</label>
+      </node>
+      <node id="10629">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="10630" relation="include">
+        </childnode>
+        <childnode refid="10631" relation="include">
+        </childnode>
+      </node>
+      <node id="10680">
+        <label>game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="10681" relation="include">
+        </childnode>
+        <childnode refid="10689" relation="include">
+        </childnode>
+        <childnode refid="10690" relation="include">
+        </childnode>
+        <childnode refid="10691" relation="include">
+        </childnode>
+        <childnode refid="10715" relation="include">
+        </childnode>
+        <childnode refid="10716" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10626" relation="include">
+        </childnode>
+      </node>
+      <node id="10709">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="10710" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10711" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+        <childnode refid="10708" relation="include">
+        </childnode>
+        <childnode refid="10712" relation="include">
+        </childnode>
+        <childnode refid="10713" relation="include">
+        </childnode>
+        <childnode refid="10694" relation="include">
+        </childnode>
+      </node>
+      <node id="10700">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+      </node>
+      <node id="10626">
+        <label>QObject</label>
+      </node>
+      <node id="10679">
+        <label>civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10680" relation="include">
+        </childnode>
+      </node>
+      <node id="10630">
+        <label>cstdint</label>
+      </node>
+      <node id="10622">
+        <label>game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="10623" relation="include">
+        </childnode>
+        <childnode refid="10624" relation="include">
+        </childnode>
+        <childnode refid="10737" relation="include">
+        </childnode>
+      </node>
+      <node id="10705">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="10620">
+        <label>actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10622" relation="include">
+        </childnode>
+        <childnode refid="10747" relation="include">
+        </childnode>
+        <childnode refid="10748" relation="include">
+        </childnode>
+        <childnode refid="10749" relation="include">
+        </childnode>
+      </node>
+      <node id="10657">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="10658" relation="include">
+        </childnode>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10635" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10660" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+      </node>
+      <node id="10686">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="10646" relation="include">
+        </childnode>
+      </node>
+      <node id="10699">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="10644" relation="include">
+        </childnode>
+      </node>
+      <node id="10634">
+        <label>cmath</label>
+      </node>
+      <node id="10738">
+        <label>cassert</label>
+      </node>
+      <node id="10689">
+        <label>../gamedata/gamedata.gen.h</label>
+      </node>
+      <node id="10646">
+        <label>stdexcept</label>
+      </node>
+      <node id="10698">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="10725">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="10630" relation="include">
+        </childnode>
+      </node>
+      <node id="10732">
+        <label>attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="10733" relation="include">
+        </childnode>
+        <childnode refid="10734" relation="include">
+        </childnode>
+      </node>
+      <node id="10693">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="10651" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10694" relation="include">
+        </childnode>
+      </node>
+      <node id="10740">
+        <label>QMetaType</label>
+      </node>
+      <node id="10727">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="10728" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10638" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+        <childnode refid="10677" relation="include">
+        </childnode>
+      </node>
+      <node id="10744">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10659" relation="include">
+        </childnode>
+      </node>
+      <node id="10661">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="10662" relation="include">
+        </childnode>
+        <childnode refid="10663" relation="include">
+        </childnode>
+        <childnode refid="10664" relation="include">
+        </childnode>
+      </node>
+      <node id="10658">
+        <label>cstdarg</label>
+      </node>
+      <node id="10642">
+        <label>string</label>
+      </node>
+      <node id="10650">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="10630" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10651" relation="include">
+        </childnode>
+        <childnode refid="10652" relation="include">
+        </childnode>
+        <childnode refid="10654" relation="include">
+        </childnode>
+        <childnode refid="10661" relation="include">
+        </childnode>
+        <childnode refid="10664" relation="include">
+        </childnode>
+      </node>
+      <node id="10674">
+        <label>rng/rng.h</label>
+        <link refid="rng_8h"/>
+        <childnode refid="10645" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+      </node>
+      <node id="10652">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="10653" relation="include">
+        </childnode>
+      </node>
+      <node id="10749">
+        <label>QUrl</label>
+      </node>
+      <node id="10654">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="10655" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10638" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+        <childnode refid="10656" relation="include">
+        </childnode>
+        <childnode refid="10657" relation="include">
+        </childnode>
+      </node>
+      <node id="10733">
+        <label>map</label>
+      </node>
+      <node id="10722">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="10737">
+        <label>guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10738" relation="include">
+        </childnode>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10638" relation="include">
+        </childnode>
+        <childnode refid="10666" relation="include">
+        </childnode>
+        <childnode refid="10739" relation="include">
+        </childnode>
+        <childnode refid="10626" relation="include">
+        </childnode>
+        <childnode refid="10740" relation="include">
+        </childnode>
+        <childnode refid="10741" relation="include">
+        </childnode>
+        <childnode refid="10742" relation="include">
+        </childnode>
+        <childnode refid="10743" relation="include">
+        </childnode>
+        <childnode refid="10744" relation="include">
+        </childnode>
+        <childnode refid="10745" relation="include">
+        </childnode>
+        <childnode refid="10746" relation="include">
+        </childnode>
+      </node>
+      <node id="10735">
+        <label>../gamedata/unit.gen.h</label>
+      </node>
+      <node id="10672">
+        <label>unordered_set</label>
+      </node>
+      <node id="10619">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+        <childnode refid="10620" relation="include">
+        </childnode>
+        <childnode refid="10750" relation="include">
+        </childnode>
+        <childnode refid="10622" relation="include">
+        </childnode>
+        <childnode refid="10751" relation="include">
+        </childnode>
+      </node>
+      <node id="10751">
+        <label>QtQml</label>
+      </node>
+      <node id="10724">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="10673" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+      </node>
+      <node id="10682">
+        <label>exception</label>
+      </node>
+      <node id="10685">
+        <label>stddef.h</label>
+      </node>
+      <node id="10717">
+        <label>fstream</label>
+      </node>
+      <node id="10637">
+        <label>ostream</label>
+      </node>
+      <node id="10746">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="10638" relation="include">
+        </childnode>
+        <childnode refid="10745" relation="include">
+        </childnode>
+      </node>
+      <node id="10736">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10685" relation="include">
+        </childnode>
+        <childnode refid="10708" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+      </node>
+      <node id="10678">
+        <label>player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10679" relation="include">
+        </childnode>
+        <childnode refid="10718" relation="include">
+        </childnode>
+        <childnode refid="10677" relation="include">
+        </childnode>
+        <childnode refid="10719" relation="include">
+        </childnode>
+      </node>
+      <node id="10695">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="10630" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10696" relation="include">
+        </childnode>
+        <childnode refid="10697" relation="include">
+        </childnode>
+      </node>
+      <node id="10640">
+        <label>limits.h</label>
+      </node>
+      <node id="10624">
+        <label>../game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="10625" relation="include">
+        </childnode>
+        <childnode refid="10626" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+        <childnode refid="10667" relation="include">
+        </childnode>
+        <childnode refid="10674" relation="include">
+        </childnode>
+        <childnode refid="10675" relation="include">
+        </childnode>
+        <childnode refid="10726" relation="include">
+        </childnode>
+        <childnode refid="10729" relation="include">
+        </childnode>
+        <childnode refid="10730" relation="include">
+        </childnode>
+        <childnode refid="10724" relation="include">
+        </childnode>
+      </node>
+      <node id="10644">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="10645" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10646" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+        <childnode refid="10650" relation="include">
+        </childnode>
+      </node>
+      <node id="10639">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="10632" relation="include">
+        </childnode>
+        <childnode refid="10640" relation="include">
+        </childnode>
+        <childnode refid="10634" relation="include">
+        </childnode>
+        <childnode refid="10641" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10644" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+      </node>
+      <node id="10716">
+        <label>../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="10653" relation="include">
+        </childnode>
+        <childnode refid="10641" relation="include">
+        </childnode>
+        <childnode refid="10717" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10644" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+        <childnode refid="10703" relation="include">
+        </childnode>
+        <childnode refid="10694" relation="include">
+        </childnode>
+      </node>
+      <node id="10667">
+        <label>input/input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10668" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10670" relation="include">
+        </childnode>
+        <childnode refid="10671" relation="include">
+        </childnode>
+      </node>
+      <node id="10706">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="10673">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="10726">
+        <label>unit/command.h</label>
+        <link refid="command_8h"/>
+        <childnode refid="10672" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+        <childnode refid="10727" relation="include">
+        </childnode>
+      </node>
+      <node id="10666">
+        <label>typeinfo</label>
+      </node>
+      <node id="10715">
+        <label>../unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="10630" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+        <childnode refid="10690" relation="include">
+        </childnode>
+      </node>
+      <node id="10728">
+        <label>bitset</label>
+      </node>
+      <node id="10719">
+        <label>score.h</label>
+        <link refid="score_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10677" relation="include">
+        </childnode>
+      </node>
+      <node id="10628">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="10625">
+        <label>tuple</label>
+      </node>
+      <node id="10675">
+        <label>gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10673" relation="include">
+        </childnode>
+        <childnode refid="10626" relation="include">
+        </childnode>
+        <childnode refid="10676" relation="include">
+        </childnode>
+        <childnode refid="10678" relation="include">
+        </childnode>
+        <childnode refid="10720" relation="include">
+        </childnode>
+        <childnode refid="10721" relation="include">
+        </childnode>
+        <childnode refid="10691" relation="include">
+        </childnode>
+        <childnode refid="10723" relation="include">
+        </childnode>
+        <childnode refid="10725" relation="include">
+        </childnode>
+      </node>
+      <node id="10742">
+        <label>QDebug</label>
+      </node>
+      <node id="10723">
+        <label>../unit/unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10708" relation="include">
+        </childnode>
+        <childnode refid="10724" relation="include">
+        </childnode>
+        <childnode refid="10725" relation="include">
+        </childnode>
+      </node>
+      <node id="10688">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+      </node>
+      <node id="10668">
+        <label>stack</label>
+      </node>
+      <node id="10621">
+        <label>vector</label>
+      </node>
+      <node id="10750">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="10664" relation="include">
+        </childnode>
+        <childnode refid="10650" relation="include">
+        </childnode>
+      </node>
+      <node id="10648">
+        <label>ciso646</label>
+      </node>
+      <node id="10670">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+        <childnode refid="10671" relation="include">
+        </childnode>
+      </node>
+      <node id="10683">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="10655" relation="include">
+        </childnode>
+        <childnode refid="10682" relation="include">
+        </childnode>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10684" relation="include">
+        </childnode>
+        <childnode refid="10644" relation="include">
+        </childnode>
+        <childnode refid="10686" relation="include">
+        </childnode>
+        <childnode refid="10687" relation="include">
+        </childnode>
+        <childnode refid="10688" relation="include">
+        </childnode>
+      </node>
+      <node id="10741">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="10739">
+        <label>utility</label>
+      </node>
+      <node id="10712">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="10710" relation="include">
+        </childnode>
+      </node>
+      <node id="10660">
+        <label>sstream</label>
+      </node>
+      <node id="10647">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="10648" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10649" relation="include">
+        </childnode>
+      </node>
+      <node id="10701">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10702" relation="include">
+        </childnode>
+        <childnode refid="10695" relation="include">
+        </childnode>
+      </node>
+      <node id="10649">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="10649" relation="include">
+        </childnode>
+      </node>
+      <node id="10710">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="10677">
+        <label>resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+      </node>
+      <node id="10656">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="10645" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+      </node>
+      <node id="10664">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="10665" relation="include">
+        </childnode>
+      </node>
+      <node id="10627">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="10628" relation="include">
+        </childnode>
+        <childnode refid="10629" relation="include">
+        </childnode>
+      </node>
+      <node id="10676">
+        <label>market.h</label>
+        <link refid="market_8h"/>
+        <childnode refid="10677" relation="include">
+        </childnode>
+      </node>
+      <node id="10703">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="10711">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="10702">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="10645" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+      </node>
+      <node id="10653">
+        <label>cstdlib</label>
+      </node>
+      <node id="10645">
+        <label>iostream</label>
+      </node>
+      <node id="10721">
+        <label>../options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10722" relation="include">
+        </childnode>
+      </node>
+      <node id="10729">
+        <label>unit/selection.h</label>
+        <link refid="selection_8h"/>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+        <childnode refid="10724" relation="include">
+        </childnode>
+        <childnode refid="10727" relation="include">
+        </childnode>
+        <childnode refid="10723" relation="include">
+        </childnode>
+      </node>
+      <node id="10745">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="10738" relation="include">
+        </childnode>
+      </node>
+      <node id="10623">
+        <label>QQmlParserStatus</label>
+      </node>
+      <node id="10681">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="10682" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10683" relation="include">
+        </childnode>
+      </node>
+      <node id="10713">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="10714" relation="include">
+        </childnode>
+        <childnode refid="10710" relation="include">
+        </childnode>
+      </node>
+      <node id="10669">
+        <label>unordered_map</label>
+      </node>
+      <node id="10697">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10663" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+        <childnode refid="10698" relation="include">
+        </childnode>
+        <childnode refid="10699" relation="include">
+        </childnode>
+        <childnode refid="10700" relation="include">
+        </childnode>
+      </node>
+      <node id="10633">
+        <label>climits</label>
+      </node>
+      <node id="10734">
+        <label>attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10733" relation="include">
+        </childnode>
+        <childnode refid="10632" relation="include">
+        </childnode>
+        <childnode refid="10708" relation="include">
+        </childnode>
+        <childnode refid="10735" relation="include">
+        </childnode>
+        <childnode refid="10736" relation="include">
+        </childnode>
+        <childnode refid="10677" relation="include">
+        </childnode>
+        <childnode refid="10723" relation="include">
+        </childnode>
+      </node>
+      <node id="10663">
+        <label>mutex</label>
+      </node>
+      <node id="10704">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="10629" relation="include">
+        </childnode>
+        <childnode refid="10705" relation="include">
+        </childnode>
+        <childnode refid="10706" relation="include">
+        </childnode>
+      </node>
+      <node id="10684">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="10685" relation="include">
+        </childnode>
+      </node>
+      <node id="10694">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10695" relation="include">
+        </childnode>
+        <childnode refid="10701" relation="include">
+        </childnode>
+        <childnode refid="10703" relation="include">
+        </childnode>
+      </node>
+      <node id="10730">
+        <label>unit/unit_type.h</label>
+        <link refid="unit__type_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+        <childnode refid="10731" relation="include">
+        </childnode>
+        <childnode refid="10732" relation="include">
+        </childnode>
+      </node>
+      <node id="10671">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10672" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10673" relation="include">
+        </childnode>
+      </node>
+      <node id="10708">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="10629" relation="include">
+        </childnode>
+        <childnode refid="10705" relation="include">
+        </childnode>
+        <childnode refid="10706" relation="include">
+        </childnode>
+        <childnode refid="10639" relation="include">
+        </childnode>
+      </node>
+      <node id="10696">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="10718">
+        <label>population_tracker.h</label>
+        <link refid="population__tracker_8h"/>
+      </node>
+      <node id="10747">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="10638">
+        <label>type_traits</label>
+      </node>
+      <node id="10692">
+        <label>set</label>
+      </node>
+      <node id="10651">
+        <label>config.h</label>
+      </node>
+      <node id="10720">
+        <label>team.h</label>
+        <link refid="team_8h"/>
+        <childnode refid="10642" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10719" relation="include">
+        </childnode>
+      </node>
+      <node id="10632">
+        <label>algorithm</label>
+      </node>
+      <node id="10687">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10688" relation="include">
+        </childnode>
+      </node>
+      <node id="10743">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10626" relation="include">
+        </childnode>
+      </node>
+      <node id="10707">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="10639" relation="include">
+        </childnode>
+        <childnode refid="10629" relation="include">
+        </childnode>
+        <childnode refid="10705" relation="include">
+        </childnode>
+        <childnode refid="10706" relation="include">
+        </childnode>
+      </node>
+      <node id="10731">
+        <label>../gamestate/cost.h</label>
+        <link refid="cost_8h"/>
+        <childnode refid="10677" relation="include">
+        </childnode>
+      </node>
+      <node id="10641">
+        <label>cstring</label>
+      </node>
+      <node id="10690">
+        <label>../gamedata/graphic.gen.h</label>
+      </node>
+      <node id="10691">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="10659" relation="include">
+        </childnode>
+        <childnode refid="10643" relation="include">
+        </childnode>
+        <childnode refid="10685" relation="include">
+        </childnode>
+        <childnode refid="10692" relation="include">
+        </childnode>
+        <childnode refid="10669" relation="include">
+        </childnode>
+        <childnode refid="10621" relation="include">
+        </childnode>
+        <childnode refid="10693" relation="include">
+        </childnode>
+        <childnode refid="10704" relation="include">
+        </childnode>
+        <childnode refid="10707" relation="include">
+        </childnode>
+        <childnode refid="10627" relation="include">
+        </childnode>
+        <childnode refid="10708" relation="include">
+        </childnode>
+        <childnode refid="10709" relation="include">
+        </childnode>
+        <childnode refid="10639" relation="include">
+        </childnode>
+      </node>
+      <node id="10643">
+        <label>memory</label>
+      </node>
+      <node id="10714">
+        <label>initializer_list</label>
+      </node>
+      <node id="10665">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="10645" relation="include">
+        </childnode>
+        <childnode refid="10666" relation="include">
+        </childnode>
+        <childnode refid="10647" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="actions__list__model_8h" kindref="compound">actions_list_model.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game__control__link_8h" kindref="compound">game_control_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtQml&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qmlRegisterType&lt;ActionsListModel&gt;(</highlight><highlight class="stringliteral">&quot;yay.sfttech.openage&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;ActionsListModel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1gui_1_1_actions_list_model_1a4e2ab2adfedb68967cc280723b62f8b9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a4e2ab2adfedb68967cc280723b62f8b9" kindref="member">ActionsListModel::ActionsListModel</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>QAbstractListModel{parent},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>action_mode{}<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1gui_1_1_actions_list_model_1a00aa41507a6622252f5bc4f587219b79" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a00aa41507a6622252f5bc4f587219b79" kindref="member">ActionsListModel::~ActionsListModel</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" kindref="member">ActionsListModel::get_active_buttons</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" kindref="member">ActionsListModel::set_active_buttons</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/>&amp;active_buttons)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;active_buttons<sp/>==<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;active_buttons<sp/>=<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" kindref="member">active_buttons</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a6adf97f83acf6453d4a6a4b1070f3754" kindref="member">ActionButtonsType::None</ref>:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">clear_buttons</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a4469cd896299cc6ea6ea2054d1e5a777" kindref="member">ActionButtonsType::MilitaryUnits</ref>:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">clear_buttons</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref>(</highlight><highlight class="stringliteral">&quot;image://by-filename/converted/interface/hudactions.slp.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(6,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_PATROL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(7,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_GUARD&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(8,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_FOLLOW&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(59,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;KILL_UNIT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(2,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_GARRISON&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(9,<sp/><sp/>53,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd" kindref="member">GroupIDs::StanceGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;AGGRESSIVE_STANCE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(10,<sp/>52,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd" kindref="member">GroupIDs::StanceGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;DEFENSIVE_STANCE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(11,<sp/>51,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd" kindref="member">GroupIDs::StanceGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;HOLD_STANCE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(50,<sp/>54,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd" kindref="member">GroupIDs::StanceGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;PASSIVE_STANCE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(3,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;STOP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a0cdbc629c6d54902fa05c83a9d1694a3" kindref="member">ActionButtonsType::CivilianUnits</ref>:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">clear_buttons</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref>(</highlight><highlight class="stringliteral">&quot;image://by-filename/converted/interface/hudactions.slp.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(30,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILD_MENU&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(31,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILD_MENU_MIL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(28,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_REPAIR&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(59,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;KILL_UNIT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(2,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_GARRISON&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(-1,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(-1,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(-1,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(-1,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(3,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;STOP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a70e748773cd746ae58fc3e9cdd9d49d1" kindref="member">ActionButtonsType::BuildMenu</ref>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">clear_buttons</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref>(</highlight><highlight class="stringliteral">&quot;image://by-filename/converted/interface/50705.slp.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(34,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_HOUS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(20,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MILL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(39,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MINE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(40,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_SMIL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(13,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_DOCK&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(35,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_FARM&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(4,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_BLAC&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(16,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MRKT&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(10,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_CRCH&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(32,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_UNIV&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(28,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_RTWC&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(37,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WNDR&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a408c62a4830f43cc283514da6fbe7acc" kindref="member">ActionButtonsType::MilBuildMenu</ref>:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">clear_buttons</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">set_icons_source</ref>(</highlight><highlight class="stringliteral">&quot;image://by-filename/converted/interface/50705.slp.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(2,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_BRKS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(0,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_ARRG&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(23,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_STBL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(22,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_SIWS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(38,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTWX&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(30,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WALL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(29,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WALL2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(25,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTW&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(42,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTW4&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(36,<sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_GTCA2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">add_button</ref>(7,<sp/><sp/>-1,<sp/>static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" kindref="member">GroupIDs::NoGroup</ref>),<sp/></highlight><highlight class="stringliteral">&quot;BUILDING_CSTL&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>action<sp/>mode<sp/>selection&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" kindref="member">ActionsListModel::get_action_mode</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" kindref="member">action_mode</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" kindref="member">ActionsListModel::set_action_mode</ref>(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref><sp/>*action_mode)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;action_mode<sp/>!=<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" kindref="member">action_mode</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;action_mode<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QObject::disconnect(this-&gt;action_mode,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" kindref="member">ActionModeLink::buttons_type_changed</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" kindref="member">ActionsListModel::on_buttons_type_changed</ref>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;action_mode<sp/>=<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" kindref="member">action_mode</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QObject::connect(this-&gt;action_mode,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" kindref="member">ActionModeLink::buttons_type_changed</ref>,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" kindref="member">ActionsListModel::on_buttons_type_changed</ref>);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" refkind="member"><highlight class="normal">QUrl<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" kindref="member">ActionsListModel::get_icons_source</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>QUrl(this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a95241b68edbb6d1d1b01ba6b997abdcd" kindref="member">icons_source</ref>);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">ActionsListModel::set_icons_source</ref>(QUrl<sp/>icons_source)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;icons_source<sp/>=<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a95241b68edbb6d1d1b01ba6b997abdcd" kindref="member">icons_source</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classopenage_1_1gui_1_1_actions_list_model_1a9ee0f271abba58e0488bfa698aeff161" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" kindref="member">ActionsListModel::set_icons_source</ref>(std::string<sp/>icons_source)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;icons_source<sp/>=<sp/>QUrl(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a95241b68edbb6d1d1b01ba6b997abdcd" kindref="member">icons_source</ref>.c_str());</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1ad84503f513414c76726db8b3def08205" kindref="member">icons_source_changed</ref>(this-&gt;icons_source);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classopenage_1_1gui_1_1_actions_list_model_1af519bfab0685982fed954d1dbf0b7e7c" refkind="member"><highlight class="normal">Q_INVOKABLE<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1af519bfab0685982fed954d1dbf0b7e7c" kindref="member">ActionsListModel::set_initial_buttons</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" kindref="member">set_active_buttons</ref>(<ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a6adf97f83acf6453d4a6a4b1070f3754" kindref="member">ActionButtonsType::None</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" kindref="member">ActionsListModel::on_buttons_type_changed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref><sp/>buttons_type)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" kindref="member">set_active_buttons</ref>(buttons_type);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="classopenage_1_1gui_1_1_actions_list_model_1accbf440c48226aa616da460e44818f15" refkind="member"><highlight class="normal">QHash&lt;int,<sp/>QByteArray&gt;<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1accbf440c48226aa616da460e44818f15" kindref="member">ActionsListModel::roleNames</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>QHash&lt;int,<sp/>QByteArray&gt;<sp/>roles;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>roles[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a3591143a2e41630676ea59ebd87fb4eb" kindref="member">ActionsRoles::IconRole</ref>)]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ico&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>roles[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aa0b694a5e7a4cd02a259f98e288f76d9" kindref="member">ActionsRoles::IconCheckedRole</ref>)]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;icoChk&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>roles[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a9045638ba88b0858225c1bb7a62ffcb8" kindref="member">ActionsRoles::GroupIDRole</ref>)]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;grpID&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>roles[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aebc5ac2a302d88834d27e146f5ca8b70" kindref="member">ActionsRoles::NameRole</ref>)]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>roles;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="classopenage_1_1gui_1_1_actions_list_model_1a332b87490307ece97012281af7eb1eee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a332b87490307ece97012281af7eb1eee" kindref="member">ActionsListModel::rowCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" kindref="member">buttons</ref>.size();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classopenage_1_1gui_1_1_actions_list_model_1a9a3ff303db71cfe50824e0b60b89a7f4" refkind="member"><highlight class="normal">QVariant<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a9a3ff303db71cfe50824e0b60b89a7f4" kindref="member">ActionsListModel::data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" kindref="member">buttons</ref>.at(index.row()).value(role);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classopenage_1_1gui_1_1_actions_list_model_1afe9f1288a1072b465fcab14cbbbe054a" refkind="member"><highlight class="normal">QMap&lt;int,<sp/>QVariant&gt;<sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1afe9f1288a1072b465fcab14cbbbe054a" kindref="member">ActionsListModel::itemData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" kindref="member">buttons</ref>.at(index.row());</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" kindref="member">ActionsListModel::clear_buttons</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" kindref="member">buttons</ref>.clear();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" kindref="member">ActionsListModel::add_button</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ico,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ico_chk,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>grp_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>QMap&lt;int,<sp/>QVariant&gt;<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a3591143a2e41630676ea59ebd87fb4eb" kindref="member">ActionsRoles::IconRole</ref>)]<sp/>=<sp/>QVariant(ico);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aa0b694a5e7a4cd02a259f98e288f76d9" kindref="member">ActionsRoles::IconCheckedRole</ref>)]<sp/>=<sp/>QVariant(ico_chk);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a9045638ba88b0858225c1bb7a62ffcb8" kindref="member">ActionsRoles::GroupIDRole</ref>)]<sp/>=<sp/>QVariant(grp_id);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>[static_cast&lt;int&gt;(<ref refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aebc5ac2a302d88834d27e146f5ca8b70" kindref="member">ActionsRoles::NameRole</ref>)]<sp/>=<sp/>QVariant(name);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" kindref="member">buttons</ref>.push_back(map);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/actions_list_model.cpp"/>
+  </compounddef>
+</doxygen>

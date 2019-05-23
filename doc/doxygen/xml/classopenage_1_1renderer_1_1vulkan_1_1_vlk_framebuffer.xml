@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::vulkan::VlkFramebuffer</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_render_target" prot="public" virt="non-virtual">openage::renderer::RenderTarget</basecompoundref>
+    <includes refid="vulkan_2render__target_8h" local="no">render_target.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1ae9ce15e3ffbaad22a69508e3dc55532e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; VkImageView &gt;</type>
+        <definition>std::vector&lt;VkImageView&gt; openage::renderer::vulkan::VlkFramebuffer::attachments</definition>
+        <argsstring></argsstring>
+        <name>attachments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="156" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a219b0b7bd2924bd78f97254c2dcc1334" prot="private" static="no" mutable="no">
+        <type>VkFramebuffer</type>
+        <definition>VkFramebuffer openage::renderer::vulkan::VlkFramebuffer::framebuffer</definition>
+        <argsstring></argsstring>
+        <name>framebuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="157" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a7b8a7cf26948c475c3e4fd115ee86ab1" prot="private" static="no" mutable="no">
+        <type>VkViewport</type>
+        <definition>VkViewport openage::renderer::vulkan::VlkFramebuffer::viewport</definition>
+        <argsstring></argsstring>
+        <name>viewport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="158" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a2d7826f7fd466ceb1f37a7421227b699" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkFramebuffer::VlkFramebuffer</definition>
+        <argsstring>(VkRenderPass, std::vector&lt; VkImageView &gt; const &amp;)</argsstring>
+        <name>VlkFramebuffer</name>
+        <param>
+          <type>VkRenderPass</type>
+        </param>
+        <param>
+          <type>std::vector&lt; VkImageView &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="161" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="161" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4948">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="4947">
+        <label>openage::renderer::vulkan::VlkFramebuffer</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer"/>
+        <childnode refid="4948" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4950">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="4949">
+        <label>openage::renderer::vulkan::VlkFramebuffer</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer"/>
+        <childnode refid="4950" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/render_target.h" line="155" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="155" bodyend="164"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1ae9ce15e3ffbaad22a69508e3dc55532e" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>attachments</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a219b0b7bd2924bd78f97254c2dcc1334" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>framebuffer</name></member>
+      <member refid="classopenage_1_1renderer_1_1_render_target_1a82f0a811d5ef9ed22a3b946eaf523968" prot="protected" virt="non-virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>RenderTarget</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a7b8a7cf26948c475c3e4fd115ee86ab1" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>viewport</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a2d7826f7fd466ceb1f37a7421227b699" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>VlkFramebuffer</name></member>
+      <member refid="classopenage_1_1renderer_1_1_render_target_1a0c525e5ad964ff0e763c2a45299ecebd" prot="public" virt="virtual"><scope>openage::renderer::vulkan::VlkFramebuffer</scope><name>~RenderTarget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::building &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_unshared_attribute_container" prot="public" virt="non-virtual">openage::UnsharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a903dc728688d1632c931eddae12b8c0a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::Attribute&lt; attr_type::building &gt;::completed</definition>
+        <argsstring></argsstring>
+        <name>completed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="462" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="462" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a4ad785c022a478c67c29afe8656e2186" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Attribute&lt; attr_type::building &gt;::foundation_terrain</definition>
+        <argsstring></argsstring>
+        <name>foundation_terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="463" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="463" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a1160fe58df48aa030282f8b1bd34beaa" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465e" kindref="member">object_state</ref></type>
+        <definition>object_state openage::Attribute&lt; attr_type::building &gt;::completion_state</definition>
+        <argsstring></argsstring>
+        <name>completion_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="467" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1abb4aabcc168d648c885735c501c6c4ed" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+        <definition>UnitType* openage::Attribute&lt; attr_type::building &gt;::pp</definition>
+        <argsstring></argsstring>
+        <name>pp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="470" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a75da9282ba7f9a1d5d8ca6242f0a0d8a" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+        <definition>coord::phys3 openage::Attribute&lt; attr_type::building &gt;::gather_point</definition>
+        <argsstring></argsstring>
+        <name>gather_point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The go to point after a unit is created. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="475" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="475" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1aeb69bdddb4f9d4f807008fd34000f933" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::building &gt;::Attribute</definition>
+        <argsstring>(int foundation_terrain, UnitType *pp, coord::phys3 gather_point)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type>int</type>
+          <declname>foundation_terrain</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+          <declname>pp</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+          <declname>gather_point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="450" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="450" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1ac1d1151929d175aa8d64c8401e184f06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::building &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="458" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="458" bodyend="460"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>TODO revisit after unit training is improved </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="387">
+        <label>openage::Attribute&lt; attr_type::building &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4"/>
+        <childnode refid="388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="388">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="389" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="389">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="394">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="393">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="394" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="405">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="403" relation="public-inheritance">
+        </childnode>
+        <childnode refid="404" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="402">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="403" relation="public-inheritance">
+        </childnode>
+        <childnode refid="401" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="403">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="395">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="396" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="398" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="399" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="401" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="404">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="405" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="407">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="398">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="390">
+        <label>openage::Attribute&lt; attr_type::building &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4"/>
+        <childnode refid="391" relation="public-inheritance">
+        </childnode>
+        <childnode refid="393" relation="usage">
+          <edgelabel>+gather_point</edgelabel>
+        </childnode>
+        <childnode refid="395" relation="usage">
+          <edgelabel>+pp</edgelabel>
+        </childnode>
+      </node>
+      <node id="401">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="402" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="404" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="400" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="406" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="407" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="396">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="397" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="400">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="391">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="392" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="406">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="392">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="399">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="400" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="397">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="448" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="448" bodyend="476"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1aeb69bdddb4f9d4f807008fd34000f933" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a903dc728688d1632c931eddae12b8c0a" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>completed</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a1160fe58df48aa030282f8b1bd34beaa" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>completion_state</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1ac1d1151929d175aa8d64c8401e184f06" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a4ad785c022a478c67c29afe8656e2186" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>foundation_terrain</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1a75da9282ba7f9a1d5d8ca6242f0a0d8a" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>gather_point</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4_1abb4aabcc168d648c885735c501c6c4ed" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>pp</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a37a9c89f4d60700087ac55df3bbf38d9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a4b609bc0e8a94749f0810e3e3228a8d6" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>UnsharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::building &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

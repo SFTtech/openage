@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="renderer_2opengl_2shader_8cpp" kind="file" language="C++">
+    <compoundname>shader.cpp</compoundname>
+    <includes refid="renderer_2opengl_2shader_8h" local="yes">shader.h</includes>
+    <includes refid="constexpr__map_8h" local="yes">../../datastructure/constexpr_map.h</includes>
+    <incdepgraph>
+      <node id="21560">
+        <label>list</label>
+      </node>
+      <node id="21552">
+        <label>atomic</label>
+      </node>
+      <node id="21557">
+        <label>iomanip</label>
+      </node>
+      <node id="21536">
+        <label>functional</label>
+      </node>
+      <node id="21564">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="21536" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+      </node>
+      <node id="21533">
+        <label>cstdint</label>
+      </node>
+      <node id="21555">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="21556" relation="include">
+        </childnode>
+        <childnode refid="21536" relation="include">
+        </childnode>
+        <childnode refid="21557" relation="include">
+        </childnode>
+        <childnode refid="21545" relation="include">
+        </childnode>
+        <childnode refid="21558" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21531" relation="include">
+        </childnode>
+      </node>
+      <node id="21542">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="21543" relation="include">
+        </childnode>
+      </node>
+      <node id="21546">
+        <label>stdexcept</label>
+      </node>
+      <node id="21541">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="21559">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="21560" relation="include">
+        </childnode>
+        <childnode refid="21537" relation="include">
+        </childnode>
+        <childnode refid="21561" relation="include">
+        </childnode>
+      </node>
+      <node id="21556">
+        <label>cstdarg</label>
+      </node>
+      <node id="21529">
+        <label>string</label>
+      </node>
+      <node id="21547">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="21533" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21548" relation="include">
+        </childnode>
+        <childnode refid="21549" relation="include">
+        </childnode>
+        <childnode refid="21551" relation="include">
+        </childnode>
+        <childnode refid="21559" relation="include">
+        </childnode>
+        <childnode refid="21561" relation="include">
+        </childnode>
+      </node>
+      <node id="21549">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="21550" relation="include">
+        </childnode>
+      </node>
+      <node id="21551">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="21552" relation="include">
+        </childnode>
+        <childnode refid="21545" relation="include">
+        </childnode>
+        <childnode refid="21553" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+        <childnode refid="21554" relation="include">
+        </childnode>
+        <childnode refid="21555" relation="include">
+        </childnode>
+      </node>
+      <node id="21526">
+        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <link refid="renderer_2opengl_2shader_8cpp"/>
+        <childnode refid="21527" relation="include">
+        </childnode>
+        <childnode refid="21571" relation="include">
+        </childnode>
+      </node>
+      <node id="21532">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="21533" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21531" relation="include">
+        </childnode>
+        <childnode refid="21534" relation="include">
+        </childnode>
+        <childnode refid="21535" relation="include">
+        </childnode>
+      </node>
+      <node id="21543">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="21544" relation="include">
+        </childnode>
+        <childnode refid="21545" relation="include">
+        </childnode>
+        <childnode refid="21546" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+        <childnode refid="21547" relation="include">
+        </childnode>
+      </node>
+      <node id="21571">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="21536" relation="include">
+        </childnode>
+        <childnode refid="21572" relation="include">
+        </childnode>
+        <childnode refid="21543" relation="include">
+        </childnode>
+      </node>
+      <node id="21563">
+        <label>typeinfo</label>
+      </node>
+      <node id="21569">
+        <label>optional</label>
+      </node>
+      <node id="21531">
+        <label>vector</label>
+      </node>
+      <node id="21539">
+        <label>ciso646</label>
+      </node>
+      <node id="21572">
+        <label>utility</label>
+      </node>
+      <node id="21558">
+        <label>sstream</label>
+      </node>
+      <node id="21538">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="21539" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21540" relation="include">
+        </childnode>
+      </node>
+      <node id="21565">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="21545" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21531" relation="include">
+        </childnode>
+        <childnode refid="21566" relation="include">
+        </childnode>
+        <childnode refid="21532" relation="include">
+        </childnode>
+      </node>
+      <node id="21540">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="21540" relation="include">
+        </childnode>
+      </node>
+      <node id="21570">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="21554">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="21544" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+      </node>
+      <node id="21561">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="21562" relation="include">
+        </childnode>
+      </node>
+      <node id="21567">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="21528">
+        <label>../resources/shader_source.h</label>
+        <link refid="shader__source_8h"/>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21530" relation="include">
+        </childnode>
+      </node>
+      <node id="21566">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="21544" relation="include">
+        </childnode>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+      </node>
+      <node id="21550">
+        <label>cstdlib</label>
+      </node>
+      <node id="21544">
+        <label>iostream</label>
+      </node>
+      <node id="21527">
+        <label>shader.h</label>
+        <link refid="renderer_2opengl_2shader_8h"/>
+        <childnode refid="21528" relation="include">
+        </childnode>
+        <childnode refid="21568" relation="include">
+        </childnode>
+      </node>
+      <node id="21535">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="21536" relation="include">
+        </childnode>
+        <childnode refid="21537" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+        <childnode refid="21541" relation="include">
+        </childnode>
+        <childnode refid="21542" relation="include">
+        </childnode>
+        <childnode refid="21564" relation="include">
+        </childnode>
+      </node>
+      <node id="21537">
+        <label>mutex</label>
+      </node>
+      <node id="21530">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="21529" relation="include">
+        </childnode>
+        <childnode refid="21531" relation="include">
+        </childnode>
+        <childnode refid="21532" relation="include">
+        </childnode>
+        <childnode refid="21565" relation="include">
+        </childnode>
+        <childnode refid="21567" relation="include">
+        </childnode>
+      </node>
+      <node id="21568">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="21569" relation="include">
+        </childnode>
+        <childnode refid="21536" relation="include">
+        </childnode>
+        <childnode refid="21570" relation="include">
+        </childnode>
+      </node>
+      <node id="21534">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="21553">
+        <label>type_traits</label>
+      </node>
+      <node id="21548">
+        <label>config.h</label>
+      </node>
+      <node id="21545">
+        <label>memory</label>
+      </node>
+      <node id="21562">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="21544" relation="include">
+        </childnode>
+        <childnode refid="21563" relation="include">
+        </childnode>
+        <childnode refid="21538" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="renderer_2opengl_2shader_8h" kindref="compound">shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../datastructure/constexpr_map.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1renderer_1_1opengl_1aa5bd688a2e55a9c7ba1377e213383de8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1aa5bd688a2e55a9c7ba1377e213383de8" kindref="member">gl_shdr_type</ref><sp/>=<sp/>datastructure::create_const_map&lt;resources::shader_stage_t,<sp/>GLenum&gt;(</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a" kindref="member">resources::shader_stage_t::vertex</ref>,<sp/>GL_VERTEX_SHADER),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7baed7daeb157cd9b31e53896ad3c771a26" kindref="member">resources::shader_stage_t::geometry</ref>,<sp/>GL_GEOMETRY_SHADER),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba7dd430baa39d2873520d0338acb98741" kindref="member">resources::shader_stage_t::tesselation_control</ref>,<sp/>GL_TESS_CONTROL_SHADER),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7bad711cc63370ae664a464b9efd08f6248" kindref="member">resources::shader_stage_t::tesselation_evaluation</ref>,<sp/>GL_TESS_EVALUATION_SHADER),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1" kindref="member">resources::shader_stage_t::fragment</ref>,<sp/>GL_FRAGMENT_SHADER)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1ac10355686749689056a938f3429629bb" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1ac10355686749689056a938f3429629bb" kindref="member">GlShader::GlShader</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref><sp/>&amp;<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref>([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteShader(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>type(<ref refid="namespaceopenage_1_1renderer_1_1opengl_1aa5bd688a2e55a9c7ba1377e213383de8" kindref="member">gl_shdr_type</ref>.get(<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_stage()))</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_lang()<sp/>!=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6" kindref="member">resources::shader_lang_t::glsl</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>shader<sp/>language<sp/>passed<sp/>to<sp/>OpenGL<sp/>renderer.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allocate<sp/>shader<sp/>in<sp/>opengl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref><sp/>=<sp/>glCreateShader(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1a6996be5a5f1b2ea8c38a19944331c273" kindref="member">type</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>load<sp/>shader<sp/>source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data<sp/>=<sp/><ref refid="gui_2gui_8cpp_1ad18da19e3399b061b9e06fa5a1a2c761" kindref="member">src</ref>.get_source().c_str();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>glShaderSource(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>,<sp/>1,<sp/>&amp;data,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compile<sp/>shader<sp/>source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>glCompileShader(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>compiliation<sp/>result</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>status;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetShaderiv(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>,<sp/>GL_COMPILE_STATUS,<sp/>&amp;status);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>GL_TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/>loglen;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetShaderiv(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>,<sp/>GL_INFO_LOG_LENGTH,<sp/>&amp;loglen);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;char&gt;<sp/>infolog(loglen);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetShaderInfoLog(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>,<sp/>loglen,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>infolog.data());</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>compile<sp/>shader:\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>infolog.data()<sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" refkind="member"><highlight class="normal">GLenum<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" kindref="member">GlShader::get_type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1a6996be5a5f1b2ea8c38a19944331c273" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/shader.cpp"/>
+  </compounddef>
+</doxygen>

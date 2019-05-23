@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_map_filter_iterator" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::MapFilterIterator</compoundname>
+    <basecompoundref refid="classopenage_1_1curve_1_1_curve_iterator" prot="public" virt="non-virtual">openage::curve::CurveIterator&lt; val_t, container_t &gt;</basecompoundref>
+    <includes refid="map__filter__iterator_8h" local="no">map_filter_iterator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>key_t</declname>
+        <defname>key_t</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>val_t</declname>
+        <defname>val_t</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>container_t</declname>
+        <defname>container_t</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" prot="public" static="no">
+        <type>typename container_t::const_iterator</type>
+        <definition>using openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::iterator_t =  typename container_t::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="26" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_map_filter_iterator_1af15da05ad36fe2ea75e76c319a2b2243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::MapFilterIterator</definition>
+        <argsstring>(const iterator_t &amp;base, const container_t *container, const time_t &amp;from, const time_t &amp;to)</argsstring>
+        <name>MapFilterIterator</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" kindref="member">iterator_t</ref> &amp;</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const container_t *</type>
+          <declname>container</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct the iterator from its boundary conditions: time and container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="31" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="31" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_map_filter_iterator_1a9ba28300a82d3f3401ddafb29e90ef7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::MapFilterIterator</definition>
+        <argsstring>(const MapFilterIterator &amp;)=default</argsstring>
+        <name>MapFilterIterator</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_map_filter_iterator_1a9d13c293e4046e4bb4d36bae91d278a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::valid</definition>
+        <argsstring>() const override</argsstring>
+        <name>valid</name>
+        <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026">valid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="42" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>val_t const  &amp;</type>
+        <definition>val_t const&amp; openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::value</definition>
+        <argsstring>() const override</argsstring>
+        <name>value</name>
+        <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">value</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the value behind the iterator. Nicer way of accessing it beside operator *. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="51" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_map_filter_iterator_1a8dc6713b4d238eedc2d6cbc300c9e6dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const key_t &amp;</type>
+        <definition>const key_t&amp; openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;::key</definition>
+        <argsstring>() const</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the key pointed to by this iterator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map_filter_iterator.h" line="58" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="58" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A filtering operator to iterate over all elements of a map whose elements exist for a certain livespan. The range where to iterate is given at construction.</para>
+<para>It depends on key_t and val_t as map-parameters, container_t is the container to operate on and the function valid_f, that checks if an element is alive. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3177">
+        <label>openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_map_filter_iterator"/>
+        <childnode refid="3178" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3178">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3182">
+        <label>container_t</label>
+      </node>
+      <node id="3179">
+        <label>openage::curve::MapFilterIterator&lt; key_t, val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_map_filter_iterator"/>
+        <childnode refid="3180" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3181">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+      <node id="3180">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+        <childnode refid="3181" relation="usage">
+          <edgelabel>#from</edgelabel>
+          <edgelabel>#to</edgelabel>
+        </childnode>
+        <childnode refid="3182" relation="usage">
+          <edgelabel>#container</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/map_filter_iterator.h" line="24" column="1" bodyfile="libopenage/curve/map_filter_iterator.h" bodystart="24" bodyend="62"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" prot="protected" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>base</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" prot="protected" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>container</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a45e14ddb2e3759afe9b36d4b01d55cd0" prot="protected" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a40ebee2d0fa0286de5626196595fdeae" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" prot="protected" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>from</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>get_base</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>get_from</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>get_to</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>iterator_t</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1a8dc6713b4d238eedc2d6cbc300c9e6dc" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>key</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1af15da05ad36fe2ea75e76c319a2b2243" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>MapFilterIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1a9ba28300a82d3f3401ddafb29e90ef7e" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>MapFilterIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator -&gt;</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator++</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a984fc87d7f98bcf2ad157b46b8859719" prot="public" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" prot="protected" virt="non-virtual"><scope>openage::curve::MapFilterIterator</scope><name>to</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1a9d13c293e4046e4bb4d36bae91d278a1" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>valid</name></member>
+      <member refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>value</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a46f039556f6f516d51e05a608319aba2" prot="public" virt="virtual"><scope>openage::curve::MapFilterIterator</scope><name>~CurveIterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

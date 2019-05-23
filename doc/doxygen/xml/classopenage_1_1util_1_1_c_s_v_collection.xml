@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_c_s_v_collection" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::CSVCollection</compoundname>
+    <includes refid="csv_8h" local="no">csv.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_c_s_v_collection_1aef170fc4b2d0f3806bd19a855ab9d3cd" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>using openage::util::CSVCollection::csv_file_map_t =  std::unordered_map&lt;std::string, std::vector&lt;std::string&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>csv_file_map_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type for storing csv data: {filename: [line, ...]}. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="35" column="1" bodyfile="libopenage/util/csv.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_c_s_v_collection_1aef170fc4b2d0f3806bd19a855ab9d3cd" kindref="member">csv_file_map_t</ref></type>
+        <definition>csv_file_map_t openage::util::CSVCollection::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="130" column="1" bodyfile="libopenage/util/csv.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::CSVCollection::CSVCollection</definition>
+        <argsstring>(const Path &amp;entryfile)</argsstring>
+        <name>CSVCollection</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>entryfile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize the collection by reading the given file. This file must contain the data that this collection is made up of. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="41" column="1" bodyfile="libopenage/util/csv.cpp" bodystart="16" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1a935638b7068bf067e0f9f9d879806d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::util::CSVCollection::~CSVCollection</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CSVCollection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class lineformat</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; lineformat &gt;</type>
+        <definition>std::vector&lt;lineformat&gt; openage::util::CSVCollection::read</definition>
+        <argsstring>(const std::string &amp;filename) const</argsstring>
+        <name>read</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is the entry point to load the whole file tree recursively.</para>
+<para>Should be called again from the .recurse() method of the struct.</para>
+<para>The internal flow is as follows:<itemizedlist>
+<listitem><para>read entries of the given files (call to the generated field parsers (the fill function))</para>
+</listitem><listitem><para>then, recurse into referenced subdata entries (this implementation is generated)</para>
+</listitem><listitem><para>from there, reach this function again to read each subdata entry. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="59" column="1" bodyfile="libopenage/util/csv.h" bodystart="59" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_c_s_v_collection_1abd8690a2db783f6d55a7ef374f6db782" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename lineformat</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; lineformat &gt;</type>
+        <definition>std::vector&lt;lineformat&gt; openage::util::CSVCollection::get_data</definition>
+        <argsstring>(const std::string &amp;filename) const</argsstring>
+        <name>get_data</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse the data from one file in the map. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="89" column="1" bodyfile="libopenage/util/csv.h" bodystart="89" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Collection of multiple csv files. Read from a packed csv that contains all the data.</para>
+<para>Then, data can be read recursively. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1032">
+        <label>openage::util::CSVCollection</label>
+        <link refid="classopenage_1_1util_1_1_c_s_v_collection"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/csv.h" line="28" column="1" bodyfile="libopenage/util/csv.h" bodystart="28" bodyend="131"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1aef170fc4b2d0f3806bd19a855ab9d3cd" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>csv_file_map_t</name></member>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>CSVCollection</name></member>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" prot="protected" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>data</name></member>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1abd8690a2db783f6d55a7ef374f6db782" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1a687817b834b18f90124915261c3752a8" prot="public" virt="non-virtual"><scope>openage::util::CSVCollection</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1_c_s_v_collection_1a935638b7068bf067e0f9f9d879806d7b" prot="public" virt="virtual"><scope>openage::util::CSVCollection</scope><name>~CSVCollection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

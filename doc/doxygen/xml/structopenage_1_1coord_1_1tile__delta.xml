@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1tile__delta" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::tile_delta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</basecompoundref>
+    <includes refid="tile_8h" local="no">tile.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4500">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="4501" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4501">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4502">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="4503" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4503">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/tile.h" line="25" column="1" bodyfile="libopenage/coord/tile.h" bodystart="25" bodyend="27"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

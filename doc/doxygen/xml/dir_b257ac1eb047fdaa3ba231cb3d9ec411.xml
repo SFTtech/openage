@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_b257ac1eb047fdaa3ba231cb3d9ec411" kind="dir">
+    <compoundname>libopenage/input</compoundname>
+    <innerfile refid="input_2action_8cpp">action.cpp</innerfile>
+    <innerfile refid="input_2action_8h">action.h</innerfile>
+    <innerfile refid="input_2event_8cpp">event.cpp</innerfile>
+    <innerfile refid="input_2event_8h">event.h</innerfile>
+    <innerfile refid="input__context_8cpp">input_context.cpp</innerfile>
+    <innerfile refid="input__context_8h">input_context.h</innerfile>
+    <innerfile refid="input__manager_8cpp">input_manager.cpp</innerfile>
+    <innerfile refid="input__manager_8h">input_manager.h</innerfile>
+    <innerfile refid="text__to__event_8cpp">text_to_event.cpp</innerfile>
+    <innerfile refid="text__to__event_8h">text_to_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/input/"/>
+  </compounddef>
+</doxygen>

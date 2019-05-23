@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_26d84fcac5b38ff9c2db6912af76a48c" kind="dir">
+    <compoundname>libopenage/job</compoundname>
+    <innerfile refid="abortable__job__state_8h">abortable_job_state.h</innerfile>
+    <innerfile refid="job_8h">job.h</innerfile>
+    <innerfile refid="job__aborted__exception_8h">job_aborted_exception.h</innerfile>
+    <innerfile refid="job__group_8cpp">job_group.cpp</innerfile>
+    <innerfile refid="job__group_8h">job_group.h</innerfile>
+    <innerfile refid="job__manager_8cpp">job_manager.cpp</innerfile>
+    <innerfile refid="job__manager_8h">job_manager.h</innerfile>
+    <innerfile refid="job__state_8h">job_state.h</innerfile>
+    <innerfile refid="job__state__base_8h">job_state_base.h</innerfile>
+    <innerfile refid="job_2tests_8cpp">tests.cpp</innerfile>
+    <innerfile refid="typed__job__state__base_8h">typed_job_state_base.h</innerfile>
+    <innerfile refid="job_2types_8h">types.h</innerfile>
+    <innerfile refid="worker_8cpp">worker.cpp</innerfile>
+    <innerfile refid="worker_8h">worker.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/job/"/>
+  </compounddef>
+</doxygen>

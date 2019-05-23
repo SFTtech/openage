@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1filelike" kind="namespace" language="C++">
+    <compoundname>openage::util::filelike</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1filelike_1_1_file_like" prot="public">openage::util::filelike::FileLike</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1filelike_1_1_native" prot="public">openage::util::filelike::Native</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1filelike_1_1_python" prot="public">openage::util::filelike::Python</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, ssize_t &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; std::string, PyObject *, ssize_t &gt; openage::util::filelike::pyx_file_read</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="91" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; size_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, void *, ssize_t &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; size_t, PyObject *, void *, ssize_t &gt; openage::util::filelike::pyx_file_read_to</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_read_to</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="92" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject * &gt; openage::util::filelike::pyx_file_readable</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_readable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="93" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::string &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; void, PyObject *, const std::string &amp; &gt; openage::util::filelike::pyx_file_write</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="94" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject * &gt; openage::util::filelike::pyx_file_writable</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_writable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="95" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, ssize_t, int &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; void, PyObject *, ssize_t, int &gt; openage::util::filelike::pyx_file_seek</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_seek</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="96" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject * &gt; openage::util::filelike::pyx_file_seekable</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_seekable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="97" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; size_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; size_t, PyObject * &gt; openage::util::filelike::pyx_file_tell</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_tell</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="98" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; void, PyObject * &gt; openage::util::filelike::pyx_file_close</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="99" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; void, PyObject * &gt; openage::util::filelike::pyx_file_flush</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_flush</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="100" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; ssize_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; ssize_t, PyObject * &gt; openage::util::filelike::pyx_file_size</definition>
+        <argsstring></argsstring>
+        <name>pyx_file_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.cpp" line="101" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/filelike/filelike.cpp" line="7" column="1"/>
+  </compounddef>
+</doxygen>

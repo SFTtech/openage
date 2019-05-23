@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hacks_8h" kind="file" language="C++">
+    <compoundname>hacks.h</compoundname>
+    <includes refid="exctranslate_8h" local="yes">exctranslate.h</includes>
+    <includedby refid="hacks_8cpp" local="yes">libopenage/pyinterface/hacks.cpp</includedby>
+    <incdepgraph>
+      <node id="19823">
+        <label>list</label>
+      </node>
+      <node id="19813">
+        <label>atomic</label>
+      </node>
+      <node id="19819">
+        <label>iomanip</label>
+      </node>
+      <node id="19818">
+        <label>functional</label>
+      </node>
+      <node id="19808">
+        <label>cstdint</label>
+      </node>
+      <node id="19816">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="19817" relation="include">
+        </childnode>
+        <childnode refid="19818" relation="include">
+        </childnode>
+        <childnode refid="19819" relation="include">
+        </childnode>
+        <childnode refid="19801" relation="include">
+        </childnode>
+        <childnode refid="19820" relation="include">
+        </childnode>
+        <childnode refid="19803" relation="include">
+        </childnode>
+        <childnode refid="19821" relation="include">
+        </childnode>
+      </node>
+      <node id="19798">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="19799" relation="include">
+        </childnode>
+      </node>
+      <node id="19802">
+        <label>stdexcept</label>
+      </node>
+      <node id="19822">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="19823" relation="include">
+        </childnode>
+        <childnode refid="19824" relation="include">
+        </childnode>
+        <childnode refid="19825" relation="include">
+        </childnode>
+      </node>
+      <node id="19817">
+        <label>cstdarg</label>
+      </node>
+      <node id="19803">
+        <label>string</label>
+      </node>
+      <node id="19807">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="19808" relation="include">
+        </childnode>
+        <childnode refid="19803" relation="include">
+        </childnode>
+        <childnode refid="19809" relation="include">
+        </childnode>
+        <childnode refid="19810" relation="include">
+        </childnode>
+        <childnode refid="19812" relation="include">
+        </childnode>
+        <childnode refid="19822" relation="include">
+        </childnode>
+        <childnode refid="19825" relation="include">
+        </childnode>
+      </node>
+      <node id="19810">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="19811" relation="include">
+        </childnode>
+      </node>
+      <node id="19812">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="19813" relation="include">
+        </childnode>
+        <childnode refid="19801" relation="include">
+        </childnode>
+        <childnode refid="19814" relation="include">
+        </childnode>
+        <childnode refid="19804" relation="include">
+        </childnode>
+        <childnode refid="19815" relation="include">
+        </childnode>
+        <childnode refid="19816" relation="include">
+        </childnode>
+      </node>
+      <node id="19797">
+        <label>libopenage/pyinterface/hacks.h</label>
+        <link refid="hacks_8h"/>
+        <childnode refid="19798" relation="include">
+        </childnode>
+      </node>
+      <node id="19799">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="19800" relation="include">
+        </childnode>
+        <childnode refid="19801" relation="include">
+        </childnode>
+        <childnode refid="19802" relation="include">
+        </childnode>
+        <childnode refid="19803" relation="include">
+        </childnode>
+        <childnode refid="19804" relation="include">
+        </childnode>
+        <childnode refid="19807" relation="include">
+        </childnode>
+      </node>
+      <node id="19827">
+        <label>typeinfo</label>
+      </node>
+      <node id="19821">
+        <label>vector</label>
+      </node>
+      <node id="19805">
+        <label>ciso646</label>
+      </node>
+      <node id="19820">
+        <label>sstream</label>
+      </node>
+      <node id="19804">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="19805" relation="include">
+        </childnode>
+        <childnode refid="19803" relation="include">
+        </childnode>
+        <childnode refid="19806" relation="include">
+        </childnode>
+      </node>
+      <node id="19806">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="19806" relation="include">
+        </childnode>
+      </node>
+      <node id="19815">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="19800" relation="include">
+        </childnode>
+        <childnode refid="19803" relation="include">
+        </childnode>
+      </node>
+      <node id="19825">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="19826" relation="include">
+        </childnode>
+      </node>
+      <node id="19811">
+        <label>cstdlib</label>
+      </node>
+      <node id="19800">
+        <label>iostream</label>
+      </node>
+      <node id="19824">
+        <label>mutex</label>
+      </node>
+      <node id="19814">
+        <label>type_traits</label>
+      </node>
+      <node id="19809">
+        <label>config.h</label>
+      </node>
+      <node id="19801">
+        <label>memory</label>
+      </node>
+      <node id="19826">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="19800" relation="include">
+        </childnode>
+        <childnode refid="19827" relation="include">
+        </childnode>
+        <childnode refid="19804" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="19828">
+        <label>libopenage/pyinterface/hacks.h</label>
+        <link refid="hacks_8h"/>
+        <childnode refid="19829" relation="include">
+        </childnode>
+      </node>
+      <node id="19829">
+        <label>libopenage/pyinterface/hacks.cpp</label>
+        <link refid="hacks_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>contains<sp/>a<sp/>collection<sp/>of<sp/>hacks<sp/>to<sp/>work<sp/>around<sp/>particular<sp/>Cython</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>bugs<sp/>and/or<sp/>features.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>This<sp/>header<sp/>file<sp/>is<sp/>automatically<sp/>included<sp/>when<sp/>building<sp/>Cython<sp/>modules.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Note<sp/>that<sp/>all<sp/>issues<sp/>with<sp/>Cython<sp/>should<sp/>be<sp/>reported<sp/>upstream.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>They<sp/>usually<sp/>get<sp/>fixed<sp/>pretty<sp/>fast,<sp/>and<sp/>openage<sp/>always<sp/>uses<sp/>the<sp/>newest</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>version<sp/>of<sp/>Cython.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/hacks.h"/>
+  </compounddef>
+</doxygen>

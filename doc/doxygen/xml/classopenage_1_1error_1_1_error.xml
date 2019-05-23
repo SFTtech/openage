@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1error_1_1_error" kind="class" language="C++" prot="public">
+    <compoundname>openage::error::Error</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1audio_1_1_error" prot="public" virt="non-virtual">openage::audio::Error</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1pyinterface_1_1_py_exception" prot="public" virt="non-virtual">openage::pyinterface::PyException</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1testing_1_1_test_error" prot="public" virt="non-virtual">openage::testing::TestError</derivedcompoundref>
+    <includes refid="error_2error_8h" local="no">error.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref></type>
+        <definition>log::message openage::error::Error::msg</definition>
+        <argsstring></argsstring>
+        <name>msg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The error message. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="91" column="1" bodyfile="libopenage/error/error.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Backtrace&gt; openage::error::Error::backtrace</definition>
+        <argsstring></argsstring>
+        <name>backtrace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The (optional) backtrace. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="97" column="1" bodyfile="libopenage/error/error.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1error_1_1_error_1aad1888d960bfad6b919cea7f8d9baff6" prot="private" static="no" mutable="no">
+        <type>std::exception_ptr</type>
+        <definition>std::exception_ptr openage::error::Error::cause</definition>
+        <argsstring></argsstring>
+        <name>cause</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Re-throw this with <ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="141" column="1" bodyfile="libopenage/error/error.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a755a7891dfe08412bc2312f29b0e618d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::error::Error::Error</definition>
+        <argsstring>(const log::message &amp;msg, bool generate_backtrace=true, bool store_cause=true)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>generate_backtrace</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>store_cause</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>As with <ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log()</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>generate_backtrace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, some platform-specific code is run to collect traceback information (e.g.: backtrace (3)) (default true). The performance impacts should be not too bad, as only program counter pointers are collected. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>store_cause</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, a pointer to the causing exception is collected and stored (default true). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="66" column="1" bodyfile="libopenage/error/error.cpp" bodystart="20" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a27cbe56bc7dbab4d399072ef87fe2014" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::Error::store_cause</definition>
+        <argsstring>()</argsstring>
+        <name>store_cause</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores a pointer to the currently-handled exception in this-&gt;cause. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="72" column="1" bodyfile="libopenage/error/error.cpp" bodystart="41" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::Error::trim_backtrace</definition>
+        <argsstring>()</argsstring>
+        <name>trim_backtrace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls this-&gt;backtrace-&gt;trim_to_current_stack_frame(), if this-&gt;backtrace is not nullptr.</para>
+<para>Designed to be used in catch clauses, to strip away all those unneeded symbols from program init upwards.</para>
+<para>Automatically called for cause exceptions, and when storing cause exceptions, and by the to_py converter. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="85" column="1" bodyfile="libopenage/error/error.cpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::Error::rethrow_cause</definition>
+        <argsstring>() const</argsstring>
+        <name>rethrow_cause</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Re-throws the exception cause, if the exception has one. Otherwise, does nothing.</para>
+<para>Use this when handling the exception, to handle the cause. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="106" column="1" bodyfile="libopenage/error/error.cpp" bodystart="82" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::error::Error::type_name</definition>
+        <argsstring>() const</argsstring>
+        <name>type_name</name>
+        <reimplementedby refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1">type_name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The type name of the exception (for pretty-printing in case the exception hierarchy is used). Uses typeid internally. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="114" column="1" bodyfile="libopenage/error/error.cpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * openage::error::Error::what</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>what</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the message&apos;s content. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="120" column="1" bodyfile="libopenage/error/error.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::Error::debug_break_on_create</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>debug_break_on_create</name>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Turn on debug breaks in the constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="125" column="1" bodyfile="libopenage/error/error.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1error_1_1_error_1ae0f4bcb1755332c4a26a998a88810072" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::error::Error::Error</definition>
+        <argsstring>()</argsstring>
+        <name>Error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs an empty error. For use by our friend, <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">pyinterface::PyException</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="135" column="1" bodyfile="libopenage/error/error.cpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Openage base exception type; the constructor usage is analogous to <ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log()</ref>.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>: message msg</para>
+<para>string <ref refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" kindref="member">type_name()</ref> except + const char *what() except + void <ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause()</ref> except + void <ref refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" kindref="member">trim_backtrace()</ref> except + @staticmethod void <ref refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" kindref="member">debug_break_on_create(bool state)</ref> except +</para>
+<para><ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> *backtrace </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1397">
+        <label>openage::testing::TestError</label>
+        <link refid="classopenage_1_1testing_1_1_test_error"/>
+        <childnode refid="1393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1394">
+        <label>runtime_error</label>
+      </node>
+      <node id="1396">
+        <label>openage::pyinterface::PyException</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
+        <childnode refid="1393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1395">
+        <label>openage::audio::Error</label>
+        <link refid="classopenage_1_1audio_1_1_error"/>
+        <childnode refid="1393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1393">
+        <label>openage::error::Error</label>
+        <link refid="classopenage_1_1error_1_1_error"/>
+        <childnode refid="1394" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1399">
+        <label>runtime_error</label>
+      </node>
+      <node id="1400">
+        <label>openage::log::message</label>
+        <link refid="structopenage_1_1log_1_1message"/>
+        <childnode refid="1401" relation="usage">
+          <edgelabel>+lvl</edgelabel>
+        </childnode>
+      </node>
+      <node id="1404">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="1402">
+        <label>openage::util::Enum&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="1403" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1401">
+        <label>openage::log::level</label>
+        <link refid="structopenage_1_1log_1_1level"/>
+        <childnode refid="1402" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1403" relation="usage">
+          <edgelabel>+NOOPTIMIZE</edgelabel>
+        </childnode>
+      </node>
+      <node id="1398">
+        <label>openage::error::Error</label>
+        <link refid="classopenage_1_1error_1_1_error"/>
+        <childnode refid="1399" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1400" relation="usage">
+          <edgelabel>+msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="1403">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/error/error.h" line="51" column="1" bodyfile="libopenage/error/error.h" bodystart="51" bodyend="142"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>backtrace</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1aad1888d960bfad6b919cea7f8d9baff6" prot="private" virt="non-virtual"><scope>openage::error::Error</scope><name>cause</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>debug_break_on_create</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a755a7891dfe08412bc2312f29b0e618d" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>Error</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1ae0f4bcb1755332c4a26a998a88810072" prot="private" virt="non-virtual"><scope>openage::error::Error</scope><name>Error</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>msg</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>rethrow_cause</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a27cbe56bc7dbab4d399072ef87fe2014" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>store_cause</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>trim_backtrace</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059" prot="public" virt="virtual"><scope>openage::error::Error</scope><name>type_name</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" prot="public" virt="non-virtual"><scope>openage::error::Error</scope><name>what</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1audio_1_1_sound_impl" kind="class" language="C++" prot="public">
+    <compoundname>openage::audio::SoundImpl</compoundname>
+    <includes refid="sound_8h" local="no">sound.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Resource&gt; openage::audio::SoundImpl::resource</definition>
+        <argsstring></argsstring>
+        <name>resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The shared audio resource, which provides the pcm data to play. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="32" column="1" bodyfile="libopenage/audio/sound.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1a4ce6ba31e2a787b05e2c0fbc0407bf83" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::audio::SoundImpl::in_use</definition>
+        <argsstring></argsstring>
+        <name>in_use</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether this sound currently actively uses it&apos;s shared audio resource. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="37" column="1" bodyfile="libopenage/audio/sound.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1af7d9908aaf55c6a61c12d2580e06995f" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t openage::audio::SoundImpl::volume</definition>
+        <argsstring></argsstring>
+        <name>volume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The sound&apos;s volume. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="43" column="1" bodyfile="libopenage/audio/sound.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1ac475476618fa9d3ed85c94bae3d7efb9" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::audio::SoundImpl::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The sound&apos;s playing offset. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="48" column="1" bodyfile="libopenage/audio/sound.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1ade93b30f4d68510df26bfd49e45a4ba5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::audio::SoundImpl::playing</definition>
+        <argsstring></argsstring>
+        <name>playing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether this sound is currently playing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="53" column="1" bodyfile="libopenage/audio/sound.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_sound_impl_1a2230479beeb25bbb551502f49be07cf9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::audio::SoundImpl::looping</definition>
+        <argsstring></argsstring>
+        <name>looping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether this sound is currently looping. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="58" column="1" bodyfile="libopenage/audio/sound.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_sound_impl_1a221903ef97b6ebd4f62ec89a3a3a5935" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SoundImpl::SoundImpl</definition>
+        <argsstring>(std::shared_ptr&lt; Resource &gt; resource, int32_t volume=128)</argsstring>
+        <name>SoundImpl</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &gt;</type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>volume</declname>
+          <defval>128</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="26" column="1" bodyfile="libopenage/audio/sound.cpp" bodystart="104" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_sound_impl_1a554ae61e3f6b138c017b31b849402419" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SoundImpl::~SoundImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~SoundImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="27" column="1" bodyfile="libopenage/audio/sound.cpp" bodystart="115" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_sound_impl_1a4f3eda2bc3bc35a063dbe0aaed7976b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+        <definition>category_t openage::audio::SoundImpl::get_category</definition>
+        <argsstring>() const</argsstring>
+        <name>get_category</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns this sound&apos;s category. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="63" column="1" bodyfile="libopenage/audio/sound.cpp" bodystart="122" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_sound_impl_1ad8a0997c0bcbfc124af3dbbb48777f25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::audio::SoundImpl::get_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns this sound&apos;s id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="68" column="1" bodyfile="libopenage/audio/sound.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_sound_impl_1a91ff0db4059a504879d693cb02874e7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::audio::SoundImpl::mix_audio</definition>
+        <argsstring>(int32_t *stream, int length)</argsstring>
+        <name>mix_audio</name>
+        <param>
+          <type>int32_t *</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/sound.h" line="79" column="1" bodyfile="libopenage/audio/sound.cpp" bodystart="132" bodyend="159"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> is the internal implementation of a sound. It stores the sound&apos;s complete state. It is passed around as a shared_ptr, such that the same <ref refid="classopenage_1_1audio_1_1_sound_impl" kindref="compound">SoundImpl</ref> instance can be shared between the <ref refid="classopenage_1_1audio_1_1_sound" kindref="compound">Sound</ref> objects themselves and the <ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref>. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4230">
+        <label>openage::audio::SoundImpl</label>
+        <link refid="classopenage_1_1audio_1_1_sound_impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/sound.h" line="24" column="1" bodyfile="libopenage/audio/sound.h" bodystart="24" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a4f3eda2bc3bc35a063dbe0aaed7976b3" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>get_category</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1ad8a0997c0bcbfc124af3dbbb48777f25" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>get_id</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a4ce6ba31e2a787b05e2c0fbc0407bf83" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>in_use</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a2230479beeb25bbb551502f49be07cf9" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>looping</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a91ff0db4059a504879d693cb02874e7c" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>mix_audio</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1ac475476618fa9d3ed85c94bae3d7efb9" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>offset</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1ade93b30f4d68510df26bfd49e45a4ba5" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>playing</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a221903ef97b6ebd4f62ec89a3a3a5935" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>SoundImpl</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1af7d9908aaf55c6a61c12d2580e06995f" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>volume</name></member>
+      <member refid="classopenage_1_1audio_1_1_sound_impl_1a554ae61e3f6b138c017b31b849402419" prot="public" virt="non-virtual"><scope>openage::audio::SoundImpl</scope><name>~SoundImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1datastructure_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::datastructure::tests</compoundname>
+    <innerclass refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem" prot="public">openage::datastructure::tests::heap_elem</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1a57b696ae13dfb3c80d6c8cc7224b7c51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::pairing_heap_0</definition>
+        <argsstring>()</argsstring>
+        <name>pairing_heap_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="18" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="18" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1af82ba08f4a466babf0ca5ca833b91fa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::pairing_heap_1</definition>
+        <argsstring>()</argsstring>
+        <name>pairing_heap_1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="65" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="65" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1a4fbf658dd2eeeb34fb83295dd631e280" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::pairing_heap_2</definition>
+        <argsstring>()</argsstring>
+        <name>pairing_heap_2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="112" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="112" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1ae3ac08d1b58fe615f03e6332d84011af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::pairing_heap_3</definition>
+        <argsstring>()</argsstring>
+        <name>pairing_heap_3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="127" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="127" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1a68c5daac0260fc457d5916be54f20a82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::pairing_heap</definition>
+        <argsstring>()</argsstring>
+        <name>pairing_heap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="145" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="145" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1datastructure_1_1tests_1ade00c39e05018597baff76d22dedff44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::tests::constexpr_map</definition>
+        <argsstring>()</argsstring>
+        <name>constexpr_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.cpp" line="154" column="1" bodyfile="libopenage/datastructure/tests.cpp" bodystart="154" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/datastructure/tests.cpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

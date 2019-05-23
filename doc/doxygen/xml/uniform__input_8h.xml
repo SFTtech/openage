@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="uniform__input_8h" kind="file" language="C++">
+    <compoundname>uniform_input.h</compoundname>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includes refid="renderer_8h" local="yes">../renderer.h</includes>
+    <includedby refid="opengl_2shader__program_8h" local="yes">libopenage/renderer/opengl/shader_program.h</includedby>
+    <includedby refid="opengl_2renderer_8cpp" local="yes">libopenage/renderer/opengl/renderer.cpp</includedby>
+    <incdepgraph>
+      <node id="22674">
+        <label>vector</label>
+      </node>
+      <node id="22672">
+        <label>libopenage/renderer/opengl/uniform_input.h</label>
+        <link refid="uniform__input_8h"/>
+        <childnode refid="22673" relation="include">
+        </childnode>
+        <childnode refid="22674" relation="include">
+        </childnode>
+        <childnode refid="22675" relation="include">
+        </childnode>
+      </node>
+      <node id="22675">
+        <label>../renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="22674" relation="include">
+        </childnode>
+        <childnode refid="22676" relation="include">
+        </childnode>
+      </node>
+      <node id="22673">
+        <label>unordered_map</label>
+      </node>
+      <node id="22676">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22678">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="22679" relation="include">
+        </childnode>
+        <childnode refid="22680" relation="include">
+        </childnode>
+        <childnode refid="22682" relation="include">
+        </childnode>
+      </node>
+      <node id="22680">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="22681">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="22677">
+        <label>libopenage/renderer/opengl/uniform_input.h</label>
+        <link refid="uniform__input_8h"/>
+        <childnode refid="22678" relation="include">
+        </childnode>
+        <childnode refid="22680" relation="include">
+        </childnode>
+      </node>
+      <node id="22682">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="22679">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="22680" relation="include">
+        </childnode>
+        <childnode refid="22681" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input" prot="public">openage::renderer::opengl::GlUniformInput</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GlShaderProgram;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input" kindref="compound">GlUniformInput</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1a97ec775bc0df936b473a998f2ca14ddd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program" kindref="compound">GlShaderProgram</ref>*<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1a97ec775bc0df936b473a998f2ca14ddd" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1acbcaed98236468d6a7644bf193d94926" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>size_t&gt;<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1acbcaed98236468d6a7644bf193d94926" kindref="member">update_offs</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1abab70be3d013034cab65a970726eb450" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input_1abab70be3d013034cab65a970726eb450" kindref="member">update_data</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/uniform_input.h"/>
+  </compounddef>
+</doxygen>

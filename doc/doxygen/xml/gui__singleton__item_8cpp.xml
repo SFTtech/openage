@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__singleton__item_8cpp" kind="file" language="C++">
+    <compoundname>gui_singleton_item.cpp</compoundname>
+    <includes refid="gui__singleton__item_8h" local="yes">gui_singleton_item.h</includes>
+    <incdepgraph>
+      <node id="12829">
+        <label>QObject</label>
+      </node>
+      <node id="12827">
+        <label>libopenage/gui/guisys/link/gui_singleton_item.cpp</label>
+        <link refid="gui__singleton__item_8cpp"/>
+        <childnode refid="12828" relation="include">
+        </childnode>
+      </node>
+      <node id="12833">
+        <label>cassert</label>
+      </node>
+      <node id="12830">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12831" relation="include">
+        </childnode>
+        <childnode refid="12832" relation="include">
+        </childnode>
+      </node>
+      <node id="12832">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12833" relation="include">
+        </childnode>
+      </node>
+      <node id="12831">
+        <label>type_traits</label>
+      </node>
+      <node id="12828">
+        <label>gui_singleton_item.h</label>
+        <link refid="gui__singleton__item_8h"/>
+        <childnode refid="12829" relation="include">
+        </childnode>
+        <childnode refid="12830" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__singleton__item_8h" kindref="compound">gui_singleton_item.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classqtsdl_1_1_gui_singleton_item_1afa0cc1ceeabd19dbab913e655a690641" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_singleton_item_1afa0cc1ceeabd19dbab913e655a690641" kindref="member">GuiSingletonItem::GuiSingletonItem</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{parent},</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref>{}<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classqtsdl_1_1_gui_singleton_item_1a2ea57bca7b78f265f506ba3d4f53f6eb" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_singleton_item_1a2ea57bca7b78f265f506ba3d4f53f6eb" kindref="member">GuiSingletonItem::~GuiSingletonItem</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_singleton_item.cpp"/>
+  </compounddef>
+</doxygen>

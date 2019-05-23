@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_terrain_search" kind="class" language="C++" prot="public">
+    <compoundname>openage::TerrainSearch</compoundname>
+    <includes refid="terrain__search_8h" local="no">terrain_search.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1aabc2d7105bbc2e1ba01b95977fa0de58" prot="private" static="no" mutable="no">
+        <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        <definition>const std::shared_ptr&lt;Terrain&gt; openage::TerrainSearch::terrain</definition>
+        <argsstring></argsstring>
+        <name>terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="66" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" prot="private" static="no" mutable="no">
+        <type>const <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>const coord::tile openage::TerrainSearch::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="67" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1a2c95477aea517bbf5d2b3175bc81d59b" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
+        <definition>std::queue&lt;coord::tile&gt; openage::TerrainSearch::tiles</definition>
+        <argsstring></argsstring>
+        <name>tiles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="68" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1a3f3f713314cc35ac39ceebd269d4c04d" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
+        <definition>std::unordered_set&lt;coord::tile&gt; openage::TerrainSearch::visited</definition>
+        <argsstring></argsstring>
+        <name>visited</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="69" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1a01d013ba8b4a285b3041dd25ac589e47" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::TerrainSearch::previous_radius</definition>
+        <argsstring></argsstring>
+        <name>previous_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="70" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_terrain_search_1a6863c70e3157a232ae161a729070c1de" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::TerrainSearch::max_radius</definition>
+        <argsstring></argsstring>
+        <name>max_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="70" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1aa53b5b7989dd55bd6e62f8177dfa0272" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TerrainSearch::TerrainSearch</definition>
+        <argsstring>(std::shared_ptr&lt; Terrain &gt; t, coord::tile s)</argsstring>
+        <name>TerrainSearch</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>next_tile will cover all tiles on the map </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="42" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1a8a3bb1291b9100fcf5e83c6b8b341bae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TerrainSearch::TerrainSearch</definition>
+        <argsstring>(std::shared_ptr&lt; Terrain &gt; t, coord::tile s, float radius)</argsstring>
+        <name>TerrainSearch</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>next_tile will iterate over a range of tiles within a radius </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="47" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="61" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1abd84942183d81ff42c88742f59c3f163" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TerrainSearch::~TerrainSearch</definition>
+        <argsstring>()=default</argsstring>
+        <name>~TerrainSearch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1a1b5105c915bacc6ba0470be218f87b51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::TerrainSearch::start_tile</definition>
+        <argsstring>() const</argsstring>
+        <name>start_tile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the tile the search began on </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="53" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1a0db543b44fe51d0f1403bedba1f575a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::TerrainSearch::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>restarts the search from the start tile </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="58" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="73" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::TerrainSearch::next_tile</definition>
+        <argsstring>()</argsstring>
+        <name>next_tile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns all objects on the next tile </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="63" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="81" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>searches outward from a point and returns nearby objects The state of the search is kept within the class, which allows a user to look at a limited number of tiles per update cycle </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4385">
+        <label>openage::TerrainSearch</label>
+        <link refid="classopenage_1_1_terrain_search"/>
+        <childnode refid="4386" relation="usage">
+          <edgelabel>-start</edgelabel>
+        </childnode>
+      </node>
+      <node id="4387">
+        <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="4386">
+        <label>openage::coord::tile</label>
+        <link refid="structopenage_1_1coord_1_1tile"/>
+        <childnode refid="4387" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain_search.h" line="37" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="37" bodyend="72"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_terrain_search_1a6863c70e3157a232ae161a729070c1de" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>max_radius</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a9865063a926eb992bdc7c94eab5eb85e" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>next_tile</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a01d013ba8b4a285b3041dd25ac589e47" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>previous_radius</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a0db543b44fe51d0f1403bedba1f575a8" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>reset</name></member>
+      <member refid="classopenage_1_1_terrain_search_1ab1b7ffb236e9c4273d294e97a4b0eb5d" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>start</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a1b5105c915bacc6ba0470be218f87b51" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>start_tile</name></member>
+      <member refid="classopenage_1_1_terrain_search_1aabc2d7105bbc2e1ba01b95977fa0de58" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>terrain</name></member>
+      <member refid="classopenage_1_1_terrain_search_1aa53b5b7989dd55bd6e62f8177dfa0272" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>TerrainSearch</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a8a3bb1291b9100fcf5e83c6b8b341bae" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>TerrainSearch</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a2c95477aea517bbf5d2b3175bc81d59b" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>tiles</name></member>
+      <member refid="classopenage_1_1_terrain_search_1a3f3f713314cc35ac39ceebd269d4c04d" prot="private" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>visited</name></member>
+      <member refid="classopenage_1_1_terrain_search_1abd84942183d81ff42c88742f59c3f163" prot="public" virt="non-virtual"><scope>openage::TerrainSearch</scope><name>~TerrainSearch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

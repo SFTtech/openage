@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hash_8h" kind="file" language="C++">
+    <compoundname>hash.h</compoundname>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">array</includes>
+    <includedby refid="font_8h" local="yes">libopenage/renderer/font/font.h</includedby>
+    <includedby refid="event_2event_8cpp" local="yes">libopenage/event/event.cpp</includedby>
+    <includedby refid="glyph__atlas_8cpp" local="yes">libopenage/renderer/font/glyph_atlas.cpp</includedby>
+    <includedby refid="rng_8cpp" local="yes">libopenage/rng/rng.cpp</includedby>
+    <includedby refid="hash_8cpp" local="yes">libopenage/util/hash.cpp</includedby>
+    <includedby refid="hash__test_8cpp" local="yes">libopenage/util/hash_test.cpp</includedby>
+    <incdepgraph>
+      <node id="30573">
+        <label>libopenage/util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30574" relation="include">
+        </childnode>
+        <childnode refid="30575" relation="include">
+        </childnode>
+      </node>
+      <node id="30575">
+        <label>array</label>
+      </node>
+      <node id="30574">
+        <label>cstdlib</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30577">
+        <label>libopenage/renderer/font/font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="30578" relation="include">
+        </childnode>
+        <childnode refid="30584" relation="include">
+        </childnode>
+        <childnode refid="30586" relation="include">
+        </childnode>
+        <childnode refid="30589" relation="include">
+        </childnode>
+        <childnode refid="30590" relation="include">
+        </childnode>
+        <childnode refid="30591" relation="include">
+        </childnode>
+        <childnode refid="30587" relation="include">
+        </childnode>
+      </node>
+      <node id="30591">
+        <label>libopenage/renderer/font/tests.cpp</label>
+        <link refid="renderer_2font_2tests_8cpp"/>
+      </node>
+      <node id="30578">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="30579" relation="include">
+        </childnode>
+        <childnode refid="30580" relation="include">
+        </childnode>
+        <childnode refid="30581" relation="include">
+        </childnode>
+        <childnode refid="30582" relation="include">
+        </childnode>
+        <childnode refid="30583" relation="include">
+        </childnode>
+      </node>
+      <node id="30576">
+        <label>libopenage/util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30577" relation="include">
+        </childnode>
+        <childnode refid="30592" relation="include">
+        </childnode>
+        <childnode refid="30588" relation="include">
+        </childnode>
+        <childnode refid="30593" relation="include">
+        </childnode>
+        <childnode refid="30594" relation="include">
+        </childnode>
+        <childnode refid="30595" relation="include">
+        </childnode>
+      </node>
+      <node id="30592">
+        <label>libopenage/event/event.cpp</label>
+        <link refid="event_2event_8cpp"/>
+      </node>
+      <node id="30593">
+        <label>libopenage/rng/rng.cpp</label>
+        <link refid="rng_8cpp"/>
+      </node>
+      <node id="30582">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="30583">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="30585">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="30580" relation="include">
+        </childnode>
+        <childnode refid="30586" relation="include">
+        </childnode>
+        <childnode refid="30582" relation="include">
+        </childnode>
+        <childnode refid="30587" relation="include">
+        </childnode>
+      </node>
+      <node id="30579">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="30586">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="30588">
+        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <link refid="glyph__atlas_8cpp"/>
+      </node>
+      <node id="30594">
+        <label>libopenage/util/hash.cpp</label>
+        <link refid="hash_8cpp"/>
+      </node>
+      <node id="30595">
+        <label>libopenage/util/hash_test.cpp</label>
+        <link refid="hash__test_8cpp"/>
+      </node>
+      <node id="30589">
+        <label>libopenage/renderer/font/font.cpp</label>
+        <link refid="font_8cpp"/>
+      </node>
+      <node id="30587">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+      </node>
+      <node id="30580">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="30584">
+        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="30585" relation="include">
+        </childnode>
+        <childnode refid="30588" relation="include">
+        </childnode>
+      </node>
+      <node id="30590">
+        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <link refid="font__manager_8cpp"/>
+      </node>
+      <node id="30581">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1_siphash" prot="public">openage::util::Siphash</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">hash_combine</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hash1,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hash2);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1_siphash" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" kindref="member">Siphash</ref>(std::array&lt;uint8_t,<sp/>16&gt;<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref>&amp;<sp/><ref refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" kindref="member">set_key</ref>(std::array&lt;uint8_t,<sp/>16&gt;<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" kindref="member">digest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len_data);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" kindref="member">digest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65" refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>[2];</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/hash.h"/>
+  </compounddef>
+</doxygen>

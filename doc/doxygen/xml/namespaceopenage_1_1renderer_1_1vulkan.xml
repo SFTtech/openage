@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1renderer_1_1vulkan" kind="namespace" language="C++">
+    <compoundname>openage::renderer::vulkan</compoundname>
+    <innerclass refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" prot="public">openage::renderer::vulkan::SurfaceSupportDetails</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" prot="public">openage::renderer::vulkan::vlk_capabilities</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" prot="public">openage::renderer::vulkan::VlkDrawableDisplay</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer" prot="public">openage::renderer::vulkan::VlkFramebuffer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device" prot="public">openage::renderer::vulkan::VlkGraphicsDevice</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" prot="public">openage::renderer::vulkan::VlkLoader</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer" prot="public">openage::renderer::vulkan::VlkRenderer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program" prot="public">openage::renderer::vulkan::VlkShaderProgram</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window" prot="public">openage::renderer::vulkan::VlkWindow</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1vulkan_1a9a6e2e6f743d06ad5c3102062cb429ce" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VkShaderStageFlagBits</type>
+        <definition>static VkShaderStageFlagBits openage::renderer::vulkan::vk_shader_stage</definition>
+        <argsstring>(resources::shader_stage_t stage)</argsstring>
+        <name>vk_shader_stage</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">resources::shader_stage_t</ref></type>
+          <declname>stage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/shader_program.h" line="16" column="1" bodyfile="libopenage/renderer/vulkan/shader_program.h" bodystart="16" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VKAPI_ATTR VkBool32 VKAPI_CALL</type>
+        <definition>static VKAPI_ATTR VkBool32 VKAPI_CALL openage::renderer::vulkan::vlk_debug_cb</definition>
+        <argsstring>(VkDebugReportFlagsEXT, VkDebugReportObjectTypeEXT, uint64_t, size_t, int32_t, const char *layerPrefix, const char *msg, void *)</argsstring>
+        <name>vlk_debug_cb</name>
+        <param>
+          <type>VkDebugReportFlagsEXT</type>
+        </param>
+        <param>
+          <type>VkDebugReportObjectTypeEXT</type>
+        </param>
+        <param>
+          <type>uint64_t</type>
+        </param>
+        <param>
+          <type>size_t</type>
+        </param>
+        <param>
+          <type>int32_t</type>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>layerPrefix</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>void *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/windowvk.cpp" line="22" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="22" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" kindref="compound">vlk_capabilities</ref></type>
+        <definition>static vlk_capabilities openage::renderer::vulkan::find_capabilities</definition>
+        <argsstring>()</argsstring>
+        <name>find_capabilities</name>
+        <briefdescription>
+<para>Queries the Vulkan implementation for available extensions and layers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/windowvk.cpp" line="39" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.cpp" bodystart="39" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/vulkan/graphics_device.cpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

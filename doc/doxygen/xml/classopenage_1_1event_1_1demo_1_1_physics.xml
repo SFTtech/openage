@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1demo_1_1_physics" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::demo::Physics</compoundname>
+    <includes refid="physics_8h" local="no">physics.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_physics_1a8667e80722a83c0f0ff29835d5d54baf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::Physics::init</definition>
+        <argsstring>(const std::shared_ptr&lt; PongState &gt; &amp;, const std::shared_ptr&lt; Loop &gt; &amp;mgr, const curve::time_t &amp;)</argsstring>
+        <name>init</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_state" kindref="compound">PongState</ref> &gt; &amp;</type>
+          <defname>gstate</defname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &gt; &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <defname>now</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.h" line="19" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="362" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::Physics::reset</definition>
+        <argsstring>(const std::shared_ptr&lt; State &gt; &amp;, Loop &amp;mgr, const curve::time_t &amp;)</argsstring>
+        <name>reset</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <defname>gstate</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <defname>now</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.h" line="29" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="489" bodyend="495"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_physics_1a808f9e14e491c56f818471417ea08396" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::Physics::process_input</definition>
+        <argsstring>(const std::shared_ptr&lt; PongState &gt; &amp;, const std::shared_ptr&lt; PongPlayer &gt; &amp;, const std::vector&lt; PongEvent &gt; &amp;input, const std::shared_ptr&lt; Loop &gt; &amp;mgr, const curve::time_t &amp;now)</argsstring>
+        <name>process_input</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_state" kindref="compound">PongState</ref> &gt; &amp;</type>
+          <defname>state</defname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_player" kindref="compound">PongPlayer</ref> &gt; &amp;</type>
+          <defname>player</defname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classopenage_1_1event_1_1demo_1_1_pong_event" kindref="compound">PongEvent</ref> &gt; &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &gt; &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>now</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.h" line="23" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="383" bodyend="486"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3667">
+        <label>openage::event::demo::Physics</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_physics"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/demo/physics.h" line="17" column="1" bodyfile="libopenage/event/demo/physics.h" bodystart="17" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1demo_1_1_physics_1a8667e80722a83c0f0ff29835d5d54baf" prot="public" virt="non-virtual"><scope>openage::event::demo::Physics</scope><name>init</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_physics_1a808f9e14e491c56f818471417ea08396" prot="public" virt="non-virtual"><scope>openage::event::demo::Physics</scope><name>process_input</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_physics_1aaaafd5ac8b7a69517a6f26f9fa220984" prot="public" virt="non-virtual"><scope>openage::event::demo::Physics</scope><name>reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

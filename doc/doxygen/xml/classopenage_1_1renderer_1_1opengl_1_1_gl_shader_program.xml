@@ -1,0 +1,564 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlShaderProgram</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_shader_program" prot="public" virt="non-virtual">openage::renderer::ShaderProgram</basecompoundref>
+    <basecompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public" virt="non-virtual">openage::renderer::opengl::GlSimpleObject</basecompoundref>
+    <includes refid="opengl_2shader__program_8h" local="no">shader_program.h</includes>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform" prot="private">openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform" prot="private">openage::renderer::opengl::GlShaderProgram::GlUniform</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block" prot="private">openage::renderer::opengl::GlShaderProgram::GlUniformBlock</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib" prot="private">openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ab934cf9cbfdbf6edd165ababf491ee36" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform" kindref="compound">GlUniform</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, GlUniform&gt; openage::renderer::opengl::GlShaderProgram::uniforms</definition>
+        <argsstring></argsstring>
+        <name>uniforms</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps uniform names to their descriptions. Contains only uniforms in the default block, i.e. not within named blocks. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="104" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a864a96bae75aebe3a4733828ae6aa209" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_uniform_block" kindref="compound">GlUniformBlock</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, GlUniformBlock&gt; openage::renderer::opengl::GlShaderProgram::uniform_blocks</definition>
+        <argsstring></argsstring>
+        <name>uniform_blocks</name>
+        <briefdescription>
+<para>Maps uniform block names to their descriptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="107" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a11bedf8c840e53515d77a1babbff5446" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib" kindref="compound">GlVertexAttrib</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, GlVertexAttrib&gt; openage::renderer::opengl::GlShaderProgram::attribs</definition>
+        <argsstring></argsstring>
+        <name>attribs</name>
+        <briefdescription>
+<para>Maps per-vertex attribute names to their descriptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="110" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a85e89a2db0c89ce5e2855942ddeccd4c" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, GLuint &gt;</type>
+        <definition>std::unordered_map&lt;std::string, GLuint&gt; openage::renderer::opengl::GlShaderProgram::texunits_per_unifs</definition>
+        <argsstring></argsstring>
+        <name>texunits_per_unifs</name>
+        <briefdescription>
+<para>Maps sampler uniform names to their assigned texture units. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="113" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a586120e648ad9c41d5c0b4742615e40b" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; GLuint, GLuint &gt;</type>
+        <definition>std::unordered_map&lt;GLuint, GLuint&gt; openage::renderer::opengl::GlShaderProgram::textures_per_texunits</definition>
+        <argsstring></argsstring>
+        <name>textures_per_texunits</name>
+        <briefdescription>
+<para>Maps texture units to the texture handles that are currently bound to them. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="115" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a23caf208d074869ce8015e4722157b24" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::renderer::opengl::GlShaderProgram::validated</definition>
+        <argsstring></argsstring>
+        <name>validated</name>
+        <briefdescription>
+<para>Whether this program has been validated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="118" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aa779365799f67daace32b90e4a4fde5e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlShaderProgram::GlShaderProgram</definition>
+        <argsstring>(const std::vector&lt; resources::ShaderSource &gt; &amp;, const gl_context_capabilities &amp;)</argsstring>
+        <name>GlShaderProgram</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref> &gt; &amp;</type>
+          <defname>srcs</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref> &amp;</type>
+          <defname>caps</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to create a shader program from the given sources. Throws an exception on compile/link errors. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="27" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="50" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aadce87ffc66b0d5fb4a4ab08fb50a545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::use</definition>
+        <argsstring>()</argsstring>
+        <name>use</name>
+        <briefdescription>
+<para>Bind this program as the currently used one in the OpenGL context. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="272" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4344b9058a349eaa6a8f3fd2ea4a0425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::execute_with</definition>
+        <argsstring>(const GlUniformInput *, const GlGeometry *)</argsstring>
+        <name>execute_with</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input" kindref="compound">GlUniformInput</ref> *</type>
+          <defname>unif_in</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry" kindref="compound">GlGeometry</ref> *</type>
+          <defname>geom</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Does what the description of <ref refid="structopenage_1_1renderer_1_1_renderable" kindref="compound">Renderable</ref> specifies - updates the uniform values and draws the <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> if it&apos;s not nullptr. If geometry is null, only the uniform values are updated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="35" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="301" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aea8b57a81d42b380e63a35497e9004e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::opengl::GlShaderProgram::has_uniform</definition>
+        <argsstring>(const char *) override</argsstring>
+        <name>has_uniform</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a7ba29dd859811e2c5e6019f6fa962e8f">has_uniform</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the shader program contains a uniform variable with the given name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="37" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="383" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9a35d65a5b9222e45bb82d4d7f5c4af4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; size_t, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">resources::vertex_input_t</ref> &gt;</type>
+        <definition>std::map&lt; size_t, resources::vertex_input_t &gt; openage::renderer::opengl::GlShaderProgram::vertex_attributes</definition>
+        <argsstring>() const override</argsstring>
+        <name>vertex_attributes</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1ad9c2c7e1dfa281b4109ef966309193b4">vertex_attributes</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="39" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="367" bodyend="375"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aa5b47b1078193b018446825b5bee10a6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; UniformInput &gt; openage::renderer::opengl::GlShaderProgram::new_unif_in</definition>
+        <argsstring>() override</argsstring>
+        <name>new_unif_in</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1af13b539d6a4bc6b66152bdcd53a50815">new_unif_in</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="42" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="377" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a06cac47db0c579b51be9ac4649dc1c53" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_i32</definition>
+        <argsstring>(UniformInput *, const char *, int32_t) override</argsstring>
+        <name>set_i32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a83b741d600d5487dae1678b20901bf1b">set_i32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="43" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="416" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a0a1f0bc1b71441622f0def25f9f9da75" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_u32</definition>
+        <argsstring>(UniformInput *, const char *, uint32_t) override</argsstring>
+        <name>set_u32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1ab8c73f6f9a7309f03b6af9fa50fb5a3f">set_u32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="44" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="420" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac4f75b2618cef42e6c899fb6a07e0962" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_f32</definition>
+        <argsstring>(UniformInput *, const char *, float) override</argsstring>
+        <name>set_f32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a38e446978eda3822674dd5c00e2004c6">set_f32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>float</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="45" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="424" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_f64</definition>
+        <argsstring>(UniformInput *, const char *, double) override</argsstring>
+        <name>set_f64</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a02a78a00855ac5db139ef1430408660e">set_f64</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>double</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="46" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="428" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9359707c420fd0a161a5896e77a6e550" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_v2f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector2f const &amp;) override</argsstring>
+        <name>set_v2f32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a003661a1e233c8352a6a21f02df46f47">set_v2f32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>Eigen::Vector2f const &amp;</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="47" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="433" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a17b135a0127d7a818e166b9affa66bb1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_v3f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector3f const &amp;) override</argsstring>
+        <name>set_v3f32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a11f73da7683311faf4689d02e05e684e">set_v3f32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>Eigen::Vector3f const &amp;</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="48" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="437" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a506af6aebdc55843bc6f2b60c24276c9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_v4f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector4f const &amp;) override</argsstring>
+        <name>set_v4f32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a169361a2c5857643e5c8b8890b5e7592">set_v4f32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>Eigen::Vector4f const &amp;</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="49" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="441" bodyend="443"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4849d33ea8bf0da94f320e1f6bc4a0d7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_m4f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Matrix4f const &amp;) override</argsstring>
+        <name>set_m4f32</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1ae05f6d0029d2c7f2cb796647d5bc988e">set_m4f32</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>Eigen::Matrix4f const &amp;</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="50" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="445" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac57749f4580137a2dea2c7ffa38ce4d6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_tex</definition>
+        <argsstring>(UniformInput *, const char *, Texture2d const *) override</argsstring>
+        <name>set_tex</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d">set_tex</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> const *</type>
+          <defname>val</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="51" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="449" bodyend="453"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a109abb04920b505341184fc0a313dcbb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlShaderProgram::set_unif</definition>
+        <argsstring>(UniformInput *, const char *, void const *, GLenum)</argsstring>
+        <name>set_unif</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <defname>in</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <defname>unif</defname>
+        </param>
+        <param>
+          <type>void const *</type>
+          <defname>val</defname>
+        </param>
+        <param>
+          <type>GLenum</type>
+          <defname>type</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="54" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="387" bodyend="414"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A handle to an OpenGL shader program. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2416">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2415">
+        <label>openage::renderer::ShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1_shader_program"/>
+      </node>
+      <node id="2414">
+        <label>openage::renderer::opengl::GlShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program"/>
+        <childnode refid="2415" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2416" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2419">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2418">
+        <label>openage::renderer::ShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1_shader_program"/>
+      </node>
+      <node id="2417">
+        <label>openage::renderer::opengl::GlShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program"/>
+        <childnode refid="2418" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2419" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/shader_program.h" line="23" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="23" bodyend="119"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a11bedf8c840e53515d77a1babbff5446" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>attribs</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>delete_fun</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4344b9058a349eaa6a8f3fd2ea4a0425" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>execute_with</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>get_handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aa779365799f67daace32b90e4a4fde5e" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>GlShaderProgram</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad01a0a9dfceabcf5ea48a6af86a805ed" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a9cb29e026e6097138f0e6d20d22eb6b9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a24d175d087077438ddf0667d4f0bb210" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aea8b57a81d42b380e63a35497e9004e4" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>has_uniform</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aa5b47b1078193b018446825b5bee10a6" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>new_unif_in</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>new_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a19018330cb67b7f63271764b883ff19a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aa5c241e2d89ec1043b3540c6beb8a3a2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac4f75b2618cef42e6c899fb6a07e0962" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_f64</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a06cac47db0c579b51be9ac4649dc1c53" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_i32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4849d33ea8bf0da94f320e1f6bc4a0d7" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_m4f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac57749f4580137a2dea2c7ffa38ce4d6" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_tex</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a0a1f0bc1b71441622f0def25f9f9da75" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_u32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a109abb04920b505341184fc0a313dcbb" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_unif</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9359707c420fd0a161a5896e77a6e550" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_v2f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a17b135a0127d7a818e166b9affa66bb1" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_v3f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a506af6aebdc55843bc6f2b60c24276c9" prot="protected" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>set_v4f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a586120e648ad9c41d5c0b4742615e40b" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>textures_per_texunits</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a85e89a2db0c89ce5e2855942ddeccd4c" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>texunits_per_unifs</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a864a96bae75aebe3a4733828ae6aa209" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>uniform_blocks</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ab934cf9cbfdbf6edd165ababf491ee36" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>uniforms</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ace920cff0ddac348df64589d5dd65e15" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ac6549848a570989183b4b4aad8e28760" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ac6f09354128bf60fbc6496e068c0e1f9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a54f4f8c5b183cee951ba8907a813bcd0" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ab9738e5488390ab104453de449ba7444" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1acf5fbb3328c63da7b645fa08f818c467" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a87ccfe4e0351057379871371ed0e928a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a1de758ad1a110cd48a774d88a11582bf" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a083cfce2ba6018afe512911c55457fde" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ad7648faf2a3e82a63a95076d3ed98d33" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a40d140c46c04de019b5081c5276bf201" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aadce87ffc66b0d5fb4a4ab08fb50a545" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>use</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a23caf208d074869ce8015e4722157b24" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>validated</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9a35d65a5b9222e45bb82d4d7f5c4af4" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>vertex_attributes</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a52d36fe37bbca9529578795d1042530d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>~GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a163d2ac1e773640fa98d3394e4d54087" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlShaderProgram</scope><name>~ShaderProgram</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

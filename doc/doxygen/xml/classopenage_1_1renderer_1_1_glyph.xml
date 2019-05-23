@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_glyph" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::Glyph</compoundname>
+    <includes refid="font_8h" local="no">font.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1a08ec5ceda600508d4a3ebb416f5dae98" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+        <definition>codepoint_t openage::renderer::Glyph::codepoint</definition>
+        <argsstring></argsstring>
+        <name>codepoint</name>
+        <briefdescription>
+<para><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref>&apos;s codepoint. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="28" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::Glyph::x_offset</definition>
+        <argsstring></argsstring>
+        <name>x_offset</name>
+        <briefdescription>
+<para>Horizontal distance from origin (current pen position) to glyph&apos;s leftmost boundary. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="29" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::Glyph::y_offset</definition>
+        <argsstring></argsstring>
+        <name>y_offset</name>
+        <briefdescription>
+<para>Vertical distance from the baseline to glyph&apos;s topmost boundary. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="30" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::Glyph::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+<para>Width of the glyph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="31" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::Glyph::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+<para>Height of the glyph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="32" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::Glyph::x_advance</definition>
+        <argsstring></argsstring>
+        <name>x_advance</name>
+        <briefdescription>
+<para>Advance width of the glyph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="33" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::Glyph::y_advance</definition>
+        <argsstring></argsstring>
+        <name>y_advance</name>
+        <briefdescription>
+<para>Advance height of the glyph. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="34" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds info about a single glyph. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2465">
+        <label>openage::renderer::Glyph</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font.h" line="26" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="26" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1a08ec5ceda600508d4a3ebb416f5dae98" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>codepoint</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>height</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>width</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>x_advance</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>x_offset</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>y_advance</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" prot="public" virt="non-virtual"><scope>openage::renderer::Glyph</scope><name>y_offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

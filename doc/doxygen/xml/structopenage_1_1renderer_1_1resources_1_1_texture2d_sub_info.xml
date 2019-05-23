@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::Texture2dSubInfo</compoundname>
+    <includes refid="texture__subinfo_8h" local="no">texture_subinfo.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a4d0a8eec81bd5eac58e3c7846100ee78" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>The subtexture position within the atlas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="20" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1aeedd2e9b3c6b03efa5d3b0daf37f79d9" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="20" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a594735c3b72fc7c68fd7cdfc489b6714" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>The subtexture size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="23" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a8de1ca95f9c32bf2c0df4e9010aeb372" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::h</definition>
+        <argsstring></argsstring>
+        <name>h</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="23" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ae209837ea123f60ddf1950e143615e08" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::cx</definition>
+        <argsstring></argsstring>
+        <name>cx</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Position of the subtexture&apos;s center within the atlas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="26" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ab98662bcfef07faffc5d01190124b26f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::resources::Texture2dSubInfo::cy</definition>
+        <argsstring></argsstring>
+        <name>cy</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="26" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ad1512b3a27b24f2e1edc45d361b30a3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</definition>
+        <argsstring>(const std::string &amp;line)</argsstring>
+        <name>Texture2dSubInfo</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the info from a CSV line containing its members. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="29" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.cpp" bodystart="10" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a52e7df03844f19937c9bfa055c74b720" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</definition>
+        <argsstring>(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint32_t cx, uint32_t cy)</argsstring>
+        <name>Texture2dSubInfo</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cy</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the info from data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="32" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.cpp" bodystart="38" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ae47d38e2a8a65d5b1135a33fab9bec4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dSubInfo::Texture2dSubInfo</definition>
+        <argsstring>()=default</argsstring>
+        <name>Texture2dSubInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a03e6fa8867f7baf6a41625ce3330fbfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::renderer::resources::Texture2dSubInfo::fill</definition>
+        <argsstring>(const std::string &amp;line)</argsstring>
+        <name>fill</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Needed for compatibility reasons, don&apos;t use this directly. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_subinfo.h" line="37" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Describes a position of a (sub)texture within a larger texture. Used for texture atlases and animations where all frames are within one texture file. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4473">
+        <label>openage::renderer::resources::Texture2dSubInfo</label>
+        <link refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/texture_subinfo.h" line="18" column="1" bodyfile="libopenage/renderer/resources/texture_subinfo.h" bodystart="18" bodyend="38"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ae209837ea123f60ddf1950e143615e08" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>cx</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ab98662bcfef07faffc5d01190124b26f" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>cy</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a03e6fa8867f7baf6a41625ce3330fbfb" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>fill</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a8de1ca95f9c32bf2c0df4e9010aeb372" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>h</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ad1512b3a27b24f2e1edc45d361b30a3a" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>Texture2dSubInfo</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a52e7df03844f19937c9bfa055c74b720" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>Texture2dSubInfo</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1ae47d38e2a8a65d5b1135a33fab9bec4c" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>Texture2dSubInfo</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a594735c3b72fc7c68fd7cdfc489b6714" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>w</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1a4d0a8eec81bd5eac58e3c7846100ee78" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>x</name></member>
+      <member refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info_1aeedd2e9b3c6b03efa5d3b0daf37f79d9" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dSubInfo</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

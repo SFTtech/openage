@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1audio_1_1_s_d_l_device_lock" kind="class" language="C++" prot="public">
+    <compoundname>openage::audio::SDLDeviceLock</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1ab6e959d2eb276312ea57281e7f38071c" prot="private" static="no" mutable="no">
+        <type>SDL_AudioDeviceID</type>
+        <definition>SDL_AudioDeviceID openage::audio::SDLDeviceLock::dev_id</definition>
+        <argsstring></argsstring>
+        <name>dev_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="44" column="1" bodyfile="libopenage/audio/audio_manager.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1a6f86c9dc2889b0fda5b4a1cd56ff6440" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SDLDeviceLock::SDLDeviceLock</definition>
+        <argsstring>(const SDL_AudioDeviceID &amp;id)</argsstring>
+        <name>SDLDeviceLock</name>
+        <param>
+          <type>const SDL_AudioDeviceID &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="28" column="1" bodyfile="libopenage/audio/audio_manager.cpp" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1a9221932b1336043d66227643e5cf7c46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SDLDeviceLock::~SDLDeviceLock</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLDeviceLock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="34" column="1" bodyfile="libopenage/audio/audio_manager.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1acab8bc4ac3b67e5d5467168e707c9d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SDLDeviceLock::SDLDeviceLock</definition>
+        <argsstring>(SDLDeviceLock &amp;&amp;)=delete</argsstring>
+        <name>SDLDeviceLock</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1aeb93c7818ef44d595663f308ba8927d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::SDLDeviceLock::SDLDeviceLock</definition>
+        <argsstring>(const SDLDeviceLock &amp;)=delete</argsstring>
+        <name>SDLDeviceLock</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1a36e9f1b356c79a47869800823636a92e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;</type>
+        <definition>SDLDeviceLock&amp; openage::audio::SDLDeviceLock::operator=</definition>
+        <argsstring>(SDLDeviceLock &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_s_d_l_device_lock_1a79de3519031c1e9ccef3a17358a227f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;</type>
+        <definition>SDLDeviceLock&amp; openage::audio::SDLDeviceLock::operator=</definition>
+        <argsstring>(const SDLDeviceLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1audio_1_1_s_d_l_device_lock" kindref="compound">SDLDeviceLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/audio_manager.cpp" line="41" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Wrapper class for the sdl audio device locking so the device doesn&apos;t deadlock because of funny exceptions. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4138">
+        <label>openage::audio::SDLDeviceLock</label>
+        <link refid="classopenage_1_1audio_1_1_s_d_l_device_lock"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/audio_manager.cpp" line="26" column="1" bodyfile="libopenage/audio/audio_manager.cpp" bodystart="26" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1ab6e959d2eb276312ea57281e7f38071c" prot="private" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>dev_id</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1a36e9f1b356c79a47869800823636a92e" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1a79de3519031c1e9ccef3a17358a227f0" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1a6f86c9dc2889b0fda5b4a1cd56ff6440" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>SDLDeviceLock</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1acab8bc4ac3b67e5d5467168e707c9d0f" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>SDLDeviceLock</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1aeb93c7818ef44d595663f308ba8927d8" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>SDLDeviceLock</name></member>
+      <member refid="classopenage_1_1audio_1_1_s_d_l_device_lock_1a9221932b1336043d66227643e5cf7c46" prot="public" virt="non-virtual"><scope>openage::audio::SDLDeviceLock</scope><name>~SDLDeviceLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

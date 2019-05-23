@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_game_main" kind="class" language="C++" prot="public">
+    <compoundname>openage::GameMain</compoundname>
+    <basecompoundref refid="classopenage_1_1options_1_1_option_node" prot="public" virt="non-virtual">openage::options::OptionNode</basecompoundref>
+    <includes refid="game__main_8h" local="no">game_main.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Terrain&gt; openage::GameMain::terrain</definition>
+        <argsstring></argsstring>
+        <name>terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>map information </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="72" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_team" kindref="compound">Team</ref> &gt;</type>
+        <definition>std::vector&lt;Team&gt; openage::GameMain::teams</definition>
+        <argsstring></argsstring>
+        <name>teams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all teams in the game </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="77" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1ac60903df53b3bbf215b1f15f919dd3c6" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_market" kindref="compound">Market</ref></type>
+        <definition>Market openage::GameMain::market</definition>
+        <argsstring></argsstring>
+        <name>market</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The global market (the global market prices). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="82" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref></type>
+        <definition>UnitContainer openage::GameMain::placed_units</definition>
+        <argsstring></argsstring>
+        <name>placed_units</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all the objects that have been placed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="87" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1a2e33821ccae8d83b550256b96fef381e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Player&gt; &gt; openage::GameMain::players</definition>
+        <argsstring></argsstring>
+        <name>players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all players in the game no objects should be added of removed once populated </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="95" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1aac754495a630309c256b41aeeb6f6a2e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;Civilisation&gt; &gt; openage::GameMain::civs</definition>
+        <argsstring></argsstring>
+        <name>civs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>civs used in this game </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="105" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_game_main_1aec9c7942bfc1d0c83058ededba2bbfe2" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GameSpec&gt; openage::GameMain::spec</definition>
+        <argsstring></argsstring>
+        <name>spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="107" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a407c4039ce4bd42030510ecf948820eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::GameMain::GameMain</definition>
+        <argsstring>(const Generator &amp;generator)</argsstring>
+        <name>GameMain</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_generator" kindref="compound">Generator</ref> &amp;</type>
+          <declname>generator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="36" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="15" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a9fd586efcead21e5e63965db6cdf1313" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::GameMain::~GameMain</definition>
+        <argsstring>()</argsstring>
+        <name>~GameMain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="37" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a8e21198940164b2d9f628196fc0bf389" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::GameMain::player_count</definition>
+        <argsstring>() const</argsstring>
+        <name>player_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the number of players </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="42" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> *</type>
+        <definition>Player * openage::GameMain::get_player</definition>
+        <argsstring>(unsigned int player_id)</argsstring>
+        <name>get_player</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>player_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>player by index </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="47" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a6f8adc595bd010a815f5783fd72df591" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::GameMain::team_count</definition>
+        <argsstring>() const</argsstring>
+        <name>team_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the number of teams </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="52" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a30f7ab2e54b3227bf2d12dee9462e9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_team" kindref="compound">Team</ref> *</type>
+        <definition>Team * openage::GameMain::get_team</definition>
+        <argsstring>(unsigned int team_id)</argsstring>
+        <name>get_team</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>team_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>team by id </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="57" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a9c18854cb18678045a149d3dba99eba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> *</type>
+        <definition>GameSpec * openage::GameMain::get_spec</definition>
+        <argsstring>()</argsstring>
+        <name>get_spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the spec in this games settings </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="62" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a0bec5982fb6c7685722b204ce199e458" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::GameMain::update</definition>
+        <argsstring>(time_nsec_t lastframe_duration)</argsstring>
+        <name>update</name>
+        <param>
+          <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+          <declname>lastframe_duration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>updates the game by one frame </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="67" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_game_main_1a08149fd6c63e67e2d495e77fb52439a9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref> *</type>
+        <definition>Civilisation * openage::GameMain::add_civ</definition>
+        <argsstring>(int civ_id)</argsstring>
+        <name>add_civ</name>
+        <param>
+          <type>int</type>
+          <declname>civ_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>creates a random civ, owned and managed by this game </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_main.h" line="100" column="1" bodyfile="libopenage/gamestate/game_main.cpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains information for a single game This information must be synced across network clients</para>
+<para>TODO: include a list of actions to be saved as the game replay file </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1819">
+        <label>openage::GameMain</label>
+        <link refid="classopenage_1_1_game_main"/>
+        <childnode refid="1820" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1820">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1821">
+        <label>openage::GameMain</label>
+        <link refid="classopenage_1_1_game_main"/>
+        <childnode refid="1822" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1823" relation="usage">
+          <edgelabel>+market</edgelabel>
+        </childnode>
+        <childnode refid="1825" relation="usage">
+          <edgelabel>+placed_units</edgelabel>
+        </childnode>
+      </node>
+      <node id="1822">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="1822" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="1823">
+        <label>openage::Market</label>
+        <link refid="classopenage_1_1_market"/>
+        <childnode refid="1824" relation="usage">
+          <edgelabel>-base_prices</edgelabel>
+        </childnode>
+      </node>
+      <node id="1824">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="1825">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/game_main.h" line="34" column="1" bodyfile="libopenage/gamestate/game_main.h" bodystart="34" bodyend="108"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::GameMain</scope><name>add</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::GameMain</scope><name>add_action</name></member>
+      <member refid="classopenage_1_1_game_main_1a08149fd6c63e67e2d495e77fb52439a9" prot="private" virt="non-virtual"><scope>openage::GameMain</scope><name>add_civ</name></member>
+      <member refid="classopenage_1_1_game_main_1aac754495a630309c256b41aeeb6f6a2e" prot="private" virt="non-virtual"><scope>openage::GameMain</scope><name>civs</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>do_action</name></member>
+      <member refid="classopenage_1_1_game_main_1a407c4039ce4bd42030510ecf948820eb" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>GameMain</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_child</name></member>
+      <member refid="classopenage_1_1_game_main_1ace86de3be7238212c0b49ecc1247e8a4" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_player</name></member>
+      <member refid="classopenage_1_1_game_main_1a9c18854cb18678045a149d3dba99eba1" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_spec</name></member>
+      <member refid="classopenage_1_1_game_main_1a30f7ab2e54b3227bf2d12dee9462e9ca" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_team</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_variable</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>get_variable_rw</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3caf0f35390dcb01054beb14a4c20819" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>getv</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>list_functions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>list_options</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>list_variables</name></member>
+      <member refid="classopenage_1_1_game_main_1ac60903df53b3bbf215b1f15f919dd3c6" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>market</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>name</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>OptionNode</name></member>
+      <member refid="classopenage_1_1_game_main_1ac0651e2cfcbf6733dfe637b6b72eaefc" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>placed_units</name></member>
+      <member refid="classopenage_1_1_game_main_1a8e21198940164b2d9f628196fc0bf389" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>player_count</name></member>
+      <member refid="classopenage_1_1_game_main_1a2e33821ccae8d83b550256b96fef381e" prot="private" virt="non-virtual"><scope>openage::GameMain</scope><name>players</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>set_parent</name></member>
+      <member refid="classopenage_1_1_game_main_1aec9c7942bfc1d0c83058ededba2bbfe2" prot="private" virt="non-virtual"><scope>openage::GameMain</scope><name>spec</name></member>
+      <member refid="classopenage_1_1_game_main_1a6f8adc595bd010a815f5783fd72df591" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>team_count</name></member>
+      <member refid="classopenage_1_1_game_main_1a9499997a06046df21b4c76940c8d704d" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>teams</name></member>
+      <member refid="classopenage_1_1_game_main_1a0a2423176e649f9865eb97fc0f187b63" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>terrain</name></member>
+      <member refid="classopenage_1_1_game_main_1a0bec5982fb6c7685722b204ce199e458" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>update</name></member>
+      <member refid="classopenage_1_1_game_main_1a9fd586efcead21e5e63965db6cdf1313" prot="public" virt="non-virtual"><scope>openage::GameMain</scope><name>~GameMain</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" prot="public" virt="virtual"><scope>openage::GameMain</scope><name>~OptionNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__item__link_8h" kind="file" language="C++">
+    <compoundname>gui_item_link.h</compoundname>
+    <includes local="no">type_traits</includes>
+    <includes refid="qtsdl__checked__static__cast_8h" local="yes">qtsdl_checked_static_cast.h</includes>
+    <includedby refid="gui__item_8h" local="yes">libopenage/gui/guisys/link/gui_item.h</includedby>
+    <includedby refid="gui__singleton__item_8h" local="yes">libopenage/gui/guisys/link/gui_singleton_item.h</includedby>
+    <incdepgraph>
+      <node id="12705">
+        <label>cassert</label>
+      </node>
+      <node id="12702">
+        <label>libopenage/gui/guisys/link/gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12703" relation="include">
+        </childnode>
+        <childnode refid="12704" relation="include">
+        </childnode>
+      </node>
+      <node id="12704">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12705" relation="include">
+        </childnode>
+      </node>
+      <node id="12703">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12722">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="12721">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="12718" relation="include">
+        </childnode>
+        <childnode refid="12716" relation="include">
+        </childnode>
+        <childnode refid="12722" relation="include">
+        </childnode>
+      </node>
+      <node id="12727">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+      </node>
+      <node id="12730">
+        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <link refid="gui__live__reloader_8cpp"/>
+      </node>
+      <node id="12708">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="12709" relation="include">
+        </childnode>
+        <childnode refid="12710" relation="include">
+        </childnode>
+        <childnode refid="12711" relation="include">
+        </childnode>
+        <childnode refid="12712" relation="include">
+        </childnode>
+        <childnode refid="12713" relation="include">
+        </childnode>
+      </node>
+      <node id="12734">
+        <label>libopenage/gui/guisys/link/gui_singleton_item.cpp</label>
+        <link refid="gui__singleton__item_8cpp"/>
+      </node>
+      <node id="12709">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="12710" relation="include">
+        </childnode>
+      </node>
+      <node id="12707">
+        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12708" relation="include">
+        </childnode>
+        <childnode refid="12714" relation="include">
+        </childnode>
+        <childnode refid="12717" relation="include">
+        </childnode>
+        <childnode refid="12721" relation="include">
+        </childnode>
+        <childnode refid="12723" relation="include">
+        </childnode>
+        <childnode refid="12726" relation="include">
+        </childnode>
+        <childnode refid="12728" relation="include">
+        </childnode>
+        <childnode refid="12729" relation="include">
+        </childnode>
+        <childnode refid="12730" relation="include">
+        </childnode>
+      </node>
+      <node id="12711">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="12710">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="12706">
+        <label>libopenage/gui/guisys/link/gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12707" relation="include">
+        </childnode>
+        <childnode refid="12731" relation="include">
+        </childnode>
+      </node>
+      <node id="12728">
+        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <link refid="gui__item_8cpp"/>
+      </node>
+      <node id="12725">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="12718">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="12733">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="12717">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="12712" relation="include">
+        </childnode>
+        <childnode refid="12718" relation="include">
+        </childnode>
+        <childnode refid="12719" relation="include">
+        </childnode>
+        <childnode refid="12720" relation="include">
+        </childnode>
+      </node>
+      <node id="12715">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="12714">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="12715" relation="include">
+        </childnode>
+        <childnode refid="12716" relation="include">
+        </childnode>
+      </node>
+      <node id="12724">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12718" relation="include">
+        </childnode>
+        <childnode refid="12720" relation="include">
+        </childnode>
+        <childnode refid="12725" relation="include">
+        </childnode>
+      </node>
+      <node id="12726">
+        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12724" relation="include">
+        </childnode>
+      </node>
+      <node id="12732">
+        <label>libopenage/gui/engine_link.h</label>
+        <link refid="engine__link_8h"/>
+        <childnode refid="12715" relation="include">
+        </childnode>
+        <childnode refid="12733" relation="include">
+        </childnode>
+        <childnode refid="12712" relation="include">
+        </childnode>
+        <childnode refid="12719" relation="include">
+        </childnode>
+      </node>
+      <node id="12712">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="12729">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+      <node id="12723">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12724" relation="include">
+        </childnode>
+        <childnode refid="12726" relation="include">
+        </childnode>
+        <childnode refid="12727" relation="include">
+        </childnode>
+      </node>
+      <node id="12719">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="12720">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="12713">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="12716">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+      <node id="12731">
+        <label>libopenage/gui/guisys/link/gui_singleton_item.h</label>
+        <link refid="gui__singleton__item_8h"/>
+        <childnode refid="12732" relation="include">
+        </childnode>
+        <childnode refid="12734" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_item_link" prot="public">qtsdl::GuiItemLink</innerclass>
+    <innerclass refid="structqtsdl_1_1_wrap" prot="public">qtsdl::Wrap</innerclass>
+    <innerclass refid="structqtsdl_1_1_unwrap" prot="public">qtsdl::Unwrap</innerclass>
+    <innerclass refid="structqtsdl_1_1can__call__test" prot="public">qtsdl::can_call_test</innerclass>
+    <innerclass refid="structqtsdl_1_1can__call" prot="public">qtsdl::can_call</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qtsdl__checked__static__cast_8h" kindref="compound">qtsdl_checked_static_cast.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_item_link" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" kindref="member">~GuiItemLink</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="26" refid="structqtsdl_1_1_wrap" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="33" refid="structqtsdl_1_1_unwrap" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="37" refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap&lt;T&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(T<sp/>*t)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t<sp/>?<sp/>t-&gt;template<sp/>get&lt;typename<sp/>Unwrap&lt;T&gt;::Type&gt;()<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="42" refid="namespaceqtsdl_1a82d73e11702a9770cca7fd06eb671a63" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap&lt;T&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>*t)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t<sp/>?<sp/>t-&gt;template<sp/>get&lt;typename<sp/>Unwrap&lt;T&gt;::Type&gt;()<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="47" refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" kindref="member">wrap</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>U<sp/>*u)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" kindref="member">checked_static_cast</ref>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*&gt;(u-&gt;gui_link);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiSingletonItem;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="57" refid="namespaceqtsdl_1a47e2bf10f69ccb92b771184271a47241" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" kindref="member">wrap</ref>(U<sp/>*u,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;!std::is_base_of&lt;<ref refid="classqtsdl_1_1_gui_singleton_item" kindref="compound">GuiSingletonItem</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>&gt;::value&gt;::type*<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>u<sp/>?<sp/><ref refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" kindref="member">checked_static_cast</ref>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*&gt;(u-&gt;gui_link)<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="62" refid="namespaceqtsdl_1a82f72a1001442aaeee79d5952de48b20" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" kindref="member">wrap</ref>(U<sp/>*u,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;std::is_base_of&lt;<ref refid="classqtsdl_1_1_gui_singleton_item" kindref="compound">GuiSingletonItem</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>&gt;::value&gt;::type*<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>u<sp/>?<sp/><ref refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" kindref="member">checked_static_cast</ref>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap&lt;U&gt;::Type</ref>*&gt;(u-&gt;gui_link)<sp/>:<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>P&gt;</highlight></codeline>
+<codeline lineno="67" refid="namespaceqtsdl_1a37d1caf872154786b3438feecde53449" refkind="member"><highlight class="normal">constexpr<sp/>P&amp;&amp;<sp/><ref refid="namespaceqtsdl_1a37d1caf872154786b3438feecde53449" kindref="member">wrap_if_can</ref>(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::remove_reference&lt;P&gt;::type&amp;&amp;<sp/>p)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::forward&lt;P&gt;(p);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="72" refid="namespaceqtsdl_1a182757d03b4347d5c8577102b0c3259f" refkind="member"><highlight class="normal">T<sp/><ref refid="namespaceqtsdl_1a37d1caf872154786b3438feecde53449" kindref="member">wrap_if_can</ref>(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap</ref>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::remove_pointer&lt;T&gt;::type&gt;::Type<sp/>*u)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceqtsdl_1a5a0a6c84da4886196d22ea5de4477e66" kindref="member">wrap</ref>(u);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>P&gt;</highlight></codeline>
+<codeline lineno="77" refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" refkind="member"><highlight class="normal">P<sp/><ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(P&amp;<sp/>p)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">template&lt;typename<sp/>T,<sp/>typename<sp/>Unwrap&lt;T&gt;::Type*<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="82" refid="namespaceqtsdl_1a993df7502f716e746ca8c9a2568c3292" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap&lt;T&gt;::Type</ref>*<sp/><ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(T<sp/>*t)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(t);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="structqtsdl_1_1can__call__test" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqtsdl_1_1can__call__test" kindref="compound">can_call_test</ref><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>decltype(std::declval&lt;F&gt;()(std::declval&lt;Args&gt;()...),<sp/>std::true_type())<sp/><ref refid="structqtsdl_1_1can__call__test_1a732de8f44ab5dce6eee0749658931533" kindref="member">f</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::false_type<sp/><ref refid="structqtsdl_1_1can__call__test_1a732de8f44ab5dce6eee0749658931533" kindref="member">f</ref>(...);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="104" refid="structqtsdl_1_1can__call" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqtsdl_1_1can__call" kindref="compound">can_call</ref><sp/>:<sp/>decltype(can_call_test::f&lt;F,<sp/>Args...&gt;(0))<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="117" refid="namespaceqtsdl_1a6ccef384f823460943a2aaf5b074dce5" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceqtsdl_1a6ccef384f823460943a2aaf5b074dce5" kindref="member">static_assert_about_unwrapping</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(<ref refid="structqtsdl_1_1can__call" kindref="compound">can_call&lt;F, Args...&gt;</ref>{},<sp/></highlight><highlight class="stringliteral">&quot;One<sp/>of<sp/>possible<sp/>causes:<sp/>if<sp/>you&apos;re<sp/>passing<sp/>SomethingLink*,<sp/>then<sp/>don&apos;t<sp/>forget<sp/>to<sp/>#include<sp/>\&quot;something_link.h\&quot;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_item_link.h"/>
+  </compounddef>
+</doxygen>

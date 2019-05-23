@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_window" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlWindow</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_window" prot="public" virt="non-virtual">openage::renderer::Window</basecompoundref>
+    <includes refid="opengl_2window_8h" local="no">window.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" prot="private" static="no" mutable="no">
+        <type>SDL_Window *</type>
+        <definition>SDL_Window* openage::renderer::opengl::GlWindow::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <briefdescription>
+<para>The <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> struct representing this window. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="37" column="1" bodyfile="libopenage/renderer/opengl/window.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aab2e3f73a07d214294a7b876127e1ae1" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">opengl::GlContext</ref> &gt;</type>
+        <definition>std::optional&lt;opengl::GlContext&gt; openage::renderer::opengl::GlWindow::context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The window&apos;s OpenGL context. It&apos;s optional because it can&apos;t be constructed immediately, but after the constructor runs it&apos;s guaranteed to be available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="41" column="1" bodyfile="libopenage/renderer/opengl/window.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlWindow::GlWindow</definition>
+        <argsstring>(const char *title, size_t width, size_t height)</argsstring>
+        <name>GlWindow</name>
+        <param>
+          <type>const char *</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+<para>Create a shiny window with the given title. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="19" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="16" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a3959f808d2c7d83556a7c605e2d550de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlWindow::~GlWindow</definition>
+        <argsstring>()</argsstring>
+        <name>~GlWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="20" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1ad74b6ed2d5495dd39ccc7d21c88bac1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlWindow::set_size</definition>
+        <argsstring>(size_t width, size_t height) override</argsstring>
+        <name>set_size</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_window_1af9c94c1eb6ec43c5891c210e0eff2a6c">set_size</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Force the window to the given size. It&apos;s generally not a good idea to use this, as it makes the window jump around wierdly. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="22" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="47" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlWindow::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_window_1a2a6722e3c0459b2caa86e8f819ff5e3f">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Polls for window events, calls callbacks for these events, swaps front and back framebuffers to present graphics onto screen. This has to be called at the end of every graphics frame. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="58" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a45268949d2510860b3643bb7779f521b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_renderer" kindref="compound">Renderer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; Renderer &gt; openage::renderer::opengl::GlWindow::make_renderer</definition>
+        <argsstring>() override</argsstring>
+        <name>make_renderer</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_window_1ab5a85c89ebe4c6f9426ca989bc8aa305">make_renderer</reimplements>
+        <briefdescription>
+<para>Creates a renderer which uses the window&apos;s graphics API and targets the window. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="26" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a666be4fac900a35afedc7ec086d98133" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlWindow::make_context_current</definition>
+        <argsstring>()</argsstring>
+        <name>make_context_current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make this window&apos;s context the current rendering context of the current thread. Only use this and most other GL functions on a dedicated window thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a7f074d1fa0eeebde4e417ee8d1154dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">opengl::GlContext</ref> *</type>
+        <definition>opengl::GlContext * openage::renderer::opengl::GlWindow::get_context</definition>
+        <argsstring>()</argsstring>
+        <name>get_context</name>
+        <briefdescription>
+<para>Return a pointer to this window&apos;s GL context. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/window.h" line="33" column="1" bodyfile="libopenage/renderer/opengl/window.cpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2461">
+        <label>openage::renderer::Window</label>
+        <link refid="classopenage_1_1renderer_1_1_window"/>
+      </node>
+      <node id="2460">
+        <label>openage::renderer::opengl::GlWindow</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window"/>
+        <childnode refid="2461" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2463">
+        <label>openage::renderer::Window</label>
+        <link refid="classopenage_1_1renderer_1_1_window"/>
+      </node>
+      <node id="2462">
+        <label>openage::renderer::opengl::GlWindow</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window"/>
+        <childnode refid="2463" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/window.h" line="16" column="1" bodyfile="libopenage/renderer/opengl/window.h" bodystart="16" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_window_1a822983220cdde11447b7e66cb9f02178" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>add_key_callback</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>add_mouse_button_callback</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1acd1c8a5130d6e3d6db05035c1e9d9e26" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>add_mouse_wheel_callback</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>add_resize_callback</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aab2e3f73a07d214294a7b876127e1ae1" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>context</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a7f074d1fa0eeebde4e417ee8d1154dee" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>get_context</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a1bf53e4db756c04ed522a975573b36a6" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>GlWindow</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a080758683dbea7ce6f185d3b8d8da929" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>key_cb_t</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a666be4fac900a35afedc7ec086d98133" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>make_context_current</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a45268949d2510860b3643bb7779f521b" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>make_renderer</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a5d6f0b1021b7b7a0460303b588e64c45" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>mouse_button_cb_t</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a37a3323f44e9f362a6ea8eab5ee97186" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>mouse_wheel_cb_t</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1adc14f04028ef5322055dc37569a173f5" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>on_key</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a13488daef83f3f84d9275dfb2aac7cfd" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>on_mouse_button</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a9499b8211b2a3bab0b9942f6a098380d" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>on_mouse_wheel</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>on_resize</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1ab856fe913343bbc5ce12cc45cec0e144" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>resize_cb_t</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1ad74b6ed2d5495dd39ccc7d21c88bac1f" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>set_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a7fdf5fbab00699344b8ce451cc73e688" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>should_be_closed</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a8fa5671d7e11d9797cd19d4258ddc69b" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>should_close</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>size</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>update</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1a604ae9d1732215d4cd2617778f516ac7" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>Window</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>window</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a3959f808d2c7d83556a7c605e2d550de" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>~GlWindow</name></member>
+      <member refid="classopenage_1_1renderer_1_1_window_1ae2f492edc2ff187638506d66b925a86e" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlWindow</scope><name>~Window</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

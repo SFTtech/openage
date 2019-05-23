@@ -1,0 +1,421 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="profiler_8h" kind="file" language="C++">
+    <compoundname>profiler.h</compoundname>
+    <includes local="no">array</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includedby refid="engine_8h" local="yes">libopenage/engine.h</includedby>
+    <includedby refid="profiler_8cpp" local="yes">libopenage/util/profiler.cpp</includedby>
+    <incdepgraph>
+      <node id="31476">
+        <label>string</label>
+      </node>
+      <node id="31475">
+        <label>vector</label>
+      </node>
+      <node id="31472">
+        <label>array</label>
+      </node>
+      <node id="31474">
+        <label>unordered_map</label>
+      </node>
+      <node id="31473">
+        <label>chrono</label>
+      </node>
+      <node id="31471">
+        <label>libopenage/util/profiler.h</label>
+        <link refid="profiler_8h"/>
+        <childnode refid="31472" relation="include">
+        </childnode>
+        <childnode refid="31473" relation="include">
+        </childnode>
+        <childnode refid="31474" relation="include">
+        </childnode>
+        <childnode refid="31475" relation="include">
+        </childnode>
+        <childnode refid="31476" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="31480">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="31493">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="31499">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="31497">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="31485">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="31487">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="31492">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="31491">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="31479">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="31481">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="31496">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="31498">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="31488">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="31483">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="31478">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="31479" relation="include">
+        </childnode>
+        <childnode refid="31480" relation="include">
+        </childnode>
+        <childnode refid="31481" relation="include">
+        </childnode>
+        <childnode refid="31482" relation="include">
+        </childnode>
+        <childnode refid="31483" relation="include">
+        </childnode>
+        <childnode refid="31484" relation="include">
+        </childnode>
+        <childnode refid="31485" relation="include">
+        </childnode>
+        <childnode refid="31486" relation="include">
+        </childnode>
+        <childnode refid="31487" relation="include">
+        </childnode>
+        <childnode refid="31488" relation="include">
+        </childnode>
+        <childnode refid="31489" relation="include">
+        </childnode>
+        <childnode refid="31490" relation="include">
+        </childnode>
+        <childnode refid="31491" relation="include">
+        </childnode>
+        <childnode refid="31492" relation="include">
+        </childnode>
+        <childnode refid="31493" relation="include">
+        </childnode>
+        <childnode refid="31494" relation="include">
+        </childnode>
+        <childnode refid="31495" relation="include">
+        </childnode>
+        <childnode refid="31496" relation="include">
+        </childnode>
+        <childnode refid="31497" relation="include">
+        </childnode>
+        <childnode refid="31498" relation="include">
+        </childnode>
+        <childnode refid="31499" relation="include">
+        </childnode>
+        <childnode refid="31500" relation="include">
+        </childnode>
+      </node>
+      <node id="31495">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="31500">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="31494">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="31489">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="31486">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="31482">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="31477">
+        <label>libopenage/util/profiler.h</label>
+        <link refid="profiler_8h"/>
+        <childnode refid="31478" relation="include">
+        </childnode>
+        <childnode refid="31500" relation="include">
+        </childnode>
+      </node>
+      <node id="31490">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="31484">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1util_1_1color" prot="public">openage::util::color</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1component__time__data" prot="public">openage::util::component_time_data</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_profiler" prot="public">openage::util::Profiler</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="profiler_8h_1a17bd26b0591a14808e271356317939b0" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int MAX_DURATION_HISTORY</definition>
+        <argsstring></argsstring>
+        <name>MAX_DURATION_HISTORY</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="11" column="1" bodyfile="libopenage/util/profiler.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_CANVAS_WIDTH</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_CANVAS_WIDTH</name>
+        <initializer>= 250</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="12" column="1" bodyfile="libopenage/util/profiler.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1aad748908ce3390c721a67a4982ce4582" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_CANVAS_HEIGHT</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_CANVAS_HEIGHT</name>
+        <initializer>= 120</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="13" column="1" bodyfile="libopenage/util/profiler.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_CANVAS_POSITION_X</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_CANVAS_POSITION_X</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="14" column="1" bodyfile="libopenage/util/profiler.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1a71195ff55854fa48e547fb54881bd502" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_CANVAS_POSITION_Y</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_CANVAS_POSITION_Y</name>
+        <initializer>= 300</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="15" column="1" bodyfile="libopenage/util/profiler.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1a7f1b8c6294cc28eecd7ceb67589bc96d" prot="public" static="no" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float PROFILER_CANVAS_ALPHA</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_CANVAS_ALPHA</name>
+        <initializer>= 0.6f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="16" column="1" bodyfile="libopenage/util/profiler.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_COM_BOX_WIDTH</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_COM_BOX_WIDTH</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="17" column="1" bodyfile="libopenage/util/profiler.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int PROFILER_COM_BOX_HEIGHT</definition>
+        <argsstring></argsstring>
+        <name>PROFILER_COM_BOX_HEIGHT</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="18" column="1" bodyfile="libopenage/util/profiler.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref><sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="12" refid="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" kindref="member">PROFILER_CANVAS_WIDTH</ref><sp/>=<sp/>250;</highlight></codeline>
+<codeline lineno="13" refid="profiler_8h_1aad748908ce3390c721a67a4982ce4582" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1aad748908ce3390c721a67a4982ce4582" kindref="member">PROFILER_CANVAS_HEIGHT</ref><sp/>=<sp/>120;</highlight></codeline>
+<codeline lineno="14" refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" kindref="member">PROFILER_CANVAS_POSITION_X</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="15" refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" kindref="member">PROFILER_CANVAS_POSITION_Y</ref><sp/>=<sp/>300;</highlight></codeline>
+<codeline lineno="16" refid="profiler_8h_1a7f1b8c6294cc28eecd7ceb67589bc96d" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1a7f1b8c6294cc28eecd7ceb67589bc96d" kindref="member">PROFILER_CANVAS_ALPHA</ref><sp/>=<sp/>0.6f;</highlight></codeline>
+<codeline lineno="17" refid="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" kindref="member">PROFILER_COM_BOX_WIDTH</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="18" refid="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" kindref="member">PROFILER_COM_BOX_HEIGHT</ref><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Engine;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structopenage_1_1util_1_1color" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="structopenage_1_1util_1_1color_1aaf002923665c35feb90c5934e41384e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1color_1aaf002923665c35feb90c5934e41384e6" kindref="member">r</ref>,<sp/><ref refid="structopenage_1_1util_1_1color_1ae39114c96dc9e4c8bc0ccfbfcb70eed8" kindref="member">g</ref>,<sp/><ref refid="structopenage_1_1util_1_1color_1a370b7e06ff57c40a2aecf46e17ab866b" kindref="member">b</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="structopenage_1_1util_1_1component__time__data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1util_1_1component__time__data" kindref="compound">component_time_data</ref><sp/>{</highlight></codeline>
+<codeline lineno="32" refid="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" kindref="member">display_name</ref>;</highlight></codeline>
+<codeline lineno="33" refid="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/><ref refid="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" kindref="member">drawing_color</ref>;</highlight></codeline>
+<codeline lineno="34" refid="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::high_resolution_clock::time_point<sp/><ref refid="structopenage_1_1util_1_1component__time__data_1a3781648d33611c3527b942e7a36e1dc8" kindref="member">start</ref>;</highlight></codeline>
+<codeline lineno="35" refid="structopenage_1_1util_1_1component__time__data_1aa402b4fc03b0e127153d43750ef848ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::high_resolution_clock::duration<sp/><ref refid="structopenage_1_1util_1_1component__time__data_1aa402b4fc03b0e127153d43750ef848ea" kindref="member">duration</ref>;</highlight></codeline>
+<codeline lineno="36" refid="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;double,<sp/>MAX_DURATION_HISTORY&gt;<sp/><ref refid="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" kindref="member">history</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1util_1_1_profiler" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_profiler" kindref="compound">Profiler</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a487b0c0c995c4892df0e21cd8dba4867" kindref="member">Profiler</ref>(<ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*<ref refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" kindref="member">engine</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a1b4a2302000a4c497762567ce5d63379" kindref="member">~Profiler</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" kindref="member">register_component</ref>(std::string<sp/>com,<sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>component_color);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1aa2cd0e4084f70dec7bff926afbc7e0de" kindref="member">unregister_component</ref>(std::string<sp/>com);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a68f01b02f0824fe2e41e508a75946793" kindref="member">unregister_all</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>starts<sp/>a<sp/>measurement<sp/>for<sp/>the<sp/>component<sp/>com.<sp/>If<sp/>com<sp/>is<sp/>not<sp/>yet</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>registered,<sp/>its<sp/>getting<sp/>registered<sp/>and<sp/>the<sp/>profiler<sp/>uses<sp/>the<sp/>color</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>information<sp/>given<sp/>by<sp/>component_color.<sp/>The<sp/>default<sp/>value<sp/>is<sp/>white.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a25d95a667ba6b5d369e545ba517d8e46" kindref="member">start_measure</ref>(std::string<sp/>com,<sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>component_color={1.0,<sp/>1.0,<sp/>1.0});</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>stops<sp/>the<sp/>measurement<sp/>for<sp/>the<sp/>component<sp/>com.<sp/>If<sp/>com<sp/>is<sp/>not<sp/>yet</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>registered<sp/>it<sp/>does<sp/>nothing.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1abb98ec218690fbc79d31967924118c45" kindref="member">end_measure</ref>(std::string<sp/>com);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>draws<sp/>the<sp/>profiler<sp/>gui<sp/>if<sp/>debug_mode<sp/>is<sp/>set</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" kindref="member">show</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>debug_mode);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>draws<sp/>the<sp/>profiler<sp/>gui</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" kindref="member">show</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>true<sp/>if<sp/>the<sp/>component<sp/>com<sp/>is<sp/>already<sp/>registered,<sp/>otherwise<sp/>false</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">registered</ref>(std::string<sp/>com)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>returns<sp/>the<sp/>number<sp/>of<sp/>registered<sp/>components</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad1b1231b26528425f7d0ebc2f446159d" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a0d8b52ef4078807189fd457e658270cb" kindref="member">start_frame_measure</ref>();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1aaf65afbb05a6aa408a7aff89e74e93dd" kindref="member">end_frame_measure</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" kindref="member">draw_canvas</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" kindref="member">draw_legend</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" kindref="member">draw_component_performance</ref>(std::string<sp/>com);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ab4c94527899682bba7316093e447ab71" kindref="member">duration_to_percentage</ref>(std::chrono::high_resolution_clock::duration<sp/>duration);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a3f1ff9c750b0d66d99528e043effa51d" kindref="member">append_to_history</ref>(std::string<sp/>com,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>percentage);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">engine_in_debug_mode</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classopenage_1_1util_1_1_profiler_1a3967792a25b22d16b1a8f3e08ba1a7e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::high_resolution_clock::time_point<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a3967792a25b22d16b1a8f3e08ba1a7e5" kindref="member">frame_start</ref>;</highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1util_1_1_profiler_1aa601a0879677712ff6109f7ec7a8783c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::high_resolution_clock::duration<sp/><ref refid="classopenage_1_1util_1_1_profiler_1aa601a0879677712ff6109f7ec7a8783c" kindref="member">frame_duration</ref>;</highlight></codeline>
+<codeline lineno="123" refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>component_time_data&gt;<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>;</highlight></codeline>
+<codeline lineno="124" refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*<ref refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" kindref="member">engine</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/profiler.h"/>
+  </compounddef>
+</doxygen>

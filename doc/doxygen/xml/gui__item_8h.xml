@@ -1,0 +1,615 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__item_8h" kind="file" language="C++">
+    <compoundname>gui_item.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">type_traits</includes>
+    <includes local="no">typeinfo</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">QObject</includes>
+    <includes local="no">QMetaType</includes>
+    <includes local="no">QRegularExpression</includes>
+    <includes local="no">QDebug</includes>
+    <includes refid="game__logic__caller_8h" local="yes">../private/game_logic_caller.h</includes>
+    <includes refid="deferred__initial__constant__property__values_8h" local="yes">../private/livereload/deferred_initial_constant_property_values.h</includes>
+    <includes refid="qtsdl__checked__static__cast_8h" local="yes">qtsdl_checked_static_cast.h</includes>
+    <includes refid="gui__item__link_8h" local="yes">gui_item_link.h</includes>
+    <includedby refid="game__control__link_8h" local="yes">libopenage/gui/game_control_link.h</includedby>
+    <includedby refid="assetmanager__link_8h" local="yes">libopenage/gui/assetmanager_link.h</includedby>
+    <includedby refid="game__main__link_8h" local="yes">libopenage/gui/game_main_link.h</includedby>
+    <includedby refid="game__spec__link_8h" local="yes">libopenage/gui/game_spec_link.h</includedby>
+    <includedby refid="gui__list__model_8h" local="yes">libopenage/gui/guisys/link/gui_list_model.h</includedby>
+    <includedby refid="gui__item__list__model_8h" local="yes">libopenage/gui/guisys/link/gui_item_list_model.h</includedby>
+    <includedby refid="gui__item_8cpp" local="yes">libopenage/gui/guisys/link/gui_item.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
+    <includedby refid="gui__live__reloader_8cpp" local="yes">libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</includedby>
+    <incdepgraph>
+      <node id="12665">
+        <label>functional</label>
+      </node>
+      <node id="12669">
+        <label>QObject</label>
+      </node>
+      <node id="12664">
+        <label>cassert</label>
+      </node>
+      <node id="12670">
+        <label>QMetaType</label>
+      </node>
+      <node id="12674">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12675" relation="include">
+        </childnode>
+        <childnode refid="12665" relation="include">
+        </childnode>
+      </node>
+      <node id="12662">
+        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12663" relation="include">
+        </childnode>
+        <childnode refid="12664" relation="include">
+        </childnode>
+        <childnode refid="12665" relation="include">
+        </childnode>
+        <childnode refid="12666" relation="include">
+        </childnode>
+        <childnode refid="12667" relation="include">
+        </childnode>
+        <childnode refid="12668" relation="include">
+        </childnode>
+        <childnode refid="12669" relation="include">
+        </childnode>
+        <childnode refid="12670" relation="include">
+        </childnode>
+        <childnode refid="12671" relation="include">
+        </childnode>
+        <childnode refid="12672" relation="include">
+        </childnode>
+        <childnode refid="12673" relation="include">
+        </childnode>
+        <childnode refid="12674" relation="include">
+        </childnode>
+        <childnode refid="12676" relation="include">
+        </childnode>
+        <childnode refid="12677" relation="include">
+        </childnode>
+      </node>
+      <node id="12677">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12666" relation="include">
+        </childnode>
+        <childnode refid="12676" relation="include">
+        </childnode>
+      </node>
+      <node id="12667">
+        <label>typeinfo</label>
+      </node>
+      <node id="12672">
+        <label>QDebug</label>
+      </node>
+      <node id="12675">
+        <label>vector</label>
+      </node>
+      <node id="12671">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12668">
+        <label>utility</label>
+      </node>
+      <node id="12676">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12664" relation="include">
+        </childnode>
+      </node>
+      <node id="12666">
+        <label>type_traits</label>
+      </node>
+      <node id="12673">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12665" relation="include">
+        </childnode>
+        <childnode refid="12669" relation="include">
+        </childnode>
+      </node>
+      <node id="12663">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12693">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="12692">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="12689" relation="include">
+        </childnode>
+        <childnode refid="12687" relation="include">
+        </childnode>
+        <childnode refid="12693" relation="include">
+        </childnode>
+      </node>
+      <node id="12698">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+      </node>
+      <node id="12701">
+        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <link refid="gui__live__reloader_8cpp"/>
+      </node>
+      <node id="12679">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="12680" relation="include">
+        </childnode>
+        <childnode refid="12681" relation="include">
+        </childnode>
+        <childnode refid="12682" relation="include">
+        </childnode>
+        <childnode refid="12683" relation="include">
+        </childnode>
+        <childnode refid="12684" relation="include">
+        </childnode>
+      </node>
+      <node id="12680">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="12681" relation="include">
+        </childnode>
+      </node>
+      <node id="12678">
+        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12679" relation="include">
+        </childnode>
+        <childnode refid="12685" relation="include">
+        </childnode>
+        <childnode refid="12688" relation="include">
+        </childnode>
+        <childnode refid="12692" relation="include">
+        </childnode>
+        <childnode refid="12694" relation="include">
+        </childnode>
+        <childnode refid="12697" relation="include">
+        </childnode>
+        <childnode refid="12699" relation="include">
+        </childnode>
+        <childnode refid="12700" relation="include">
+        </childnode>
+        <childnode refid="12701" relation="include">
+        </childnode>
+      </node>
+      <node id="12682">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="12681">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="12699">
+        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <link refid="gui__item_8cpp"/>
+      </node>
+      <node id="12696">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="12689">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="12688">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="12683" relation="include">
+        </childnode>
+        <childnode refid="12689" relation="include">
+        </childnode>
+        <childnode refid="12690" relation="include">
+        </childnode>
+        <childnode refid="12691" relation="include">
+        </childnode>
+      </node>
+      <node id="12686">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="12685">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="12686" relation="include">
+        </childnode>
+        <childnode refid="12687" relation="include">
+        </childnode>
+      </node>
+      <node id="12695">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12689" relation="include">
+        </childnode>
+        <childnode refid="12691" relation="include">
+        </childnode>
+        <childnode refid="12696" relation="include">
+        </childnode>
+      </node>
+      <node id="12697">
+        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12695" relation="include">
+        </childnode>
+      </node>
+      <node id="12683">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="12700">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+      <node id="12694">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12695" relation="include">
+        </childnode>
+        <childnode refid="12697" relation="include">
+        </childnode>
+        <childnode refid="12698" relation="include">
+        </childnode>
+      </node>
+      <node id="12690">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="12691">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="12684">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="12687">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_persistent_core_holder_base" prot="public">qtsdl::PersistentCoreHolderBase</innerclass>
+    <innerclass refid="classqtsdl_1_1_persistent_core_holder" prot="public">qtsdl::PersistentCoreHolder</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_base" prot="public">qtsdl::GuiItemBase</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_origin" prot="public">qtsdl::GuiItemOrigin</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_methods" prot="public">qtsdl::GuiItemMethods</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_q_object" prot="public">qtsdl::GuiItemQObject</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_core_instantiator" prot="public">qtsdl::GuiItemCoreInstantiator</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item" prot="public">qtsdl::GuiItem</innerclass>
+    <innerclass refid="classqtsdl_1_1_gui_item_interface" prot="public">qtsdl::GuiItemInterface</innerclass>
+    <innerclass refid="classqtsdl_1_1_shadow" prot="public">qtsdl::Shadow</innerclass>
+    <innerclass refid="classqtsdl_1_1_inherits" prot="public">qtsdl::Inherits</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMetaType&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QRegularExpression&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/game_logic_caller.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/livereload/deferred_initial_constant_property_values.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qtsdl__checked__static__cast_8h" kindref="compound">qtsdl_checked_static_cast.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__item__link_8h" kindref="compound">gui_item_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">QString<sp/><ref refid="namespaceqtsdl_1adfa85f2323dd14fc4cd2381acab77960" kindref="member">name_tidier</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classqtsdl_1_1_persistent_core_holder_base" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36" refid="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" kindref="member">~PersistentCoreHolderBase</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a" kindref="member">adopt_shell</ref>(<ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref><sp/>*link)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="47" refid="classqtsdl_1_1_persistent_core_holder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_persistent_core_holder" kindref="compound">PersistentCoreHolder</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49" refid="classqtsdl_1_1_persistent_core_holder_1a1014c04e322e957f3f698bb23a81d121" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1a1014c04e322e957f3f698bb23a81d121" kindref="member">PersistentCoreHolder</ref>(std::unique_ptr&lt;T&gt;<sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" kindref="member">core</ref>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref>{},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" kindref="member">core</ref>{std::move(<ref refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" kindref="member">core</ref>)}<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classqtsdl_1_1_persistent_core_holder_1a0b277e49a1e40beb7eebeb6d1effe40c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1a0b277e49a1e40beb7eebeb6d1effe40c" kindref="member">PersistentCoreHolder</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref>{}<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56" kindref="member">adopt_shell</ref>(<ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref><sp/>*link)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" kindref="member">core</ref>-&gt;gui_link<sp/>=<sp/>link;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;T&gt;<sp/><ref refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" kindref="member">core</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classqtsdl_1_1_gui_item_base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values" kindref="compound">DeferredInitialConstantPropertyValues</ref><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70" refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" kindref="member">~GuiItemBase</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74" refid="classqtsdl_1_1_gui_item_base_1af06ac41a40b996c41a6bea8eb81cdb34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_live_reloader" kindref="compound">GuiLiveReloader</ref>;</highlight></codeline>
+<codeline lineno="75" refid="classqtsdl_1_1_gui_item_base_1a141ca92272c6cc5e6c97ea10b7e9b8e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_subtree_impl" kindref="compound">GuiSubtreeImpl</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="78" refid="classqtsdl_1_1_gui_item_base_1a43709c5aa9a03fdc13528f08551adf2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="81" refid="classqtsdl_1_1_gui_item_base_1a3d4fc768ba657ca0a2a2c4edc573c6d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="84" refid="classqtsdl_1_1_gui_item_base_1af2257b970c546bf1360c6d12537b64f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_list_model" kindref="compound">GuiItemListModel</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classqtsdl_1_1_gui_item_base_1a5deaa06ceae4ec076f38c355547c41f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;PersistentCoreHolderBase&gt;<sp/><ref refid="classqtsdl_1_1_gui_item_base_1a5deaa06ceae4ec076f38c355547c41f8" kindref="member">instantiate_core</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" kindref="member">instantiate_core_func</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classqtsdl_1_1_gui_item_base_1af1433a540395f683b194c0471bef68ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base_1af1433a540395f683b194c0471bef68ff" kindref="member">adopt_core</ref>(<ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref><sp/>*holder,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;tag)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a7a29a7f13ba9826bbb31a32ad2d37707" kindref="member">do_adopt_core</ref>(holder,<sp/>tag);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" kindref="member">on_core_adopted_func</ref>)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" kindref="member">on_core_adopted_func</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1aaa15e915bd7009ac4a332aa08d3e554f" kindref="member">on_core_adopted</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classqtsdl_1_1_gui_item_base_1a7a29a7f13ba9826bbb31a32ad2d37707" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base_1a7a29a7f13ba9826bbb31a32ad2d37707" kindref="member">do_adopt_core</ref>(<ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref><sp/>*holder,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;tag)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" kindref="member">do_adopt_core_func</ref>(holder,<sp/>tag);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classqtsdl_1_1_gui_item_base_1aaa15e915bd7009ac4a332aa08d3e554f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base_1aaa15e915bd7009ac4a332aa08d3e554f" kindref="member">on_core_adopted</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classqtsdl_1_1_gui_item_base_1a0567d09e763a08648aad1675201b75b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base_1a0567d09e763a08648aad1675201b75b8" kindref="member">set_game_logic_callback</ref>(<ref refid="classqtsdl_1_1_gui_callback" kindref="compound">GuiCallback</ref><sp/>*game_logic_callback)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" kindref="member">game_logic_caller</ref>.<ref refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" kindref="member">set_game_logic_callback</ref>(game_logic_callback);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="120" refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_game_logic_caller" kindref="compound">GameLogicCaller</ref><sp/><ref refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" kindref="member">game_logic_caller</ref>;</highlight></codeline>
+<codeline lineno="121" refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;std::unique_ptr&lt;PersistentCoreHolderBase&gt;()&gt;<sp/><ref refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" kindref="member">instantiate_core_func</ref>;</highlight></codeline>
+<codeline lineno="122" refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;)&gt;<sp/><ref refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" kindref="member">do_adopt_core_func</ref>;</highlight></codeline>
+<codeline lineno="123" refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void()&gt;<sp/><ref refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" kindref="member">on_core_adopted_func</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="127" refid="classqtsdl_1_1_gui_item_origin" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_origin" kindref="compound">GuiItemOrigin</ref><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="129" refid="classqtsdl_1_1_gui_item_origin_1a43709c5aa9a03fdc13528f08551adf2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="132" refid="classqtsdl_1_1_gui_item_origin_1a3d4fc768ba657ca0a2a2c4edc573c6d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classqtsdl_1_1_gui_item_origin_1af359424505ff487e07fab719186a0c7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_persistent_core_holder" kindref="compound">PersistentCoreHolder&lt;typename Unwrap&lt;T&gt;::Type</ref>&gt;<sp/>*<ref refid="classqtsdl_1_1_gui_item_origin_1af359424505ff487e07fab719186a0c7b" kindref="member">holder</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="144" refid="classqtsdl_1_1_gui_item_methods" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" kindref="member">~GuiItemMethods</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="156" refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>U*<sp/><ref refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" kindref="member">get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core.get()));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core.get());</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="169" refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>U*<sp/><ref refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" kindref="member">get</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core.get()));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>checked_static_cast&lt;U*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)-&gt;holder-&gt;core.get());</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="182" refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" kindref="member">i</ref>(F<sp/>f,<sp/>Args&amp;&amp;<sp/>...<sp/>args)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref><sp/>*base<sp/>=<sp/>checked_static_cast&lt;GuiItemBase*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>base-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" kindref="member">game_logic_caller</ref>.<ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">in_game_logic_thread</ref>([=]<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert_about_unwrapping&lt;F,<sp/>decltype(unwrap(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">))),<sp/>decltype(<ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(args))...&gt;();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f(<ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)),<sp/><ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(args)...);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>A&gt;</highlight></codeline>
+<codeline lineno="196" refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" kindref="member">s</ref>(F<sp/>f,<sp/>P<sp/>&amp;p,<sp/>A<sp/>&amp;&amp;arg)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p<sp/>!=<sp/>arg)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>std::forward&lt;A&gt;(arg);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" kindref="member">assign_while_catching_constant_properies_inits</ref>(f,<sp/>p);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>P,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>A&gt;</highlight></codeline>
+<codeline lineno="207" refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" kindref="member">sf</ref>(F<sp/>f,<sp/>P<sp/>&amp;p,<sp/>A<sp/>&amp;&amp;arg)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>=<sp/>std::forward&lt;A&gt;(arg);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" kindref="member">assign_while_catching_constant_properies_inits</ref>(f,<sp/>p);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>A&gt;</highlight></codeline>
+<codeline lineno="217" refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" kindref="member">assign_while_catching_constant_properies_inits</ref>(F<sp/>f,<sp/>A<sp/>&amp;&amp;arg)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref><sp/>*base<sp/>=<sp/>checked_static_cast&lt;GuiItemBase*&gt;(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert_about_unwrapping&lt;F,<sp/>decltype(unwrap(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">))),<sp/>decltype(<ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(arg))&gt;();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(base-&gt;<ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" kindref="member">init_over</ref>)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>base-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" kindref="member">game_logic_caller</ref>.<ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">in_game_logic_thread</ref>([=]<sp/>{f(<ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)),<sp/><ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(arg));});</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>base-&gt;<ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" kindref="member">static_properties_assignments</ref>.push_back([=]<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>base-&gt;<ref refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" kindref="member">game_logic_caller</ref>.<ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">in_game_logic_thread</ref>([=]<sp/>{f(<ref refid="namespaceqtsdl_1af1666c815e9f0f5791315530fd76b18d" kindref="member">unwrap</ref>(checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)),<sp/><ref refid="namespaceqtsdl_1a83a6e7a16478b7ba6d336c26542afa71" kindref="member">unwrap_if_can</ref>(arg));});</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classqtsdl_1_1_gui_item_q_object" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_q_object" kindref="compound">GuiItemQObject</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" kindref="member">GuiItemQObject</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="239" refid="classqtsdl_1_1_gui_item_core_instantiator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="244" refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" kindref="member">GuiItemCoreInstantiator</ref>(<ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref><sp/>*item_base)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref>&lt;T&gt;{}<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std::placeholders;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item_base-&gt;instantiate_core_func<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" kindref="member">std::bind</ref>(&amp;<ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a72c1388c7758fe72b737e8a17b291c88" kindref="member">GuiItemCoreInstantiator::instantiate_core</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item_base-&gt;do_adopt_core_func<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" kindref="member">std::bind</ref>(&amp;<ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" kindref="member">GuiItemCoreInstantiator::do_adopt_core</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>_1,<sp/>_2);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="258" refid="classqtsdl_1_1_gui_item_core_instantiator_1a72c1388c7758fe72b737e8a17b291c88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;PersistentCoreHolderBase&gt;<sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a72c1388c7758fe72b737e8a17b291c88" kindref="member">instantiate_core</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>*origin<sp/>=<sp/>checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(origin-&gt;holder)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;PersistentCoreHolderBase&gt;();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>core<sp/>=<sp/>std::make_unique&lt;typename<sp/>Unwrap&lt;T&gt;::Type&gt;(origin);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::remove_reference&lt;decltype(*origin-&gt;holder)&gt;::type&gt;(std::move(core));</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" kindref="member">do_adopt_core</ref>(<ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref><sp/>*holder,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;tag)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(holder);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>*origin<sp/>=<sp/>checked_static_cast&lt;T*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(origin-&gt;holder)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qFatal(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>GuiLiveReloader<sp/>was<sp/>asked<sp/>to<sp/>use<sp/>same<sp/>tag<sp/>&apos;%s&apos;<sp/>for<sp/>multiple<sp/>objects.&quot;</highlight><highlight class="normal">,<sp/>qUtf8Printable(tag));</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(decltype(*origin-&gt;holder))<sp/>!=<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(*holder))<sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qFatal(</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>GuiLiveReloader<sp/>was<sp/>asked<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;to<sp/>restore<sp/>&apos;%s&apos;<sp/>into<sp/>different<sp/>type<sp/>&apos;%s&apos;<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;using<sp/>tag<sp/>&apos;%s&apos;.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qUtf8Printable(<ref refid="namespaceqtsdl_1adfa85f2323dd14fc4cd2381acab77960" kindref="member">name_tidier</ref>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(decltype(*origin-&gt;holder)).name())),</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qUtf8Printable(<ref refid="namespaceqtsdl_1adfa85f2323dd14fc4cd2381acab77960" kindref="member">name_tidier</ref>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(*holder).name())),</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qUtf8Printable(tag)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin-&gt;holder<sp/>=<sp/><ref refid="namespaceqtsdl_1a220ce9f0bb41d3f42a8b559e454ed4bc" kindref="member">checked_static_cast</ref>&lt;decltype(origin-&gt;holder)&gt;(holder);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin-&gt;holder-&gt;adopt_shell(origin);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" kindref="member">GuiItemCoreInstantiator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>&amp;<sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator_1aac199f6ace73ba00c049c3f1b664e948" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="312" refid="classqtsdl_1_1_gui_item" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item" kindref="compound">GuiItem</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_origin" kindref="compound">GuiItemOrigin</ref>&lt;T&gt;,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="317" refid="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" kindref="member">GuiItem</ref>(<ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref><sp/>*item_base)</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_origin" kindref="compound">GuiItemOrigin</ref>&lt;T&gt;{},</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;T&gt;</ref>{item_base}<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="325" refid="classqtsdl_1_1_gui_item_interface" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_interface" kindref="compound">GuiItemInterface</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_origin" kindref="compound">GuiItemOrigin</ref>&lt;T&gt;,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="327" refid="classqtsdl_1_1_gui_item_interface_1a80a10e145186f70b90801d078564fc8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_interface_1a80a10e145186f70b90801d078564fc8d" kindref="member">GuiItemInterface</ref>()</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_origin" kindref="compound">GuiItemOrigin</ref>&lt;T&gt;{},</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_methods" kindref="compound">GuiItemMethods&lt;T&gt;</ref>{}<sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">NullClass<sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>NullClass()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="344" refid="classqtsdl_1_1_shadow" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>T<sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="346" refid="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" kindref="member">Shadow</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T{parent}<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" kindref="member">get</ref>(NullClass);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" kindref="member">i</ref>(NullClass);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" kindref="member">s</ref>(NullClass);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" kindref="member">sf</ref>(NullClass);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>P&gt;</highlight></codeline>
+<codeline lineno="361" refid="classqtsdl_1_1_inherits" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_inherits" kindref="compound">Inherits</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow</ref>&lt;T&gt;,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref>&lt;P&gt;<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow&lt;T&gt;::get</ref>;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;P&gt;::get</ref>;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow&lt;T&gt;::i</ref>;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;P&gt;::i</ref>;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow&lt;T&gt;::s</ref>;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;P&gt;::s</ref>;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow&lt;T&gt;::sf</ref>;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;P&gt;::sf</ref>;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="classqtsdl_1_1_inherits_1a8e40f947d69f66a2e6231d7243e14b1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_inherits_1a8e40f947d69f66a2e6231d7243e14b1e" kindref="member">Inherits</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_shadow" kindref="compound">Shadow</ref>&lt;T&gt;{parent},</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator&lt;P&gt;</ref>{</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378" refid="classqtsdl_1_1_inherits_1a9c8a480b69f22524c19ae46704b42f7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_inherits_1a9c8a480b69f22524c19ae46704b42f7f" kindref="member">~Inherits</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_item.h"/>
+  </compounddef>
+</doxygen>

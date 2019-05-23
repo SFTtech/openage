@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__make__standalone__subtexture_8h" kind="file" language="C++">
+    <compoundname>gui_make_standalone_subtexture.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">QSGTexture</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includedby refid="gui__make__standalone__subtexture_8cpp" local="yes">libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</includedby>
+    <includedby refid="gui__texture_8cpp" local="yes">libopenage/gui/integration/private/gui_texture.cpp</includedby>
+    <incdepgraph>
+      <node id="14465">
+        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
+        <link refid="gui__make__standalone__subtexture_8h"/>
+        <childnode refid="14466" relation="include">
+        </childnode>
+        <childnode refid="14467" relation="include">
+        </childnode>
+        <childnode refid="14468" relation="include">
+        </childnode>
+      </node>
+      <node id="14467">
+        <label>QSGTexture</label>
+      </node>
+      <node id="14468">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="14466">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14470">
+        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp</label>
+        <link refid="gui__make__standalone__subtexture_8cpp"/>
+      </node>
+      <node id="14469">
+        <label>libopenage/gui/integration/private/gui_make_standalone_subtexture.h</label>
+        <link refid="gui__make__standalone__subtexture_8h"/>
+        <childnode refid="14470" relation="include">
+        </childnode>
+        <childnode refid="14471" relation="include">
+        </childnode>
+      </node>
+      <node id="14471">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QSGTexture&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Reason<sp/>for<sp/>this<sp/>is<sp/>to<sp/>resolve<sp/>epoxy<sp/>header<sp/>clash<sp/>that<sp/>occur</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>when<sp/>a<sp/>header<sp/>with<sp/>QObject-derived<sp/>(so,<sp/>it&apos;s<sp/>moc-ed)<sp/>class</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>needs<sp/>GL<sp/>headers.<sp/>Automoc<sp/>can<sp/>arrange<sp/>headers<sp/>in<sp/>any<sp/>order,</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>so<sp/>the<sp/>GL<sp/>can<sp/>be<sp/>included<sp/>through<sp/>Qt<sp/>first,<sp/>because<sp/>guisys</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>files<sp/>aren&apos;t<sp/>allowed<sp/>to<sp/>include<sp/>epoxy<sp/>at<sp/>all,<sp/>for<sp/>example.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">std::unique_ptr&lt;QSGTexture&gt;<sp/><ref refid="namespaceopenage_1_1gui_1ad386ee98cd26c09c0e03fdc7f50ad6de" kindref="member">make_standalone_subtexture</ref>(GLuint<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;size);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_make_standalone_subtexture.h"/>
+  </compounddef>
+</doxygen>

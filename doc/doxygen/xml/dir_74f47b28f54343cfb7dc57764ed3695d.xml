@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_74f47b28f54343cfb7dc57764ed3695d" kind="dir">
+    <compoundname>libopenage/gui/integration/private</compoundname>
+    <innerfile refid="gui__filled__texture__handles_8cpp">gui_filled_texture_handles.cpp</innerfile>
+    <innerfile refid="gui__filled__texture__handles_8h">gui_filled_texture_handles.h</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__filename__impl_8cpp">gui_game_spec_image_provider_by_filename_impl.cpp</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__filename__impl_8h">gui_game_spec_image_provider_by_filename_impl.h</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp">gui_game_spec_image_provider_by_graphic_id_impl.cpp</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__graphic__id__impl_8h">gui_game_spec_image_provider_by_graphic_id_impl.h</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__id__impl_8cpp">gui_game_spec_image_provider_by_id_impl.cpp</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__id__impl_8h">gui_game_spec_image_provider_by_id_impl.h</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp">gui_game_spec_image_provider_by_terrain_id_impl.cpp</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__by__terrain__id__impl_8h">gui_game_spec_image_provider_by_terrain_id_impl.h</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__impl_8cpp">gui_game_spec_image_provider_impl.cpp</innerfile>
+    <innerfile refid="gui__game__spec__image__provider__impl_8h">gui_game_spec_image_provider_impl.h</innerfile>
+    <innerfile refid="gui__image__provider__link_8cpp">gui_image_provider_link.cpp</innerfile>
+    <innerfile refid="gui__image__provider__link_8h">gui_image_provider_link.h</innerfile>
+    <innerfile refid="gui__log_8cpp">gui_log.cpp</innerfile>
+    <innerfile refid="gui__log_8h">gui_log.h</innerfile>
+    <innerfile refid="gui__make__standalone__subtexture_8cpp">gui_make_standalone_subtexture.cpp</innerfile>
+    <innerfile refid="gui__make__standalone__subtexture_8h">gui_make_standalone_subtexture.h</innerfile>
+    <innerfile refid="gui__standalone__subtexture_8cpp">gui_standalone_subtexture.cpp</innerfile>
+    <innerfile refid="gui__standalone__subtexture_8h">gui_standalone_subtexture.h</innerfile>
+    <innerfile refid="gui__texture_8cpp">gui_texture.cpp</innerfile>
+    <innerfile refid="gui__texture_8h">gui_texture.h</innerfile>
+    <innerfile refid="gui__texture__factory_8cpp">gui_texture_factory.cpp</innerfile>
+    <innerfile refid="gui__texture__factory_8h">gui_texture_factory.h</innerfile>
+    <innerfile refid="gui__texture__handle_8cpp">gui_texture_handle.cpp</innerfile>
+    <innerfile refid="gui__texture__handle_8h">gui_texture_handle.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gui/integration/private/"/>
+  </compounddef>
+</doxygen>

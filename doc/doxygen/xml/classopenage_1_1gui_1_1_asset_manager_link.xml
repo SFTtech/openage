@@ -1,0 +1,628 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_asset_manager_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::AssetManagerLink</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_q_object" prot="public" virt="non-virtual">qtsdl::GuiItemQObject</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item" prot="public" virt="non-virtual">qtsdl::GuiItem&lt; AssetManagerLink &gt;</basecompoundref>
+    <includes refid="assetmanager__link_8h" local="no">assetmanager_link.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref></type>
+        <definition>openage::util::Path openage::gui::AssetManagerLink::assetDir</definition>
+        <argsstring></argsstring>
+        <name>assetDir</name>
+        <read>get_asset_dir</read>
+        <write>set_asset_dir</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="16" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">openage::gui::EngineLink</ref></type>
+        <definition>openage::gui::EngineLink openage::gui::AssetManagerLink::engine</definition>
+        <argsstring></argsstring>
+        <name>engine</name>
+        <read>get_engine</read>
+        <write>set_engine</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="16" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_asset_manager_link_1a3256fd4358a1465bd96708d8952db26c" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::gui::AssetManagerLink::asset_dir</definition>
+        <argsstring></argsstring>
+        <name>asset_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="50" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_asset_manager_link_1ac41f66ed9c14f62aaeb29c3751420bb5" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref> *</type>
+        <definition>EngineLink* openage::gui::AssetManagerLink::engine</definition>
+        <argsstring></argsstring>
+        <name>engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="51" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1af94cbae60205c97c8d68b66d5dd84557" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::AssetManagerLink::AssetManagerLink</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>AssetManagerLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="40" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="19" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1a685fe21f6b4f07d0887c5f7aad3b24b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::AssetManagerLink::~AssetManagerLink</definition>
+        <argsstring>()</argsstring>
+        <name>~AssetManagerLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="41" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="26" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1a6566b17b489083a396b9bb3fae5a1929" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+        <definition>const util::Path &amp; openage::gui::AssetManagerLink::get_asset_dir</definition>
+        <argsstring>() const</argsstring>
+        <name>get_asset_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="43" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1a78cdab0ef894c100ba296a3fc56b9a96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::AssetManagerLink::set_asset_dir</definition>
+        <argsstring>(const util::Path &amp;data_dir)</argsstring>
+        <name>set_asset_dir</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>data_dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="44" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="35" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1a624202289589dc11dad8958aaf3c5e31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref> *</type>
+        <definition>EngineLink * openage::gui::AssetManagerLink::get_engine</definition>
+        <argsstring>() const</argsstring>
+        <name>get_engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="46" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_asset_manager_link_1ae86376a20e9bad6811574df8f9e70a40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::AssetManagerLink::set_engine</definition>
+        <argsstring>(EngineLink *engine)</argsstring>
+        <name>set_engine</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_engine_link" kindref="compound">EngineLink</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="47" column="1" bodyfile="libopenage/gui/assetmanager_link.cpp" bodystart="48" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="236">
+        <label>qtsdl::GuiItemOrigin&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+      </node>
+      <node id="234">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="229">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="230" relation="public-inheritance">
+        </childnode>
+        <childnode refid="235" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="231">
+        <label>QObject</label>
+      </node>
+      <node id="238">
+        <label>qtsdl::GuiItemMethods&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="233">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="237">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="238" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="230">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="231" relation="public-inheritance">
+        </childnode>
+        <childnode refid="232" relation="public-inheritance">
+        </childnode>
+        <childnode refid="234" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="232">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="233" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="235">
+        <label>qtsdl::GuiItem&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="236" relation="public-inheritance">
+        </childnode>
+        <childnode refid="237" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="285">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="252">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="247">
+        <label>qtsdl::GuiItemOrigin&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="248" relation="usage">
+          <edgelabel>-holder</edgelabel>
+        </childnode>
+      </node>
+      <node id="262">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="286">
+        <label>openage::coord::camgame_delta</label>
+        <link refid="structopenage_1_1coord_1_1camgame__delta"/>
+        <childnode refid="287" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="260">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="264">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="265" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="266" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="245">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="239">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="240" relation="public-inheritance">
+        </childnode>
+        <childnode refid="246" relation="public-inheritance">
+        </childnode>
+        <childnode refid="252" relation="usage">
+          <edgelabel>-asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="253" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="267">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="259">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="260" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="241">
+        <label>QObject</label>
+      </node>
+      <node id="263">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="252" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="284">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="251">
+        <label>qtsdl::GuiItemMethods&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="270">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+      <node id="243">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="249">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="248">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="249" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="254">
+        <label>qtsdl::GuiSingletonItem</label>
+        <link refid="classqtsdl_1_1_gui_singleton_item"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+        <childnode refid="245" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="257">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="257" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="282">
+        <label>openage::coord::viewport</label>
+        <link refid="structopenage_1_1coord_1_1viewport"/>
+        <childnode refid="283" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="278">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="263" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="271" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="280">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="250">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="251" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="267" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="277">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="273">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="274" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="240">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+        <childnode refid="242" relation="public-inheritance">
+        </childnode>
+        <childnode refid="245" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="287">
+        <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="265">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="274">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="242">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="243" relation="public-inheritance">
+        </childnode>
+        <childnode refid="244" relation="usage">
+          <edgelabel>#game_logic_caller</edgelabel>
+        </childnode>
+      </node>
+      <node id="268">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="269" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="275">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="271" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="279">
+        <label>openage::gui::EngineQMLInfo</label>
+        <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
+        <childnode refid="280" relation="public-inheritance">
+        </childnode>
+        <childnode refid="252" relation="usage">
+          <edgelabel>+asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="255" relation="usage">
+          <edgelabel>+engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="288">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="265" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="261">
+        <label>openage::util::Profiler</label>
+        <link refid="classopenage_1_1util_1_1_profiler"/>
+        <childnode refid="255" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="255">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="256" relation="public-inheritance">
+        </childnode>
+        <childnode refid="257" relation="public-inheritance">
+        </childnode>
+        <childnode refid="258" relation="usage">
+          <edgelabel>+drawing_huds</edgelabel>
+          <edgelabel>+drawing_debug_overlay</edgelabel>
+        </childnode>
+        <childnode refid="261" relation="usage">
+          <edgelabel>-profiler</edgelabel>
+        </childnode>
+        <childnode refid="252" relation="usage">
+          <edgelabel>-root_dir</edgelabel>
+        </childnode>
+        <childnode refid="262" relation="usage">
+          <edgelabel>+gui_signals</edgelabel>
+        </childnode>
+        <childnode refid="263" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="264" relation="usage">
+          <edgelabel>-screenshot_manager</edgelabel>
+        </childnode>
+        <childnode refid="268" relation="usage">
+          <edgelabel>-fps_counter</edgelabel>
+        </childnode>
+        <childnode refid="270" relation="usage">
+          <edgelabel>+external_profiler</edgelabel>
+        </childnode>
+        <childnode refid="271" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+        <childnode refid="279" relation="usage">
+          <edgelabel>-qml_info</edgelabel>
+        </childnode>
+        <childnode refid="281" relation="usage">
+          <edgelabel>+coord</edgelabel>
+        </childnode>
+        <childnode refid="265" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="278" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+        <childnode refid="288" relation="usage">
+          <edgelabel>-audio_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="283">
+        <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="256">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="258">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="259" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="276">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="277" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="269">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+      <node id="253">
+        <label>openage::gui::EngineLink</label>
+        <link refid="classopenage_1_1gui_1_1_engine_link"/>
+        <childnode refid="254" relation="public-inheritance">
+        </childnode>
+        <childnode refid="255" relation="usage">
+          <edgelabel>-core</edgelabel>
+        </childnode>
+      </node>
+      <node id="272">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="244">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="241" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="246">
+        <label>qtsdl::GuiItem&lt; AssetManagerLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="247" relation="public-inheritance">
+        </childnode>
+        <childnode refid="250" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="271">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="272" relation="public-inheritance">
+        </childnode>
+        <childnode refid="273" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="275" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="276" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="278" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="281">
+        <label>openage::coord::CoordManager</label>
+        <link refid="classopenage_1_1coord_1_1_coord_manager"/>
+        <childnode refid="282" relation="usage">
+          <edgelabel>+camgame_viewport</edgelabel>
+          <edgelabel>+camhud_viewport</edgelabel>
+        </childnode>
+        <childnode refid="284" relation="usage">
+          <edgelabel>+camgame_phys</edgelabel>
+        </childnode>
+        <childnode refid="286" relation="usage">
+          <edgelabel>+tile_size</edgelabel>
+        </childnode>
+        <childnode refid="266" relation="usage">
+          <edgelabel>+viewport_size</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/assetmanager_link.h" line="33" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="33" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>apply_static_properties</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a3256fd4358a1465bd96708d8952db26c" prot="private" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>asset_dir</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a3d981a0a65caed7744b0807cc93b1cc7" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>assetDir</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1af94cbae60205c97c8d68b66d5dd84557" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>AssetManagerLink</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>clear_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>do_adopt_core_func</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a0b607124216ebfa7bd13b17a6dbf60ae" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>engine</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1ac41f66ed9c14f62aaeb29c3751420bb5" prot="private" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>engine</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>game_logic_caller</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>get</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a6566b17b489083a396b9bb3fae5a1929" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>get_asset_dir</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a624202289589dc11dad8958aaf3c5e31" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>get_engine</name></member>
+      <member refid="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>GuiItem</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>GuiItemQObject</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>instantiate_core_func</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>is_init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>on_core_adopted_func</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>s</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a78cdab0ef894c100ba296a3fc56b9a96" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>set_asset_dir</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1ae86376a20e9bad6811574df8f9e70a40" prot="public" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>set_engine</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" virt="non-virtual"><scope>openage::gui::AssetManagerLink</scope><name>static_properties_assignments</name></member>
+      <member refid="classopenage_1_1gui_1_1_asset_manager_link_1a685fe21f6b4f07d0887c5f7aad3b24b2" prot="public" virt="virtual"><scope>openage::gui::AssetManagerLink</scope><name>~AssetManagerLink</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" virt="virtual"><scope>openage::gui::AssetManagerLink</scope><name>~DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" prot="public" virt="virtual"><scope>openage::gui::AssetManagerLink</scope><name>~GuiItemBase</name></member>
+      <member refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" prot="public" virt="virtual"><scope>openage::gui::AssetManagerLink</scope><name>~GuiItemLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>openage::gui::AssetManagerLink</scope><name>~GuiItemMethods</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

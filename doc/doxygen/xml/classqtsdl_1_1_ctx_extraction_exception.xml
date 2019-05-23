@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_ctx_extraction_exception" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::CtxExtractionException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">runtime_error</basecompoundref>
+    <includes refid="gui__ctx__setup_8h" local="no">gui_ctx_setup.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_exception_1a5aacdc89f44cb2982d1bb05fdf3ff33b" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::CtxExtractionException::CtxExtractionException</definition>
+        <argsstring>(const std::string &amp;what_arg)</argsstring>
+        <name>CtxExtractionException</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>what_arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1034">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="1033">
+        <label>qtsdl::CtxExtractionException</label>
+        <link refid="classqtsdl_1_1_ctx_extraction_exception"/>
+        <childnode refid="1034" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1036">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="1035">
+        <label>qtsdl::CtxExtractionException</label>
+        <link refid="classqtsdl_1_1_ctx_extraction_exception"/>
+        <childnode refid="1036" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="18" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="18" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_ctx_extraction_exception_1a5aacdc89f44cb2982d1bb05fdf3ff33b" prot="public" virt="non-virtual"><scope>qtsdl::CtxExtractionException</scope><name>CtxExtractionException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

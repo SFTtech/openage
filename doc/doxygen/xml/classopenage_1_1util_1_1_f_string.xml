@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_f_string" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::FString</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_string_formatter" prot="public" virt="non-virtual">openage::util::StringFormatter&lt; FString &gt;</basecompoundref>
+    <includes refid="stringformatter_8h" local="no">stringformatter.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::FString::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="318" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a6781d6f730ba4ec0de006209a4578f06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::FString</definition>
+        <argsstring>()</argsstring>
+        <name>FString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="272" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="272" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a0ee14b9c964e5bcdf909fb877ea99cf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::FString</definition>
+        <argsstring>(const std::string &amp;other)</argsstring>
+        <name>FString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="278" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="278" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1aa863db7df7b17caa1eba82568ded809e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::FString</definition>
+        <argsstring>(std::string &amp;&amp;other) noexcept</argsstring>
+        <name>FString</name>
+        <param>
+          <type>std::string &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="283" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="283" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a26060a21e2a84090f618139322c53ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> &amp;</type>
+        <definition>FString&amp; openage::util::FString::operator=</definition>
+        <argsstring>(const std::string &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="288" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="288" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1ad1df6c4aa6f0bdfa096b596e03803260" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> &amp;</type>
+        <definition>FString&amp; openage::util::FString::operator=</definition>
+        <argsstring>(std::string &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>std::string &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="293" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="293" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a8034b9b91efab393bfaee00be7267273" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::operator std::string &amp;</definition>
+        <argsstring>()</argsstring>
+        <name>operator std::string &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="300" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="300" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a25e403e8e3ee7462ed20e6fcf33f510a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::operator const std::string &amp;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator const std::string &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="304" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="304" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1ad8485cc2e0ece728bfc22c6c8d55b3f5" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="rvalue" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FString::operator std::string</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>operator std::string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="308" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="308" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::FString::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/stringformatter.h" line="312" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="312" bodyend="315"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A self-formatting string! Get yours today!</para>
+<para>Use like this:</para>
+<para>std::string stuff() { <ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref> s; s &lt;&lt; &quot;test: &quot; &lt;&lt; 5 &lt;&lt; std::cout; return s; }</para>
+<para>Use as a faster, care-free replacement for stringstream:</para>
+<para>std::string stuff() { std::stringstream sstr; sstr &lt;&lt; &quot;test: &quot; &lt;&lt; 5 &lt;&lt; std::cout; return <ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">sstr.str()</ref>; } </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1550">
+        <label>openage::util::FString</label>
+        <link refid="classopenage_1_1util_1_1_f_string"/>
+        <childnode refid="1551" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1551">
+        <label>openage::util::StringFormatter&lt; FString &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1554">
+        <label>openage::util::CachableOSStream</label>
+        <link refid="classopenage_1_1util_1_1_cachable_o_s_stream"/>
+        <childnode refid="1555" relation="usage">
+          <edgelabel>+stream</edgelabel>
+        </childnode>
+      </node>
+      <node id="1552">
+        <label>openage::util::FString</label>
+        <link refid="classopenage_1_1util_1_1_f_string"/>
+        <childnode refid="1553" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1555">
+        <label>openage::util::ExternalOStringStream</label>
+        <link refid="classopenage_1_1util_1_1_external_o_string_stream"/>
+        <childnode refid="1556" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1557" relation="usage">
+          <edgelabel>-buf</edgelabel>
+        </childnode>
+      </node>
+      <node id="1558">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1553">
+        <label>openage::util::StringFormatter&lt; FString &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="1554" relation="usage">
+          <edgelabel>-stream_ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1556">
+        <label>std::ostream</label>
+      </node>
+      <node id="1557">
+        <label>openage::util::ExternalStringBuf</label>
+        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
+        <childnode refid="1558" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/stringformatter.h" line="270" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="270" bodyend="319"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>buffer</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1adee46a55b6f42172045bc199ef0469f0" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>child_type_ref</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a6d06a46c42c75fe91a1736559b914ab3" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>fmt</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a6781d6f730ba4ec0de006209a4578f06" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>FString</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a0ee14b9c964e5bcdf909fb877ea99cf3" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>FString</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1aa863db7df7b17caa1eba82568ded809e" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>FString</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a25e403e8e3ee7462ed20e6fcf33f510a" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator const std::string &amp;</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1ad8485cc2e0ece728bfc22c6c8d55b3f5" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator std::string</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a8034b9b91efab393bfaee00be7267273" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator std::string &amp;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad4ebd58a5fcd96c87d116a2090a9b334" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1afbfb9d33b20ea4ae22a8261bc82d0e1a" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a89d3cf2f11edaa7885c3ab0e6bfe3536" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a638f9190413d043007430971011ece57" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a34cd9ca325f900c88254381412c953c6" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a5219fb7cba6db3e5c7603a57c94c0326" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a21573badd1afe0cf9dc9b2c6311d34b3" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a26060a21e2a84090f618139322c53ee3" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1ad1df6c4aa6f0bdfa096b596e03803260" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a42ffb5b1e764e003ac8c59facc580722" prot="public" virt="non-virtual" ambiguityscope="StringFormatter&lt; FString &gt;::"><scope>openage::util::FString</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad3a8b063f359dd603acf5b5de75307bf" prot="public" virt="non-virtual" ambiguityscope="StringFormatter&lt; FString &gt;::"><scope>openage::util::FString</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>reset</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a3007d4045a594b7b18d9936908732cb1" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>reset_flags</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a9f4f8b039a336f8368ba3ab9f7464a60" prot="public" virt="virtual"><scope>openage::util::FString</scope><name>should_format</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1abc8c5d3dda80dadf6bbefa12c075bdab" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a14f06db924cc9c7f7a8cb71ac5849577" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a2471b33c928800acb26d0660c5d647ef" prot="public" virt="non-virtual"><scope>openage::util::FString</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1aa55bdace86e9b1eda7b225b694c5a165" prot="public" virt="virtual"><scope>openage::util::FString</scope><name>~StringFormatter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

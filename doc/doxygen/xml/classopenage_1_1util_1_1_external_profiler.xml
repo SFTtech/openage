@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_external_profiler" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::ExternalProfiler</compoundname>
+    <includes refid="externalprofiler_8h" local="no">externalprofiler.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" prot="public" static="yes" mutable="no">
+        <type>const char *const</type>
+        <definition>const char *const openage::util::ExternalProfiler::profiling_filename</definition>
+        <argsstring></argsstring>
+        <name>profiling_filename</name>
+        <initializer>= &quot;/tmp/openage-gperftools-cpuprofile&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="12" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1a31aa8514ddfaebd7d446cb75a60c3831" prot="public" static="yes" mutable="no">
+        <type>const char *const</type>
+        <definition>const char *const openage::util::ExternalProfiler::profiling_pdf_filename</definition>
+        <argsstring></argsstring>
+        <name>profiling_pdf_filename</name>
+        <initializer>= &quot;/tmp/openage-gperftools-cpuprofile.pdf&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="13" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::ExternalProfiler::currently_profiling</definition>
+        <argsstring></argsstring>
+        <name>currently_profiling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="15" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool openage::util::ExternalProfiler::can_profile</definition>
+        <argsstring></argsstring>
+        <name>can_profile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="16" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1ae252461da0e48e367c02b7969f177bf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::ExternalProfiler::ExternalProfiler</definition>
+        <argsstring>()</argsstring>
+        <name>ExternalProfiler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="10" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::ExternalProfiler::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="18" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="32" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::ExternalProfiler::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="19" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="52" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::ExternalProfiler::show_results</definition>
+        <argsstring>()</argsstring>
+        <name>show_results</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/externalprofiler.h" line="21" column="1" bodyfile="libopenage/util/externalprofiler.cpp" bodystart="72" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1476">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/externalprofiler.h" line="8" column="1" bodyfile="libopenage/util/externalprofiler.h" bodystart="8" bodyend="22"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1ae316c40618407f53238a0e3b1f6eb236" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>can_profile</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1a169ccda24ecef26a0585803b6d94db74" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>currently_profiling</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1ae252461da0e48e367c02b7969f177bf7" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>ExternalProfiler</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1aae28f5426db6de7f5cf259e952f2d0ef" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>profiling_filename</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1a31aa8514ddfaebd7d446cb75a60c3831" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>profiling_pdf_filename</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1add3055482caaf197842cc1661b463ac8" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>show_results</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1a7b2962583089c8c5f691b3f411a5dd5b" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>start</name></member>
+      <member refid="classopenage_1_1util_1_1_external_profiler_1ac3a5cc26c455355471efacdf59912abe" prot="public" virt="non-virtual"><scope>openage::util::ExternalProfiler</scope><name>stop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

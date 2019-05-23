@@ -1,0 +1,574 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="sound_8cpp" kind="file" language="C++">
+    <compoundname>sound.cpp</compoundname>
+    <includes refid="sound_8h" local="yes">sound.h</includes>
+    <includes local="no">tuple</includes>
+    <includes refid="audio__manager_8h" local="yes">audio_manager.h</includes>
+    <includes refid="audio_2resource_8h" local="yes">resource.h</includes>
+    <incdepgraph>
+      <node id="2223">
+        <label>list</label>
+      </node>
+      <node id="2215">
+        <label>atomic</label>
+      </node>
+      <node id="2220">
+        <label>iomanip</label>
+      </node>
+      <node id="2201">
+        <label>functional</label>
+      </node>
+      <node id="2234">
+        <label>resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2186" relation="include">
+        </childnode>
+        <childnode refid="2195" relation="include">
+        </childnode>
+        <childnode refid="2235" relation="include">
+        </childnode>
+      </node>
+      <node id="2183">
+        <label>libopenage/audio/sound.cpp</label>
+        <link refid="sound_8cpp"/>
+        <childnode refid="2184" relation="include">
+        </childnode>
+        <childnode refid="2188" relation="include">
+        </childnode>
+        <childnode refid="2189" relation="include">
+        </childnode>
+        <childnode refid="2234" relation="include">
+        </childnode>
+      </node>
+      <node id="2194">
+        <label>hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="2188" relation="include">
+        </childnode>
+        <childnode refid="2186" relation="include">
+        </childnode>
+      </node>
+      <node id="2227">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+      </node>
+      <node id="2198">
+        <label>cstdint</label>
+      </node>
+      <node id="2218">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="2219" relation="include">
+        </childnode>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2220" relation="include">
+        </childnode>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2221" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+      </node>
+      <node id="2207">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="2208" relation="include">
+        </childnode>
+      </node>
+      <node id="2186">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="2187" relation="include">
+        </childnode>
+      </node>
+      <node id="2209">
+        <label>stdexcept</label>
+      </node>
+      <node id="2206">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="2222">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="2223" relation="include">
+        </childnode>
+        <childnode refid="2202" relation="include">
+        </childnode>
+        <childnode refid="2224" relation="include">
+        </childnode>
+      </node>
+      <node id="2219">
+        <label>cstdarg</label>
+      </node>
+      <node id="2190">
+        <label>string</label>
+      </node>
+      <node id="2210">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="2198" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2211" relation="include">
+        </childnode>
+        <childnode refid="2212" relation="include">
+        </childnode>
+        <childnode refid="2214" relation="include">
+        </childnode>
+        <childnode refid="2222" relation="include">
+        </childnode>
+        <childnode refid="2224" relation="include">
+        </childnode>
+      </node>
+      <node id="2212">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="2213" relation="include">
+        </childnode>
+      </node>
+      <node id="2214">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="2215" relation="include">
+        </childnode>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2216" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+        <childnode refid="2217" relation="include">
+        </childnode>
+        <childnode refid="2218" relation="include">
+        </childnode>
+      </node>
+      <node id="2232">
+        <label>ostream</label>
+      </node>
+      <node id="2197">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="2198" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+        <childnode refid="2199" relation="include">
+        </childnode>
+        <childnode refid="2200" relation="include">
+        </childnode>
+      </node>
+      <node id="2235">
+        <label>types.h</label>
+        <link refid="audio_2types_8h"/>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+      </node>
+      <node id="2195">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2196" relation="include">
+        </childnode>
+        <childnode refid="2186" relation="include">
+        </childnode>
+        <childnode refid="2231" relation="include">
+        </childnode>
+        <childnode refid="2233" relation="include">
+        </childnode>
+      </node>
+      <node id="2208">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="2187" relation="include">
+        </childnode>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2209" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+        <childnode refid="2210" relation="include">
+        </childnode>
+      </node>
+      <node id="2193">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="2226">
+        <label>typeinfo</label>
+      </node>
+      <node id="2189">
+        <label>audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2191" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+        <childnode refid="2193" relation="include">
+        </childnode>
+        <childnode refid="2186" relation="include">
+        </childnode>
+        <childnode refid="2194" relation="include">
+        </childnode>
+        <childnode refid="2184" relation="include">
+        </childnode>
+        <childnode refid="2195" relation="include">
+        </childnode>
+      </node>
+      <node id="2184">
+        <label>sound.h</label>
+        <link refid="sound_8h"/>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2186" relation="include">
+        </childnode>
+      </node>
+      <node id="2188">
+        <label>tuple</label>
+      </node>
+      <node id="2231">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="2232" relation="include">
+        </childnode>
+      </node>
+      <node id="2192">
+        <label>vector</label>
+      </node>
+      <node id="2204">
+        <label>ciso646</label>
+      </node>
+      <node id="2221">
+        <label>sstream</label>
+      </node>
+      <node id="2203">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="2204" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2205" relation="include">
+        </childnode>
+      </node>
+      <node id="2228">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="2185" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+        <childnode refid="2229" relation="include">
+        </childnode>
+        <childnode refid="2197" relation="include">
+        </childnode>
+      </node>
+      <node id="2205">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="2205" relation="include">
+        </childnode>
+      </node>
+      <node id="2217">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="2187" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+      </node>
+      <node id="2224">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="2225" relation="include">
+        </childnode>
+      </node>
+      <node id="2230">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="2229">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="2187" relation="include">
+        </childnode>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+      </node>
+      <node id="2213">
+        <label>cstdlib</label>
+      </node>
+      <node id="2187">
+        <label>iostream</label>
+      </node>
+      <node id="2191">
+        <label>unordered_map</label>
+      </node>
+      <node id="2200">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2202" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+        <childnode refid="2206" relation="include">
+        </childnode>
+        <childnode refid="2207" relation="include">
+        </childnode>
+        <childnode refid="2227" relation="include">
+        </childnode>
+      </node>
+      <node id="2202">
+        <label>mutex</label>
+      </node>
+      <node id="2196">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="2190" relation="include">
+        </childnode>
+        <childnode refid="2192" relation="include">
+        </childnode>
+        <childnode refid="2197" relation="include">
+        </childnode>
+        <childnode refid="2228" relation="include">
+        </childnode>
+        <childnode refid="2230" relation="include">
+        </childnode>
+      </node>
+      <node id="2199">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="2216">
+        <label>type_traits</label>
+      </node>
+      <node id="2211">
+        <label>config.h</label>
+      </node>
+      <node id="2233">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="2232" relation="include">
+        </childnode>
+      </node>
+      <node id="2185">
+        <label>memory</label>
+      </node>
+      <node id="2225">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="2187" relation="include">
+        </childnode>
+        <childnode refid="2226" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sound_8h" kindref="compound">sound.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio__manager_8h" kindref="compound">audio_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio_2resource_8h" kindref="compound">resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1audio_1_1_sound_1aa2ac9020a5ece67233a969921ad5e536" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_sound_1aa2ac9020a5ece67233a969921ad5e536" kindref="member">Sound::Sound</ref>(<ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref><sp/>*audio_manager,<sp/>std::shared_ptr&lt;SoundImpl&gt;<sp/>sound_impl)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>audio_manager{<ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>sound_impl{sound_impl}<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1audio_1_1_sound_1a1544a37a5713345ac93bc79267fdb440" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a1544a37a5713345ac93bc79267fdb440" kindref="member">Sound::get_category</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;get_category();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1audio_1_1_sound_1a82d74c1b94fcece5086d9299095d5a72" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a82d74c1b94fcece5086d9299095d5a72" kindref="member">Sound::get_id</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;get_id();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1audio_1_1_sound_1a12ab8da1d5d3721ad446c825be12b51d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a12ab8da1d5d3721ad446c825be12b51d" kindref="member">Sound::set_volume</ref>(int32_t<sp/>volume)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;volume<sp/>=<sp/>volume;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1audio_1_1_sound_1a775b736c1255e04ecd6a41c7b32e5002" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="classopenage_1_1audio_1_1_sound_1a775b736c1255e04ecd6a41c7b32e5002" kindref="member">Sound::get_volume</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;volume;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1audio_1_1_sound_1a7f44887badc38c1bbec70f4e6cd5dd76" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a7f44887badc38c1bbec70f4e6cd5dd76" kindref="member">Sound::set_looping</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>looping)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;looping<sp/>=<sp/>looping;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classopenage_1_1audio_1_1_sound_1a892fe30026e8f5f72a386d9e37c279a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a892fe30026e8f5f72a386d9e37c279a7" kindref="member">Sound::is_looping</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;looping;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1audio_1_1_sound_1a7e4854e55386f2498a332eed36e374d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a7e4854e55386f2498a332eed36e374d4" kindref="member">Sound::play</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;resource-&gt;use();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1a558810ebb9233d8f80da70d48b0bf282" kindref="member">add_sound</ref>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classopenage_1_1audio_1_1_sound_1a2974dc942136bfead20c8f7b988cb1ac" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a2974dc942136bfead20c8f7b988cb1ac" kindref="member">Sound::pause</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1a30af6b961d77d0b564e4813560666b2c" kindref="member">remove_sound</ref>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1audio_1_1_sound_1a976abde72ad8a2328ef5d723d0fd7e75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a976abde72ad8a2328ef5d723d0fd7e75" kindref="member">Sound::resume</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;resource-&gt;use();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1a558810ebb9233d8f80da70d48b0bf282" kindref="member">add_sound</ref>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classopenage_1_1audio_1_1_sound_1af11cd36b7a1dd5475d811e30580298fe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1af11cd36b7a1dd5475d811e30580298fe" kindref="member">Sound::stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1a30af6b961d77d0b564e4813560666b2c" kindref="member">remove_sound</ref>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;resource-&gt;stop_using();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;in_use<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1audio_1_1_sound_1afc94edcbbee8f78f7c3b25c759f6ee62" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_1afc94edcbbee8f78f7c3b25c759f6ee62" kindref="member">Sound::is_playing</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_sound_1a716f739aa7b1bfe5dc759f82662411ba" kindref="member">audio_manager</ref>-&gt;<ref refid="classopenage_1_1audio_1_1_audio_manager_1a6df7195e7f02f6959a9a241037e48657" kindref="member">is_available</ref>()<sp/>and<sp/><ref refid="classopenage_1_1audio_1_1_sound_1a3951ae62cfa73cf574e9bf32109ebc30" kindref="member">sound_impl</ref>-&gt;playing;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>here<sp/>begins<sp/>the<sp/>internal<sp/>sound<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classopenage_1_1audio_1_1_sound_impl_1a221903ef97b6ebd4f62ec89a3a3a5935" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_sound_impl_1a221903ef97b6ebd4f62ec89a3a3a5935" kindref="member">SoundImpl::SoundImpl</ref>(std::shared_ptr&lt;Resource&gt;<sp/>resource,<sp/>int32_t<sp/>volume)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204" kindref="member">resource</ref>{<ref refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" kindref="member">resource</ref>},</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>in_use{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>volume{volume},</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>offset{0},</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>playing{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>looping{</highlight><highlight class="keyword">false</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classopenage_1_1audio_1_1_sound_impl_1a554ae61e3f6b138c017b31b849402419" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_sound_impl_1a554ae61e3f6b138c017b31b849402419" kindref="member">SoundImpl::~SoundImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1audio_1_1_sound_impl_1a4ce6ba31e2a787b05e2c0fbc0407bf83" kindref="member">in_use</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" kindref="member">resource</ref>-&gt;stop_using();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1audio_1_1_sound_impl_1a4f3eda2bc3bc35a063dbe0aaed7976b3" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a4f3eda2bc3bc35a063dbe0aaed7976b3" kindref="member">SoundImpl::get_category</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" kindref="member">resource</ref>-&gt;get_category();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classopenage_1_1audio_1_1_sound_impl_1ad8a0997c0bcbfc124af3dbbb48777f25" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1ad8a0997c0bcbfc124af3dbbb48777f25" kindref="member">SoundImpl::get_id</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" kindref="member">resource</ref>-&gt;get_id();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classopenage_1_1audio_1_1_sound_impl_1a91ff0db4059a504879d693cb02874e7c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a91ff0db4059a504879d693cb02874e7c" kindref="member">SoundImpl::mix_audio</ref>(int32_t<sp/>*stream,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>length)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>stream_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fetch<sp/>the<sp/>raw<sp/>audio<sp/>from<sp/>the<sp/>underlying<sp/>resource</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk<sp/>=<sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1a3208d172100aa52a7ad87de3e7e01658" kindref="member">resource</ref>-&gt;get_data(<ref refid="classopenage_1_1audio_1_1_sound_impl_1ac475476618fa9d3ed85c94bae3d7efb9" kindref="member">offset</ref>,<sp/>length);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk.length<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1audio_1_1_sound_impl_1a2230479beeb25bbb551502f49be07cf9" kindref="member">looping</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_sound_impl_1ac475476618fa9d3ed85c94bae3d7efb9" kindref="member">offset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_sound_impl_1ade93b30f4d68510df26bfd49e45a4ba5" kindref="member">playing</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chunk.data<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>chunk.length;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream[i+stream_index]<sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_sound_impl_1af7d9908aaf55c6a61c12d2580e06995f" kindref="member">volume</ref><sp/>*<sp/>chunk.data[i];</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1audio_1_1_sound_impl_1ac475476618fa9d3ed85c94bae3d7efb9" kindref="member">offset</ref><sp/>+=<sp/>chunk.length;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>length<sp/>-=<sp/>chunk.length;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream_index<sp/>+=<sp/>chunk.length;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/sound.cpp"/>
+  </compounddef>
+</doxygen>

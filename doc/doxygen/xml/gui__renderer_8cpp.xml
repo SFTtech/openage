@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__renderer_8cpp" kind="file" language="C++">
+    <compoundname>gui_renderer.cpp</compoundname>
+    <includes refid="gui__renderer_8h" local="yes">../public/gui_renderer.h</includes>
+    <includes local="no">QSize</includes>
+    <includes refid="gui__renderer__impl_8h" local="yes">../private/gui_renderer_impl.h</includes>
+    <incdepgraph>
+      <node id="13587">
+        <label>atomic</label>
+      </node>
+      <node id="13591">
+        <label>QObject</label>
+      </node>
+      <node id="13594">
+        <label>QOffscreenSurface</label>
+      </node>
+      <node id="13593">
+        <label>QQuickRenderControl</label>
+      </node>
+      <node id="13590">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13586">
+        <label>../private/gui_renderer_impl.h</label>
+        <link refid="gui__renderer__impl_8h"/>
+        <childnode refid="13583" relation="include">
+        </childnode>
+        <childnode refid="13587" relation="include">
+        </childnode>
+        <childnode refid="13588" relation="include">
+        </childnode>
+        <childnode refid="13589" relation="include">
+        </childnode>
+        <childnode refid="13590" relation="include">
+        </childnode>
+        <childnode refid="13591" relation="include">
+        </childnode>
+        <childnode refid="13592" relation="include">
+        </childnode>
+        <childnode refid="13593" relation="include">
+        </childnode>
+        <childnode refid="13594" relation="include">
+        </childnode>
+        <childnode refid="13595" relation="include">
+        </childnode>
+      </node>
+      <node id="13589">
+        <label>condition_variable</label>
+      </node>
+      <node id="13592">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="13585">
+        <label>QSize</label>
+      </node>
+      <node id="13588">
+        <label>mutex</label>
+      </node>
+      <node id="13582">
+        <label>../public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="13583" relation="include">
+        </childnode>
+        <childnode refid="13584" relation="include">
+        </childnode>
+      </node>
+      <node id="13581">
+        <label>libopenage/gui/guisys/public/gui_renderer.cpp</label>
+        <link refid="gui__renderer_8cpp"/>
+        <childnode refid="13582" relation="include">
+        </childnode>
+        <childnode refid="13585" relation="include">
+        </childnode>
+        <childnode refid="13586" relation="include">
+        </childnode>
+      </node>
+      <node id="13584">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="13583">
+        <label>memory</label>
+      </node>
+      <node id="13595">
+        <label>gui_rendering_setup_routines.h</label>
+        <link refid="gui__rendering__setup__routines_8h"/>
+        <childnode refid="13583" relation="include">
+        </childnode>
+        <childnode refid="13590" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QSize&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_renderer_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" kindref="member">GuiRenderer::GuiRenderer</ref>(SDL_Window<sp/>*window)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>impl{std::make_unique&lt;GuiRendererImpl&gt;(window)}<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" kindref="member">GuiRenderer::~GuiRenderer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classqtsdl_1_1_gui_renderer_1a0deb3d159f4f59d24ac14369a05b3959" refkind="member"><highlight class="normal">GLuint<sp/><ref refid="classqtsdl_1_1_gui_renderer_1a0deb3d159f4f59d24ac14369a05b3959" kindref="member">GuiRenderer::render</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" kindref="member">impl</ref>-&gt;render();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_gui_renderer_1a2a23a8da34f7623c3060e788468210e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_1a2a23a8da34f7623c3060e788468210e9" kindref="member">GuiRenderer::resize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>w,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>h)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" kindref="member">impl</ref>-&gt;resize(QSize{w,<sp/>h});</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_renderer.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1tile3" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::tile3</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordNeSeUpAbsolute&lt; tile_t, tile3, tile3_delta &gt;</basecompoundref>
+    <includes refid="tile_8h" local="no">tile.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">tile</ref></type>
+        <definition>constexpr tile openage::coord::tile3::to_tile</definition>
+        <argsstring>() const</argsstring>
+        <name>to_tile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/tile.h" line="59" column="1" bodyfile="libopenage/coord/tile.h" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys2" kindref="compound">phys2</ref></type>
+        <definition>phys2 openage::coord::tile3::to_phys2</definition>
+        <argsstring>() const</argsstring>
+        <name>to_phys2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/tile.h" line="63" column="1" bodyfile="libopenage/coord/tile.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
+        <definition>phys3 openage::coord::tile3::to_phys3</definition>
+        <argsstring>() const</argsstring>
+        <name>to_phys3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/tile.h" line="64" column="1" bodyfile="libopenage/coord/tile.cpp" bodystart="36" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4486">
+        <label>openage::coord::tile3</label>
+        <link refid="structopenage_1_1coord_1_1tile3"/>
+        <childnode refid="4487" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4487">
+        <label>CoordNeSeUpAbsolute&lt; tile_t, tile3, tile3_delta &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4488">
+        <label>openage::coord::tile3</label>
+        <link refid="structopenage_1_1coord_1_1tile3"/>
+        <childnode refid="4489" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4489">
+        <label>CoordNeSeUpAbsolute&lt; tile_t, tile3, tile3_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/tile.h" line="55" column="1" bodyfile="libopenage/coord/tile.h" bodystart="55" bodyend="65"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1coord_1_1tile3_1a41375a0a27e652e560f0c0fb66fcc56d" prot="public" virt="non-virtual"><scope>openage::coord::tile3</scope><name>to_phys2</name></member>
+      <member refid="structopenage_1_1coord_1_1tile3_1a4c8cdcd73dd2d7d1e6109c8b4a82ba65" prot="public" virt="non-virtual"><scope>openage::coord::tile3</scope><name>to_phys3</name></member>
+      <member refid="structopenage_1_1coord_1_1tile3_1af828e2ee284deb35ce13d30b57b14ad0" prot="public" virt="non-virtual"><scope>openage::coord::tile3</scope><name>to_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

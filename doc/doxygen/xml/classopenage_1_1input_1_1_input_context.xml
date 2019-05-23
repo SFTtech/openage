@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1input_1_1_input_context" kind="class" language="C++" prot="public">
+    <compoundname>openage::input::InputContext</compoundname>
+    <derivedcompoundref refid="classopenage_1_1_output_mode" prot="public" virt="non-virtual">openage::OutputMode</derivedcompoundref>
+    <includes refid="input__context_8h" local="no">input_context.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_input_context_1a190c561c895ffc95c2f3092e47509737" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::input::InputContext::utf8_mode</definition>
+        <argsstring></argsstring>
+        <name>utf8_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Affects which keyboard events are received: true to accpet utf8 text events, false to receive regular char events </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="92" column="1" bodyfile="libopenage/input/input_context.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_input_context_1af84dd2cdfe2d8655ed796b94e99ad199" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> *</type>
+        <definition>InputManager* openage::input::InputContext::input_manager</definition>
+        <argsstring></argsstring>
+        <name>input_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Input manager this context is bound to. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="99" column="1" bodyfile="libopenage/input/input_context.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_input_context_1a6f1d87566bbd4aaa60900399d3d0dc35" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref>, <ref refid="namespaceopenage_1_1input_1a20e943c4e2c674bd2fbc51cc1aa95f4e" kindref="member">action_func_t</ref> &gt;</type>
+        <definition>std::unordered_map&lt;action_t, action_func_t&gt; openage::input::InputContext::by_type</definition>
+        <argsstring></argsstring>
+        <name>by_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps an action id to a event execution function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="104" column="1" bodyfile="libopenage/input/input_context.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_input_context_1a755cbd02d0d4e05a8cde3d1c0db912b2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>, <ref refid="namespaceopenage_1_1input_1a20e943c4e2c674bd2fbc51cc1aa95f4e" kindref="member">action_func_t</ref>, <ref refid="structopenage_1_1input_1_1event__hash" kindref="compound">event_hash</ref> &gt;</type>
+        <definition>std::unordered_map&lt;Event, action_func_t, event_hash&gt; openage::input::InputContext::by_event</definition>
+        <argsstring></argsstring>
+        <name>by_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>map specific overriding events </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="109" column="1" bodyfile="libopenage/input/input_context.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_input_context_1a3c3e329f64016a032e5fdf49247d84d8" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref>, <ref refid="namespaceopenage_1_1input_1a749551c9ca7f855abac1a48f51a3f1bf" kindref="member">action_check_t</ref>, <ref refid="structopenage_1_1input_1_1event__class__hash" kindref="compound">event_class_hash</ref> &gt;</type>
+        <definition>std::unordered_map&lt;event_class, action_check_t, event_class_hash&gt; openage::input::InputContext::by_class</definition>
+        <argsstring></argsstring>
+        <name>by_class</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>event to action map event_class as key, to ensure all events can be mapped </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="115" column="1" bodyfile="libopenage/input/input_context.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a717f49ae6be59bee9eee3b2544156e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::input::InputContext::InputContext</definition>
+        <argsstring>()</argsstring>
+        <name>InputContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an unbound input context. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="33" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1aa4def561465e157c135bba80d7345fc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::input::InputContext::InputContext</definition>
+        <argsstring>(InputManager *manager)</argsstring>
+        <name>InputContext</name>
+        <param>
+          <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a bound context, assigned to its manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="38" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1aa9cbb44149a877bfeaaf2633ee505615" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::input::InputContext::~InputContext</definition>
+        <argsstring>()=default</argsstring>
+        <name>~InputContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1ab79e2d06d4aab199d3fb9c5dc5b6ff3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::input::InputContext::active_binds</definition>
+        <argsstring>() const</argsstring>
+        <name>active_binds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a list of all keys of this context which are bound currently in the active context.</para>
+<para>TODO: move this method to the input manager. as InputManager::active_binds(const InputContext &amp;) const; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="49" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="25" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a32c669bab23aa04b6d17309b21486ffa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::InputContext::bind</definition>
+        <argsstring>(action_t type, const action_func_t act)</argsstring>
+        <name>bind</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1input_1a20e943c4e2c674bd2fbc51cc1aa95f4e" kindref="member">action_func_t</ref></type>
+          <declname>act</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bind a specific action idetifier this is the highest matching priority </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="55" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1ad2240a3e1b80bdf0432f31e7fed692da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::InputContext::bind</definition>
+        <argsstring>(const Event &amp;ev, const action_func_t act)</argsstring>
+        <name>bind</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref> &amp;</type>
+          <declname>ev</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1input_1a20e943c4e2c674bd2fbc51cc1aa95f4e" kindref="member">action_func_t</ref></type>
+          <declname>act</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bind a specific event this is the second matching priority </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="61" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a225d2dfdd4224c77ce2692ffa1fadf10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::InputContext::bind</definition>
+        <argsstring>(event_class ec, const action_check_t act)</argsstring>
+        <name>bind</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref></type>
+          <declname>ec</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1input_1a749551c9ca7f855abac1a48f51a3f1bf" kindref="member">action_check_t</ref></type>
+          <declname>act</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bind all events of a specific class this is the lowest matching priority </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="67" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::input::InputContext::execute_if_bound</definition>
+        <argsstring>(const action_arg_t &amp;e)</argsstring>
+        <name>execute_if_bound</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1input_1_1action__arg__t" kindref="compound">action_arg_t</ref> &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>lookup an action. If it is bound, execute it. <simplesect kind="return"><para>true when the action is executed, false else. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="73" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="46" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a0a5d3374a164faf57483d7555f0b84b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::InputContext::register_to</definition>
+        <argsstring>(InputManager *manager)</argsstring>
+        <name>register_to</name>
+        <param>
+          <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called by the <ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref> where this context shall be registered to. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="79" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_input_context_1a12ae83daa8c6bfefef320a07377a9246" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::InputContext::unregister</definition>
+        <argsstring>()</argsstring>
+        <name>unregister</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the registration to an input manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_context.h" line="84" column="1" bodyfile="libopenage/input/input_context.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An input context contains all keybindings and actions active in e.g. the HUD only. For the console, there&apos;s a different input context. That way, each context can have the same keys assigned to different actions, the active context decides, which one to trigger. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2989">
+        <label>openage::EditorMode</label>
+        <link refid="classopenage_1_1_editor_mode"/>
+        <childnode refid="2986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2988">
+        <label>openage::CreateMode</label>
+        <link refid="classopenage_1_1_create_mode"/>
+        <childnode refid="2986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2985">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+      </node>
+      <node id="2987">
+        <label>openage::ActionMode</label>
+        <link refid="classopenage_1_1_action_mode"/>
+        <childnode refid="2986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2986">
+        <label>openage::OutputMode</label>
+        <link refid="classopenage_1_1_output_mode"/>
+        <childnode refid="2985" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2999">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="2998">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="2999" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="2997">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="2998" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="2991" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="2996">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="2993">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="2994" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2994">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="2990">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="2991" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="2995">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="2996" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2992">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="2991">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="2992" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2993" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="2990" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="2995" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="2997" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/input/input_context.h" line="27" column="1" bodyfile="libopenage/input/input_context.h" bodystart="27" bodyend="117"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1input_1_1_input_context_1ab79e2d06d4aab199d3fb9c5dc5b6ff3f" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>active_binds</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a32c669bab23aa04b6d17309b21486ffa" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>bind</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1ad2240a3e1b80bdf0432f31e7fed692da" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>bind</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a225d2dfdd4224c77ce2692ffa1fadf10" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>bind</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a3c3e329f64016a032e5fdf49247d84d8" prot="private" virt="non-virtual"><scope>openage::input::InputContext</scope><name>by_class</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a755cbd02d0d4e05a8cde3d1c0db912b2" prot="private" virt="non-virtual"><scope>openage::input::InputContext</scope><name>by_event</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a6f1d87566bbd4aaa60900399d3d0dc35" prot="private" virt="non-virtual"><scope>openage::input::InputContext</scope><name>by_type</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>execute_if_bound</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1af84dd2cdfe2d8655ed796b94e99ad199" prot="private" virt="non-virtual"><scope>openage::input::InputContext</scope><name>input_manager</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a717f49ae6be59bee9eee3b2544156e10" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>InputContext</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1aa4def561465e157c135bba80d7345fc4" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>InputContext</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a0a5d3374a164faf57483d7555f0b84b5" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>register_to</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a12ae83daa8c6bfefef320a07377a9246" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>unregister</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1a190c561c895ffc95c2f3092e47509737" prot="public" virt="non-virtual"><scope>openage::input::InputContext</scope><name>utf8_mode</name></member>
+      <member refid="classopenage_1_1input_1_1_input_context_1aa9cbb44149a877bfeaaf2633ee505615" prot="public" virt="virtual"><scope>openage::input::InputContext</scope><name>~InputContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

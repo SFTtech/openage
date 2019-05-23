@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="window_8h" kind="file" language="C++">
+    <compoundname>window.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes refid="renderer_8h" local="yes">renderer.h</includes>
+    <includedby refid="opengl_2window_8h" local="yes">libopenage/renderer/opengl/window.h</includedby>
+    <includedby refid="windowvk_8h" local="yes">libopenage/renderer/vulkan/windowvk.h</includedby>
+    <includedby refid="window_8cpp" local="yes">libopenage/renderer/window.cpp</includedby>
+    <incdepgraph>
+      <node id="22893">
+        <label>functional</label>
+      </node>
+      <node id="22892">
+        <label>libopenage/renderer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="22893" relation="include">
+        </childnode>
+        <childnode refid="22894" relation="include">
+        </childnode>
+        <childnode refid="22895" relation="include">
+        </childnode>
+        <childnode refid="22896" relation="include">
+        </childnode>
+        <childnode refid="22897" relation="include">
+        </childnode>
+      </node>
+      <node id="22896">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="22895">
+        <label>vector</label>
+      </node>
+      <node id="22897">
+        <label>renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="22895" relation="include">
+        </childnode>
+        <childnode refid="22894" relation="include">
+        </childnode>
+      </node>
+      <node id="22894">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22901">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="22898">
+        <label>libopenage/renderer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="22899" relation="include">
+        </childnode>
+        <childnode refid="22902" relation="include">
+        </childnode>
+        <childnode refid="22904" relation="include">
+        </childnode>
+      </node>
+      <node id="22900">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="22904">
+        <label>libopenage/renderer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="22903">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+      </node>
+      <node id="22899">
+        <label>libopenage/renderer/opengl/window.h</label>
+        <link refid="opengl_2window_8h"/>
+        <childnode refid="22900" relation="include">
+        </childnode>
+        <childnode refid="22901" relation="include">
+        </childnode>
+      </node>
+      <node id="22902">
+        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <link refid="windowvk_8h"/>
+        <childnode refid="22903" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_window" prot="public">openage::renderer::Window</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="renderer_8h" kindref="compound">renderer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1renderer_1_1_window" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_window" kindref="compound">Window</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ae2f492edc2ff187638506d66b925a86e" kindref="member">~Window</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;size_t,<sp/>size_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1a1bf53e4db756c04ed522a975573b36a6" kindref="member">get_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a8fa5671d7e11d9797cd19d4258ddc69b" kindref="member">should_close</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1renderer_1_1_window_1a080758683dbea7ce6f185d3b8d8da929" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a080758683dbea7ce6f185d3b8d8da929" kindref="member">key_cb_t</ref><sp/>=<sp/>std::function&lt;void(SDL_KeyboardEvent<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)&gt;;</highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1renderer_1_1_window_1a5d6f0b1021b7b7a0460303b588e64c45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a5d6f0b1021b7b7a0460303b588e64c45" kindref="member">mouse_button_cb_t</ref><sp/>=<sp/>std::function&lt;void(SDL_MouseButtonEvent<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)&gt;;</highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1renderer_1_1_window_1a37a3323f44e9f362a6ea8eab5ee97186" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a37a3323f44e9f362a6ea8eab5ee97186" kindref="member">mouse_wheel_cb_t</ref><sp/>=<sp/>std::function&lt;void(SDL_MouseWheelEvent<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)&gt;;</highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1renderer_1_1_window_1ab856fe913343bbc5ce12cc45cec0e144" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ab856fe913343bbc5ce12cc45cec0e144" kindref="member">resize_cb_t</ref><sp/>=<sp/>std::function&lt;void(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)&gt;;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a822983220cdde11447b7e66cb9f02178" kindref="member">add_key_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a080758683dbea7ce6f185d3b8d8da929" kindref="member">key_cb_t</ref>&amp;);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" kindref="member">add_mouse_button_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a5d6f0b1021b7b7a0460303b588e64c45" kindref="member">mouse_button_cb_t</ref>&amp;);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1acd1c8a5130d6e3d6db05035c1e9d9e26" kindref="member">add_mouse_wheel_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a37a3323f44e9f362a6ea8eab5ee97186" kindref="member">mouse_wheel_cb_t</ref>&amp;);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" kindref="member">add_resize_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ab856fe913343bbc5ce12cc45cec0e144" kindref="member">resize_cb_t</ref>&amp;);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1af9c94c1eb6ec43c5891c210e0eff2a6c" kindref="member">set_size</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a2a6722e3c0459b2caa86e8f819ff5e3f" kindref="member">update</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Renderer&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1ab5a85c89ebe4c6f9426ca989bc8aa305" kindref="member">make_renderer</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a604ae9d1732215d4cd2617778f516ac7" kindref="member">Window</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1renderer_1_1_window_1a7fdf5fbab00699344b8ce451cc73e688" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a7fdf5fbab00699344b8ce451cc73e688" kindref="member">should_be_closed</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;size_t,<sp/>size_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1renderer_1_1_window_1adc14f04028ef5322055dc37569a173f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;key_cb_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1adc14f04028ef5322055dc37569a173f5" kindref="member">on_key</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classopenage_1_1renderer_1_1_window_1a13488daef83f3f84d9275dfb2aac7cfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;mouse_button_cb_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1a13488daef83f3f84d9275dfb2aac7cfd" kindref="member">on_mouse_button</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classopenage_1_1renderer_1_1_window_1a9499b8211b2a3bab0b9942f6a098380d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;mouse_wheel_cb_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1a9499b8211b2a3bab0b9942f6a098380d" kindref="member">on_mouse_wheel</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;resize_cb_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" kindref="member">on_resize</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/window.h"/>
+  </compounddef>
+</doxygen>

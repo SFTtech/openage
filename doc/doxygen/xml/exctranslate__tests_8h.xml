@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="exctranslate__tests_8h" kind="file" language="C++">
+    <compoundname>exctranslate_tests.h</compoundname>
+    <includes refid="functional_8h" local="yes">functional.h</includes>
+    <includedby refid="exctranslate__tests_8cpp" local="yes">libopenage/pyinterface/exctranslate_tests.cpp</includedby>
+    <incdepgraph>
+      <node id="19517">
+        <label>list</label>
+      </node>
+      <node id="19508">
+        <label>atomic</label>
+      </node>
+      <node id="19513">
+        <label>iomanip</label>
+      </node>
+      <node id="19490">
+        <label>functional</label>
+      </node>
+      <node id="19521">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="19490" relation="include">
+        </childnode>
+        <childnode refid="19492" relation="include">
+        </childnode>
+      </node>
+      <node id="19503">
+        <label>cstdint</label>
+      </node>
+      <node id="19511">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="19512" relation="include">
+        </childnode>
+        <childnode refid="19490" relation="include">
+        </childnode>
+        <childnode refid="19513" relation="include">
+        </childnode>
+        <childnode refid="19500" relation="include">
+        </childnode>
+        <childnode refid="19514" relation="include">
+        </childnode>
+        <childnode refid="19494" relation="include">
+        </childnode>
+        <childnode refid="19515" relation="include">
+        </childnode>
+      </node>
+      <node id="19488">
+        <label>libopenage/pyinterface/exctranslate_tests.h</label>
+        <link refid="exctranslate__tests_8h"/>
+        <childnode refid="19489" relation="include">
+        </childnode>
+      </node>
+      <node id="19497">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="19498" relation="include">
+        </childnode>
+      </node>
+      <node id="19501">
+        <label>stdexcept</label>
+      </node>
+      <node id="19496">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="19516">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="19517" relation="include">
+        </childnode>
+        <childnode refid="19491" relation="include">
+        </childnode>
+        <childnode refid="19518" relation="include">
+        </childnode>
+      </node>
+      <node id="19512">
+        <label>cstdarg</label>
+      </node>
+      <node id="19494">
+        <label>string</label>
+      </node>
+      <node id="19502">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="19503" relation="include">
+        </childnode>
+        <childnode refid="19494" relation="include">
+        </childnode>
+        <childnode refid="19504" relation="include">
+        </childnode>
+        <childnode refid="19505" relation="include">
+        </childnode>
+        <childnode refid="19507" relation="include">
+        </childnode>
+        <childnode refid="19516" relation="include">
+        </childnode>
+        <childnode refid="19518" relation="include">
+        </childnode>
+      </node>
+      <node id="19505">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="19506" relation="include">
+        </childnode>
+      </node>
+      <node id="19507">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="19508" relation="include">
+        </childnode>
+        <childnode refid="19500" relation="include">
+        </childnode>
+        <childnode refid="19509" relation="include">
+        </childnode>
+        <childnode refid="19492" relation="include">
+        </childnode>
+        <childnode refid="19510" relation="include">
+        </childnode>
+        <childnode refid="19511" relation="include">
+        </childnode>
+      </node>
+      <node id="19498">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="19499" relation="include">
+        </childnode>
+        <childnode refid="19500" relation="include">
+        </childnode>
+        <childnode refid="19501" relation="include">
+        </childnode>
+        <childnode refid="19494" relation="include">
+        </childnode>
+        <childnode refid="19492" relation="include">
+        </childnode>
+        <childnode refid="19502" relation="include">
+        </childnode>
+      </node>
+      <node id="19520">
+        <label>typeinfo</label>
+      </node>
+      <node id="19515">
+        <label>vector</label>
+      </node>
+      <node id="19493">
+        <label>ciso646</label>
+      </node>
+      <node id="19514">
+        <label>sstream</label>
+      </node>
+      <node id="19492">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="19493" relation="include">
+        </childnode>
+        <childnode refid="19494" relation="include">
+        </childnode>
+        <childnode refid="19495" relation="include">
+        </childnode>
+      </node>
+      <node id="19495">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="19495" relation="include">
+        </childnode>
+      </node>
+      <node id="19510">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="19499" relation="include">
+        </childnode>
+        <childnode refid="19494" relation="include">
+        </childnode>
+      </node>
+      <node id="19518">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="19519" relation="include">
+        </childnode>
+      </node>
+      <node id="19506">
+        <label>cstdlib</label>
+      </node>
+      <node id="19499">
+        <label>iostream</label>
+      </node>
+      <node id="19489">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="19490" relation="include">
+        </childnode>
+        <childnode refid="19491" relation="include">
+        </childnode>
+        <childnode refid="19492" relation="include">
+        </childnode>
+        <childnode refid="19496" relation="include">
+        </childnode>
+        <childnode refid="19497" relation="include">
+        </childnode>
+        <childnode refid="19521" relation="include">
+        </childnode>
+      </node>
+      <node id="19491">
+        <label>mutex</label>
+      </node>
+      <node id="19509">
+        <label>type_traits</label>
+      </node>
+      <node id="19504">
+        <label>config.h</label>
+      </node>
+      <node id="19500">
+        <label>memory</label>
+      </node>
+      <node id="19519">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="19499" relation="include">
+        </childnode>
+        <childnode refid="19520" relation="include">
+        </childnode>
+        <childnode refid="19492" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="19522">
+        <label>libopenage/pyinterface/exctranslate_tests.h</label>
+        <link refid="exctranslate__tests_8h"/>
+        <childnode refid="19523" relation="include">
+        </childnode>
+      </node>
+      <node id="19523">
+        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <link refid="exctranslate__tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface_1_1tests">openage::pyinterface::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.pyinterface.functional<sp/>cimport<sp/>PyIfFunc0,<sp/>PyIfFunc2,<sp/>Func0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="functional_8h" kindref="compound">functional.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pyinterface<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ac5cb0834a41caf9f84ee192cc307f24d" kindref="member">err_cpp_to_py_helper</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/>PyIfFunc&lt;void&gt;<sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aedb3b49eb37f36870b17865655b11247" kindref="member">err_py_to_cpp_helper</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ad62ace68d6946aec2ca53e5269bb9946" kindref="member">bounce_call</ref>(Func&lt;void&gt;<sp/>func,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>times);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/>PyIfFunc&lt;void,<sp/>Func&lt;void&gt;,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aa2b601816e1678049ffc42740a366ce9" kindref="member">bounce_call_py</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/exctranslate_tests.h"/>
+  </compounddef>
+</doxygen>

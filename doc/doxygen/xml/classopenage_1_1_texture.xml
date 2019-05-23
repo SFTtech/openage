@@ -1,0 +1,728 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_texture" kind="class" language="C++" prot="public">
+    <compoundname>openage::Texture</compoundname>
+    <includes refid="texture_8h" local="no">texture.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Texture::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="73" column="1" bodyfile="libopenage/texture.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Texture::h</definition>
+        <argsstring></argsstring>
+        <name>h</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="74" column="1" bodyfile="libopenage/texture.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="structopenage_1_1gl__texture__buffer" kindref="compound">gl_texture_buffer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;gl_texture_buffer&gt; openage::Texture::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="170" column="1" bodyfile="libopenage/texture.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gamedata::subtexture &gt;</type>
+        <definition>std::vector&lt;gamedata::subtexture&gt; openage::Texture::subtextures</definition>
+        <argsstring></argsstring>
+        <name>subtextures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="171" column="1" bodyfile="libopenage/texture.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::Texture::use_metafile</definition>
+        <argsstring></argsstring>
+        <name>use_metafile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="172" column="1" bodyfile="libopenage/texture.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::Texture::filename</definition>
+        <argsstring></argsstring>
+        <name>filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="174" column="1" bodyfile="libopenage/texture.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_texture_1a9e58058cc22522ac149768038cc2dc08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Texture::Texture</definition>
+        <argsstring>(int width, int height, std::unique_ptr&lt; uint32_t[]&gt; data)</argsstring>
+        <name>Texture</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; uint32_t[]&gt;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a texture from a rgba8 array. It will have w * h * 32bit storage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="80" column="1" bodyfile="libopenage/texture.cpp" bodystart="37" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a245b2f41a0307ea3553fadfbc777bb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Texture::Texture</definition>
+        <argsstring>(const util::Path &amp;filename, bool use_metafile=false)</argsstring>
+        <name>Texture</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_metafile</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a texture from a existing image file. For supported image file types, see the SDL_Image initialization in the engine. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="86" column="1" bodyfile="libopenage/texture.cpp" bodystart="52" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1aedb0d8e12aa8cc20d364b12a75045a5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Texture::~Texture</definition>
+        <argsstring>()</argsstring>
+        <name>~Texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="87" column="1" bodyfile="libopenage/texture.cpp" bodystart="185" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mode</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mirrored</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subid</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>player</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws the texture at hud coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="92" column="1" bodyfile="libopenage/texture.cpp" bodystart="198" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a6537758244bbe7b99bda2de4a337fb4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;mgr, coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mode</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mirrored</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subid</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>player</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws the texture at game coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="97" column="1" bodyfile="libopenage/texture.cpp" bodystart="205" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a67031aa8a376335fe775cf819b22900c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;mgr, coord::phys3 pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mode</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mirrored</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subid</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>player</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws the texture at phys coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="102" column="1" bodyfile="libopenage/texture.cpp" bodystart="212" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1ac79ebb1a99e21faf9ed7faacdf0d68d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;mgr, const Terrain &amp;terrain, coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;</type>
+          <declname>terrain</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subid</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+          <declname>alpha_texture</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha_subid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws the texture at tile coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="107" column="1" bodyfile="libopenage/texture.cpp" bodystart="219" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::draw</definition>
+        <argsstring>(coord::viewport pos, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mirrored</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>subid</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+          <declname>alpha_texture</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha_subid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draws the texture at window coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="112" column="1" bodyfile="libopenage/texture.cpp" bodystart="229" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::reload</definition>
+        <argsstring>()</argsstring>
+        <name>reload</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reload the image file. Used for inotify refreshing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="117" column="1" bodyfile="libopenage/texture.cpp" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const gamedata::subtexture *</type>
+        <definition>const gamedata::subtexture * openage::Texture::get_subtexture</definition>
+        <argsstring>(uint64_t subid) const</argsstring>
+        <name>get_subtexture</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>subid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the subtexture coordinates by its id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="122" column="1" bodyfile="libopenage/texture.cpp" bodystart="400" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::Texture::get_subtexture_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_subtexture_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of available subtextures </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="127" column="1" bodyfile="libopenage/texture.cpp" bodystart="431" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::get_subtexture_size</definition>
+        <argsstring>(uint64_t subid, int *w, int *h) const</argsstring>
+        <name>get_subtexture_size</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>subid</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetch the size of the given subtexture. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>index of the requested subtexture </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>w</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the subtexture width </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>h</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the subtexture height </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="135" column="1" bodyfile="libopenage/texture.cpp" bodystart="436" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::get_subtexture_coordinates</definition>
+        <argsstring>(uint64_t subid, float *txl, float *txr, float *txt, float *txb) const</argsstring>
+        <name>get_subtexture_coordinates</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>subid</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txl</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txr</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txt</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get atlas subtexture coordinates.</para>
+<para>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="144" column="1" bodyfile="libopenage/texture.cpp" bodystart="413" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1ae868f4636be962e32dd7ceb96da2d01c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::get_subtexture_coordinates</definition>
+        <argsstring>(const gamedata::subtexture *subtex, float *txl, float *txr, float *txt, float *txb) const</argsstring>
+        <name>get_subtexture_coordinates</name>
+        <param>
+          <type>const gamedata::subtexture *</type>
+          <declname>subtex</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txl</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txr</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txt</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>txb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="145" column="1" bodyfile="libopenage/texture.cpp" bodystart="421" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a5b69e4f44b43bb966b8b5030873c1ddd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::fix_hotspots</definition>
+        <argsstring>(unsigned x, unsigned y)</argsstring>
+        <name>fix_hotspots</name>
+        <param>
+          <type>unsigned</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>fixes the hotspots of all subtextures to (x,y). this is a temporary workaround; such fixes should actually be done in the convert script. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="152" column="1" bodyfile="libopenage/texture.cpp" bodystart="190" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a622e7c5ad0a837004883818ec8f91147" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::activate_alphamask</definition>
+        <argsstring>(Texture *mask, uint64_t subid)</argsstring>
+        <name>activate_alphamask</name>
+        <param>
+          <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>subid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>activates the influence of a given alpha mask to this texture. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="157" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1abc6ca9da94bcd6ada3ada56606ca96dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::disable_alphamask</definition>
+        <argsstring>()</argsstring>
+        <name>disable_alphamask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>disable a previously activated alpha mask. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="162" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint openage::Texture::get_texture_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_texture_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the opengl texture id of this texture. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="167" column="1" bodyfile="libopenage/texture.cpp" bodystart="443" bodyend="446"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::load</definition>
+        <argsstring>()</argsstring>
+        <name>load</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="176" column="1" bodyfile="libopenage/texture.cpp" bodystart="61" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::load_in_glthread</definition>
+        <argsstring>() const</argsstring>
+        <name>load_in_glthread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The texture loadin must occur on the thread that manages the gl context. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="181" column="1" bodyfile="libopenage/texture.cpp" bodystart="157" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint openage::Texture::make_gl_texture</definition>
+        <argsstring>(int iformat, int oformat, int w, int h, void *) const</argsstring>
+        <name>make_gl_texture</name>
+        <param>
+          <type>int</type>
+          <declname>iformat</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>oformat</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="182" column="1" bodyfile="libopenage/texture.cpp" bodystart="137" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Texture::unload</definition>
+        <argsstring>()</argsstring>
+        <name>unload</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="183" column="1" bodyfile="libopenage/texture.cpp" bodystart="173" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A texture for rendering graphically.</para>
+<para>You may believe it or not, but this class represents a single texture, which can be drawn on the screen.</para>
+<para>The class supports subtextures, so that one big texture can contain several small images. These are the ones actually to be rendered. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4458">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4457">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4458" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/texture.h" line="71" column="1" bodyfile="libopenage/texture.h" bodystart="71" bodyend="185"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_texture_1a622e7c5ad0a837004883818ec8f91147" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>activate_alphamask</name></member>
+      <member refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>buffer</name></member>
+      <member refid="classopenage_1_1_texture_1abc6ca9da94bcd6ada3ada56606ca96dd" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>disable_alphamask</name></member>
+      <member refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_texture_1a6537758244bbe7b99bda2de4a337fb4d" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_texture_1a67031aa8a376335fe775cf819b22900c" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_texture_1ac79ebb1a99e21faf9ed7faacdf0d68d5" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_texture_1a6b4128fc6fd1856fbfc6ece4165fd505" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>filename</name></member>
+      <member refid="classopenage_1_1_texture_1a5b69e4f44b43bb966b8b5030873c1ddd" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>fix_hotspots</name></member>
+      <member refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_subtexture</name></member>
+      <member refid="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_subtexture_coordinates</name></member>
+      <member refid="classopenage_1_1_texture_1ae868f4636be962e32dd7ceb96da2d01c" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_subtexture_coordinates</name></member>
+      <member refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_subtexture_count</name></member>
+      <member refid="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_subtexture_size</name></member>
+      <member refid="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>get_texture_id</name></member>
+      <member refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>h</name></member>
+      <member refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>load</name></member>
+      <member refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>load_in_glthread</name></member>
+      <member refid="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>make_gl_texture</name></member>
+      <member refid="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>reload</name></member>
+      <member refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>subtextures</name></member>
+      <member refid="classopenage_1_1_texture_1a9e58058cc22522ac149768038cc2dc08" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>Texture</name></member>
+      <member refid="classopenage_1_1_texture_1a245b2f41a0307ea3553fadfbc777bb54" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>Texture</name></member>
+      <member refid="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>unload</name></member>
+      <member refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" prot="private" virt="non-virtual"><scope>openage::Texture</scope><name>use_metafile</name></member>
+      <member refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>w</name></member>
+      <member refid="classopenage_1_1_texture_1aedb0d8e12aa8cc20d364b12a75045a5e" prot="public" virt="non-virtual"><scope>openage::Texture</scope><name>~Texture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

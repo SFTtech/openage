@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1audio_1_1_dynamic_resource" kind="class" language="C++" prot="public">
+    <compoundname>openage::audio::DynamicResource</compoundname>
+    <basecompoundref refid="classopenage_1_1audio_1_1_resource" prot="public" virt="non-virtual">openage::audio::Resource</basecompoundref>
+    <includes refid="dynamic__resource_8h" local="no">dynamic_resource.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" prot="public" static="yes" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::audio::DynamicResource::DEFAULT_PRELOAD_AMOUNT</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_PRELOAD_AMOUNT</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of chunks that have to be loaded, before a sound actually starts playing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="95" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" prot="public" static="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::audio::DynamicResource::DEFAULT_CHUNK_SIZE</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_CHUNK_SIZE</name>
+        <initializer>= 9600*2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The default used chunk size in bytes (100ms). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="98" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" prot="public" static="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::audio::DynamicResource::DEFAULT_MAX_CHUNKS</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_MAX_CHUNKS</name>
+        <initializer>= 100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The default number of chunks, that can be loaded at the same time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="101" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::audio::DynamicResource::path</definition>
+        <argsstring></argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resource&apos;s path. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="105" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref></type>
+        <definition>format_t openage::audio::DynamicResource::format</definition>
+        <argsstring></argsstring>
+        <name>format</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resource&apos;s audio format. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="108" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::audio::DynamicResource::preload_amount</definition>
+        <argsstring></argsstring>
+        <name>preload_amount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of chunks that should be preloaded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="111" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::audio::DynamicResource::chunk_size</definition>
+        <argsstring></argsstring>
+        <name>chunk_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of one audio chunk in bytes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="114" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::audio::DynamicResource::max_chunks</definition>
+        <argsstring></argsstring>
+        <name>max_chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The maximum number of chunks that are used to store audio data. This is the maximum amount stored in the <computeroutput>chunks</computeroutput> map. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="120" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" prot="private" static="no" mutable="no">
+        <type>std::atomic_int</type>
+        <definition>std::atomic_int openage::audio::DynamicResource::use_count</definition>
+        <argsstring></argsstring>
+        <name>use_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of sounds that currently use this resource. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="123" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;DynamicLoader&gt; openage::audio::DynamicResource::loader</definition>
+        <argsstring></argsstring>
+        <name>loader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The background audio loader. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="126" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1datastructure_1_1_concurrent_queue" kindref="compound">datastructure::ConcurrentQueue</ref>&lt; std::shared_ptr&lt; <ref refid="structopenage_1_1audio_1_1chunk__info__t" kindref="compound">chunk_info_t</ref> &gt; &gt;</type>
+        <definition>datastructure::ConcurrentQueue&lt;std::shared_ptr&lt;chunk_info_t&gt; &gt; openage::audio::DynamicResource::decay_queue</definition>
+        <argsstring></argsstring>
+        <name>decay_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queue of audio chunk information that manages the decay of buffer data.</para>
+<para>This implements &quot;forget least-recently-used chunks&quot; when a new one shall be loaded. This <emphasis>must</emphasis> never run empty! Otherwise the audio system will lock up. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="135" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; size_t, std::shared_ptr&lt; <ref refid="structopenage_1_1audio_1_1chunk__info__t" kindref="compound">chunk_info_t</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;size_t,std::shared_ptr&lt;chunk_info_t&gt; &gt; openage::audio::DynamicResource::chunks</definition>
+        <argsstring></argsstring>
+        <name>chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> chunk index to chunk mapping. Loading and usage state is reached through this. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="141" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1job_1_1_job_group" kindref="compound">job::JobGroup</ref></type>
+        <definition>job::JobGroup openage::audio::DynamicResource::loading_job_group</definition>
+        <argsstring></argsstring>
+        <name>loading_job_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The background loading job group. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="144" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a890bf6e35b0070abdfa414e29931e989" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::DynamicResource::DynamicResource</definition>
+        <argsstring>(AudioManager *manager, category_t category, int id, const util::Path &amp;path, format_t format=format_t::OPUS, int preload_amount=DEFAULT_PRELOAD_AMOUNT, size_t chunk_size=DEFAULT_CHUNK_SIZE, size_t max_chunks=DEFAULT_MAX_CHUNKS)</argsstring>
+        <name>DynamicResource</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref></type>
+          <declname>format</declname>
+          <defval><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9" kindref="member">format_t::OPUS</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>preload_amount</declname>
+          <defval><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" kindref="member">DEFAULT_PRELOAD_AMOUNT</ref></defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>chunk_size</declname>
+          <defval><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" kindref="member">DEFAULT_CHUNK_SIZE</ref></defval>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_chunks</declname>
+          <defval><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" kindref="member">DEFAULT_MAX_CHUNKS</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="58" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="22" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a16a62693a4a1ba7a75fccd0af800b8e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::audio::DynamicResource::~DynamicResource</definition>
+        <argsstring>()=default</argsstring>
+        <name>~DynamicResource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::audio::DynamicResource::use</definition>
+        <argsstring>() override</argsstring>
+        <name>use</name>
+        <reimplements refid="classopenage_1_1audio_1_1_resource_1a0ad2666c3d7c85d9ca17a2eb9c7887cb">use</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="69" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="39" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::audio::DynamicResource::stop_using</definition>
+        <argsstring>() override</argsstring>
+        <name>stop_using</name>
+        <reimplements refid="classopenage_1_1audio_1_1_resource_1aaa6342dfe81f25de870d35018db5934c">stop_using</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the resource, that one sound object does not use this resource any longer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="70" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="63" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="structopenage_1_1audio_1_1audio__chunk__t" kindref="compound">audio_chunk_t</ref></type>
+        <definition>audio_chunk_t openage::audio::DynamicResource::get_data</definition>
+        <argsstring>(size_t position, size_t data_length) override</argsstring>
+        <name>get_data</name>
+        <reimplements refid="classopenage_1_1audio_1_1_resource_1a2c01c18ad8bee86abf0ea5e3cfd00ba1">get_data</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the current position in the resource</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of int16_t values that should be returned </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes of audio data that is requested </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="72" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="73" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::audio::DynamicResource::start_preloading</definition>
+        <argsstring>(size_t resource_chunk_index)</argsstring>
+        <name>start_preloading</name>
+        <param>
+          <type>size_t</type>
+          <declname>resource_chunk_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Start to load audio chunks beginning at the given chunk index. Continues to do so until the <computeroutput>preload_amount</computeroutput> is reached. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="79" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="134" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::audio::DynamicResource::load_chunk_async</definition>
+        <argsstring>(std::shared_ptr&lt; chunk_info_t &gt; chunk_info, size_t resource_chunk_offset)</argsstring>
+        <name>load_chunk_async</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="structopenage_1_1audio_1_1chunk__info__t" kindref="compound">chunk_info_t</ref> &gt;</type>
+          <declname>chunk_info</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>resource_chunk_offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Load a single chunk in the background (through the job manager). First, the given <computeroutput>chunk_info</computeroutput> is invalidated. Then, after loading, it&apos;s pushed into the <computeroutput>decay_queue</computeroutput> so it can decay again. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="87" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="173" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Audio data that is loaded dynamically when used. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1131">
+        <label>openage::audio::DynamicResource</label>
+        <link refid="classopenage_1_1audio_1_1_dynamic_resource"/>
+        <childnode refid="1132" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1132">
+        <label>openage::audio::Resource</label>
+        <link refid="classopenage_1_1audio_1_1_resource"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1137">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="1140">
+        <label>openage::job::Worker</label>
+        <link refid="classopenage_1_1job_1_1_worker"/>
+        <childnode refid="1136" relation="usage">
+          <edgelabel>-manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1138">
+        <label>openage::datastructure::ConcurrentQueue&lt; std::shared_ptr&lt; openage::audio::chunk_info_t &gt; &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_concurrent_queue"/>
+      </node>
+      <node id="1133">
+        <label>openage::audio::DynamicResource</label>
+        <link refid="classopenage_1_1audio_1_1_dynamic_resource"/>
+        <childnode refid="1134" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1137" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+        <childnode refid="1138" relation="usage">
+          <edgelabel>-decay_queue</edgelabel>
+        </childnode>
+        <childnode refid="1139" relation="usage">
+          <edgelabel>-loading_job_group</edgelabel>
+        </childnode>
+      </node>
+      <node id="1136">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="1135">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="1136" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1139">
+        <label>openage::job::JobGroup</label>
+        <link refid="classopenage_1_1job_1_1_job_group"/>
+        <childnode refid="1140" relation="usage">
+          <edgelabel>-parent_worker</edgelabel>
+        </childnode>
+      </node>
+      <node id="1134">
+        <label>openage::audio::Resource</label>
+        <link refid="classopenage_1_1audio_1_1_resource"/>
+        <childnode refid="1135" relation="usage">
+          <edgelabel>#manager</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/dynamic_resource.h" line="56" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="56" bodyend="145"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>chunk_size</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>chunks</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>create_resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>decay_queue</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>DEFAULT_CHUNK_SIZE</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>DEFAULT_MAX_CHUNKS</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>DEFAULT_PRELOAD_AMOUNT</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a890bf6e35b0070abdfa414e29931e989" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>DynamicResource</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>format</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1aaaa8563a969d83cdb37eb80ddfd44950" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>get_category</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1ae81d8c100e6135f26ecc74e8a90320ee" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>get_id</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>load_chunk_async</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>loader</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>loading_job_group</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" prot="protected" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>manager</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>max_chunks</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a6337ca0a02ba5649a5fa3d3a89cb2b26" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a6c230fc4dc1990986af8014ce8325789" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>path</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>preload_amount</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a85abebc7740a31274aa0510527929479" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a76349042da32df00953f6bc99373f573" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a038faba6ab04164f0da17c2edc0f1f56" prot="public" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>start_preloading</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>stop_using</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>use</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" prot="private" virt="non-virtual"><scope>openage::audio::DynamicResource</scope><name>use_count</name></member>
+      <member refid="classopenage_1_1audio_1_1_dynamic_resource_1a16a62693a4a1ba7a75fccd0af800b8e1" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>~DynamicResource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a7d92f800884160897bce48592a75835e" prot="public" virt="virtual"><scope>openage::audio::DynamicResource</scope><name>~Resource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

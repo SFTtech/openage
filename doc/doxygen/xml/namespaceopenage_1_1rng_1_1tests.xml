@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1rng_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::rng::tests</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" prot="public" static="no" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::rng::tests::num_rand</definition>
+        <argsstring></argsstring>
+        <name>num_rand</name>
+        <initializer>= (1 &lt;&lt; 18)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the number of generation repetitions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="20" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" prot="public" static="no" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float openage::rng::tests::difference_factor</definition>
+        <argsstring></argsstring>
+        <name>difference_factor</name>
+        <initializer>= 0.1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allow the result to be in this range of the expected perfect distribution. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="26" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::freq_dist</definition>
+        <argsstring>()</argsstring>
+        <name>freq_dist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the distribution of the bit generator.</para>
+<para>We generate many many random numbers, and select a bucket by it. After n random numbers, each bucket should have been selected n/bucket_count times. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="36" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="36" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::bool_dist</definition>
+        <argsstring>()</argsstring>
+        <name>bool_dist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the distribution of the boolean generation.</para>
+<para>For n draws it should result in n/2 trues and n/2 falses. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="84" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="84" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::real_dist</definition>
+        <argsstring>()</argsstring>
+        <name>real_dist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the distribution of the floating point numbers.</para>
+<para>Perform the test by placing the [0, 1] range into buckets. each bucket should be drawn n/bucket_count times.</para>
+<para>Also, the sum of all numbers drawn should be n/2. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="108" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="108" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::reproduce</definition>
+        <argsstring>()</argsstring>
+        <name>reproduce</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests reproducibility. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="143" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="143" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1a265e3eddfd2efda00d3f1d1d9291469d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::serialize</definition>
+        <argsstring>()</argsstring>
+        <name>serialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the serializing functionality. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="175" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="175" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::fill</definition>
+        <argsstring>()</argsstring>
+        <name>fill</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests filling integers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="194" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="194" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1a3b24c3f995bfb45b9d833030720bd88f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::fill_real</definition>
+        <argsstring>()</argsstring>
+        <name>fill_real</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests filling doubles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="216" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="216" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1_1tests_1ae22d2c6364226e0169f0eed1c9701592" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::tests::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng_tests.cpp" line="233" column="1" bodyfile="libopenage/rng/rng_tests.cpp" bodystart="233" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/rng/rng_tests.cpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

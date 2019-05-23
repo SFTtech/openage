@@ -1,0 +1,1073 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__saver_8cpp" kind="file" language="C++">
+    <compoundname>game_saver.cpp</compoundname>
+    <includes refid="game__saver_8h" local="yes">game_saver.h</includes>
+    <includes local="no">QtQml</includes>
+    <includes refid="game__save_8h" local="yes">../gamestate/game_save.h</includes>
+    <includes refid="game__main_8h" local="yes">../gamestate/game_main.h</includes>
+    <includes refid="generator_8h" local="yes">../gamestate/generator.h</includes>
+    <includes refid="game__main__link_8h" local="yes">game_main_link.h</includes>
+    <includes refid="generator__link_8h" local="yes">generator_link.h</includes>
+    <incdepgraph>
+      <node id="12236">
+        <label>list</label>
+      </node>
+      <node id="12214">
+        <label>atomic</label>
+      </node>
+      <node id="12261">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="12262" relation="include">
+        </childnode>
+        <childnode refid="12263" relation="include">
+        </childnode>
+        <childnode refid="12264" relation="include">
+        </childnode>
+        <childnode refid="12233" relation="include">
+        </childnode>
+        <childnode refid="12265" relation="include">
+        </childnode>
+        <childnode refid="12266" relation="include">
+        </childnode>
+        <childnode refid="12229" relation="include">
+        </childnode>
+        <childnode refid="12267" relation="include">
+        </childnode>
+      </node>
+      <node id="12233">
+        <label>iomanip</label>
+      </node>
+      <node id="12206">
+        <label>functional</label>
+      </node>
+      <node id="12265">
+        <label>limits</label>
+      </node>
+      <node id="12260">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="12224" relation="include">
+        </childnode>
+        <childnode refid="12261" relation="include">
+        </childnode>
+      </node>
+      <node id="12210">
+        <label>game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="12211" relation="include">
+        </childnode>
+        <childnode refid="12244" relation="include">
+        </childnode>
+        <childnode refid="12245" relation="include">
+        </childnode>
+        <childnode refid="12246" relation="include">
+        </childnode>
+        <childnode refid="12282" relation="include">
+        </childnode>
+        <childnode refid="12283" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12196" relation="include">
+        </childnode>
+      </node>
+      <node id="12276">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="12277" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12278" relation="include">
+        </childnode>
+        <childnode refid="12273" relation="include">
+        </childnode>
+        <childnode refid="12275" relation="include">
+        </childnode>
+        <childnode refid="12279" relation="include">
+        </childnode>
+        <childnode refid="12280" relation="include">
+        </childnode>
+        <childnode refid="12249" relation="include">
+        </childnode>
+      </node>
+      <node id="12255">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+      </node>
+      <node id="12196">
+        <label>QObject</label>
+      </node>
+      <node id="12224">
+        <label>cstdint</label>
+      </node>
+      <node id="12209">
+        <label>civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12210" relation="include">
+        </childnode>
+      </node>
+      <node id="12270">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="12231">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="12232" relation="include">
+        </childnode>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12233" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12234" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+      </node>
+      <node id="12241">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="12219" relation="include">
+        </childnode>
+      </node>
+      <node id="12254">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="12217" relation="include">
+        </childnode>
+      </node>
+      <node id="12264">
+        <label>cmath</label>
+      </node>
+      <node id="12299">
+        <label>cassert</label>
+      </node>
+      <node id="12244">
+        <label>../gamedata/gamedata.gen.h</label>
+      </node>
+      <node id="12219">
+        <label>stdexcept</label>
+      </node>
+      <node id="12253">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="12292">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="12224" relation="include">
+        </childnode>
+      </node>
+      <node id="12248">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="12225" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12249" relation="include">
+        </childnode>
+      </node>
+      <node id="12301">
+        <label>QMetaType</label>
+      </node>
+      <node id="12305">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12206" relation="include">
+        </childnode>
+      </node>
+      <node id="12235">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="12236" relation="include">
+        </childnode>
+        <childnode refid="12237" relation="include">
+        </childnode>
+        <childnode refid="12238" relation="include">
+        </childnode>
+      </node>
+      <node id="12232">
+        <label>cstdarg</label>
+      </node>
+      <node id="12199">
+        <label>string</label>
+      </node>
+      <node id="12223">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="12224" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12225" relation="include">
+        </childnode>
+        <childnode refid="12226" relation="include">
+        </childnode>
+        <childnode refid="12228" relation="include">
+        </childnode>
+        <childnode refid="12235" relation="include">
+        </childnode>
+        <childnode refid="12238" relation="include">
+        </childnode>
+      </node>
+      <node id="12226">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="12227" relation="include">
+        </childnode>
+      </node>
+      <node id="12228">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="12214" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12229" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+        <childnode refid="12230" relation="include">
+        </childnode>
+        <childnode refid="12231" relation="include">
+        </childnode>
+      </node>
+      <node id="12289">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="12298">
+        <label>guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12299" relation="include">
+        </childnode>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12229" relation="include">
+        </childnode>
+        <childnode refid="12240" relation="include">
+        </childnode>
+        <childnode refid="12300" relation="include">
+        </childnode>
+        <childnode refid="12196" relation="include">
+        </childnode>
+        <childnode refid="12301" relation="include">
+        </childnode>
+        <childnode refid="12302" relation="include">
+        </childnode>
+        <childnode refid="12303" relation="include">
+        </childnode>
+        <childnode refid="12304" relation="include">
+        </childnode>
+        <childnode refid="12305" relation="include">
+        </childnode>
+        <childnode refid="12306" relation="include">
+        </childnode>
+        <childnode refid="12307" relation="include">
+        </childnode>
+      </node>
+      <node id="12294">
+        <label>unordered_set</label>
+      </node>
+      <node id="12197">
+        <label>QtQml</label>
+      </node>
+      <node id="12291">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="12203" relation="include">
+        </childnode>
+        <childnode refid="12273" relation="include">
+        </childnode>
+      </node>
+      <node id="12212">
+        <label>exception</label>
+      </node>
+      <node id="12216">
+        <label>stddef.h</label>
+      </node>
+      <node id="12284">
+        <label>fstream</label>
+      </node>
+      <node id="12266">
+        <label>ostream</label>
+      </node>
+      <node id="12307">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12229" relation="include">
+        </childnode>
+        <childnode refid="12306" relation="include">
+        </childnode>
+      </node>
+      <node id="12293">
+        <label>../gamestate/generator.h</label>
+        <link refid="generator_8h"/>
+        <childnode refid="12294" relation="include">
+        </childnode>
+        <childnode refid="12275" relation="include">
+        </childnode>
+        <childnode refid="12295" relation="include">
+        </childnode>
+      </node>
+      <node id="12207">
+        <label>player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12209" relation="include">
+        </childnode>
+        <childnode refid="12285" relation="include">
+        </childnode>
+        <childnode refid="12205" relation="include">
+        </childnode>
+        <childnode refid="12286" relation="include">
+        </childnode>
+      </node>
+      <node id="12250">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="12224" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12251" relation="include">
+        </childnode>
+        <childnode refid="12252" relation="include">
+        </childnode>
+      </node>
+      <node id="12268">
+        <label>limits.h</label>
+      </node>
+      <node id="12217">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="12218" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12219" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+        <childnode refid="12223" relation="include">
+        </childnode>
+      </node>
+      <node id="12295">
+        <label>../gui/guisys/public/gui_property_map.h</label>
+        <link refid="gui__property__map_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+      </node>
+      <node id="12267">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="12262" relation="include">
+        </childnode>
+        <childnode refid="12268" relation="include">
+        </childnode>
+        <childnode refid="12264" relation="include">
+        </childnode>
+        <childnode refid="12269" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12217" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+      </node>
+      <node id="12283">
+        <label>../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="12227" relation="include">
+        </childnode>
+        <childnode refid="12269" relation="include">
+        </childnode>
+        <childnode refid="12284" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12217" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+        <childnode refid="12258" relation="include">
+        </childnode>
+        <childnode refid="12249" relation="include">
+        </childnode>
+      </node>
+      <node id="12271">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="12203">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="12240">
+        <label>typeinfo</label>
+      </node>
+      <node id="12282">
+        <label>../unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="12224" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12272" relation="include">
+        </childnode>
+        <childnode refid="12245" relation="include">
+        </childnode>
+      </node>
+      <node id="12286">
+        <label>score.h</label>
+        <link refid="score_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12205" relation="include">
+        </childnode>
+      </node>
+      <node id="12274">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="12310">
+        <label>tuple</label>
+      </node>
+      <node id="12296">
+        <label>game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="12297" relation="include">
+        </childnode>
+        <childnode refid="12298" relation="include">
+        </childnode>
+        <childnode refid="12200" relation="include">
+        </childnode>
+      </node>
+      <node id="12200">
+        <label>../gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12203" relation="include">
+        </childnode>
+        <childnode refid="12196" relation="include">
+        </childnode>
+        <childnode refid="12204" relation="include">
+        </childnode>
+        <childnode refid="12207" relation="include">
+        </childnode>
+        <childnode refid="12287" relation="include">
+        </childnode>
+        <childnode refid="12288" relation="include">
+        </childnode>
+        <childnode refid="12246" relation="include">
+        </childnode>
+        <childnode refid="12290" relation="include">
+        </childnode>
+        <childnode refid="12292" relation="include">
+        </childnode>
+      </node>
+      <node id="12303">
+        <label>QDebug</label>
+      </node>
+      <node id="12290">
+        <label>../unit/unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12275" relation="include">
+        </childnode>
+        <childnode refid="12291" relation="include">
+        </childnode>
+        <childnode refid="12292" relation="include">
+        </childnode>
+      </node>
+      <node id="12243">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+      </node>
+      <node id="12202">
+        <label>vector</label>
+      </node>
+      <node id="12221">
+        <label>ciso646</label>
+      </node>
+      <node id="12213">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="12214" relation="include">
+        </childnode>
+        <childnode refid="12212" relation="include">
+        </childnode>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12215" relation="include">
+        </childnode>
+        <childnode refid="12217" relation="include">
+        </childnode>
+        <childnode refid="12241" relation="include">
+        </childnode>
+        <childnode refid="12242" relation="include">
+        </childnode>
+        <childnode refid="12243" relation="include">
+        </childnode>
+      </node>
+      <node id="12302">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12300">
+        <label>utility</label>
+      </node>
+      <node id="12279">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="12277" relation="include">
+        </childnode>
+      </node>
+      <node id="12234">
+        <label>sstream</label>
+      </node>
+      <node id="12220">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="12221" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12222" relation="include">
+        </childnode>
+      </node>
+      <node id="12308">
+        <label>generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12293" relation="include">
+        </childnode>
+        <childnode refid="12309" relation="include">
+        </childnode>
+        <childnode refid="12312" relation="include">
+        </childnode>
+      </node>
+      <node id="12198">
+        <label>../gamestate/game_save.h</label>
+        <link refid="game__save_8h"/>
+        <childnode refid="12199" relation="include">
+        </childnode>
+      </node>
+      <node id="12256">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12257" relation="include">
+        </childnode>
+        <childnode refid="12250" relation="include">
+        </childnode>
+      </node>
+      <node id="12222">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="12222" relation="include">
+        </childnode>
+      </node>
+      <node id="12277">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="12205">
+        <label>resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+      </node>
+      <node id="12312">
+        <label>guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12298" relation="include">
+        </childnode>
+        <childnode refid="12313" relation="include">
+        </childnode>
+        <childnode refid="12309" relation="include">
+        </childnode>
+      </node>
+      <node id="12230">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="12218" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+      </node>
+      <node id="12313">
+        <label>gui_property_map_impl.h</label>
+        <link refid="gui__property__map__impl_8h"/>
+        <childnode refid="12196" relation="include">
+        </childnode>
+      </node>
+      <node id="12238">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="12239" relation="include">
+        </childnode>
+      </node>
+      <node id="12273">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="12274" relation="include">
+        </childnode>
+        <childnode refid="12260" relation="include">
+        </childnode>
+      </node>
+      <node id="12204">
+        <label>market.h</label>
+        <link refid="market_8h"/>
+        <childnode refid="12205" relation="include">
+        </childnode>
+      </node>
+      <node id="12258">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="12278">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="12257">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="12218" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+      </node>
+      <node id="12227">
+        <label>cstdlib</label>
+      </node>
+      <node id="12218">
+        <label>iostream</label>
+      </node>
+      <node id="12288">
+        <label>../options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12289" relation="include">
+        </childnode>
+      </node>
+      <node id="12306">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12299" relation="include">
+        </childnode>
+      </node>
+      <node id="12297">
+        <label>QQmlParserStatus</label>
+      </node>
+      <node id="12211">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="12212" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12213" relation="include">
+        </childnode>
+      </node>
+      <node id="12280">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="12281" relation="include">
+        </childnode>
+        <childnode refid="12277" relation="include">
+        </childnode>
+      </node>
+      <node id="12208">
+        <label>unordered_map</label>
+      </node>
+      <node id="12252">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12237" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+        <childnode refid="12253" relation="include">
+        </childnode>
+        <childnode refid="12254" relation="include">
+        </childnode>
+        <childnode refid="12255" relation="include">
+        </childnode>
+      </node>
+      <node id="12263">
+        <label>climits</label>
+      </node>
+      <node id="12237">
+        <label>mutex</label>
+      </node>
+      <node id="12259">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="12260" relation="include">
+        </childnode>
+        <childnode refid="12270" relation="include">
+        </childnode>
+        <childnode refid="12271" relation="include">
+        </childnode>
+      </node>
+      <node id="12309">
+        <label>guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12310" relation="include">
+        </childnode>
+        <childnode refid="12311" relation="include">
+        </childnode>
+        <childnode refid="12298" relation="include">
+        </childnode>
+      </node>
+      <node id="12215">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="12216" relation="include">
+        </childnode>
+      </node>
+      <node id="12249">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12250" relation="include">
+        </childnode>
+        <childnode refid="12256" relation="include">
+        </childnode>
+        <childnode refid="12258" relation="include">
+        </childnode>
+      </node>
+      <node id="12275">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="12260" relation="include">
+        </childnode>
+        <childnode refid="12270" relation="include">
+        </childnode>
+        <childnode refid="12271" relation="include">
+        </childnode>
+        <childnode refid="12267" relation="include">
+        </childnode>
+      </node>
+      <node id="12251">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="12285">
+        <label>population_tracker.h</label>
+        <link refid="population__tracker_8h"/>
+      </node>
+      <node id="12311">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="12229">
+        <label>type_traits</label>
+      </node>
+      <node id="12247">
+        <label>set</label>
+      </node>
+      <node id="12225">
+        <label>config.h</label>
+      </node>
+      <node id="12287">
+        <label>team.h</label>
+        <link refid="team_8h"/>
+        <childnode refid="12199" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12286" relation="include">
+        </childnode>
+      </node>
+      <node id="12262">
+        <label>algorithm</label>
+      </node>
+      <node id="12242">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12243" relation="include">
+        </childnode>
+      </node>
+      <node id="12304">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12196" relation="include">
+        </childnode>
+      </node>
+      <node id="12272">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="12267" relation="include">
+        </childnode>
+        <childnode refid="12260" relation="include">
+        </childnode>
+        <childnode refid="12270" relation="include">
+        </childnode>
+        <childnode refid="12271" relation="include">
+        </childnode>
+      </node>
+      <node id="12194">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+        <childnode refid="12195" relation="include">
+        </childnode>
+        <childnode refid="12197" relation="include">
+        </childnode>
+        <childnode refid="12198" relation="include">
+        </childnode>
+        <childnode refid="12200" relation="include">
+        </childnode>
+        <childnode refid="12293" relation="include">
+        </childnode>
+        <childnode refid="12296" relation="include">
+        </childnode>
+        <childnode refid="12308" relation="include">
+        </childnode>
+      </node>
+      <node id="12269">
+        <label>cstring</label>
+      </node>
+      <node id="12245">
+        <label>../gamedata/graphic.gen.h</label>
+      </node>
+      <node id="12246">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="12206" relation="include">
+        </childnode>
+        <childnode refid="12201" relation="include">
+        </childnode>
+        <childnode refid="12216" relation="include">
+        </childnode>
+        <childnode refid="12247" relation="include">
+        </childnode>
+        <childnode refid="12208" relation="include">
+        </childnode>
+        <childnode refid="12202" relation="include">
+        </childnode>
+        <childnode refid="12248" relation="include">
+        </childnode>
+        <childnode refid="12259" relation="include">
+        </childnode>
+        <childnode refid="12272" relation="include">
+        </childnode>
+        <childnode refid="12273" relation="include">
+        </childnode>
+        <childnode refid="12275" relation="include">
+        </childnode>
+        <childnode refid="12276" relation="include">
+        </childnode>
+        <childnode refid="12267" relation="include">
+        </childnode>
+      </node>
+      <node id="12201">
+        <label>memory</label>
+      </node>
+      <node id="12281">
+        <label>initializer_list</label>
+      </node>
+      <node id="12239">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="12218" relation="include">
+        </childnode>
+        <childnode refid="12240" relation="include">
+        </childnode>
+        <childnode refid="12220" relation="include">
+        </childnode>
+      </node>
+      <node id="12195">
+        <label>game_saver.h</label>
+        <link refid="game__saver_8h"/>
+        <childnode refid="12196" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game__saver_8h" kindref="compound">game_saver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtQml&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/game_save.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/game_main.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/generator.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game__main__link_8h" kindref="compound">game_main_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="generator__link_8h" kindref="compound">generator_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qmlRegisterType&lt;GameSaver&gt;(</highlight><highlight class="stringliteral">&quot;yay.sfttech.openage&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;GameSaver&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1gui_1_1_game_saver_1a37732c142caeee0d392a53bd5bacfa45" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_game_saver_1a37732c142caeee0d392a53bd5bacfa45" kindref="member">GameSaver::GameSaver</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{parent},</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>game{},</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>generator_parameters{}<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1gui_1_1_game_saver_1ae26c4ef4511cb47b083e9cfac55408a4" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_game_saver_1ae26c4ef4511cb47b083e9cfac55408a4" kindref="member">GameSaver::~GameSaver</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1gui_1_1_game_saver_1af45b713178a6c330e37c4b0f43bfcbbf" refkind="member"><highlight class="normal">QString<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1af45b713178a6c330e37c4b0f43bfcbbf" kindref="member">GameSaver::get_error_string</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a2c46e1933ec41191eaf54aa807ab59f9" kindref="member">error_string</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>called<sp/>when<sp/>the<sp/>save-game<sp/>button<sp/>is<sp/>pressed:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1gui_1_1_game_saver_1a8d88b6621b60cfc359cbeaae88475686" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a8d88b6621b60cfc359cbeaae88475686" kindref="member">GameSaver::activate</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>[]<sp/>(<ref refid="classopenage_1_1_game_main_handle" kindref="compound">GameMainHandle</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" kindref="member">game</ref>,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_generator" kindref="compound">Generator</ref><sp/>*generator,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSaverSignals&gt;<sp/>callback)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>error_msg;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" kindref="member">game</ref>-&gt;is_game_running())<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_msg<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;no<sp/>open<sp/>game<sp/>to<sp/>save&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>=<sp/>generator-&gt;getv&lt;std::string&gt;(</highlight><highlight class="stringliteral">&quot;load_filename&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" kindref="member">gameio::save</ref>(<ref refid="classopenage_1_1gui_1_1_game_saver_1a0cd18304cc55f98bc91a2148c1daa81d" kindref="member">game</ref>-&gt;get_game(),<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>callback-&gt;error_message(error_msg);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;game<sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a6fc1d8d4c28f24d58df098f26f4238ba" kindref="member">generator_parameters</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSaverSignals&gt;<sp/>callback<sp/>=<sp/>std::make_shared&lt;GameSaverSignals&gt;();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QObject::connect(callback.get(),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_game_saver_signals_1a827fc3ebe24390d59e6a18781318d184" kindref="member">GameSaverSignals::error_message</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_game_saver_1a363f735228bdac37f9bb2d9a4c99ea9f" kindref="member">GameSaver::on_processed</ref>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;game-&gt;i(f,<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a6fc1d8d4c28f24d58df098f26f4238ba" kindref="member">generator_parameters</ref>,<sp/>callback);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>error_msg<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;game)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_msg<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;provide<sp/>&apos;game&apos;<sp/>before<sp/>saving&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a6fc1d8d4c28f24d58df098f26f4238ba" kindref="member">generator_parameters</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error_msg<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;provide<sp/>&apos;generatorParameters&apos;<sp/>before<sp/>saving&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;unhandled<sp/>case<sp/>for<sp/>refusal<sp/>to<sp/>create<sp/>a<sp/>game&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a363f735228bdac37f9bb2d9a4c99ea9f" kindref="member">on_processed</ref>(error_msg);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1gui_1_1_game_saver_1afb402f4d3d3d1d53f2d20956e425d0cb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1afb402f4d3d3d1d53f2d20956e425d0cb" kindref="member">GameSaver::clearErrors</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1a2c46e1933ec41191eaf54aa807ab59f9" kindref="member">error_string</ref>.clear();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1ab12ca5a2e5461978a29cf177f0d5efec" kindref="member">error_string_changed</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classopenage_1_1gui_1_1_game_saver_1a363f735228bdac37f9bb2d9a4c99ea9f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a363f735228bdac37f9bb2d9a4c99ea9f" kindref="member">GameSaver::on_processed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;error_string)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;error_string<sp/>=<sp/><ref refid="classopenage_1_1gui_1_1_game_saver_1a2c46e1933ec41191eaf54aa807ab59f9" kindref="member">error_string</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_game_saver_1ab12ca5a2e5461978a29cf177f0d5efec" kindref="member">error_string_changed</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/game_saver.cpp"/>
+  </compounddef>
+</doxygen>

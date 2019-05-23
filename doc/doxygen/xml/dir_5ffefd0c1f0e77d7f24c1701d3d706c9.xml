@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_5ffefd0c1f0e77d7f24c1701d3d706c9" kind="dir">
+    <compoundname>libopenage/terrain</compoundname>
+    <innerfile refid="terrain_8cpp">terrain.cpp</innerfile>
+    <innerfile refid="terrain_8h">terrain.h</innerfile>
+    <innerfile refid="terrain__chunk_8cpp">terrain_chunk.cpp</innerfile>
+    <innerfile refid="terrain__chunk_8h">terrain_chunk.h</innerfile>
+    <innerfile refid="terrain__object_8cpp">terrain_object.cpp</innerfile>
+    <innerfile refid="terrain__object_8h">terrain_object.h</innerfile>
+    <innerfile refid="terrain__outline_8cpp">terrain_outline.cpp</innerfile>
+    <innerfile refid="terrain__outline_8h">terrain_outline.h</innerfile>
+    <innerfile refid="terrain__search_8cpp">terrain_search.cpp</innerfile>
+    <innerfile refid="terrain__search_8h">terrain_search.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/terrain/"/>
+  </compounddef>
+</doxygen>

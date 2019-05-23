@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="global__rng_8h" kind="file" language="C++">
+    <compoundname>global_rng.h</compoundname>
+    <includedby refid="physics_8cpp" local="yes">libopenage/event/demo/physics.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
+    <includedby refid="global__rng_8cpp" local="yes">libopenage/rng/global_rng.cpp</includedby>
+    <invincdepgraph>
+      <node id="23808">
+        <label>libopenage/rng/global_rng.cpp</label>
+        <link refid="global__rng_8cpp"/>
+      </node>
+      <node id="23806">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="23807">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="23805">
+        <label>libopenage/rng/global_rng.h</label>
+        <link refid="global__rng_8h"/>
+        <childnode refid="23806" relation="include">
+        </childnode>
+        <childnode refid="23807" relation="include">
+        </childnode>
+        <childnode refid="23808" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1rng">openage::rng</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains functions for the global random number generator.</para>
+<para>Please avoid using it, instead, create rng objects for your current class as members. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">rng<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">uint64_t<sp/><ref refid="namespaceopenage_1_1rng_1a595e7ab593687bbb092d69186c65c45a" kindref="member">global_seed</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">uint64_t<sp/><ref refid="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" kindref="member">random</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">uint64_t<sp/><ref refid="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" kindref="member">random_range</ref>(uint64_t<sp/>lower,<sp/>uint64_t<sp/>upper);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1aadfcdd4f8b418047382e29828d81b157" kindref="member">real</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1a459eb99bb9ad49587a1cbb0bb3de8750" kindref="member">real_range</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>lower,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>upper);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>rng</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/rng/global_rng.h"/>
+  </compounddef>
+</doxygen>

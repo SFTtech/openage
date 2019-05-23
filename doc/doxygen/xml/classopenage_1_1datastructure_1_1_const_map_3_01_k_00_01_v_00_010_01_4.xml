@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</compoundname>
+    <includes refid="constexpr__map_8h" local="no">constexpr_map.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename K</type>
+      </param>
+      <param>
+        <type>typename V</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a2b57cb2015c9462110d7e102ae880e2f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class ConstMap&lt; K, V, 1 &gt;</definition>
+        <argsstring></argsstring>
+        <name>ConstMap&lt; K, V, 1 &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The previous entry class is our friend. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="207" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1afe6ebe1a55a48a3d27273132995c41e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::datastructure::ConstMap&lt; K, V, 0 &gt;::ConstMap</definition>
+        <argsstring>()</argsstring>
+        <name>ConstMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="171" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a13807dfdf4291a14b9fd792a72024f56" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::datastructure::ConstMap&lt; K, V, 0 &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the end element. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="176" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="176" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1abffc9a3cce9c15bbd5bc4b95bf38b0ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::datastructure::ConstMap&lt; K, V, 0 &gt;::contains</definition>
+        <argsstring>(const K &amp;) const</argsstring>
+        <name>contains</name>
+        <param>
+          <type>const K &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The end element can&apos;t contain the key. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="183" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="183" bodyend="185"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1aaaf8e7ec3a8856c8c76b9937240251ed" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::datastructure::ConstMap&lt; K, V, 0 &gt;::all_are_unique</definition>
+        <argsstring>() const</argsstring>
+        <name>all_are_unique</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reaching the last entry of the uniqueness check means we had no duplicates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="192" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="192" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1ac4346a17fb866c53e6498a92365c8bcd" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::datastructure::ConstMap&lt; K, V, 0 &gt;::has_entry</definition>
+        <argsstring>(const K &amp;) const</argsstring>
+        <name>has_entry</name>
+        <param>
+          <type>const K &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The end element doesn&apos;t have an entry. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="199" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const V &amp;</type>
+        <definition>constexpr const V&amp; openage::datastructure::ConstMap&lt; K, V, 0 &gt;::fetch</definition>
+        <argsstring>(const K &amp;) const</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>const K &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The end element doesn&apos;t have an entry, so nothing can be fetched, </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="207" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="207" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>constexpr map end container. When this element is reached, all contained entries have been processed.</para>
+<para>For example, when searching a key and calling to this class means the key was not found. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="875">
+        <label>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/constexpr_map.h" line="169" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="169" bodyend="216"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1aaaf8e7ec3a8856c8c76b9937240251ed" prot="private" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>all_are_unique</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1afe6ebe1a55a48a3d27273132995c41e7" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>ConstMap</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a2b57cb2015c9462110d7e102ae880e2f" prot="private" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>ConstMap&lt; K, V, 1 &gt;</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1abffc9a3cce9c15bbd5bc4b95bf38b0ad" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>contains</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" prot="private" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>fetch</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1ac4346a17fb866c53e6498a92365c8bcd" prot="private" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>has_entry</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a13807dfdf4291a14b9fd792a72024f56" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMap&lt; K, V, 0 &gt;</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

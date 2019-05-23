@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1log_1_1tests_1_1_test_log_sink" kind="class" language="C++" prot="public">
+    <compoundname>openage::log::tests::TestLogSink</compoundname>
+    <basecompoundref refid="classopenage_1_1log_1_1_log_sink" prot="public" virt="non-virtual">openage::log::LogSink</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a3374ed52f02a321dad15e50fd5cf8342" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; openage::log::tests::TestLogSink::os</definition>
+        <argsstring></argsstring>
+        <name>os</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/test.cpp" line="33" column="1" bodyfile="libopenage/log/test.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1tests_1_1_test_log_sink_1adaecb1ed2e32bd8d55abbff37e256e4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::log::tests::TestLogSink::TestLogSink</definition>
+        <argsstring>(std::ostream &amp;os)</argsstring>
+        <name>TestLogSink</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/test.cpp" line="29" column="1" bodyfile="libopenage/log/test.cpp" bodystart="29" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a2c736431ae9603f27c0eb940cee0f14c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::log::tests::TestLogSink::output_log_message</definition>
+        <argsstring>(const message &amp;msg, LogSource *) override</argsstring>
+        <name>output_log_message</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/test.cpp" line="35" column="1" bodyfile="libopenage/log/test.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4418">
+        <label>openage::log::LogSink</label>
+        <link refid="classopenage_1_1log_1_1_log_sink"/>
+      </node>
+      <node id="4417">
+        <label>openage::log::tests::TestLogSink</label>
+        <link refid="classopenage_1_1log_1_1tests_1_1_test_log_sink"/>
+        <childnode refid="4418" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4420">
+        <label>openage::log::LogSink</label>
+        <link refid="classopenage_1_1log_1_1_log_sink"/>
+        <childnode refid="4421" relation="usage">
+          <edgelabel>-loglevel</edgelabel>
+        </childnode>
+      </node>
+      <node id="4424">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="4422">
+        <label>openage::util::Enum&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4423" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4419">
+        <label>openage::log::tests::TestLogSink</label>
+        <link refid="classopenage_1_1log_1_1tests_1_1_test_log_sink"/>
+        <childnode refid="4420" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4421">
+        <label>openage::log::level</label>
+        <link refid="structopenage_1_1log_1_1level"/>
+        <childnode refid="4422" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4423" relation="usage">
+          <edgelabel>+NOOPTIMIZE</edgelabel>
+        </childnode>
+      </node>
+      <node id="4423">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="4424" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/test.cpp" line="27" column="1" bodyfile="libopenage/log/test.cpp" bodystart="27" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>LogSink</name></member>
+      <member refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a3374ed52f02a321dad15e50fd5cf8342" prot="private" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>os</name></member>
+      <member refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1a2c736431ae9603f27c0eb940cee0f14c" prot="private" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>output_log_message</name></member>
+      <member refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>set_loglevel</name></member>
+      <member refid="classopenage_1_1log_1_1tests_1_1_test_log_sink_1adaecb1ed2e32bd8d55abbff37e256e4d" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSink</scope><name>TestLogSink</name></member>
+      <member refid="classopenage_1_1log_1_1_log_sink_1a39411101da7dacb22ae1bea3f6a1f5e6" prot="public" virt="virtual"><scope>openage::log::tests::TestLogSink</scope><name>~LogSink</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

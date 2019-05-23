@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1compress" kind="namespace" language="C++">
+    <compoundname>openage::util::compress</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_bit_stream" prot="public">openage::util::compress::BitStream</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_huffman_table" prot="public">openage::util::compress::HuffmanTable</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" prot="public">openage::util::compress::LZXDecompressor</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" prot="public">openage::util::compress::LZXDStream</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" prot="public" static="no">
+        <type>std::function&lt; size_t(unsigned char *buf, size_t size)&gt;</type>
+        <definition>using openage::util::compress::read_callback_t = typedef std::function&lt;size_t (unsigned char *buf, size_t size)&gt;</definition>
+        <argsstring></argsstring>
+        <name>read_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of the &apos;read&apos; callback function.</para>
+<para>See <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> for documentation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="23" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1aa0e09ec612ba2d2ea51ec2a4c8ff3d49" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_MIN_MATCH</definition>
+        <argsstring></argsstring>
+        <name>LZX_MIN_MATCH</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="36" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1acab149685574ec8b787e3d805e036885" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_NUM_CHARS</definition>
+        <argsstring></argsstring>
+        <name>LZX_NUM_CHARS</name>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="38" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1aebf8cb02777e89fdf7430467b0386ce4" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_BLOCKTYPE_INVALID</definition>
+        <argsstring></argsstring>
+        <name>LZX_BLOCKTYPE_INVALID</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="39" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a4bd87f3542f41c380c17ab677e862def" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_BLOCKTYPE_VERBATIM</definition>
+        <argsstring></argsstring>
+        <name>LZX_BLOCKTYPE_VERBATIM</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="40" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1ae2792f791635463a2e096c00caa867f9" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_BLOCKTYPE_ALIGNED</definition>
+        <argsstring></argsstring>
+        <name>LZX_BLOCKTYPE_ALIGNED</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="41" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a185998c032b4c2440610ff414caed40f" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_BLOCKTYPE_UNCOMPRESSED</definition>
+        <argsstring></argsstring>
+        <name>LZX_BLOCKTYPE_UNCOMPRESSED</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="42" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a59cc3709a73f2e23d1ccec9d2547db65" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_PRETREE_NUM_ELEMENTS</definition>
+        <argsstring></argsstring>
+        <name>LZX_PRETREE_NUM_ELEMENTS</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="43" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1ade1bdb939220c6ecf6e11623d7370bfd" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_ALIGNED_NUM_ELEMENTS</definition>
+        <argsstring></argsstring>
+        <name>LZX_ALIGNED_NUM_ELEMENTS</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="44" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1abd6796af7934ef7bd5f8e84f3fb8af56" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_NUM_PRIMARY_LENGTHS</definition>
+        <argsstring></argsstring>
+        <name>LZX_NUM_PRIMARY_LENGTHS</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="45" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1acc00b52c00f768cbc18595d59a8be848" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_NUM_SECONDARY_LENGTHS</definition>
+        <argsstring></argsstring>
+        <name>LZX_NUM_SECONDARY_LENGTHS</name>
+        <initializer>= 249</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="46" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1af91efa77f8f600907c489a0902749971" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_PRETREE_MAXSYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>LZX_PRETREE_MAXSYMBOLS</name>
+        <initializer>= <ref refid="namespaceopenage_1_1util_1_1compress_1a59cc3709a73f2e23d1ccec9d2547db65" kindref="member">LZX_PRETREE_NUM_ELEMENTS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="49" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a0332219afcf379226d035ccf047daaf6" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_PRETREE_TABLEBITS</definition>
+        <argsstring></argsstring>
+        <name>LZX_PRETREE_TABLEBITS</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="50" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a26cdb2480260be73fa269f982a416010" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_MAINTREE_MAXSYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>LZX_MAINTREE_MAXSYMBOLS</name>
+        <initializer>= <ref refid="namespaceopenage_1_1util_1_1compress_1acab149685574ec8b787e3d805e036885" kindref="member">LZX_NUM_CHARS</ref> + 50 * 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="51" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1aa0fc34af35349c165672483bf156d07c" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_MAINTREE_TABLEBITS</definition>
+        <argsstring></argsstring>
+        <name>LZX_MAINTREE_TABLEBITS</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="52" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1ab6ee57ad31f7a4b2e5cbe80e5ff0bf78" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_LENGTH_MAXSYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>LZX_LENGTH_MAXSYMBOLS</name>
+        <initializer>= <ref refid="namespaceopenage_1_1util_1_1compress_1acc00b52c00f768cbc18595d59a8be848" kindref="member">LZX_NUM_SECONDARY_LENGTHS</ref> + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="53" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a277c86b93d58635990ad4fe855839fcb" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_LENGTH_TABLEBITS</definition>
+        <argsstring></argsstring>
+        <name>LZX_LENGTH_TABLEBITS</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="54" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1acfbbec691511fb87c1df869972edcc13" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_ALIGNED_MAXSYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>LZX_ALIGNED_MAXSYMBOLS</name>
+        <initializer>= <ref refid="namespaceopenage_1_1util_1_1compress_1ade1bdb939220c6ecf6e11623d7370bfd" kindref="member">LZX_ALIGNED_NUM_ELEMENTS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="55" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1ac7382afbfe3e70045b5471207c6f0b1c" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_ALIGNED_TABLEBITS</definition>
+        <argsstring></argsstring>
+        <name>LZX_ALIGNED_TABLEBITS</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="56" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1aaeed04374c06ce503ff18341be17e29e" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_LENTABLE_SAFETY</definition>
+        <argsstring></argsstring>
+        <name>LZX_LENTABLE_SAFETY</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="57" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a24c3f0ac8013e7040eb0fd87243e1972" prot="public" static="yes" mutable="no">
+        <type>const unsigned</type>
+        <definition>const unsigned openage::util::compress::position_base[]</definition>
+        <argsstring>[]</argsstring>
+        <name>position_base</name>
+        <initializer>= {
+	0, 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256,
+	384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192, 12288,
+	16384, 24576, 32768, 49152, 65536, 98304, 131072, 196608, 262144,
+	393216, 524288, 655360, 786432, 917504, 1048576, 1179648, 1310720,
+	1441792, 1572864, 1703936, 1835008, 1966080, 2097152
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="78" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a4124e3ae9c8211d05e8457cb16182896" prot="public" static="yes" mutable="no">
+        <type>const unsigned char</type>
+        <definition>const unsigned char openage::util::compress::extra_bits[]</definition>
+        <argsstring>[]</argsstring>
+        <name>extra_bits</name>
+        <initializer>= {
+	0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8,
+	9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16,
+	17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="86" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1compress_1a72fc5c91c3e79ff1d0e2348b50b8f013" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned</type>
+        <definition>constexpr unsigned openage::util::compress::LZX_FRAME_SIZE</definition>
+        <argsstring></argsstring>
+        <name>LZX_FRAME_SIZE</name>
+        <initializer>= 32768</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.h" line="16" column="1" bodyfile="libopenage/util/compress/lzxd.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/compress/bitstream.h" line="15" column="1"/>
+  </compounddef>
+</doxygen>

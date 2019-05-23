@@ -1,0 +1,797 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="job_8h" kind="file" language="C++">
+    <compoundname>job.h</compoundname>
+    <includes local="no">exception</includes>
+    <includes local="no">memory</includes>
+    <includes refid="typed__job__state__base_8h" local="yes">typed_job_state_base.h</includes>
+    <includedby refid="dynamic__resource_8h" local="yes">libopenage/audio/dynamic_resource.h</includedby>
+    <includedby refid="job__group_8h" local="yes">libopenage/job/job_group.h</includedby>
+    <includedby refid="job__manager_8h" local="yes">libopenage/job/job_manager.h</includedby>
+    <includedby refid="game__spec_8h" local="yes">libopenage/gamestate/game_spec.h</includedby>
+    <incdepgraph>
+      <node id="15933">
+        <label>list</label>
+      </node>
+      <node id="15908">
+        <label>atomic</label>
+      </node>
+      <node id="15929">
+        <label>iomanip</label>
+      </node>
+      <node id="15909">
+        <label>functional</label>
+      </node>
+      <node id="15920">
+        <label>cstdint</label>
+      </node>
+      <node id="15927">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15928" relation="include">
+        </childnode>
+        <childnode refid="15909" relation="include">
+        </childnode>
+        <childnode refid="15929" relation="include">
+        </childnode>
+        <childnode refid="15906" relation="include">
+        </childnode>
+        <childnode refid="15930" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+        <childnode refid="15931" relation="include">
+        </childnode>
+      </node>
+      <node id="15938">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="15914" relation="include">
+        </childnode>
+      </node>
+      <node id="15914">
+        <label>stdexcept</label>
+      </node>
+      <node id="15932">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15933" relation="include">
+        </childnode>
+        <childnode refid="15934" relation="include">
+        </childnode>
+        <childnode refid="15935" relation="include">
+        </childnode>
+      </node>
+      <node id="15928">
+        <label>cstdarg</label>
+      </node>
+      <node id="15915">
+        <label>string</label>
+      </node>
+      <node id="15919">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15920" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+        <childnode refid="15921" relation="include">
+        </childnode>
+        <childnode refid="15922" relation="include">
+        </childnode>
+        <childnode refid="15924" relation="include">
+        </childnode>
+        <childnode refid="15932" relation="include">
+        </childnode>
+        <childnode refid="15935" relation="include">
+        </childnode>
+      </node>
+      <node id="15922">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15923" relation="include">
+        </childnode>
+      </node>
+      <node id="15924">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15908" relation="include">
+        </childnode>
+        <childnode refid="15906" relation="include">
+        </childnode>
+        <childnode refid="15925" relation="include">
+        </childnode>
+        <childnode refid="15916" relation="include">
+        </childnode>
+        <childnode refid="15926" relation="include">
+        </childnode>
+        <childnode refid="15927" relation="include">
+        </childnode>
+      </node>
+      <node id="15905">
+        <label>exception</label>
+      </node>
+      <node id="15911">
+        <label>stddef.h</label>
+      </node>
+      <node id="15912">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15913" relation="include">
+        </childnode>
+        <childnode refid="15906" relation="include">
+        </childnode>
+        <childnode refid="15914" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+        <childnode refid="15916" relation="include">
+        </childnode>
+        <childnode refid="15919" relation="include">
+        </childnode>
+      </node>
+      <node id="15937">
+        <label>typeinfo</label>
+      </node>
+      <node id="15940">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="15909" relation="include">
+        </childnode>
+      </node>
+      <node id="15931">
+        <label>vector</label>
+      </node>
+      <node id="15917">
+        <label>ciso646</label>
+      </node>
+      <node id="15907">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="15908" relation="include">
+        </childnode>
+        <childnode refid="15905" relation="include">
+        </childnode>
+        <childnode refid="15909" relation="include">
+        </childnode>
+        <childnode refid="15910" relation="include">
+        </childnode>
+        <childnode refid="15912" relation="include">
+        </childnode>
+        <childnode refid="15938" relation="include">
+        </childnode>
+        <childnode refid="15939" relation="include">
+        </childnode>
+        <childnode refid="15940" relation="include">
+        </childnode>
+      </node>
+      <node id="15930">
+        <label>sstream</label>
+      </node>
+      <node id="15916">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15917" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+        <childnode refid="15918" relation="include">
+        </childnode>
+      </node>
+      <node id="15918">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15918" relation="include">
+        </childnode>
+      </node>
+      <node id="15926">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15913" relation="include">
+        </childnode>
+        <childnode refid="15915" relation="include">
+        </childnode>
+      </node>
+      <node id="15935">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15936" relation="include">
+        </childnode>
+      </node>
+      <node id="15923">
+        <label>cstdlib</label>
+      </node>
+      <node id="15913">
+        <label>iostream</label>
+      </node>
+      <node id="15904">
+        <label>libopenage/job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="15905" relation="include">
+        </childnode>
+        <childnode refid="15906" relation="include">
+        </childnode>
+        <childnode refid="15907" relation="include">
+        </childnode>
+      </node>
+      <node id="15934">
+        <label>mutex</label>
+      </node>
+      <node id="15910">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="15911" relation="include">
+        </childnode>
+      </node>
+      <node id="15925">
+        <label>type_traits</label>
+      </node>
+      <node id="15921">
+        <label>config.h</label>
+      </node>
+      <node id="15939">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="15909" relation="include">
+        </childnode>
+        <childnode refid="15940" relation="include">
+        </childnode>
+      </node>
+      <node id="15906">
+        <label>memory</label>
+      </node>
+      <node id="15936">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15913" relation="include">
+        </childnode>
+        <childnode refid="15937" relation="include">
+        </childnode>
+        <childnode refid="15916" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="16002">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="15944">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="16007">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="16000">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="15986" relation="include">
+        </childnode>
+        <childnode refid="16001" relation="include">
+        </childnode>
+        <childnode refid="16002" relation="include">
+        </childnode>
+      </node>
+      <node id="15973">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="15974" relation="include">
+        </childnode>
+        <childnode refid="15951" relation="include">
+        </childnode>
+        <childnode refid="15952" relation="include">
+        </childnode>
+        <childnode refid="15953" relation="include">
+        </childnode>
+        <childnode refid="15983" relation="include">
+        </childnode>
+        <childnode refid="15954" relation="include">
+        </childnode>
+        <childnode refid="15984" relation="include">
+        </childnode>
+        <childnode refid="15999" relation="include">
+        </childnode>
+        <childnode refid="15986" relation="include">
+        </childnode>
+        <childnode refid="16000" relation="include">
+        </childnode>
+        <childnode refid="16003" relation="include">
+        </childnode>
+        <childnode refid="16004" relation="include">
+        </childnode>
+        <childnode refid="16005" relation="include">
+        </childnode>
+        <childnode refid="16006" relation="include">
+        </childnode>
+        <childnode refid="16007" relation="include">
+        </childnode>
+        <childnode refid="16008" relation="include">
+        </childnode>
+      </node>
+      <node id="15969">
+        <label>libopenage/job/tests.cpp</label>
+        <link refid="job_2tests_8cpp"/>
+      </node>
+      <node id="15960">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="15974">
+        <label>libopenage/gamestate/civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="15975" relation="include">
+        </childnode>
+        <childnode refid="15998" relation="include">
+        </childnode>
+        <childnode refid="15954" relation="include">
+        </childnode>
+      </node>
+      <node id="15966">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="15978">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="15979" relation="include">
+        </childnode>
+        <childnode refid="15980" relation="include">
+        </childnode>
+        <childnode refid="15981" relation="include">
+        </childnode>
+        <childnode refid="15956" relation="include">
+        </childnode>
+        <childnode refid="15982" relation="include">
+        </childnode>
+      </node>
+      <node id="15995">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="15990">
+        <label>libopenage/gamestate/cost.cpp</label>
+        <link refid="cost_8cpp"/>
+      </node>
+      <node id="15979">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="15980" relation="include">
+        </childnode>
+      </node>
+      <node id="15964">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="15952">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="15970">
+        <label>libopenage/job/worker.cpp</label>
+        <link refid="worker_8cpp"/>
+      </node>
+      <node id="15954">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="15992">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="15981">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="15959">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="16006">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="15980">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="15972">
+        <label>libopenage/job/job_group.cpp</label>
+        <link refid="job__group_8cpp"/>
+      </node>
+      <node id="15997">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="15958">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="15946">
+        <label>libopenage/job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="15947" relation="include">
+        </childnode>
+        <childnode refid="15943" relation="include">
+        </childnode>
+        <childnode refid="15968" relation="include">
+        </childnode>
+        <childnode refid="15969" relation="include">
+        </childnode>
+        <childnode refid="15970" relation="include">
+        </childnode>
+        <childnode refid="15971" relation="include">
+        </childnode>
+      </node>
+      <node id="15975">
+        <label>libopenage/gamestate/player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="15976" relation="include">
+        </childnode>
+        <childnode refid="15988" relation="include">
+        </childnode>
+        <childnode refid="15990" relation="include">
+        </childnode>
+        <childnode refid="15991" relation="include">
+        </childnode>
+        <childnode refid="15992" relation="include">
+        </childnode>
+        <childnode refid="15993" relation="include">
+        </childnode>
+        <childnode refid="15994" relation="include">
+        </childnode>
+        <childnode refid="15995" relation="include">
+        </childnode>
+        <childnode refid="15996" relation="include">
+        </childnode>
+        <childnode refid="15997" relation="include">
+        </childnode>
+      </node>
+      <node id="16004">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="15988">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="15952" relation="include">
+        </childnode>
+        <childnode refid="15983" relation="include">
+        </childnode>
+        <childnode refid="15954" relation="include">
+        </childnode>
+        <childnode refid="15963" relation="include">
+        </childnode>
+        <childnode refid="15964" relation="include">
+        </childnode>
+        <childnode refid="15965" relation="include">
+        </childnode>
+        <childnode refid="15966" relation="include">
+        </childnode>
+        <childnode refid="15989" relation="include">
+        </childnode>
+      </node>
+      <node id="15977">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="15951" relation="include">
+        </childnode>
+        <childnode refid="15978" relation="include">
+        </childnode>
+        <childnode refid="15982" relation="include">
+        </childnode>
+        <childnode refid="15959" relation="include">
+        </childnode>
+      </node>
+      <node id="16008">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="15943">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="15948">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="15986">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="15963">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="15993">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="15965">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="15955">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="15945">
+        <label>libopenage/job/job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="15942" relation="include">
+        </childnode>
+        <childnode refid="15946" relation="include">
+        </childnode>
+        <childnode refid="15972" relation="include">
+        </childnode>
+      </node>
+      <node id="15985">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="15956" relation="include">
+        </childnode>
+        <childnode refid="15986" relation="include">
+        </childnode>
+        <childnode refid="15957" relation="include">
+        </childnode>
+        <childnode refid="15987" relation="include">
+        </childnode>
+      </node>
+      <node id="15950">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="15947">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="15943" relation="include">
+        </childnode>
+        <childnode refid="15944" relation="include">
+        </childnode>
+        <childnode refid="15948" relation="include">
+        </childnode>
+        <childnode refid="15949" relation="include">
+        </childnode>
+        <childnode refid="15950" relation="include">
+        </childnode>
+        <childnode refid="15951" relation="include">
+        </childnode>
+        <childnode refid="15952" relation="include">
+        </childnode>
+        <childnode refid="15953" relation="include">
+        </childnode>
+        <childnode refid="15954" relation="include">
+        </childnode>
+        <childnode refid="15955" relation="include">
+        </childnode>
+        <childnode refid="15956" relation="include">
+        </childnode>
+        <childnode refid="15957" relation="include">
+        </childnode>
+        <childnode refid="15958" relation="include">
+        </childnode>
+        <childnode refid="15959" relation="include">
+        </childnode>
+        <childnode refid="15960" relation="include">
+        </childnode>
+        <childnode refid="15961" relation="include">
+        </childnode>
+        <childnode refid="15962" relation="include">
+        </childnode>
+        <childnode refid="15963" relation="include">
+        </childnode>
+        <childnode refid="15964" relation="include">
+        </childnode>
+        <childnode refid="15965" relation="include">
+        </childnode>
+        <childnode refid="15966" relation="include">
+        </childnode>
+        <childnode refid="15967" relation="include">
+        </childnode>
+      </node>
+      <node id="15989">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="15976">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="15950" relation="include">
+        </childnode>
+        <childnode refid="15977" relation="include">
+        </childnode>
+        <childnode refid="15952" relation="include">
+        </childnode>
+        <childnode refid="15953" relation="include">
+        </childnode>
+        <childnode refid="15983" relation="include">
+        </childnode>
+        <childnode refid="15984" relation="include">
+        </childnode>
+        <childnode refid="15985" relation="include">
+        </childnode>
+        <childnode refid="15986" relation="include">
+        </childnode>
+        <childnode refid="15987" relation="include">
+        </childnode>
+      </node>
+      <node id="15942">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="15943" relation="include">
+        </childnode>
+        <childnode refid="15944" relation="include">
+        </childnode>
+      </node>
+      <node id="16005">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="15962">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="15967">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="15984">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="15961">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="15996">
+        <label>libopenage/unit/research.cpp</label>
+        <link refid="research_8cpp"/>
+      </node>
+      <node id="15983">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="15999">
+        <label>libopenage/gui/category_contents_list_model.h</label>
+        <link refid="category__contents__list__model_8h"/>
+        <childnode refid="15981" relation="include">
+        </childnode>
+      </node>
+      <node id="15971">
+        <label>libopenage/screenshot.cpp</label>
+        <link refid="screenshot_8cpp"/>
+      </node>
+      <node id="15991">
+        <label>libopenage/gamestate/market.cpp</label>
+        <link refid="market_8cpp"/>
+      </node>
+      <node id="15941">
+        <label>libopenage/job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="15942" relation="include">
+        </childnode>
+        <childnode refid="15945" relation="include">
+        </childnode>
+        <childnode refid="15946" relation="include">
+        </childnode>
+        <childnode refid="15973" relation="include">
+        </childnode>
+      </node>
+      <node id="15956">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="15968">
+        <label>libopenage/job/job_manager.cpp</label>
+        <link refid="job__manager_8cpp"/>
+      </node>
+      <node id="15953">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="16003">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+      <node id="15949">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="15994">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="15957">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="15998">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+      </node>
+      <node id="15951">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="15987">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="15982">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="16001">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1job_1_1_job" prot="public">openage::job::Job</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1job">openage::job</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="typed__job__state__base_8h" kindref="compound">typed_job_state_base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">job<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">JobGroup;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">JobManager;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1job_1_1_job" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job" kindref="compound">Job</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;TypedJobStateBase&lt;T&gt;&gt;<sp/><ref refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_job_1af7910b0b4f4390767944a3f30ba6cc0c" kindref="member">Job</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" kindref="member">is_finished</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;state)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;state-&gt;finished.load();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" kindref="member">get_result</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(this-&gt;state,<sp/></highlight><highlight class="stringliteral">&quot;getting<sp/>result<sp/>of<sp/>a<sp/>destroyed<sp/>or<sp/>uninitialised<sp/>job&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(this-&gt;state-&gt;finished.load(),<sp/></highlight><highlight class="stringliteral">&quot;trying<sp/>to<sp/>report<sp/>a<sp/>result<sp/>of<sp/>an<sp/>unfinished<sp/>job&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;state-&gt;exception<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::rethrow_exception(this-&gt;state-&gt;exception);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(this-&gt;state-&gt;result);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1job_1_1_job_1a625402a18d1d29e348ff2c9a1fc757fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_job_1a625402a18d1d29e348ff2c9a1fc757fb" kindref="member">Job</ref>(std::shared_ptr&lt;<ref refid="classopenage_1_1job_1_1_typed_job_state_base" kindref="compound">TypedJobStateBase&lt;T&gt;</ref>&gt;<sp/><ref refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" kindref="member">state</ref>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" kindref="member">state</ref>{<ref refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" kindref="member">state</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Job<sp/>manager<sp/>and<sp/>job<sp/>group<sp/>have<sp/>to<sp/>be<sp/>friends<sp/>of<sp/>job<sp/>in<sp/>order<sp/>to<sp/>access<sp/>the</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>private<sp/>constructor.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1job_1_1_job_1a809a08e92b20b20ec93b9aef661b6931" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job_group" kindref="compound">JobGroup</ref>;</highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1job_1_1_job_1a22d5e96819bc7c0bff8d135a21e67b42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">JobManager</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/job/job.h"/>
+  </compounddef>
+</doxygen>

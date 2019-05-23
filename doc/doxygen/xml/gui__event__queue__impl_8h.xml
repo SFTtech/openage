@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__event__queue__impl_8h" kind="file" language="C++">
+    <compoundname>gui_event_queue_impl.h</compoundname>
+    <includes local="no">QtGlobal</includes>
+    <includes local="no">QEventLoop</includes>
+    <includedby refid="gui__event__queue__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_event_queue_impl.cpp</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__subtree__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_subtree_impl.cpp</includedby>
+    <includedby refid="gui__event__queue_8cpp" local="yes">libopenage/gui/guisys/public/gui_event_queue.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</includedby>
+    <incdepgraph>
+      <node id="13084">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13085">
+        <label>QEventLoop</label>
+      </node>
+      <node id="13083">
+        <label>libopenage/gui/guisys/private/gui_event_queue_impl.h</label>
+        <link refid="gui__event__queue__impl_8h"/>
+        <childnode refid="13084" relation="include">
+        </childnode>
+        <childnode refid="13085" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13087">
+        <label>libopenage/gui/guisys/private/gui_event_queue_impl.cpp</label>
+        <link refid="gui__event__queue__impl_8cpp"/>
+      </node>
+      <node id="13091">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="13086">
+        <label>libopenage/gui/guisys/private/gui_event_queue_impl.h</label>
+        <link refid="gui__event__queue__impl_8h"/>
+        <childnode refid="13087" relation="include">
+        </childnode>
+        <childnode refid="13088" relation="include">
+        </childnode>
+        <childnode refid="13089" relation="include">
+        </childnode>
+        <childnode refid="13090" relation="include">
+        </childnode>
+        <childnode refid="13091" relation="include">
+        </childnode>
+      </node>
+      <node id="13088">
+        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <link refid="gui__input__impl_8cpp"/>
+      </node>
+      <node id="13090">
+        <label>libopenage/gui/guisys/public/gui_event_queue.cpp</label>
+        <link refid="gui__event__queue_8cpp"/>
+      </node>
+      <node id="13089">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_event_queue_impl" prot="public">qtsdl::GuiEventQueueImpl</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtGlobal&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QEventLoop&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">QT_FORWARD_DECLARE_CLASS(QThread)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiEventQueue;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_event_queue_impl" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_event_queue_impl" kindref="compound">GuiEventQueueImpl</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1a47f28c621759d5b2cd4a8a88bc2af24b" kindref="member">GuiEventQueueImpl</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1a3a5185a231f3a6ae0014adbfa11afdcb" kindref="member">~GuiEventQueueImpl</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl" kindref="compound">GuiEventQueueImpl</ref>*<sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1aa210a90acba7405dbf013ca75b60778e" kindref="member">impl</ref>(<ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">GuiEventQueue</ref><sp/>*event_queue);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1a44943ac7ab0b6cbefb4390201020ddd6" kindref="member">process_callbacks</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>QThread*<sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1ad445b8604c39eddf25837572c4dda508" kindref="member">get_thread</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29" refid="classqtsdl_1_1_gui_event_queue_impl_1a8d10edd5156f1417efbed0e4ff6e7c4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QThread<sp/>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1a8d10edd5156f1417efbed0e4ff6e7c4b" kindref="member">thread</ref>;</highlight></codeline>
+<codeline lineno="30" refid="classqtsdl_1_1_gui_event_queue_impl_1ad2f4e01bb05a5e5b2bc288bfc2a8cf9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QEventLoop<sp/><ref refid="classqtsdl_1_1_gui_event_queue_impl_1ad2f4e01bb05a5e5b2bc288bfc2a8cf9f" kindref="member">callback_processor</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_event_queue_impl.h"/>
+  </compounddef>
+</doxygen>

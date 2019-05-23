@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1term" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::term</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordXYAbsolute&lt; term_t, term, term_delta &gt;</basecompoundref>
+    <includes refid="term_8h" local="no">term.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4332">
+        <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
+      </node>
+      <node id="4331">
+        <label>openage::coord::term</label>
+        <link refid="structopenage_1_1coord_1_1term"/>
+        <childnode refid="4332" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4334">
+        <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
+      </node>
+      <node id="4333">
+        <label>openage::coord::term</label>
+        <link refid="structopenage_1_1coord_1_1term"/>
+        <childnode refid="4334" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/term.h" line="22" column="1" bodyfile="libopenage/coord/term.h" bodystart="22" bodyend="24"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

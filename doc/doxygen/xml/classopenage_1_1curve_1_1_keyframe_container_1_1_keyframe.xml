@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::KeyframeContainer::Keyframe</compoundname>
+    <includes refid="keyframe__container_8h" local="no">keyframe_container.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
+        <definition>const time_t openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <initializer>= std::numeric_limits&lt;<ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>&gt;::min()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="51" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <initializer>= T()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="52" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a6ce5238d9611a9cc62550fc3370b94aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::Keyframe</definition>
+        <argsstring>()</argsstring>
+        <name>Keyframe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>New default object at numericlimits&lt;time&gt;::min. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="36" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::Keyframe</definition>
+        <argsstring>(const time_t &amp;time)</argsstring>
+        <name>Keyframe</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>New, default-constructed element at the given time </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="41" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="41" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a74c0349627125515d82d91a082e4aa1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::KeyframeContainer&lt; T &gt;::Keyframe::Keyframe</definition>
+        <argsstring>(const time_t &amp;time, const T &amp;value)</argsstring>
+        <name>Keyframe</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>New element fron time and value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="47" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="47" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A element of the curvecontainer. This is especially used to keep track of the value-timing. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3045">
+        <label>T</label>
+      </node>
+      <node id="3043">
+        <label>openage::curve::KeyframeContainer&lt; T &gt;::Keyframe</label>
+        <link refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe"/>
+        <childnode refid="3044" relation="usage">
+          <edgelabel>+time</edgelabel>
+        </childnode>
+        <childnode refid="3045" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3044">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/keyframe_container.h" line="31" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="31" bodyend="53"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a6ce5238d9611a9cc62550fc3370b94aa" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>Keyframe</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>Keyframe</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a74c0349627125515d82d91a082e4aa1b" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>Keyframe</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>time</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer::Keyframe</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

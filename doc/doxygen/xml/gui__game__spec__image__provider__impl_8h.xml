@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__game__spec__image__provider__impl_8h" kind="file" language="C++">
+    <compoundname>gui_game_spec_image_provider_impl.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">condition_variable</includes>
+    <includes refid="gui__image__provider__impl_8h" local="yes">../../guisys/private/gui_image_provider_impl.h</includes>
+    <includes refid="gui__callback_8h" local="yes">../../guisys/private/gui_callback.h</includes>
+    <includes refid="gui__texture__handle_8h" local="yes">gui_texture_handle.h</includes>
+    <includes refid="gui__filled__texture__handles_8h" local="yes">gui_filled_texture_handles.h</includes>
+    <includedby refid="gui__game__spec__image__provider__by__filename__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__id__impl_8h" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</includedby>
+    <includedby refid="gui__image__provider__link_8cpp" local="yes">libopenage/gui/integration/private/gui_image_provider_link.cpp</includedby>
+    <includedby refid="gui__texture__factory_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
+    <incdepgraph>
+      <node id="14279">
+        <label>functional</label>
+      </node>
+      <node id="14280">
+        <label>QObject</label>
+      </node>
+      <node id="14282">
+        <label>gui_texture_handle.h</label>
+        <link refid="gui__texture__handle_8h"/>
+        <childnode refid="14283" relation="include">
+        </childnode>
+      </node>
+      <node id="14281">
+        <label>QMetaType</label>
+      </node>
+      <node id="14276">
+        <label>../../guisys/private/gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="14271" relation="include">
+        </childnode>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14277" relation="include">
+        </childnode>
+      </node>
+      <node id="14278">
+        <label>../../guisys/private/gui_callback.h</label>
+        <link refid="gui__callback_8h"/>
+        <childnode refid="14279" relation="include">
+        </childnode>
+        <childnode refid="14280" relation="include">
+        </childnode>
+        <childnode refid="14281" relation="include">
+        </childnode>
+      </node>
+      <node id="14275">
+        <label>condition_variable</label>
+      </node>
+      <node id="14274">
+        <label>tuple</label>
+      </node>
+      <node id="14273">
+        <label>vector</label>
+      </node>
+      <node id="14285">
+        <label>QString</label>
+      </node>
+      <node id="14283">
+        <label>QSize</label>
+      </node>
+      <node id="14277">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="14270">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</label>
+        <link refid="gui__game__spec__image__provider__impl_8h"/>
+        <childnode refid="14271" relation="include">
+        </childnode>
+        <childnode refid="14272" relation="include">
+        </childnode>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14274" relation="include">
+        </childnode>
+        <childnode refid="14275" relation="include">
+        </childnode>
+        <childnode refid="14276" relation="include">
+        </childnode>
+        <childnode refid="14278" relation="include">
+        </childnode>
+        <childnode refid="14282" relation="include">
+        </childnode>
+        <childnode refid="14284" relation="include">
+        </childnode>
+      </node>
+      <node id="14272">
+        <label>mutex</label>
+      </node>
+      <node id="14284">
+        <label>gui_filled_texture_handles.h</label>
+        <link refid="gui__filled__texture__handles_8h"/>
+        <childnode refid="14273" relation="include">
+        </childnode>
+        <childnode refid="14272" relation="include">
+        </childnode>
+        <childnode refid="14271" relation="include">
+        </childnode>
+        <childnode refid="14279" relation="include">
+        </childnode>
+        <childnode refid="14285" relation="include">
+        </childnode>
+        <childnode refid="14283" relation="include">
+        </childnode>
+      </node>
+      <node id="14271">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14289">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="14297">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="14296">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="14290">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <link refid="gui__game__spec__image__provider_8cpp"/>
+      </node>
+      <node id="14298">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="14293">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="14291">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8h"/>
+        <childnode refid="14292" relation="include">
+        </childnode>
+        <childnode refid="14294" relation="include">
+        </childnode>
+        <childnode refid="14295" relation="include">
+        </childnode>
+      </node>
+      <node id="14294">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="14295">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8h"/>
+        <childnode refid="14296" relation="include">
+        </childnode>
+        <childnode refid="14289" relation="include">
+        </childnode>
+        <childnode refid="14290" relation="include">
+        </childnode>
+      </node>
+      <node id="14286">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h</label>
+        <link refid="gui__game__spec__image__provider__impl_8h"/>
+        <childnode refid="14287" relation="include">
+        </childnode>
+        <childnode refid="14291" relation="include">
+        </childnode>
+        <childnode refid="14297" relation="include">
+        </childnode>
+        <childnode refid="14289" relation="include">
+        </childnode>
+        <childnode refid="14298" relation="include">
+        </childnode>
+      </node>
+      <node id="14287">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8h"/>
+        <childnode refid="14288" relation="include">
+        </childnode>
+        <childnode refid="14289" relation="include">
+        </childnode>
+        <childnode refid="14290" relation="include">
+        </childnode>
+      </node>
+      <node id="14292">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.h</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8h"/>
+        <childnode refid="14293" relation="include">
+        </childnode>
+        <childnode refid="14289" relation="include">
+        </childnode>
+        <childnode refid="14290" relation="include">
+        </childnode>
+      </node>
+      <node id="14288">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" prot="public">openage::gui::GuiGameSpecImageProviderImpl</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../guisys/private/gui_image_provider_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../guisys/private/gui_callback.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__texture__handle_8h" kindref="compound">gui_texture_handle.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__filled__texture__handles_8h" kindref="compound">gui_filled_texture_handles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiEventQueue;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiEventQueueImpl;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GameSpec;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Texture;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiTexture;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" kindref="compound">GuiGameSpecImageProviderImpl</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">qtsdl::GuiImageProviderImpl</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1abf0126df9e8042f64226bbb1459c092c" kindref="member">GuiGameSpecImageProviderImpl</ref>(<ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref><sp/>*render_updater);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a10f2ca12803f2786d41353f6b5da338b" kindref="member">~GuiGameSpecImageProviderImpl</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a96f49e5b70c5848778479d8ae36431b9" kindref="member">on_game_spec_loaded</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;GameSpec&gt;&amp;<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" kindref="member">loaded_game_spec</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a42ec51b02960edb6ef405251a640bd5f" kindref="member">on_game_spec_invalidated</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_filled_texture_handle_user" kindref="compound">GuiFilledTextureHandleUser</ref><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" kindref="member">fill_texture_handle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;requested_size,<sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/>*filled_handle);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a99c5f3aa01010aafd71bec94f1fd017d" kindref="member">get_missing_texture</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSpec&gt;<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" kindref="member">loaded_game_spec</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ae39715c0800f5ade30bdc6af6ad696b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ae39715c0800f5ade30bdc6af6ad696b3" kindref="member">invalidated</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a28738ee06bd6ef675a723b0db02433c2" kindref="member">get_texture_handle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QQuickTextureFactory*<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a8a2c7319a6690e41380689f6f3283eea" kindref="member">requestTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>QSize<sp/>*size,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;requestedSize)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a72bac11f807d36b625ea4b345221256e" kindref="member">give_up</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab296b31a83e17fbd14f7106ce4c2a54a" kindref="member">migrate_to_new_game_spec</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;GameSpec&gt;&amp;<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" kindref="member">loaded_game_spec</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac4c74475a47396d2e1824d2625e9d666" kindref="member">overwrite_texture_handle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;requested_size,<sp/><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref><sp/>*filled_handle);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab94d9dbb8b7cba7e2376325a70e50160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GuiFilledTextureHandles&gt;<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab94d9dbb8b7cba7e2376325a70e50160" kindref="member">filled_handles</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ad5faedf27a1afe1b7191eaef0455125d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ad5faedf27a1afe1b7191eaef0455125d" kindref="member">loaded_game_spec_mutex</ref>;</highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1aa503f841ff5df35013cc125d3c62484b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::condition_variable<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1aa503f841ff5df35013cc125d3c62484b" kindref="member">loaded_game_spec_cond</ref>;</highlight></codeline>
+<codeline lineno="98" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac0b9fa728c384bbe334fbc074298aad1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac0b9fa728c384bbe334fbc074298aad1" kindref="member">ended</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a1c0744b49e86627437c99dc93922607c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_callback" kindref="compound">qtsdl::GuiCallback</ref><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a1c0744b49e86627437c99dc93922607c" kindref="member">render_thread_callback</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h"/>
+  </compounddef>
+</doxygen>

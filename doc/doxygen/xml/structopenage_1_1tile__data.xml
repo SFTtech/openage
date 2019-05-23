@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1tile__data" kind="struct" language="C++" prot="public">
+    <compoundname>openage::tile_data</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1af0b5bcdebb37222eb9d443033ec97aff" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+        <definition>terrain_t openage::tile_data::terrain_id</definition>
+        <argsstring></argsstring>
+        <name>terrain_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="122" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::tile_data::pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <initializer>{0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="123" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1acd0094b0c8a95d0499c5f2b6d57b12a1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::tile_data::subtexture_id</definition>
+        <argsstring></argsstring>
+        <name>subtexture_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="124" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1ad9e49e097703a4386dac3b90bdc02d5e" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture* openage::tile_data::tex</definition>
+        <argsstring></argsstring>
+        <name>tex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="125" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1a820454b286bedff8df818d0c47c58695" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::tile_data::priority</definition>
+        <argsstring></argsstring>
+        <name>priority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="126" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1aef74e061ba5aea22401f1c443423afb9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::tile_data::mask_id</definition>
+        <argsstring></argsstring>
+        <name>mask_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="127" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1a43ad7a45a29a2056ff8300633478c62e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::tile_data::blend_mode</definition>
+        <argsstring></argsstring>
+        <name>blend_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="128" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1aafb07c8fa1ecda12f76b957bb0b972ed" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture* openage::tile_data::mask_tex</definition>
+        <argsstring></argsstring>
+        <name>mask_tex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="129" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__data_1a7e05c08e74c2be5e11d6c86f4ffc291c" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" kindref="member">tile_state</ref></type>
+        <definition>tile_state openage::tile_data::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="130" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>storage data for a single terrain tile. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4499">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4495">
+        <label>openage::tile_data</label>
+        <link refid="structopenage_1_1tile__data"/>
+        <childnode refid="4496" relation="usage">
+          <edgelabel>+pos</edgelabel>
+        </childnode>
+        <childnode refid="4498" relation="usage">
+          <edgelabel>+tex</edgelabel>
+          <edgelabel>+mask_tex</edgelabel>
+        </childnode>
+      </node>
+      <node id="4497">
+        <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="4498">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4499" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+      <node id="4496">
+        <label>openage::coord::tile</label>
+        <link refid="structopenage_1_1coord_1_1tile"/>
+        <childnode refid="4497" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="121" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="121" bodyend="131"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1tile__data_1a43ad7a45a29a2056ff8300633478c62e" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>blend_mode</name></member>
+      <member refid="structopenage_1_1tile__data_1aef74e061ba5aea22401f1c443423afb9" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>mask_id</name></member>
+      <member refid="structopenage_1_1tile__data_1aafb07c8fa1ecda12f76b957bb0b972ed" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>mask_tex</name></member>
+      <member refid="structopenage_1_1tile__data_1abf5ae33e043c9877c1312b583fddcffa" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>pos</name></member>
+      <member refid="structopenage_1_1tile__data_1a820454b286bedff8df818d0c47c58695" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>priority</name></member>
+      <member refid="structopenage_1_1tile__data_1a7e05c08e74c2be5e11d6c86f4ffc291c" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>state</name></member>
+      <member refid="structopenage_1_1tile__data_1acd0094b0c8a95d0499c5f2b6d57b12a1" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>subtexture_id</name></member>
+      <member refid="structopenage_1_1tile__data_1af0b5bcdebb37222eb9d443033ec97aff" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>terrain_id</name></member>
+      <member refid="structopenage_1_1tile__data_1ad9e49e097703a4386dac3b90bdc02d5e" prot="public" virt="non-virtual"><scope>openage::tile_data</scope><name>tex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,469 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="framebuffer_8cpp" kind="file" language="C++">
+    <compoundname>framebuffer.cpp</compoundname>
+    <includes refid="framebuffer_8h" local="yes">framebuffer.h</includes>
+    <incdepgraph>
+      <node id="20971">
+        <label>list</label>
+      </node>
+      <node id="20963">
+        <label>atomic</label>
+      </node>
+      <node id="20968">
+        <label>iomanip</label>
+      </node>
+      <node id="20949">
+        <label>functional</label>
+      </node>
+      <node id="20988">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="20949" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+      </node>
+      <node id="20945">
+        <label>cstdint</label>
+      </node>
+      <node id="20944">
+        <label>../resources/texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20945" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20947" relation="include">
+        </childnode>
+        <childnode refid="20982" relation="include">
+        </childnode>
+      </node>
+      <node id="20966">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20967" relation="include">
+        </childnode>
+        <childnode refid="20949" relation="include">
+        </childnode>
+        <childnode refid="20968" relation="include">
+        </childnode>
+        <childnode refid="20953" relation="include">
+        </childnode>
+        <childnode refid="20969" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+      </node>
+      <node id="20987">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="20951" relation="include">
+        </childnode>
+      </node>
+      <node id="20954">
+        <label>stdexcept</label>
+      </node>
+      <node id="20986">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="20970">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20971" relation="include">
+        </childnode>
+        <childnode refid="20972" relation="include">
+        </childnode>
+        <childnode refid="20973" relation="include">
+        </childnode>
+      </node>
+      <node id="20967">
+        <label>cstdarg</label>
+      </node>
+      <node id="20946">
+        <label>string</label>
+      </node>
+      <node id="20958">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20945" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20959" relation="include">
+        </childnode>
+        <childnode refid="20960" relation="include">
+        </childnode>
+        <childnode refid="20962" relation="include">
+        </childnode>
+        <childnode refid="20970" relation="include">
+        </childnode>
+        <childnode refid="20973" relation="include">
+        </childnode>
+      </node>
+      <node id="20960">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20961" relation="include">
+        </childnode>
+      </node>
+      <node id="20962">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20963" relation="include">
+        </childnode>
+        <childnode refid="20953" relation="include">
+        </childnode>
+        <childnode refid="20964" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+        <childnode refid="20965" relation="include">
+        </childnode>
+        <childnode refid="20966" relation="include">
+        </childnode>
+      </node>
+      <node id="20940">
+        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+        <childnode refid="20941" relation="include">
+        </childnode>
+      </node>
+      <node id="20979">
+        <label>fstream</label>
+      </node>
+      <node id="20983">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="20945" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20984" relation="include">
+        </childnode>
+        <childnode refid="20985" relation="include">
+        </childnode>
+      </node>
+      <node id="20951">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20952" relation="include">
+        </childnode>
+        <childnode refid="20953" relation="include">
+        </childnode>
+        <childnode refid="20954" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+        <childnode refid="20958" relation="include">
+        </childnode>
+      </node>
+      <node id="20991">
+        <label>../texture.h</label>
+        <link refid="renderer_2texture_8h"/>
+        <childnode refid="20944" relation="include">
+        </childnode>
+      </node>
+      <node id="20977">
+        <label>../../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="20961" relation="include">
+        </childnode>
+        <childnode refid="20978" relation="include">
+        </childnode>
+        <childnode refid="20979" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20980" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20951" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+        <childnode refid="20981" relation="include">
+        </childnode>
+        <childnode refid="20982" relation="include">
+        </childnode>
+      </node>
+      <node id="20941">
+        <label>framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20943" relation="include">
+        </childnode>
+        <childnode refid="20992" relation="include">
+        </childnode>
+      </node>
+      <node id="20943">
+        <label>texture.h</label>
+        <link refid="renderer_2opengl_2texture_8h"/>
+        <childnode refid="20944" relation="include">
+        </childnode>
+        <childnode refid="20991" relation="include">
+        </childnode>
+        <childnode refid="20992" relation="include">
+        </childnode>
+      </node>
+      <node id="20948">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="20949" relation="include">
+        </childnode>
+        <childnode refid="20950" relation="include">
+        </childnode>
+        <childnode refid="20951" relation="include">
+        </childnode>
+      </node>
+      <node id="20975">
+        <label>typeinfo</label>
+      </node>
+      <node id="20993">
+        <label>optional</label>
+      </node>
+      <node id="20942">
+        <label>vector</label>
+      </node>
+      <node id="20956">
+        <label>ciso646</label>
+      </node>
+      <node id="20950">
+        <label>utility</label>
+      </node>
+      <node id="20969">
+        <label>sstream</label>
+      </node>
+      <node id="20955">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20956" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20957" relation="include">
+        </childnode>
+      </node>
+      <node id="20989">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="20953" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20990" relation="include">
+        </childnode>
+        <childnode refid="20983" relation="include">
+        </childnode>
+      </node>
+      <node id="20957">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20957" relation="include">
+        </childnode>
+      </node>
+      <node id="20994">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="20965">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20952" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+      </node>
+      <node id="20973">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20974" relation="include">
+        </childnode>
+      </node>
+      <node id="20981">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="20990">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="20952" relation="include">
+        </childnode>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+      </node>
+      <node id="20961">
+        <label>cstdlib</label>
+      </node>
+      <node id="20952">
+        <label>iostream</label>
+      </node>
+      <node id="20980">
+        <label>unordered_map</label>
+      </node>
+      <node id="20985">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="20949" relation="include">
+        </childnode>
+        <childnode refid="20972" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+        <childnode refid="20986" relation="include">
+        </childnode>
+        <childnode refid="20987" relation="include">
+        </childnode>
+        <childnode refid="20988" relation="include">
+        </childnode>
+      </node>
+      <node id="20976">
+        <label>texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="20945" relation="include">
+        </childnode>
+        <childnode refid="20977" relation="include">
+        </childnode>
+      </node>
+      <node id="20972">
+        <label>mutex</label>
+      </node>
+      <node id="20982">
+        <label>path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="20946" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20983" relation="include">
+        </childnode>
+        <childnode refid="20989" relation="include">
+        </childnode>
+        <childnode refid="20981" relation="include">
+        </childnode>
+      </node>
+      <node id="20947">
+        <label>texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="20945" relation="include">
+        </childnode>
+        <childnode refid="20942" relation="include">
+        </childnode>
+        <childnode refid="20948" relation="include">
+        </childnode>
+        <childnode refid="20976" relation="include">
+        </childnode>
+      </node>
+      <node id="20992">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="20993" relation="include">
+        </childnode>
+        <childnode refid="20949" relation="include">
+        </childnode>
+        <childnode refid="20994" relation="include">
+        </childnode>
+      </node>
+      <node id="20984">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="20964">
+        <label>type_traits</label>
+      </node>
+      <node id="20959">
+        <label>config.h</label>
+      </node>
+      <node id="20978">
+        <label>cstring</label>
+      </node>
+      <node id="20953">
+        <label>memory</label>
+      </node>
+      <node id="20974">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20952" relation="include">
+        </childnode>
+        <childnode refid="20975" relation="include">
+        </childnode>
+        <childnode refid="20955" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="framebuffer_8h" kindref="compound">framebuffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO<sp/>the<sp/>validity<sp/>of<sp/>this<sp/>object<sp/>is<sp/>contingent</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>on<sp/>its<sp/>texture<sp/>existing.<sp/>use<sp/>shared_ptr?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1a5d34c4c82d6685200365ae981b9c495a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1a5d34c4c82d6685200365ae981b9c495a" kindref="member">GlFramebuffer::GlFramebuffer</ref>(std::vector&lt;const<sp/>GlTexture2d*&gt;<sp/>textures)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref>([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteFramebuffers(1,<sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" kindref="member">handle</ref>);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/>handle;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenFramebuffers(1,<sp/>&amp;handle);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/>handle;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(GL_FRAMEBUFFER,<sp/>handle);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;GLenum&gt;<sp/>drawBuffers;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>colorTextureCount<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref><sp/>:<sp/>textures)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>figure<sp/>out<sp/>attachment<sp/>points<sp/>from<sp/>pixel<sp/>formats</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref>-&gt;get_info().get_format()<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70" kindref="member">resources::pixel_format::depth24</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glFramebufferTexture2D(GL_FRAMEBUFFER,<sp/>GL_DEPTH_ATTACHMENT,<sp/>GL_TEXTURE_2D,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref>-&gt;get_handle(),<sp/>0);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>attachmentPoint<sp/>=<sp/>GL_COLOR_ATTACHMENT0<sp/>+<sp/>colorTextureCount++;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glFramebufferTexture2D(GL_FRAMEBUFFER,<sp/>attachmentPoint,<sp/>GL_TEXTURE_2D,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref>-&gt;get_handle(),<sp/>0);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drawBuffers.push_back(attachmentPoint);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>glDrawBuffers(drawBuffers.size(),<sp/>drawBuffers.data());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(glCheckFramebufferStatus(GL_FRAMEBUFFER)<sp/>!=<sp/>GL_FRAMEBUFFER_COMPLETE)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>create<sp/>OpenGL<sp/>framebuffer.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad56acbd6cd31f4dde51dd895b9be4891" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad56acbd6cd31f4dde51dd895b9be4891" kindref="member">GlFramebuffer::bind_read</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(GL_READ_FRAMEBUFFER,<sp/>*this-&gt;handle);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad3b4817ba31ee0d433c48d6c7f8aae89" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer_1ad3b4817ba31ee0d433c48d6c7f8aae89" kindref="member">GlFramebuffer::bind_write</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindFramebuffer(GL_DRAW_FRAMEBUFFER,<sp/>*this-&gt;handle);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/framebuffer.cpp"/>
+  </compounddef>
+</doxygen>

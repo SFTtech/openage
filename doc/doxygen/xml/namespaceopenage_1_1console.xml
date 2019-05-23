@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1console" kind="namespace" language="C++">
+    <compoundname>openage::console</compoundname>
+    <innerclass refid="classopenage_1_1console_1_1_buf" prot="public">openage::console::Buf</innerclass>
+    <innerclass refid="structopenage_1_1console_1_1buf__char" prot="public">openage::console::buf_char</innerclass>
+    <innerclass refid="structopenage_1_1console_1_1buf__line" prot="public">openage::console::buf_line</innerclass>
+    <innerclass refid="classopenage_1_1console_1_1_console" prot="public">openage::console::Console</innerclass>
+    <innerclass refid="classopenage_1_1console_1_1_new_buf" prot="public">openage::console::NewBuf</innerclass>
+    <innernamespace refid="namespaceopenage_1_1console_1_1draw">openage::console::draw</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1console_1_1tests">openage::console::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using openage::console::chrcol_t = typedef uint8_t</definition>
+        <argsstring></argsstring>
+        <name>chrcol_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the length of the escape sequence buffer, and thus the maximum length of any escape sequence that will be successfully processed.</para>
+<para>longer escape sequences will be ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="27" column="1" bodyfile="libopenage/console/buf.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>using openage::console::chrflags_t = typedef uint16_t</definition>
+        <argsstring></argsstring>
+        <name>chrflags_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="28" column="1" bodyfile="libopenage/console/buf.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using openage::console::linetype_t = typedef uint8_t</definition>
+        <argsstring></argsstring>
+        <name>linetype_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="94" column="1" bodyfile="libopenage/console/buf.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a9745bb286bb9090f6a1108ab396a7b8a" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_BOLD</definition>
+        <argsstring></argsstring>
+        <name>CHR_BOLD</name>
+        <initializer>= (1 &lt;&lt; 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="30" column="1" bodyfile="libopenage/console/buf.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a8344de72e80fee53e75bb2d8ed0d05fa" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_FAINT</definition>
+        <argsstring></argsstring>
+        <name>CHR_FAINT</name>
+        <initializer>= (1 &lt;&lt; 1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="31" column="1" bodyfile="libopenage/console/buf.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a0c77f6f996bfc8d29bcf3328dd59a7ed" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_ITALIC</definition>
+        <argsstring></argsstring>
+        <name>CHR_ITALIC</name>
+        <initializer>= (1 &lt;&lt; 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="32" column="1" bodyfile="libopenage/console/buf.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1af47bf3d97cd359c6c10f897202d86f6e" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_BLINKING</definition>
+        <argsstring></argsstring>
+        <name>CHR_BLINKING</name>
+        <initializer>= (1 &lt;&lt; 3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="33" column="1" bodyfile="libopenage/console/buf.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a4c87ac281f12c1a70ce7a42e994b1f4e" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_BLINKINGFAST</definition>
+        <argsstring></argsstring>
+        <name>CHR_BLINKINGFAST</name>
+        <initializer>= (1 &lt;&lt; 4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="34" column="1" bodyfile="libopenage/console/buf.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a93039d0f5b2e81d5c16ea27f24726d46" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_UNDERLINED</definition>
+        <argsstring></argsstring>
+        <name>CHR_UNDERLINED</name>
+        <initializer>= (1 &lt;&lt; 5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="35" column="1" bodyfile="libopenage/console/buf.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a5e51abe4b309530b0e3ce99dd7e15542" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_STRUCKOUT</definition>
+        <argsstring></argsstring>
+        <name>CHR_STRUCKOUT</name>
+        <initializer>= (1 &lt;&lt; 6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="36" column="1" bodyfile="libopenage/console/buf.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1ab5697bf92be9d8d51dcf4302601bca8b" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_FRAKTUR</definition>
+        <argsstring></argsstring>
+        <name>CHR_FRAKTUR</name>
+        <initializer>= (1 &lt;&lt; 7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="37" column="1" bodyfile="libopenage/console/buf.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a704887dfb1063ef039b3d0b3a47c8e3a" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_NEGATIVE</definition>
+        <argsstring></argsstring>
+        <name>CHR_NEGATIVE</name>
+        <initializer>= (1 &lt;&lt; 8)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="38" column="1" bodyfile="libopenage/console/buf.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1afb42dd8609458df8845f0fcfe1369a02" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_INVISIBLE</definition>
+        <argsstring></argsstring>
+        <name>CHR_INVISIBLE</name>
+        <initializer>= (1 &lt;&lt; 9)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="39" column="1" bodyfile="libopenage/console/buf.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a5ed01c84ea51ab071895ba4893def65a" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_FRAMED</definition>
+        <argsstring></argsstring>
+        <name>CHR_FRAMED</name>
+        <initializer>= (1 &lt;&lt; 10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="40" column="1" bodyfile="libopenage/console/buf.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a5b36a87df8bd26b15cd6cf9c405be21e" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_ENCIRCLED</definition>
+        <argsstring></argsstring>
+        <name>CHR_ENCIRCLED</name>
+        <initializer>= (1 &lt;&lt; 11)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="41" column="1" bodyfile="libopenage/console/buf.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1ac1c0a1692341ff6e2f561f047ae69443" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_OVERLINED</definition>
+        <argsstring></argsstring>
+        <name>CHR_OVERLINED</name>
+        <initializer>= (1 &lt;&lt; 12)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="42" column="1" bodyfile="libopenage/console/buf.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1ad9457c58e4cd80cf614f2fdfd9746a52" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_RIGHTLINED</definition>
+        <argsstring></argsstring>
+        <name>CHR_RIGHTLINED</name>
+        <initializer>= (1 &lt;&lt; 13)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="43" column="1" bodyfile="libopenage/console/buf.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a0e58c4dd9bc39bc92df452fed1d3b3bd" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_LEFTLINED</definition>
+        <argsstring></argsstring>
+        <name>CHR_LEFTLINED</name>
+        <initializer>= (1 &lt;&lt; 14)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="44" column="1" bodyfile="libopenage/console/buf.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a2fdcdc91078a83eb1c89e268f9b45426" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>constexpr chrflags_t openage::console::CHR_STRESS_IDEOGRAM</definition>
+        <argsstring></argsstring>
+        <name>CHR_STRESS_IDEOGRAM</name>
+        <initializer>= (1 &lt;&lt; 15)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="45" column="1" bodyfile="libopenage/console/buf.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1aa09a20fff5c3fe6f00987bb27d28c3ff" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
+        <definition>constexpr linetype_t openage::console::LINE_EMPTY</definition>
+        <argsstring></argsstring>
+        <name>LINE_EMPTY</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the line has not been written yet (or cleared in between) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="99" column="1" bodyfile="libopenage/console/buf.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a2f8b6f12c1655f3259fbdc6873ccb0a2" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
+        <definition>constexpr linetype_t openage::console::LINE_REGULAR</definition>
+        <argsstring></argsstring>
+        <name>LINE_REGULAR</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the line has some contents </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="103" column="1" bodyfile="libopenage/console/buf.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1ae5dcef92c8c76cebffd40c925cb209cd" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
+        <definition>constexpr linetype_t openage::console::LINE_WRAPPED</definition>
+        <argsstring></argsstring>
+        <name>LINE_WRAPPED</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the line has been written to until it auto-wrapped; its continuation can be found in the next line</para>
+<para>this value is required for re-calculating the buffer on resize </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="110" column="1" bodyfile="libopenage/console/buf.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1console_1a84a7cb454b1e8ee8221d2099833547ae" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref></type>
+        <definition>constexpr buf_line openage::console::BUF_LINE_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>BUF_LINE_DEFAULT</name>
+        <initializer>{<ref refid="namespaceopenage_1_1console_1aa09a20fff5c3fe6f00987bb27d28c3ff" kindref="member">LINE_EMPTY</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="119" column="1" bodyfile="libopenage/console/buf.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1console_1ac6af4ff8acdecaf3ebf91c57e2c20953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::print_cps</definition>
+        <argsstring>(FILE *f, std::vector&lt; int &gt; *v)</argsstring>
+        <name>print_cps</name>
+        <param>
+          <type>FILE *</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; int &gt; *</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="598" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="598" bodyend="606"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>In-game console subsystem. Featuring a full terminal emulator. </para>
+    </detaileddescription>
+    <location file="libopenage/console/buf.cpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

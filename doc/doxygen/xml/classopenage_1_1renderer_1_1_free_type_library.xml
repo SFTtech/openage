@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_free_type_library" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::FreeTypeLibrary</compoundname>
+    <includes refid="font__manager_8h" local="no">font_manager.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_free_type_library_1a2d87d4a6d52325b7009f7e77a66f1f3c" prot="public" static="no" mutable="no">
+        <type>FT_Library</type>
+        <definition>FT_Library openage::renderer::FreeTypeLibrary::ft_library</definition>
+        <argsstring></argsstring>
+        <name>ft_library</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="19" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1a9e8e9ce337ad8d411d6a82f48ca19299" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FreeTypeLibrary::FreeTypeLibrary</definition>
+        <argsstring>()</argsstring>
+        <name>FreeTypeLibrary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="22" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1a6b3fb01b3ff9182d35dc05744b8219b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FreeTypeLibrary::~FreeTypeLibrary</definition>
+        <argsstring>()</argsstring>
+        <name>~FreeTypeLibrary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="28" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1a24e43dda55dffbab21ff0e32200aee6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FreeTypeLibrary::FreeTypeLibrary</definition>
+        <argsstring>(const FreeTypeLibrary &amp;copy)=delete</argsstring>
+        <name>FreeTypeLibrary</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1ae390c1c1f09d3ad0781b1c65dc04f997" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;</type>
+        <definition>FreeTypeLibrary&amp; openage::renderer::FreeTypeLibrary::operator=</definition>
+        <argsstring>(const FreeTypeLibrary &amp;copy)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1a37780f1373ab685b3b8207995cd1dd55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FreeTypeLibrary::FreeTypeLibrary</definition>
+        <argsstring>(FreeTypeLibrary &amp;&amp;other)=delete</argsstring>
+        <name>FreeTypeLibrary</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_free_type_library_1a0fad21902978e1a3d5bd2b36a681b4a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;</type>
+        <definition>FreeTypeLibrary&amp; openage::renderer::FreeTypeLibrary::operator=</definition>
+        <argsstring>(FreeTypeLibrary &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="38" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1543">
+        <label>openage::renderer::FreeTypeLibrary</label>
+        <link refid="classopenage_1_1renderer_1_1_free_type_library"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font_manager.h" line="16" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="16" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a9e8e9ce337ad8d411d6a82f48ca19299" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>FreeTypeLibrary</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a24e43dda55dffbab21ff0e32200aee6d" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>FreeTypeLibrary</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a37780f1373ab685b3b8207995cd1dd55" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>FreeTypeLibrary</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a2d87d4a6d52325b7009f7e77a66f1f3c" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>ft_library</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1ae390c1c1f09d3ad0781b1c65dc04f997" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a0fad21902978e1a3d5bd2b36a681b4a1" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1_free_type_library_1a6b3fb01b3ff9182d35dc05744b8219b9" prot="public" virt="non-virtual"><scope>openage::renderer::FreeTypeLibrary</scope><name>~FreeTypeLibrary</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

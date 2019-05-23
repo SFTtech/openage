@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1error" kind="namespace" language="C++">
+    <compoundname>openage::error</compoundname>
+    <innerclass refid="classopenage_1_1error_1_1_backtrace" prot="public">openage::error::Backtrace</innerclass>
+    <innerclass refid="structopenage_1_1error_1_1backtrace__symbol" prot="public">openage::error::backtrace_symbol</innerclass>
+    <innerclass refid="classopenage_1_1error_1_1_error" prot="public">openage::error::Error</innerclass>
+    <innerclass refid="classopenage_1_1error_1_1_stack_analyzer" prot="public">openage::error::StackAnalyzer</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1error_1a1f2a2504ac8f64e3666ce4322b32f0e6" prot="public" static="no" mutable="no">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char* openage::error::runtime_error_message</definition>
+        <argsstring></argsstring>
+        <name>runtime_error_message</name>
+        <initializer>= &quot;polymorphic openage <ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref> object; catch by reference!&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.cpp" line="13" column="1" bodyfile="libopenage/error/error.cpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1error_1a69283bf7d976b89c848b6b413190e15a" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::error::enable_break_on_create</definition>
+        <argsstring></argsstring>
+        <name>enable_break_on_create</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.cpp" line="15" column="1" bodyfile="libopenage/error/error.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1error_1ae3d9c89190667cb25a58f4946755cd7c" prot="public" static="no" mutable="no">
+        <type>constexpr uint64_t</type>
+        <definition>constexpr uint64_t openage::error::skip_entry_frames</definition>
+        <argsstring></argsstring>
+        <name>skip_entry_frames</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Skip this many frames at the beginning of the trace. Can trim away various libc calls. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.cpp" line="19" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1error_1af4d473d062c43372ff4db76ff90d212b" prot="public" static="no" mutable="no">
+        <type>constexpr uint64_t</type>
+        <definition>constexpr uint64_t openage::error::base_skip_frames</definition>
+        <argsstring></argsstring>
+        <name>base_skip_frames</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Skip this many stack frames, this drops the stackanalyzer function call itself. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.cpp" line="25" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1error_1a58eb7522d2a474098647490b1a6041f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::error::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const backtrace_symbol &amp;bt_sym)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> &amp;</type>
+          <declname>bt_sym</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints a <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/backtrace.cpp" line="16" column="1" bodyfile="libopenage/error/backtrace.cpp" bodystart="16" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1ab21567da92b6f9b758b2c16ca9c2186b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::error::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Backtrace &amp;bt)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> &amp;</type>
+          <declname>bt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints an entire <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/backtrace.cpp" line="49" column="1" bodyfile="libopenage/error/backtrace.cpp" bodystart="49" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1a036babcdd58261ba26288431876e7b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::demo</definition>
+        <argsstring>()</argsstring>
+        <name>demo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/demo.cpp" line="45" column="1" bodyfile="libopenage/error/demo.cpp" bodystart="45" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1a902be6cbbea4f6485907cc5e15406b3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::error::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const Error &amp;e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref> &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.cpp" line="89" column="1" bodyfile="libopenage/error/error.cpp" bodystart="89" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1ab2024deec6ddbb6949287eccd5be88a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::error::no_ensuring_message</definition>
+        <argsstring>()</argsstring>
+        <name>no_ensuring_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/error.h" line="149" column="1" bodyfile="libopenage/error/error.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>SDL_GLContext</type>
+        <definition>SDL_GLContext openage::error::create_debug_context</definition>
+        <argsstring>(SDL_Window *window)</argsstring>
+        <name>create_debug_context</name>
+        <param>
+          <type>SDL_Window *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/gl_debug.cpp" line="45" column="1" bodyfile="libopenage/error/gl_debug.cpp" bodystart="45" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::terminate_handler</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>terminate_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/handlers.cpp" line="37" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="69" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::sigsegv_handler</definition>
+        <argsstring>(int)</argsstring>
+        <name>sigsegv_handler</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/handlers.cpp" line="38" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="107" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::exit_handler</definition>
+        <argsstring>()</argsstring>
+        <name>exit_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/handlers.cpp" line="39" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="119" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1error_1aa782a00ec80760003f986c063aef169d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::error::set_exit_ok</definition>
+        <argsstring>(bool value)</argsstring>
+        <name>set_exit_ok</name>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call this to set or unset the atexit error handler.</para>
+<para>In order to capture any stray calls to exit() from any place in the game (including libraries), set this to true on startup, and back to false right before termination.</para>
+<para>pxd: void set_exit_ok(cppbool value) except + </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/handlers.cpp" line="134" column="1" bodyfile="libopenage/error/handlers.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/error/backtrace.cpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

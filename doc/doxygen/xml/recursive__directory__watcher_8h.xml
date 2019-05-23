@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="recursive__directory__watcher_8h" kind="file" language="C++">
+    <compoundname>recursive_directory_watcher.h</compoundname>
+    <includes local="no">future</includes>
+    <includes local="no">QObject</includes>
+    <includes local="no">QStringList</includes>
+    <includedby refid="gui__engine__impl_8h" local="yes">libopenage/gui/guisys/private/gui_engine_impl.h</includedby>
+    <includedby refid="recursive__directory__watcher_8cpp" local="yes">libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</includedby>
+    <incdepgraph>
+      <node id="13381">
+        <label>QObject</label>
+      </node>
+      <node id="13379">
+        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
+        <link refid="recursive__directory__watcher_8h"/>
+        <childnode refid="13380" relation="include">
+        </childnode>
+        <childnode refid="13381" relation="include">
+        </childnode>
+        <childnode refid="13382" relation="include">
+        </childnode>
+      </node>
+      <node id="13380">
+        <label>future</label>
+      </node>
+      <node id="13382">
+        <label>QStringList</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13383">
+        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h</label>
+        <link refid="recursive__directory__watcher_8h"/>
+        <childnode refid="13384" relation="include">
+        </childnode>
+        <childnode refid="13388" relation="include">
+        </childnode>
+      </node>
+      <node id="13384">
+        <label>libopenage/gui/guisys/private/gui_engine_impl.h</label>
+        <link refid="gui__engine__impl_8h"/>
+        <childnode refid="13385" relation="include">
+        </childnode>
+        <childnode refid="13386" relation="include">
+        </childnode>
+        <childnode refid="13387" relation="include">
+        </childnode>
+      </node>
+      <node id="13387">
+        <label>libopenage/gui/guisys/public/gui_engine.cpp</label>
+        <link refid="gui__engine_8cpp"/>
+      </node>
+      <node id="13386">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+      <node id="13388">
+        <label>libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp</label>
+        <link refid="recursive__directory__watcher_8cpp"/>
+      </node>
+      <node id="13385">
+        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <link refid="gui__engine__impl_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_recursive_directory_watcher" prot="public">qtsdl::RecursiveDirectoryWatcher</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;future&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStringList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classqtsdl_1_1_recursive_directory_watcher" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_recursive_directory_watcher" kindref="compound">RecursiveDirectoryWatcher</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1a783cc986da8f9ed63ac735b00f119404" kindref="member">RecursiveDirectoryWatcher</ref>(QObject<sp/>*parent<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" kindref="member">~RecursiveDirectoryWatcher</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1a8023f71a72a9b22765d88d33cd71b237" kindref="member">changeDetected</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1aabc2911d48c9af1d435ccb894e216b0e" kindref="member">rootDirsPathsChanged</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QStringList&amp;);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7" kindref="member">quit</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28" refid="classqtsdl_1_1_recursive_directory_watcher_1aa0079513a72c29ae057b0432f7b1bb13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::future&lt;void&gt;<sp/><ref refid="classqtsdl_1_1_recursive_directory_watcher_1aa0079513a72c29ae057b0432f7b1bb13" kindref="member">worker</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h"/>
+  </compounddef>
+</doxygen>

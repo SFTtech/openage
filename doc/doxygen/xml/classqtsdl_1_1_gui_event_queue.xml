@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_event_queue" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiEventQueue</compoundname>
+    <includes refid="gui__event__queue_8h" local="no">gui_event_queue.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_event_queue_1ae42bcdfa445720590a44468e20d505d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiEventQueueImpl</definition>
+        <argsstring></argsstring>
+        <name>GuiEventQueueImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="22" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_event_queue_1adcd28a57420b8fbd566b719f5d3f68f2" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_event_queue_impl" kindref="compound">GuiEventQueueImpl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;GuiEventQueueImpl&gt; qtsdl::GuiEventQueue::impl</definition>
+        <argsstring></argsstring>
+        <name>impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="23" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_event_queue_1a64f25a5d14abca7bd1898b32ed98f99e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiEventQueue::GuiEventQueue</definition>
+        <argsstring>()</argsstring>
+        <name>GuiEventQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="16" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_event_queue_1a04b5b8332243b9820f6f3bd12553786b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiEventQueue::~GuiEventQueue</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiEventQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="17" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.cpp" bodystart="14" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_event_queue_1a9dfaf95d4590839c4ed7a40ab61ed69e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiEventQueue::process_callbacks</definition>
+        <argsstring>()</argsstring>
+        <name>process_callbacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="19" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.cpp" bodystart="17" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides synchronization with some game thread. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2527">
+        <label>qtsdl::GuiEventQueue</label>
+        <link refid="classqtsdl_1_1_gui_event_queue"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/public/gui_event_queue.h" line="14" column="1" bodyfile="libopenage/gui/guisys/public/gui_event_queue.h" bodystart="14" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_event_queue_1a64f25a5d14abca7bd1898b32ed98f99e" prot="public" virt="non-virtual"><scope>qtsdl::GuiEventQueue</scope><name>GuiEventQueue</name></member>
+      <member refid="classqtsdl_1_1_gui_event_queue_1ae42bcdfa445720590a44468e20d505d6" prot="private" virt="non-virtual"><scope>qtsdl::GuiEventQueue</scope><name>GuiEventQueueImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_event_queue_1adcd28a57420b8fbd566b719f5d3f68f2" prot="private" virt="non-virtual"><scope>qtsdl::GuiEventQueue</scope><name>impl</name></member>
+      <member refid="classqtsdl_1_1_gui_event_queue_1a9dfaf95d4590839c4ed7a40ab61ed69e" prot="public" virt="non-virtual"><scope>qtsdl::GuiEventQueue</scope><name>process_callbacks</name></member>
+      <member refid="classqtsdl_1_1_gui_event_queue_1a04b5b8332243b9820f6f3bd12553786b" prot="public" virt="non-virtual"><scope>qtsdl::GuiEventQueue</scope><name>~GuiEventQueue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

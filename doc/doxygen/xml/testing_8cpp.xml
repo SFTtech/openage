@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="testing_8cpp" kind="file" language="C++">
+    <compoundname>testing.cpp</compoundname>
+    <includes refid="testing_8h" local="yes">testing.h</includes>
+    <incdepgraph>
+      <node id="25093">
+        <label>list</label>
+      </node>
+      <node id="25083">
+        <label>atomic</label>
+      </node>
+      <node id="25089">
+        <label>iomanip</label>
+      </node>
+      <node id="25088">
+        <label>functional</label>
+      </node>
+      <node id="25078">
+        <label>cstdint</label>
+      </node>
+      <node id="25086">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="25087" relation="include">
+        </childnode>
+        <childnode refid="25088" relation="include">
+        </childnode>
+        <childnode refid="25089" relation="include">
+        </childnode>
+        <childnode refid="25071" relation="include">
+        </childnode>
+        <childnode refid="25090" relation="include">
+        </childnode>
+        <childnode refid="25073" relation="include">
+        </childnode>
+        <childnode refid="25091" relation="include">
+        </childnode>
+      </node>
+      <node id="25072">
+        <label>stdexcept</label>
+      </node>
+      <node id="25092">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="25093" relation="include">
+        </childnode>
+        <childnode refid="25094" relation="include">
+        </childnode>
+        <childnode refid="25095" relation="include">
+        </childnode>
+      </node>
+      <node id="25087">
+        <label>cstdarg</label>
+      </node>
+      <node id="25073">
+        <label>string</label>
+      </node>
+      <node id="25077">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="25078" relation="include">
+        </childnode>
+        <childnode refid="25073" relation="include">
+        </childnode>
+        <childnode refid="25079" relation="include">
+        </childnode>
+        <childnode refid="25080" relation="include">
+        </childnode>
+        <childnode refid="25082" relation="include">
+        </childnode>
+        <childnode refid="25092" relation="include">
+        </childnode>
+        <childnode refid="25095" relation="include">
+        </childnode>
+      </node>
+      <node id="25080">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="25081" relation="include">
+        </childnode>
+      </node>
+      <node id="25082">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="25083" relation="include">
+        </childnode>
+        <childnode refid="25071" relation="include">
+        </childnode>
+        <childnode refid="25084" relation="include">
+        </childnode>
+        <childnode refid="25074" relation="include">
+        </childnode>
+        <childnode refid="25085" relation="include">
+        </childnode>
+        <childnode refid="25086" relation="include">
+        </childnode>
+      </node>
+      <node id="25069">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="25070" relation="include">
+        </childnode>
+        <childnode refid="25071" relation="include">
+        </childnode>
+        <childnode refid="25072" relation="include">
+        </childnode>
+        <childnode refid="25073" relation="include">
+        </childnode>
+        <childnode refid="25074" relation="include">
+        </childnode>
+        <childnode refid="25077" relation="include">
+        </childnode>
+      </node>
+      <node id="25097">
+        <label>typeinfo</label>
+      </node>
+      <node id="25091">
+        <label>vector</label>
+      </node>
+      <node id="25075">
+        <label>ciso646</label>
+      </node>
+      <node id="25067">
+        <label>libopenage/testing/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+        <childnode refid="25068" relation="include">
+        </childnode>
+      </node>
+      <node id="25090">
+        <label>sstream</label>
+      </node>
+      <node id="25074">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="25075" relation="include">
+        </childnode>
+        <childnode refid="25073" relation="include">
+        </childnode>
+        <childnode refid="25076" relation="include">
+        </childnode>
+      </node>
+      <node id="25076">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="25076" relation="include">
+        </childnode>
+      </node>
+      <node id="25085">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="25070" relation="include">
+        </childnode>
+        <childnode refid="25073" relation="include">
+        </childnode>
+      </node>
+      <node id="25095">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="25096" relation="include">
+        </childnode>
+      </node>
+      <node id="25081">
+        <label>cstdlib</label>
+      </node>
+      <node id="25070">
+        <label>iostream</label>
+      </node>
+      <node id="25068">
+        <label>testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="25069" relation="include">
+        </childnode>
+      </node>
+      <node id="25094">
+        <label>mutex</label>
+      </node>
+      <node id="25084">
+        <label>type_traits</label>
+      </node>
+      <node id="25079">
+        <label>config.h</label>
+      </node>
+      <node id="25071">
+        <label>memory</label>
+      </node>
+      <node id="25096">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="25070" relation="include">
+        </childnode>
+        <childnode refid="25097" relation="include">
+        </childnode>
+        <childnode refid="25074" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing">openage::testing</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="testing_8h" kindref="compound">testing.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6" refid="namespaceopenage_1_1testing" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">testing<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">fail</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref><sp/>&amp;msg)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">TestError</ref>{msg};</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>opeange::testing</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/testing/testing.cpp"/>
+  </compounddef>
+</doxygen>

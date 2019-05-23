@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1tile__draw__data" kind="struct" language="C++" prot="public">
+    <compoundname>openage::tile_draw_data</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1tile__draw__data_1a6df5238236b9996b79e44bd59f4d2b46" prot="public" static="no" mutable="no">
+        <type>ssize_t</type>
+        <definition>ssize_t openage::tile_draw_data::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="139" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__draw__data_1abb735fac94699d37947a4456ac4177a9" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structopenage_1_1tile__data" kindref="compound">tile_data</ref></type>
+        <definition>struct tile_data openage::tile_draw_data::data[9]</definition>
+        <argsstring>[9]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="139" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>collection of drawing data for a single tile. because of influences, a maximum of 8+1 draws could be requested. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4510">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4506">
+        <label>openage::tile_data</label>
+        <link refid="structopenage_1_1tile__data"/>
+        <childnode refid="4507" relation="usage">
+          <edgelabel>+pos</edgelabel>
+        </childnode>
+        <childnode refid="4509" relation="usage">
+          <edgelabel>+tex</edgelabel>
+          <edgelabel>+mask_tex</edgelabel>
+        </childnode>
+      </node>
+      <node id="4508">
+        <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="4509">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4510" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+      <node id="4507">
+        <label>openage::coord::tile</label>
+        <link refid="structopenage_1_1coord_1_1tile"/>
+        <childnode refid="4508" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4505">
+        <label>openage::tile_draw_data</label>
+        <link refid="structopenage_1_1tile__draw__data"/>
+        <childnode refid="4506" relation="usage">
+          <edgelabel>+data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="138" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="138" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1tile__draw__data_1a6df5238236b9996b79e44bd59f4d2b46" prot="public" virt="non-virtual"><scope>openage::tile_draw_data</scope><name>count</name></member>
+      <member refid="structopenage_1_1tile__draw__data_1abb735fac94699d37947a4456ac4177a9" prot="public" virt="non-virtual"><scope>openage::tile_draw_data</scope><name>data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

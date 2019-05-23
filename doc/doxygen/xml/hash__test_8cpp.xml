@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hash__test_8cpp" kind="file" language="C++">
+    <compoundname>hash_test.cpp</compoundname>
+    <includes refid="hash_8h" local="yes">hash.h</includes>
+    <includes local="no">array</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <includes refid="misc_8h" local="yes">misc.h</includes>
+    <incdepgraph>
+      <node id="30624">
+        <label>list</label>
+      </node>
+      <node id="30614">
+        <label>atomic</label>
+      </node>
+      <node id="30620">
+        <label>iomanip</label>
+      </node>
+      <node id="30619">
+        <label>functional</label>
+      </node>
+      <node id="30610">
+        <label>cstdint</label>
+      </node>
+      <node id="30617">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30618" relation="include">
+        </childnode>
+        <childnode refid="30619" relation="include">
+        </childnode>
+        <childnode refid="30620" relation="include">
+        </childnode>
+        <childnode refid="30603" relation="include">
+        </childnode>
+        <childnode refid="30621" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+      </node>
+      <node id="30597">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30598" relation="include">
+        </childnode>
+        <childnode refid="30599" relation="include">
+        </childnode>
+      </node>
+      <node id="30632">
+        <label>cmath</label>
+      </node>
+      <node id="30604">
+        <label>stdexcept</label>
+      </node>
+      <node id="30623">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30625" relation="include">
+        </childnode>
+        <childnode refid="30626" relation="include">
+        </childnode>
+      </node>
+      <node id="30618">
+        <label>cstdarg</label>
+      </node>
+      <node id="30605">
+        <label>string</label>
+      </node>
+      <node id="30609">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30610" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30611" relation="include">
+        </childnode>
+        <childnode refid="30612" relation="include">
+        </childnode>
+        <childnode refid="30613" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30626" relation="include">
+        </childnode>
+      </node>
+      <node id="30612">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30598" relation="include">
+        </childnode>
+      </node>
+      <node id="30613">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30614" relation="include">
+        </childnode>
+        <childnode refid="30603" relation="include">
+        </childnode>
+        <childnode refid="30615" relation="include">
+        </childnode>
+        <childnode refid="30606" relation="include">
+        </childnode>
+        <childnode refid="30616" relation="include">
+        </childnode>
+        <childnode refid="30617" relation="include">
+        </childnode>
+      </node>
+      <node id="30631">
+        <label>limits.h</label>
+      </node>
+      <node id="30601">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30602" relation="include">
+        </childnode>
+        <childnode refid="30603" relation="include">
+        </childnode>
+        <childnode refid="30604" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30606" relation="include">
+        </childnode>
+        <childnode refid="30609" relation="include">
+        </childnode>
+      </node>
+      <node id="30629">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="30630" relation="include">
+        </childnode>
+        <childnode refid="30631" relation="include">
+        </childnode>
+        <childnode refid="30632" relation="include">
+        </childnode>
+        <childnode refid="30633" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30603" relation="include">
+        </childnode>
+        <childnode refid="30601" relation="include">
+        </childnode>
+        <childnode refid="30606" relation="include">
+        </childnode>
+      </node>
+      <node id="30628">
+        <label>typeinfo</label>
+      </node>
+      <node id="30622">
+        <label>vector</label>
+      </node>
+      <node id="30607">
+        <label>ciso646</label>
+      </node>
+      <node id="30599">
+        <label>array</label>
+      </node>
+      <node id="30621">
+        <label>sstream</label>
+      </node>
+      <node id="30606">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30607" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30608" relation="include">
+        </childnode>
+      </node>
+      <node id="30608">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30608" relation="include">
+        </childnode>
+      </node>
+      <node id="30596">
+        <label>libopenage/util/hash_test.cpp</label>
+        <link refid="hash__test_8cpp"/>
+        <childnode refid="30597" relation="include">
+        </childnode>
+        <childnode refid="30599" relation="include">
+        </childnode>
+        <childnode refid="30600" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+      </node>
+      <node id="30616">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30602" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+      </node>
+      <node id="30626">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30627" relation="include">
+        </childnode>
+      </node>
+      <node id="30598">
+        <label>cstdlib</label>
+      </node>
+      <node id="30602">
+        <label>iostream</label>
+      </node>
+      <node id="30600">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="30601" relation="include">
+        </childnode>
+      </node>
+      <node id="30625">
+        <label>mutex</label>
+      </node>
+      <node id="30615">
+        <label>type_traits</label>
+      </node>
+      <node id="30611">
+        <label>config.h</label>
+      </node>
+      <node id="30630">
+        <label>algorithm</label>
+      </node>
+      <node id="30633">
+        <label>cstring</label>
+      </node>
+      <node id="30603">
+        <label>memory</label>
+      </node>
+      <node id="30627">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30602" relation="include">
+        </childnode>
+        <childnode refid="30628" relation="include">
+        </childnode>
+        <childnode refid="30606" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hash_8h" kindref="compound">hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="misc_8h" kindref="compound">misc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;uint8_t,<sp/>16&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" kindref="member">test_key</ref><sp/>{{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>0x00,<sp/>0x01,<sp/>0x02,<sp/>0x03,<sp/>0x04,<sp/>0x05,<sp/>0x06,<sp/>0x07,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>0x08,<sp/>0x09,<sp/>0x0a,<sp/>0x0b,<sp/>0x0c,<sp/>0x0d,<sp/>0x0e,<sp/>0x0f</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" kindref="member">siphash</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Hash<sp/>results<sp/>for<sp/>some<sp/>Siphash<sp/>inputs</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>test<sp/>key<sp/>is<sp/>0x000102...0d0e0f</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>The<sp/>inputs<sp/>are:</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>nothing<sp/>(zero<sp/>length)</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>0x00</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>0x0001</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>0x000102</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>0x00010203</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/>-<sp/>...</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::array&lt;uint64_t,<sp/>64&gt;<sp/>expected_hashes<sp/>{{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x726fdb47dd0e0e31,0x74f839c593dc67fd,0x0d6c8009d9a94f5a,0x85676696d7fb7e2d,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xcf2794e0277187b7,0x18765564cd99a68d,0xcbc9466e58fee3ce,0xab0200f58b01d137,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x93f5f5799a932462,0x9e0082df0ba9e4b0,0x7a5dbbc594ddb9f3,0xf4b32f46226bada7,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x751e8fbc860ee5fb,0x14ea5627c0843d90,0xf723ca908e7af2ee,0xa129ca6149be45e5,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x3f2acc7f57c29bdb,0x699ae9f52cbe4794,0x4bc1b3f0968dd39c,0xbb6dc91da77961bd,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xbed65cf21aa2ee98,0xd0f2cbb02e3b67c7,0x93536795e3a33e88,0xa80c038ccd5ccec8,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xb8ad50c6f649af94,0xbce192de8a85b8ea,0x17d835b85bbb15f3,0x2f2e6163076bcfad,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xde4daaaca71dc9a5,0xa6a2506687956571,0xad87a3535c49ef28,0x32d892fad841c342,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x7127512f72f27cce,0xa7f32346f95978e3,0x12e0b01abb051238,0x15e034d40fa197ae,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x314dffbe0815a3b4,0x027990f029623981,0xcadcd4e59ef40c4d,0x9abfd8766a33735c,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0e3ea96b5304a7d0,0xad0c42d6fc585992,0x187306c89bc215a9,0xd4a60abcf3792b95,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xf935451de4f21df2,0xa9538f0419755787,0xdb9acddff56ca510,0xd06c98cd5c0975eb,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xe612a3cb9ecba951,0xc766e62cfcadaf96,0xee64435a9752fe72,0xa192d576b245165a,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0a8787bf8ecb74b2,0x81b3e73d20b49b6f,0x7fa8220ba3b2ecea,0x245731c13ca42499,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xb78dbfaf3a8d83bd,0xea1ad565322a1a0b,0x60e61c23a3795013,0x6606d7e446282b93,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x6ca4ecb15c5f91e1,0x9f626da15c9625f3,0xe51b38608ef25f57,0x958a324ceb064572</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;uint8_t,<sp/>64&gt;<sp/>data;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">openage::util::Siphash</ref><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" kindref="member">siphash</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" kindref="member">test_key</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>64;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" kindref="member">siphash</ref>.digest(data.data(),<sp/>i),<sp/>expected_hashes[i]);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.at(i)<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>test<sp/>the<sp/>64bit<sp/>input<sp/>digest</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>data8[8]<sp/>=<sp/>{0x01,<sp/>0x23,<sp/>0x45,<sp/>0x67,<sp/>0x89,<sp/>0xab,<sp/>0xcd,<sp/>0xef};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>data64<sp/>=<sp/>0x0123456789abcdef;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" kindref="member">siphash</ref>.digest(data8,<sp/>8),<sp/><ref refid="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" kindref="member">siphash</ref>.digest(data64));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/hash_test.cpp"/>
+  </compounddef>
+</doxygen>

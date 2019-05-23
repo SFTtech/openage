@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::GlyphAtlas::Entry</compoundname>
+    <includes refid="glyph__atlas_8h" local="no">glyph_atlas.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref></type>
+        <definition>Glyph openage::renderer::GlyphAtlas::Entry::glyph</definition>
+        <argsstring></argsstring>
+        <name>glyph</name>
+        <briefdescription>
+<para>The <ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="34" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::GlyphAtlas::Entry::u0</definition>
+        <argsstring></argsstring>
+        <name>u0</name>
+        <briefdescription>
+<para>The bottom-left texture coordinate in u-axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="35" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::GlyphAtlas::Entry::v0</definition>
+        <argsstring></argsstring>
+        <name>v0</name>
+        <briefdescription>
+<para>The bottom-left texture coordinate in v-axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="36" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::GlyphAtlas::Entry::u1</definition>
+        <argsstring></argsstring>
+        <name>u1</name>
+        <briefdescription>
+<para>The top-right texture coordinate in u-axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="37" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::GlyphAtlas::Entry::v1</definition>
+        <argsstring></argsstring>
+        <name>v1</name>
+        <briefdescription>
+<para>The top-right texture coordinate in v-axis. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="38" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Datastructure for a single atlas entry </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1383">
+        <label>openage::renderer::GlyphAtlas::Entry</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry"/>
+        <childnode refid="1384" relation="usage">
+          <edgelabel>+glyph</edgelabel>
+        </childnode>
+      </node>
+      <node id="1384">
+        <label>openage::renderer::Glyph</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/glyph_atlas.h" line="32" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="32" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>glyph</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>u0</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>u1</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>v0</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Entry</scope><name>v1</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

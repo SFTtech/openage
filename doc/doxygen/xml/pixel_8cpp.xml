@@ -1,0 +1,467 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="pixel_8cpp" kind="file" language="C++">
+    <compoundname>pixel.cpp</compoundname>
+    <includes refid="pixel_8h" local="yes">pixel.h</includes>
+    <includes refid="coordmanager_8h" local="yes">coordmanager.h</includes>
+    <includes refid="phys_8h" local="yes">phys.h</includes>
+    <incdepgraph>
+      <node id="3937">
+        <label>list</label>
+      </node>
+      <node id="3930">
+        <label>atomic</label>
+      </node>
+      <node id="3942">
+        <label>coordmanager.h</label>
+        <link refid="coordmanager_8h"/>
+        <childnode refid="3943" relation="include">
+        </childnode>
+        <childnode refid="3901" relation="include">
+        </childnode>
+        <childnode refid="3946" relation="include">
+        </childnode>
+      </node>
+      <node id="3905">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="3906" relation="include">
+        </childnode>
+        <childnode refid="3907" relation="include">
+        </childnode>
+        <childnode refid="3908" relation="include">
+        </childnode>
+        <childnode refid="3909" relation="include">
+        </childnode>
+        <childnode refid="3910" relation="include">
+        </childnode>
+        <childnode refid="3911" relation="include">
+        </childnode>
+        <childnode refid="3912" relation="include">
+        </childnode>
+        <childnode refid="3913" relation="include">
+        </childnode>
+      </node>
+      <node id="3934">
+        <label>functional</label>
+      </node>
+      <node id="3909">
+        <label>iomanip</label>
+      </node>
+      <node id="3910">
+        <label>limits</label>
+      </node>
+      <node id="3903">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="3904" relation="include">
+        </childnode>
+        <childnode refid="3905" relation="include">
+        </childnode>
+      </node>
+      <node id="3904">
+        <label>cstdint</label>
+      </node>
+      <node id="3900">
+        <label>libopenage/coord/pixel.cpp</label>
+        <link refid="pixel_8cpp"/>
+        <childnode refid="3901" relation="include">
+        </childnode>
+        <childnode refid="3942" relation="include">
+        </childnode>
+        <childnode refid="3943" relation="include">
+        </childnode>
+      </node>
+      <node id="3944">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="3932">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="3933" relation="include">
+        </childnode>
+        <childnode refid="3934" relation="include">
+        </childnode>
+        <childnode refid="3909" relation="include">
+        </childnode>
+        <childnode refid="3918" relation="include">
+        </childnode>
+        <childnode refid="3935" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3917" relation="include">
+        </childnode>
+      </node>
+      <node id="3908">
+        <label>cmath</label>
+      </node>
+      <node id="3921">
+        <label>stdexcept</label>
+      </node>
+      <node id="3936">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="3937" relation="include">
+        </childnode>
+        <childnode refid="3938" relation="include">
+        </childnode>
+        <childnode refid="3939" relation="include">
+        </childnode>
+      </node>
+      <node id="3933">
+        <label>cstdarg</label>
+      </node>
+      <node id="3916">
+        <label>string</label>
+      </node>
+      <node id="3925">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="3904" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3926" relation="include">
+        </childnode>
+        <childnode refid="3927" relation="include">
+        </childnode>
+        <childnode refid="3929" relation="include">
+        </childnode>
+        <childnode refid="3936" relation="include">
+        </childnode>
+        <childnode refid="3939" relation="include">
+        </childnode>
+      </node>
+      <node id="3927">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="3928" relation="include">
+        </childnode>
+      </node>
+      <node id="3929">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="3930" relation="include">
+        </childnode>
+        <childnode refid="3918" relation="include">
+        </childnode>
+        <childnode refid="3912" relation="include">
+        </childnode>
+        <childnode refid="3922" relation="include">
+        </childnode>
+        <childnode refid="3931" relation="include">
+        </childnode>
+        <childnode refid="3932" relation="include">
+        </childnode>
+      </node>
+      <node id="3911">
+        <label>ostream</label>
+      </node>
+      <node id="3914">
+        <label>limits.h</label>
+      </node>
+      <node id="3919">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="3920" relation="include">
+        </childnode>
+        <childnode refid="3918" relation="include">
+        </childnode>
+        <childnode refid="3921" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3922" relation="include">
+        </childnode>
+        <childnode refid="3925" relation="include">
+        </childnode>
+      </node>
+      <node id="3913">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="3906" relation="include">
+        </childnode>
+        <childnode refid="3914" relation="include">
+        </childnode>
+        <childnode refid="3908" relation="include">
+        </childnode>
+        <childnode refid="3915" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3917" relation="include">
+        </childnode>
+        <childnode refid="3918" relation="include">
+        </childnode>
+        <childnode refid="3919" relation="include">
+        </childnode>
+        <childnode refid="3922" relation="include">
+        </childnode>
+      </node>
+      <node id="3945">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="3941">
+        <label>typeinfo</label>
+      </node>
+      <node id="3902">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="3917">
+        <label>vector</label>
+      </node>
+      <node id="3923">
+        <label>ciso646</label>
+      </node>
+      <node id="3935">
+        <label>sstream</label>
+      </node>
+      <node id="3922">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="3923" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3924" relation="include">
+        </childnode>
+      </node>
+      <node id="3924">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="3924" relation="include">
+        </childnode>
+      </node>
+      <node id="3931">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="3920" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+      </node>
+      <node id="3939">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="3940" relation="include">
+        </childnode>
+      </node>
+      <node id="3901">
+        <label>pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="3902" relation="include">
+        </childnode>
+        <childnode refid="3903" relation="include">
+        </childnode>
+      </node>
+      <node id="3928">
+        <label>cstdlib</label>
+      </node>
+      <node id="3920">
+        <label>iostream</label>
+      </node>
+      <node id="3907">
+        <label>climits</label>
+      </node>
+      <node id="3938">
+        <label>mutex</label>
+      </node>
+      <node id="3946">
+        <label>tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="3903" relation="include">
+        </childnode>
+        <childnode refid="3944" relation="include">
+        </childnode>
+        <childnode refid="3945" relation="include">
+        </childnode>
+        <childnode refid="3913" relation="include">
+        </childnode>
+      </node>
+      <node id="3912">
+        <label>type_traits</label>
+      </node>
+      <node id="3926">
+        <label>config.h</label>
+      </node>
+      <node id="3906">
+        <label>algorithm</label>
+      </node>
+      <node id="3943">
+        <label>phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="3913" relation="include">
+        </childnode>
+        <childnode refid="3903" relation="include">
+        </childnode>
+        <childnode refid="3944" relation="include">
+        </childnode>
+        <childnode refid="3945" relation="include">
+        </childnode>
+      </node>
+      <node id="3915">
+        <label>cstring</label>
+      </node>
+      <node id="3918">
+        <label>memory</label>
+      </node>
+      <node id="3940">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="3920" relation="include">
+        </childnode>
+        <childnode refid="3941" relation="include">
+        </childnode>
+        <childnode refid="3922" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pixel_8h" kindref="compound">pixel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coordmanager_8h" kindref="compound">coordmanager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="phys_8h" kindref="compound">phys.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" kindref="member">coord</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">camgame_delta::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>apply<sp/>scaling<sp/>factor;<sp/>w/2<sp/>for<sp/>x,<sp/>h/2<sp/>for<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>x<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" kindref="member">phys_t::from_int</ref>(this-&gt;x)<sp/>/<sp/>static_cast&lt;int64_t&gt;(mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" kindref="member">tile_size</ref>.x<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>y<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" kindref="member">phys_t::from_int</ref>(this-&gt;y)<sp/>/<sp/>static_cast&lt;int64_t&gt;(mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1abd45c3c2cf20f76ac980e18bba3128e3" kindref="member">tile_size</ref>.y<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>apply<sp/>transformation<sp/>matrix<sp/>to<sp/>&apos;scaled&apos;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>get<sp/>the<sp/>relative<sp/>phys3<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>camgame<sp/>position<sp/>represents<sp/>a<sp/>line<sp/>in<sp/>the<sp/>3D<sp/>phys<sp/>space</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>camgame<sp/>delta<sp/>of<sp/>0<sp/>might<sp/>actually<sp/>correlate<sp/>to<sp/>an<sp/>arbitrarily</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>large<sp/>phys<sp/>delta.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>select<sp/>one<sp/>specific<sp/>point<sp/>on<sp/>that<sp/>line<sp/>by<sp/>explicitly<sp/>specifying<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&apos;up&apos;<sp/>value<sp/>of<sp/>the<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>transformation<sp/>matrix<sp/>is:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(ne)<sp/>=<sp/>(+0.5<sp/>+0.5<sp/>+0.5)<sp/>(<sp/>x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(se)<sp/>=<sp/>(+0.5<sp/>-0.5<sp/>-0.5)<sp/>(<sp/>y)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(up)<sp/>=<sp/>(+0.0<sp/>+0.0<sp/>+1.0)<sp/>(up)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/>result;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>result.ne<sp/>=<sp/>(x<sp/>+<sp/>y<sp/>+<sp/>up)/2L;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>result.se<sp/>=<sp/>(x<sp/>-<sp/>y<sp/>-<sp/>up)/2L;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>result.up<sp/>=<sp/>(<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>up);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" kindref="member">camgame::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref>{0,<sp/>0}).<ref refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" kindref="member">to_phys3</ref>(mgr,<sp/>up)<sp/>+<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a7d3d2a6a960c82fa5dcec0e43e3e7c9a" kindref="member">camgame_phys</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" kindref="member">camgame::to_viewport</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reverse<sp/>of<sp/>viewport::to_camgame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref>{0,<sp/>0}).<ref refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" kindref="member">to_viewport</ref>()<sp/>+<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" kindref="member">camgame_viewport</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structopenage_1_1coord_1_1viewport_1ae8aa028a39351652937d97680ff11afd" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref><sp/><ref refid="structopenage_1_1coord_1_1viewport_1ae8aa028a39351652937d97680ff11afd" kindref="member">viewport::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">to_camgame</ref>(mgr).<ref refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" kindref="member">to_phys3</ref>(mgr,<sp/>up);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame_1a91e45e5fd4f7ea2cb447d51a24543187" kindref="member">camgame::to_camhud</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1camgame_1a3fc238716b4f13031e53b8cb1d8c3a44" kindref="member">to_viewport</ref>(mgr).<ref refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" kindref="member">to_camhud</ref>(mgr);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="structopenage_1_1coord_1_1camgame__delta_1a9ab7f49a99385626a0d6a11df1a6e211" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame__delta_1a9ab7f49a99385626a0d6a11df1a6e211" kindref="member">camgame_delta::to_viewport</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref>{this-&gt;x,<sp/>this-&gt;y};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="structopenage_1_1coord_1_1viewport__delta_1afae32b811af22b8689e65490ee0bd6ad" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta_1afae32b811af22b8689e65490ee0bd6ad" kindref="member">viewport_delta::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1viewport__delta_1a0b6723ea20118b76cc7a4b66e5abdf4d" kindref="member">to_camgame</ref>().<ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">to_phys3</ref>(mgr,<sp/>up);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref><sp/><ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">viewport::to_camgame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mgr.camgame_viewport<sp/>describes<sp/>the<sp/>coordinates<sp/>of<sp/>camgame{0,<sp/>0}<sp/>in<sp/>the<sp/>viewport<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref>{0,<sp/>0}<sp/>+<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a366cc992363b8e417679d6a8f54574c6" kindref="member">camgame_viewport</ref>).<ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">to_camgame</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="structopenage_1_1coord_1_1viewport_1ad78ba1b1f9b64caa7b6eda78aaf7513a" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">tile</ref><sp/><ref refid="structopenage_1_1coord_1_1viewport_1ad78ba1b1f9b64caa7b6eda78aaf7513a" kindref="member">viewport::to_tile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">to_camgame</ref>(mgr).<ref refid="structopenage_1_1coord_1_1camgame_1a323da0da625f2160938843dc8a248e6c" kindref="member">to_tile</ref>(mgr,<sp/>up);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="structopenage_1_1coord_1_1camgame_1a323da0da625f2160938843dc8a248e6c" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">tile</ref><sp/><ref refid="structopenage_1_1coord_1_1camgame_1a323da0da625f2160938843dc8a248e6c" kindref="member">camgame::to_tile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" kindref="member">to_phys3</ref>(mgr,<sp/>up).<ref refid="structopenage_1_1coord_1_1phys3_1aa8aa4b7a7a76ddb625b8770ba12484d6" kindref="member">to_tile</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref><sp/><ref refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" kindref="member">viewport::to_camhud</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref>{0,<sp/>0}<sp/>+<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" kindref="member">camhud_viewport</ref>).<ref refid="structopenage_1_1coord_1_1viewport_1a1eca9ee705a35cf6176e9c9f708c5339" kindref="member">to_camhud</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref><sp/><ref refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" kindref="member">camhud::to_viewport</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reverse<sp/>of<sp/>viewport::to_camhud</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">camhud</ref>{0,<sp/>0}).<ref refid="structopenage_1_1coord_1_1camhud_1abbbebb0d15c032c20f0db6dd6f9c4911" kindref="member">to_viewport</ref>()<sp/>+<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1ae6e2147894fc653dd8fe9c057afc1794" kindref="member">camhud_viewport</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="structopenage_1_1coord_1_1camhud__delta_1a93c7d9c5d48bb5b1348b72451f84394b" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1camhud__delta_1a93c7d9c5d48bb5b1348b72451f84394b" kindref="member">camhud_delta::to_viewport</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref>{this-&gt;x,<sp/>this-&gt;y};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" kindref="member">input_delta::to_viewport</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref><sp/>result;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>result.x<sp/>=<sp/>this-&gt;x;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>result.y<sp/>=<sp/>mgr.<ref refid="classopenage_1_1coord_1_1_coord_manager_1a5dae949d1b16387cee8ea1d865884507" kindref="member">viewport_size</ref>.y<sp/>-<sp/>this-&gt;y;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="structopenage_1_1coord_1_1input__delta_1abc20c3dad9b05730566a6f2fe224cdbc" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">camgame_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1input__delta_1abc20c3dad9b05730566a6f2fe224cdbc" kindref="member">input_delta::to_camgame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" kindref="member">to_viewport</ref>(mgr).<ref refid="structopenage_1_1coord_1_1viewport__delta_1a0b6723ea20118b76cc7a4b66e5abdf4d" kindref="member">to_camgame</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="structopenage_1_1coord_1_1input__delta_1a508c2df08f42b8754cc07ed1e4c6f309" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref><sp/><ref refid="structopenage_1_1coord_1_1input__delta_1a508c2df08f42b8754cc07ed1e4c6f309" kindref="member">input_delta::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" kindref="member">to_viewport</ref>(mgr).<ref refid="structopenage_1_1coord_1_1viewport__delta_1a0b6723ea20118b76cc7a4b66e5abdf4d" kindref="member">to_camgame</ref>().<ref refid="structopenage_1_1coord_1_1camgame__delta_1a7e761e4e14092c27b01fbc0ee0a39330" kindref="member">to_phys3</ref>(mgr,<sp/>up);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="structopenage_1_1coord_1_1input_1a659ce906cbf0fb7a6224f71a199f2c83" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref><sp/><ref refid="structopenage_1_1coord_1_1input_1a659ce906cbf0fb7a6224f71a199f2c83" kindref="member">input::to_viewport</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">viewport</ref>{0,<sp/>0}<sp/>+<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>-<sp/><ref refid="structopenage_1_1coord_1_1input" kindref="compound">input</ref>{0,<sp/>0}).<ref refid="structopenage_1_1coord_1_1input_1a659ce906cbf0fb7a6224f71a199f2c83" kindref="member">to_viewport</ref>(mgr);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="structopenage_1_1coord_1_1input_1a36c619fe6d0f99917204848208285fef" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">camgame</ref><sp/><ref refid="structopenage_1_1coord_1_1input_1a36c619fe6d0f99917204848208285fef" kindref="member">input::to_camgame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1input_1a659ce906cbf0fb7a6224f71a199f2c83" kindref="member">to_viewport</ref>(mgr).<ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">to_camgame</ref>(mgr);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="structopenage_1_1coord_1_1input_1a9eba1358725d529a26f871308794ab36" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref><sp/><ref refid="structopenage_1_1coord_1_1input_1a9eba1358725d529a26f871308794ab36" kindref="member">input::to_phys3</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">phys_t</ref><sp/>up)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="structopenage_1_1coord_1_1input_1a659ce906cbf0fb7a6224f71a199f2c83" kindref="member">to_viewport</ref>(mgr).<ref refid="structopenage_1_1coord_1_1viewport_1ab5b83e1486c0898fcb68f163fe49904f" kindref="member">to_camgame</ref>(mgr).<ref refid="structopenage_1_1coord_1_1camgame_1a0b8e17b9f35af0cb50dbd56e8d6ff243" kindref="member">to_phys3</ref>(mgr,<sp/>up);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/coord/pixel.cpp"/>
+  </compounddef>
+</doxygen>

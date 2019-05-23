@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_keyframe_container" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::KeyframeContainer</compoundname>
+    <includes refid="keyframe__container_8h" local="no">keyframe_container.h</includes>
+    <innerclass refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" prot="public">openage::curve::KeyframeContainer::Keyframe</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" prot="public" static="no">
+        <type>std::list&lt; <ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref> &gt;</type>
+        <definition>using openage::curve::KeyframeContainer&lt; T &gt;::curvecontainer =  std::list&lt;Keyframe&gt;</definition>
+        <argsstring></argsstring>
+        <name>curvecontainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The underlaying container type.</para>
+<para>The most important property of this container is the iterator validity on insert and remove. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="61" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" prot="public" static="no">
+        <type>typename curvecontainer::const_iterator</type>
+        <definition>using openage::curve::KeyframeContainer&lt; T &gt;::KeyframeIterator =  typename curvecontainer::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>KeyframeIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The iterator type to access elements in the container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="66" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_keyframe_container_1ae8344fbebc5e645cbc46426ec937a370" prot="private" static="no" mutable="no">
+        <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">event::Loop</ref> &gt;</type>
+        <definition>const std::shared_ptr&lt;event::Loop&gt; openage::curve::KeyframeContainer&lt; T &gt;::loop</definition>
+        <argsstring></argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The data store. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="165" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" kindref="member">curvecontainer</ref></type>
+        <definition>curvecontainer openage::curve::KeyframeContainer&lt; T &gt;::container</definition>
+        <argsstring></argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="167" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::KeyframeContainer&lt; T &gt;::KeyframeContainer</definition>
+        <argsstring>(const std::shared_ptr&lt; event::Loop &gt; &amp;loop)</argsstring>
+        <name>KeyframeContainer</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">event::Loop</ref> &gt; &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>need the datamanger for change management </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="69" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="172" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1ae67e4a25f4212a1c5c526d9ad62d2508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::KeyframeContainer&lt; T &gt;::~KeyframeContainer</definition>
+        <argsstring>()</argsstring>
+        <name>~KeyframeContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="70" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="182" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeContainer&lt; T &gt;::KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::last</definition>
+        <argsstring>(const time_t &amp;time, const KeyframeIterator &amp;hint) const</argsstring>
+        <name>last</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref> &amp;</type>
+          <declname>hint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the last element with e-&gt;time &lt;= time, given a hint where to start the search.</para>
+<para>Select the element that directly preceedes the given timestamp.</para>
+<para>Without a hint, start to iterate at the beginning of the buffer, and return the element last element before e-&gt;time &gt; time. This method returns nullptr, if begin-&gt;time &gt; time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="76" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="194" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a9fe5fdab43afd4c928337654c72171b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::last</definition>
+        <argsstring>(const time_t &amp;time) const</argsstring>
+        <name>last</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the last element with e-&gt;time &lt;= time, without a hint where to start searching.</para>
+<para>The usage of this method is discouraged - except if there is absolutely no chance for you to have a hint (or the container is known to be nearly empty) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="87" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="87" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::insert</definition>
+        <argsstring>(const Keyframe &amp;value)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a new element without a hint.</para>
+<para>This function is not recommended for use, whenever possible, keep a hint to insert the data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="101" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a4437663c1bfe8e983b9cf10bc4cdd6fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::insert</definition>
+        <argsstring>(const Keyframe &amp;value, const KeyframeIterator &amp;hint)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref> &amp;</type>
+          <declname>hint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Insert a new element. The hint shall give an approximate location, where the inserter will start to look for a insertion point. If a good hint is given, the runtime of this function will not be affected by the current history size. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a2b7e8c72aad9a88a990aea0c90dc65e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::insert</definition>
+        <argsstring>(const time_t &amp;time, const T &amp;value)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create and insert a new element without submitting a hint. The use of this function is discouraged, use it only, if your really do not have the possibility to get a hint </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="118" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="118" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a287aea01a22da706b70a85aed754ff95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::insert</definition>
+        <argsstring>(const time_t &amp;time, const T &amp;value, const KeyframeIterator &amp;hint)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref> &amp;</type>
+          <declname>hint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create and insert a new element. The hint gives an approximate location. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="125" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="125" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeContainer&lt; T &gt;::KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::erase_after</definition>
+        <argsstring>(KeyframeIterator last_valid)</argsstring>
+        <name>erase_after</name>
+        <param>
+          <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+          <declname>last_valid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Erase all elements that come after this last valid element.</para>
+<para>Go from the end to the last_valid element, and call erase on all of them </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="132" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="248" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeContainer&lt; T &gt;::KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::erase</definition>
+        <argsstring>(KeyframeIterator it)</argsstring>
+        <name>erase</name>
+        <param>
+          <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+          <declname>it</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Erase a single element from the curve.</para>
+<para>Delete the element from the list and call delete on it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="137" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain an iterator to the first value with the smallest timestamp. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="142" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1a0fc2356241a3c9880a95b1f2672bc7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref></type>
+        <definition>KeyframeIterator openage::curve::KeyframeContainer&lt; T &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain an iterator to the position after the last value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="149" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="149" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_keyframe_container_1ad503e55c30411387171677294858ff6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::KeyframeContainer&lt; T &gt;::dump</definition>
+        <argsstring>()</argsstring>
+        <name>dump</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Debugging method to be used from gdb to understand bugs better. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/keyframe_container.h" line="156" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="156" bodyend="160"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A timely ordered list with several management functions</para>
+<para>This class manages different time-based management functions for list approach that lies underneath. It contains list to be accessed via a non-accurate timing functionality, this means, that for getting a value, not the exact timestamp has to be known, it will always return the one closest, less or equal to the requested one. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3047">
+        <label>openage::curve::KeyframeContainer&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_keyframe_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/keyframe_container.h" line="25" column="1" bodyfile="libopenage/curve/keyframe_container.h" bodystart="25" bodyend="168"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>begin</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" prot="private" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>container</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>curvecontainer</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1ad503e55c30411387171677294858ff6b" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>dump</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a0fc2356241a3c9880a95b1f2672bc7f5" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>end</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>erase</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>erase_after</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a4437663c1bfe8e983b9cf10bc4cdd6fb" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a2b7e8c72aad9a88a990aea0c90dc65e3" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a287aea01a22da706b70a85aed754ff95" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>KeyframeContainer</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>KeyframeIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>last</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1a9fe5fdab43afd4c928337654c72171b3" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>last</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1ae8344fbebc5e645cbc46426ec937a370" prot="private" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>loop</name></member>
+      <member refid="classopenage_1_1curve_1_1_keyframe_container_1ae67e4a25f4212a1c5c526d9ad62d2508" prot="public" virt="non-virtual"><scope>openage::curve::KeyframeContainer</scope><name>~KeyframeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

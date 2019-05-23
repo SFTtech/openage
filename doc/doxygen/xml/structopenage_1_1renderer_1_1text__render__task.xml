@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1text__render__task" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::text_render_task</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1a7ed5173e4105299826d0522a1525499d" prot="public" static="no" mutable="no">
+        <type>GLenum</type>
+        <definition>GLenum openage::renderer::text_render_task::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="42" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
+        <definition>Color openage::renderer::text_render_task::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="43" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1adce9b78e58d984de0a9fe96955fa8c44" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::text_render_task::num_elements</definition>
+        <argsstring></argsstring>
+        <name>num_elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="44" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__task_1ac6e8e5b831ee591d7c003b62574efcc5" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::text_render_task::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="45" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4446">
+        <label>openage::renderer::Color</label>
+        <link refid="classopenage_1_1renderer_1_1_color"/>
+      </node>
+      <node id="4445">
+        <label>openage::renderer::text_render_task</label>
+        <link refid="structopenage_1_1renderer_1_1text__render__task"/>
+        <childnode refid="4446" relation="usage">
+          <edgelabel>+color</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/text.cpp" line="41" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="41" bodyend="46"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>color</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__task_1a7ed5173e4105299826d0522a1525499d" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>mode</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__task_1adce9b78e58d984de0a9fe96955fa8c44" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>num_elements</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__task_1ac6e8e5b831ee591d7c003b62574efcc5" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_task</scope><name>offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

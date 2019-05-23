@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1console_1_1buf__line" kind="struct" language="C++" prot="public">
+    <compoundname>openage::console::buf_line</compoundname>
+    <includes refid="buf_8h" local="no">buf.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1console_1_1buf__line_1af481a8ea9bc97ab5fe57e0f0d2102a6c" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1console_1a20fab25100c8456b19801314577b2470" kindref="member">linetype_t</ref></type>
+        <definition>linetype_t openage::console::buf_line::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="116" column="1" bodyfile="libopenage/console/buf.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>metadata for a single line in the buffer </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="580">
+        <label>openage::console::buf_line</label>
+        <link refid="structopenage_1_1console_1_1buf__line"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/console/buf.h" line="115" column="1" bodyfile="libopenage/console/buf.h" bodystart="115" bodyend="117"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1console_1_1buf__line_1af481a8ea9bc97ab5fe57e0f0d2102a6c" prot="public" virt="non-virtual"><scope>openage::console::buf_line</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

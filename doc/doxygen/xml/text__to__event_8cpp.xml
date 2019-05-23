@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="text__to__event_8cpp" kind="file" language="C++">
+    <compoundname>text_to_event.cpp</compoundname>
+    <includes refid="text__to__event_8h" local="yes">text_to_event.h</includes>
+    <includes local="no">regex</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="15817">
+        <label>list</label>
+      </node>
+      <node id="15808">
+        <label>atomic</label>
+      </node>
+      <node id="15814">
+        <label>iomanip</label>
+      </node>
+      <node id="15813">
+        <label>functional</label>
+      </node>
+      <node id="15803">
+        <label>cstdint</label>
+      </node>
+      <node id="15811">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15812" relation="include">
+        </childnode>
+        <childnode refid="15813" relation="include">
+        </childnode>
+        <childnode refid="15814" relation="include">
+        </childnode>
+        <childnode refid="15798" relation="include">
+        </childnode>
+        <childnode refid="15815" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15792" relation="include">
+        </childnode>
+      </node>
+      <node id="15795">
+        <label>stdexcept</label>
+      </node>
+      <node id="15816">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15817" relation="include">
+        </childnode>
+        <childnode refid="15818" relation="include">
+        </childnode>
+        <childnode refid="15819" relation="include">
+        </childnode>
+      </node>
+      <node id="15812">
+        <label>cstdarg</label>
+      </node>
+      <node id="15788">
+        <label>string</label>
+      </node>
+      <node id="15802">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15803" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15804" relation="include">
+        </childnode>
+        <childnode refid="15805" relation="include">
+        </childnode>
+        <childnode refid="15807" relation="include">
+        </childnode>
+        <childnode refid="15816" relation="include">
+        </childnode>
+        <childnode refid="15819" relation="include">
+        </childnode>
+      </node>
+      <node id="15805">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15806" relation="include">
+        </childnode>
+      </node>
+      <node id="15807">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15808" relation="include">
+        </childnode>
+        <childnode refid="15798" relation="include">
+        </childnode>
+        <childnode refid="15809" relation="include">
+        </childnode>
+        <childnode refid="15799" relation="include">
+        </childnode>
+        <childnode refid="15810" relation="include">
+        </childnode>
+        <childnode refid="15811" relation="include">
+        </childnode>
+      </node>
+      <node id="15794">
+        <label>regex</label>
+      </node>
+      <node id="15791">
+        <label>unordered_set</label>
+      </node>
+      <node id="15796">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15797" relation="include">
+        </childnode>
+        <childnode refid="15798" relation="include">
+        </childnode>
+        <childnode refid="15795" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15799" relation="include">
+        </childnode>
+        <childnode refid="15802" relation="include">
+        </childnode>
+      </node>
+      <node id="15793">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="15821">
+        <label>typeinfo</label>
+      </node>
+      <node id="15792">
+        <label>vector</label>
+      </node>
+      <node id="15822">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="15819" relation="include">
+        </childnode>
+        <childnode refid="15802" relation="include">
+        </childnode>
+      </node>
+      <node id="15800">
+        <label>ciso646</label>
+      </node>
+      <node id="15815">
+        <label>sstream</label>
+      </node>
+      <node id="15799">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15800" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15801" relation="include">
+        </childnode>
+      </node>
+      <node id="15801">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15801" relation="include">
+        </childnode>
+      </node>
+      <node id="15810">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15797" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+      </node>
+      <node id="15819">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15820" relation="include">
+        </childnode>
+      </node>
+      <node id="15806">
+        <label>cstdlib</label>
+      </node>
+      <node id="15797">
+        <label>iostream</label>
+      </node>
+      <node id="15790">
+        <label>unordered_map</label>
+      </node>
+      <node id="15823">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="15796" relation="include">
+        </childnode>
+      </node>
+      <node id="15818">
+        <label>mutex</label>
+      </node>
+      <node id="15786">
+        <label>libopenage/input/text_to_event.cpp</label>
+        <link refid="text__to__event_8cpp"/>
+        <childnode refid="15787" relation="include">
+        </childnode>
+        <childnode refid="15794" relation="include">
+        </childnode>
+        <childnode refid="15795" relation="include">
+        </childnode>
+        <childnode refid="15793" relation="include">
+        </childnode>
+        <childnode refid="15796" relation="include">
+        </childnode>
+        <childnode refid="15822" relation="include">
+        </childnode>
+        <childnode refid="15823" relation="include">
+        </childnode>
+      </node>
+      <node id="15789">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="15790" relation="include">
+        </childnode>
+        <childnode refid="15791" relation="include">
+        </childnode>
+        <childnode refid="15792" relation="include">
+        </childnode>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15793" relation="include">
+        </childnode>
+      </node>
+      <node id="15809">
+        <label>type_traits</label>
+      </node>
+      <node id="15804">
+        <label>config.h</label>
+      </node>
+      <node id="15798">
+        <label>memory</label>
+      </node>
+      <node id="15820">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15797" relation="include">
+        </childnode>
+        <childnode refid="15821" relation="include">
+        </childnode>
+        <childnode refid="15799" relation="include">
+        </childnode>
+      </node>
+      <node id="15787">
+        <label>text_to_event.h</label>
+        <link refid="text__to__event_8h"/>
+        <childnode refid="15788" relation="include">
+        </childnode>
+        <childnode refid="15789" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input_1_1tests">openage::input::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="text__to__event_8h" kindref="compound">text_to_event.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;regex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">input<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;int&gt;<sp/>modifiers{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>KMOD_LCTRL,<sp/>KMOD_LSHIFT,<sp/>KMOD_RCTRL,<sp/>KMOD_RSHIFT,<sp/>KMOD_LALT,<sp/>KMOD_RALT,<sp/>KMOD_LGUI,<sp/>KMOD_RGUI,<sp/>KMOD_CTRL,<sp/>KMOD_SHIFT,<sp/>KMOD_ALT,<sp/>KMOD_GUI,<sp/>KMOD_MODE,<sp/>KMOD_CAPS,<sp/>KMOD_NUM</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::regex<sp/>event_pattern{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;(?:(?:(LCtrl)|(LShift)|(RCtrl)|(RShift)|(LAlt)|(RAlt)|(LGui)|(RGUI)|(Ctrl)|(Shift)|(Alt)|(Gui)|(AltGr)|(Caps)|(NumLck))[[:space:]]+)?&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>modifier<sp/>(optional)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;([^[:space:]]+)&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;(?:[[:space:]]+([^[:space:]]+))?&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>parameter,<sp/>like<sp/>direction<sp/>(optional)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;[[:space:]]*&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_modifiers_once()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>checked<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!checked)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checked<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(event_pattern.mark_count()<sp/>==<sp/>modifiers.size()<sp/>+<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;Groups<sp/>in<sp/>the<sp/>input<sp/>event<sp/>regex<sp/>pattern:<sp/>one<sp/>per<sp/>key<sp/>modifier,<sp/>key<sp/>itself<sp/>and<sp/>amount.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">Event<sp/>to_event(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;event_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;param,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event_type<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;MOUSE&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" kindref="member">sdl_mouse</ref>(std::stoi(param),<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event_type<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;MOUSE_UP&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" kindref="member">sdl_mouse_up_down</ref>(std::stoi(param),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event_type<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;MOUSE_DOWN&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" kindref="member">sdl_mouse_up_down</ref>(std::stoi(param),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::logic_error&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>parse<sp/>mouse<sp/>button<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>param<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event_type<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;WHEEL&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(param<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal"><sp/>||<sp/>param<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;UP&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1ab6f0345d20c07a72034dc85a73d1cdf1" kindref="member">sdl_wheel</ref>(1,<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(param<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;-1&quot;</highlight><highlight class="normal"><sp/>||<sp/>param<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;DOWN&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1ab6f0345d20c07a72034dc85a73d1cdf1" kindref="member">sdl_wheel</ref>(-1,<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>parse<sp/>mouse<sp/>wheel<sp/>amount<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>param<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_Keycode<sp/>key_code<sp/>=<sp/>SDL_GetKeyFromName(event_type.c_str());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key_code<sp/>==<sp/>SDLK_UNKNOWN)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>parse<sp/>key<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>event_type<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!param.empty())</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(warn)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;nothing<sp/>expected<sp/>after<sp/>key<sp/>name<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>event_type<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;,<sp/>but<sp/>got<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>param<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" kindref="member">sdl_key</ref>(key_code,<sp/>static_cast&lt;SDL_Keymod&gt;(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;event_str)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>check_modifiers_once();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(event_str.find(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&quot;Input<sp/>event<sp/>string<sp/>representation<sp/>must<sp/>be<sp/>one<sp/>line,<sp/>got<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>event_str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::smatch<sp/>event_elements;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::regex_match(event_str,<sp/>event_elements,<sp/>event_pattern))<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>groups_it<sp/>=<sp/>std::begin(event_elements)<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>first_non_empty<sp/>=<sp/>std::find_if(groups_it,<sp/>std::end(event_elements),<sp/>[]<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::ssub_match<sp/>&amp;element)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>element.length();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(first_non_empty<sp/>!=<sp/>std::end(event_elements),<sp/></highlight><highlight class="stringliteral">&quot;Nothing<sp/>captured<sp/>from<sp/>string<sp/>representation<sp/>of<sp/>event<sp/>&apos;&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>event_str<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;&apos;:<sp/>regex<sp/>pattern<sp/>is<sp/>broken.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>index_first_non_empty<sp/>=<sp/>std::distance(groups_it,<sp/>first_non_empty);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index_first_non_empty<sp/>&lt;<sp/>std::distance(std::begin(modifiers),<sp/>std::end(modifiers)))</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>=<sp/>modifiers[index_first_non_empty];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>event_type<sp/>=<sp/>groups_it[modifiers.size()].str();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="error_2error_8h_1ae20e8a0a86b80f8211fdf87477524f87" kindref="member">ENSURE</ref>(!event_type.empty(),<sp/></highlight><highlight class="stringliteral">&quot;Empty<sp/>group<sp/>where<sp/>key<sp/>was<sp/>expected<sp/>in<sp/>string<sp/>representation<sp/>of<sp/>event<sp/>&apos;&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>event_str<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;&apos;:<sp/>regex<sp/>pattern<sp/>is<sp/>broken.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>param<sp/>=<sp/>groups_it[modifiers.size()<sp/>+<sp/>1].str();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>to_event(event_type,<sp/>param,<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>parse<sp/>keybinding<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>event_str<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="namespaceopenage_1_1input_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="112" refid="namespaceopenage_1_1input_1_1tests_1a0291195ab14d6ffb5dcb8e894ec20972" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1_1tests_1a0291195ab14d6ffb5dcb8e894ec20972" kindref="member">parse_event_string</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;q&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a002101f8725e5c78d9f30d87f3fa4c87" kindref="member">event_class::ALPHA</ref>,<sp/>SDL_GetKeyFromName(</highlight><highlight class="stringliteral">&quot;q&quot;</highlight><highlight class="normal">),<sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref>{}}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;Return&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a473d7f95e1409a797f859f013fbccaa2" kindref="member">event_class::NONPRINT</ref>,<sp/>SDL_GetKeyFromName(</highlight><highlight class="stringliteral">&quot;Return&quot;</highlight><highlight class="normal">),<sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref>{}}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;Ctrl<sp/>p&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a002101f8725e5c78d9f30d87f3fa4c87" kindref="member">event_class::ALPHA</ref>,<sp/>SDL_GetKeyFromName(</highlight><highlight class="stringliteral">&quot;p&quot;</highlight><highlight class="normal">),<sp/><ref refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" kindref="member">sdl_mod</ref>(static_cast&lt;SDL_Keymod&gt;(KMOD_CTRL))}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;Shift<sp/>MOUSE<sp/>1&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a3421ce503e9731d435babad896b7aef8" kindref="member">event_class::MOUSE_BUTTON</ref>,<sp/>1,<sp/><ref refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" kindref="member">sdl_mod</ref>(static_cast&lt;SDL_Keymod&gt;(KMOD_SHIFT))}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;MOUSE_UP<sp/>1&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849ac80e822dfb2e91b477ea25b533fb001d" kindref="member">event_class::MOUSE_BUTTON_UP</ref>,<sp/>1,<sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref>{}}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;WHEEL<sp/>-1&quot;</highlight><highlight class="normal">)<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc" kindref="member">event_class::MOUSE_WHEEL</ref>,<sp/>-1,<sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref>{}}<sp/>||<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;WHEEL&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;MOUSE&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;MOUSE_DOWN&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;Blurb<sp/>MOUSE<sp/>1&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;Shift<sp/>MICKEY_MOUSE<sp/>1&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(</highlight><highlight class="stringliteral">&quot;WHEEL<sp/>TEAR_OFF&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/input/text_to_event.cpp"/>
+  </compounddef>
+</doxygen>

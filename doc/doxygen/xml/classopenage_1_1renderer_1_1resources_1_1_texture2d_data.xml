@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::Texture2dData</compoundname>
+    <includes refid="texture__data_8h" local="no">texture_data.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref></type>
+        <definition>Texture2dInfo openage::renderer::resources::Texture2dData::info</definition>
+        <argsstring></argsstring>
+        <name>info</name>
+        <briefdescription>
+<para>Information about this texture data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="65" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; openage::renderer::resources::Texture2dData::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+<para>The raw texture data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="68" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dData::Texture2dData</definition>
+        <argsstring>(const util::Path &amp;path, bool use_metafile=false)</argsstring>
+        <name>Texture2dData</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_metafile</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a texture from an image file. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">use_metafile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>determines whether the loading should read an accompanying metadata file to split the texture into subtextures</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Uses <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> Image internally. For supported image file types, see the SDL_Image initialization in the engine. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="27" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="56" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ac914d524baaf0ac61f42ca7fcd24a8bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dData::Texture2dData</definition>
+        <argsstring>(Texture2dInfo const &amp;info, std::vector&lt; uint8_t &gt; &amp;&amp;data)</argsstring>
+        <name>Texture2dData</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> const &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;&amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Construct by moving the information and raw texture data from somewhere else. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="30" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">Texture2dData</ref></type>
+        <definition>Texture2dData openage::renderer::resources::Texture2dData::flip_y</definition>
+        <argsstring>()</argsstring>
+        <name>flip_y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flips the texture along the Y-axis and returns the flipped data with the same info. Sometimes necessary when converting between storage modes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="34" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="125" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> &amp;</type>
+        <definition>const Texture2dInfo &amp; openage::renderer::resources::Texture2dData::get_info</definition>
+        <argsstring>() const</argsstring>
+        <name>get_info</name>
+        <briefdescription>
+<para>Returns the information describing this texture data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="37" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const uint8_t *</type>
+        <definition>const uint8_t * openage::renderer::resources::Texture2dData::get_data</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data</name>
+        <briefdescription>
+<para>Returns a pointer to the raw texture data, in row-major order. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="40" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T openage::renderer::resources::Texture2dData::read_pixel</definition>
+        <argsstring>(size_t x, size_t y) const</argsstring>
+        <name>read_pixel</name>
+        <param>
+          <type>size_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the pixel at the given position and casts it to the given type. The texture is <emphasis>not</emphasis> read as if it consisted of pixels of the given type, but rather according to its original pixel format, so the coordinates have to be specified according to that. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="47" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="47" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::resources::Texture2dData::store</definition>
+        <argsstring>(const util::Path &amp;file) const</argsstring>
+        <name>store</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+<para>Stores this texture data in the given file in the PNG format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.h" line="61" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="150" bodyend="204"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from and storing onto disk, as well as sending to and receiving from graphics hardware. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4468">
+        <label>openage::renderer::resources::Texture2dData</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data"/>
+        <childnode refid="4469" relation="usage">
+          <edgelabel>-info</edgelabel>
+        </childnode>
+      </node>
+      <node id="4469">
+        <label>openage::renderer::resources::Texture2dInfo</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/texture_data.h" line="19" column="1" bodyfile="libopenage/renderer/resources/texture_data.h" bodystart="19" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>data</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>flip_y</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>get_info</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>info</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad1afa8d4edac82bbb12a3bf371149a41" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>read_pixel</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>store</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>Texture2dData</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ac914d524baaf0ac61f42ca7fcd24a8bd" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dData</scope><name>Texture2dData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

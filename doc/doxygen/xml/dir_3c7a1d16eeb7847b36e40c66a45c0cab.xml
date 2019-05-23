@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_3c7a1d16eeb7847b36e40c66a45c0cab" kind="dir">
+    <compoundname>libopenage/error</compoundname>
+    <innerfile refid="backtrace_8cpp">backtrace.cpp</innerfile>
+    <innerfile refid="backtrace_8h">backtrace.h</innerfile>
+    <innerfile refid="demo_8cpp">demo.cpp</innerfile>
+    <innerfile refid="error_2error_8cpp">error.cpp</innerfile>
+    <innerfile refid="error_2error_8h">error.h</innerfile>
+    <innerfile refid="gl__debug_8cpp">gl_debug.cpp</innerfile>
+    <innerfile refid="gl__debug_8h">gl_debug.h</innerfile>
+    <innerfile refid="error_2handlers_8cpp">handlers.cpp</innerfile>
+    <innerfile refid="error_2handlers_8h">handlers.h</innerfile>
+    <innerfile refid="stackanalyzer_8cpp">stackanalyzer.cpp</innerfile>
+    <innerfile refid="stackanalyzer_8h">stackanalyzer.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/error/"/>
+  </compounddef>
+</doxygen>

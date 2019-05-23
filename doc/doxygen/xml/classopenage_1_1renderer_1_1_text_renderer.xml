@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_text_renderer" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::TextRenderer</compoundname>
+    <includes refid="text_8h" local="no">text.h</includes>
+    <innerclass refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" prot="private">openage::renderer::TextRenderer::text_render_batch</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" prot="private">openage::renderer::TextRenderer::text_render_batch_pass</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+        <definition>Font* openage::renderer::TextRenderer::current_font</definition>
+        <argsstring></argsstring>
+        <name>current_font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="109" column="1" bodyfile="libopenage/renderer/text.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
+        <definition>Color openage::renderer::TextRenderer::current_color</definition>
+        <argsstring></argsstring>
+        <name>current_color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="110" column="1" bodyfile="libopenage/renderer/text.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::renderer::TextRenderer::is_dirty</definition>
+        <argsstring></argsstring>
+        <name>is_dirty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="111" column="1" bodyfile="libopenage/renderer/text.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kindref="compound">text_render_batch</ref> &gt;</type>
+        <definition>std::vector&lt;text_render_batch&gt; openage::renderer::TextRenderer::render_batches</definition>
+        <argsstring></argsstring>
+        <name>render_batches</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="112" column="1" bodyfile="libopenage/renderer/text.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_glyph_atlas" kindref="compound">GlyphAtlas</ref></type>
+        <definition>GlyphAtlas openage::renderer::TextRenderer::glyph_atlas</definition>
+        <argsstring></argsstring>
+        <name>glyph_atlas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="114" column="1" bodyfile="libopenage/renderer/text.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::renderer::TextRenderer::vbo</definition>
+        <argsstring></argsstring>
+        <name>vbo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="116" column="1" bodyfile="libopenage/renderer/text.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::renderer::TextRenderer::ibo</definition>
+        <argsstring></argsstring>
+        <name>ibo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="117" column="1" bodyfile="libopenage/renderer/text.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1abce6be4c1b901fb91a52e29829260eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::TextRenderer::TextRenderer</definition>
+        <argsstring>()</argsstring>
+        <name>TextRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Requires a working OpenGL context to create buffer objects. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="29" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="48" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::renderer::TextRenderer::~TextRenderer</definition>
+        <argsstring>()</argsstring>
+        <name>~TextRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="31" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="60" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::set_font</definition>
+        <argsstring>(Font *font)</argsstring>
+        <name>set_font</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+          <declname>font</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the font to be used for the future text draw calls.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the font to be used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="38" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="69" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::set_color</definition>
+        <argsstring>(const Color &amp;color)</argsstring>
+        <name>set_color</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the color to be used for the future text draw calls.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color to be used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="45" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="78" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::draw</definition>
+        <argsstring>(coord::viewport position, const char *format,...)</argsstring>
+        <name>draw</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw a formatted string at the specified position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>where the text should be displayed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the text format </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="53" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="87" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1a021938d1c8fb338a055a3a01d7f06214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::draw</definition>
+        <argsstring>(coord::viewport position, const std::string &amp;text)</argsstring>
+        <name>draw</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw text at the specified position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>where the text should be displayed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the text to be displayed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="61" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::draw</definition>
+        <argsstring>(int x, int y, const std::string &amp;text)</argsstring>
+        <name>draw</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw text at the specified position.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position in x-direction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position in y-direction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the text to be displayed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="70" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="101" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::TextRenderer::render</definition>
+        <argsstring>()</argsstring>
+        <name>render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Render all the text draw requests made during the frame. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="75" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="110" bodyend="234"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4450">
+        <label>openage::renderer::TextRenderer</label>
+        <link refid="classopenage_1_1renderer_1_1_text_renderer"/>
+        <childnode refid="4451" relation="usage">
+          <edgelabel>-current_font</edgelabel>
+        </childnode>
+        <childnode refid="4453" relation="usage">
+          <edgelabel>-current_color</edgelabel>
+        </childnode>
+        <childnode refid="4454" relation="usage">
+          <edgelabel>-glyph_atlas</edgelabel>
+        </childnode>
+      </node>
+      <node id="4453">
+        <label>openage::renderer::Color</label>
+        <link refid="classopenage_1_1renderer_1_1_color"/>
+      </node>
+      <node id="4455">
+        <label>openage::renderer::GlyphAtlas::dirty_rect</label>
+        <link refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect"/>
+      </node>
+      <node id="4451">
+        <label>openage::renderer::Font</label>
+        <link refid="classopenage_1_1renderer_1_1_font"/>
+        <childnode refid="4452" relation="usage">
+          <edgelabel>+description</edgelabel>
+        </childnode>
+      </node>
+      <node id="4452">
+        <label>openage::renderer::font_description</label>
+        <link refid="structopenage_1_1renderer_1_1font__description"/>
+      </node>
+      <node id="4454">
+        <label>openage::renderer::GlyphAtlas</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph_atlas"/>
+        <childnode refid="4455" relation="usage">
+          <edgelabel>-dirty_area</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/text.h" line="23" column="1" bodyfile="libopenage/renderer/text.h" bodystart="23" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>current_color</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>current_font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>draw</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a021938d1c8fb338a055a3a01d7f06214" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>draw</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>draw</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>glyph_atlas</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>ibo</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>is_dirty</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>render</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>render_batches</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>set_color</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>set_font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1abce6be4c1b901fb91a52e29829260eab" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>TextRenderer</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" prot="private" virt="non-virtual"><scope>openage::renderer::TextRenderer</scope><name>vbo</name></member>
+      <member refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" prot="public" virt="virtual"><scope>openage::renderer::TextRenderer</scope><name>~TextRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

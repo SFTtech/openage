@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_71bc918c788390e0c00bc0dfb4f34834" kind="dir">
+    <compoundname>libopenage/renderer/font</compoundname>
+    <innerfile refid="font_8cpp">font.cpp</innerfile>
+    <innerfile refid="font_8h">font.h</innerfile>
+    <innerfile refid="font__manager_8cpp">font_manager.cpp</innerfile>
+    <innerfile refid="font__manager_8h">font_manager.h</innerfile>
+    <innerfile refid="glyph__atlas_8cpp">glyph_atlas.cpp</innerfile>
+    <innerfile refid="glyph__atlas_8h">glyph_atlas.h</innerfile>
+    <innerfile refid="renderer_2font_2tests_8cpp">tests.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/font/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__engine__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_engine_impl.cpp</compoundname>
+    <includes refid="gui__engine__impl_8h" local="yes">gui_engine_impl.h</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">QCoreApplication</includes>
+    <includes local="no">QQuickWindow</includes>
+    <includes local="no">QDebug</includes>
+    <includes refid="gui__engine_8h" local="yes">../public/gui_engine.h</includes>
+    <includes refid="gui__image__provider__impl_8h" local="yes">gui_image_provider_impl.h</includes>
+    <includes refid="gui__renderer__impl_8h" local="yes">gui_renderer_impl.h</includes>
+    <incdepgraph>
+      <node id="13051">
+        <label>atomic</label>
+      </node>
+      <node id="13037">
+        <label>../link/qml_engine_with_singleton_items_info.h</label>
+        <link refid="qml__engine__with__singleton__items__info_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13038" relation="include">
+        </childnode>
+        <childnode refid="13039" relation="include">
+        </childnode>
+      </node>
+      <node id="13043">
+        <label>QObject</label>
+      </node>
+      <node id="13056">
+        <label>QOffscreenSurface</label>
+      </node>
+      <node id="13041">
+        <label>livereload/recursive_directory_watcher.h</label>
+        <link refid="recursive__directory__watcher_8h"/>
+        <childnode refid="13042" relation="include">
+        </childnode>
+        <childnode refid="13043" relation="include">
+        </childnode>
+        <childnode refid="13044" relation="include">
+        </childnode>
+      </node>
+      <node id="13034">
+        <label>gui_engine_impl.h</label>
+        <link refid="gui__engine__impl_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13036" relation="include">
+        </childnode>
+        <childnode refid="13037" relation="include">
+        </childnode>
+        <childnode refid="13041" relation="include">
+        </childnode>
+      </node>
+      <node id="13049">
+        <label>../public/gui_engine.h</label>
+        <link refid="gui__engine_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13036" relation="include">
+        </childnode>
+      </node>
+      <node id="13045">
+        <label>cassert</label>
+      </node>
+      <node id="13055">
+        <label>QQuickRenderControl</label>
+      </node>
+      <node id="13038">
+        <label>QQmlEngine</label>
+      </node>
+      <node id="13054">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13039">
+        <label>../private/gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13036" relation="include">
+        </childnode>
+        <childnode refid="13040" relation="include">
+        </childnode>
+      </node>
+      <node id="13050">
+        <label>gui_renderer_impl.h</label>
+        <link refid="gui__renderer__impl_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13051" relation="include">
+        </childnode>
+        <childnode refid="13052" relation="include">
+        </childnode>
+        <childnode refid="13053" relation="include">
+        </childnode>
+        <childnode refid="13054" relation="include">
+        </childnode>
+        <childnode refid="13043" relation="include">
+        </childnode>
+        <childnode refid="13047" relation="include">
+        </childnode>
+        <childnode refid="13055" relation="include">
+        </childnode>
+        <childnode refid="13056" relation="include">
+        </childnode>
+        <childnode refid="13057" relation="include">
+        </childnode>
+      </node>
+      <node id="13053">
+        <label>condition_variable</label>
+      </node>
+      <node id="13047">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="13042">
+        <label>future</label>
+      </node>
+      <node id="13048">
+        <label>QDebug</label>
+      </node>
+      <node id="13036">
+        <label>vector</label>
+      </node>
+      <node id="13040">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="13052">
+        <label>mutex</label>
+      </node>
+      <node id="13033">
+        <label>libopenage/gui/guisys/private/gui_engine_impl.cpp</label>
+        <link refid="gui__engine__impl_8cpp"/>
+        <childnode refid="13034" relation="include">
+        </childnode>
+        <childnode refid="13045" relation="include">
+        </childnode>
+        <childnode refid="13046" relation="include">
+        </childnode>
+        <childnode refid="13047" relation="include">
+        </childnode>
+        <childnode refid="13048" relation="include">
+        </childnode>
+        <childnode refid="13049" relation="include">
+        </childnode>
+        <childnode refid="13039" relation="include">
+        </childnode>
+        <childnode refid="13050" relation="include">
+        </childnode>
+      </node>
+      <node id="13044">
+        <label>QStringList</label>
+      </node>
+      <node id="13035">
+        <label>memory</label>
+      </node>
+      <node id="13057">
+        <label>gui_rendering_setup_routines.h</label>
+        <link refid="gui__rendering__setup__routines_8h"/>
+        <childnode refid="13035" relation="include">
+        </childnode>
+        <childnode refid="13054" relation="include">
+        </childnode>
+      </node>
+      <node id="13046">
+        <label>QCoreApplication</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__engine__impl_8h" kindref="compound">gui_engine_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QCoreApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQuickWindow&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__image__provider__impl_8h" kindref="compound">gui_image_provider_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__renderer__impl_8h" kindref="compound">gui_renderer_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_engine_impl_1a66cc6ccf9605d94f979bbbbc56ae1184" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_engine_impl_1a66cc6ccf9605d94f979bbbbc56ae1184" kindref="member">GuiEngineImpl::GuiEngineImpl</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;GuiImageProvider*&gt;<sp/>&amp;image_providers,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref><sp/>*singleton_items_info)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>renderer{},</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>engine{<ref refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" kindref="member">GuiImageProviderImpl::take_ownership</ref>(image_providers),<sp/>singleton_items_info}<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>QThread<sp/>*gui_thread<sp/>=<sp/>QCoreApplication::instance()-&gt;thread();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;moveToThread(gui_thread);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;engine.moveToThread(gui_thread);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;watcher.moveToThread(gui_thread);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(!this-&gt;engine.incubationController());</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;attach_to(<ref refid="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" kindref="member">GuiRendererImpl::impl</ref>(renderer));</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classqtsdl_1_1_gui_engine_impl_1a3f9eb6dff849859000c60bc556c4c65c" kindref="member">GuiEngineImpl::rootDirsPathsChanged</ref>,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;this-&gt;watcher,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classqtsdl_1_1_recursive_directory_watcher_1aabc2911d48c9af1d435ccb894e216b0e" kindref="member">RecursiveDirectoryWatcher::rootDirsPathsChanged</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;this-&gt;watcher,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classqtsdl_1_1_recursive_directory_watcher_1a8023f71a72a9b22765d88d33cd71b237" kindref="member">RecursiveDirectoryWatcher::changeDetected</ref>,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classqtsdl_1_1_gui_engine_impl_1a8a5e647f1df22a102c691e721dcc8f26" kindref="member">GuiEngineImpl::onReload</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classqtsdl_1_1_gui_engine_impl_1a7b14a50a70e1bc615b38e618e011a899" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_engine_impl_1a7b14a50a70e1bc615b38e618e011a899" kindref="member">GuiEngineImpl::~GuiEngineImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classqtsdl_1_1_gui_engine_impl_1a7a1f3506f8bc11e95f3a981291a4ade0" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_engine_impl" kindref="compound">GuiEngineImpl</ref>*<sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a7a1f3506f8bc11e95f3a981291a4ade0" kindref="member">GuiEngineImpl::impl</ref>(<ref refid="classqtsdl_1_1_gui_engine" kindref="compound">GuiEngine</ref><sp/>*engine)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a6c207f5585af640ff7b32e90c31c9508" kindref="member">engine</ref>-&gt;impl.get();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classqtsdl_1_1_gui_engine_impl_1a5b83bd915fa9ce9bf9e36f26000143cc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a5b83bd915fa9ce9bf9e36f26000143cc" kindref="member">GuiEngineImpl::attach_to</ref>(<ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref><sp/>*renderer)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;renderer<sp/>=<sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a420e7d89f9adfd52c422f058a8fdbe6b" kindref="member">renderer</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a6c207f5585af640ff7b32e90c31c9508" kindref="member">engine</ref>.setIncubationController(this-&gt;renderer-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" kindref="member">get_window</ref>()-&gt;incubationController());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classqtsdl_1_1_gui_engine_impl_1af1dc911943688d3c296909af70dfc62e" refkind="member"><highlight class="normal">QQmlEngine*<sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1af1dc911943688d3c296909af70dfc62e" kindref="member">GuiEngineImpl::get_qml_engine</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a6c207f5585af640ff7b32e90c31c9508" kindref="member">engine</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classqtsdl_1_1_gui_engine_impl_1a8a5e647f1df22a102c691e721dcc8f26" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a8a5e647f1df22a102c691e721dcc8f26" kindref="member">GuiEngineImpl::onReload</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>qDebug(</highlight><highlight class="stringliteral">&quot;reloading<sp/>GUI&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a6c207f5585af640ff7b32e90c31c9508" kindref="member">engine</ref>.clearComponentCache();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1ad57811cbb531486d7aadd98aedfdcf31" kindref="member">reload</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classqtsdl_1_1_gui_engine_impl_1a9ede5811b7eb20e26e0b7d2d2e07474b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a9ede5811b7eb20e26e0b7d2d2e07474b" kindref="member">GuiEngineImpl::add_root_dir_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;root_dir_path)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a9e079732f149647eb9e47529e2cb7b67" kindref="member">root_dirs_paths</ref>.push_back(root_dir_path);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a3f9eb6dff849859000c60bc556c4c65c" kindref="member">rootDirsPathsChanged</ref>(this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a9e079732f149647eb9e47529e2cb7b67" kindref="member">root_dirs_paths</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classqtsdl_1_1_gui_engine_impl_1a7ad899a288943e1bd4266fee8fb79b30" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_engine_impl_1a7ad899a288943e1bd4266fee8fb79b30" kindref="member">GuiEngineImpl::remove_root_dir_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;root_dir_path)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a9e079732f149647eb9e47529e2cb7b67" kindref="member">root_dirs_paths</ref>.removeOne(root_dir_path))</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a3f9eb6dff849859000c60bc556c4c65c" kindref="member">rootDirsPathsChanged</ref>(this-&gt;<ref refid="classqtsdl_1_1_gui_engine_impl_1a9e079732f149647eb9e47529e2cb7b67" kindref="member">root_dirs_paths</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qWarning()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>remove<sp/>path<sp/>watched<sp/>by<sp/>ReloadableQmlEngine.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_engine_impl.cpp"/>
+  </compounddef>
+</doxygen>

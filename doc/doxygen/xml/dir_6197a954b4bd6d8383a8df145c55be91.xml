@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_6197a954b4bd6d8383a8df145c55be91" kind="dir">
+    <compoundname>libopenage/event/demo</compoundname>
+    <innerfile refid="aicontroller_8cpp">aicontroller.cpp</innerfile>
+    <innerfile refid="aicontroller_8h">aicontroller.h</innerfile>
+    <innerfile refid="gamestate_8cpp">gamestate.cpp</innerfile>
+    <innerfile refid="gamestate_8h">gamestate.h</innerfile>
+    <innerfile refid="event_2demo_2gui_8cpp">gui.cpp</innerfile>
+    <innerfile refid="event_2demo_2gui_8h">gui.h</innerfile>
+    <innerfile refid="event_2demo_2main_8cpp">main.cpp</innerfile>
+    <innerfile refid="event_2demo_2main_8h">main.h</innerfile>
+    <innerfile refid="physics_8cpp">physics.cpp</innerfile>
+    <innerfile refid="physics_8h">physics.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/event/demo/"/>
+  </compounddef>
+</doxygen>

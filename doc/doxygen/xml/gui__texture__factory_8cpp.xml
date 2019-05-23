@@ -1,0 +1,602 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__texture__factory_8cpp" kind="file" language="C++">
+    <compoundname>gui_texture_factory.cpp</compoundname>
+    <includes refid="gui__texture__factory_8h" local="yes">gui_texture_factory.h</includes>
+    <includes refid="gui__game__spec__image__provider__impl_8h" local="yes">gui_game_spec_image_provider_impl.h</includes>
+    <includes refid="texture_8h" local="yes">../../../texture.h</includes>
+    <includes refid="gui__texture_8h" local="yes">gui_texture.h</includes>
+    <includes refid="gui__filled__texture__handles_8h" local="yes">gui_filled_texture_handles.h</includes>
+    <incdepgraph>
+      <node id="14615">
+        <label>list</label>
+      </node>
+      <node id="14609">
+        <label>atomic</label>
+      </node>
+      <node id="14586">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="14587" relation="include">
+        </childnode>
+        <childnode refid="14588" relation="include">
+        </childnode>
+        <childnode refid="14589" relation="include">
+        </childnode>
+        <childnode refid="14590" relation="include">
+        </childnode>
+        <childnode refid="14591" relation="include">
+        </childnode>
+        <childnode refid="14592" relation="include">
+        </childnode>
+        <childnode refid="14593" relation="include">
+        </childnode>
+        <childnode refid="14594" relation="include">
+        </childnode>
+      </node>
+      <node id="14590">
+        <label>iomanip</label>
+      </node>
+      <node id="14569">
+        <label>functional</label>
+      </node>
+      <node id="14591">
+        <label>limits</label>
+      </node>
+      <node id="14584">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="14585" relation="include">
+        </childnode>
+        <childnode refid="14586" relation="include">
+        </childnode>
+      </node>
+      <node id="14579">
+        <label>../../../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="14580" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14581" relation="include">
+        </childnode>
+        <childnode refid="14582" relation="include">
+        </childnode>
+        <childnode refid="14619" relation="include">
+        </childnode>
+        <childnode refid="14622" relation="include">
+        </childnode>
+        <childnode refid="14623" relation="include">
+        </childnode>
+        <childnode refid="14625" relation="include">
+        </childnode>
+      </node>
+      <node id="14631">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="14569" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+      </node>
+      <node id="14577">
+        <label>QObject</label>
+      </node>
+      <node id="14585">
+        <label>cstdint</label>
+      </node>
+      <node id="14620">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="14611">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="14612" relation="include">
+        </childnode>
+        <childnode refid="14569" relation="include">
+        </childnode>
+        <childnode refid="14590" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14613" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+      </node>
+      <node id="14564">
+        <label>gui_texture_handle.h</label>
+        <link refid="gui__texture__handle_8h"/>
+        <childnode refid="14565" relation="include">
+        </childnode>
+      </node>
+      <node id="14630">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="14598" relation="include">
+        </childnode>
+      </node>
+      <node id="14589">
+        <label>cmath</label>
+      </node>
+      <node id="14600">
+        <label>stdexcept</label>
+      </node>
+      <node id="14629">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="14578">
+        <label>QMetaType</label>
+      </node>
+      <node id="14614">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="14615" relation="include">
+        </childnode>
+        <childnode refid="14568" relation="include">
+        </childnode>
+        <childnode refid="14616" relation="include">
+        </childnode>
+      </node>
+      <node id="14612">
+        <label>cstdarg</label>
+      </node>
+      <node id="14597">
+        <label>string</label>
+      </node>
+      <node id="14604">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="14585" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14605" relation="include">
+        </childnode>
+        <childnode refid="14606" relation="include">
+        </childnode>
+        <childnode refid="14608" relation="include">
+        </childnode>
+        <childnode refid="14614" relation="include">
+        </childnode>
+        <childnode refid="14616" relation="include">
+        </childnode>
+      </node>
+      <node id="14606">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="14607" relation="include">
+        </childnode>
+      </node>
+      <node id="14563">
+        <label>QQuickTextureFactory</label>
+      </node>
+      <node id="14608">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="14609" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14593" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+        <childnode refid="14610" relation="include">
+        </childnode>
+        <childnode refid="14611" relation="include">
+        </childnode>
+      </node>
+      <node id="14592">
+        <label>ostream</label>
+      </node>
+      <node id="14560">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+        <childnode refid="14561" relation="include">
+        </childnode>
+        <childnode refid="14571" relation="include">
+        </childnode>
+        <childnode refid="14579" relation="include">
+        </childnode>
+        <childnode refid="14635" relation="include">
+        </childnode>
+        <childnode refid="14566" relation="include">
+        </childnode>
+      </node>
+      <node id="14574">
+        <label>../../guisys/private/gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14575" relation="include">
+        </childnode>
+      </node>
+      <node id="14626">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="14585" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14627" relation="include">
+        </childnode>
+        <childnode refid="14628" relation="include">
+        </childnode>
+      </node>
+      <node id="14595">
+        <label>limits.h</label>
+      </node>
+      <node id="14598">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="14599" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14600" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+        <childnode refid="14604" relation="include">
+        </childnode>
+      </node>
+      <node id="14594">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="14587" relation="include">
+        </childnode>
+        <childnode refid="14595" relation="include">
+        </childnode>
+        <childnode refid="14589" relation="include">
+        </childnode>
+        <childnode refid="14596" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14598" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+      </node>
+      <node id="14576">
+        <label>../../guisys/private/gui_callback.h</label>
+        <link refid="gui__callback_8h"/>
+        <childnode refid="14569" relation="include">
+        </childnode>
+        <childnode refid="14577" relation="include">
+        </childnode>
+        <childnode refid="14578" relation="include">
+        </childnode>
+      </node>
+      <node id="14621">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="14573">
+        <label>condition_variable</label>
+      </node>
+      <node id="14636">
+        <label>QSGTexture</label>
+      </node>
+      <node id="14618">
+        <label>typeinfo</label>
+      </node>
+      <node id="14583">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="14572">
+        <label>tuple</label>
+      </node>
+      <node id="14567">
+        <label>vector</label>
+      </node>
+      <node id="14602">
+        <label>ciso646</label>
+      </node>
+      <node id="14622">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="14580" relation="include">
+        </childnode>
+      </node>
+      <node id="14613">
+        <label>sstream</label>
+      </node>
+      <node id="14601">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="14602" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14603" relation="include">
+        </childnode>
+      </node>
+      <node id="14570">
+        <label>QString</label>
+      </node>
+      <node id="14575">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="14565">
+        <label>QSize</label>
+      </node>
+      <node id="14632">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14633" relation="include">
+        </childnode>
+        <childnode refid="14626" relation="include">
+        </childnode>
+      </node>
+      <node id="14603">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="14603" relation="include">
+        </childnode>
+      </node>
+      <node id="14580">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="14610">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="14599" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+      </node>
+      <node id="14616">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="14617" relation="include">
+        </childnode>
+      </node>
+      <node id="14582">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="14583" relation="include">
+        </childnode>
+        <childnode refid="14584" relation="include">
+        </childnode>
+      </node>
+      <node id="14634">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="14635">
+        <label>gui_texture.h</label>
+        <link refid="gui__texture_8h"/>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14636" relation="include">
+        </childnode>
+        <childnode refid="14564" relation="include">
+        </childnode>
+      </node>
+      <node id="14581">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="14633">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="14599" relation="include">
+        </childnode>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+      </node>
+      <node id="14607">
+        <label>cstdlib</label>
+      </node>
+      <node id="14599">
+        <label>iostream</label>
+      </node>
+      <node id="14571">
+        <label>gui_game_spec_image_provider_impl.h</label>
+        <link refid="gui__game__spec__image__provider__impl_8h"/>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14568" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14572" relation="include">
+        </childnode>
+        <childnode refid="14573" relation="include">
+        </childnode>
+        <childnode refid="14574" relation="include">
+        </childnode>
+        <childnode refid="14576" relation="include">
+        </childnode>
+        <childnode refid="14564" relation="include">
+        </childnode>
+        <childnode refid="14566" relation="include">
+        </childnode>
+      </node>
+      <node id="14623">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="14624" relation="include">
+        </childnode>
+        <childnode refid="14580" relation="include">
+        </childnode>
+      </node>
+      <node id="14628">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="14569" relation="include">
+        </childnode>
+        <childnode refid="14568" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+        <childnode refid="14629" relation="include">
+        </childnode>
+        <childnode refid="14630" relation="include">
+        </childnode>
+        <childnode refid="14631" relation="include">
+        </childnode>
+      </node>
+      <node id="14588">
+        <label>climits</label>
+      </node>
+      <node id="14561">
+        <label>gui_texture_factory.h</label>
+        <link refid="gui__texture__factory_8h"/>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14563" relation="include">
+        </childnode>
+        <childnode refid="14564" relation="include">
+        </childnode>
+        <childnode refid="14566" relation="include">
+        </childnode>
+      </node>
+      <node id="14568">
+        <label>mutex</label>
+      </node>
+      <node id="14625">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="14597" relation="include">
+        </childnode>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14626" relation="include">
+        </childnode>
+        <childnode refid="14632" relation="include">
+        </childnode>
+        <childnode refid="14634" relation="include">
+        </childnode>
+      </node>
+      <node id="14619">
+        <label>coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="14584" relation="include">
+        </childnode>
+        <childnode refid="14620" relation="include">
+        </childnode>
+        <childnode refid="14621" relation="include">
+        </childnode>
+        <childnode refid="14594" relation="include">
+        </childnode>
+      </node>
+      <node id="14627">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="14566">
+        <label>gui_filled_texture_handles.h</label>
+        <link refid="gui__filled__texture__handles_8h"/>
+        <childnode refid="14567" relation="include">
+        </childnode>
+        <childnode refid="14568" relation="include">
+        </childnode>
+        <childnode refid="14562" relation="include">
+        </childnode>
+        <childnode refid="14569" relation="include">
+        </childnode>
+        <childnode refid="14570" relation="include">
+        </childnode>
+        <childnode refid="14565" relation="include">
+        </childnode>
+      </node>
+      <node id="14593">
+        <label>type_traits</label>
+      </node>
+      <node id="14605">
+        <label>config.h</label>
+      </node>
+      <node id="14587">
+        <label>algorithm</label>
+      </node>
+      <node id="14596">
+        <label>cstring</label>
+      </node>
+      <node id="14562">
+        <label>memory</label>
+      </node>
+      <node id="14624">
+        <label>initializer_list</label>
+      </node>
+      <node id="14617">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="14599" relation="include">
+        </childnode>
+        <childnode refid="14618" relation="include">
+        </childnode>
+        <childnode refid="14601" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__texture__factory_8h" kindref="compound">gui_texture_factory.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__game__spec__image__provider__impl_8h" kindref="compound">gui_game_spec_image_provider_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../../texture.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__texture_8h" kindref="compound">gui_texture.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__filled__texture__handles_8h" kindref="compound">gui_filled_texture_handles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1gui_1_1_gui_texture_factory_1af51021a1b0298e9c467ae7b50f2a8180" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1af51021a1b0298e9c467ae7b50f2a8180" kindref="member">GuiTextureFactory::GuiTextureFactory</ref>(<ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" kindref="compound">GuiGameSpecImageProviderImpl</ref><sp/>*provider,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;requested_size)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>texture_handle(),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>texture_handle_user{provider-&gt;<ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" kindref="member">fill_texture_handle</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>requested_size,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" kindref="member">texture_handle</ref>)}<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1gui_1_1_gui_texture_factory_1ab199b5d7467dc2d846e93df35247d757" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1ab199b5d7467dc2d846e93df35247d757" kindref="member">GuiTextureFactory::~GuiTextureFactory</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1gui_1_1_gui_texture_factory_1a3e965b7d112047c4e8b983db71026c22" refkind="member"><highlight class="normal">QSGTexture*<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a3e965b7d112047c4e8b983db71026c22" kindref="member">GuiTextureFactory::createTexture</ref>(QQuickWindow<sp/>*window)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(window);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture" kindref="compound">GuiTexture</ref>{this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" kindref="member">texture_handle</ref>};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a1ae333fa6ad5331cf45b81d067febdc4" kindref="member">GuiTextureFactory::textureByteCount</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assume<sp/>32bit<sp/>textures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" kindref="member">texture_handle</ref>.<ref refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" kindref="member">texture</ref>-&gt;<ref refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" kindref="member">w</ref><sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" kindref="member">texture_handle</ref>.<ref refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" kindref="member">texture</ref>-&gt;<ref refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" kindref="member">h</ref><sp/>*<sp/>4;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1gui_1_1_gui_texture_factory_1a2af0c7e7d25985cd93743b6d08468d9d" refkind="member"><highlight class="normal">QSize<sp/><ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a2af0c7e7d25985cd93743b6d08468d9d" kindref="member">GuiTextureFactory::textureSize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" kindref="member">openage::gui::textureSize</ref>(this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_texture_factory_1a387dd40e1495fc71cdb3de841b5cf5a0" kindref="member">texture_handle</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_texture_factory.cpp"/>
+  </compounddef>
+</doxygen>

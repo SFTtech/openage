@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::MeshData</compoundname>
+    <includes refid="mesh__data_8h" local="no">mesh_data.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; openage::renderer::resources::MeshData::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+<para>The raw vertex data. The size is an integer multiple of the size of a single vertex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="140" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a924f3e7f0ede4d7b5536ea7dd3a2b31d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::vector&lt; uint8_t &gt; &gt;</type>
+        <definition>std::optional&lt;std::vector&lt;uint8_t&gt; &gt; openage::renderer::resources::MeshData::ids</definition>
+        <argsstring></argsstring>
+        <name>ids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The indices of vertices to be drawn if the mesh is indexed. For array drawing, empty optional. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="144" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1aa089b9853c9c8c81f43c5ba050bd93f1" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref> &gt;</type>
+        <definition>std::optional&lt;VertexInputInfo&gt; openage::renderer::resources::MeshData::info</definition>
+        <argsstring></argsstring>
+        <name>info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Information about how to interpret the data to make vertices. This is optional because initialization is deferred until the constructor obtains the mesh data e.g. from disk, but it should always be present after construction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="150" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a8d18f2be596595fed8762920ca9bd7ec" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::MeshData::MeshData</definition>
+        <argsstring>(const util::Path &amp;)</argsstring>
+        <name>MeshData</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Tries to load the mesh data from the specified file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="117" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a72cc8859a8d458fc64d462ac13225ab6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::MeshData::MeshData</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt; &amp;&amp;verts, VertexInputInfo)</argsstring>
+        <name>MeshData</name>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;&amp;</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref></type>
+          <defname>info</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the mesh data to a custom unindexed vertex vector described by the given info. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="120" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a2f2b8619ac800c3e00ca3f4018f1de1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::MeshData::MeshData</definition>
+        <argsstring>(std::vector&lt; uint8_t &gt; &amp;&amp;verts, std::vector&lt; uint8_t &gt; &amp;&amp;ids, VertexInputInfo)</argsstring>
+        <name>MeshData</name>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;&amp;</type>
+          <declname>verts</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;&amp;</type>
+          <declname>ids</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref></type>
+          <defname>info</defname>
+        </param>
+        <briefdescription>
+<para>Initializes the mesh data to a custom indexed vertex vector described by the given info. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="123" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad378865d7ad463f3ae1474277318c2c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint8_t &gt; const  &amp;</type>
+        <definition>std::vector&lt; uint8_t &gt; const  &amp; openage::renderer::resources::MeshData::get_data</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data</name>
+        <briefdescription>
+<para>Returns the raw vertex data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="126" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ac24d7bb9216c3c440f0070417d36c1e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::vector&lt; uint8_t &gt; &gt; const  &amp;</type>
+        <definition>std::optional&lt; std::vector&lt; uint8_t &gt; &gt; const  &amp; openage::renderer::resources::MeshData::get_ids</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ids</name>
+        <briefdescription>
+<para>Returns the indices used for indexed drawing if they exist. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="129" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a55dee70e28a6ea0e4d613fc00dca2bd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">VertexInputInfo</ref></type>
+        <definition>VertexInputInfo openage::renderer::resources::MeshData::get_info</definition>
+        <argsstring>() const</argsstring>
+        <name>get_info</name>
+        <briefdescription>
+<para>Returns information describing the vertices in this mesh. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="132" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="110" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kindref="compound">MeshData</ref></type>
+        <definition>MeshData openage::renderer::resources::MeshData::make_quad</definition>
+        <argsstring>()</argsstring>
+        <name>make_quad</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the mesh data with a simple quadrilateral spanning the whole window space, with (vec2 pos, vec2 uv) vertex format. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="136" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="123" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3191">
+        <label>openage::renderer::resources::MeshData</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/mesh_data.h" line="114" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="114" bodyend="151"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a58ac4b6b4fb3e27d165e49ca1826da50" prot="private" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>data</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad378865d7ad463f3ae1474277318c2c4" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ac24d7bb9216c3c440f0070417d36c1e5" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>get_ids</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a55dee70e28a6ea0e4d613fc00dca2bd0" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>get_info</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a924f3e7f0ede4d7b5536ea7dd3a2b31d" prot="private" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>ids</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1aa089b9853c9c8c81f43c5ba050bd93f1" prot="private" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>info</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1ad8928c08c9c05b7b7f7eae1a203e462b" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>make_quad</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a8d18f2be596595fed8762920ca9bd7ec" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>MeshData</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a72cc8859a8d458fc64d462ac13225ab6" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>MeshData</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data_1a2f2b8619ac800c3e00ca3f4018f1de1f" prot="public" virt="non-virtual"><scope>openage::renderer::resources::MeshData</scope><name>MeshData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

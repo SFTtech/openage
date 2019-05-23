@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1_shared_ptr_less" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::SharedPtrLess</compoundname>
+    <includes refid="misc_8h" local="no">misc.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1util_1_1_shared_ptr_less_1a2d342306bb66a154d214154377f6ee07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::SharedPtrLess&lt; T &gt;::operator()</definition>
+        <argsstring>(const std::shared_ptr&lt; T &gt; &amp;left, const std::shared_ptr&lt; T &gt; &amp;right)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const std::shared_ptr&lt; T &gt; &amp;</type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; T &gt; &amp;</type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="290" column="1" bodyfile="libopenage/util/misc.h" bodystart="290" bodyend="298"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Comparator that returns true if the contained value of the left sharedptr is <computeroutput>&lt;</computeroutput> than the value contained in the right sharedptr. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4172">
+        <label>openage::util::SharedPtrLess&lt; T &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/misc.h" line="289" column="1" bodyfile="libopenage/util/misc.h" bodystart="289" bodyend="299"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1_shared_ptr_less_1a2d342306bb66a154d214154377f6ee07" prot="public" virt="non-virtual"><scope>openage::util::SharedPtrLess</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

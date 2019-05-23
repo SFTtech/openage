@@ -1,0 +1,779 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="unit_8h" kind="file" language="C++">
+    <compoundname>unit.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">queue</includes>
+    <includes refid="phys_8h" local="yes">../coord/phys.h</includes>
+    <includes refid="handlers_8h" local="yes">../handlers.h</includes>
+    <includes refid="logsource_8h" local="yes">../log/logsource.h</includes>
+    <includes refid="terrain__object_8h" local="yes">../terrain/terrain_object.h</includes>
+    <includes refid="timing_8h" local="yes">../util/timing.h</includes>
+    <includes refid="ability_8h" local="yes">ability.h</includes>
+    <includes refid="attribute_8h" local="yes">attribute.h</includes>
+    <includes refid="attributes_8h" local="yes">attributes.h</includes>
+    <includes refid="command_8h" local="yes">command.h</includes>
+    <includes refid="unit__container_8h" local="yes">unit_container.h</includes>
+    <includedby refid="unit_2action_8h" local="yes">libopenage/unit/action.h</includedby>
+    <includedby refid="producer_8h" local="yes">libopenage/unit/producer.h</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
+    <includedby refid="game__save_8cpp" local="yes">libopenage/gamestate/game_save.cpp</includedby>
+    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="player_8cpp" local="yes">libopenage/gamestate/player.cpp</includedby>
+    <includedby refid="terrain__object_8cpp" local="yes">libopenage/terrain/terrain_object.cpp</includedby>
+    <includedby refid="ability_8cpp" local="yes">libopenage/unit/ability.cpp</includedby>
+    <includedby refid="attribute_8cpp" local="yes">libopenage/unit/attribute.cpp</includedby>
+    <includedby refid="producer_8cpp" local="yes">libopenage/unit/producer.cpp</includedby>
+    <includedby refid="selection_8cpp" local="yes">libopenage/unit/selection.cpp</includedby>
+    <includedby refid="unit_8cpp" local="yes">libopenage/unit/unit.cpp</includedby>
+    <includedby refid="unit__container_8cpp" local="yes">libopenage/unit/unit_container.cpp</includedby>
+    <includedby refid="unit__type_8cpp" local="yes">libopenage/unit/unit_type.cpp</includedby>
+    <incdepgraph>
+      <node id="26606">
+        <label>list</label>
+      </node>
+      <node id="26597">
+        <label>atomic</label>
+      </node>
+      <node id="26611">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="26580" relation="include">
+        </childnode>
+        <childnode refid="26612" relation="include">
+        </childnode>
+        <childnode refid="26582" relation="include">
+        </childnode>
+        <childnode refid="26603" relation="include">
+        </childnode>
+        <childnode refid="26613" relation="include">
+        </childnode>
+        <childnode refid="26614" relation="include">
+        </childnode>
+        <childnode refid="26598" relation="include">
+        </childnode>
+        <childnode refid="26579" relation="include">
+        </childnode>
+      </node>
+      <node id="26603">
+        <label>iomanip</label>
+      </node>
+      <node id="26602">
+        <label>functional</label>
+      </node>
+      <node id="26577">
+        <label>queue</label>
+      </node>
+      <node id="26613">
+        <label>limits</label>
+      </node>
+      <node id="26610">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="26592" relation="include">
+        </childnode>
+        <childnode refid="26611" relation="include">
+        </childnode>
+      </node>
+      <node id="26592">
+        <label>cstdint</label>
+      </node>
+      <node id="26621">
+        <label>../log/logsource.h</label>
+        <link refid="logsource_8h"/>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26591" relation="include">
+        </childnode>
+      </node>
+      <node id="26615">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="26600">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="26601" relation="include">
+        </childnode>
+        <childnode refid="26602" relation="include">
+        </childnode>
+        <childnode refid="26603" relation="include">
+        </childnode>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26604" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26576" relation="include">
+        </childnode>
+      </node>
+      <node id="26582">
+        <label>cmath</label>
+      </node>
+      <node id="26587">
+        <label>stdexcept</label>
+      </node>
+      <node id="26625">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="26592" relation="include">
+        </childnode>
+      </node>
+      <node id="26633">
+        <label>attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="26630" relation="include">
+        </childnode>
+        <childnode refid="26629" relation="include">
+        </childnode>
+      </node>
+      <node id="26626">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="26627" relation="include">
+        </childnode>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26598" relation="include">
+        </childnode>
+        <childnode refid="26575" relation="include">
+        </childnode>
+        <childnode refid="26576" relation="include">
+        </childnode>
+        <childnode refid="26578" relation="include">
+        </childnode>
+        <childnode refid="26628" relation="include">
+        </childnode>
+      </node>
+      <node id="26605">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="26606" relation="include">
+        </childnode>
+        <childnode refid="26574" relation="include">
+        </childnode>
+        <childnode refid="26607" relation="include">
+        </childnode>
+      </node>
+      <node id="26601">
+        <label>cstdarg</label>
+      </node>
+      <node id="26584">
+        <label>string</label>
+      </node>
+      <node id="26591">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="26592" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26593" relation="include">
+        </childnode>
+        <childnode refid="26594" relation="include">
+        </childnode>
+        <childnode refid="26596" relation="include">
+        </childnode>
+        <childnode refid="26605" relation="include">
+        </childnode>
+        <childnode refid="26607" relation="include">
+        </childnode>
+      </node>
+      <node id="26594">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="26595" relation="include">
+        </childnode>
+      </node>
+      <node id="26596">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="26597" relation="include">
+        </childnode>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26598" relation="include">
+        </childnode>
+        <childnode refid="26588" relation="include">
+        </childnode>
+        <childnode refid="26599" relation="include">
+        </childnode>
+        <childnode refid="26600" relation="include">
+        </childnode>
+      </node>
+      <node id="26630">
+        <label>map</label>
+      </node>
+      <node id="26635">
+        <label>unordered_set</label>
+      </node>
+      <node id="26631">
+        <label>../gamedata/unit.gen.h</label>
+      </node>
+      <node id="26617">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="26618" relation="include">
+        </childnode>
+        <childnode refid="26619" relation="include">
+        </childnode>
+      </node>
+      <node id="26623">
+        <label>stddef.h</label>
+      </node>
+      <node id="26614">
+        <label>ostream</label>
+      </node>
+      <node id="26622">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26623" relation="include">
+        </childnode>
+        <childnode refid="26624" relation="include">
+        </childnode>
+        <childnode refid="26578" relation="include">
+        </childnode>
+      </node>
+      <node id="26581">
+        <label>limits.h</label>
+      </node>
+      <node id="26585">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="26586" relation="include">
+        </childnode>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26587" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26588" relation="include">
+        </childnode>
+        <childnode refid="26591" relation="include">
+        </childnode>
+      </node>
+      <node id="26579">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="26580" relation="include">
+        </childnode>
+        <childnode refid="26581" relation="include">
+        </childnode>
+        <childnode refid="26582" relation="include">
+        </childnode>
+        <childnode refid="26583" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26576" relation="include">
+        </childnode>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26585" relation="include">
+        </childnode>
+        <childnode refid="26588" relation="include">
+        </childnode>
+      </node>
+      <node id="26616">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="26618">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="26634">
+        <label>command.h</label>
+        <link refid="command_8h"/>
+        <childnode refid="26635" relation="include">
+        </childnode>
+        <childnode refid="26578" relation="include">
+        </childnode>
+        <childnode refid="26626" relation="include">
+        </childnode>
+      </node>
+      <node id="26609">
+        <label>typeinfo</label>
+      </node>
+      <node id="26627">
+        <label>bitset</label>
+      </node>
+      <node id="26620">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="26632">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26575" relation="include">
+        </childnode>
+        <childnode refid="26576" relation="include">
+        </childnode>
+        <childnode refid="26624" relation="include">
+        </childnode>
+        <childnode refid="26617" relation="include">
+        </childnode>
+        <childnode refid="26625" relation="include">
+        </childnode>
+      </node>
+      <node id="26576">
+        <label>vector</label>
+      </node>
+      <node id="26589">
+        <label>ciso646</label>
+      </node>
+      <node id="26604">
+        <label>sstream</label>
+      </node>
+      <node id="26588">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="26589" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+        <childnode refid="26590" relation="include">
+        </childnode>
+      </node>
+      <node id="26590">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="26590" relation="include">
+        </childnode>
+      </node>
+      <node id="26628">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="26602" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+      </node>
+      <node id="26599">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="26586" relation="include">
+        </childnode>
+        <childnode refid="26584" relation="include">
+        </childnode>
+      </node>
+      <node id="26607">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="26608" relation="include">
+        </childnode>
+      </node>
+      <node id="26619">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="26620" relation="include">
+        </childnode>
+        <childnode refid="26610" relation="include">
+        </childnode>
+      </node>
+      <node id="26595">
+        <label>cstdlib</label>
+      </node>
+      <node id="26586">
+        <label>iostream</label>
+      </node>
+      <node id="26575">
+        <label>unordered_map</label>
+      </node>
+      <node id="26572">
+        <label>libopenage/unit/unit.h</label>
+        <link refid="unit_8h"/>
+        <childnode refid="26573" relation="include">
+        </childnode>
+        <childnode refid="26574" relation="include">
+        </childnode>
+        <childnode refid="26575" relation="include">
+        </childnode>
+        <childnode refid="26576" relation="include">
+        </childnode>
+        <childnode refid="26577" relation="include">
+        </childnode>
+        <childnode refid="26578" relation="include">
+        </childnode>
+        <childnode refid="26617" relation="include">
+        </childnode>
+        <childnode refid="26621" relation="include">
+        </childnode>
+        <childnode refid="26622" relation="include">
+        </childnode>
+        <childnode refid="26625" relation="include">
+        </childnode>
+        <childnode refid="26626" relation="include">
+        </childnode>
+        <childnode refid="26629" relation="include">
+        </childnode>
+        <childnode refid="26633" relation="include">
+        </childnode>
+        <childnode refid="26634" relation="include">
+        </childnode>
+        <childnode refid="26632" relation="include">
+        </childnode>
+      </node>
+      <node id="26612">
+        <label>climits</label>
+      </node>
+      <node id="26629">
+        <label>attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="26602" relation="include">
+        </childnode>
+        <childnode refid="26630" relation="include">
+        </childnode>
+        <childnode refid="26580" relation="include">
+        </childnode>
+        <childnode refid="26624" relation="include">
+        </childnode>
+        <childnode refid="26631" relation="include">
+        </childnode>
+        <childnode refid="26622" relation="include">
+        </childnode>
+        <childnode refid="26628" relation="include">
+        </childnode>
+        <childnode refid="26632" relation="include">
+        </childnode>
+      </node>
+      <node id="26574">
+        <label>mutex</label>
+      </node>
+      <node id="26624">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="26610" relation="include">
+        </childnode>
+        <childnode refid="26615" relation="include">
+        </childnode>
+        <childnode refid="26616" relation="include">
+        </childnode>
+        <childnode refid="26579" relation="include">
+        </childnode>
+      </node>
+      <node id="26598">
+        <label>type_traits</label>
+      </node>
+      <node id="26593">
+        <label>config.h</label>
+      </node>
+      <node id="26580">
+        <label>algorithm</label>
+      </node>
+      <node id="26578">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="26579" relation="include">
+        </childnode>
+        <childnode refid="26610" relation="include">
+        </childnode>
+        <childnode refid="26615" relation="include">
+        </childnode>
+        <childnode refid="26616" relation="include">
+        </childnode>
+      </node>
+      <node id="26583">
+        <label>cstring</label>
+      </node>
+      <node id="26573">
+        <label>memory</label>
+      </node>
+      <node id="26608">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="26586" relation="include">
+        </childnode>
+        <childnode refid="26609" relation="include">
+        </childnode>
+        <childnode refid="26588" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="26643">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="26639">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="26641">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="26638">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="26647">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="26650">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="26652">
+        <label>libopenage/unit/attribute.cpp</label>
+        <link refid="attribute_8cpp"/>
+      </node>
+      <node id="26644">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="26645">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="26638" relation="include">
+        </childnode>
+        <childnode refid="26646" relation="include">
+        </childnode>
+        <childnode refid="26647" relation="include">
+        </childnode>
+        <childnode refid="26640" relation="include">
+        </childnode>
+        <childnode refid="26641" relation="include">
+        </childnode>
+        <childnode refid="26642" relation="include">
+        </childnode>
+        <childnode refid="26643" relation="include">
+        </childnode>
+        <childnode refid="26648" relation="include">
+        </childnode>
+      </node>
+      <node id="26640">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="26642">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="26648">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="26651">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="26649">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="26646">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="26636">
+        <label>libopenage/unit/unit.h</label>
+        <link refid="unit_8h"/>
+        <childnode refid="26637" relation="include">
+        </childnode>
+        <childnode refid="26645" relation="include">
+        </childnode>
+        <childnode refid="26638" relation="include">
+        </childnode>
+        <childnode refid="26646" relation="include">
+        </childnode>
+        <childnode refid="26649" relation="include">
+        </childnode>
+        <childnode refid="26650" relation="include">
+        </childnode>
+        <childnode refid="26651" relation="include">
+        </childnode>
+        <childnode refid="26639" relation="include">
+        </childnode>
+        <childnode refid="26652" relation="include">
+        </childnode>
+        <childnode refid="26641" relation="include">
+        </childnode>
+        <childnode refid="26642" relation="include">
+        </childnode>
+        <childnode refid="26643" relation="include">
+        </childnode>
+        <childnode refid="26648" relation="include">
+        </childnode>
+        <childnode refid="26644" relation="include">
+        </childnode>
+      </node>
+      <node id="26637">
+        <label>libopenage/unit/action.h</label>
+        <link refid="unit_2action_8h"/>
+        <childnode refid="26638" relation="include">
+        </childnode>
+        <childnode refid="26639" relation="include">
+        </childnode>
+        <childnode refid="26640" relation="include">
+        </childnode>
+        <childnode refid="26641" relation="include">
+        </childnode>
+        <childnode refid="26642" relation="include">
+        </childnode>
+        <childnode refid="26643" relation="include">
+        </childnode>
+        <childnode refid="26644" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1_unit" prot="public">openage::Unit</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;queue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/phys.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../handlers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/logsource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../terrain/terrain_object.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/timing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ability_8h" kindref="compound">ability.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="attribute_8h" kindref="compound">attribute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="attributes_8h" kindref="compound">attributes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="command_8h" kindref="compound">command.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="unit__container_8h" kindref="compound">unit_container.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UnitAbility;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UnitAction;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1_unit" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">log::LogSource</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_1a0d28eef2303cf46adc72001bc1cc3619" kindref="member">Unit</ref>(<ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref><sp/>*c,<sp/><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a619f807de65d2a8488d7decbe31866f7" kindref="member">~Unit</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classopenage_1_1_unit_1aa5e4275675942d5e5e6b12a83dbf577a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref><sp/><ref refid="classopenage_1_1_unit_1aa5e4275675942d5e5e6b12a83dbf577a" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref><sp/>*<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1_unit_1a00fd6387097ed12ae6f6b6ec2ab2939e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a00fd6387097ed12ae6f6b6ec2ab2939e" kindref="member">selected</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;TerrainObject&gt;<sp/><ref refid="classopenage_1_1_unit_1a12811894b98383b4c3cfe6769bc3ff80" kindref="member">location</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Arg&gt;</highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1_unit_1a76a10b9ab26e62d7b712a6c796052ee3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a76a10b9ab26e62d7b712a6c796052ee3" kindref="member">make_location</ref>(Arg<sp/>...<sp/>args)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>any<sp/>existing<sp/>location<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;location)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;location-&gt;remove();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>since<sp/>Unit<sp/>is<sp/>a<sp/>friend<sp/>of<sp/>the<sp/>location</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make_shared<sp/>will<sp/>not<sp/>work</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;location<sp/>=<sp/>std::unique_ptr&lt;T&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>T(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>args<sp/>...));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a24ad46b827d50be1c5af4eccc5111929" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a257ef8a7aeceb306d372ef745b40ef90" kindref="member">has_action</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a21542f7813db482fd36799cf12971979" kindref="member">accept_commands</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1aba4a16068cf5a6b218a4c78f499874b0" kindref="member">is_own_unit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_action" kindref="compound">UnitAction</ref><sp/>*<ref refid="classopenage_1_1_unit_1a86a49987e082055274e98a142baffad8" kindref="member">top</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_action" kindref="compound">UnitAction</ref><sp/>*<ref refid="classopenage_1_1_unit_1a4923193cf464188a2e5f8563dd85ff43" kindref="member">before</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_action" kindref="compound">UnitAction</ref><sp/>*action)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a6090576402dce0bcc8f3f584ae0c1db5" kindref="member">update</ref>(<ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/>lastframe_duration);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1ae422123ecc6a2e930ba86e45bf8a5a37" kindref="member">draw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>&amp;engine);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1ae422123ecc6a2e930ba86e45bf8a5a37" kindref="member">draw</ref>(<ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref><sp/>*loc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a905fde9cff5779781eb779ca95d80cf1" kindref="member">graphic_set</ref><sp/>&amp;graphics,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>&amp;engine);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1ae422123ecc6a2e930ba86e45bf8a5a37" kindref="member">draw</ref>(<ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>draw_pos,<sp/>std::shared_ptr&lt;UnitTexture&gt;<sp/>graphic,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>frame,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>&amp;engine);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a37f35cd78b09fea32514ed2b2dd87b64" kindref="member">give_ability</ref>(std::shared_ptr&lt;UnitAbility&gt;);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_ability" kindref="compound">UnitAbility</ref><sp/>*<ref refid="classopenage_1_1_unit_1a2f0e740b8fd1b0f948916c854b9910ec" kindref="member">get_ability</ref>(<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">ability_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1aecd686fafc67487f4df4d3637f2621f4" kindref="member">push_action</ref>(std::unique_ptr&lt;UnitAction&gt;<sp/>action,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a8b29886dcd48b1db9381dcc7fd252ebc" kindref="member">secondary_action</ref>(std::unique_ptr&lt;UnitAction&gt;<sp/>action);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1ab74b08bb7725863fc63839d798f6aedb" kindref="member">add_attribute</ref>(std::shared_ptr&lt;AttributeContainer&gt;<sp/>attr);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1af46fb7ca65071c68a85f492a8235302e" kindref="member">add_attributes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref><sp/>&amp;attr);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1af46fb7ca65071c68a85f492a8235302e" kindref="member">add_attributes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref><sp/>&amp;attr,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shared,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unshared);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref><sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;attr_type<sp/>T&gt;</highlight></codeline>
+<codeline lineno="199" refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_attribute" kindref="compound">Attribute&lt;T&gt;</ref><sp/>&amp;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="classopenage_1_1_attribute" kindref="compound">Attribute&lt;T&gt;</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classopenage_1_1_unit_1a49ca534b218c7a77336914f450d71602" kindref="member">attributes</ref>.<ref refid="classopenage_1_1_attributes_1a08f927be3be6911e7cf77604f9ead10f" kindref="member">get</ref>(T).get());</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change<sp/>to<sp/>(templates<sp/>errors)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//return<sp/>attributes.get&lt;T&gt;();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;UnitAbility&gt;<sp/><ref refid="classopenage_1_1_unit_1ac5dcdf3180dcd4bdce67b765d8ef2134" kindref="member">queue_cmd</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_command" kindref="compound">Command</ref><sp/>&amp;cmd);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a238fb029bd4cc32e393506533facd976" kindref="member">stop_gather</ref>();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a9f53ef015fca7c42ff3bf9d0779145a3" kindref="member">stop_actions</ref>();</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1ad7f76de394d832d927a9e6d46bd3c93f" kindref="member">delete_unit</ref>();</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref><sp/><ref refid="classopenage_1_1_unit_1adfea298b04684ab09dd8f499dabb8715" kindref="member">get_ref</ref>();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref><sp/>*<ref refid="classopenage_1_1_unit_1a2e9937d84fe91d95cbe273f6fe986068" kindref="member">get_container</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1_unit_1ae769f520dfdb148ec831c151a954a881" kindref="member">logsource_name</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="classopenage_1_1_unit_1a49ca534b218c7a77336914f450d71602" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref><sp/><ref refid="classopenage_1_1_unit_1a49ca534b218c7a77336914f450d71602" kindref="member">attributes</ref>;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="261" refid="classopenage_1_1_unit_1a57f5c6434774eee7ab25124f4ddb2a6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;ability_type,<sp/>std::shared_ptr&lt;UnitAbility&gt;&gt;<sp/><ref refid="classopenage_1_1_unit_1a57f5c6434774eee7ab25124f4ddb2a6c" kindref="member">ability_available</ref>;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="classopenage_1_1_unit_1a878fa4f611ba7b3a4d01f3ab6fd16b2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;UnitAction&gt;&gt;<sp/><ref refid="classopenage_1_1_unit_1a878fa4f611ba7b3a4d01f3ab6fd16b2a" kindref="member">action_stack</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="classopenage_1_1_unit_1a7ac507ed4ccdbae729577ade59adf0ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;UnitAction&gt;&gt;<sp/><ref refid="classopenage_1_1_unit_1a7ac507ed4ccdbae729577ade59adf0ad" kindref="member">action_secondary</ref>;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="classopenage_1_1_unit_1affad2da15f99e71f16baa669b2c86b73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::queue&lt;std::pair&lt;std::shared_ptr&lt;UnitAbility&gt;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_command" kindref="compound">Command</ref>&gt;&gt;<sp/><ref refid="classopenage_1_1_unit_1affad2da15f99e71f16baa669b2c86b73" kindref="member">command_queue</ref>;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="classopenage_1_1_unit_1afc59d516f370891e74777246cef87ed8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><ref refid="classopenage_1_1_unit_1afc59d516f370891e74777246cef87ed8" kindref="member">command_queue_lock</ref>;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="classopenage_1_1_unit_1a74d9dca7027740fdf81be8563c0dd906" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a74d9dca7027740fdf81be8563c0dd906" kindref="member">pop_destructables</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="classopenage_1_1_unit_1acf42842a4886bf35b64147c7f44d797b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref><sp/>*<ref refid="classopenage_1_1_unit_1acf42842a4886bf35b64147c7f44d797b" kindref="member">container</ref>;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1a627bc25cc4e546ff34b06cfa809f8946" kindref="member">apply_all_cmds</ref>();</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1aef7363eab8f805124114c4967470379d" kindref="member">apply_cmd</ref>(std::shared_ptr&lt;UnitAbility&gt;<sp/>ability,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_command" kindref="compound">Command</ref><sp/>&amp;cmd);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1aaf08f7acc4fd00636671fb21ba4cbaf0" kindref="member">update_secondary</ref>(int64_t<sp/>time_elapsed);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_1aae0b3f53cb1d75823391322876d199ef" kindref="member">erase_after</ref>(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(std::unique_ptr&lt;UnitAction&gt;<sp/>&amp;)&gt;<sp/>func,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>run_completed=</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/unit/unit.h"/>
+  </compounddef>
+</doxygen>

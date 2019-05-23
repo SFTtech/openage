@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1audio_1_1_resource" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::audio::Resource</compoundname>
+    <derivedcompoundref refid="classopenage_1_1audio_1_1_dynamic_resource" prot="public" virt="non-virtual">openage::audio::DynamicResource</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1audio_1_1_in_memory_resource" prot="public" virt="non-virtual">openage::audio::InMemoryResource</derivedcompoundref>
+    <includes refid="audio_2resource_8h" local="no">resource.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref> *</type>
+        <definition>AudioManager* openage::audio::Resource::manager</definition>
+        <argsstring></argsstring>
+        <name>manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Audiomanager in charge of this resource. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="73" column="1" bodyfile="libopenage/audio/resource.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+        <definition>category_t openage::audio::Resource::category</definition>
+        <argsstring></argsstring>
+        <name>category</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resource&apos;s category. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="79" column="1" bodyfile="libopenage/audio/resource.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1audio_1_1_resource_1a8231960a44778565f6ccc6f916de4572" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::audio::Resource::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resource&apos;s id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="84" column="1" bodyfile="libopenage/audio/resource.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a85abebc7740a31274aa0510527929479" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::Resource::Resource</definition>
+        <argsstring>(AudioManager *manager, category_t category, int id)</argsstring>
+        <name>Resource</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+          <declname>category</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="27" column="1" bodyfile="libopenage/audio/resource.cpp" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a7d92f800884160897bce48592a75835e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::audio::Resource::~Resource</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a76349042da32df00953f6bc99373f573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::Resource::Resource</definition>
+        <argsstring>(const Resource &amp;)=delete</argsstring>
+        <name>Resource</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a6337ca0a02ba5649a5fa3d3a89cb2b26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
+        <definition>Resource&amp; openage::audio::Resource::operator=</definition>
+        <argsstring>(const Resource &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="31" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a038faba6ab04164f0da17c2edc0f1f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::Resource::Resource</definition>
+        <argsstring>(Resource &amp;&amp;)=delete</argsstring>
+        <name>Resource</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a6c230fc4dc1990986af8014ce8325789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;</type>
+        <definition>Resource&amp; openage::audio::Resource::operator=</definition>
+        <argsstring>(Resource &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1aaaa8563a969d83cdb37eb80ddfd44950" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+        <definition>category_t openage::audio::Resource::get_category</definition>
+        <argsstring>() const</argsstring>
+        <name>get_category</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="36" column="1" bodyfile="libopenage/audio/resource.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1ae81d8c100e6135f26ecc74e8a90320ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::audio::Resource::get_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="37" column="1" bodyfile="libopenage/audio/resource.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a0ad2666c3d7c85d9ca17a2eb9c7887cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::audio::Resource::use</definition>
+        <argsstring>()=0</argsstring>
+        <name>use</name>
+        <reimplementedby refid="classopenage_1_1audio_1_1_in_memory_resource_1aadc80441d22bfd356c36d8dbacc45d64">use</reimplementedby>
+        <reimplementedby refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c">use</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the resource, that it will be used by a sound object, so it can preload some pcm samples. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1aaa6342dfe81f25de870d35018db5934c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::audio::Resource::stop_using</definition>
+        <argsstring>()=0</argsstring>
+        <name>stop_using</name>
+        <reimplementedby refid="classopenage_1_1audio_1_1_in_memory_resource_1ae8f4953554d1e2d18d1bddadd4a024fa">stop_using</reimplementedby>
+        <reimplementedby refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904">stop_using</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tells the resource, that one sound object does not use this resource any longer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a2c01c18ad8bee86abf0ea5e3cfd00ba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structopenage_1_1audio_1_1audio__chunk__t" kindref="compound">audio_chunk_t</ref></type>
+        <definition>virtual audio_chunk_t openage::audio::Resource::get_data</definition>
+        <argsstring>(size_t position, size_t data_length)=0</argsstring>
+        <name>get_data</name>
+        <reimplementedby refid="classopenage_1_1audio_1_1_in_memory_resource_1af6ae89eb2364351fbe4417724505cb19">get_data</reimplementedby>
+        <reimplementedby refid="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0">get_data</reimplementedby>
+        <param>
+          <type>size_t</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a pointer to the sample buffer at the given position and the number of int16_t values that are actually available. If the end of the resource is reached, 0 will be returned. If the resource is not ready yet, a nullptr with a length, different to zero, will be returned.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the current position in the resource</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of int16_t values that should be returned </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes of audio data that is requested </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="61" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Resource &gt; openage::audio::Resource::create_resource</definition>
+        <argsstring>(AudioManager *manager, const resource_def &amp;def)</argsstring>
+        <name>create_resource</name>
+        <param>
+          <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1audio_1_1resource__def" kindref="compound">resource_def</ref> &amp;</type>
+          <declname>def</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create an audio resource, this produces a <ref refid="classopenage_1_1audio_1_1_dynamic_resource" kindref="compound">DynamicResource</ref> or a <ref refid="classopenage_1_1audio_1_1_in_memory_resource" kindref="compound">InMemoryResource</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource.h" line="66" column="1" bodyfile="libopenage/audio/resource.cpp" bodystart="32" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> contains 16 bit signed integer pcm data, that can be played by sounds. Each <ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref> has an unique id within it&apos;s category. The category specifies the type of sound, e. g. game sounds, background music, etc. The id is a unique integer value. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4095">
+        <label>openage::audio::InMemoryResource</label>
+        <link refid="classopenage_1_1audio_1_1_in_memory_resource"/>
+        <childnode refid="4093" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4094">
+        <label>openage::audio::DynamicResource</label>
+        <link refid="classopenage_1_1audio_1_1_dynamic_resource"/>
+        <childnode refid="4093" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4093">
+        <label>openage::audio::Resource</label>
+        <link refid="classopenage_1_1audio_1_1_resource"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4098">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="4097">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="4098" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4096">
+        <label>openage::audio::Resource</label>
+        <link refid="classopenage_1_1audio_1_1_resource"/>
+        <childnode refid="4097" relation="usage">
+          <edgelabel>#manager</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/resource.h" line="25" column="1" bodyfile="libopenage/audio/resource.h" bodystart="25" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" prot="private" virt="non-virtual"><scope>openage::audio::Resource</scope><name>category</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>create_resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1aaaa8563a969d83cdb37eb80ddfd44950" prot="public" virt="virtual"><scope>openage::audio::Resource</scope><name>get_category</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a2c01c18ad8bee86abf0ea5e3cfd00ba1" prot="public" virt="pure-virtual"><scope>openage::audio::Resource</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1ae81d8c100e6135f26ecc74e8a90320ee" prot="public" virt="virtual"><scope>openage::audio::Resource</scope><name>get_id</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a8231960a44778565f6ccc6f916de4572" prot="private" virt="non-virtual"><scope>openage::audio::Resource</scope><name>id</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" prot="protected" virt="non-virtual"><scope>openage::audio::Resource</scope><name>manager</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a6337ca0a02ba5649a5fa3d3a89cb2b26" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a6c230fc4dc1990986af8014ce8325789" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a85abebc7740a31274aa0510527929479" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a76349042da32df00953f6bc99373f573" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a038faba6ab04164f0da17c2edc0f1f56" prot="public" virt="non-virtual"><scope>openage::audio::Resource</scope><name>Resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1aaa6342dfe81f25de870d35018db5934c" prot="public" virt="pure-virtual"><scope>openage::audio::Resource</scope><name>stop_using</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a0ad2666c3d7c85d9ca17a2eb9c7887cb" prot="public" virt="pure-virtual"><scope>openage::audio::Resource</scope><name>use</name></member>
+      <member refid="classopenage_1_1audio_1_1_resource_1a7d92f800884160897bce48592a75835e" prot="public" virt="virtual"><scope>openage::audio::Resource</scope><name>~Resource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,532 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="map_8h" kind="file" language="C++">
+    <compoundname>map.h</compoundname>
+    <includes refid="curve_8h" local="yes">curve.h</includes>
+    <includes refid="map__filter__iterator_8h" local="yes">map_filter_iterator.h</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="map_8cpp" local="yes">libopenage/curve/map.cpp</includedby>
+    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
+    <incdepgraph>
+      <node id="5062">
+        <label>list</label>
+      </node>
+      <node id="5055">
+        <label>atomic</label>
+      </node>
+      <node id="5030">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="5031" relation="include">
+        </childnode>
+        <childnode refid="5032" relation="include">
+        </childnode>
+        <childnode refid="5033" relation="include">
+        </childnode>
+        <childnode refid="5034" relation="include">
+        </childnode>
+        <childnode refid="5035" relation="include">
+        </childnode>
+        <childnode refid="5036" relation="include">
+        </childnode>
+        <childnode refid="5037" relation="include">
+        </childnode>
+        <childnode refid="5038" relation="include">
+        </childnode>
+      </node>
+      <node id="5059">
+        <label>functional</label>
+      </node>
+      <node id="5034">
+        <label>iomanip</label>
+      </node>
+      <node id="5035">
+        <label>limits</label>
+      </node>
+      <node id="5069">
+        <label>iterator</label>
+      </node>
+      <node id="5029">
+        <label>cstdint</label>
+      </node>
+      <node id="5068">
+        <label>iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="5028" relation="include">
+        </childnode>
+      </node>
+      <node id="5057">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5058" relation="include">
+        </childnode>
+        <childnode refid="5059" relation="include">
+        </childnode>
+        <childnode refid="5034" relation="include">
+        </childnode>
+        <childnode refid="5043" relation="include">
+        </childnode>
+        <childnode refid="5060" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+        <childnode refid="5042" relation="include">
+        </childnode>
+      </node>
+      <node id="5027">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="5028" relation="include">
+        </childnode>
+        <childnode refid="5067" relation="include">
+        </childnode>
+        <childnode refid="5070" relation="include">
+        </childnode>
+        <childnode refid="5045" relation="include">
+        </childnode>
+        <childnode refid="5071" relation="include">
+        </childnode>
+      </node>
+      <node id="5033">
+        <label>cmath</label>
+      </node>
+      <node id="5046">
+        <label>stdexcept</label>
+      </node>
+      <node id="5028">
+        <label>curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="5029" relation="include">
+        </childnode>
+        <childnode refid="5030" relation="include">
+        </childnode>
+      </node>
+      <node id="5061">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5062" relation="include">
+        </childnode>
+        <childnode refid="5063" relation="include">
+        </childnode>
+        <childnode refid="5064" relation="include">
+        </childnode>
+      </node>
+      <node id="5058">
+        <label>cstdarg</label>
+      </node>
+      <node id="5041">
+        <label>string</label>
+      </node>
+      <node id="5050">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5029" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+        <childnode refid="5051" relation="include">
+        </childnode>
+        <childnode refid="5052" relation="include">
+        </childnode>
+        <childnode refid="5054" relation="include">
+        </childnode>
+        <childnode refid="5061" relation="include">
+        </childnode>
+        <childnode refid="5064" relation="include">
+        </childnode>
+      </node>
+      <node id="5052">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5053" relation="include">
+        </childnode>
+      </node>
+      <node id="5054">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5055" relation="include">
+        </childnode>
+        <childnode refid="5043" relation="include">
+        </childnode>
+        <childnode refid="5037" relation="include">
+        </childnode>
+        <childnode refid="5047" relation="include">
+        </childnode>
+        <childnode refid="5056" relation="include">
+        </childnode>
+        <childnode refid="5057" relation="include">
+        </childnode>
+      </node>
+      <node id="5036">
+        <label>ostream</label>
+      </node>
+      <node id="5039">
+        <label>limits.h</label>
+      </node>
+      <node id="5044">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5045" relation="include">
+        </childnode>
+        <childnode refid="5043" relation="include">
+        </childnode>
+        <childnode refid="5046" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+        <childnode refid="5047" relation="include">
+        </childnode>
+        <childnode refid="5050" relation="include">
+        </childnode>
+      </node>
+      <node id="5038">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="5031" relation="include">
+        </childnode>
+        <childnode refid="5039" relation="include">
+        </childnode>
+        <childnode refid="5033" relation="include">
+        </childnode>
+        <childnode refid="5040" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+        <childnode refid="5042" relation="include">
+        </childnode>
+        <childnode refid="5043" relation="include">
+        </childnode>
+        <childnode refid="5044" relation="include">
+        </childnode>
+        <childnode refid="5047" relation="include">
+        </childnode>
+      </node>
+      <node id="5066">
+        <label>typeinfo</label>
+      </node>
+      <node id="5070">
+        <label>optional</label>
+      </node>
+      <node id="5042">
+        <label>vector</label>
+      </node>
+      <node id="5048">
+        <label>ciso646</label>
+      </node>
+      <node id="5060">
+        <label>sstream</label>
+      </node>
+      <node id="5047">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5048" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+        <childnode refid="5049" relation="include">
+        </childnode>
+      </node>
+      <node id="5049">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5049" relation="include">
+        </childnode>
+      </node>
+      <node id="5056">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5045" relation="include">
+        </childnode>
+        <childnode refid="5041" relation="include">
+        </childnode>
+      </node>
+      <node id="5064">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5065" relation="include">
+        </childnode>
+      </node>
+      <node id="5053">
+        <label>cstdlib</label>
+      </node>
+      <node id="5045">
+        <label>iostream</label>
+      </node>
+      <node id="5071">
+        <label>unordered_map</label>
+      </node>
+      <node id="5032">
+        <label>climits</label>
+      </node>
+      <node id="5063">
+        <label>mutex</label>
+      </node>
+      <node id="5037">
+        <label>type_traits</label>
+      </node>
+      <node id="5051">
+        <label>config.h</label>
+      </node>
+      <node id="5031">
+        <label>algorithm</label>
+      </node>
+      <node id="5040">
+        <label>cstring</label>
+      </node>
+      <node id="5043">
+        <label>memory</label>
+      </node>
+      <node id="5065">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5045" relation="include">
+        </childnode>
+        <childnode refid="5066" relation="include">
+        </childnode>
+        <childnode refid="5047" relation="include">
+        </childnode>
+      </node>
+      <node id="5067">
+        <label>map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="5028" relation="include">
+        </childnode>
+        <childnode refid="5068" relation="include">
+        </childnode>
+        <childnode refid="5069" relation="include">
+        </childnode>
+        <childnode refid="5035" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5072">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="5073" relation="include">
+        </childnode>
+        <childnode refid="5074" relation="include">
+        </childnode>
+      </node>
+      <node id="5073">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+      </node>
+      <node id="5074">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1curve_1_1_unordered_map" prot="public">openage::curve::UnorderedMap</innerclass>
+    <innerclass refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" prot="private">openage::curve::UnorderedMap::map_element</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="curve_8h" kindref="compound">curve.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="map__filter__iterator_8h" kindref="compound">map_filter_iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1curve_1_1_unordered_map" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref><sp/>{</highlight></codeline>
+<codeline lineno="22" refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" kindref="compound">map_element</ref><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a32835688bb0476a2c16cea52a10708c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a32835688bb0476a2c16cea52a10708c1" kindref="member">map_element</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;v,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;d)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" kindref="member">value</ref>(v),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" kindref="member">alive</ref>(a),</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" kindref="member">dead</ref>(d)<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val_t<sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" kindref="member">alive</ref>;</highlight></codeline>
+<codeline lineno="31" refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" kindref="member">dead</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1curve_1_1_unordered_map_1ad67364bdecc861f16e38d1e17deac202" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;key_t,<sp/>map_element&gt;<sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1ad67364bdecc861f16e38d1e17deac202" kindref="member">container</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1curve_1_1_unordered_map_1abf74f2a6d59323e9ad9458e8d91b9258" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1abf74f2a6d59323e9ad9458e8d91b9258" kindref="member">const_iterator</ref><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::unordered_map&lt;key_t,<sp/>map_element&gt;::const_iterator;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;MapFilterIterator&lt;key_t,<sp/>val_t,<sp/>UnorderedMap&gt;&gt;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a71ab04bbbcc0c9bc9ef02baf236d94b9" kindref="member">operator ()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;MapFilterIterator&lt;key_t,<sp/>val_t,<sp/>UnorderedMap&gt;&gt;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1ab7e91da88c63f0bc632cf38572706fc5" kindref="member">at</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&gt;</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a3d59e255c6113d5e517ba2f69e6927ea" kindref="member">begin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;e<sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>())<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&gt;</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1af9481e8e9e7cba29a319bd1bea5be0c8" kindref="member">end</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;e<sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>())<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&gt;</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">birth</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&gt;</ref></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">birth</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;death,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;value);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&gt;</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a74e9ff15f6b3176742a166d7e7c7b5f2" kindref="member">between</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;to)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">birth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">birth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;val_t, val_t, UnorderedMap&gt;</ref><sp/>&amp;);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" kindref="member">kill</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" kindref="member">kill</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;val_t, val_t, UnorderedMap&gt;</ref><sp/>&amp;);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>all<sp/>dead<sp/>elements<sp/>before<sp/>that<sp/>point<sp/>in<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" kindref="member">clean</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1curve_1_1_unordered_map_1a9089d0b0dc73dde810956090bb44d52f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a9089d0b0dc73dde810956090bb44d52f" kindref="member">dump</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>:<sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1ad67364bdecc861f16e38d1e17deac202" kindref="member">container</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Element:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i.second.value<sp/>&lt;&lt;<sp/>std::endl;;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">std::optional&lt;MapFilterIterator&lt;key_t,<sp/>val_t,<sp/>UnorderedMap&lt;key_t,<sp/>val_t&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="87" refid="classopenage_1_1curve_1_1_unordered_map_1a71ab04bbbcc0c9bc9ef02baf236d94b9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1a71ab04bbbcc0c9bc9ef02baf236d94b9" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;at(time,<sp/>key);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">std::optional&lt;MapFilterIterator&lt;key_t,<sp/>val_t,<sp/>UnorderedMap&lt;key_t,<sp/>val_t&gt;&gt;&gt;</highlight></codeline>
+<codeline lineno="94" refid="classopenage_1_1curve_1_1_unordered_map_1ab7e91da88c63f0bc632cf38572706fc5" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1ab7e91da88c63f0bc632cf38572706fc5" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::at</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<sp/>time,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;<sp/>key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>this-&gt;container.find(key);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/>this-&gt;container.end()<sp/>and</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;second.alive<sp/>&lt;=<sp/>time<sp/>and</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e-&gt;second.dead<sp/>&gt;<sp/>time)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>()</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="114" refid="classopenage_1_1curve_1_1_unordered_map_1a3d59e255c6113d5e517ba2f69e6927ea" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1a3d59e255c6113d5e517ba2f69e6927ea" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::begin</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;(</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;container.begin(),</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="124" refid="classopenage_1_1curve_1_1_unordered_map_1af9481e8e9e7cba29a319bd1bea5be0c8" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1af9481e8e9e7cba29a319bd1bea5be0c8" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::end</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;(</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;container.end(),</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>(),</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="134" refid="classopenage_1_1curve_1_1_unordered_map_1a74e9ff15f6b3176742a166d7e7c7b5f2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1a74e9ff15f6b3176742a166d7e7c7b5f2" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::between</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;from,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;to)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;(</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;container.begin(),</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!it.valid())<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++it;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="149" refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;alive,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;insert(</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alive,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>(),</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="161" refid="classopenage_1_1curve_1_1_unordered_map_1a0794cb0a2bca785e61ce8a8f1fd2ff8f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;alive,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;dead,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" kindref="compound">map_element</ref><sp/>e(value,<sp/>alive,<sp/>dead);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;container.insert(std::make_pair(key,<sp/>e));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;key_t, val_t, UnorderedMap&lt;key_t, val_t&gt;</ref>&gt;(</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it.first,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alive,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dead);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="175" refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::birth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;container.find(key);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;container.end())<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second.alive<sp/>=<sp/>time;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="184" refid="classopenage_1_1curve_1_1_unordered_map_1afc343e3cce6523cc598efd2fb3a30952" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::birth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt;val_t,<sp/>val_t,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref>&gt;<sp/>&amp;it)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>it-&gt;second.alive<sp/>=<sp/>time;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="191" refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::kill</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;key)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;container.find(key);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;container.end())<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second.dead<sp/>=<sp/>time;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="200" refid="classopenage_1_1curve_1_1_unordered_map_1a1462828461d5615ecb2d0c613637aa74" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::kill</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator&lt;val_t, val_t, UnorderedMap&gt;</ref><sp/>&amp;it)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>it-&gt;second.dead<sp/>=<sp/>time;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="206" refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" kindref="member">UnorderedMap&lt;key_t, val_t&gt;::clean</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>save<sp/>everything<sp/>to<sp/>a<sp/>file<sp/>and<sp/>be<sp/>happy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/map.h"/>
+  </compounddef>
+</doxygen>

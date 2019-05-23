@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="type__pair_8cpp" kind="file" language="C++">
+    <compoundname>type_pair.cpp</compoundname>
+    <includes refid="type__pair_8h" local="yes">type_pair.h</includes>
+    <incdepgraph>
+      <node id="26415">
+        <label>libopenage/unit/type_pair.cpp</label>
+        <link refid="type__pair_8cpp"/>
+        <childnode refid="26416" relation="include">
+        </childnode>
+      </node>
+      <node id="26416">
+        <label>type_pair.h</label>
+        <link refid="type__pair_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="type__pair_8h" kindref="compound">type_pair.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classopenage_1_1_unit_type_1a6ae0e2415e9082dbbfb4210343ac9f27" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_unit_type_1a6ae0e2415e9082dbbfb4210343ac9f27" kindref="member">UnitType::UnitType</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classopenage_1_1_unit_type_1abced3a6bfc5e322ed0ae58a699cd1e80" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_type_1abced3a6bfc5e322ed0ae58a699cd1e80" kindref="member">UnitType::match</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1_type_pair_1aa892274df5dd2a35a659ee04cba10ab4" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_type_pair_1aa892274df5dd2a35a659ee04cba10ab4" kindref="member">TypePair::TypePair</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/unit/type_pair.cpp"/>
+  </compounddef>
+</doxygen>

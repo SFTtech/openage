@@ -1,0 +1,442 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1options_1_1_option_value" kind="class" language="C++" prot="public">
+    <compoundname>openage::options::OptionValue</compoundname>
+    <includes refid="options_8h" local="no">options.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6b" kindref="member">option_type</ref></type>
+        <definition>const option_type openage::options::OptionValue::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="94" column="1" bodyfile="libopenage/options.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_value_1aff36cc2b7adc32b62266be18fbeef197" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::options::OptionValue::owner</definition>
+        <argsstring></argsstring>
+        <name>owner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Use of shared_ptr and unique_ptr doesnt work here possibly solved by templating ownership type</para>
+<para>non-owned variables act as references </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="125" column="1" bodyfile="libopenage/options.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_value_1ab140f0393e1c70bc71ffd251380c951e" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_variable_base" kindref="compound">util::VariableBase</ref> *</type>
+        <definition>util::VariableBase* openage::options::OptionValue::var</definition>
+        <argsstring></argsstring>
+        <name>var</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="126" column="1" bodyfile="libopenage/options.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(bool b)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>value ownership managed by this </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="45" column="1" bodyfile="libopenage/options.cpp" bodystart="9" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a5c270c02e50dd480b2536e14eb74e98c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(int i)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="46" column="1" bodyfile="libopenage/options.cpp" bodystart="16" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a33e2a0c4037c94f23d8a72add56761af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(double d)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="47" column="1" bodyfile="libopenage/options.cpp" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1acae99f9c19fde936370b6d499051fc9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(const char *s)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="48" column="1" bodyfile="libopenage/options.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a0629b9f69b41b92342586f19ccbf95b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="49" column="1" bodyfile="libopenage/options.cpp" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1ab7531638f7b5834ce7df56e6f0c1e889" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(const option_list &amp;l)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1options_1a53e5aeb32d312633e9f30394a4c21014" kindref="member">option_list</ref> &amp;</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="50" column="1" bodyfile="libopenage/options.cpp" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1ab36530fdc058d652640f00c7768ac579" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(const OptionValue &amp;v)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="51" column="1" bodyfile="libopenage/options.cpp" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a46138f5f4b6064b427b50644e7345a4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(util::Variable&lt; bool &gt; *b)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable</ref>&lt; bool &gt; *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>value owned by another object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="56" column="1" bodyfile="libopenage/options.cpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1aca313b23f3bf17dfa4e3b6ff4425d996" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(util::Variable&lt; int &gt; *i)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable</ref>&lt; int &gt; *</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="57" column="1" bodyfile="libopenage/options.cpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a0b74d458a739861eaa7b03d094006b55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(util::Variable&lt; double &gt; *d)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable</ref>&lt; double &gt; *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="58" column="1" bodyfile="libopenage/options.cpp" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a70344d2366db773baac96d273dea434b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(util::Variable&lt; std::string &gt; *s)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable</ref>&lt; std::string &gt; *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="59" column="1" bodyfile="libopenage/options.cpp" bodystart="81" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a6b933622a41a0ad29a39fe53fe233d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::OptionValue</definition>
+        <argsstring>(util::Variable&lt; option_list &gt; *l)</argsstring>
+        <name>OptionValue</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable</ref>&lt; <ref refid="namespaceopenage_1_1options_1a53e5aeb32d312633e9f30394a4c21014" kindref="member">option_list</ref> &gt; *</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="60" column="1" bodyfile="libopenage/options.cpp" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a387d858b9c133fc690e972f474242306" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::options::OptionValue::~OptionValue</definition>
+        <argsstring>()</argsstring>
+        <name>~OptionValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="62" column="1" bodyfile="libopenage/options.cpp" bodystart="95" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a269d5de943bc725290a1ff4d12fc27c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::options::OptionValue::is_reference</definition>
+        <argsstring>() const</argsstring>
+        <name>is_reference</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if this value references an object not owned by itself </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="68" column="1" bodyfile="libopenage/options.cpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a3131bfc6b2018d894fc51ecea54766ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::options::OptionValue::operator==</definition>
+        <argsstring>(const OptionValue &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks equality </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="73" column="1" bodyfile="libopenage/options.cpp" bodystart="107" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1ae274c0b2ad61b040b4e82312ea5b496b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+        <definition>const OptionValue &amp; openage::options::OptionValue::operator=</definition>
+        <argsstring>(const OptionValue &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assignment, reference values share their values non reference values are copied </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="79" column="1" bodyfile="libopenage/options.cpp" bodystart="136" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::options::OptionValue::str_value</definition>
+        <argsstring>() const</argsstring>
+        <name>str_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Value converted to a string </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="84" column="1" bodyfile="libopenage/options.cpp" bodystart="171" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>const T &amp;</type>
+        <definition>const T&amp; openage::options::OptionValue::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read inner type - the templated type must match </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="90" column="1" bodyfile="libopenage/options.h" bodystart="90" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a4b1ec4a19215c1f708254e32d80c2b33" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionValue::set</definition>
+        <argsstring>(const OptionValue &amp;other)</argsstring>
+        <name>set</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="101" column="1" bodyfile="libopenage/options.cpp" bodystart="144" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_value_1a5a9a57371b4a3d6a8b4278224aba1752" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::options::OptionValue::set_value</definition>
+        <argsstring>(const OptionValue &amp;other)</argsstring>
+        <name>set_value</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="104" column="1" bodyfile="libopenage/options.h" bodystart="104" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>stores a type and value </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3484">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="3483">
+        <label>openage::options::OptionValue</label>
+        <link refid="classopenage_1_1options_1_1_option_value"/>
+        <childnode refid="3484" relation="usage">
+          <edgelabel>-var</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/options.h" line="39" column="1" bodyfile="libopenage/options.h" bodystart="39" bodyend="128"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_value_1a269d5de943bc725290a1ff4d12fc27c1" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>is_reference</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1ae274c0b2ad61b040b4e82312ea5b496b" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a3131bfc6b2018d894fc51ecea54766ec" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a5c270c02e50dd480b2536e14eb74e98c" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a33e2a0c4037c94f23d8a72add56761af" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1acae99f9c19fde936370b6d499051fc9f" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a0629b9f69b41b92342586f19ccbf95b3" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1ab7531638f7b5834ce7df56e6f0c1e889" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1ab36530fdc058d652640f00c7768ac579" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a46138f5f4b6064b427b50644e7345a4b" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1aca313b23f3bf17dfa4e3b6ff4425d996" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a0b74d458a739861eaa7b03d094006b55" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a70344d2366db773baac96d273dea434b" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a6b933622a41a0ad29a39fe53fe233d8f" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>OptionValue</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1aff36cc2b7adc32b62266be18fbeef197" prot="private" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>owner</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a4b1ec4a19215c1f708254e32d80c2b33" prot="private" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>set</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a5a9a57371b4a3d6a8b4278224aba1752" prot="private" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>set_value</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>str_value</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>type</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" prot="public" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>value</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1ab140f0393e1c70bc71ffd251380c951e" prot="private" virt="non-virtual"><scope>openage::options::OptionValue</scope><name>var</name></member>
+      <member refid="classopenage_1_1options_1_1_option_value_1a387d858b9c133fc690e972f474242306" prot="public" virt="virtual"><scope>openage::options::OptionValue</scope><name>~OptionValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

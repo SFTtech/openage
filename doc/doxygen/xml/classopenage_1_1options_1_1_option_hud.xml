@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1options_1_1_option_hud" kind="class" language="C++" prot="public">
+    <compoundname>openage::options::OptionHud</compoundname>
+    <includes refid="options_8h" local="no">options.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_hud_1a256236aa1b443d974352f8a3a8a5fd09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionHud::OptionHud</definition>
+        <argsstring>()</argsstring>
+        <name>OptionHud</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="286" column="1" bodyfile="libopenage/options.cpp" bodystart="340" bodyend="342"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A thing for drawing OptionNodes</para>
+<para>generates required gui elements for each variable on a panel </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3476">
+        <label>openage::options::OptionHud</label>
+        <link refid="classopenage_1_1options_1_1_option_hud"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/options.h" line="284" column="1" bodyfile="libopenage/options.h" bodystart="284" bodyend="287"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_hud_1a256236aa1b443d974352f8a3a8a5fd09" prot="public" virt="non-virtual"><scope>openage::options::OptionHud</scope><name>OptionHud</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

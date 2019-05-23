@@ -1,0 +1,738 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="opengl_2window_8cpp" kind="file" language="C++">
+    <compoundname>window.cpp</compoundname>
+    <includes refid="opengl_2window_8h" local="yes">window.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="sdl__global_8h" local="yes">../sdl_global.h</includes>
+    <includes refid="opengl_2renderer_8h" local="yes">renderer.h</includes>
+    <incdepgraph>
+      <node id="22828">
+        <label>list</label>
+      </node>
+      <node id="22820">
+        <label>atomic</label>
+      </node>
+      <node id="22859">
+        <label>render_target.h</label>
+        <link refid="opengl_2render__target_8h"/>
+        <childnode refid="22803" relation="include">
+        </childnode>
+        <childnode refid="22802" relation="include">
+        </childnode>
+        <childnode refid="22860" relation="include">
+        </childnode>
+        <childnode refid="22870" relation="include">
+        </childnode>
+      </node>
+      <node id="22825">
+        <label>iomanip</label>
+      </node>
+      <node id="22798">
+        <label>functional</label>
+      </node>
+      <node id="22853">
+        <label>../geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22854" relation="include">
+        </childnode>
+      </node>
+      <node id="22846">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+      </node>
+      <node id="22815">
+        <label>cstdint</label>
+      </node>
+      <node id="22861">
+        <label>../resources/texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22862" relation="include">
+        </childnode>
+        <childnode refid="22840" relation="include">
+        </childnode>
+      </node>
+      <node id="22839">
+        <label>resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22835" relation="include">
+        </childnode>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22818" relation="include">
+        </childnode>
+        <childnode refid="22803" relation="include">
+        </childnode>
+        <childnode refid="22840" relation="include">
+        </childnode>
+      </node>
+      <node id="22834">
+        <label>shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="22835" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22836" relation="include">
+        </childnode>
+        <childnode refid="22850" relation="include">
+        </childnode>
+        <childnode refid="22802" relation="include">
+        </childnode>
+        <childnode refid="22851" relation="include">
+        </childnode>
+        <childnode refid="22804" relation="include">
+        </childnode>
+        <childnode refid="22852" relation="include">
+        </childnode>
+        <childnode refid="22856" relation="include">
+        </childnode>
+      </node>
+      <node id="22797">
+        <label>../window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22801" relation="include">
+        </childnode>
+        <childnode refid="22802" relation="include">
+        </childnode>
+      </node>
+      <node id="22823">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="22824" relation="include">
+        </childnode>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22825" relation="include">
+        </childnode>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22826" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+      </node>
+      <node id="22845">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="22830" relation="include">
+        </childnode>
+      </node>
+      <node id="22831">
+        <label>stdexcept</label>
+      </node>
+      <node id="22844">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="22838">
+        <label>eigen3/Eigen/Dense</label>
+      </node>
+      <node id="22827">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="22828" relation="include">
+        </childnode>
+        <childnode refid="22829" relation="include">
+        </childnode>
+        <childnode refid="22806" relation="include">
+        </childnode>
+      </node>
+      <node id="22824">
+        <label>cstdarg</label>
+      </node>
+      <node id="22812">
+        <label>string</label>
+      </node>
+      <node id="22814">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22816" relation="include">
+        </childnode>
+        <childnode refid="22817" relation="include">
+        </childnode>
+        <childnode refid="22819" relation="include">
+        </childnode>
+        <childnode refid="22827" relation="include">
+        </childnode>
+        <childnode refid="22806" relation="include">
+        </childnode>
+      </node>
+      <node id="22817">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="22818" relation="include">
+        </childnode>
+      </node>
+      <node id="22836">
+        <label>../shader_program.h</label>
+        <link refid="shader__program_8h"/>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22837" relation="include">
+        </childnode>
+        <childnode refid="22838" relation="include">
+        </childnode>
+        <childnode refid="22839" relation="include">
+        </childnode>
+        <childnode refid="22830" relation="include">
+        </childnode>
+      </node>
+      <node id="22795">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+        <childnode refid="22796" relation="include">
+        </childnode>
+        <childnode refid="22805" relation="include">
+        </childnode>
+        <childnode refid="22830" relation="include">
+        </childnode>
+        <childnode refid="22832" relation="include">
+        </childnode>
+        <childnode refid="22833" relation="include">
+        </childnode>
+      </node>
+      <node id="22819">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="22820" relation="include">
+        </childnode>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22821" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+        <childnode refid="22822" relation="include">
+        </childnode>
+        <childnode refid="22823" relation="include">
+        </childnode>
+      </node>
+      <node id="22837">
+        <label>map</label>
+      </node>
+      <node id="22804">
+        <label>context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="22801" relation="include">
+        </childnode>
+      </node>
+      <node id="22868">
+        <label>fstream</label>
+      </node>
+      <node id="22841">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22842" relation="include">
+        </childnode>
+        <childnode refid="22843" relation="include">
+        </childnode>
+      </node>
+      <node id="22830">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="22808" relation="include">
+        </childnode>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22831" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+        <childnode refid="22814" relation="include">
+        </childnode>
+      </node>
+      <node id="22869">
+        <label>../texture.h</label>
+        <link refid="renderer_2texture_8h"/>
+        <childnode refid="22861" relation="include">
+        </childnode>
+      </node>
+      <node id="22866">
+        <label>../../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="22818" relation="include">
+        </childnode>
+        <childnode refid="22867" relation="include">
+        </childnode>
+        <childnode refid="22868" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22835" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22830" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+        <childnode refid="22849" relation="include">
+        </childnode>
+        <childnode refid="22840" relation="include">
+        </childnode>
+      </node>
+      <node id="22801">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="22870">
+        <label>framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22860" relation="include">
+        </childnode>
+        <childnode refid="22856" relation="include">
+        </childnode>
+      </node>
+      <node id="22860">
+        <label>texture.h</label>
+        <link refid="renderer_2opengl_2texture_8h"/>
+        <childnode refid="22861" relation="include">
+        </childnode>
+        <childnode refid="22869" relation="include">
+        </childnode>
+        <childnode refid="22856" relation="include">
+        </childnode>
+      </node>
+      <node id="22863">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22864" relation="include">
+        </childnode>
+        <childnode refid="22830" relation="include">
+        </childnode>
+      </node>
+      <node id="22809">
+        <label>typeinfo</label>
+      </node>
+      <node id="22803">
+        <label>optional</label>
+      </node>
+      <node id="22800">
+        <label>vector</label>
+      </node>
+      <node id="22805">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="22806" relation="include">
+        </childnode>
+        <childnode refid="22814" relation="include">
+        </childnode>
+      </node>
+      <node id="22811">
+        <label>ciso646</label>
+      </node>
+      <node id="22851">
+        <label>uniform_input.h</label>
+        <link refid="uniform__input_8h"/>
+        <childnode refid="22835" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22802" relation="include">
+        </childnode>
+      </node>
+      <node id="22832">
+        <label>../sdl_global.h</label>
+        <link refid="sdl__global_8h"/>
+      </node>
+      <node id="22864">
+        <label>utility</label>
+      </node>
+      <node id="22826">
+        <label>sstream</label>
+      </node>
+      <node id="22810">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="22811" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22813" relation="include">
+        </childnode>
+      </node>
+      <node id="22847">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22848" relation="include">
+        </childnode>
+        <childnode refid="22841" relation="include">
+        </childnode>
+      </node>
+      <node id="22813">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="22813" relation="include">
+        </childnode>
+      </node>
+      <node id="22857">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="22822">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="22808" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+      </node>
+      <node id="22806">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="22807" relation="include">
+        </childnode>
+      </node>
+      <node id="22849">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="22858">
+        <label>vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="22839" relation="include">
+        </childnode>
+        <childnode refid="22855" relation="include">
+        </childnode>
+        <childnode refid="22856" relation="include">
+        </childnode>
+      </node>
+      <node id="22852">
+        <label>geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="22803" relation="include">
+        </childnode>
+        <childnode refid="22853" relation="include">
+        </childnode>
+        <childnode refid="22839" relation="include">
+        </childnode>
+        <childnode refid="22855" relation="include">
+        </childnode>
+        <childnode refid="22858" relation="include">
+        </childnode>
+      </node>
+      <node id="22850">
+        <label>../resources/shader_source.h</label>
+        <link refid="shader__source_8h"/>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22840" relation="include">
+        </childnode>
+      </node>
+      <node id="22848">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="22808" relation="include">
+        </childnode>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+      </node>
+      <node id="22818">
+        <label>cstdlib</label>
+      </node>
+      <node id="22808">
+        <label>iostream</label>
+      </node>
+      <node id="22802">
+        <label>renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22799" relation="include">
+        </childnode>
+      </node>
+      <node id="22854">
+        <label>cstddef</label>
+      </node>
+      <node id="22835">
+        <label>unordered_map</label>
+      </node>
+      <node id="22843">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22829" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+        <childnode refid="22844" relation="include">
+        </childnode>
+        <childnode refid="22845" relation="include">
+        </childnode>
+        <childnode refid="22846" relation="include">
+        </childnode>
+      </node>
+      <node id="22865">
+        <label>texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22866" relation="include">
+        </childnode>
+      </node>
+      <node id="22829">
+        <label>mutex</label>
+      </node>
+      <node id="22796">
+        <label>window.h</label>
+        <link refid="opengl_2window_8h"/>
+        <childnode refid="22797" relation="include">
+        </childnode>
+        <childnode refid="22803" relation="include">
+        </childnode>
+        <childnode refid="22804" relation="include">
+        </childnode>
+      </node>
+      <node id="22840">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="22812" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22841" relation="include">
+        </childnode>
+        <childnode refid="22847" relation="include">
+        </childnode>
+        <childnode refid="22849" relation="include">
+        </childnode>
+      </node>
+      <node id="22862">
+        <label>texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="22815" relation="include">
+        </childnode>
+        <childnode refid="22800" relation="include">
+        </childnode>
+        <childnode refid="22863" relation="include">
+        </childnode>
+        <childnode refid="22865" relation="include">
+        </childnode>
+      </node>
+      <node id="22856">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="22803" relation="include">
+        </childnode>
+        <childnode refid="22798" relation="include">
+        </childnode>
+        <childnode refid="22857" relation="include">
+        </childnode>
+      </node>
+      <node id="22842">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="22821">
+        <label>type_traits</label>
+      </node>
+      <node id="22816">
+        <label>config.h</label>
+      </node>
+      <node id="22867">
+        <label>cstring</label>
+      </node>
+      <node id="22855">
+        <label>buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="22856" relation="include">
+        </childnode>
+      </node>
+      <node id="22799">
+        <label>memory</label>
+      </node>
+      <node id="22833">
+        <label>renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="22799" relation="include">
+        </childnode>
+        <childnode refid="22801" relation="include">
+        </childnode>
+        <childnode refid="22804" relation="include">
+        </childnode>
+        <childnode refid="22802" relation="include">
+        </childnode>
+        <childnode refid="22834" relation="include">
+        </childnode>
+        <childnode refid="22859" relation="include">
+        </childnode>
+      </node>
+      <node id="22807">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="22808" relation="include">
+        </childnode>
+        <childnode refid="22809" relation="include">
+        </childnode>
+        <childnode refid="22810" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="opengl_2window_8h" kindref="compound">window.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sdl_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="opengl_2renderer_8h" kindref="compound">renderer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9ac3a40d0f546cf8026715d0f5a0f637" kindref="member">GlWindow::GlWindow</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*title,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1_window" kindref="compound">Window</ref>(width,<sp/>height)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" kindref="member">make_sdl_available</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>need<sp/>HIGHDPI<sp/>for<sp/>eventual<sp/>support<sp/>of<sp/>GUI<sp/>scaling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>HIGHDPI<sp/>fails<sp/>(requires<sp/>newer<sp/>SDL2?)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>window_flags<sp/>=<sp/>SDL_WINDOW_OPENGL<sp/>|<sp/>SDL_WINDOW_RESIZABLE<sp/>|<sp/>SDL_WINDOW_MAXIMIZED;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref><sp/>=<sp/>SDL_CreateWindow(</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>title,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_WINDOWPOS_CENTERED,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_WINDOWPOS_CENTERED,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref>.first,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;size.second,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window_flags</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>SDL<sp/>window:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError()};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aab2e3f73a07d214294a7b876127e1ae1" kindref="member">context</ref><sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">opengl::GlContext</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" kindref="member">add_resize_callback</ref>([]<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>w,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>h)<sp/>{<sp/>glViewport(0,<sp/>0,<sp/>w,<sp/>h);<sp/>}<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>SDL<sp/>window<sp/>with<sp/>OpenGL<sp/>context.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a3959f808d2c7d83556a7c605e2d550de" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a3959f808d2c7d83556a7c605e2d550de" kindref="member">GlWindow::~GlWindow</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_DestroyWindow(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1ad74b6ed2d5495dd39ccc7d21c88bac1f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1ad74b6ed2d5495dd39ccc7d21c88bac1f" kindref="member">GlWindow::set_size</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref>.first<sp/>!=<sp/>width<sp/>||<sp/>this-&gt;size.second<sp/>!=<sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_SetWindowSize(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref>,<sp/>width,<sp/>height);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref><sp/>=<sp/>std::make_pair(width,<sp/>height);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cb<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" kindref="member">on_resize</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(width,<sp/>height);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aae47c67c2194f86ad609762a371eef87" kindref="member">GlWindow::update</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_Event<sp/>event;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(SDL_PollEvent(&amp;event)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.type<sp/>==<sp/>SDL_WINDOWEVENT)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.window.event<sp/>==<sp/>SDL_WINDOWEVENT_RESIZED)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width<sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.window.data1;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height<sp/>=<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.window.data2;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Window<sp/>resized<sp/>to:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>width<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>height);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref><sp/>=<sp/>std::make_pair(width,<sp/>height);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cb<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" kindref="member">on_resize</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(width,<sp/>height);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.type<sp/>==<sp/>SDL_QUIT)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a7fdf5fbab00699344b8ce451cc73e688" kindref="member">should_be_closed</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>call<sp/>on_destroy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.type<sp/>==<sp/>SDL_KEYUP)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ev<sp/>=<sp/>*reinterpret_cast&lt;SDL_KeyboardEvent<sp/>const*&gt;(&amp;event);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cb<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1adc14f04028ef5322055dc37569a173f5" kindref="member">on_key</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(ev);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>keydown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.type<sp/>==<sp/>SDL_MOUSEBUTTONUP)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ev<sp/>=<sp/>*reinterpret_cast&lt;SDL_MouseButtonEvent<sp/>const*&gt;(&amp;event);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cb<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a13488daef83f3f84d9275dfb2aac7cfd" kindref="member">on_mouse_button</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cb(ev);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>mousedown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SwapWindow(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a45268949d2510860b3643bb7779f521b" refkind="member"><highlight class="normal">std::unique_ptr&lt;Renderer&gt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a45268949d2510860b3643bb7779f521b" kindref="member">GlWindow::make_renderer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;GlRenderer&gt;(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a7f074d1fa0eeebde4e417ee8d1154dee" kindref="member">get_context</ref>());</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a666be4fac900a35afedc7ec086d98133" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a666be4fac900a35afedc7ec086d98133" kindref="member">GlWindow::make_context_current</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_MakeCurrent(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a9f49ab8b2a5777ffba4792f80ee2b637" kindref="member">window</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aab2e3f73a07d214294a7b876127e1ae1" kindref="member">context</ref>-&gt;get_raw_context());</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a7f074d1fa0eeebde4e417ee8d1154dee" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">opengl::GlContext</ref><sp/>*<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1a7f074d1fa0eeebde4e417ee8d1154dee" kindref="member">GlWindow::get_context</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window_1aab2e3f73a07d214294a7b876127e1ae1" kindref="member">context</ref>.value();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/window.cpp"/>
+  </compounddef>
+</doxygen>

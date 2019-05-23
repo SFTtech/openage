@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="stackanalyzer_8h" kind="file" language="C++">
+    <compoundname>stackanalyzer.h</compoundname>
+    <includes refid="backtrace_8h" local="yes">backtrace.h</includes>
+    <includedby refid="error_2error_8cpp" local="yes">libopenage/error/error.cpp</includedby>
+    <includedby refid="error_2handlers_8cpp" local="yes">libopenage/error/handlers.cpp</includedby>
+    <includedby refid="stackanalyzer_8cpp" local="yes">libopenage/error/stackanalyzer.cpp</includedby>
+    <incdepgraph>
+      <node id="6534">
+        <label>libopenage/error/stackanalyzer.h</label>
+        <link refid="stackanalyzer_8h"/>
+        <childnode refid="6535" relation="include">
+        </childnode>
+      </node>
+      <node id="6539">
+        <label>functional</label>
+      </node>
+      <node id="6535">
+        <label>backtrace.h</label>
+        <link refid="backtrace_8h"/>
+        <childnode refid="6536" relation="include">
+        </childnode>
+        <childnode refid="6537" relation="include">
+        </childnode>
+        <childnode refid="6538" relation="include">
+        </childnode>
+        <childnode refid="6539" relation="include">
+        </childnode>
+      </node>
+      <node id="6537">
+        <label>string</label>
+      </node>
+      <node id="6536">
+        <label>vector</label>
+      </node>
+      <node id="6538">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6540">
+        <label>libopenage/error/stackanalyzer.h</label>
+        <link refid="stackanalyzer_8h"/>
+        <childnode refid="6541" relation="include">
+        </childnode>
+        <childnode refid="6542" relation="include">
+        </childnode>
+        <childnode refid="6543" relation="include">
+        </childnode>
+      </node>
+      <node id="6541">
+        <label>libopenage/error/error.cpp</label>
+        <link refid="error_2error_8cpp"/>
+      </node>
+      <node id="6543">
+        <label>libopenage/error/stackanalyzer.cpp</label>
+        <link refid="stackanalyzer_8cpp"/>
+      </node>
+      <node id="6542">
+        <label>libopenage/error/handlers.cpp</label>
+        <link refid="error_2handlers_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1error_1_1_stack_analyzer" prot="public">openage::error::StackAnalyzer</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="backtrace_8h" kindref="compound">backtrace.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">error<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1error_1_1_stack_analyzer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer_1a82f244c47e648d1b7e1eefa577fc3622" kindref="member">StackAnalyzer</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Analyzes<sp/>the<sp/>current<sp/>stack,<sp/>and<sp/>stores<sp/>the<sp/>program<sp/>counter<sp/>values<sp/>in</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>this-&gt;stack_addrs.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1error_1_1_stack_analyzer_1a6ff702e8c60bc0f7aa6ab908e85cde07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;void<sp/>*&gt;<sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer_1a6ff702e8c60bc0f7aa6ab908e85cde07" kindref="member">stack_addrs</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Looks<sp/>up<sp/>symbol<sp/>names<sp/>for<sp/>the<sp/>program<sp/>counter<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" kindref="member">get_symbols</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref><sp/>*)&gt;<sp/>cb,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>reversed)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" kindref="member">trim_to_current_stack_frame</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/error/stackanalyzer.h"/>
+  </compounddef>
+</doxygen>

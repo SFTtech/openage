@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_nyan_type" kind="class" language="C++" prot="public">
+    <compoundname>openage::NyanType</compoundname>
+    <basecompoundref refid="classopenage_1_1_unit_type" prot="public" virt="non-virtual">openage::UnitType</basecompoundref>
+    <includes refid="unit__type_8h" local="no">unit_type.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1a63ce8cdf7fd596318a61c0c20628b88b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::NyanType::NyanType</definition>
+        <argsstring>(const Player &amp;owner)</argsstring>
+        <name>NyanType</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO: give the parsed nyan attributes to the constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="203" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="98" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1a22c0e00cbbef25bdbfd6cd02be70d6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::NyanType::~NyanType</definition>
+        <argsstring>()</argsstring>
+        <name>~NyanType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="204" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1af95692295537f3525bf7343cb0887b44" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::NyanType::id</definition>
+        <argsstring>() const override</argsstring>
+        <name>id</name>
+        <reimplements refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b">id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the unique id of this unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="206" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1a82c113bb1212048d1dee4b5aac83c8ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::NyanType::parent_id</definition>
+        <argsstring>() const override</argsstring>
+        <name>parent_id</name>
+        <reimplements refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f">parent_id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the parent id of this unit type which is used for village base and gather types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="207" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1a305c61d06b1dcca1719a1802b78a6b5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::NyanType::name</definition>
+        <argsstring>() const override</argsstring>
+        <name>name</name>
+        <reimplements refid="classopenage_1_1_unit_type_1afadac353590f8c7d7a590f41420fa32c">name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the name of the unit type being produced </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="208" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="114" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1ad058ecef5e52cd4da37dc7d2f10e4255" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::NyanType::initialise</definition>
+        <argsstring>(Unit *, Player &amp;) override</argsstring>
+        <name>initialise</name>
+        <reimplements refid="classopenage_1_1_unit_type_1a810c763e421cd95a9c64ab4c3e351140">initialise</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize units attributes to this type spec</para>
+<para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
+<para>TODO: make const </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="209" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="118" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_nyan_type_1ae2f61064a00875267824a0bdfba63085" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>TerrainObject * openage::NyanType::place</definition>
+        <argsstring>(Unit *, std::shared_ptr&lt; Terrain &gt;, coord::phys3) const override</argsstring>
+        <name>place</name>
+        <reimplements refid="classopenage_1_1_unit_type_1a51facc71929fe2d425bc6bec06e0dc48">place</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set unit in place <ndash/> return if placement was successful</para>
+<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object TODO: make const </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="210" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="138" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An example of how nyan can work with the type system </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3387">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+      </node>
+      <node id="3386">
+        <label>openage::NyanType</label>
+        <link refid="classopenage_1_1_nyan_type"/>
+        <childnode refid="3387" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3399">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="3397" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3398" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="3396">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="3397" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3395" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="3397">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="3389">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="3390" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="3392" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="3393" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="3395" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="3398">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="3399" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="3401">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="3392">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="3395">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="3396" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="3398" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="3394" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="3400" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="3401" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="3390">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="3391" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3394">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="3400">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="3393">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="3394" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="3391">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="3388">
+        <label>openage::NyanType</label>
+        <link refid="classopenage_1_1_nyan_type"/>
+        <childnode refid="3389" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/unit_type.h" line="197" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="197" bodyend="212"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_type_1acf200f0f7321ae1e074bae39bc437b53" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>copy_attributes</name></member>
+      <member refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>cost</name></member>
+      <member refid="classopenage_1_1_unit_type_1a4603ca3746b1c118bd2c082f5e8ba3b1" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>default_attributes</name></member>
+      <member refid="classopenage_1_1_unit_type_1aa0d238ca5c0cb6b4b328e77dc12abc11" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>default_texture</name></member>
+      <member refid="classopenage_1_1_unit_type_1a6cb4b86a37f31b2994d197f43da03ab5" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>foundation_size</name></member>
+      <member refid="classopenage_1_1_unit_type_1aaf36044630d13a601a4245e34419df90" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>graphics</name></member>
+      <member refid="classopenage_1_1_unit_type_1af3dc1ba3b4f6cc2418ebbc9375461e49" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>had_limit</name></member>
+      <member refid="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>have_limit</name></member>
+      <member refid="classopenage_1_1_nyan_type_1af95692295537f3525bf7343cb0887b44" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>id</name></member>
+      <member refid="classopenage_1_1_nyan_type_1ad058ecef5e52cd4da37dc7d2f10e4255" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>initialise</name></member>
+      <member refid="classopenage_1_1_unit_type_1a9cd05602a6b909ef27928c1b73a0f747" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>instances</name></member>
+      <member refid="classopenage_1_1_unit_type_1abced3a6bfc5e322ed0ae58a699cd1e80" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>match</name></member>
+      <member refid="classopenage_1_1_nyan_type_1a305c61d06b1dcca1719a1802b78a6b5a" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>name</name></member>
+      <member refid="classopenage_1_1_nyan_type_1a63ce8cdf7fd596318a61c0c20628b88b" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>NyanType</name></member>
+      <member refid="classopenage_1_1_unit_type_1a9a87307b27ad4747ebd54e4f5f5cb6ee" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>operator!=</name></member>
+      <member refid="classopenage_1_1_unit_type_1a791ffeb70d0ca577cfcccb3de4273d3a" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1_unit_type_1a8aefb19903db17d9f07cea64ecba76bf" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>owner</name></member>
+      <member refid="classopenage_1_1_nyan_type_1a82c113bb1212048d1dee4b5aac83c8ec" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>parent_id</name></member>
+      <member refid="classopenage_1_1_unit_type_1a31d2ff66a69c6fb5d2f1cd699abd63a7" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>parent_type</name></member>
+      <member refid="classopenage_1_1_nyan_type_1ae2f61064a00875267824a0bdfba63085" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>place</name></member>
+      <member refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>place_beside</name></member>
+      <member refid="classopenage_1_1_unit_type_1a05d515d0c9b380bd9cb426b3bf3852f8" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>reinitialise</name></member>
+      <member refid="classopenage_1_1_unit_type_1a1585d5b6235d2d90cf2de4736f1a7e54" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>type_abilities</name></member>
+      <member refid="classopenage_1_1_unit_type_1a8f429cad1b7e5c9daedf836bdc8cd1a7" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>unit_class</name></member>
+      <member refid="classopenage_1_1_unit_type_1a6ae0e2415e9082dbbfb4210343ac9f27" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>UnitType</name></member>
+      <member refid="classopenage_1_1_unit_type_1a7bae1065ae7cd93f3b45cabd4cf47a5f" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>UnitType</name></member>
+      <member refid="classopenage_1_1_unit_type_1ad468f1258da7e164a0bc175ebdd11b2a" prot="public" virt="non-virtual"><scope>openage::NyanType</scope><name>upgrade</name></member>
+      <member refid="classopenage_1_1_nyan_type_1a22c0e00cbbef25bdbfd6cd02be70d6de" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>~NyanType</name></member>
+      <member refid="classopenage_1_1_unit_type_1a29b9bcea7d358a295c45dcd5e0e6cda5" prot="public" virt="virtual"><scope>openage::NyanType</scope><name>~UnitType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

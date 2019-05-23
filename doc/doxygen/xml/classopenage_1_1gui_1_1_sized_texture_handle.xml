@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_sized_texture_handle" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::SizedTextureHandle</compoundname>
+    <basecompoundref refid="classopenage_1_1gui_1_1_texture_handle" prot="public" virt="non-virtual">openage::gui::TextureHandle</basecompoundref>
+    <includes refid="gui__texture__handle_8h" local="no">gui_texture_handle.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" prot="public" static="no" mutable="no">
+        <type>QSize</type>
+        <definition>QSize openage::gui::SizedTextureHandle::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="23" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_sized_texture_handle_1ada6a4added07890f41b4fbbba74e05dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::SizedTextureHandle::SizedTextureHandle</definition>
+        <argsstring>()</argsstring>
+        <name>SizedTextureHandle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="12" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_sized_texture_handle_1a4c07e7e899c17925e33fda0834b6cc2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::SizedTextureHandle::SizedTextureHandle</definition>
+        <argsstring>(const TextureHandle &amp;handle, const QSize &amp;size)</argsstring>
+        <name>SizedTextureHandle</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref> &amp;</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="18" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4178">
+        <label>openage::gui::TextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_texture_handle"/>
+      </node>
+      <node id="4177">
+        <label>openage::gui::SizedTextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
+        <childnode refid="4178" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4182">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4180">
+        <label>openage::gui::TextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_texture_handle"/>
+        <childnode refid="4181" relation="usage">
+          <edgelabel>+texture</edgelabel>
+        </childnode>
+      </node>
+      <node id="4181">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4182" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+      <node id="4179">
+        <label>openage::gui::SizedTextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
+        <childnode refid="4180" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="19" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="19" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_sized_texture_handle_1a75db4be4d014c84bc509bf748db54b1c" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>size</name></member>
+      <member refid="classopenage_1_1gui_1_1_sized_texture_handle_1ada6a4added07890f41b4fbbba74e05dc" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>SizedTextureHandle</name></member>
+      <member refid="classopenage_1_1gui_1_1_sized_texture_handle_1a4c07e7e899c17925e33fda0834b6cc2f" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>SizedTextureHandle</name></member>
+      <member refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>subid</name></member>
+      <member refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" prot="public" virt="non-virtual"><scope>openage::gui::SizedTextureHandle</scope><name>texture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

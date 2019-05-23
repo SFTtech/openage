@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1gl__debug__parameters" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::gl_debug_parameters</compoundname>
+    <includes refid="opengl__debug__logger_8h" local="no">opengl_debug_logger.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::gl_debug_parameters::is_debug</definition>
+        <argsstring></argsstring>
+        <name>is_debug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if the GL context is a debug context </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="14" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" prot="public" static="no" mutable="no">
+        <type>GLvoid *</type>
+        <definition>GLvoid* qtsdl::gl_debug_parameters::callback</definition>
+        <argsstring></argsstring>
+        <name>callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Function that GL context uses to report debug messages </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::gl_debug_parameters::synchronous</definition>
+        <argsstring></argsstring>
+        <name>synchronous</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if debug callback calling method is chosen to be synchronous </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="24" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2373">
+        <label>qtsdl::gl_debug_parameters</label>
+        <link refid="structqtsdl_1_1gl__debug__parameters"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/opengl_debug_logger.h" line="10" column="1" bodyfile="libopenage/gui/guisys/private/opengl_debug_logger.h" bodystart="10" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" prot="public" virt="non-virtual"><scope>qtsdl::gl_debug_parameters</scope><name>callback</name></member>
+      <member refid="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" prot="public" virt="non-virtual"><scope>qtsdl::gl_debug_parameters</scope><name>is_debug</name></member>
+      <member refid="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" prot="public" virt="non-virtual"><scope>qtsdl::gl_debug_parameters</scope><name>synchronous</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

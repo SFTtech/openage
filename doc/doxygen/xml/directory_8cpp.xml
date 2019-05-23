@@ -1,0 +1,752 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="directory_8cpp" kind="file" language="C++">
+    <compoundname>directory.cpp</compoundname>
+    <includes refid="directory_8h" local="yes">directory.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">dirent.h</includes>
+    <includes local="no">fcntl.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes refid="fslike_2native_8h" local="yes">./native.h</includes>
+    <includes refid="file_8h" local="yes">../file.h</includes>
+    <includes refid="filelike_2native_8h" local="yes">../filelike/native.h</includes>
+    <includes refid="misc_8h" local="yes">../misc.h</includes>
+    <includes refid="util_2path_8h" local="yes">../path.h</includes>
+    <incdepgraph>
+      <node id="30340">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="30374">
+        <label>list</label>
+      </node>
+      <node id="30366">
+        <label>atomic</label>
+      </node>
+      <node id="30371">
+        <label>iomanip</label>
+      </node>
+      <node id="30352">
+        <label>functional</label>
+      </node>
+      <node id="30378">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="30352" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+      </node>
+      <node id="30344">
+        <label>cstdint</label>
+      </node>
+      <node id="30337">
+        <label>libopenage/util/fslike/directory.cpp</label>
+        <link refid="directory_8cpp"/>
+        <childnode refid="30338" relation="include">
+        </childnode>
+        <childnode refid="30382" relation="include">
+        </childnode>
+        <childnode refid="30383" relation="include">
+        </childnode>
+        <childnode refid="30384" relation="include">
+        </childnode>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30340" relation="include">
+        </childnode>
+        <childnode refid="30385" relation="include">
+        </childnode>
+        <childnode refid="30386" relation="include">
+        </childnode>
+        <childnode refid="30381" relation="include">
+        </childnode>
+        <childnode refid="30379" relation="include">
+        </childnode>
+        <childnode refid="30387" relation="include">
+        </childnode>
+        <childnode refid="30389" relation="include">
+        </childnode>
+        <childnode refid="30348" relation="include">
+        </childnode>
+      </node>
+      <node id="30369">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30370" relation="include">
+        </childnode>
+        <childnode refid="30352" relation="include">
+        </childnode>
+        <childnode refid="30371" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30372" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+      </node>
+      <node id="30358">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="30359" relation="include">
+        </childnode>
+      </node>
+      <node id="30392">
+        <label>cmath</label>
+      </node>
+      <node id="30360">
+        <label>stdexcept</label>
+      </node>
+      <node id="30357">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="30384">
+        <label>fcntl.h</label>
+      </node>
+      <node id="30373">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30374" relation="include">
+        </childnode>
+        <childnode refid="30353" relation="include">
+        </childnode>
+        <childnode refid="30375" relation="include">
+        </childnode>
+      </node>
+      <node id="30370">
+        <label>cstdarg</label>
+      </node>
+      <node id="30339">
+        <label>string</label>
+      </node>
+      <node id="30338">
+        <label>directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30340" relation="include">
+        </childnode>
+        <childnode refid="30341" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+        <childnode refid="30343" relation="include">
+        </childnode>
+      </node>
+      <node id="30361">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30344" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30362" relation="include">
+        </childnode>
+        <childnode refid="30363" relation="include">
+        </childnode>
+        <childnode refid="30365" relation="include">
+        </childnode>
+        <childnode refid="30373" relation="include">
+        </childnode>
+        <childnode refid="30375" relation="include">
+        </childnode>
+      </node>
+      <node id="30363">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30364" relation="include">
+        </childnode>
+      </node>
+      <node id="30365">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30366" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30367" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+        <childnode refid="30368" relation="include">
+        </childnode>
+        <childnode refid="30369" relation="include">
+        </childnode>
+      </node>
+      <node id="30388">
+        <label>fstream</label>
+      </node>
+      <node id="30343">
+        <label>fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="30344" relation="include">
+        </childnode>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30347" relation="include">
+        </childnode>
+        <childnode refid="30348" relation="include">
+        </childnode>
+        <childnode refid="30379" relation="include">
+        </childnode>
+      </node>
+      <node id="30349">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="30344" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+        <childnode refid="30350" relation="include">
+        </childnode>
+        <childnode refid="30351" relation="include">
+        </childnode>
+      </node>
+      <node id="30391">
+        <label>limits.h</label>
+      </node>
+      <node id="30359">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30360" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+        <childnode refid="30361" relation="include">
+        </childnode>
+      </node>
+      <node id="30389">
+        <label>../misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="30390" relation="include">
+        </childnode>
+        <childnode refid="30391" relation="include">
+        </childnode>
+        <childnode refid="30392" relation="include">
+        </childnode>
+        <childnode refid="30393" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30359" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+      </node>
+      <node id="30387">
+        <label>../filelike/native.h</label>
+        <link refid="filelike_2native_8h"/>
+        <childnode refid="30388" relation="include">
+        </childnode>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30380" relation="include">
+        </childnode>
+      </node>
+      <node id="30385">
+        <label>sys/types.h</label>
+      </node>
+      <node id="30377">
+        <label>typeinfo</label>
+      </node>
+      <node id="30382">
+        <label>cstdio</label>
+      </node>
+      <node id="30341">
+        <label>tuple</label>
+      </node>
+      <node id="30386">
+        <label>unistd.h</label>
+      </node>
+      <node id="30342">
+        <label>vector</label>
+      </node>
+      <node id="30355">
+        <label>ciso646</label>
+      </node>
+      <node id="30347">
+        <label>utility</label>
+      </node>
+      <node id="30372">
+        <label>sstream</label>
+      </node>
+      <node id="30354">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30355" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30356" relation="include">
+        </childnode>
+      </node>
+      <node id="30379">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="30346" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+        <childnode refid="30380" relation="include">
+        </childnode>
+        <childnode refid="30349" relation="include">
+        </childnode>
+      </node>
+      <node id="30356">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30356" relation="include">
+        </childnode>
+      </node>
+      <node id="30368">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+      </node>
+      <node id="30375">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30376" relation="include">
+        </childnode>
+      </node>
+      <node id="30381">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="30380">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+      </node>
+      <node id="30364">
+        <label>cstdlib</label>
+      </node>
+      <node id="30345">
+        <label>iostream</label>
+      </node>
+      <node id="30351">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="30352" relation="include">
+        </childnode>
+        <childnode refid="30353" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+        <childnode refid="30357" relation="include">
+        </childnode>
+        <childnode refid="30358" relation="include">
+        </childnode>
+        <childnode refid="30378" relation="include">
+        </childnode>
+      </node>
+      <node id="30353">
+        <label>mutex</label>
+      </node>
+      <node id="30348">
+        <label>../path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="30339" relation="include">
+        </childnode>
+        <childnode refid="30342" relation="include">
+        </childnode>
+        <childnode refid="30349" relation="include">
+        </childnode>
+        <childnode refid="30379" relation="include">
+        </childnode>
+        <childnode refid="30381" relation="include">
+        </childnode>
+      </node>
+      <node id="30350">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="30367">
+        <label>type_traits</label>
+      </node>
+      <node id="30362">
+        <label>config.h</label>
+      </node>
+      <node id="30390">
+        <label>algorithm</label>
+      </node>
+      <node id="30393">
+        <label>cstring</label>
+      </node>
+      <node id="30346">
+        <label>memory</label>
+      </node>
+      <node id="30376">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30345" relation="include">
+        </childnode>
+        <childnode refid="30377" relation="include">
+        </childnode>
+        <childnode refid="30354" relation="include">
+        </childnode>
+      </node>
+      <node id="30383">
+        <label>dirent.h</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="directory_8h" kindref="compound">directory.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HACK:<sp/>windows.h<sp/>defines<sp/>max<sp/>and<sp/>min<sp/>as<sp/>macros.<sp/>This<sp/>results<sp/>in<sp/>compile<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>defining<sp/>`NOMINMAX`<sp/>disables<sp/>the<sp/>definition<sp/>of<sp/>those<sp/>macros.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NOMINMAX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;dirent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;direct.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;io.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/utime.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HACK:<sp/>What<sp/>the<sp/>heck?<sp/>I<sp/>want<sp/>the<sp/>std::filesystem<sp/>library!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>O_NOCTTY<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>O_NONBLOCK<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>W_OK<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>!<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filelike_2native_8h" kindref="compound">./native.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../file.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../filelike/native.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../misc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="42" refid="namespaceopenage_1_1util_1_1fslike" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fslike<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2bef103b4ee6cf8dda2c55ada35ae060" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2bef103b4ee6cf8dda2c55ada35ae060" kindref="member">Directory::Directory</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;basepath,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>create_if_missing)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>basepath{<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" kindref="member">basepath</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(create_if_missing)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;mkdirs({});</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>don&apos;t<sp/>need<sp/>a<sp/>resolve_r<sp/>and<sp/>resolve_w<sp/>here!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>underlying<sp/>fslike<sp/>system<sp/>is<sp/>a<sp/>Directory<sp/>(i.e.<sp/>this.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>then<sp/>we<sp/>don&apos;t<sp/>have<sp/>any<sp/>overlay<sp/>possibility!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-&gt;<sp/>Always<sp/>resolve<sp/>just<sp/>the<sp/>real<sp/>system<sp/>filename.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">Directory::resolve</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>ret<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" kindref="member">basepath</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;part<sp/>:<sp/>parts)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>+=<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" kindref="member">PATHSEP</ref><sp/>+<sp/>part;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO:<sp/>use<sp/>std::optional<sp/>when<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" refkind="member"><highlight class="normal">std::tuple&lt;struct<sp/>stat,<sp/>int&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" kindref="member">Directory::do_stat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">stat<sp/>buf;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>stat(path.c_str(),<sp/>&amp;buf);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_tuple(buf,<sp/>result);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a36e4b63f3b31b1de2370ebe081484159" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a36e4b63f3b31b1de2370ebe081484159" kindref="member">Directory::is_file</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stat_result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" kindref="member">do_stat</ref>(parts);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>for<sp/>regular<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::get&lt;1&gt;(stat_result)<sp/>==<sp/>0<sp/>and</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S_ISREG(std::get&lt;0&gt;(stat_result).st_mode))<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5dced8dddac80ad98b3804a64a36af0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5dced8dddac80ad98b3804a64a36af0" kindref="member">Directory::is_dir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stat_result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" kindref="member">do_stat</ref>(parts);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>for<sp/>regular<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::get&lt;1&gt;(stat_result)<sp/>==<sp/>0<sp/>and</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S_ISDIR(std::get&lt;0&gt;(stat_result).st_mode))<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa05f20e2d1e377421774d2360d54d237" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa05f20e2d1e377421774d2360d54d237" kindref="member">Directory::writable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>parts_test<sp/>=<sp/>parts;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>to<sp/>find<sp/>the<sp/>first<sp/>existing<sp/>path-part</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(not<sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5dced8dddac80ad98b3804a64a36af0" kindref="member">is_dir</ref>(parts_test)<sp/>or</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a36e4b63f3b31b1de2370ebe081484159" kindref="member">is_file</ref>(parts_test)))<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(parts_test.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;file<sp/>not<sp/>found&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parts_test.pop_back();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts_test);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>access(path.c_str(),<sp/>W_OK);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a34049b9a977a33a7173bb90ab96df65f" refkind="member"><highlight class="normal">std::vector&lt;Path::part_t&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a34049b9a977a33a7173bb90ab96df65f" kindref="member">Directory::list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Path::part_t&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>DIR<sp/>*dir;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">dirent<sp/>*ent;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>dir<sp/>=<sp/>opendir(path.c_str());</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;could<sp/>not<sp/>list<sp/>contents<sp/>of<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>path<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>walk<sp/>over<sp/>dir<sp/>contents</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((ent<sp/>=<sp/>readdir(dir))<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.push_back(ent-&gt;d_name);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>closedir(dir);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" kindref="member">Directory::mkdirs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>all_parts<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" kindref="member">util::split</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" kindref="member">basepath</ref>,<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" kindref="member">PATHSEP</ref>);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1af88424f642ef1ba4e6b2eb1c05ad8e3c" kindref="member">vector_extend</ref>(all_parts,<sp/>parts);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>dirpath;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;part<sp/>:<sp/>all_parts)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dirpath<sp/>+=<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" kindref="member">PATHSEP</ref><sp/>+<sp/>part;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">stat<sp/>buf;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>it<sp/>exists<sp/>already,<sp/>try<sp/>creating<sp/>the<sp/>next<sp/>one</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(stat(dirpath.c_str(),<sp/>&amp;buf)<sp/>==<sp/>0<sp/>and</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S_ISDIR(buf.st_mode))<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>folder,<sp/>umask<sp/>will<sp/>turn<sp/>it<sp/>to<sp/>755.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dir_created<sp/>=<sp/>_mkdir(dirpath.c_str())<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>__MINGW32__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dir_created<sp/>=<sp/>mkdir(dirpath.c_str())<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>dir_created<sp/>=<sp/>mkdir(dirpath.c_str(),<sp/>0777)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>dir_created)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a85129377f5f8b133c45ea585b42b6e4e" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a85129377f5f8b133c45ea585b42b6e4e" kindref="member">Directory::open_r</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;filelike::Native&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts),</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" kindref="member">filelike::Native::mode_t::R</ref>)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a30009d2a2d94139e2688d07b5df1de8a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a30009d2a2d94139e2688d07b5df1de8a" kindref="member">Directory::open_w</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;filelike::Native&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts),</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a61e9c06ea9a85a5088a499df6458d276" kindref="member">filelike::Native::mode_t::W</ref>)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5decb9af0d2373df3a4c6acade814e3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5decb9af0d2373df3a4c6acade814e3" kindref="member">Directory::open_rw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;filelike::Native&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts),</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee" kindref="member">filelike::Native::mode_t::RW</ref>)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac4207abf1b91ac361bba198c58709555" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac4207abf1b91ac361bba198c58709555" kindref="member">Directory::open_a</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;filelike::Native&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts),</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a7fc56270e7a70fa81a5935b72eacbe29" kindref="member">filelike::Native::mode_t::A</ref>)</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="classopenage_1_1util_1_1fslike_1_1_directory_1af22803a261b1e56ddf1b3046f34c4914" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1af22803a261b1e56ddf1b3046f34c4914" kindref="member">Directory::open_ar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;filelike::Native&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts),</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5b61a1b298a0d06efa6933a97e68d763" kindref="member">filelike::Native::mode_t::AR</ref>)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa1f011f4012ff1e02ecfdd5df30b7e84" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa1f011f4012ff1e02ecfdd5df30b7e84" kindref="member">Directory::get_native_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad63db9e7e3a5f49a93f47d7904f2de33" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad63db9e7e3a5f49a93f47d7904f2de33" kindref="member">Directory::rename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts,</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;target_parts)<sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::rename(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts).c_str(),</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(target_parts).c_str())<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad25337a6884cc2a497b1f142e4f01225" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad25337a6884cc2a497b1f142e4f01225" kindref="member">Directory::rmdir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>::rmdir(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts).c_str())<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5d2482157fe89058a2a763141c4d9e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5d2482157fe89058a2a763141c4d9e9" kindref="member">Directory::touch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>the<sp/>file<sp/>if<sp/>missing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fd<sp/>=<sp/>open(</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path.c_str(),</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>O_WRONLY|O_CREAT|O_NOCTTY|O_NONBLOCK,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0666</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fd<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>close(fd);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>the<sp/>timestamp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>utimes(path.c_str(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>_utime(path.c_str(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>utimensat(AT_FDCWD,<sp/>path.c_str(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classopenage_1_1util_1_1fslike_1_1_directory_1aea004e3d87864f6f13e2c5d79fc67d2e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1aea004e3d87864f6f13e2c5d79fc67d2e" kindref="member">Directory::unlink</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::remove(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" kindref="member">resolve</ref>(parts).c_str())<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a4edc467134f448398dbe7cf5ad4dcc11" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a4edc467134f448398dbe7cf5ad4dcc11" kindref="member">Directory::get_mtime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stat_result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" kindref="member">do_stat</ref>(parts);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>mtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::get&lt;1&gt;(stat_result)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;0&gt;(stat_result).st_mtimespec.tv_sec;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;0&gt;(stat_result).st_mtime;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;0&gt;(stat_result).st_mtim.tv_sec;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;can&apos;t<sp/>get<sp/>mtime&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="classopenage_1_1util_1_1fslike_1_1_directory_1a071636c64e89976aaa350083c66b6a4a" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a071636c64e89976aaa350083c66b6a4a" kindref="member">Directory::get_filesize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stat_result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" kindref="member">do_stat</ref>(parts);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>mtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::get&lt;1&gt;(stat_result)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;0&gt;(stat_result).st_size;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;can&apos;t<sp/>get<sp/>filesize&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="classopenage_1_1util_1_1fslike_1_1_directory_1aae57b59ff2e61cbb96d44ffe58f1f72b" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1aae57b59ff2e61cbb96d44ffe58f1f72b" kindref="member">Directory::repr</ref>(std::ostream<sp/>&amp;stream)<sp/>{</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" kindref="member">basepath</ref>;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fslike/directory.cpp"/>
+  </compounddef>
+</doxygen>

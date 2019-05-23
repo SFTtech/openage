@@ -1,0 +1,1910 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="functional_8h" kind="file" language="C++">
+    <compoundname>functional.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes local="no">mutex</includes>
+    <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
+    <includes refid="language_8h" local="yes">../util/language.h</includes>
+    <includes refid="exctranslate_8h" local="yes">exctranslate.h</includes>
+    <includes refid="setup_8h" local="yes">setup.h</includes>
+    <includedby refid="pyobject_8h" local="yes">libopenage/pyinterface/pyobject.h</includedby>
+    <includedby refid="cvar_8h" local="yes">libopenage/cvar/cvar.h</includedby>
+    <includedby refid="pyexception_8h" local="yes">libopenage/pyinterface/pyexception.h</includedby>
+    <includedby refid="exctranslate__tests_8h" local="yes">libopenage/pyinterface/exctranslate_tests.h</includedby>
+    <includedby refid="functional_8cpp" local="yes">libopenage/pyinterface/functional.cpp</includedby>
+    <includedby refid="filelike_2python_8h" local="yes">libopenage/util/filelike/python.h</includedby>
+    <includedby refid="fslike_2python_8h" local="yes">libopenage/util/fslike/python.h</includedby>
+    <incdepgraph>
+      <node id="19587">
+        <label>list</label>
+      </node>
+      <node id="19578">
+        <label>atomic</label>
+      </node>
+      <node id="19583">
+        <label>iomanip</label>
+      </node>
+      <node id="19560">
+        <label>functional</label>
+      </node>
+      <node id="19591">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="19560" relation="include">
+        </childnode>
+        <childnode refid="19562" relation="include">
+        </childnode>
+      </node>
+      <node id="19573">
+        <label>cstdint</label>
+      </node>
+      <node id="19581">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="19582" relation="include">
+        </childnode>
+        <childnode refid="19560" relation="include">
+        </childnode>
+        <childnode refid="19583" relation="include">
+        </childnode>
+        <childnode refid="19570" relation="include">
+        </childnode>
+        <childnode refid="19584" relation="include">
+        </childnode>
+        <childnode refid="19564" relation="include">
+        </childnode>
+        <childnode refid="19585" relation="include">
+        </childnode>
+      </node>
+      <node id="19567">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="19568" relation="include">
+        </childnode>
+      </node>
+      <node id="19571">
+        <label>stdexcept</label>
+      </node>
+      <node id="19566">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="19586">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="19587" relation="include">
+        </childnode>
+        <childnode refid="19561" relation="include">
+        </childnode>
+        <childnode refid="19588" relation="include">
+        </childnode>
+      </node>
+      <node id="19582">
+        <label>cstdarg</label>
+      </node>
+      <node id="19564">
+        <label>string</label>
+      </node>
+      <node id="19572">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="19573" relation="include">
+        </childnode>
+        <childnode refid="19564" relation="include">
+        </childnode>
+        <childnode refid="19574" relation="include">
+        </childnode>
+        <childnode refid="19575" relation="include">
+        </childnode>
+        <childnode refid="19577" relation="include">
+        </childnode>
+        <childnode refid="19586" relation="include">
+        </childnode>
+        <childnode refid="19588" relation="include">
+        </childnode>
+      </node>
+      <node id="19575">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="19576" relation="include">
+        </childnode>
+      </node>
+      <node id="19577">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="19578" relation="include">
+        </childnode>
+        <childnode refid="19570" relation="include">
+        </childnode>
+        <childnode refid="19579" relation="include">
+        </childnode>
+        <childnode refid="19562" relation="include">
+        </childnode>
+        <childnode refid="19580" relation="include">
+        </childnode>
+        <childnode refid="19581" relation="include">
+        </childnode>
+      </node>
+      <node id="19568">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="19569" relation="include">
+        </childnode>
+        <childnode refid="19570" relation="include">
+        </childnode>
+        <childnode refid="19571" relation="include">
+        </childnode>
+        <childnode refid="19564" relation="include">
+        </childnode>
+        <childnode refid="19562" relation="include">
+        </childnode>
+        <childnode refid="19572" relation="include">
+        </childnode>
+      </node>
+      <node id="19590">
+        <label>typeinfo</label>
+      </node>
+      <node id="19585">
+        <label>vector</label>
+      </node>
+      <node id="19563">
+        <label>ciso646</label>
+      </node>
+      <node id="19584">
+        <label>sstream</label>
+      </node>
+      <node id="19562">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="19563" relation="include">
+        </childnode>
+        <childnode refid="19564" relation="include">
+        </childnode>
+        <childnode refid="19565" relation="include">
+        </childnode>
+      </node>
+      <node id="19565">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="19565" relation="include">
+        </childnode>
+      </node>
+      <node id="19580">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="19569" relation="include">
+        </childnode>
+        <childnode refid="19564" relation="include">
+        </childnode>
+      </node>
+      <node id="19588">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="19589" relation="include">
+        </childnode>
+      </node>
+      <node id="19576">
+        <label>cstdlib</label>
+      </node>
+      <node id="19569">
+        <label>iostream</label>
+      </node>
+      <node id="19559">
+        <label>libopenage/pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="19560" relation="include">
+        </childnode>
+        <childnode refid="19561" relation="include">
+        </childnode>
+        <childnode refid="19562" relation="include">
+        </childnode>
+        <childnode refid="19566" relation="include">
+        </childnode>
+        <childnode refid="19567" relation="include">
+        </childnode>
+        <childnode refid="19591" relation="include">
+        </childnode>
+      </node>
+      <node id="19561">
+        <label>mutex</label>
+      </node>
+      <node id="19579">
+        <label>type_traits</label>
+      </node>
+      <node id="19574">
+        <label>config.h</label>
+      </node>
+      <node id="19570">
+        <label>memory</label>
+      </node>
+      <node id="19589">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="19569" relation="include">
+        </childnode>
+        <childnode refid="19590" relation="include">
+        </childnode>
+        <childnode refid="19562" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="19718">
+        <label>libopenage/renderer/opengl/lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="19719" relation="include">
+        </childnode>
+        <childnode refid="19710" relation="include">
+        </childnode>
+        <childnode refid="19708" relation="include">
+        </childnode>
+        <childnode refid="19709" relation="include">
+        </childnode>
+        <childnode refid="19720" relation="include">
+        </childnode>
+      </node>
+      <node id="19641">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="19679">
+        <label>libopenage/audio/resource_def.cpp</label>
+        <link refid="resource__def_8cpp"/>
+      </node>
+      <node id="19703">
+        <label>libopenage/renderer/opengl/render_target.h</label>
+        <link refid="opengl_2render__target_8h"/>
+        <childnode refid="19704" relation="include">
+        </childnode>
+        <childnode refid="19705" relation="include">
+        </childnode>
+        <childnode refid="19708" relation="include">
+        </childnode>
+        <childnode refid="19709" relation="include">
+        </childnode>
+      </node>
+      <node id="19668">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="19646">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="19695">
+        <label>libopenage/audio/opus_in_memory_loader.h</label>
+        <link refid="opus__in__memory__loader_8h"/>
+        <childnode refid="19694" relation="include">
+        </childnode>
+        <childnode refid="19685" relation="include">
+        </childnode>
+      </node>
+      <node id="19639">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="19619" relation="include">
+        </childnode>
+        <childnode refid="19640" relation="include">
+        </childnode>
+        <childnode refid="19641" relation="include">
+        </childnode>
+      </node>
+      <node id="19675">
+        <label>libopenage/audio/resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="19665" relation="include">
+        </childnode>
+        <childnode refid="19676" relation="include">
+        </childnode>
+        <childnode refid="19677" relation="include">
+        </childnode>
+        <childnode refid="19668" relation="include">
+        </childnode>
+        <childnode refid="19674" relation="include">
+        </childnode>
+      </node>
+      <node id="19694">
+        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <link refid="in__memory__loader_8cpp"/>
+      </node>
+      <node id="19674">
+        <label>libopenage/audio/sound.cpp</label>
+        <link refid="sound_8cpp"/>
+      </node>
+      <node id="19681">
+        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <link refid="dynamic__loader_8cpp"/>
+      </node>
+      <node id="19600">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="19601" relation="include">
+        </childnode>
+        <childnode refid="19606" relation="include">
+        </childnode>
+        <childnode refid="19614" relation="include">
+        </childnode>
+        <childnode refid="19615" relation="include">
+        </childnode>
+        <childnode refid="19616" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+        <childnode refid="19617" relation="include">
+        </childnode>
+        <childnode refid="19638" relation="include">
+        </childnode>
+        <childnode refid="19619" relation="include">
+        </childnode>
+        <childnode refid="19639" relation="include">
+        </childnode>
+        <childnode refid="19642" relation="include">
+        </childnode>
+        <childnode refid="19643" relation="include">
+        </childnode>
+        <childnode refid="19644" relation="include">
+        </childnode>
+        <childnode refid="19645" relation="include">
+        </childnode>
+        <childnode refid="19646" relation="include">
+        </childnode>
+        <childnode refid="19647" relation="include">
+        </childnode>
+      </node>
+      <node id="19712">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="19656">
+        <label>libopenage/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="19596" relation="include">
+        </childnode>
+        <childnode refid="19597" relation="include">
+        </childnode>
+        <childnode refid="19604" relation="include">
+        </childnode>
+        <childnode refid="19657" relation="include">
+        </childnode>
+        <childnode refid="19658" relation="include">
+        </childnode>
+        <childnode refid="19659" relation="include">
+        </childnode>
+        <childnode refid="19660" relation="include">
+        </childnode>
+        <childnode refid="19651" relation="include">
+        </childnode>
+        <childnode refid="19652" relation="include">
+        </childnode>
+        <childnode refid="19661" relation="include">
+        </childnode>
+        <childnode refid="19662" relation="include">
+        </childnode>
+        <childnode refid="19647" relation="include">
+        </childnode>
+      </node>
+      <node id="19650">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="19601">
+        <label>libopenage/gamestate/civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="19602" relation="include">
+        </childnode>
+        <childnode refid="19637" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+      </node>
+      <node id="19627">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="19699">
+        <label>libopenage/renderer/resources/texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="19700" relation="include">
+        </childnode>
+        <childnode refid="19711" relation="include">
+        </childnode>
+        <childnode refid="19708" relation="include">
+        </childnode>
+        <childnode refid="19714" relation="include">
+        </childnode>
+        <childnode refid="19715" relation="include">
+        </childnode>
+        <childnode refid="19709" relation="include">
+        </childnode>
+        <childnode refid="19717" relation="include">
+        </childnode>
+        <childnode refid="19712" relation="include">
+        </childnode>
+      </node>
+      <node id="19745">
+        <label>libopenage/util/fslike/directory.cpp</label>
+        <link refid="directory_8cpp"/>
+      </node>
+      <node id="19607">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="19608" relation="include">
+        </childnode>
+        <childnode refid="19609" relation="include">
+        </childnode>
+        <childnode refid="19610" relation="include">
+        </childnode>
+        <childnode refid="19611" relation="include">
+        </childnode>
+        <childnode refid="19612" relation="include">
+        </childnode>
+      </node>
+      <node id="19758">
+        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <link refid="pyobject__tests_8cpp"/>
+      </node>
+      <node id="19729">
+        <label>libopenage/renderer/resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="19730" relation="include">
+        </childnode>
+        <childnode refid="19732" relation="include">
+        </childnode>
+        <childnode refid="19718" relation="include">
+        </childnode>
+        <childnode refid="19733" relation="include">
+        </childnode>
+        <childnode refid="19736" relation="include">
+        </childnode>
+        <childnode refid="19712" relation="include">
+        </childnode>
+      </node>
+      <node id="19731">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="19705" relation="include">
+        </childnode>
+        <childnode refid="19706" relation="include">
+        </childnode>
+        <childnode refid="19710" relation="include">
+        </childnode>
+      </node>
+      <node id="19740">
+        <label>libopenage/renderer/resources/shader_source.cpp</label>
+        <link refid="shader__source_8cpp"/>
+      </node>
+      <node id="19634">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="19629">
+        <label>libopenage/gamestate/cost.cpp</label>
+        <link refid="cost_8cpp"/>
+      </node>
+      <node id="19608">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="19609" relation="include">
+        </childnode>
+      </node>
+      <node id="19685">
+        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <link refid="opus__in__memory__loader_8cpp"/>
+      </node>
+      <node id="19762">
+        <label>libopenage/pyinterface/exctranslate_tests.h</label>
+        <link refid="exctranslate__tests_8h"/>
+        <childnode refid="19756" relation="include">
+        </childnode>
+      </node>
+      <node id="19625">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="19746">
+        <label>libopenage/util/path.cpp</label>
+        <link refid="util_2path_8cpp"/>
+      </node>
+      <node id="19706">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="19614">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="19595">
+        <label>libopenage/assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="19596" relation="include">
+        </childnode>
+        <childnode refid="19597" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+        <childnode refid="19654" relation="include">
+        </childnode>
+      </node>
+      <node id="19678">
+        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <link refid="in__memory__resource_8cpp"/>
+      </node>
+      <node id="19689">
+        <label>libopenage/input/action.cpp</label>
+        <link refid="input_2action_8cpp"/>
+      </node>
+      <node id="19723">
+        <label>libopenage/util/csv.cpp</label>
+        <link refid="csv_8cpp"/>
+      </node>
+      <node id="19744">
+        <label>libopenage/util/fslike/directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="19735" relation="include">
+        </childnode>
+        <childnode refid="19745" relation="include">
+        </childnode>
+        <childnode refid="19746" relation="include">
+        </childnode>
+      </node>
+      <node id="19760">
+        <label>libopenage/util/filelike/python.h</label>
+        <link refid="filelike_2python_8h"/>
+        <childnode refid="19750" relation="include">
+        </childnode>
+        <childnode refid="19761" relation="include">
+        </childnode>
+      </node>
+      <node id="19761">
+        <label>libopenage/util/filelike/python.cpp</label>
+        <link refid="filelike_2python_8cpp"/>
+      </node>
+      <node id="19733">
+        <label>libopenage/renderer/shader_program.h</label>
+        <link refid="shader__program_8h"/>
+        <childnode refid="19731" relation="include">
+        </childnode>
+        <childnode refid="19712" relation="include">
+        </childnode>
+        <childnode refid="19734" relation="include">
+        </childnode>
+      </node>
+      <node id="19707">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="19715">
+        <label>libopenage/renderer/opengl/texture_array.h</label>
+        <link refid="opengl_2texture__array_8h"/>
+        <childnode refid="19709" relation="include">
+        </childnode>
+      </node>
+      <node id="19653">
+        <label>libopenage/terrain/terrain_search.cpp</label>
+        <link refid="terrain__search_8cpp"/>
+      </node>
+      <node id="19734">
+        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <link refid="vulkan_2shader__program_8h"/>
+        <childnode refid="19735" relation="include">
+        </childnode>
+      </node>
+      <node id="19623">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="19631">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="19613">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="19610">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="19661">
+        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <link refid="terrain__outline_8cpp"/>
+      </node>
+      <node id="19645">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="19596">
+        <label>libopenage/assetmanager.cpp</label>
+        <link refid="assetmanager_8cpp"/>
+      </node>
+      <node id="19648">
+        <label>libopenage/pathfinding/a_star.cpp</label>
+        <link refid="a__star_8cpp"/>
+      </node>
+      <node id="19725">
+        <label>libopenage/gui/main_args_link.h</label>
+        <link refid="main__args__link_8h"/>
+        <childnode refid="19692" relation="include">
+        </childnode>
+      </node>
+      <node id="19752">
+        <label>libopenage/shader/program.cpp</label>
+        <link refid="program_8cpp"/>
+      </node>
+      <node id="19649">
+        <label>libopenage/pathfinding/path.cpp</label>
+        <link refid="pathfinding_2path_8cpp"/>
+      </node>
+      <node id="19609">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="19687">
+        <label>libopenage/cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="19667" relation="include">
+        </childnode>
+        <childnode refid="19688" relation="include">
+        </childnode>
+        <childnode refid="19689" relation="include">
+        </childnode>
+      </node>
+      <node id="19739">
+        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <link refid="renderer_2opengl_2shader_8cpp"/>
+      </node>
+      <node id="19702">
+        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="19636">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="19599">
+        <label>libopenage/coord/tile.cpp</label>
+        <link refid="tile_8cpp"/>
+      </node>
+      <node id="19682">
+        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <link refid="opus__dynamic__loader_8h"/>
+        <childnode refid="19681" relation="include">
+        </childnode>
+        <childnode refid="19683" relation="include">
+        </childnode>
+      </node>
+      <node id="19690">
+        <label>libopenage/gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="19667" relation="include">
+        </childnode>
+        <childnode refid="19691" relation="include">
+        </childnode>
+        <childnode refid="19672" relation="include">
+        </childnode>
+        <childnode refid="19692" relation="include">
+        </childnode>
+      </node>
+      <node id="19659">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="19672">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="19743">
+        <label>libopenage/util/fslike/fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="19744" relation="include">
+        </childnode>
+        <childnode refid="19747" relation="include">
+        </childnode>
+        <childnode refid="19748" relation="include">
+        </childnode>
+      </node>
+      <node id="19713">
+        <label>libopenage/renderer/texture.cpp</label>
+        <link refid="renderer_2texture_8cpp"/>
+      </node>
+      <node id="19602">
+        <label>libopenage/gamestate/player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="19603" relation="include">
+        </childnode>
+        <childnode refid="19622" relation="include">
+        </childnode>
+        <childnode refid="19629" relation="include">
+        </childnode>
+        <childnode refid="19630" relation="include">
+        </childnode>
+        <childnode refid="19631" relation="include">
+        </childnode>
+        <childnode refid="19632" relation="include">
+        </childnode>
+        <childnode refid="19633" relation="include">
+        </childnode>
+        <childnode refid="19634" relation="include">
+        </childnode>
+        <childnode refid="19635" relation="include">
+        </childnode>
+        <childnode refid="19636" relation="include">
+        </childnode>
+      </node>
+      <node id="19704">
+        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="19593">
+        <label>libopenage/pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="19594" relation="include">
+        </childnode>
+        <childnode refid="19751" relation="include">
+        </childnode>
+        <childnode refid="19754" relation="include">
+        </childnode>
+        <childnode refid="19759" relation="include">
+        </childnode>
+        <childnode refid="19758" relation="include">
+        </childnode>
+        <childnode refid="19760" relation="include">
+        </childnode>
+        <childnode refid="19748" relation="include">
+        </childnode>
+      </node>
+      <node id="19643">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="19755">
+        <label>libopenage/pyinterface/exctranslate.cpp</label>
+        <link refid="exctranslate_8cpp"/>
+      </node>
+      <node id="19680">
+        <label>libopenage/audio/dynamic_loader.h</label>
+        <link refid="dynamic__loader_8h"/>
+        <childnode refid="19681" relation="include">
+        </childnode>
+        <childnode refid="19682" relation="include">
+        </childnode>
+        <childnode refid="19676" relation="include">
+        </childnode>
+      </node>
+      <node id="19663">
+        <label>libopenage/audio/resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="19664" relation="include">
+        </childnode>
+        <childnode refid="19675" relation="include">
+        </childnode>
+        <childnode refid="19679" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+      </node>
+      <node id="19622">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="19614" relation="include">
+        </childnode>
+        <childnode refid="19616" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+        <childnode refid="19624" relation="include">
+        </childnode>
+        <childnode refid="19625" relation="include">
+        </childnode>
+        <childnode refid="19626" relation="include">
+        </childnode>
+        <childnode refid="19627" relation="include">
+        </childnode>
+        <childnode refid="19628" relation="include">
+        </childnode>
+      </node>
+      <node id="19605">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="19606" relation="include">
+        </childnode>
+        <childnode refid="19607" relation="include">
+        </childnode>
+        <childnode refid="19612" relation="include">
+        </childnode>
+        <childnode refid="19613" relation="include">
+        </childnode>
+      </node>
+      <node id="19686">
+        <label>libopenage/audio/opus_loading.cpp</label>
+        <link refid="opus__loading_8cpp"/>
+      </node>
+      <node id="19647">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="19711">
+        <label>libopenage/renderer/texture.h</label>
+        <link refid="renderer_2texture_8h"/>
+        <childnode refid="19700" relation="include">
+        </childnode>
+        <childnode refid="19712" relation="include">
+        </childnode>
+        <childnode refid="19713" relation="include">
+        </childnode>
+      </node>
+      <node id="19696">
+        <label>libopenage/util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="19600" relation="include">
+        </childnode>
+        <childnode refid="19697" relation="include">
+        </childnode>
+        <childnode refid="19717" relation="include">
+        </childnode>
+        <childnode refid="19662" relation="include">
+        </childnode>
+        <childnode refid="19723" relation="include">
+        </childnode>
+      </node>
+      <node id="19666">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="19736">
+        <label>libopenage/renderer/resources/mesh_data.cpp</label>
+        <link refid="mesh__data_8cpp"/>
+      </node>
+      <node id="19714">
+        <label>libopenage/renderer/texture_array.h</label>
+        <link refid="texture__array_8h"/>
+        <childnode refid="19715" relation="include">
+        </childnode>
+        <childnode refid="19716" relation="include">
+        </childnode>
+      </node>
+      <node id="19701">
+        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="19702" relation="include">
+        </childnode>
+        <childnode refid="19703" relation="include">
+        </childnode>
+      </node>
+      <node id="19700">
+        <label>libopenage/renderer/opengl/texture.h</label>
+        <link refid="renderer_2opengl_2texture_8h"/>
+        <childnode refid="19701" relation="include">
+        </childnode>
+        <childnode refid="19703" relation="include">
+        </childnode>
+        <childnode refid="19706" relation="include">
+        </childnode>
+        <childnode refid="19710" relation="include">
+        </childnode>
+        <childnode refid="19708" relation="include">
+        </childnode>
+      </node>
+      <node id="19721">
+        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <link refid="texture__info_8cpp"/>
+      </node>
+      <node id="19658">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+      <node id="19669">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="19759">
+        <label>libopenage/pyinterface/pyobject.cpp</label>
+        <link refid="pyobject_8cpp"/>
+      </node>
+      <node id="19619">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="19624">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="19632">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="19664">
+        <label>libopenage/audio/audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="19665" relation="include">
+        </childnode>
+        <childnode refid="19666" relation="include">
+        </childnode>
+        <childnode refid="19667" relation="include">
+        </childnode>
+        <childnode refid="19674" relation="include">
+        </childnode>
+      </node>
+      <node id="19671">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="19626">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="19750">
+        <label>libopenage/util/file.cpp</label>
+        <link refid="file_8cpp"/>
+      </node>
+      <node id="19618">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="19611" relation="include">
+        </childnode>
+        <childnode refid="19619" relation="include">
+        </childnode>
+        <childnode refid="19620" relation="include">
+        </childnode>
+        <childnode refid="19621" relation="include">
+        </childnode>
+      </node>
+      <node id="19604">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="19667">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="19666" relation="include">
+        </childnode>
+        <childnode refid="19668" relation="include">
+        </childnode>
+        <childnode refid="19669" relation="include">
+        </childnode>
+        <childnode refid="19670" relation="include">
+        </childnode>
+        <childnode refid="19604" relation="include">
+        </childnode>
+        <childnode refid="19606" relation="include">
+        </childnode>
+        <childnode refid="19614" relation="include">
+        </childnode>
+        <childnode refid="19615" relation="include">
+        </childnode>
+        <childnode refid="19623" relation="include">
+        </childnode>
+        <childnode refid="19671" relation="include">
+        </childnode>
+        <childnode refid="19611" relation="include">
+        </childnode>
+        <childnode refid="19620" relation="include">
+        </childnode>
+        <childnode refid="19672" relation="include">
+        </childnode>
+        <childnode refid="19613" relation="include">
+        </childnode>
+        <childnode refid="19650" relation="include">
+        </childnode>
+        <childnode refid="19651" relation="include">
+        </childnode>
+        <childnode refid="19652" relation="include">
+        </childnode>
+        <childnode refid="19624" relation="include">
+        </childnode>
+        <childnode refid="19625" relation="include">
+        </childnode>
+        <childnode refid="19626" relation="include">
+        </childnode>
+        <childnode refid="19627" relation="include">
+        </childnode>
+        <childnode refid="19673" relation="include">
+        </childnode>
+      </node>
+      <node id="19628">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="19657">
+        <label>libopenage/terrain/terrain_chunk.h</label>
+        <link refid="terrain__chunk_8h"/>
+        <childnode refid="19606" relation="include">
+        </childnode>
+        <childnode refid="19616" relation="include">
+        </childnode>
+        <childnode refid="19617" relation="include">
+        </childnode>
+        <childnode refid="19650" relation="include">
+        </childnode>
+        <childnode refid="19651" relation="include">
+        </childnode>
+        <childnode refid="19652" relation="include">
+        </childnode>
+      </node>
+      <node id="19603">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="19604" relation="include">
+        </childnode>
+        <childnode refid="19605" relation="include">
+        </childnode>
+        <childnode refid="19614" relation="include">
+        </childnode>
+        <childnode refid="19615" relation="include">
+        </childnode>
+        <childnode refid="19616" relation="include">
+        </childnode>
+        <childnode refid="19617" relation="include">
+        </childnode>
+        <childnode refid="19618" relation="include">
+        </childnode>
+        <childnode refid="19619" relation="include">
+        </childnode>
+        <childnode refid="19621" relation="include">
+        </childnode>
+      </node>
+      <node id="19676">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="19666" relation="include">
+        </childnode>
+        <childnode refid="19668" relation="include">
+        </childnode>
+      </node>
+      <node id="19692">
+        <label>libopenage/gui/main_args_link.cpp</label>
+        <link refid="main__args__link_8cpp"/>
+      </node>
+      <node id="19644">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="19652">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="19720">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="19673">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="19753">
+        <label>libopenage/shader/shader.cpp</label>
+        <link refid="shader_2shader_8cpp"/>
+      </node>
+      <node id="19655">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="19617">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="19651">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="19727">
+        <label>libopenage/gui/registrations.cpp</label>
+        <link refid="registrations_8cpp"/>
+      </node>
+      <node id="19688">
+        <label>libopenage/cvar/cvar.cpp</label>
+        <link refid="cvar_8cpp"/>
+      </node>
+      <node id="19756">
+        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <link refid="exctranslate__tests_8cpp"/>
+      </node>
+      <node id="19635">
+        <label>libopenage/unit/research.cpp</label>
+        <link refid="research_8cpp"/>
+      </node>
+      <node id="19747">
+        <label>libopenage/util/fslike/fslike.cpp</label>
+        <link refid="fslike_8cpp"/>
+      </node>
+      <node id="19693">
+        <label>libopenage/audio/in_memory_loader.h</label>
+        <link refid="in__memory__loader_8h"/>
+        <childnode refid="19694" relation="include">
+        </childnode>
+        <childnode refid="19695" relation="include">
+        </childnode>
+        <childnode refid="19678" relation="include">
+        </childnode>
+      </node>
+      <node id="19654">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="19655" relation="include">
+        </childnode>
+        <childnode refid="19640" relation="include">
+        </childnode>
+      </node>
+      <node id="19616">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="19751">
+        <label>libopenage/util/file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="19594" relation="include">
+        </childnode>
+        <childnode refid="19596" relation="include">
+        </childnode>
+        <childnode refid="19657" relation="include">
+        </childnode>
+        <childnode refid="19613" relation="include">
+        </childnode>
+        <childnode refid="19740" relation="include">
+        </childnode>
+        <childnode refid="19743" relation="include">
+        </childnode>
+        <childnode refid="19752" relation="include">
+        </childnode>
+        <childnode refid="19753" relation="include">
+        </childnode>
+        <childnode refid="19723" relation="include">
+        </childnode>
+        <childnode refid="19750" relation="include">
+        </childnode>
+        <childnode refid="19745" relation="include">
+        </childnode>
+        <childnode refid="19748" relation="include">
+        </childnode>
+      </node>
+      <node id="19660">
+        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <link refid="gui__texture__handle_8cpp"/>
+      </node>
+      <node id="19691">
+        <label>libopenage/gui/engine_info.cpp</label>
+        <link refid="engine__info_8cpp"/>
+      </node>
+      <node id="19724">
+        <label>libopenage/gui/engine_link.h</label>
+        <link refid="engine__link_8h"/>
+        <childnode refid="19655" relation="include">
+        </childnode>
+        <childnode refid="19671" relation="include">
+        </childnode>
+        <childnode refid="19611" relation="include">
+        </childnode>
+        <childnode refid="19620" relation="include">
+        </childnode>
+      </node>
+      <node id="19742">
+        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="19735" relation="include">
+        </childnode>
+      </node>
+      <node id="19732">
+        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="19730" relation="include">
+        </childnode>
+        <childnode refid="19720" relation="include">
+        </childnode>
+      </node>
+      <node id="19730">
+        <label>libopenage/renderer/opengl/geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="19719" relation="include">
+        </childnode>
+        <childnode refid="19731" relation="include">
+        </childnode>
+        <childnode refid="19706" relation="include">
+        </childnode>
+        <childnode refid="19710" relation="include">
+        </childnode>
+      </node>
+      <node id="19638">
+        <label>libopenage/gui/category_contents_list_model.h</label>
+        <link refid="category__contents__list__model_8h"/>
+        <childnode refid="19610" relation="include">
+        </childnode>
+      </node>
+      <node id="19665">
+        <label>libopenage/audio/audio_manager.cpp</label>
+        <link refid="audio__manager_8cpp"/>
+      </node>
+      <node id="19737">
+        <label>libopenage/renderer/resources/shader_source.h</label>
+        <link refid="shader__source_8h"/>
+        <childnode refid="19731" relation="include">
+        </childnode>
+        <childnode refid="19738" relation="include">
+        </childnode>
+        <childnode refid="19740" relation="include">
+        </childnode>
+        <childnode refid="19712" relation="include">
+        </childnode>
+        <childnode refid="19735" relation="include">
+        </childnode>
+        <childnode refid="19734" relation="include">
+        </childnode>
+      </node>
+      <node id="19630">
+        <label>libopenage/gamestate/market.cpp</label>
+        <link refid="market_8cpp"/>
+      </node>
+      <node id="19683">
+        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <link refid="opus__dynamic__loader_8cpp"/>
+      </node>
+      <node id="19748">
+        <label>libopenage/util/fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="19749" relation="include">
+        </childnode>
+        <childnode refid="19746" relation="include">
+        </childnode>
+      </node>
+      <node id="19722">
+        <label>libopenage/renderer/resources/texture_subinfo.cpp</label>
+        <link refid="texture__subinfo_8cpp"/>
+      </node>
+      <node id="19710">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="19735">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="19738">
+        <label>libopenage/renderer/opengl/shader.h</label>
+        <link refid="renderer_2opengl_2shader_8h"/>
+        <childnode refid="19739" relation="include">
+        </childnode>
+        <childnode refid="19710" relation="include">
+        </childnode>
+      </node>
+      <node id="19592">
+        <label>libopenage/pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="19593" relation="include">
+        </childnode>
+        <childnode refid="19687" relation="include">
+        </childnode>
+        <childnode refid="19754" relation="include">
+        </childnode>
+        <childnode refid="19762" relation="include">
+        </childnode>
+        <childnode refid="19763" relation="include">
+        </childnode>
+        <childnode refid="19760" relation="include">
+        </childnode>
+        <childnode refid="19748" relation="include">
+        </childnode>
+      </node>
+      <node id="19611">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="19719">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="19697">
+        <label>libopenage/renderer/resources/texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="19698" relation="include">
+        </childnode>
+        <childnode refid="19722" relation="include">
+        </childnode>
+      </node>
+      <node id="19754">
+        <label>libopenage/pyinterface/pyexception.h</label>
+        <link refid="pyexception_8h"/>
+        <childnode refid="19755" relation="include">
+        </childnode>
+        <childnode refid="19756" relation="include">
+        </childnode>
+        <childnode refid="19757" relation="include">
+        </childnode>
+        <childnode refid="19758" relation="include">
+        </childnode>
+      </node>
+      <node id="19677">
+        <label>libopenage/audio/in_memory_resource.h</label>
+        <link refid="in__memory__resource_8h"/>
+        <childnode refid="19678" relation="include">
+        </childnode>
+        <childnode refid="19668" relation="include">
+        </childnode>
+      </node>
+      <node id="19615">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="19749">
+        <label>libopenage/util/fslike/python.cpp</label>
+        <link refid="fslike_2python_8cpp"/>
+      </node>
+      <node id="19717">
+        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <link refid="texture__data_8cpp"/>
+      </node>
+      <node id="19642">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+      <node id="19594">
+        <label>libopenage/util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="19595" relation="include">
+        </childnode>
+        <childnode refid="19656" relation="include">
+        </childnode>
+        <childnode refid="19663" relation="include">
+        </childnode>
+        <childnode refid="19680" relation="include">
+        </childnode>
+        <childnode refid="19684" relation="include">
+        </childnode>
+        <childnode refid="19682" relation="include">
+        </childnode>
+        <childnode refid="19676" relation="include">
+        </childnode>
+        <childnode refid="19687" relation="include">
+        </childnode>
+        <childnode refid="19690" relation="include">
+        </childnode>
+        <childnode refid="19667" relation="include">
+        </childnode>
+        <childnode refid="19693" relation="include">
+        </childnode>
+        <childnode refid="19695" relation="include">
+        </childnode>
+        <childnode refid="19677" relation="include">
+        </childnode>
+        <childnode refid="19696" relation="include">
+        </childnode>
+        <childnode refid="19654" relation="include">
+        </childnode>
+        <childnode refid="19724" relation="include">
+        </childnode>
+        <childnode refid="19672" relation="include">
+        </childnode>
+        <childnode refid="19725" relation="include">
+        </childnode>
+        <childnode refid="19726" relation="include">
+        </childnode>
+        <childnode refid="19728" relation="include">
+        </childnode>
+        <childnode refid="19699" relation="include">
+        </childnode>
+        <childnode refid="19729" relation="include">
+        </childnode>
+        <childnode refid="19737" relation="include">
+        </childnode>
+        <childnode refid="19741" relation="include">
+        </childnode>
+        <childnode refid="19742" relation="include">
+        </childnode>
+        <childnode refid="19743" relation="include">
+        </childnode>
+        <childnode refid="19750" relation="include">
+        </childnode>
+        <childnode refid="19745" relation="include">
+        </childnode>
+        <childnode refid="19747" relation="include">
+        </childnode>
+        <childnode refid="19748" relation="include">
+        </childnode>
+        <childnode refid="19746" relation="include">
+        </childnode>
+      </node>
+      <node id="19728">
+        <label>libopenage/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="19613" relation="include">
+        </childnode>
+      </node>
+      <node id="19716">
+        <label>libopenage/renderer/texture_array.cpp</label>
+        <link refid="texture__array_8cpp"/>
+      </node>
+      <node id="19670">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="19633">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="19698">
+        <label>libopenage/renderer/resources/texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="19699" relation="include">
+        </childnode>
+        <childnode refid="19718" relation="include">
+        </childnode>
+        <childnode refid="19721" relation="include">
+        </childnode>
+      </node>
+      <node id="19709">
+        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <link refid="opengl_2texture__array_8cpp"/>
+      </node>
+      <node id="19598">
+        <label>libopenage/coord/phys.cpp</label>
+        <link refid="phys_8cpp"/>
+      </node>
+      <node id="19726">
+        <label>libopenage/gui/registrations.h</label>
+        <link refid="registrations_8h"/>
+        <childnode refid="19727" relation="include">
+        </childnode>
+      </node>
+      <node id="19763">
+        <label>libopenage/pyinterface/functional.cpp</label>
+        <link refid="functional_8cpp"/>
+      </node>
+      <node id="19620">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="19637">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+      </node>
+      <node id="19606">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="19621">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="19612">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="19684">
+        <label>libopenage/audio/opus_loading.h</label>
+        <link refid="opus__loading_8h"/>
+        <childnode refid="19682" relation="include">
+        </childnode>
+        <childnode refid="19685" relation="include">
+        </childnode>
+        <childnode refid="19686" relation="include">
+        </childnode>
+      </node>
+      <node id="19640">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+      <node id="19597">
+        <label>libopenage/terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="19598" relation="include">
+        </childnode>
+        <childnode refid="19599" relation="include">
+        </childnode>
+        <childnode refid="19600" relation="include">
+        </childnode>
+        <childnode refid="19603" relation="include">
+        </childnode>
+        <childnode refid="19614" relation="include">
+        </childnode>
+        <childnode refid="19615" relation="include">
+        </childnode>
+        <childnode refid="19648" relation="include">
+        </childnode>
+        <childnode refid="19649" relation="include">
+        </childnode>
+        <childnode refid="19650" relation="include">
+        </childnode>
+        <childnode refid="19651" relation="include">
+        </childnode>
+        <childnode refid="19652" relation="include">
+        </childnode>
+        <childnode refid="19653" relation="include">
+        </childnode>
+        <childnode refid="19624" relation="include">
+        </childnode>
+        <childnode refid="19625" relation="include">
+        </childnode>
+        <childnode refid="19626" relation="include">
+        </childnode>
+        <childnode refid="19627" relation="include">
+        </childnode>
+      </node>
+      <node id="19757">
+        <label>libopenage/pyinterface/pyexception.cpp</label>
+        <link refid="pyexception_8cpp"/>
+      </node>
+      <node id="19705">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="19706" relation="include">
+        </childnode>
+        <childnode refid="19707" relation="include">
+        </childnode>
+      </node>
+      <node id="19741">
+        <label>libopenage/renderer/tests.h</label>
+        <link refid="renderer_2tests_8h"/>
+        <childnode refid="19712" relation="include">
+        </childnode>
+      </node>
+      <node id="19662">
+        <label>libopenage/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="19708">
+        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <link refid="renderer_2opengl_2texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_func" prot="public">openage::pyinterface::Func</innerclass>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_py_if_func" prot="public">openage::pyinterface::PyIfFunc</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/compiler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/language.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="setup_8h" kindref="compound">setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pyinterface<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ReturnType,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>ArgTypes&gt;</highlight></codeline>
+<codeline lineno="58" refid="classopenage_1_1pyinterface_1_1_func" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1pyinterface_1_1_func_1a9aafa14c1e14d75e4c65258650e2281b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a9aafa14c1e14d75e4c65258650e2281b" kindref="member">Func</ref>()</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">}<sp/>{}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>construction<sp/>from<sp/>lambdas<sp/>and<sp/>other<sp/>callables<sp/>(from<sp/>C++).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" kindref="member">Func</ref>(F<sp/>&amp;&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" kindref="member">Func</ref>(std::reference_wrapper&lt;F&gt;<sp/>f)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>construction<sp/>from<sp/>std::function<sp/>objects<sp/>(from<sp/>C++).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" kindref="member">Func</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" kindref="member">Func</ref>(std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>assignment<sp/>of<sp/>lambdas<sp/>and<sp/>other<sp/>callables<sp/>(from<sp/>C++).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="86" refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" kindref="member">operator =</ref>(F<sp/>&amp;&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>F&gt;</highlight></codeline>
+<codeline lineno="92" refid="classopenage_1_1pyinterface_1_1_func_1a79f4926a369a8e3cf54214abe80257a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" kindref="member">operator =</ref>(std::reference_wrapper&lt;F&gt;<sp/>f)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>assignment<sp/>of<sp/>std::function<sp/>objects<sp/>(from<sp/>C++).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classopenage_1_1pyinterface_1_1_func_1aa4c47359a02ab210750ba35bf012ff37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classopenage_1_1pyinterface_1_1_func_1a0193d5a98fe674619cd1d9b8d00d6b55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" kindref="member">operator =</ref>(std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>f;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" kindref="member">check_fptr</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(not<sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Uninitialized<sp/>Func<sp/>object<sp/>at<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">util::symbol_name</ref>(static_cast&lt;const<sp/>void<sp/>*&gt;(</highlight><highlight class="keyword">this</highlight><highlight class="normal">))<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Can<sp/>not<sp/>call<sp/>or<sp/>convert<sp/>to<sp/>std::function.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>backtrace<sp/>info</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>ReturnType<sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" kindref="member">call</ref>(ArgTypes<sp/>...args)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" kindref="member">check_fptr</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>(args...);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" kindref="member">check_fptr</ref>();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" kindref="member">get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" kindref="member">check_fptr</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>BoundArgTypes&gt;</highlight></codeline>
+<codeline lineno="158" refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind</ref>(<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgTypes ..., ArgTypes ...&gt;</ref><sp/>f,<sp/>BoundArgTypes<sp/>...bound_args)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind_catchexcept_impl&lt;std::is_void&lt;ReturnType&gt;::value,<sp/>BoundArgTypes<sp/>...&gt;(f,<sp/>bound_args...);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>return_type_is_void,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>BoundArgTypes&gt;</highlight></codeline>
+<codeline lineno="168" refid="classopenage_1_1pyinterface_1_1_func_1acea6cb67bc0e8ea78d513f6db4e2e477" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;return_type_is_void&gt;::type<sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1acea6cb67bc0e8ea78d513f6db4e2e477" kindref="member">bind_catchexcept_impl</ref>(<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgTypes ..., ArgTypes ...&gt;</ref><sp/>f,<sp/>BoundArgTypes<sp/>...bound_args)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>[=](ArgTypes<sp/>...args)<sp/>-&gt;<sp/>ReturnType<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>f.<ref refid="classopenage_1_1util_1_1_function_ptr_1ab5cdb320863a46abc561330527a01e3d" kindref="member">ptr</ref>(bound_args...,<sp/>args...);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kindref="member">translate_exc_py_to_cpp</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>return_type_is_void,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>BoundArgTypes&gt;</highlight></codeline>
+<codeline lineno="180" refid="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;not<sp/>return_type_is_void&gt;::type<sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" kindref="member">bind_catchexcept_impl</ref>(<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgTypes ..., ArgTypes ...&gt;</ref><sp/>f,<sp/>BoundArgTypes<sp/>...bound_args)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>[=](ArgTypes<sp/>...args)<sp/>-&gt;<sp/>ReturnType<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReturnType<sp/>&amp;&amp;result<sp/>=<sp/>f.<ref refid="classopenage_1_1util_1_1_function_ptr_1ab5cdb320863a46abc561330527a01e3d" kindref="member">ptr</ref>(bound_args...,<sp/>args...);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kindref="member">translate_exc_py_to_cpp</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>BoundArgTypes&gt;</highlight></codeline>
+<codeline lineno="194" refid="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" kindref="member">bind_noexcept</ref>(<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgTypes ..., ArgTypes ...&gt;</ref><sp/>f,<sp/>BoundArgTypes<sp/>...bound_args)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref><sp/>=<sp/>[=](ArgTypes<sp/>...args)<sp/>-&gt;<sp/>ReturnType<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>f.<ref refid="classopenage_1_1util_1_1_function_ptr_1ab5cdb320863a46abc561330527a01e3d" kindref="member">ptr</ref>(bound_args...,<sp/>args...);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>non-variadic<sp/>aliases<sp/>for<sp/>bind,<sp/>for<sp/>use<sp/>by<sp/>Cython</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" kindref="member">bind0</ref>(ReturnType<sp/>(*f)(ArgTypes<sp/>...))<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind&lt;&gt;(</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, ArgTypes ...&gt;</ref>(f));</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" kindref="member">bind_noexcept0</ref>(ReturnType<sp/>(*f)(ArgTypes<sp/>...))<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind_noexcept&lt;&gt;(</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, ArgTypes ...&gt;</ref>(f));</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0&gt;</highlight></codeline>
+<codeline lineno="212" refid="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" kindref="member">bind1</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind&lt;BoundArgType0&gt;(</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0&gt;</highlight></codeline>
+<codeline lineno="218" refid="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" kindref="member">bind_noexcept1</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0)<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind_noexcept&lt;BoundArgType0&gt;(</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType1&gt;</highlight></codeline>
+<codeline lineno="224" refid="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" kindref="member">bind2</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>BoundArgType1,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0,<sp/>BoundArgType1<sp/>bound_arg1)<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind&lt;BoundArgType0,<sp/>BoundArgType1&gt;(</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, BoundArgType1, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0,<sp/>bound_arg1);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType1&gt;</highlight></codeline>
+<codeline lineno="230" refid="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" kindref="member">bind_noexcept2</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>BoundArgType1,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0,<sp/>BoundArgType1<sp/>bound_arg1)<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind_noexcept&lt;BoundArgType0,<sp/>BoundArgType1&gt;(</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, BoundArgType1, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0,<sp/>bound_arg1);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType2&gt;</highlight></codeline>
+<codeline lineno="236" refid="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" kindref="member">bind3</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>BoundArgType1,<sp/>BoundArgType2,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0,<sp/>BoundArgType1<sp/>bound_arg1,<sp/>BoundArgType2<sp/>bound_arg2)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind&lt;BoundArgType0,<sp/>BoundArgType1,<sp/>BoundArgType2&gt;(</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0,<sp/>bound_arg1,<sp/>bound_arg2);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>BoundArgType2&gt;</highlight></codeline>
+<codeline lineno="242" refid="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" kindref="member">bind_noexcept3</ref>(ReturnType<sp/>(*f)(BoundArgType0,<sp/>BoundArgType1,<sp/>BoundArgType2,<sp/>ArgTypes<sp/>...),<sp/>BoundArgType0<sp/>bound_arg0,<sp/>BoundArgType1<sp/>bound_arg1,<sp/>BoundArgType2<sp/>bound_arg2)<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bind_noexcept&lt;BoundArgType0,<sp/>BoundArgType1,<sp/>BoundArgType2&gt;(</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr&lt;ReturnType, BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...&gt;</ref>(f),<sp/>bound_arg0,<sp/>bound_arg1,<sp/>bound_arg2);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="248" refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;ReturnType<sp/>(ArgTypes<sp/>...)&gt;<sp/><ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*<sp/>Now<sp/>follow<sp/>the<sp/>glorious,<sp/>aforementioned<sp/>aliases<sp/>for<sp/>Cython,<sp/>and<sp/>accompanying<sp/>pxd<sp/>declarations.</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/>*<sp/>No<sp/>arguments.</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func0[RT]:</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call()<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT&gt;</highlight></codeline>
+<codeline lineno="275" refid="namespaceopenage_1_1pyinterface_1ac5982090c06dd898f6ae31eb91d0eb03" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func0</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT&gt;</ref>;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/>*<sp/>One<sp/>argument.</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func1[RT,<sp/>AT0]:</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call(AT0)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT0&gt;</highlight></codeline>
+<codeline lineno="296" refid="namespaceopenage_1_1pyinterface_1af2af31f0399e7a2975248aa5d1b90770" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func1</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT, AT0&gt;</ref>;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/>*<sp/>Two<sp/>arguments.</highlight></codeline>
+<codeline lineno="300"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func2[RT,<sp/>AT0,<sp/>AT1]:</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call(AT0,<sp/>AT1)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="309"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="313"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT1&gt;</highlight></codeline>
+<codeline lineno="318" refid="namespaceopenage_1_1pyinterface_1aa8a4b7d9f80e0eb01b608e76e63f0200" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func2</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT, AT0, AT1&gt;</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/>*<sp/>Three<sp/>arguments.</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="325"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func3[RT,<sp/>AT0,<sp/>AT1,<sp/>AT2]:</highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call(AT0,<sp/>AT1,<sp/>AT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="328"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="329"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="330"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="331"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="337"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT2&gt;</highlight></codeline>
+<codeline lineno="340" refid="namespaceopenage_1_1pyinterface_1aa3e403feb31c12f6da74581bdd27e7d7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func3</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT, AT0, AT1, AT2&gt;</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="343"><highlight class="comment"><sp/>*<sp/>Four<sp/>arguments.</highlight></codeline>
+<codeline lineno="344"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="345"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func4[RT,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3]:</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="353"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="354"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="355"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT3&gt;</highlight></codeline>
+<codeline lineno="362" refid="namespaceopenage_1_1pyinterface_1a5cac3c9ec570cd62730cd4b0c8861f54" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func4</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT, AT0, AT1, AT2, AT3&gt;</ref>;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/>*<sp/>Five<sp/>arguments.</highlight></codeline>
+<codeline lineno="367"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"><sp/>*<sp/>pxd:</highlight></codeline>
+<codeline lineno="369"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="370"><highlight class="comment"><sp/>*<sp/>cppclass<sp/>Func5[RT,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4]:</highlight></codeline>
+<codeline lineno="371"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>RT<sp/>call(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="372"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="373"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="374"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="375"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="376"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/>except<sp/>*<sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="377"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="378"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="379"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept1<sp/>[BT0]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="380"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept2<sp/>[BT0,<sp/>BT1]<sp/><sp/><sp/><sp/><sp/><sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1<sp/><sp/><sp/><sp/><sp/>)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="381"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/>void<sp/>bind_noexcept3<sp/>[BT0,<sp/>BT1,<sp/>BT2]<sp/>(RT<sp/>(*f)(BT0,<sp/>BT1,<sp/>BT2,<sp/>AT0,<sp/>AT1,<sp/>AT2,<sp/>AT3,<sp/>AT4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>gil,<sp/>BT0,<sp/>BT1,<sp/>BT2)<sp/>except<sp/>+</highlight></codeline>
+<codeline lineno="382"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>RT,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT0,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT1,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT2,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT3,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>AT4&gt;</highlight></codeline>
+<codeline lineno="385" refid="namespaceopenage_1_1pyinterface_1ad60b5c16d79c409477eefd3791832f41" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func5</ref><sp/>=<sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;RT, AT0, AT1, AT2, AT3, AT4&gt;</ref>;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ReturnType,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>ArgTypes&gt;</highlight></codeline>
+<codeline lineno="407" refid="classopenage_1_1pyinterface_1_1_py_if_func" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>{</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="409" refid="classopenage_1_1pyinterface_1_1_py_if_func_1a151c2faee8d91169645204f1eb3a6a22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func_1a151c2faee8d91169645204f1eb3a6a22" kindref="member">PyIfFunc</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" kindref="member">add_py_if_component</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>[=]()<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" kindref="member">check_fptr</ref>();</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref><sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420" refid="classopenage_1_1pyinterface_1_1_py_if_func_1a1ac0419304a48f6c323317604c117388" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func_1a1ac0419304a48f6c323317604c117388" kindref="member">~PyIfFunc</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" kindref="member">destroy_py_if_component</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>copy<sp/>construction!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;(<ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_py_if_func_1aa6f654b601f7c6beabcd05796c2b87ee" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc&lt;ReturnType, ArgTypes ...&gt;</ref><sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;<ref refid="classopenage_1_1pyinterface_1_1_py_if_func_1aa6f654b601f7c6beabcd05796c2b87ee" kindref="member">operator =</ref>(<ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc&lt;ReturnType, ArgTypes ...&gt;</ref><sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>you<sp/>may<sp/>convert<sp/>this<sp/>to<sp/>a<sp/>regular<sp/>Func<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="431" refid="classopenage_1_1pyinterface_1_1_py_if_func_1a411242c89ae252742b481bba3d94a4fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...&gt;<sp/>&amp;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt;ReturnType,<sp/>ArgTypes<sp/>...</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">&gt;(this-&gt;<ref refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" kindref="member">fptr</ref>);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="434"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/functional.h"/>
+  </compounddef>
+</doxygen>

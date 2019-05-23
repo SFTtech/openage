@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_renderer" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiRenderer</compoundname>
+    <includes refid="gui__renderer_8h" local="no">gui_renderer.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_renderer_1ab1747501362ffdb75cb21fd446a03885" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiRendererImpl</definition>
+        <argsstring></argsstring>
+        <name>GuiRendererImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="36" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;GuiRendererImpl&gt; qtsdl::GuiRenderer::impl</definition>
+        <argsstring></argsstring>
+        <name>impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="37" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderer::GuiRenderer</definition>
+        <argsstring>(SDL_Window *window)</argsstring>
+        <name>GuiRenderer</name>
+        <param>
+          <type>SDL_Window *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="29" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderer::~GuiRenderer</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="30" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.cpp" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_1a0deb3d159f4f59d24ac14369a05b3959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint qtsdl::GuiRenderer::render</definition>
+        <argsstring>()</argsstring>
+        <name>render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="32" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_1a2a23a8da34f7623c3060e788468210e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRenderer::resize</definition>
+        <argsstring>(int w, int h)</argsstring>
+        <name>resize</name>
+        <param>
+          <type>int</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_renderer.h" line="33" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Passes the native graphic context to Qt. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2750">
+        <label>qtsdl::GuiRenderer</label>
+        <link refid="classqtsdl_1_1_gui_renderer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/public/gui_renderer.h" line="26" column="1" bodyfile="libopenage/gui/guisys/public/gui_renderer.h" bodystart="26" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_renderer_1ae2c33e2d2e98c0d479feb9e906db9dd6" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>GuiRenderer</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_1ab1747501362ffdb75cb21fd446a03885" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>GuiRendererImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>impl</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_1a0deb3d159f4f59d24ac14369a05b3959" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>render</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_1a2a23a8da34f7623c3060e788468210e9" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>resize</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_1a3331199a681cbf303d2f7aa6d8fe233b" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderer</scope><name>~GuiRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1chunk__delta" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::chunk_delta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordNeSeRelative&lt; chunk_t, chunk, chunk_delta &gt;</basecompoundref>
+    <includes refid="chunk_8h" local="no">chunk.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="757">
+        <label>openage::coord::chunk_delta</label>
+        <link refid="structopenage_1_1coord_1_1chunk__delta"/>
+        <childnode refid="758" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="758">
+        <label>CoordNeSeRelative&lt; chunk_t, chunk, chunk_delta &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="759">
+        <label>openage::coord::chunk_delta</label>
+        <link refid="structopenage_1_1coord_1_1chunk__delta"/>
+        <childnode refid="760" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="760">
+        <label>CoordNeSeRelative&lt; chunk_t, chunk, chunk_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/chunk.h" line="13" column="1" bodyfile="libopenage/coord/chunk.h" bodystart="13" bodyend="15"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

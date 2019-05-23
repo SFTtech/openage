@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attributes" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attributes</compoundname>
+    <includes refid="attributes_8h" local="no">attributes.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" prot="private" static="no" mutable="no">
+        <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref>, std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt; &gt;</type>
+        <definition>std::map&lt;attr_type, std::shared_ptr&lt;AttributeContainer&gt; &gt; openage::Attributes::attrs</definition>
+        <argsstring></argsstring>
+        <name>attrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="61" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attributes_1afe865d67637b979eb7593f4d0f310119" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attributes::Attributes</definition>
+        <argsstring>()</argsstring>
+        <name>Attributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="17" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Attributes::add</definition>
+        <argsstring>(const std::shared_ptr&lt; AttributeContainer &gt; attr)</argsstring>
+        <name>add</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add an attribute or replace any attribute of the same type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="22" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1ae8924d1ae2fafd0c13418ab238848afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Attributes::add_copies</definition>
+        <argsstring>(const Attributes &amp;attrs)</argsstring>
+        <name>add_copies</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref> &amp;</type>
+          <declname>attrs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="27" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1ae27a84788906e6fd8786f950e8177704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Attributes::add_copies</definition>
+        <argsstring>(const Attributes &amp;attrs, bool shared, bool unshared)</argsstring>
+        <name>add_copies</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref> &amp;</type>
+          <declname>attrs</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>shared</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>unshared</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add copies of all the attributes from the given <ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref>. If shared is false, shared attributes are ignored. If unshared is false, unshared attributes are ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="34" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="15" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1a3499621c25a8c9eda9250f15a8729fed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Attributes::remove</definition>
+        <argsstring>(const attr_type type)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove an attribute based on the type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="39" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1aee38f453ac85b68821958ad74cdd8df5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Attributes::has</definition>
+        <argsstring>(const attr_type type) const</argsstring>
+        <name>has</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the attribute of the given type exists. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="44" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1a08f927be3be6911e7cf77604f9ead10f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; AttributeContainer &gt; openage::Attributes::get</definition>
+        <argsstring>(const attr_type type) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the attribute based on the type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="49" column="1" bodyfile="libopenage/unit/attributes.cpp" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attributes_1a19e964a1ee9570f046f9db9dc1f48c62" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1_attribute" kindref="compound">Attribute</ref>&lt; T &gt; &amp;</type>
+        <definition>Attribute&lt;T&gt;&amp; openage::Attributes::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the attribute </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attributes.h" line="55" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="55" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains a group of attributes. Can contain only one attribute of each type. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="544">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attributes.h" line="15" column="1" bodyfile="libopenage/unit/attributes.h" bodystart="15" bodyend="62"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attributes_1a9ffc8cfe4d75fbea84e7846cc6a8196f" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>add</name></member>
+      <member refid="classopenage_1_1_attributes_1ae8924d1ae2fafd0c13418ab238848afb" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>add_copies</name></member>
+      <member refid="classopenage_1_1_attributes_1ae27a84788906e6fd8786f950e8177704" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>add_copies</name></member>
+      <member refid="classopenage_1_1_attributes_1afe865d67637b979eb7593f4d0f310119" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>Attributes</name></member>
+      <member refid="classopenage_1_1_attributes_1ac77f87ee91094ddb74f89dd7d7d61fee" prot="private" virt="non-virtual"><scope>openage::Attributes</scope><name>attrs</name></member>
+      <member refid="classopenage_1_1_attributes_1a08f927be3be6911e7cf77604f9ead10f" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>get</name></member>
+      <member refid="classopenage_1_1_attributes_1a19e964a1ee9570f046f9db9dc1f48c62" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>get</name></member>
+      <member refid="classopenage_1_1_attributes_1aee38f453ac85b68821958ad74cdd8df5" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>has</name></member>
+      <member refid="classopenage_1_1_attributes_1a3499621c25a8c9eda9250f15a8729fed" prot="public" virt="non-virtual"><scope>openage::Attributes</scope><name>remove</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

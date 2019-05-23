@@ -1,0 +1,549 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="quaternion__test_8cpp" kind="file" language="C++">
+    <compoundname>quaternion_test.cpp</compoundname>
+    <includes refid="quaternion_8h" local="yes">quaternion.h</includes>
+    <includes local="no">cmath</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="31617">
+        <label>list</label>
+      </node>
+      <node id="31608">
+        <label>atomic</label>
+      </node>
+      <node id="31613">
+        <label>iomanip</label>
+      </node>
+      <node id="31612">
+        <label>functional</label>
+      </node>
+      <node id="31624">
+        <label>limits</label>
+      </node>
+      <node id="31603">
+        <label>cstdint</label>
+      </node>
+      <node id="31589">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="31590" relation="include">
+        </childnode>
+        <childnode refid="31588" relation="include">
+        </childnode>
+        <childnode refid="31591" relation="include">
+        </childnode>
+        <childnode refid="31592" relation="include">
+        </childnode>
+        <childnode refid="31593" relation="include">
+        </childnode>
+        <childnode refid="31594" relation="include">
+        </childnode>
+      </node>
+      <node id="31610">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="31611" relation="include">
+        </childnode>
+        <childnode refid="31612" relation="include">
+        </childnode>
+        <childnode refid="31613" relation="include">
+        </childnode>
+        <childnode refid="31596" relation="include">
+        </childnode>
+        <childnode refid="31614" relation="include">
+        </childnode>
+        <childnode refid="31598" relation="include">
+        </childnode>
+        <childnode refid="31615" relation="include">
+        </childnode>
+      </node>
+      <node id="31587">
+        <label>quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="31588" relation="include">
+        </childnode>
+        <childnode refid="31589" relation="include">
+        </childnode>
+        <childnode refid="31623" relation="include">
+        </childnode>
+        <childnode refid="31594" relation="include">
+        </childnode>
+        <childnode refid="31595" relation="include">
+        </childnode>
+        <childnode refid="31622" relation="include">
+        </childnode>
+      </node>
+      <node id="31588">
+        <label>cmath</label>
+      </node>
+      <node id="31597">
+        <label>stdexcept</label>
+      </node>
+      <node id="31616">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="31617" relation="include">
+        </childnode>
+        <childnode refid="31618" relation="include">
+        </childnode>
+        <childnode refid="31619" relation="include">
+        </childnode>
+      </node>
+      <node id="31586">
+        <label>libopenage/util/quaternion_test.cpp</label>
+        <link refid="quaternion__test_8cpp"/>
+        <childnode refid="31587" relation="include">
+        </childnode>
+        <childnode refid="31588" relation="include">
+        </childnode>
+        <childnode refid="31595" relation="include">
+        </childnode>
+        <childnode refid="31622" relation="include">
+        </childnode>
+        <childnode refid="31625" relation="include">
+        </childnode>
+      </node>
+      <node id="31611">
+        <label>cstdarg</label>
+      </node>
+      <node id="31598">
+        <label>string</label>
+      </node>
+      <node id="31602">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="31603" relation="include">
+        </childnode>
+        <childnode refid="31598" relation="include">
+        </childnode>
+        <childnode refid="31604" relation="include">
+        </childnode>
+        <childnode refid="31605" relation="include">
+        </childnode>
+        <childnode refid="31607" relation="include">
+        </childnode>
+        <childnode refid="31616" relation="include">
+        </childnode>
+        <childnode refid="31619" relation="include">
+        </childnode>
+      </node>
+      <node id="31605">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="31606" relation="include">
+        </childnode>
+      </node>
+      <node id="31594">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="31590" relation="include">
+        </childnode>
+        <childnode refid="31588" relation="include">
+        </childnode>
+        <childnode refid="31591" relation="include">
+        </childnode>
+        <childnode refid="31592" relation="include">
+        </childnode>
+        <childnode refid="31593" relation="include">
+        </childnode>
+        <childnode refid="31595" relation="include">
+        </childnode>
+        <childnode refid="31622" relation="include">
+        </childnode>
+      </node>
+      <node id="31607">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="31608" relation="include">
+        </childnode>
+        <childnode refid="31596" relation="include">
+        </childnode>
+        <childnode refid="31593" relation="include">
+        </childnode>
+        <childnode refid="31599" relation="include">
+        </childnode>
+        <childnode refid="31609" relation="include">
+        </childnode>
+        <childnode refid="31610" relation="include">
+        </childnode>
+      </node>
+      <node id="31595">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="31592" relation="include">
+        </childnode>
+        <childnode refid="31596" relation="include">
+        </childnode>
+        <childnode refid="31597" relation="include">
+        </childnode>
+        <childnode refid="31598" relation="include">
+        </childnode>
+        <childnode refid="31599" relation="include">
+        </childnode>
+        <childnode refid="31602" relation="include">
+        </childnode>
+      </node>
+      <node id="31621">
+        <label>typeinfo</label>
+      </node>
+      <node id="31615">
+        <label>vector</label>
+      </node>
+      <node id="31622">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="31619" relation="include">
+        </childnode>
+        <childnode refid="31602" relation="include">
+        </childnode>
+      </node>
+      <node id="31600">
+        <label>ciso646</label>
+      </node>
+      <node id="31590">
+        <label>array</label>
+      </node>
+      <node id="31614">
+        <label>sstream</label>
+      </node>
+      <node id="31599">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="31600" relation="include">
+        </childnode>
+        <childnode refid="31598" relation="include">
+        </childnode>
+        <childnode refid="31601" relation="include">
+        </childnode>
+      </node>
+      <node id="31601">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="31601" relation="include">
+        </childnode>
+      </node>
+      <node id="31609">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="31592" relation="include">
+        </childnode>
+        <childnode refid="31598" relation="include">
+        </childnode>
+      </node>
+      <node id="31619">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="31620" relation="include">
+        </childnode>
+      </node>
+      <node id="31623">
+        <label>math_constants.h</label>
+        <link refid="math__constants_8h"/>
+        <childnode refid="31624" relation="include">
+        </childnode>
+      </node>
+      <node id="31606">
+        <label>cstdlib</label>
+      </node>
+      <node id="31592">
+        <label>iostream</label>
+      </node>
+      <node id="31625">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="31595" relation="include">
+        </childnode>
+      </node>
+      <node id="31618">
+        <label>mutex</label>
+      </node>
+      <node id="31593">
+        <label>type_traits</label>
+      </node>
+      <node id="31604">
+        <label>config.h</label>
+      </node>
+      <node id="31591">
+        <label>cstring</label>
+      </node>
+      <node id="31596">
+        <label>memory</label>
+      </node>
+      <node id="31620">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="31592" relation="include">
+        </childnode>
+        <childnode refid="31621" relation="include">
+        </childnode>
+        <childnode refid="31599" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="quaternion_8h" kindref="compound">quaternion.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" kindref="member">quaternion</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Quaternion<sp/>construction<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>id_explicit{1.0,<sp/>0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(id_explicit)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.equals_deg(id_explicit,<sp/>1e-5f)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>wrong{0.0,<sp/>0.0,<sp/>1.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>not<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(wrong)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix3f</ref><sp/>id_mat3<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_matrix_1a0ba437147db630d1ca901f870764a024" kindref="member">Matrix3f::identity</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_id_mat3{id_mat3};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(q_id_mat3)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix4f</ref><sp/>id_mat4<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_matrix_1a0ba437147db630d1ca901f870764a024" kindref="member">Matrix4f::identity</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_id_mat4{id_mat4};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(q_id_mat4)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix4f</ref><sp/>neg_mat4{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1,<sp/>0,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>1,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>-1,<sp/>0,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>0,<sp/>1,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_neg{neg_mat4};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_nex_exp{0,<sp/>0,<sp/>1,<sp/>0};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_neg.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(q_nex_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>member<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q0{1,<sp/>2,<sp/>3,<sp/>4};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q1{5,<sp/>6,<sp/>7,<sp/>8};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(q0.dot(q1),<sp/>5<sp/>+<sp/>12<sp/>+<sp/>21<sp/>+<sp/>32,<sp/>1e-5f);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(q0.norm(),<sp/>5.4772255<sp/></highlight><highlight class="comment">/*=<sp/>sqrt(30)<sp/>*/</highlight><highlight class="normal">,<sp/>1e-4f);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2{2,<sp/>8,<sp/>4,<sp/>16};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2_normd<sp/>=<sp/>q2.<ref refid="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" kindref="member">normalized</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q2_normd.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(q2)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2conj_exp{2,<sp/>-8,<sp/>-4,<sp/>-16};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q2conj_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(q2.conjugated())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2inv_exp{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.0058823529411764705f,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-0.023529411764705882f,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-0.011764705882352941f,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-0.047058823529411764f</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2inv<sp/>=<sp/>q2.<ref refid="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" kindref="member">inversed</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q2inv.<ref refid="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" kindref="member">normalized</ref>().<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(q2inv_exp.normalized())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q2.normalize();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q2norm_exp{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.10846522f,<sp/>0.433860915f,<sp/>0.216930457f,<sp/>0.8677218312f</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q2norm_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(q2)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Operator<sp/>tests.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla0{13,<sp/>37,<sp/>42,<sp/>235};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla0.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>*<sp/>bla0)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla1{8,<sp/>16,<sp/>24,<sp/>32};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla0_1_exp{21,<sp/>45,<sp/>50,<sp/>243};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla0_1_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla0<sp/>+<sp/>bla1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla1_2_exp{2,<sp/>8,<sp/>12,<sp/>16};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla1_2_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla1<sp/>/<sp/>4)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla1_3_exp{16,<sp/>64,<sp/>96,<sp/>128};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla1_3_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla1<sp/>*<sp/>8)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla1_4_exp{21,<sp/>53,<sp/>66,<sp/>267};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla1_4_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla0<sp/>+<sp/>bla1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla1_5_exp{5,<sp/>21,<sp/>18,<sp/>203};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla1_5_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla0<sp/>-<sp/>bla1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla2_exp{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/>*<sp/>21<sp/>-<sp/>37<sp/>*<sp/>45<sp/>-<sp/>42<sp/>*<sp/>50<sp/>-<sp/>235<sp/>*<sp/>243,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/>*<sp/>45<sp/>+<sp/>37<sp/>*<sp/>21<sp/>+<sp/>42<sp/>*<sp/>243<sp/>-<sp/>235<sp/>*<sp/>50,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/>*<sp/>50<sp/>-<sp/>37<sp/>*<sp/>243<sp/>+<sp/>42<sp/>*<sp/>21<sp/>+<sp/>235<sp/>*<sp/>45,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/>*<sp/>243<sp/>+<sp/>37<sp/>*<sp/>50<sp/>-<sp/>42<sp/>*<sp/>45<sp/>+<sp/>235<sp/>*<sp/>21</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla2_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(bla0<sp/>*<sp/>bla0_1_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(bla2_exp<sp/>==<sp/>bla2_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(bla2_exp<sp/>!=<sp/>bla0)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>bla0_neg_exp{-13,<sp/>-37,<sp/>-42,<sp/>-235};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bla0_neg_exp.<ref refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" kindref="member">equals</ref>(-bla0)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>axis<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x,<sp/>y,<sp/>z</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rotation<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rot_mat<sp/>=<sp/>[&amp;](axis<sp/>a,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>am,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deg=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>-&gt;<sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix3f</ref><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(deg)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>am<sp/>=<sp/>(am<sp/>*<sp/><ref refid="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" kindref="member">math::PI</ref>)<sp/>/<sp/>180.0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(a)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>axis::x:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>std::cos(am),<sp/>-std::sin(am),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>std::sin(am),<sp/>std::cos(am)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>axis::y:</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cos(am),<sp/>0,<sp/>std::sin(am),</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>1,<sp/>0,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-std::sin(am),<sp/>0,<sp/>std::cos(am)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>axis::z:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cos(am),<sp/>-std::sin(am),<sp/>0,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::sin(am),<sp/>std::cos(am),<sp/>0,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>1,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;wtf<sp/>unreachable<sp/>code<sp/>reached&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>zero<sp/>rotation<sp/>=<sp/>identity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix3f</ref><sp/>rot<sp/>=<sp/>rot_mat(axis::x,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(<ref refid="classopenage_1_1util_1_1_matrix_1a0ba437147db630d1ca901f870764a024" kindref="member">Matrix3f::identity</ref>())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_rot{rot};</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" kindref="member">Quaternionf::from_rad</ref>(0,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10<sp/>rad<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::x,<sp/>10,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" kindref="member">Quaternionf::from_rad</ref>(10,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" kindref="member">equals_rad</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wrong<sp/>90-rad-rotation:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" kindref="member">Quaternionf::from_rad</ref>(90,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>not<sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" kindref="member">equals_rad</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10<sp/>deg<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::x,<sp/>10);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(10,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>90<sp/>deg<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::x,<sp/>90);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(90,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::y,<sp/>90);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(90,<sp/>{0,<sp/>1,<sp/>0});</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::z,<sp/>90);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(90,<sp/>{0,<sp/>0,<sp/>1});</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-90<sp/>deg<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::y,<sp/>-90);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(-90,<sp/>{0,<sp/>1,<sp/>0});</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>45<sp/>deg<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::z,<sp/>45);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(45,<sp/>{0,<sp/>0,<sp/>1});</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rotation<sp/>combination</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::z,<sp/>45)<sp/>*<sp/>rot_mat(axis::y,<sp/>60);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/>(<ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(45,<sp/>{0,<sp/>0,<sp/>1})<sp/>*</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(60,<sp/>{0,<sp/>1,<sp/>0}));</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::z,<sp/>45)<sp/>*</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot_mat(axis::y,<sp/>60)<sp/>*</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot_mat(axis::x,<sp/>-200);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternionf</ref>{rot};</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot_deg<sp/>=<sp/>(<ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(45,<sp/>{0,<sp/>0,<sp/>1})<sp/>*</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(60,<sp/>{0,<sp/>1,<sp/>0})<sp/>*</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(-200,<sp/>{1,<sp/>0,<sp/>0}));</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot.<ref refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" kindref="member">equals_deg</ref>(q_rot_deg)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to_matrix<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::x,<sp/>235);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(235,<sp/>{1,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(q_rot.to_matrix())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::y,<sp/>-55);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(-55,<sp/>{0,<sp/>1,<sp/>0});</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(q_rot.to_matrix())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot<sp/>=<sp/>rot_mat(axis::z,<sp/>64);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_rot<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(64,<sp/>{0,<sp/>0,<sp/>1});</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot.<ref refid="classopenage_1_1util_1_1_matrix_1ac1bc212dbfd151ce922ba27cad25a074" kindref="member">equals</ref>(q_rot.to_matrix())<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref><sp/>vec{5,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref><sp/>turned<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(180,<sp/>{0,<sp/>0,<sp/>1})<sp/>*<sp/>vec;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref><sp/>turned_exp{-5,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turned.<ref refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" kindref="member">equals</ref>(turned_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>intentional<sp/>fail:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turned_exp<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref>{-42,<sp/>-42,<sp/>-42};</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>not<sp/>turned.<ref refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" kindref="member">equals</ref>(turned_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>another<sp/>turn</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vec<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref>{1337,<sp/>42,<sp/>235};</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turned<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" kindref="member">Quaternionf::from_deg</ref>(90,<sp/>{1,<sp/>0,<sp/>0})<sp/>*<sp/>vec;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turned_exp<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref>{1337,<sp/>-235,<sp/>42};</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turned.<ref refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" kindref="member">equals</ref>(turned_exp)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/quaternion_test.cpp"/>
+  </compounddef>
+</doxygen>

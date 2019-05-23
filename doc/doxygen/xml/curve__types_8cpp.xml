@@ -1,0 +1,625 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="curve__types_8cpp" kind="file" language="C++">
+    <compoundname>curve_types.cpp</compoundname>
+    <includes refid="event_2loop_8h" local="yes">../../event/loop.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="testing_8h" local="yes">../../testing/testing.h</includes>
+    <includes refid="continuous_8h" local="yes">../continuous.h</includes>
+    <includes refid="curve_8h" local="yes">../curve.h</includes>
+    <includes refid="discrete_8h" local="yes">../discrete.h</includes>
+    <includes refid="keyframe__container_8h" local="yes">../keyframe_container.h</includes>
+    <incdepgraph>
+      <node id="5420">
+        <label>list</label>
+      </node>
+      <node id="5461">
+        <label>eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="5423" relation="include">
+        </childnode>
+        <childnode refid="5462" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5422" relation="include">
+        </childnode>
+      </node>
+      <node id="5449">
+        <label>atomic</label>
+      </node>
+      <node id="5425">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="5426" relation="include">
+        </childnode>
+        <childnode refid="5427" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5429" relation="include">
+        </childnode>
+        <childnode refid="5430" relation="include">
+        </childnode>
+        <childnode refid="5431" relation="include">
+        </childnode>
+        <childnode refid="5432" relation="include">
+        </childnode>
+        <childnode refid="5433" relation="include">
+        </childnode>
+      </node>
+      <node id="5429">
+        <label>iomanip</label>
+      </node>
+      <node id="5419">
+        <label>functional</label>
+      </node>
+      <node id="5430">
+        <label>limits</label>
+      </node>
+      <node id="5459">
+        <label>eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5460" relation="include">
+        </childnode>
+        <childnode refid="5461" relation="include">
+        </childnode>
+        <childnode refid="5463" relation="include">
+        </childnode>
+        <childnode refid="5423" relation="include">
+        </childnode>
+      </node>
+      <node id="5418">
+        <label>../../event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="5419" relation="include">
+        </childnode>
+        <childnode refid="5420" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5422" relation="include">
+        </childnode>
+        <childnode refid="5423" relation="include">
+        </childnode>
+        <childnode refid="5459" relation="include">
+        </childnode>
+        <childnode refid="5465" relation="include">
+        </childnode>
+        <childnode refid="5467" relation="include">
+        </childnode>
+        <childnode refid="5468" relation="include">
+        </childnode>
+      </node>
+      <node id="5417">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+        <childnode refid="5418" relation="include">
+        </childnode>
+        <childnode refid="5468" relation="include">
+        </childnode>
+        <childnode refid="5469" relation="include">
+        </childnode>
+        <childnode refid="5470" relation="include">
+        </childnode>
+        <childnode refid="5423" relation="include">
+        </childnode>
+        <childnode refid="5473" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+      </node>
+      <node id="5424">
+        <label>cstdint</label>
+      </node>
+      <node id="5451">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5452" relation="include">
+        </childnode>
+        <childnode refid="5419" relation="include">
+        </childnode>
+        <childnode refid="5429" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5453" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5437" relation="include">
+        </childnode>
+      </node>
+      <node id="5428">
+        <label>cmath</label>
+      </node>
+      <node id="5465">
+        <label>eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5419" relation="include">
+        </childnode>
+        <childnode refid="5466" relation="include">
+        </childnode>
+      </node>
+      <node id="5440">
+        <label>stdexcept</label>
+      </node>
+      <node id="5423">
+        <label>../curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="5424" relation="include">
+        </childnode>
+        <childnode refid="5425" relation="include">
+        </childnode>
+      </node>
+      <node id="5471">
+        <label>value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="5466" relation="include">
+        </childnode>
+        <childnode refid="5472" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+      </node>
+      <node id="5454">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5420" relation="include">
+        </childnode>
+        <childnode refid="5455" relation="include">
+        </childnode>
+        <childnode refid="5456" relation="include">
+        </childnode>
+      </node>
+      <node id="5452">
+        <label>cstdarg</label>
+      </node>
+      <node id="5436">
+        <label>string</label>
+      </node>
+      <node id="5444">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5424" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5445" relation="include">
+        </childnode>
+        <childnode refid="5446" relation="include">
+        </childnode>
+        <childnode refid="5448" relation="include">
+        </childnode>
+        <childnode refid="5454" relation="include">
+        </childnode>
+        <childnode refid="5456" relation="include">
+        </childnode>
+      </node>
+      <node id="5446">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5447" relation="include">
+        </childnode>
+      </node>
+      <node id="5448">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5449" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5432" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5450" relation="include">
+        </childnode>
+        <childnode refid="5451" relation="include">
+        </childnode>
+      </node>
+      <node id="5460">
+        <label>unordered_set</label>
+      </node>
+      <node id="5431">
+        <label>ostream</label>
+      </node>
+      <node id="5470">
+        <label>../continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="5432" relation="include">
+        </childnode>
+        <childnode refid="5471" relation="include">
+        </childnode>
+        <childnode refid="5468" relation="include">
+        </childnode>
+      </node>
+      <node id="5434">
+        <label>limits.h</label>
+      </node>
+      <node id="5438">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5439" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5440" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5444" relation="include">
+        </childnode>
+      </node>
+      <node id="5433">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="5426" relation="include">
+        </childnode>
+        <childnode refid="5434" relation="include">
+        </childnode>
+        <childnode refid="5428" relation="include">
+        </childnode>
+        <childnode refid="5435" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5437" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+      </node>
+      <node id="5462">
+        <label>any</label>
+      </node>
+      <node id="5458">
+        <label>typeinfo</label>
+      </node>
+      <node id="5463">
+        <label>eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="5464" relation="include">
+        </childnode>
+        <childnode refid="5433" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5422" relation="include">
+        </childnode>
+      </node>
+      <node id="5472">
+        <label>keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="5439" relation="include">
+        </childnode>
+        <childnode refid="5430" relation="include">
+        </childnode>
+        <childnode refid="5420" relation="include">
+        </childnode>
+        <childnode refid="5423" relation="include">
+        </childnode>
+        <childnode refid="5418" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+      </node>
+      <node id="5466">
+        <label>eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="5423" relation="include">
+        </childnode>
+        <childnode refid="5419" relation="include">
+        </childnode>
+        <childnode refid="5420" relation="include">
+        </childnode>
+        <childnode refid="5421" relation="include">
+        </childnode>
+      </node>
+      <node id="5474">
+        <label>optional</label>
+      </node>
+      <node id="5437">
+        <label>vector</label>
+      </node>
+      <node id="5468">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="5456" relation="include">
+        </childnode>
+        <childnode refid="5444" relation="include">
+        </childnode>
+      </node>
+      <node id="5442">
+        <label>ciso646</label>
+      </node>
+      <node id="5475">
+        <label>utility</label>
+      </node>
+      <node id="5453">
+        <label>sstream</label>
+      </node>
+      <node id="5441">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5442" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+        <childnode refid="5443" relation="include">
+        </childnode>
+      </node>
+      <node id="5443">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5443" relation="include">
+        </childnode>
+      </node>
+      <node id="5450">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5439" relation="include">
+        </childnode>
+        <childnode refid="5436" relation="include">
+        </childnode>
+      </node>
+      <node id="5456">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5457" relation="include">
+        </childnode>
+      </node>
+      <node id="5447">
+        <label>cstdlib</label>
+      </node>
+      <node id="5467">
+        <label>event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5461" relation="include">
+        </childnode>
+        <childnode refid="5423" relation="include">
+        </childnode>
+      </node>
+      <node id="5439">
+        <label>iostream</label>
+      </node>
+      <node id="5473">
+        <label>../discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="5474" relation="include">
+        </childnode>
+        <childnode refid="5475" relation="include">
+        </childnode>
+        <childnode refid="5471" relation="include">
+        </childnode>
+      </node>
+      <node id="5464">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="5421" relation="include">
+        </childnode>
+        <childnode refid="5419" relation="include">
+        </childnode>
+        <childnode refid="5432" relation="include">
+        </childnode>
+        <childnode refid="5460" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+        <childnode refid="5438" relation="include">
+        </childnode>
+      </node>
+      <node id="5422">
+        <label>unordered_map</label>
+      </node>
+      <node id="5427">
+        <label>climits</label>
+      </node>
+      <node id="5469">
+        <label>../../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="5438" relation="include">
+        </childnode>
+      </node>
+      <node id="5455">
+        <label>mutex</label>
+      </node>
+      <node id="5432">
+        <label>type_traits</label>
+      </node>
+      <node id="5445">
+        <label>config.h</label>
+      </node>
+      <node id="5426">
+        <label>algorithm</label>
+      </node>
+      <node id="5435">
+        <label>cstring</label>
+      </node>
+      <node id="5421">
+        <label>memory</label>
+      </node>
+      <node id="5457">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5439" relation="include">
+        </childnode>
+        <childnode refid="5458" relation="include">
+        </childnode>
+        <childnode refid="5441" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve_1_1tests">openage::curve::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../event/loop.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../continuous.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../curve.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../discrete.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../keyframe_container.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve_1_1tests" kindref="compound">openage::curve::tests</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" kindref="member">curve_types</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>the<sp/>base<sp/>container<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>loop<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container" kindref="compound">KeyframeContainer&lt;int&gt;</ref><sp/>c{loop};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p0<sp/>=<sp/>c.<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p1<sp/>=<sp/>c.insert(1,<sp/>1);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p2<sp/>=<sp/>c.insert(10,<sp/>2);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>last<sp/>function<sp/>tests<sp/>without<sp/>hints</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(0)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(1)-&gt;value,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>last<sp/>shall<sp/>give<sp/>&gt;=<sp/>not<sp/>only<sp/>&gt;<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(5)-&gt;value,<sp/>1);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(10)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>last()<sp/>with<sp/>hints.<sp/>Yes<sp/>this<sp/>can<sp/>make<sp/>a<sp/>difference.<sp/>we<sp/>want<sp/>to<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>absolutely<sp/>sure!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(0,<sp/>p0)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(1,<sp/>p0)-&gt;value,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>last<sp/>shall<sp/>give<sp/>&gt;=<sp/>not<sp/>only<sp/>&gt;<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(5,<sp/>p0)-&gt;value,<sp/>1);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(10,<sp/>p0)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47,<sp/>p0)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(0,<sp/>p1)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(1,<sp/>p1)-&gt;value,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>last<sp/>shall<sp/>give<sp/>&gt;=<sp/>not<sp/>only<sp/>&gt;<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(5,<sp/>p1)-&gt;value,<sp/>1);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(10,<sp/>p1)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47,<sp/>p1)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(0,<sp/>p2)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(1,<sp/>p2)-&gt;value,<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>last<sp/>shall<sp/>give<sp/>&gt;=<sp/>not<sp/>only<sp/>&gt;<sp/>!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(5,<sp/>p2)-&gt;value,<sp/>1);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(10,<sp/>p2)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47,<sp/>p2)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>test<sp/>the<sp/>basic<sp/>erase()<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>the<sp/>1-element,<sp/>new<sp/>values<sp/>should<sp/>be<sp/>[0,<sp/>2]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.erase(c.last(1));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(1)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(5)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>do<sp/>nothing,<sp/>since<sp/>we<sp/>delete<sp/>all<sp/>at<sp/>&gt;<sp/>99,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>the<sp/>last<sp/>element<sp/>is<sp/>at<sp/>10.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.erase_after(c.last(99));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47)-&gt;value,<sp/>2);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>now<sp/>since<sp/>5<sp/>&lt;<sp/>10,<sp/>element<sp/>with<sp/>value<sp/>2<sp/>has<sp/>to<sp/>be<sp/>gone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.erase_after(c.last(5));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.last(47)-&gt;value,<sp/>0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>the<sp/>Simple<sp/>Continuous<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous&lt;float&gt;</ref><sp/>c(f,<sp/>0);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(10,<sp/>1);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(0),<sp/>0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(1),<sp/>0.1,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous&lt;float&gt;</ref><sp/>c(f,<sp/>0);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Continuous<sp/>float&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Inserting<sp/>t:20,<sp/>v:20&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(20,<sp/>20);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(0),<sp/>0);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(1),<sp/>1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(7),<sp/>7);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" kindref="member">set_last</ref>(20,<sp/>10);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Inserting<sp/>t:20,<sp/>v:10.<sp/>This<sp/>should<sp/>overwrite<sp/>the<sp/>old<sp/>values!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(0),<sp/>0);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(2),<sp/>1);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(8),<sp/>4);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Check<sp/>the<sp/>discrete<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_discrete" kindref="compound">Discrete&lt;int&gt;</ref><sp/>c(f,<sp/>0);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(10,<sp/>10);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" kindref="member">get</ref>(0),<sp/>0);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" kindref="member">get</ref>(1),<sp/>0);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" kindref="member">get</ref>(10),<sp/>10);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_discrete" kindref="compound">Discrete&lt;std::string&gt;</ref><sp/>complex(f,<sp/>0);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>complex.set_insert(0,<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>0&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>complex.set_insert(10,<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>10&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(complex.get(0),<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>0&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(complex.get(1),<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>0&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(complex.get(10),<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>10&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//check<sp/>set_last</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_discrete" kindref="compound">Discrete&lt;int&gt;</ref><sp/>c(f,<sp/>0);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(0,<sp/>0);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(1,<sp/>1);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(3,<sp/>3);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" kindref="member">get</ref>(3),<sp/>3);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" kindref="member">set_last</ref>(2,<sp/>10);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5" kindref="member">get</ref>(2),<sp/>10);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Encountered<sp/>Errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>f<sp/>=<sp/>std::make_shared&lt;event::Loop&gt;();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">Continuous&lt;int&gt;</ref><sp/>c(f,<sp/>0);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" kindref="member">set_insert</ref>(1,<sp/>1);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.<ref refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" kindref="member">set_last</ref>(1,<sp/>-5);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.<ref refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e" kindref="member">get</ref>(1),<sp/>-5);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/tests/curve_types.cpp"/>
+  </compounddef>
+</doxygen>

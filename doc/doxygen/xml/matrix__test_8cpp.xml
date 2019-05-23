@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="matrix__test_8cpp" kind="file" language="C++">
+    <compoundname>matrix_test.cpp</compoundname>
+    <includes refid="matrix_8h" local="yes">matrix.h</includes>
+    <includes refid="vector_8h" local="yes">vector.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="30981">
+        <label>list</label>
+      </node>
+      <node id="30972">
+        <label>atomic</label>
+      </node>
+      <node id="30977">
+        <label>iomanip</label>
+      </node>
+      <node id="30976">
+        <label>functional</label>
+      </node>
+      <node id="30967">
+        <label>cstdint</label>
+      </node>
+      <node id="30952">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="30953" relation="include">
+        </childnode>
+        <childnode refid="30954" relation="include">
+        </childnode>
+        <childnode refid="30955" relation="include">
+        </childnode>
+        <childnode refid="30956" relation="include">
+        </childnode>
+        <childnode refid="30957" relation="include">
+        </childnode>
+        <childnode refid="30958" relation="include">
+        </childnode>
+      </node>
+      <node id="30974">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30975" relation="include">
+        </childnode>
+        <childnode refid="30976" relation="include">
+        </childnode>
+        <childnode refid="30977" relation="include">
+        </childnode>
+        <childnode refid="30960" relation="include">
+        </childnode>
+        <childnode refid="30978" relation="include">
+        </childnode>
+        <childnode refid="30962" relation="include">
+        </childnode>
+        <childnode refid="30979" relation="include">
+        </childnode>
+      </node>
+      <node id="30954">
+        <label>cmath</label>
+      </node>
+      <node id="30961">
+        <label>stdexcept</label>
+      </node>
+      <node id="30980">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30981" relation="include">
+        </childnode>
+        <childnode refid="30982" relation="include">
+        </childnode>
+        <childnode refid="30983" relation="include">
+        </childnode>
+      </node>
+      <node id="30975">
+        <label>cstdarg</label>
+      </node>
+      <node id="30962">
+        <label>string</label>
+      </node>
+      <node id="30966">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30967" relation="include">
+        </childnode>
+        <childnode refid="30962" relation="include">
+        </childnode>
+        <childnode refid="30968" relation="include">
+        </childnode>
+        <childnode refid="30969" relation="include">
+        </childnode>
+        <childnode refid="30971" relation="include">
+        </childnode>
+        <childnode refid="30980" relation="include">
+        </childnode>
+        <childnode refid="30983" relation="include">
+        </childnode>
+      </node>
+      <node id="30969">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30970" relation="include">
+        </childnode>
+      </node>
+      <node id="30958">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="30953" relation="include">
+        </childnode>
+        <childnode refid="30954" relation="include">
+        </childnode>
+        <childnode refid="30955" relation="include">
+        </childnode>
+        <childnode refid="30956" relation="include">
+        </childnode>
+        <childnode refid="30957" relation="include">
+        </childnode>
+        <childnode refid="30959" relation="include">
+        </childnode>
+        <childnode refid="30986" relation="include">
+        </childnode>
+      </node>
+      <node id="30971">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30972" relation="include">
+        </childnode>
+        <childnode refid="30960" relation="include">
+        </childnode>
+        <childnode refid="30957" relation="include">
+        </childnode>
+        <childnode refid="30963" relation="include">
+        </childnode>
+        <childnode refid="30973" relation="include">
+        </childnode>
+        <childnode refid="30974" relation="include">
+        </childnode>
+      </node>
+      <node id="30959">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30956" relation="include">
+        </childnode>
+        <childnode refid="30960" relation="include">
+        </childnode>
+        <childnode refid="30961" relation="include">
+        </childnode>
+        <childnode refid="30962" relation="include">
+        </childnode>
+        <childnode refid="30963" relation="include">
+        </childnode>
+        <childnode refid="30966" relation="include">
+        </childnode>
+      </node>
+      <node id="30985">
+        <label>typeinfo</label>
+      </node>
+      <node id="30979">
+        <label>vector</label>
+      </node>
+      <node id="30986">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="30983" relation="include">
+        </childnode>
+        <childnode refid="30966" relation="include">
+        </childnode>
+      </node>
+      <node id="30964">
+        <label>ciso646</label>
+      </node>
+      <node id="30953">
+        <label>array</label>
+      </node>
+      <node id="30978">
+        <label>sstream</label>
+      </node>
+      <node id="30963">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30964" relation="include">
+        </childnode>
+        <childnode refid="30962" relation="include">
+        </childnode>
+        <childnode refid="30965" relation="include">
+        </childnode>
+      </node>
+      <node id="30965">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30965" relation="include">
+        </childnode>
+      </node>
+      <node id="30951">
+        <label>libopenage/util/matrix_test.cpp</label>
+        <link refid="matrix__test_8cpp"/>
+        <childnode refid="30952" relation="include">
+        </childnode>
+        <childnode refid="30958" relation="include">
+        </childnode>
+        <childnode refid="30987" relation="include">
+        </childnode>
+      </node>
+      <node id="30973">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30956" relation="include">
+        </childnode>
+        <childnode refid="30962" relation="include">
+        </childnode>
+      </node>
+      <node id="30983">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30984" relation="include">
+        </childnode>
+      </node>
+      <node id="30970">
+        <label>cstdlib</label>
+      </node>
+      <node id="30956">
+        <label>iostream</label>
+      </node>
+      <node id="30987">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="30959" relation="include">
+        </childnode>
+      </node>
+      <node id="30982">
+        <label>mutex</label>
+      </node>
+      <node id="30957">
+        <label>type_traits</label>
+      </node>
+      <node id="30968">
+        <label>config.h</label>
+      </node>
+      <node id="30955">
+        <label>cstring</label>
+      </node>
+      <node id="30960">
+        <label>memory</label>
+      </node>
+      <node id="30984">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30956" relation="include">
+        </childnode>
+        <childnode refid="30985" relation="include">
+        </childnode>
+        <childnode refid="30963" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matrix_8h" kindref="compound">matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vector_8h" kindref="compound">vector.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" kindref="member">matrix</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>matrix<sp/>multiplication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix&lt;5, 3, float&gt;</ref><sp/>a(0.0,<sp/>0.5,<sp/>1.0,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.5,<sp/>2.0,<sp/>2.5,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3.0,<sp/>3.5,<sp/>4.0,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4.5,<sp/>5.0,<sp/>5.5,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>6.0,<sp/>6.5,<sp/>7.0);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix&lt;3, 4, float&gt;</ref><sp/>b(1,<sp/>0,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>1,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>1,<sp/>0);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix&lt;5, 4, float&gt;</ref><sp/>c<sp/>=<sp/>a<sp/>*<sp/>b;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][0],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][1],<sp/>0.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][2],<sp/>1,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][3],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][0],<sp/>1.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][1],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][2],<sp/>2.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][3],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[2][0],<sp/>3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[2][1],<sp/>3.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[2][2],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[2][3],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[3][0],<sp/>4.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[3][1],<sp/>5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[3][2],<sp/>5.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[3][3],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[4][0],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[4][1],<sp/>6.5,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[4][2],<sp/>7,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[4][3],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>addition<sp/>and<sp/>subtraction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>a(1,<sp/>2,<sp/>3,<sp/>4);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>b(5,<sp/>6,<sp/>7,<sp/>8);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>c<sp/>=<sp/>a<sp/>+<sp/>b;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][0],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][1],<sp/>8,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][0],<sp/>10,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][1],<sp/>12,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>b<sp/>-<sp/>a;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][0],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[0][1],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][0],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(c[1][1],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>scalar<sp/>multiplication<sp/>and<sp/>division</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>a(0,<sp/>1,<sp/>2,<sp/>3);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>b<sp/>=<sp/>a<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][0],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][1],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][0],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][1],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>2<sp/>*<sp/>a;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][0],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][1],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][0],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][1],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>a<sp/>/<sp/>0.5;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][0],<sp/>0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][1],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][0],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][1],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>transposition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>a(1,<sp/>2,<sp/>3,<sp/>4);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix2f</ref><sp/>b<sp/>=<sp/>a.<ref refid="classopenage_1_1util_1_1_matrix_1a4950945a55363fd77668b983001d55b5" kindref="member">transpose</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][0],<sp/>1,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[0][1],<sp/>3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][0],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(b[1][1],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>vector<sp/>interaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix3f</ref><sp/>a(2,<sp/>0,<sp/>0,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>2,<sp/>0,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>2);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref><sp/>v(1,<sp/>2,<sp/>3);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>u<sp/>=<sp/>(a<sp/>*<sp/>v).to_vector();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(u[0],<sp/>2,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(u[1],<sp/>4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(u[2],<sp/>6,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/matrix_test.cpp"/>
+  </compounddef>
+</doxygen>

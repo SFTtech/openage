@@ -1,0 +1,480 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="eventstore_8h" kind="file" language="C++">
+    <compoundname>eventstore.h</compoundname>
+    <includes refid="pairing__heap_8h" local="yes">../datastructure/pairing_heap.h</includes>
+    <includes refid="misc_8h" local="yes">../util/misc.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="eventqueue_8h" local="yes">libopenage/event/eventqueue.h</includedby>
+    <includedby refid="eventstore_8cpp" local="yes">libopenage/event/eventstore.cpp</includedby>
+    <incdepgraph>
+      <node id="8014">
+        <label>list</label>
+      </node>
+      <node id="8006">
+        <label>atomic</label>
+      </node>
+      <node id="8010">
+        <label>iomanip</label>
+      </node>
+      <node id="7990">
+        <label>functional</label>
+      </node>
+      <node id="8001">
+        <label>cstdint</label>
+      </node>
+      <node id="8008">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="8009" relation="include">
+        </childnode>
+        <childnode refid="7990" relation="include">
+        </childnode>
+        <childnode refid="8010" relation="include">
+        </childnode>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="8011" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+        <childnode refid="8012" relation="include">
+        </childnode>
+      </node>
+      <node id="8022">
+        <label>cmath</label>
+      </node>
+      <node id="7999">
+        <label>stdexcept</label>
+      </node>
+      <node id="8013">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="8014" relation="include">
+        </childnode>
+        <childnode refid="8015" relation="include">
+        </childnode>
+        <childnode refid="8016" relation="include">
+        </childnode>
+      </node>
+      <node id="8009">
+        <label>cstdarg</label>
+      </node>
+      <node id="7995">
+        <label>string</label>
+      </node>
+      <node id="8000">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="8001" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+        <childnode refid="8002" relation="include">
+        </childnode>
+        <childnode refid="8003" relation="include">
+        </childnode>
+        <childnode refid="8005" relation="include">
+        </childnode>
+        <childnode refid="8013" relation="include">
+        </childnode>
+        <childnode refid="8016" relation="include">
+        </childnode>
+      </node>
+      <node id="8003">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="8004" relation="include">
+        </childnode>
+      </node>
+      <node id="8005">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="8006" relation="include">
+        </childnode>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="7991" relation="include">
+        </childnode>
+        <childnode refid="7993" relation="include">
+        </childnode>
+        <childnode refid="8007" relation="include">
+        </childnode>
+        <childnode refid="8008" relation="include">
+        </childnode>
+      </node>
+      <node id="7992">
+        <label>unordered_set</label>
+      </node>
+      <node id="8021">
+        <label>limits.h</label>
+      </node>
+      <node id="7997">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="7998" relation="include">
+        </childnode>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="7999" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+        <childnode refid="7993" relation="include">
+        </childnode>
+        <childnode refid="8000" relation="include">
+        </childnode>
+      </node>
+      <node id="8019">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="8020" relation="include">
+        </childnode>
+        <childnode refid="8021" relation="include">
+        </childnode>
+        <childnode refid="8022" relation="include">
+        </childnode>
+        <childnode refid="8023" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+        <childnode refid="8012" relation="include">
+        </childnode>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="7997" relation="include">
+        </childnode>
+        <childnode refid="7993" relation="include">
+        </childnode>
+      </node>
+      <node id="8018">
+        <label>typeinfo</label>
+      </node>
+      <node id="7987">
+        <label>libopenage/event/eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="7988" relation="include">
+        </childnode>
+        <childnode refid="8019" relation="include">
+        </childnode>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="8024" relation="include">
+        </childnode>
+      </node>
+      <node id="8012">
+        <label>vector</label>
+      </node>
+      <node id="7994">
+        <label>ciso646</label>
+      </node>
+      <node id="8011">
+        <label>sstream</label>
+      </node>
+      <node id="7993">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="7994" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+        <childnode refid="7996" relation="include">
+        </childnode>
+      </node>
+      <node id="7996">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="7996" relation="include">
+        </childnode>
+      </node>
+      <node id="8007">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="7998" relation="include">
+        </childnode>
+        <childnode refid="7995" relation="include">
+        </childnode>
+      </node>
+      <node id="8016">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="8017" relation="include">
+        </childnode>
+      </node>
+      <node id="8004">
+        <label>cstdlib</label>
+      </node>
+      <node id="7998">
+        <label>iostream</label>
+      </node>
+      <node id="7988">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="7989" relation="include">
+        </childnode>
+        <childnode refid="7990" relation="include">
+        </childnode>
+        <childnode refid="7991" relation="include">
+        </childnode>
+        <childnode refid="7992" relation="include">
+        </childnode>
+        <childnode refid="7993" relation="include">
+        </childnode>
+        <childnode refid="7997" relation="include">
+        </childnode>
+      </node>
+      <node id="8024">
+        <label>unordered_map</label>
+      </node>
+      <node id="8015">
+        <label>mutex</label>
+      </node>
+      <node id="7991">
+        <label>type_traits</label>
+      </node>
+      <node id="8002">
+        <label>config.h</label>
+      </node>
+      <node id="8020">
+        <label>algorithm</label>
+      </node>
+      <node id="8023">
+        <label>cstring</label>
+      </node>
+      <node id="7989">
+        <label>memory</label>
+      </node>
+      <node id="8017">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="7998" relation="include">
+        </childnode>
+        <childnode refid="8018" relation="include">
+        </childnode>
+        <childnode refid="7993" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8038">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="8026">
+        <label>libopenage/event/eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="8027" relation="include">
+        </childnode>
+        <childnode refid="8048" relation="include">
+        </childnode>
+        <childnode refid="8046" relation="include">
+        </childnode>
+      </node>
+      <node id="8045">
+        <label>libopenage/event/eventtarget.cpp</label>
+        <link refid="eventtarget_8cpp"/>
+      </node>
+      <node id="8027">
+        <label>libopenage/event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="8028" relation="include">
+        </childnode>
+        <childnode refid="8033" relation="include">
+        </childnode>
+        <childnode refid="8034" relation="include">
+        </childnode>
+        <childnode refid="8045" relation="include">
+        </childnode>
+        <childnode refid="8046" relation="include">
+        </childnode>
+        <childnode refid="8047" relation="include">
+        </childnode>
+      </node>
+      <node id="8033">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="8046">
+        <label>libopenage/event/loop.cpp</label>
+        <link refid="loop_8cpp"/>
+      </node>
+      <node id="8040">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="8036">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="8042">
+        <label>libopenage/curve/discrete.cpp</label>
+        <link refid="discrete_8cpp"/>
+      </node>
+      <node id="8029">
+        <label>libopenage/curve/value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="8030" relation="include">
+        </childnode>
+        <childnode refid="8041" relation="include">
+        </childnode>
+        <childnode refid="8043" relation="include">
+        </childnode>
+      </node>
+      <node id="8039">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="8037" relation="include">
+        </childnode>
+        <childnode refid="8040" relation="include">
+        </childnode>
+      </node>
+      <node id="8048">
+        <label>libopenage/event/eventqueue.cpp</label>
+        <link refid="eventqueue_8cpp"/>
+      </node>
+      <node id="8044">
+        <label>libopenage/curve/keyframe_container.cpp</label>
+        <link refid="keyframe__container_8cpp"/>
+      </node>
+      <node id="8030">
+        <label>libopenage/curve/continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="8031" relation="include">
+        </childnode>
+        <childnode refid="8032" relation="include">
+        </childnode>
+        <childnode refid="8033" relation="include">
+        </childnode>
+        <childnode refid="8034" relation="include">
+        </childnode>
+      </node>
+      <node id="8037">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="8025">
+        <label>libopenage/event/eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="8026" relation="include">
+        </childnode>
+        <childnode refid="8049" relation="include">
+        </childnode>
+      </node>
+      <node id="8028">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="8029" relation="include">
+        </childnode>
+        <childnode refid="8044" relation="include">
+        </childnode>
+        <childnode refid="8033" relation="include">
+        </childnode>
+      </node>
+      <node id="8035">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="8036" relation="include">
+        </childnode>
+        <childnode refid="8037" relation="include">
+        </childnode>
+      </node>
+      <node id="8047">
+        <label>libopenage/event/tests.cpp</label>
+        <link refid="event_2tests_8cpp"/>
+      </node>
+      <node id="8041">
+        <label>libopenage/curve/discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="8042" relation="include">
+        </childnode>
+        <childnode refid="8032" relation="include">
+        </childnode>
+        <childnode refid="8033" relation="include">
+        </childnode>
+        <childnode refid="8034" relation="include">
+        </childnode>
+      </node>
+      <node id="8043">
+        <label>libopenage/curve/value_container.cpp</label>
+        <link refid="value__container_8cpp"/>
+      </node>
+      <node id="8034">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="8035" relation="include">
+        </childnode>
+        <childnode refid="8038" relation="include">
+        </childnode>
+        <childnode refid="8037" relation="include">
+        </childnode>
+        <childnode refid="8039" relation="include">
+        </childnode>
+      </node>
+      <node id="8049">
+        <label>libopenage/event/eventstore.cpp</label>
+        <link refid="eventstore_8cpp"/>
+      </node>
+      <node id="8032">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="8031">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1event_1_1_event_store" prot="public">openage::event::EventStore</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1event">openage::event</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../datastructure/pairing_heap.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/misc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1event" kindref="compound">openage::event</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Event;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1event_1_1_event_store" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>don&apos;t<sp/>store<sp/>a<sp/>double-sharedpointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>instead,<sp/>use<sp/>the<sp/>event-sharedpointer<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">heap_t</ref><sp/>=<sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">datastructure::PairingHeap&lt;std::shared_ptr&lt;Event&gt;</ref>,</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1event_1_1_event_store_1afef869c8828b088e15582eec63ae79bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1_shared_ptr_less" kindref="compound">util::SharedPtrLess&lt;Event&gt;</ref>&gt;;</highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" kindref="member">elemmap_t</ref><sp/>=<sp/>std::unordered_map&lt;std::shared_ptr&lt;Event&gt;,<sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1af89a07b90150d0d4606787f0ac202242" kindref="member">heap_t::element_t</ref>&gt;;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" kindref="member">push</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Event&gt;<sp/><ref refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" kindref="member">pop</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;<ref refid="classopenage_1_1event_1_1_event_store_1abbad60ac960f4020d813237260867dcb" kindref="member">top</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1acf182eb2f89c80bb6c790a24d192398f" kindref="member">erase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1ae8a67463b44b369d9402186cf332e247" kindref="member">update</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;event);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a4be75c01219e59abd20b9f906c8b7154" kindref="member">contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;event)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a5085887950c62e1061fea8e2edaf76cb" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a895a291c20860520abba447e1cd48fd0" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_store_1ad91190c9873619a057d067282966d68c" kindref="member">empty</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;Event&gt;&gt;<sp/><ref refid="classopenage_1_1event_1_1_event_store_1af94747a58143a4d16b0f94bd184444be" kindref="member">get_sorted_events</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">heap_t</ref><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" kindref="member">heap</ref>;</highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" kindref="member">elemmap_t</ref><sp/><ref refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" kindref="member">events</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/event/eventstore.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1730 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage" kind="namespace" language="C++">
+    <compoundname>openage</compoundname>
+    <innerclass refid="classopenage_1_1_action_mode" prot="public">openage::ActionMode</innerclass>
+    <innerclass refid="classopenage_1_1_action_mode_signals" prot="public">openage::ActionModeSignals</innerclass>
+    <innerclass refid="classopenage_1_1_asset_manager" prot="public">openage::AssetManager</innerclass>
+    <innerclass refid="classopenage_1_1_attack_ability" prot="public">openage::AttackAbility</innerclass>
+    <innerclass refid="classopenage_1_1_attack_action" prot="public">openage::AttackAction</innerclass>
+    <innerclass refid="classopenage_1_1_attribute" prot="public">openage::Attribute</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4" prot="public">openage::Attribute&lt; attr_type::armor &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4" prot="public">openage::Attribute&lt; attr_type::attack &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1building_01_4" prot="public">openage::Attribute&lt; attr_type::building &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1damaged_01_4" prot="public">openage::Attribute&lt; attr_type::damaged &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1direction_01_4" prot="public">openage::Attribute&lt; attr_type::direction &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4" prot="public">openage::Attribute&lt; attr_type::dropsite &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4" prot="public">openage::Attribute&lt; attr_type::formation &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1garrison_01_4" prot="public">openage::Attribute&lt; attr_type::garrison &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4" prot="public">openage::Attribute&lt; attr_type::heal &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4" prot="public">openage::Attribute&lt; attr_type::hitpoints &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4" prot="public">openage::Attribute&lt; attr_type::multitype &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1owner_01_4" prot="public">openage::Attribute&lt; attr_type::owner &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4" prot="public">openage::Attribute&lt; attr_type::population &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1projectile_01_4" prot="public">openage::Attribute&lt; attr_type::projectile &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1resource_01_4" prot="public">openage::Attribute&lt; attr_type::resource &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4" prot="public">openage::Attribute&lt; attr_type::resource_generator &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4" prot="public">openage::Attribute&lt; attr_type::speed &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4" prot="public">openage::Attribute&lt; attr_type::storage &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4" prot="public">openage::Attribute&lt; attr_type::worker &gt;</innerclass>
+    <innerclass refid="classopenage_1_1_attribute_container" prot="public">openage::AttributeContainer</innerclass>
+    <innerclass refid="classopenage_1_1_attributes" prot="public">openage::Attributes</innerclass>
+    <innerclass refid="classopenage_1_1_build_ability" prot="public">openage::BuildAbility</innerclass>
+    <innerclass refid="classopenage_1_1_build_action" prot="public">openage::BuildAction</innerclass>
+    <innerclass refid="classopenage_1_1_building_producer" prot="public">openage::BuildingProducer</innerclass>
+    <innerclass refid="structopenage_1_1chunk__neighbors" prot="public">openage::chunk_neighbors</innerclass>
+    <innerclass refid="classopenage_1_1_civilisation" prot="public">openage::Civilisation</innerclass>
+    <innerclass refid="classopenage_1_1_classic_resources" prot="public">openage::ClassicResources</innerclass>
+    <innerclass refid="classopenage_1_1_command" prot="public">openage::Command</innerclass>
+    <innerclass refid="classopenage_1_1_convert_ability" prot="public">openage::ConvertAbility</innerclass>
+    <innerclass refid="classopenage_1_1_convert_action" prot="public">openage::ConvertAction</innerclass>
+    <innerclass refid="structopenage_1_1coord__chunk__hash" prot="public">openage::coord_chunk_hash</innerclass>
+    <innerclass refid="classopenage_1_1_create_mode" prot="public">openage::CreateMode</innerclass>
+    <innerclass refid="classopenage_1_1_dead_action" prot="public">openage::DeadAction</innerclass>
+    <innerclass refid="classopenage_1_1_decay_action" prot="public">openage::DecayAction</innerclass>
+    <innerclass refid="classopenage_1_1_draw_handler" prot="public">openage::DrawHandler</innerclass>
+    <innerclass refid="classopenage_1_1_editor_mode" prot="public">openage::EditorMode</innerclass>
+    <innerclass refid="classopenage_1_1_editor_mode_signals" prot="public">openage::EditorModeSignals</innerclass>
+    <innerclass refid="classopenage_1_1_engine" prot="public">openage::Engine</innerclass>
+    <innerclass refid="classopenage_1_1_engine_signals" prot="public">openage::EngineSignals</innerclass>
+    <innerclass refid="classopenage_1_1_foundation_action" prot="public">openage::FoundationAction</innerclass>
+    <innerclass refid="classopenage_1_1_game_control" prot="public">openage::GameControl</innerclass>
+    <innerclass refid="classopenage_1_1_game_control_signals" prot="public">openage::GameControlSignals</innerclass>
+    <innerclass refid="classopenage_1_1_game_main" prot="public">openage::GameMain</innerclass>
+    <innerclass refid="classopenage_1_1_game_main_handle" prot="public">openage::GameMainHandle</innerclass>
+    <innerclass refid="classopenage_1_1_game_main_signals" prot="public">openage::GameMainSignals</innerclass>
+    <innerclass refid="classopenage_1_1_game_renderer" prot="public">openage::GameRenderer</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec" prot="public">openage::GameSpec</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec_handle" prot="public">openage::GameSpecHandle</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec_signals" prot="public">openage::GameSpecSignals</innerclass>
+    <innerclass refid="classopenage_1_1_garrison_ability" prot="public">openage::GarrisonAbility</innerclass>
+    <innerclass refid="classopenage_1_1_garrison_action" prot="public">openage::GarrisonAction</innerclass>
+    <innerclass refid="classopenage_1_1_gather_ability" prot="public">openage::GatherAbility</innerclass>
+    <innerclass refid="classopenage_1_1_gather_action" prot="public">openage::GatherAction</innerclass>
+    <innerclass refid="classopenage_1_1_generator" prot="public">openage::Generator</innerclass>
+    <innerclass refid="structopenage_1_1gl__texture__buffer" prot="public">openage::gl_texture_buffer</innerclass>
+    <innerclass refid="classopenage_1_1_heal_ability" prot="public">openage::HealAbility</innerclass>
+    <innerclass refid="classopenage_1_1_heal_action" prot="public">openage::HealAction</innerclass>
+    <innerclass refid="classopenage_1_1_hud_handler" prot="public">openage::HudHandler</innerclass>
+    <innerclass refid="classopenage_1_1_idle_action" prot="public">openage::IdleAction</innerclass>
+    <innerclass refid="structopenage_1_1influence" prot="public">openage::influence</innerclass>
+    <innerclass refid="structopenage_1_1influence__group" prot="public">openage::influence_group</innerclass>
+    <innerclass refid="classopenage_1_1_input_handler" prot="public">openage::InputHandler</innerclass>
+    <innerclass refid="classopenage_1_1_interval_timer" prot="public">openage::IntervalTimer</innerclass>
+    <innerclass refid="classopenage_1_1_living_producer" prot="public">openage::LivingProducer</innerclass>
+    <innerclass refid="structopenage_1_1main__arguments" prot="public">openage::main_arguments</innerclass>
+    <innerclass refid="classopenage_1_1_market" prot="public">openage::Market</innerclass>
+    <innerclass refid="classopenage_1_1_movable_producer" prot="public">openage::MovableProducer</innerclass>
+    <innerclass refid="classopenage_1_1_move_ability" prot="public">openage::MoveAbility</innerclass>
+    <innerclass refid="classopenage_1_1_move_action" prot="public">openage::MoveAction</innerclass>
+    <innerclass refid="structopenage_1_1neighbor__tile" prot="public">openage::neighbor_tile</innerclass>
+    <innerclass refid="classopenage_1_1_nyan_research_type" prot="public">openage::NyanResearchType</innerclass>
+    <innerclass refid="classopenage_1_1_nyan_type" prot="public">openage::NyanType</innerclass>
+    <innerclass refid="classopenage_1_1_object_producer" prot="public">openage::ObjectProducer</innerclass>
+    <innerclass refid="classopenage_1_1_output_mode" prot="public">openage::OutputMode</innerclass>
+    <innerclass refid="classopenage_1_1_output_mode_signals" prot="public">openage::OutputModeSignals</innerclass>
+    <innerclass refid="classopenage_1_1_patrol_ability" prot="public">openage::PatrolAbility</innerclass>
+    <innerclass refid="classopenage_1_1_player" prot="public">openage::Player</innerclass>
+    <innerclass refid="classopenage_1_1_player_score" prot="public">openage::PlayerScore</innerclass>
+    <innerclass refid="classopenage_1_1_population_tracker" prot="public">openage::PopulationTracker</innerclass>
+    <innerclass refid="classopenage_1_1_projectile_action" prot="public">openage::ProjectileAction</innerclass>
+    <innerclass refid="classopenage_1_1_projectile_producer" prot="public">openage::ProjectileProducer</innerclass>
+    <innerclass refid="classopenage_1_1_radial_object" prot="public">openage::RadialObject</innerclass>
+    <innerclass refid="structopenage_1_1reference__data" prot="public">openage::reference_data</innerclass>
+    <innerclass refid="classopenage_1_1_region" prot="public">openage::Region</innerclass>
+    <innerclass refid="classopenage_1_1_render_options" prot="public">openage::RenderOptions</innerclass>
+    <innerclass refid="classopenage_1_1_repair_ability" prot="public">openage::RepairAbility</innerclass>
+    <innerclass refid="classopenage_1_1_repair_action" prot="public">openage::RepairAction</innerclass>
+    <innerclass refid="classopenage_1_1_research" prot="public">openage::Research</innerclass>
+    <innerclass refid="classopenage_1_1_research_ability" prot="public">openage::ResearchAbility</innerclass>
+    <innerclass refid="classopenage_1_1_research_action" prot="public">openage::ResearchAction</innerclass>
+    <innerclass refid="classopenage_1_1_research_type" prot="public">openage::ResearchType</innerclass>
+    <innerclass refid="classopenage_1_1_resize_handler" prot="public">openage::ResizeHandler</innerclass>
+    <innerclass refid="classopenage_1_1_resource" prot="public">openage::Resource</innerclass>
+    <innerclass refid="classopenage_1_1_resource_bundle" prot="public">openage::ResourceBundle</innerclass>
+    <innerclass refid="classopenage_1_1_resource_cost" prot="public">openage::ResourceCost</innerclass>
+    <innerclass refid="classopenage_1_1_resource_producer" prot="public">openage::ResourceProducer</innerclass>
+    <innerclass refid="classopenage_1_1_resources" prot="public">openage::Resources</innerclass>
+    <innerclass refid="classopenage_1_1_score" prot="public">openage::Score</innerclass>
+    <innerclass refid="classopenage_1_1_screenshot_manager" prot="public">openage::ScreenshotManager</innerclass>
+    <innerclass refid="classopenage_1_1_set_point_ability" prot="public">openage::SetPointAbility</innerclass>
+    <innerclass refid="classopenage_1_1_shared_attribute_container" prot="public">openage::SharedAttributeContainer</innerclass>
+    <innerclass refid="classopenage_1_1_sound" prot="public">openage::Sound</innerclass>
+    <innerclass refid="classopenage_1_1_square_object" prot="public">openage::SquareObject</innerclass>
+    <innerclass refid="classopenage_1_1_target_action" prot="public">openage::TargetAction</innerclass>
+    <innerclass refid="classopenage_1_1_team" prot="public">openage::Team</innerclass>
+    <innerclass refid="classopenage_1_1_team_score" prot="public">openage::TeamScore</innerclass>
+    <innerclass refid="classopenage_1_1_terrain" prot="public">openage::Terrain</innerclass>
+    <innerclass refid="structopenage_1_1terrain__meta" prot="public">openage::terrain_meta</innerclass>
+    <innerclass refid="structopenage_1_1terrain__render__data" prot="public">openage::terrain_render_data</innerclass>
+    <innerclass refid="classopenage_1_1_terrain_chunk" prot="public">openage::TerrainChunk</innerclass>
+    <innerclass refid="classopenage_1_1_terrain_object" prot="public">openage::TerrainObject</innerclass>
+    <innerclass refid="classopenage_1_1_terrain_search" prot="public">openage::TerrainSearch</innerclass>
+    <innerclass refid="classopenage_1_1_texture" prot="public">openage::Texture</innerclass>
+    <innerclass refid="classopenage_1_1_tick_handler" prot="public">openage::TickHandler</innerclass>
+    <innerclass refid="structopenage_1_1tile__data" prot="public">openage::tile_data</innerclass>
+    <innerclass refid="structopenage_1_1tile__draw__data" prot="public">openage::tile_draw_data</innerclass>
+    <innerclass refid="structopenage_1_1tile__range" prot="public">openage::tile_range</innerclass>
+    <innerclass refid="classopenage_1_1_tile_content" prot="public">openage::TileContent</innerclass>
+    <innerclass refid="classopenage_1_1_train_ability" prot="public">openage::TrainAbility</innerclass>
+    <innerclass refid="classopenage_1_1_train_action" prot="public">openage::TrainAction</innerclass>
+    <innerclass refid="classopenage_1_1_type_pair" prot="public">openage::TypePair</innerclass>
+    <innerclass refid="classopenage_1_1_ungarrison_ability" prot="public">openage::UngarrisonAbility</innerclass>
+    <innerclass refid="classopenage_1_1_ungarrison_action" prot="public">openage::UngarrisonAction</innerclass>
+    <innerclass refid="classopenage_1_1_unit" prot="public">openage::Unit</innerclass>
+    <innerclass refid="classopenage_1_1_unit_ability" prot="public">openage::UnitAbility</innerclass>
+    <innerclass refid="classopenage_1_1_unit_action" prot="public">openage::UnitAction</innerclass>
+    <innerclass refid="classopenage_1_1_unit_container" prot="public">openage::UnitContainer</innerclass>
+    <innerclass refid="classopenage_1_1_unit_reference" prot="public">openage::UnitReference</innerclass>
+    <innerclass refid="classopenage_1_1_unit_selection" prot="public">openage::UnitSelection</innerclass>
+    <innerclass refid="classopenage_1_1_unit_texture" prot="public">openage::UnitTexture</innerclass>
+    <innerclass refid="classopenage_1_1_unit_type" prot="public">openage::UnitType</innerclass>
+    <innerclass refid="classopenage_1_1_unit_type_meta" prot="public">openage::UnitTypeMeta</innerclass>
+    <innerclass refid="classopenage_1_1_unshared_attribute_container" prot="public">openage::UnsharedAttributeContainer</innerclass>
+    <innernamespace refid="namespaceopenage_1_1alphamask__shader">openage::alphamask_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1console">openage::console</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1cvar">openage::cvar</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1datastructure">openage::datastructure</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1event">openage::event</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gameio">openage::gameio</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1job">openage::job</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1math">openage::math</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1options">openage::options</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1os">openage::os</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1path">openage::path</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1py">openage::py</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1rng">openage::rng</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1shader">openage::shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1simulation">openage::simulation</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1subprocess">openage::subprocess</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1teamcolor__shader">openage::teamcolor_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1test">openage::test</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing">openage::testing</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1texture__shader">openage::texture_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1texturefont__shader">openage::texturefont_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1timing">openage::timing</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ActionButtonsType</name>
+        <enumvalue id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a4469cd896299cc6ea6ea2054d1e5a777" prot="public">
+          <name>MilitaryUnits</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a0cdbc629c6d54902fa05c83a9d1694a3" prot="public">
+          <name>CivilianUnits</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a70e748773cd746ae58fc3e9cdd9d49d1" prot="public">
+          <name>BuildMenu</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5a408c62a4830f43cc283514da6fbe7acc" prot="public">
+          <name>MilBuildMenu</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_control.h" line="130" column="1" bodyfile="libopenage/game_control.h" bodystart="130" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>cost_type</name>
+        <enumvalue id="namespaceopenage_1abda3971a8397f9204b2ad873b645251ca617ac08757d38a5a7ed91c224f0e90a0" prot="public">
+          <name>constant</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Constant resources. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1abda3971a8397f9204b2ad873b645251ca4a2125c5934e8e01a02220017c0f5646" prot="public">
+          <name>workforce</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Dynamic cost based on the workforce. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Types of dynamic cost calculation (and one constant).</para>
+<para>Used in <ref refid="classopenage_1_1_resource_cost" kindref="compound">ResourceCost</ref> TODO use in TimeCost </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="18" column="1" bodyfile="libopenage/gamestate/cost.h" bodystart="18" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>game_resource</name>
+        <enumvalue id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da22811dd94d65037ef86535740b98dec8" prot="public">
+          <name>wood</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da62506be34d574da4a0d158a67253ea99" prot="public">
+          <name>food</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328dae07e81c20cf5935f5225765f0af81755" prot="public">
+          <name>gold</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0a840ef45467fb3932dbf2c2896c5cbf" prot="public">
+          <name>stone</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328da0e3189e54a778ef92b43939c27c234bb" prot="public">
+          <name>RESOURCE_TYPE_COUNT</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="94" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="94" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>score_category</name>
+        <enumvalue id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a31ba6d3619a6d70c983151afa0764de4" prot="public">
+          <name>military</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>20% of units killed cost </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a0959a8b663be96468a1c5c1d456243a2" prot="public">
+          <name>economy</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>20% of alive units cost and 10% of resources </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a83ec45960b80c035a0068df1d9df5aa8" prot="public">
+          <name>technology</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>20% of researched technologies and 10 for each 1% of map explored </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a7310936c1bff3304c3767495298a29fc" prot="public">
+          <name>society</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>20% of Castles and Wonders cost </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830aab18b2d5fd1535004e3d8428c3056523" prot="public">
+          <name>SCORE_CATEGORY_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The categories of sub-scores that sum to a player&apos;s score. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/score.h" line="18" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="18" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>member_type</name>
+        <enumvalue id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0ac444858e0aaeb727da73d2eae62321ad" prot="public">
+          <name>leader</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0aaa08769cdcb26674c6706093503ff0a3" prot="public">
+          <name>member</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0ac5a5adb4becbec9d63074dcb70a2fa03" prot="public">
+          <name>recruit</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0a334c4a4c42fdb79d7ebc3e73b517e6f8" prot="public">
+          <name>none</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Types of membership </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="20" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a452923c63b865b21223a44ea86714b4a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>tile_state</name>
+        <enumvalue id="namespaceopenage_1a452923c63b865b21223a44ea86714b4aaea21841da70e6405af19fabc4ff8bdd9" prot="public">
+          <name>missing</name>
+          <briefdescription>
+<para>tile is not created yet </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a452923c63b865b21223a44ea86714b4aaf4e0ac58eb46d88efc451c164db3b837" prot="public">
+          <name>existing</name>
+          <briefdescription>
+<para>tile is already existing </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a452923c63b865b21223a44ea86714b4aa3035da8cd016b46a243c7230ac213cb6" prot="public">
+          <name>creatable</name>
+          <briefdescription>
+<para>tile does not exist but can be created </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a452923c63b865b21223a44ea86714b4aafedb2d84cafe20862cb4399751a8a7e3" prot="public">
+          <name>invalid</name>
+          <briefdescription>
+<para>tile does not exist and can not be created </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>describes the state of a terrain tile. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="81" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="81" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465e" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>object_state</name>
+        <enumvalue id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465eab07286ebbb5bc7aa91cc3eaa8bc19711" prot="public">
+          <name>removed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465ea374515b23d6f106696387776a6077d17" prot="public">
+          <name>floating</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465ea6ebb25b39f65cab5efa469977b9479e2" prot="public">
+          <name>placed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a1df3032ec46d1407f95723ad6fc5465eac693ee9f8e776555e9625dd624ad5fa3" prot="public">
+          <name>placed_no_collision</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>only placed will enable collision checks </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="22" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="22" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ability_type</name>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" prot="public">
+          <name>move</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7e39411afa494a20a2b1a11eff1fe660" prot="public">
+          <name>patrol</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a6babe83086924834de593c74b8cddc2f" prot="public">
+          <name>set_point</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a2dc979d8571788e647e49a10223acae8" prot="public">
+          <name>garrison</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828aa2218a02430bfb386f4dfee54f6d2325" prot="public">
+          <name>ungarrison</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a61b3a8faa9c1091806675c230a9abe64" prot="public">
+          <name>train</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1" prot="public">
+          <name>build</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7412df2b1db8cd2a5d4aafdb6c2090d3" prot="public">
+          <name>research</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a76a79a1cdd981d7b73a1b7cf9cc6e0de" prot="public">
+          <name>gather</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659" prot="public">
+          <name>attack</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a31168275dcaac634489082b54c4c66d0" prot="public">
+          <name>convert</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a9ab776b93b3c6bbb67f4545371814423" prot="public">
+          <name>repair</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a214d940b5313897d9e25b3a2b3533770" prot="public">
+          <name>heal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5" prot="public">
+          <name>MAX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>roughly the same as command_ability in game data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="26" column="1" bodyfile="libopenage/unit/ability.h" bodystart="26" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>graphic_type</name>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3bae62068a633874d298459a25f8868d306" prot="public">
+          <name>construct</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba3bf1114a986ba87ed28fc1b5884fc2f8" prot="public">
+          <name>shadow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba63faabca234a29640f3344e74c0672da" prot="public">
+          <name>decay</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba564202d4005974a8279609ef0f95d43b" prot="public">
+          <name>dying</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3baeeeaea9366c4a3ee8ae10bffc661799e" prot="public">
+          <name>standing</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba099410f601830a2873dd98ea0acf711d" prot="public">
+          <name>walking</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3baa771e1fd1a582e9cf05f5213586f1965" prot="public">
+          <name>carrying</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3bafc7e987f23de5bd6562b7c0063cad659" prot="public">
+          <name>attack</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba214d940b5313897d9e25b3a2b3533770" prot="public">
+          <name>heal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3ba67e92c8765a9bc7fb2d335c459de9eb5" prot="public">
+          <name>work</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Types of action graphics </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="36" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="36" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>attr_type</name>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" prot="public">
+          <name>owner</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" prot="public">
+          <name>population</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a46cc0df55d22d6eb6c37cabbc09f5193" prot="public">
+          <name>damaged</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ad5f6f6624aebf09a1c60464a76a96df1" prot="public">
+          <name>hitpoints</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a3ee45b1ff632881c66b6b92f45a47fd7" prot="public">
+          <name>armor</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36afc7e987f23de5bd6562b7c0063cad659" prot="public">
+          <name>attack</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36af1a41f239896dc63a6eaeba863f0e7ce" prot="public">
+          <name>formation</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a214d940b5313897d9e25b3a2b3533770" prot="public">
+          <name>heal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ace4ef3ec98443ed10da505114b58f153" prot="public">
+          <name>speed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36aef72c37be9d1b9e6e5bbd6ef09448abe" prot="public">
+          <name>direction</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36abdb3aea80363d8d4bded1ce9f3cdadf2" prot="public">
+          <name>projectile</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" prot="public">
+          <name>building</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a82ac54bc705e60f101a783334be1e7e1" prot="public">
+          <name>dropsite</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204" prot="public">
+          <name>resource</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a07c8a39fbe04116af6aa6e9dfc13f488" prot="public">
+          <name>resource_generator</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" prot="public">
+          <name>worker</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" prot="public">
+          <name>storage</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a360fa717125a1d694d8218ce0af98a51" prot="public">
+          <name>multitype</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a2dc979d8571788e647e49a10223acae8" prot="public">
+          <name>garrison</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List of unit&apos;s attribute types. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="59" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="59" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6ed" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>attack_stance</name>
+        <enumvalue id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6eda7daca46098eec28a63e877c18451ce30" prot="public">
+          <name>aggressive</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6eda6f5e2ac86ae7de0f01a834f29340f5d5" prot="public">
+          <name>defensive</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6edaa183589cf15be7f98c613e6c5a89d20f" prot="public">
+          <name>stand_ground</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6eda8cb06461d4398cb0457b5f4cf50c06fc" prot="public">
+          <name>do_nothing</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List of unit&apos;s attack stance. Can be used for buildings also. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="85" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="85" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>attack_formation</name>
+        <enumvalue id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" prot="public">
+          <name>line</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6012b5293d0c7397efd784be681cd35c" prot="public">
+          <name>staggered</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a34be958a921e43d813a2075297d8e862" prot="public">
+          <name>box</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a473b77e304705afe4c60404646fa8004" prot="public">
+          <name>flank</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List of unit&apos;s formation. Effect applys on a group of units. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="96" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="96" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>command_flag</name>
+        <enumvalue id="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3aa2414c252176310b2c04547257948c7b7" prot="public">
+          <name>interrupt</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3aa0f99c9f01a52f21f547acbeb2bb67dc5" prot="public">
+          <name>use_range</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a355391982e6c1257c3fc4de3b6402b3aa2a71c2ff2e6e5f1d2d3342d476a6d4dc" prot="public">
+          <name>attack_res</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>additional flags which may affect some abilities </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/command.h" line="15" column="1" bodyfile="libopenage/unit/command.h" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082a" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>research_category</name>
+        <enumvalue id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082aa8a67d00a2da5ab614b3a93766f9f63aa" prot="public">
+          <name>unit_upgrade</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classopenage_1_1_research" kindref="compound">Research</ref> which modify unit type data. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082aa9ee21762a0519bcdf0849387a7eff8ce" prot="public">
+          <name>age_advance</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classopenage_1_1_research" kindref="compound">Research</ref> which modify unit type data and also progresses the next age. Separate category for simplification. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082aa3d517f8924ac7fd03699a29d97dc52d9" prot="public">
+          <name>generic</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classopenage_1_1_research" kindref="compound">Research</ref> which modify unit type data and something else. (eg. see enemy line of sight) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1ac519db9c9f959f36985d551eeb69082aa436a91abe3dfbd8d27615cd124bae951" prot="public">
+          <name>RESEARCH_CATEGORY_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/research.h" line="15" column="1" bodyfile="libopenage/unit/research.h" bodystart="15" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>selection_type_t</name>
+        <enumvalue id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cda05e717c9df8ba7e69bb8f3db541fcb7c" prot="public">
+          <name>own_units</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cdacec576a55414cd51591ce1b0794dc1fa" prot="public">
+          <name>own_buildings</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cdacbd2ae7b84f0df28929ff9f16bffc43c" prot="public">
+          <name>enemy_unit</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cda1fd8e3998f23347bbf10bfcc892df706" prot="public">
+          <name>enemy_building</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cda3e47b75000b0924b6c9ba5759a7cf15d" prot="public">
+          <name>nothing</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A selection of units always has a type You can&apos;t select units from multiple types at once Earlier types have precedence over later types</para>
+<para>So you can select a group of units, or a building (or multiple if append is on) Enemy units, enemy buildings and other objects may only be selected one at a time </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="27" column="1" bodyfile="libopenage/unit/selection.h" bodystart="27" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" prot="public" static="no">
+        <type>int</type>
+        <definition>using openage::index_t = typedef int</definition>
+        <argsstring></argsstring>
+        <name>index_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the key type mapped to data objects </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_spec.h" line="29" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a80fe26a181494ba07762b46df300d016" prot="public" static="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &gt; &gt;</type>
+        <definition>using openage::unit_type_list = typedef std::vector&lt;std::shared_ptr&lt;UnitType&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>unit_type_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>could use unique ptr </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_spec.h" line="35" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" prot="public" static="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_type_meta" kindref="compound">UnitTypeMeta</ref> &gt; &gt;</type>
+        <definition>using openage::unit_meta_list = typedef std::vector&lt;std::shared_ptr&lt;UnitTypeMeta&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>unit_meta_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_spec.h" line="36" column="1" bodyfile="libopenage/gamestate/game_spec.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1aec1b23983a95168bf5f310c0d5ea8e08" prot="public" static="no">
+        <type>std::unordered_set&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
+        <definition>using openage::tileset_t = typedef std::unordered_set&lt;coord::tile&gt;</definition>
+        <argsstring></argsstring>
+        <name>tileset_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the type to store a set of tiles </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="27" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" prot="public" static="no">
+        <type>int</type>
+        <definition>using openage::terrain_t = typedef int</definition>
+        <argsstring></argsstring>
+        <name>terrain_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>type that for terrain ids. it&apos;s signed so that -1 can indicate a missing tile. TODO: get rid of the signedness. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="32" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1ae960c566d0da147b055f619d8cca9300" prot="public" static="no">
+        <type>std::bitset&lt; <ref refid="namespaceopenage_1a51dc47ef6d14c1e563c04bf7c07db9b3" kindref="member">ability_type_size</ref> &gt;</type>
+        <definition>using openage::ability_set = typedef std::bitset&lt;ability_type_size&gt;</definition>
+        <argsstring></argsstring>
+        <name>ability_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="47" column="1" bodyfile="libopenage/unit/ability.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1aabfde03d69894c7c23aa686c30ef8cc8" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>using openage::ability_id_t = typedef unsigned int</definition>
+        <argsstring></argsstring>
+        <name>ability_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="48" column="1" bodyfile="libopenage/unit/ability.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a905fde9cff5779781eb779ca95d80cf1" prot="public" static="no">
+        <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; <ref refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" kindref="member">graphic_type</ref>, std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt; &gt;</type>
+        <definition>using openage::graphic_set = typedef std::map&lt;graphic_type, std::shared_ptr&lt;UnitTexture&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>graphic_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Collection of graphics attached to each unit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="54" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a9b5c147a16053038d4317df642a4723a" prot="public" static="no">
+        <type>std::unordered_map&lt; int, unsigned int &gt;</type>
+        <definition>using openage::typeamount_map = typedef std::unordered_map&lt;int, unsigned int&gt;</definition>
+        <argsstring></argsstring>
+        <name>typeamount_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An unordered_map with a int key used as a type id and a unsigned int value used as the amount </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="143" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" prot="public" static="no">
+        <type>unsigned long int</type>
+        <definition>using openage::id_t = typedef unsigned long int</definition>
+        <argsstring></argsstring>
+        <name>id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type used to identify each single unit in the game. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="28" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using openage::time_nsec_t = typedef uint64_t</definition>
+        <argsstring></argsstring>
+        <name>time_nsec_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type to store time in nanoseconds. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timing.h" line="12" column="1" bodyfile="libopenage/util/timing.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1ae153a7bdcb1d70441174ccfc861eee78" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> const</type>
+        <definition>constexpr coord::tile_delta const openage::neigh_tiles[]</definition>
+        <argsstring>[]</argsstring>
+        <name>neigh_tiles</name>
+        <initializer>= {
+	{ 1,  0},
+	{-1,  0},
+	{ 0,  1},
+	{ 0, -1}
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the four directions available for 2d tiles </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="37" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1af11d6daf50156125c5094a3b3a9d30d5" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::MARKET_PRICE_D</definition>
+        <argsstring></argsstring>
+        <name>MARKET_PRICE_D</name>
+        <initializer>= 3.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="11" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a1b0364e945696f529260c90a44552f34" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::MARKET_PRICE_MIN</definition>
+        <argsstring></argsstring>
+        <name>MARKET_PRICE_MIN</name>
+        <initializer>= 20.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="12" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1aefb228067111c56f781e3989fbc2d138" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::MARKET_PRICE_MAX</definition>
+        <argsstring></argsstring>
+        <name>MARKET_PRICE_MAX</name>
+        <initializer>= 9999.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="13" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1ae3c2dc1df011c09431f9eeb09d8d4bf7" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::MARKET_TRANSACTION_AMOUNT</definition>
+        <argsstring></argsstring>
+        <name>MARKET_TRANSACTION_AMOUNT</name>
+        <initializer>= 100.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="14" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a46e91d5e7a9e134b40bddec3742b1c1e" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> const</type>
+        <definition>constexpr coord::tile_delta const openage::neigh_offsets[]</definition>
+        <argsstring>[]</argsstring>
+        <name>neigh_offsets</name>
+        <initializer>= {
+	{ 1, -1},
+	{ 1,  0},
+	{ 1,  1},
+	{ 0,  1},
+	{-1,  1},
+	{-1,  0},
+	{-1, -1},
+	{ 0, -1}
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>coordinate offsets for getting tile neighbors by their id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="66" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" prot="public" static="no" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::chunk_size</definition>
+        <argsstring></argsstring>
+        <name>chunk_size</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the number of tiles per direction on a chunk </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_chunk.h" line="24" column="1" bodyfile="libopenage/terrain/terrain_chunk.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1ac27a19b7546e41750ef227ae0af62f9c" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref> const</type>
+        <definition>constexpr coord::tile_delta const openage::neigh_tile[]</definition>
+        <argsstring>[]</argsstring>
+        <name>neigh_tile</name>
+        <initializer>= {
+	{0,  1},
+	{0, -1},
+	{1,  0},
+	{-1, 0}
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.h" line="25" column="1" bodyfile="libopenage/terrain/terrain_search.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::PLAYERCOLORED</definition>
+        <argsstring></argsstring>
+        <name>PLAYERCOLORED</name>
+        <initializer>= 1 &lt;&lt; 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="45" column="1" bodyfile="libopenage/texture.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a8f58bd5706ab9adf5f5905a0966d188a" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::ALPHAMASKED</definition>
+        <argsstring></argsstring>
+        <name>ALPHAMASKED</name>
+        <initializer>= 1 &lt;&lt; 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="46" column="1" bodyfile="libopenage/texture.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a51dc47ef6d14c1e563c04bf7c07db9b3" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::ability_type_size</definition>
+        <argsstring></argsstring>
+        <name>ability_type_size</name>
+        <initializer>= static_cast&lt;int&gt;(<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5" kindref="member">ability_type::MAX</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a container where each ability uses 1 bit </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="46" column="1" bodyfile="libopenage/unit/ability.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1aecacc31af434a432cdcbcd0fe21690c3" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1ae960c566d0da147b055f619d8cca9300" kindref="member">ability_set</ref></type>
+        <definition>const ability_set openage::ability_all</definition>
+        <argsstring></argsstring>
+        <name>ability_all</name>
+        <initializer>= <ref refid="namespaceopenage_1ae960c566d0da147b055f619d8cca9300" kindref="member">ability_set</ref>().set()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all bits set to 1 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="53" column="1" bodyfile="libopenage/unit/ability.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1a435b29ad85fdfd9d975d8846daad6b2d" prot="public" static="yes" mutable="no">
+        <type>std::vector&lt; <ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">ability_type</ref> &gt;</type>
+        <definition>std::vector&lt;ability_type&gt; openage::ability_priority</definition>
+        <argsstring></argsstring>
+        <name>ability_priority</name>
+        <initializer>{
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a76a79a1cdd981d7b73a1b7cf9cc6e0de" kindref="member">ability_type::gather</ref>,	
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a31168275dcaac634489082b54c4c66d0" kindref="member">ability_type::convert</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a9ab776b93b3c6bbb67f4545371814423" kindref="member">ability_type::repair</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a214d940b5313897d9e25b3a2b3533770" kindref="member">ability_type::heal</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828afc7e987f23de5bd6562b7c0063cad659" kindref="member">ability_type::attack</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828ab0da275520918e23dd615e2a747528f1" kindref="member">ability_type::build</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">ability_type::move</ref>,	
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7e39411afa494a20a2b1a11eff1fe660" kindref="member">ability_type::patrol</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a2dc979d8571788e647e49a10223acae8" kindref="member">ability_type::garrison</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828aa2218a02430bfb386f4dfee54f6d2325" kindref="member">ability_type::ungarrison</ref>, 
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a61b3a8faa9c1091806675c230a9abe64" kindref="member">ability_type::train</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a7412df2b1db8cd2a5d4aafdb6c2090d3" kindref="member">ability_type::research</ref>,
+	<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a6babe83086924834de593c74b8cddc2f" kindref="member">ability_type::set_point</ref>,
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the order abilities should be used when available </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="58" column="1" bodyfile="libopenage/unit/ability.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1a3acc47409b93e64eef42ad8add16052b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::random_tile</definition>
+        <argsstring>(rng::RNG &amp;rng, tileset_t tiles)</argsstring>
+        <name>random_tile</name>
+        <param>
+          <type><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">rng::RNG</ref> &amp;</type>
+          <declname>rng</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1aec1b23983a95168bf5f310c0d5ea8e08" kindref="member">tileset_t</ref></type>
+          <declname>tiles</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>picks a random tile from a set </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.cpp" line="17" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="17" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>OAAPI int openage::run_game</definition>
+        <argsstring>(const main_arguments &amp;args)</argsstring>
+        <name>run_game</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>runs the game.</para>
+<para>pxd: int <ref refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" kindref="member">run_game(const main_arguments &amp;args)</ref> except + </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/main.cpp" line="24" column="1" bodyfile="libopenage/main.cpp" bodystart="24" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a3a0d4d7c2bc234c442c13758d306f60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
+        <definition>std::vector&lt; coord::tile &gt; openage::tile_list</definition>
+        <argsstring>(const tile_range &amp;rng)</argsstring>
+        <name>tile_list</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref> &amp;</type>
+          <declname>rng</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get all tiles in the tile range <ndash/> useful for iterating returns a flat list of tiles between the rectangle enclosed by the <ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref> start and end tiles </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.cpp" line="444" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="444" bodyend="467"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a231617a72c3e699877ee6eacb76850de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
+        <definition>tile_range openage::building_center</definition>
+        <argsstring>(coord::phys3 west, coord::tile_delta size, const Terrain &amp;terrain)</argsstring>
+        <name>building_center</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+          <declname>west</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;</type>
+          <declname>terrain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>given the west most point of a building foundation and the tile_delta size of the foundation, this will return the tile range covered by the base, which includes start and end tiles, and phys3 center point (used for drawing) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.cpp" line="469" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="469" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a23f086d83373aef776a1031dbbcbe975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::complete_building</definition>
+        <argsstring>(Unit &amp;u)</argsstring>
+        <name>complete_building</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <defname>u</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets a building to a fully completed state </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.cpp" line="486" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="486" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Texture &gt; openage::square_outline</definition>
+        <argsstring>(coord::tile_delta foundation_size)</argsstring>
+        <name>square_outline</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref></type>
+          <declname>foundation_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a isometric square outline texture </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_outline.cpp" line="12" column="1" bodyfile="libopenage/terrain/terrain_outline.cpp" bodystart="12" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Texture &gt; openage::radial_outline</definition>
+        <argsstring>(float radius)</argsstring>
+        <name>radial_outline</name>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a isometric circle outline texture </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_outline.cpp" line="33" column="1" bodyfile="libopenage/terrain/terrain_outline.cpp" bodystart="33" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1abf30260a65f6b06163a5dad881836523" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>TerrainObject * openage::find_near</definition>
+        <argsstring>(const TerrainObject &amp;start, std::function&lt; bool(const TerrainObject &amp;)&gt; found, unsigned int search_limit)</argsstring>
+        <name>find_near</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool(const <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> &amp;)&gt;</type>
+          <declname>found</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>search_limit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.cpp" line="11" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="11" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a8d7d58d26d71e7447de628441782a751" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>TerrainObject * openage::find_in_radius</definition>
+        <argsstring>(const TerrainObject &amp;start, std::function&lt; bool(const TerrainObject &amp;)&gt; found, float radius)</argsstring>
+        <name>find_in_radius</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool(const <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> &amp;)&gt;</type>
+          <declname>found</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_search.cpp" line="33" column="1" bodyfile="libopenage/terrain/terrain_search.cpp" bodystart="33" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a012c2c0bdd9534a3d648ada6c608ebf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_set&lt; <ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref> &gt;</type>
+        <definition>std::unordered_set&lt; terrain_t &gt; openage::allowed_terrains</definition>
+        <argsstring>(const gamedata::ground_type &amp;restriction)</argsstring>
+        <name>allowed_terrains</name>
+        <param>
+          <type>const gamedata::ground_type &amp;</type>
+          <declname>restriction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/producer.cpp" line="28" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="28" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a51da621433dabf064cd41efc49641d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::create_resource_cost</definition>
+        <argsstring>(game_resource resource, int amount)</argsstring>
+        <name>create_resource_cost</name>
+        <param>
+          <type><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/producer.cpp" line="83" column="1" bodyfile="libopenage/unit/producer.cpp" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1ac00e0eb95e4253ba49dcc06a9f7f65be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref> &gt;</type>
+        <definition>std::vector&lt; coord::tile &gt; openage::tiles_in_range</definition>
+        <argsstring>(coord::camgame p1, coord::camgame p2, const coord::CoordManager &amp;coord)</argsstring>
+        <name>tiles_in_range</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.cpp" line="331" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="331" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1a43b3cc127b88b97e81a2ce9160e5b5a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::dispatch_command</definition>
+        <argsstring>(id_t, const Command &amp;)</argsstring>
+        <name>dispatch_command</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_command" kindref="compound">Command</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.cpp" line="139" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="139" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1af8871290d3c97a11b6761d12827ab9e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::dir_group</definition>
+        <argsstring>(coord::phys3_delta dir, unsigned int angles)</argsstring>
+        <name>dir_group</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref></type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>angles</declname>
+          <defval>8</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the set of images to used based on unit direction, usually 8 directions to draw for each unit (3 are mirrored)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a world space direction, </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of angles, usually 8 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>first_angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset added to angle, modulo number of angles </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>image set index </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.cpp" line="162" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="162" bodyend="175"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains forward declarations for all the coordinate types, as well as their scalar types.</para>
+<para>It was created to escape circular-include hell.</para>
+<para>Main openage namespace to store all things that make the have to do with the game.</para>
+<para>Game entity management, graphics drawing, gui stuff, input handling etc. So basically everything that makes the game work lies in here...</para>
+<para>This namespace contains constexpr functions, i.e. C++14 functions that are designed to run at compile-time. </para>
+    </detaileddescription>
+    <location file="libopenage/assetmanager.cpp" line="18" column="1"/>
+  </compounddef>
+</doxygen>

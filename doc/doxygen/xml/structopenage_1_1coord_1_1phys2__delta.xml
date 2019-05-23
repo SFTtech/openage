@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1phys2__delta" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::phys2_delta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordNeSeRelative&lt; phys_t, phys2, phys2_delta &gt;</basecompoundref>
+    <includes refid="phys_8h" local="no">phys.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2__delta_1a3b3d995d39587eef8aa02a684823d6df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::coord::phys2_delta::length</definition>
+        <argsstring>() const</argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="27" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2__delta_1acf150b64ab3d975516f26ff80ed2b793" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys2__delta" kindref="compound">phys2_delta</ref></type>
+        <definition>phys2_delta openage::coord::phys2_delta::normalize</definition>
+        <argsstring>(double length=1) const</argsstring>
+        <name>normalize</name>
+        <param>
+          <type>double</type>
+          <declname>length</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="28" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2__delta_1a79ca35badafcd4f90126ab81a3f1f13c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref></type>
+        <definition>phys3_delta openage::coord::phys2_delta::to_phys3</definition>
+        <argsstring>() const</argsstring>
+        <name>to_phys3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="29" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3655">
+        <label>CoordNeSeRelative&lt; phys_t, phys2, phys2_delta &gt;</label>
+      </node>
+      <node id="3654">
+        <label>openage::coord::phys2_delta</label>
+        <link refid="structopenage_1_1coord_1_1phys2__delta"/>
+        <childnode refid="3655" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3657">
+        <label>CoordNeSeRelative&lt; phys_t, phys2, phys2_delta &gt;</label>
+      </node>
+      <node id="3656">
+        <label>openage::coord::phys2_delta</label>
+        <link refid="structopenage_1_1coord_1_1phys2__delta"/>
+        <childnode refid="3657" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/phys.h" line="24" column="1" bodyfile="libopenage/coord/phys.h" bodystart="24" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1coord_1_1phys2__delta_1a3b3d995d39587eef8aa02a684823d6df" prot="public" virt="non-virtual"><scope>openage::coord::phys2_delta</scope><name>length</name></member>
+      <member refid="structopenage_1_1coord_1_1phys2__delta_1acf150b64ab3d975516f26ff80ed2b793" prot="public" virt="non-virtual"><scope>openage::coord::phys2_delta</scope><name>normalize</name></member>
+      <member refid="structopenage_1_1coord_1_1phys2__delta_1a79ca35badafcd4f90126ab81a3f1f13c" prot="public" virt="non-virtual"><scope>openage::coord::phys2_delta</scope><name>to_phys3</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

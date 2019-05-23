@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_08f007f8ad7650aeb247b9a033bf8b2f" kind="dir">
+    <compoundname>libopenage/util/filelike</compoundname>
+    <innerfile refid="filelike_8cpp">filelike.cpp</innerfile>
+    <innerfile refid="filelike_8h">filelike.h</innerfile>
+    <innerfile refid="filelike_2native_8cpp">native.cpp</innerfile>
+    <innerfile refid="filelike_2native_8h">native.h</innerfile>
+    <innerfile refid="filelike_2python_8cpp">python.cpp</innerfile>
+    <innerfile refid="filelike_2python_8h">python.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/filelike/"/>
+  </compounddef>
+</doxygen>

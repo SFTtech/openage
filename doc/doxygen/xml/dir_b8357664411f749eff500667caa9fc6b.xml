@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_b8357664411f749eff500667caa9fc6b" kind="dir">
+    <compoundname>libopenage/shader</compoundname>
+    <innerfile refid="program_8cpp">program.cpp</innerfile>
+    <innerfile refid="program_8h">program.h</innerfile>
+    <innerfile refid="shader_2shader_8cpp">shader.cpp</innerfile>
+    <innerfile refid="shader_2shader_8h">shader.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/shader/"/>
+  </compounddef>
+</doxygen>

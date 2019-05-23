@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_53fc77cdc2c4a643e9780698bc16c36c" kind="dir">
+    <compoundname>libopenage/pathfinding</compoundname>
+    <innerfile refid="a__star_8cpp">a_star.cpp</innerfile>
+    <innerfile refid="a__star_8h">a_star.h</innerfile>
+    <innerfile refid="heuristics_8cpp">heuristics.cpp</innerfile>
+    <innerfile refid="heuristics_8h">heuristics.h</innerfile>
+    <innerfile refid="pathfinding_2path_8cpp">path.cpp</innerfile>
+    <innerfile refid="pathfinding_2path_8h">path.h</innerfile>
+    <innerfile refid="path__utils_8h">path_utils.h</innerfile>
+    <innerfile refid="pathfinding_2tests_8cpp">tests.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/pathfinding/"/>
+  </compounddef>
+</doxygen>

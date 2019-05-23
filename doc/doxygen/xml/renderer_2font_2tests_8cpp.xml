@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="renderer_2font_2tests_8cpp" kind="file" language="C++">
+    <compoundname>tests.cpp</compoundname>
+    <includes refid="testing_8h" local="yes">../../testing/testing.h</includes>
+    <includes refid="font__manager_8h" local="yes">font_manager.h</includes>
+    <includes refid="font_8h" local="yes">font.h</includes>
+    <incdepgraph>
+      <node id="3112">
+        <label>list</label>
+      </node>
+      <node id="3102">
+        <label>atomic</label>
+      </node>
+      <node id="3108">
+        <label>iomanip</label>
+      </node>
+      <node id="3107">
+        <label>functional</label>
+      </node>
+      <node id="3120">
+        <label>font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3121" relation="include">
+        </childnode>
+        <childnode refid="3110" relation="include">
+        </childnode>
+        <childnode refid="3122" relation="include">
+        </childnode>
+        <childnode refid="3117" relation="include">
+        </childnode>
+      </node>
+      <node id="3097">
+        <label>cstdint</label>
+      </node>
+      <node id="3086">
+        <label>libopenage/renderer/font/tests.cpp</label>
+        <link refid="renderer_2font_2tests_8cpp"/>
+        <childnode refid="3087" relation="include">
+        </childnode>
+        <childnode refid="3117" relation="include">
+        </childnode>
+        <childnode refid="3120" relation="include">
+        </childnode>
+      </node>
+      <node id="3105">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="3106" relation="include">
+        </childnode>
+        <childnode refid="3107" relation="include">
+        </childnode>
+        <childnode refid="3108" relation="include">
+        </childnode>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3109" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3110" relation="include">
+        </childnode>
+      </node>
+      <node id="3122">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="3100" relation="include">
+        </childnode>
+        <childnode refid="3123" relation="include">
+        </childnode>
+      </node>
+      <node id="3091">
+        <label>stdexcept</label>
+      </node>
+      <node id="3111">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="3112" relation="include">
+        </childnode>
+        <childnode refid="3113" relation="include">
+        </childnode>
+        <childnode refid="3114" relation="include">
+        </childnode>
+      </node>
+      <node id="3106">
+        <label>cstdarg</label>
+      </node>
+      <node id="3092">
+        <label>string</label>
+      </node>
+      <node id="3096">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="3097" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3098" relation="include">
+        </childnode>
+        <childnode refid="3099" relation="include">
+        </childnode>
+        <childnode refid="3101" relation="include">
+        </childnode>
+        <childnode refid="3111" relation="include">
+        </childnode>
+        <childnode refid="3114" relation="include">
+        </childnode>
+      </node>
+      <node id="3099">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="3100" relation="include">
+        </childnode>
+      </node>
+      <node id="3101">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="3102" relation="include">
+        </childnode>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3103" relation="include">
+        </childnode>
+        <childnode refid="3093" relation="include">
+        </childnode>
+        <childnode refid="3104" relation="include">
+        </childnode>
+        <childnode refid="3105" relation="include">
+        </childnode>
+      </node>
+      <node id="3088">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="3089" relation="include">
+        </childnode>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3091" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3093" relation="include">
+        </childnode>
+        <childnode refid="3096" relation="include">
+        </childnode>
+      </node>
+      <node id="3116">
+        <label>typeinfo</label>
+      </node>
+      <node id="3110">
+        <label>vector</label>
+      </node>
+      <node id="3094">
+        <label>ciso646</label>
+      </node>
+      <node id="3123">
+        <label>array</label>
+      </node>
+      <node id="3109">
+        <label>sstream</label>
+      </node>
+      <node id="3093">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="3094" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3095" relation="include">
+        </childnode>
+      </node>
+      <node id="3118">
+        <label>ft2build.h</label>
+      </node>
+      <node id="3095">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="3095" relation="include">
+        </childnode>
+      </node>
+      <node id="3104">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="3089" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+      </node>
+      <node id="3114">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="3115" relation="include">
+        </childnode>
+      </node>
+      <node id="3100">
+        <label>cstdlib</label>
+      </node>
+      <node id="3089">
+        <label>iostream</label>
+      </node>
+      <node id="3119">
+        <label>unordered_map</label>
+      </node>
+      <node id="3087">
+        <label>../../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="3088" relation="include">
+        </childnode>
+      </node>
+      <node id="3113">
+        <label>mutex</label>
+      </node>
+      <node id="3103">
+        <label>type_traits</label>
+      </node>
+      <node id="3098">
+        <label>config.h</label>
+      </node>
+      <node id="3117">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="3118" relation="include">
+        </childnode>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3119" relation="include">
+        </childnode>
+        <childnode refid="3088" relation="include">
+        </childnode>
+      </node>
+      <node id="3090">
+        <label>memory</label>
+      </node>
+      <node id="3121">
+        <label>typeindex</label>
+      </node>
+      <node id="3115">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="3089" relation="include">
+        </childnode>
+        <childnode refid="3116" relation="include">
+        </childnode>
+        <childnode refid="3093" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1tests">openage::renderer::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="font__manager_8h" kindref="compound">font_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="font_8h" kindref="compound">font.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="10" refid="namespaceopenage_1_1renderer_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" kindref="member">font_manager_test_get_font</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font_manager" kindref="compound">FontManager</ref><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FontManager<sp/>should<sp/>provide<sp/>different<sp/>font<sp/>instances<sp/>for<sp/>different<sp/>sizes<sp/>of<sp/>same<sp/>font<sp/>face.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*font1<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>.get_font(</highlight><highlight class="stringliteral">&quot;DejaVu<sp/>Serif&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Book&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*font2<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>.get_font(</highlight><highlight class="stringliteral">&quot;DejaVu<sp/>Serif&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Book&quot;</highlight><highlight class="normal">,<sp/>20);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>(font1<sp/>!=<sp/>font2)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FontManager<sp/>should<sp/>provide<sp/>the<sp/>cached<sp/>font<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*font3<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>.get_font(</highlight><highlight class="stringliteral">&quot;DejaVu<sp/>Serif&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Book&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>(font3<sp/>==<sp/>font1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" kindref="member">font_manager_test_get_font</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" kindref="member">font_test_font_description</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>default<sp/>direction,<sp/>language,<sp/>script<sp/>of<sp/>font_description</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>fd1{</highlight><highlight class="stringliteral">&quot;DejaVu<sp/>Serif&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Book&quot;</highlight><highlight class="normal">,<sp/>12};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd1.direction<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1" kindref="member">font_direction::left_to_right</ref>)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd1.language<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;en&quot;</highlight><highlight class="normal">)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd1.script<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Latn&quot;</highlight><highlight class="normal">)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>check<sp/>of<sp/>two<sp/>different<sp/>font_description<sp/>instances</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>fd2{</highlight><highlight class="stringliteral">&quot;DejaVu<sp/>Serif&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Book&quot;</highlight><highlight class="normal">,<sp/>20};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd1<sp/>!=<sp/>fd2)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>font_description<sp/>instance<sp/>constructed<sp/>from<sp/>family,style,size<sp/>should<sp/>be<sp/>equal<sp/>to<sp/>another<sp/>with<sp/>same<sp/>font<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>fd3{fd1.<ref refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" kindref="member">font_file</ref>,<sp/>12};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd3<sp/>==<sp/>fd1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>check<sp/>with<sp/>copy<sp/>constructor<sp/>and<sp/>assignment<sp/>operator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>fd4<sp/>=<sp/>fd3;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>fd5{fd4};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd4<sp/>==<sp/>fd3)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd5<sp/>==<sp/>fd3)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>check<sp/>with<sp/>different<sp/>font<sp/>direction,<sp/>language,<sp/>script</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>fd3.direction<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a74ecbc5c277e2952aac1ac167699d74c" kindref="member">font_direction::right_to_left</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>fd4.<ref refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" kindref="member">language</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;fr&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>fd5.script<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Deva&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd3<sp/>!=<sp/>fd1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd4<sp/>!=<sp/>fd1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>(fd5<sp/>!=<sp/>fd1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" kindref="member">font_test_font_description</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/font/tests.cpp"/>
+  </compounddef>
+</doxygen>

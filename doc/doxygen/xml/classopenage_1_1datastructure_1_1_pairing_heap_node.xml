@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1datastructure_1_1_pairing_heap_node" kind="class" language="C++" prot="public">
+    <compoundname>openage::datastructure::PairingHeapNode</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; PairingHeapNode&lt; T, compare &gt; &gt;</basecompoundref>
+    <includes refid="pairing__heap_8h" local="no">pairing_heap.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename compare</type>
+        <defval>std::less&lt;T&gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" prot="public" static="no">
+        <type><ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node" kindref="compound">PairingHeapNode</ref>&lt; T, compare &gt;</type>
+        <definition>using openage::datastructure::PairingHeapNode&lt; T, compare &gt;::this_type =  PairingHeapNode&lt;T, compare&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="44" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3aca0150a01a40ee16f3da49f38c3c31" prot="public" static="no" mutable="no">
+        <type>friend</type>
+        <definition>friend openage::datastructure::PairingHeapNode&lt; T, compare &gt;::PairingHeap&lt; T, compare, this_type &gt;</definition>
+        <argsstring></argsstring>
+        <name>PairingHeap&lt; T, compare, this_type &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="46" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::datastructure::PairingHeapNode&lt; T, compare &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="48" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1aa48e37e1eb9ea1cd87cf17b2f511b479" prot="public" static="no" mutable="no">
+        <type>compare</type>
+        <definition>compare openage::datastructure::PairingHeapNode&lt; T, compare &gt;::cmp</definition>
+        <argsstring></argsstring>
+        <name>cmp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="49" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a913846c9030bbcb2502d4cc96cd56afa" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::first_child</definition>
+        <argsstring></argsstring>
+        <name>first_child</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="182" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a01fb1e27e0012a6f31147c7d11a4fc08" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::prev_sibling</definition>
+        <argsstring></argsstring>
+        <name>prev_sibling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="183" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a5275316630476a1db17714404feb3d34" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::next_sibling</definition>
+        <argsstring></argsstring>
+        <name>next_sibling</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="184" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1ae8766c62075853897ab56f7066315813" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="185" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1af1b32b518657c3a03efa60240c5634d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::datastructure::PairingHeapNode&lt; T, compare &gt;::PairingHeapNode</definition>
+        <argsstring>(const T &amp;data)</argsstring>
+        <name>PairingHeapNode</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="52" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a17ab80e5ef35e2d22599ebcfabbdf639" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::datastructure::PairingHeapNode&lt; T, compare &gt;::PairingHeapNode</definition>
+        <argsstring>(T &amp;&amp;data)</argsstring>
+        <name>PairingHeapNode</name>
+        <param>
+          <type>T &amp;&amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="56" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad2d2dd30261c2108d7ff21a4df43098c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::datastructure::PairingHeapNode&lt; T, compare &gt;::~PairingHeapNode</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PairingHeapNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a4f1e12c9a1871b3ba19edb4a73935ae4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T&amp; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::get_data</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get contained node data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="65" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a0b2c1f83d627f4f401d53787e9fa076f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::PairingHeapNode&lt; T, compare &gt;::become_child_of</definition>
+        <argsstring>(const std::shared_ptr&lt; this_type &gt; &amp;node)</argsstring>
+        <name>become_child_of</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt; &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Let this node become a child of the given one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="72" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3f6b72619532af9b5a828dd541a225b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::PairingHeapNode&lt; T, compare &gt;::add_child</definition>
+        <argsstring>(const std::shared_ptr&lt; this_type &gt; &amp;new_child)</argsstring>
+        <name>add_child</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt; &amp;</type>
+          <declname>new_child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add the given node as a child to this one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="79" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="79" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a9de129f708553f7a91cdfbacc9b48ea6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_with</definition>
+        <argsstring>(const std::shared_ptr&lt; this_type &gt; &amp;node)</argsstring>
+        <name>link_with</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt; &amp;</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method decides which node becomes the new root node by comparing <computeroutput>this</computeroutput> with <computeroutput>node</computeroutput>. The new root is returned, it has the other node as child. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="99" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="99" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" kindref="member">this_type</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;this_type&gt; openage::datastructure::PairingHeapNode&lt; T, compare &gt;::link_backwards</definition>
+        <argsstring>()</argsstring>
+        <name>link_backwards</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Link all siblings backwards from right to left. Recursive call, one stage for each all childs of the root node. This results in the computation of the new subtree root. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="134" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="134" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::datastructure::PairingHeapNode&lt; T, compare &gt;::loosen</definition>
+        <argsstring>()</argsstring>
+        <name>loosen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cut this node from all parent and sibling connections, but keeps the child pointer. This effectively cuts out the subtree. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/pairing_heap.h" line="157" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="157" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3582">
+        <label>std::enable_shared_from_this&lt; PairingHeapNode&lt; T, compare &gt; &gt;</label>
+      </node>
+      <node id="3581">
+        <label>openage::datastructure::PairingHeapNode&lt; T, compare &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap_node"/>
+        <childnode refid="3582" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3584">
+        <label>std::enable_shared_from_this&lt; PairingHeapNode&lt; T, compare &gt; &gt;</label>
+      </node>
+      <node id="3583">
+        <label>openage::datastructure::PairingHeapNode&lt; T, compare &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap_node"/>
+        <childnode refid="3584" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/pairing_heap.h" line="42" column="1" bodyfile="libopenage/datastructure/pairing_heap.h" bodystart="42" bodyend="186"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3f6b72619532af9b5a828dd541a225b1" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>add_child</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a0b2c1f83d627f4f401d53787e9fa076f" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>become_child_of</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1aa48e37e1eb9ea1cd87cf17b2f511b479" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>cmp</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3dcccc1c86bffe3bf6d852687bd8a9c4" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>data</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a913846c9030bbcb2502d4cc96cd56afa" prot="private" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>first_child</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a4f1e12c9a1871b3ba19edb4a73935ae4" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>get_data</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a6227d9be8c7b75e3456c25850e324327" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>link_backwards</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a9de129f708553f7a91cdfbacc9b48ea6" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>link_with</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a954463b2218a69cf977df80d4bd7d872" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>loosen</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a5275316630476a1db17714404feb3d34" prot="private" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>next_sibling</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a3aca0150a01a40ee16f3da49f38c3c31" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>PairingHeap&lt; T, compare, this_type &gt;</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1af1b32b518657c3a03efa60240c5634d5" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>PairingHeapNode</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a17ab80e5ef35e2d22599ebcfabbdf639" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>PairingHeapNode</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ae8766c62075853897ab56f7066315813" prot="private" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>parent</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1a01fb1e27e0012a6f31147c7d11a4fc08" prot="private" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>prev_sibling</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad25d6fdfdc3e7bfc92d2c77395571e75" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>this_type</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_pairing_heap_node_1ad2d2dd30261c2108d7ff21a4df43098c" prot="public" virt="non-virtual"><scope>openage::datastructure::PairingHeapNode</scope><name>~PairingHeapNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

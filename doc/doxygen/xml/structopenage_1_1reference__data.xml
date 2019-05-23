@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1reference__data" kind="struct" language="C++" prot="public">
+    <compoundname>openage::reference_data</compoundname>
+    <includes refid="unit__container_8h" local="no">unit_container.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1reference__data_1a635c724da059a064a493aafb8bb5ab9d" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref> *const</type>
+        <definition>const UnitContainer* const openage::reference_data::container</definition>
+        <argsstring></argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="37" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1reference__data_1aa52d387e7f33269c163dd77658d7c61f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+        <definition>const id_t openage::reference_data::unit_id</definition>
+        <argsstring></argsstring>
+        <name>unit_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="38" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1reference__data_1ac02f1337dd56c2a2927a3dc3c443e5a2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *const</type>
+        <definition>Unit* const openage::reference_data::unit_ptr</definition>
+        <argsstring></argsstring>
+        <name>unit_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="39" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1reference__data_1aecb7555a1389f0a0589fc8810321a7df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::reference_data::reference_data</definition>
+        <argsstring>(const UnitContainer *c, id_t id, Unit *)</argsstring>
+        <name>reference_data</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>u</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="35" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="15" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>immutable reference data </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3873">
+        <label>openage::reference_data</label>
+        <link refid="structopenage_1_1reference__data"/>
+        <childnode refid="3874" relation="usage">
+          <edgelabel>+unit_ptr</edgelabel>
+        </childnode>
+        <childnode refid="3889" relation="usage">
+          <edgelabel>+container</edgelabel>
+        </childnode>
+      </node>
+      <node id="3886">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="3884" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3885" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="3883">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="3884" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3882" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="3884">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="3876">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="3877" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="3879" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="3880" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="3882" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="3885">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="3886" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="3874">
+        <label>openage::Unit</label>
+        <link refid="classopenage_1_1_unit"/>
+        <childnode refid="3875" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3876" relation="usage">
+          <edgelabel>+unit_type</edgelabel>
+        </childnode>
+        <childnode refid="3889" relation="usage">
+          <edgelabel>-container</edgelabel>
+        </childnode>
+        <childnode refid="3879" relation="usage">
+          <edgelabel>+attributes</edgelabel>
+        </childnode>
+      </node>
+      <node id="3888">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="3879">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="3882">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="3883" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="3885" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="3881" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="3887" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="3888" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="3875">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+      <node id="3877">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="3878" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3881">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="3887">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="3880">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="3881" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="3889">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+      <node id="3878">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/unit_container.h" line="34" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="34" bodyend="40"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1reference__data_1a635c724da059a064a493aafb8bb5ab9d" prot="public" virt="non-virtual"><scope>openage::reference_data</scope><name>container</name></member>
+      <member refid="structopenage_1_1reference__data_1aecb7555a1389f0a0589fc8810321a7df" prot="public" virt="non-virtual"><scope>openage::reference_data</scope><name>reference_data</name></member>
+      <member refid="structopenage_1_1reference__data_1aa52d387e7f33269c163dd77658d7c61f" prot="public" virt="non-virtual"><scope>openage::reference_data</scope><name>unit_id</name></member>
+      <member refid="structopenage_1_1reference__data_1ac02f1337dd56c2a2927a3dc3c443e5a2" prot="public" virt="non-virtual"><scope>openage::reference_data</scope><name>unit_ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

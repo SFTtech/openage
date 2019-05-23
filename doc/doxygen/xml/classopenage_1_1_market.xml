@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_market" kind="class" language="C++" prot="public">
+    <compoundname>openage::Market</compoundname>
+    <includes refid="market_8h" local="no">market.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Market::base_prices</definition>
+        <argsstring></argsstring>
+        <name>base_prices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores the base price values of each resource.</para>
+<para>The <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> is used to represent the prices instead of the amounts for each resource. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="67" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_market_1ad74c045fe0b5c766a07f861e224222b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Market::Market</definition>
+        <argsstring>()</argsstring>
+        <name>Market</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="23" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="8" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Market::sell</definition>
+        <argsstring>(Player &amp;player, const game_resource res)</argsstring>
+        <name>sell</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The given player sells the given resource for gold. Returns true when the transaction is successful. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="29" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="17" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Market::buy</definition>
+        <argsstring>(Player &amp;player, const game_resource res)</argsstring>
+        <name>buy</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The given player buys the given resource with gold. Returns true when the transaction is successful. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="35" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="35" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_market_1aef15aab0297f52df8675a3b71dc93a88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Market::get_buy_prices</definition>
+        <argsstring>(const Player &amp;player) const</argsstring>
+        <name>get_buy_prices</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the selling prices for a given player. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="40" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_market_1a5c916fe21925f6276f58bc9f6dd95765" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Market::get_sell_prices</definition>
+        <argsstring>(const Player &amp;player) const</argsstring>
+        <name>get_sell_prices</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the buying prices for a given player. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="45" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Market::get_prices</definition>
+        <argsstring>(const Player &amp;player, const bool is_buy) const</argsstring>
+        <name>get_prices</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>is_buy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The getBuyPrices and getSellPrices are redirected here. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="52" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="60" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_market_1adb430db2e1ce5828a1bc6b273994b9dc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::Market::get_multiplier</definition>
+        <argsstring>(const Player &amp;player, const bool is_buy) const</argsstring>
+        <name>get_multiplier</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>is_buy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the multiplier for the base prices </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/market.h" line="57" column="1" bodyfile="libopenage/gamestate/market.cpp" bodystart="69" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The global market prices.</para>
+<para>Price calculation is documented at doc/reverse_engineering/market.md#prices </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3184">
+        <label>openage::Market</label>
+        <link refid="classopenage_1_1_market"/>
+        <childnode refid="3185" relation="usage">
+          <edgelabel>-base_prices</edgelabel>
+        </childnode>
+      </node>
+      <node id="3185">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/market.h" line="21" column="1" bodyfile="libopenage/gamestate/market.h" bodystart="21" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_market_1a2a0d8a7059c215e934494b75bef0a47b" prot="private" virt="non-virtual"><scope>openage::Market</scope><name>base_prices</name></member>
+      <member refid="classopenage_1_1_market_1a2d93c032e00528978844815b3f139260" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>buy</name></member>
+      <member refid="classopenage_1_1_market_1aef15aab0297f52df8675a3b71dc93a88" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>get_buy_prices</name></member>
+      <member refid="classopenage_1_1_market_1adb430db2e1ce5828a1bc6b273994b9dc" prot="protected" virt="non-virtual"><scope>openage::Market</scope><name>get_multiplier</name></member>
+      <member refid="classopenage_1_1_market_1aefa96adaadd93ab08349621e01a1b65f" prot="protected" virt="non-virtual"><scope>openage::Market</scope><name>get_prices</name></member>
+      <member refid="classopenage_1_1_market_1a5c916fe21925f6276f58bc9f6dd95765" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>get_sell_prices</name></member>
+      <member refid="classopenage_1_1_market_1ad74c045fe0b5c766a07f861e224222b1" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>Market</name></member>
+      <member refid="classopenage_1_1_market_1a7980df34ceedf0e878373284d61093ae" prot="public" virt="non-virtual"><scope>openage::Market</scope><name>sell</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

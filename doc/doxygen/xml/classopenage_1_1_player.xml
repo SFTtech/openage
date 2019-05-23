@@ -1,0 +1,879 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_player" kind="class" language="C++" prot="public">
+    <compoundname>openage::Player</compoundname>
+    <includes refid="player_8h" local="no">player.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int openage::Player::player_number</definition>
+        <argsstring></argsstring>
+        <name>player_number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>values 0 .. player count - 1 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="26" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a4abf1f98ff6f6b42147646d13008475c" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int openage::Player::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>values 1 .. player count would be better to have rgb color value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="32" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a310acdae5a61cb9fa1f1e77ce2fcea40" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref> *</type>
+        <definition>const Civilisation* openage::Player::civ</definition>
+        <argsstring></argsstring>
+        <name>civ</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>civilisation and techs of this player </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="37" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::Player::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>visible name of this player </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="42" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a49e6eb4d6794785417435205a53ae5cb" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_team" kindref="compound">Team</ref> *</type>
+        <definition>Team* openage::Player::team</definition>
+        <argsstring></argsstring>
+        <name>team</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the team of this player nullptr if member of no team </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="48" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_population_tracker" kindref="compound">PopulationTracker</ref></type>
+        <definition>PopulationTracker openage::Player::population</definition>
+        <argsstring></argsstring>
+        <name>population</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Keeps track of the population information. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="128" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_player_score" kindref="compound">PlayerScore</ref></type>
+        <definition>PlayerScore openage::Player::score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The score of the player. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="133" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Player::resources</definition>
+        <argsstring></argsstring>
+        <name>resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resources this player currently has </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="194" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::Player::resources_capacity</definition>
+        <argsstring></argsstring>
+        <name>resources_capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The resources capacities this player currently has </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="199" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a80fe26a181494ba07762b46df300d016" kindref="member">unit_type_list</ref></type>
+        <definition>unit_type_list openage::Player::available_objects</definition>
+        <argsstring></argsstring>
+        <name>available_objects</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unit types which can be produced by this player. TODO revisit, can be simplified? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="210" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref>, <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;index_t, UnitType *&gt; openage::Player::available_ids</definition>
+        <argsstring></argsstring>
+        <name>available_ids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>available objects mapped using type id unit ids -&gt; unit type for that id TODO revisit, can be simplified? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="217" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, int &gt;</type>
+        <definition>std::unordered_map&lt;int, int&gt; openage::Player::units_have</definition>
+        <argsstring></argsstring>
+        <name>units_have</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of units the player has for each unit type id. Used for and event triggers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="223" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a4f928ee4c753d7360214912ab85bff3c" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, int &gt;</type>
+        <definition>std::unordered_map&lt;int, int&gt; openage::Player::units_had</definition>
+        <argsstring></argsstring>
+        <name>units_had</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of units the player ever had for each unit type id. Used for unit dependencies (eg. Farm). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="229" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, int &gt;</type>
+        <definition>std::unordered_map&lt;int, int&gt; openage::Player::units_pending</definition>
+        <argsstring></argsstring>
+        <name>units_pending</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="235" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_player_1adef32e0454fc4063bcb2555efd0aa12a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Player::age</definition>
+        <argsstring></argsstring>
+        <name>age</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The current age. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="240" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_player_1aa0bbbf96f0765ac2e2cd242302c86c1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Player::Player</definition>
+        <argsstring>(Civilisation *civ, unsigned int number, std::string name)</argsstring>
+        <name>Player</name>
+        <param>
+          <type><ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref> *</type>
+          <declname>civ</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>number</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="21" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="14" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a1b907e14fdbcb176ed179f7d0751de76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::operator==</definition>
+        <argsstring>(const Player &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks if two players are the same </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="53" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1afa2d1a4238826a37a94b69e4583a6465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::is_enemy</definition>
+        <argsstring>(const Player &amp;) const</argsstring>
+        <name>is_enemy</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the specified player is an enemy of this player </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="58" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a1bc0f7b97c57e7c016d3d5df3de5223a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::is_ally</definition>
+        <argsstring>(const Player &amp;) const</argsstring>
+        <name>is_ally</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the specified player is an ally of this player </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="63" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="41" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1aefd20341c814fc53919cac8761bad38b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::owns</definition>
+        <argsstring>(Unit &amp;) const</argsstring>
+        <name>owns</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <defname>unit</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this player owns the specified unit </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="68" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::receive</definition>
+        <argsstring>(const ResourceBundle &amp;amount)</argsstring>
+        <name>receive</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add to stockpile </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="73" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1aa5c3bbb49503d3166ce365686343f4da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::receive</definition>
+        <argsstring>(const game_resource resource, double amount)</argsstring>
+        <name>receive</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="74" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a7afa6e6f2c511235e1aa58a40b16eaf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::can_receive</definition>
+        <argsstring>(const ResourceBundle &amp;amount) const</argsstring>
+        <name>can_receive</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if can add to stockpile </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="79" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a086e4dcf2bccd69fa8d48541c54c1768" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::can_receive</definition>
+        <argsstring>(const game_resource resource, double amount) const</argsstring>
+        <name>can_receive</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="80" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::deduct</definition>
+        <argsstring>(const ResourceBundle &amp;amount)</argsstring>
+        <name>deduct</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>remove from stockpile if available </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="85" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="80" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ae9e08a13015f842a55b37413c179dc4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::deduct</definition>
+        <argsstring>(const game_resource resource, double amount)</argsstring>
+        <name>deduct</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="86" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="88" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::can_deduct</definition>
+        <argsstring>(const ResourceBundle &amp;amount) const</argsstring>
+        <name>can_deduct</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the player has enough resources to deduct the given amount. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="91" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ab4df4918bf1f83664f7fd5e0bd0b5ff4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::can_deduct</definition>
+        <argsstring>(const game_resource resource, double amount) const</argsstring>
+        <name>can_deduct</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="92" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::Player::amount</definition>
+        <argsstring>(const game_resource resource) const</argsstring>
+        <name>amount</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>current stockpile amount </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="97" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a4909a76cf5b65e544b1a62dc21147d77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::can_make</definition>
+        <argsstring>(const UnitType &amp;type) const</argsstring>
+        <name>can_make</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the player can make a new unit of the given type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="102" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="109" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1aebec55f09f5e295450a0d8381f0f86f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::Player::type_count</definition>
+        <argsstring>()</argsstring>
+        <name>type_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>total number of unit types available </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="107" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+        <definition>UnitType * openage::Player::get_type</definition>
+        <argsstring>(index_t type_id) const</argsstring>
+        <name>get_type</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref></type>
+          <declname>type_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unit types by aoe gamedata unit ids <ndash/> the unit type which corresponds to an aoe unit id </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="112" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="119" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+        <definition>UnitType * openage::Player::get_type_index</definition>
+        <argsstring>(size_t type_index) const</argsstring>
+        <name>get_type_index</name>
+        <param>
+          <type>size_t</type>
+          <declname>type_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unit types by list index <ndash/> a continuous array of all types probably not a useful function / can be removed </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="118" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="129" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::initialise_unit_types</definition>
+        <argsstring>()</argsstring>
+        <name>initialise_unit_types</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>initialise with the base tech level </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="123" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="138" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::active_unit_added</definition>
+        <argsstring>(Unit *unit, bool from_pending=false)</argsstring>
+        <name>active_unit_added</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>unit</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>from_pending</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when a unit is created and active.</para>
+<para>If the unit was pending when create (constuction site, training) the method must be called again when the unit activates (with the from_penging param set to true) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="141" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="148" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::active_unit_removed</definition>
+        <argsstring>(Unit *unit)</argsstring>
+        <name>active_unit_removed</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when a unit is destroyed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="146" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="193" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a2d3f269dc4b0acd1972e4d0a32f97c2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::killed_unit</definition>
+        <argsstring>(const Unit &amp;unit)</argsstring>
+        <name>killed_unit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when a unit is killed by this player. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="151" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="233" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1ab5854d681fef5b4a8327097c8ea19bbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::advance_age</definition>
+        <argsstring>()</argsstring>
+        <name>advance_age</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Advance to next age; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="156" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="238" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a03454af8fd68e803804e2619b62b7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Player::get_units_have</definition>
+        <argsstring>(int type_id) const</argsstring>
+        <name>get_units_have</name>
+        <param>
+          <type>int</type>
+          <declname>type_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of units the player has for each unit type id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="163" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="255" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1adc552ba67bafcfa1bd689b2c276ec7ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Player::get_units_had</definition>
+        <argsstring>(int type_id) const</argsstring>
+        <name>get_units_had</name>
+        <param>
+          <type>int</type>
+          <declname>type_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of units the player ever had for each unit type id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="168" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="262" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Player::get_units_pending</definition>
+        <argsstring>(int type_id) const</argsstring>
+        <name>get_units_pending</name>
+        <param>
+          <type>int</type>
+          <declname>type_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of units the player has being made for each unit type id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="173" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="269" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a684dfdb6a9add2fb4bf76c1f4e87ec86" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Player::get_age</definition>
+        <argsstring>() const</argsstring>
+        <name>get_age</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current age. The first age has the value 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="179" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="179" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1af95cd6a1823c78ef20a347369901830d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::Player::get_workforce_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_workforce_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of units considered part of the workforce. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="184" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="281" bodyend="287"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Player::is_unit_pending</definition>
+        <argsstring>(Unit *unit) const</argsstring>
+        <name>is_unit_pending</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="189" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="276" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Player::on_resources_change</definition>
+        <argsstring>()</argsstring>
+        <name>on_resources_change</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when the resources amounts change. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/player.h" line="204" column="1" bodyfile="libopenage/gamestate/player.cpp" bodystart="242" bodyend="253"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3673">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="3671" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3672" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="3670">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="3671" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3669" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="3671">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="3672">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="3673" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="3676">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="3669">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="3670" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="3672" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="3674" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="3675" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="3676" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="3674">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="3675">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/player.h" line="19" column="1" bodyfile="libopenage/gamestate/player.h" bodystart="19" bodyend="242"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>active_unit_added</name></member>
+      <member refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>active_unit_removed</name></member>
+      <member refid="classopenage_1_1_player_1ab5854d681fef5b4a8327097c8ea19bbe" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>advance_age</name></member>
+      <member refid="classopenage_1_1_player_1adef32e0454fc4063bcb2555efd0aa12a" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>age</name></member>
+      <member refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>amount</name></member>
+      <member refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>available_ids</name></member>
+      <member refid="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>available_objects</name></member>
+      <member refid="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>can_deduct</name></member>
+      <member refid="classopenage_1_1_player_1ab4df4918bf1f83664f7fd5e0bd0b5ff4" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>can_deduct</name></member>
+      <member refid="classopenage_1_1_player_1a4909a76cf5b65e544b1a62dc21147d77" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>can_make</name></member>
+      <member refid="classopenage_1_1_player_1a7afa6e6f2c511235e1aa58a40b16eaf5" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>can_receive</name></member>
+      <member refid="classopenage_1_1_player_1a086e4dcf2bccd69fa8d48541c54c1768" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>can_receive</name></member>
+      <member refid="classopenage_1_1_player_1a310acdae5a61cb9fa1f1e77ce2fcea40" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>civ</name></member>
+      <member refid="classopenage_1_1_player_1a4abf1f98ff6f6b42147646d13008475c" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>color</name></member>
+      <member refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>deduct</name></member>
+      <member refid="classopenage_1_1_player_1ae9e08a13015f842a55b37413c179dc4e" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>deduct</name></member>
+      <member refid="classopenage_1_1_player_1a684dfdb6a9add2fb4bf76c1f4e87ec86" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_age</name></member>
+      <member refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_type</name></member>
+      <member refid="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_type_index</name></member>
+      <member refid="classopenage_1_1_player_1adc552ba67bafcfa1bd689b2c276ec7ce" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_units_had</name></member>
+      <member refid="classopenage_1_1_player_1a03454af8fd68e803804e2619b62b7231" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_units_have</name></member>
+      <member refid="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_units_pending</name></member>
+      <member refid="classopenage_1_1_player_1af95cd6a1823c78ef20a347369901830d" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>get_workforce_count</name></member>
+      <member refid="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>initialise_unit_types</name></member>
+      <member refid="classopenage_1_1_player_1a1bc0f7b97c57e7c016d3d5df3de5223a" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>is_ally</name></member>
+      <member refid="classopenage_1_1_player_1afa2d1a4238826a37a94b69e4583a6465" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>is_enemy</name></member>
+      <member refid="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>is_unit_pending</name></member>
+      <member refid="classopenage_1_1_player_1a2d3f269dc4b0acd1972e4d0a32f97c2f" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>killed_unit</name></member>
+      <member refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>name</name></member>
+      <member refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>on_resources_change</name></member>
+      <member refid="classopenage_1_1_player_1a1b907e14fdbcb176ed179f7d0751de76" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1_player_1aefd20341c814fc53919cac8761bad38b" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>owns</name></member>
+      <member refid="classopenage_1_1_player_1aa0bbbf96f0765ac2e2cd242302c86c1a" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>Player</name></member>
+      <member refid="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>player_number</name></member>
+      <member refid="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>population</name></member>
+      <member refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>receive</name></member>
+      <member refid="classopenage_1_1_player_1aa5c3bbb49503d3166ce365686343f4da" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>receive</name></member>
+      <member refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>resources</name></member>
+      <member refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>resources_capacity</name></member>
+      <member refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>score</name></member>
+      <member refid="classopenage_1_1_player_1a49e6eb4d6794785417435205a53ae5cb" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>team</name></member>
+      <member refid="classopenage_1_1_player_1aebec55f09f5e295450a0d8381f0f86f2" prot="public" virt="non-virtual"><scope>openage::Player</scope><name>type_count</name></member>
+      <member refid="classopenage_1_1_player_1a4f928ee4c753d7360214912ab85bff3c" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>units_had</name></member>
+      <member refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>units_have</name></member>
+      <member refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" prot="private" virt="non-virtual"><scope>openage::Player</scope><name>units_pending</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1curve_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::curve::tests</compoundname>
+    <innerclass refid="structopenage_1_1curve_1_1tests_1_1map__test__element" prot="public">openage::curve::tests::map_test_element</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1ae83c263763307d2e883c942afdeb6f2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; openage::curve::tests::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;o, const map_test_element &amp;e)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element" kindref="compound">map_test_element</ref> &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="28" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1adaea2f0357531c64ef6af72d720e37f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename key_t</type>
+          </param>
+          <param>
+            <type>typename val_t</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::curve::tests::dump</definition>
+        <argsstring>(const std::unordered_map&lt; key_t, val_t &gt; &amp;map)</argsstring>
+        <name>dump</name>
+        <param>
+          <type>const std::unordered_map&lt; key_t, val_t &gt; &amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="34" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::tests::test_map</definition>
+        <argsstring>()</argsstring>
+        <name>test_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="40" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="40" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::tests::test_list</definition>
+        <argsstring>()</argsstring>
+        <name>test_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="134" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::tests::test_queue</definition>
+        <argsstring>()</argsstring>
+        <name>test_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="138" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="138" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::tests::container</definition>
+        <argsstring>()</argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/container.cpp" line="205" column="1" bodyfile="libopenage/curve/tests/container.cpp" bodystart="205" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1curve_1_1tests_1aa6290e10c0af22b4a5bcbcf4ad20eb88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::tests::curve_types</definition>
+        <argsstring>()</argsstring>
+        <name>curve_types</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/tests/curve_types.cpp" line="14" column="1" bodyfile="libopenage/curve/tests/curve_types.cpp" bodystart="14" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/curve/tests/container.cpp" line="14" column="1"/>
+  </compounddef>
+</doxygen>

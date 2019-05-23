@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1options_1_1_var" kind="class" language="C++" prot="public">
+    <compoundname>openage::options::Var</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_variable" prot="public" virt="non-virtual">openage::util::Variable&lt; T &gt;</basecompoundref>
+    <includes refid="options_8h" local="no">options.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_var_1af769e8f2fe94158c85c15ab60030ed06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::Var&lt; T &gt;::Var</definition>
+        <argsstring>(OptionNode *owner, const std::string &amp;name, const T &amp;init)</argsstring>
+        <name>Var</name>
+        <param>
+          <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>init</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="269" column="1" bodyfile="libopenage/options.h" bodystart="269" bodyend="274"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A interaface variable which gets monitored by an option node allowing reflection, while also being directly accessable as a typed member </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4912">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="4910">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4911" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4911">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="4912" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4915">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="4916">
+        <label>T</label>
+      </node>
+      <node id="4913">
+        <label>openage::options::Var&lt; T &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4914" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4914">
+        <label>openage::util::Variable&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="4915" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4916" relation="usage">
+          <edgelabel>+value</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/options.h" line="267" column="1" bodyfile="libopenage/options.h" bodystart="267" bodyend="275"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_variable_1aa25af78b5870a920fb9a2ea04173881b" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>get</name></member>
+      <member refid="classopenage_1_1util_1_1_variable_1a572624d736175eba6d85c461fe2a430f" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>set</name></member>
+      <member refid="classopenage_1_1util_1_1_variable_base_1a1acb662ac94f35aed9b2ecd6d3f1ddfe" prot="public" virt="non-virtual" ambiguityscope="openage::util::VariableBase::"><scope>openage::options::Var</scope><name>set</name></member>
+      <member refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>value</name></member>
+      <member refid="classopenage_1_1options_1_1_var_1af769e8f2fe94158c85c15ab60030ed06" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>Var</name></member>
+      <member refid="classopenage_1_1util_1_1_variable_1a22a572f41f189c6edf178b449e5f5690" prot="public" virt="non-virtual"><scope>openage::options::Var</scope><name>Variable</name></member>
+      <member refid="classopenage_1_1util_1_1_variable_base_1af40913c41076cd605c10a2fb7fc36254" prot="public" virt="virtual"><scope>openage::options::Var</scope><name>~VariableBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

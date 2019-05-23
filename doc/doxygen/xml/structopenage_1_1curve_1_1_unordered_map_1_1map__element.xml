@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1curve_1_1_unordered_map_1_1map__element" kind="struct" language="C++" prot="private">
+    <compoundname>openage::curve::UnorderedMap::map_element</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" prot="public" static="no" mutable="no">
+        <type>val_t</type>
+        <definition>val_t openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="29" column="1" bodyfile="libopenage/curve/map.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
+        <definition>time_t openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element::alive</definition>
+        <argsstring></argsstring>
+        <name>alive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="30" column="1" bodyfile="libopenage/curve/map.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
+        <definition>time_t openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element::dead</definition>
+        <argsstring></argsstring>
+        <name>dead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="31" column="1" bodyfile="libopenage/curve/map.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a32835688bb0476a2c16cea52a10708c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element::map_element</definition>
+        <argsstring>(const val_t &amp;v, const time_t &amp;a, const time_t &amp;d)</argsstring>
+        <name>map_element</name>
+        <param>
+          <type>const val_t &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="23" column="1" bodyfile="libopenage/curve/map.h" bodystart="23" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Internal container to access all data and metadata </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3173">
+        <label>openage::curve::UnorderedMap&lt; key_t, val_t &gt;::map_element</label>
+        <link refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element"/>
+        <childnode refid="3174" relation="usage">
+          <edgelabel>+alive</edgelabel>
+          <edgelabel>+dead</edgelabel>
+        </childnode>
+      </node>
+      <node id="3174">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/map.h" line="22" column="1" bodyfile="libopenage/curve/map.h" bodystart="22" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1adcc9a44be4c417ace2c9600f2ed72832" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>alive</name></member>
+      <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a8e5039bc46d4c507e98b5d6a5b42d6c1" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>dead</name></member>
+      <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1a32835688bb0476a2c16cea52a10708c1" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>map_element</name></member>
+      <member refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element_1ac9e11c7bc4696f2320443dcfd50a289e" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap::map_element</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

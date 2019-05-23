@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1os" kind="namespace" language="C++">
+    <compoundname>openage::os</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1os_1a2ff2ec43cb1353b31db1f7cae31b13be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::os::read_symlink</definition>
+        <argsstring>(const char *path)</argsstring>
+        <name>read_symlink</name>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reads a symlink </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/os.cpp" line="28" column="1" bodyfile="libopenage/util/os.cpp" bodystart="28" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1os_1aaa0a892b4d5cf0b41684c5f31c6cf86b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::os::self_exec_filename</definition>
+        <argsstring>()</argsstring>
+        <name>self_exec_filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns openage&apos;s executable name </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/os.cpp" line="57" column="1" bodyfile="libopenage/util/os.cpp" bodystart="57" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1os_1a5d72e5b58b3036f2298e474c4e9ed9b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::os::execute_file</definition>
+        <argsstring>(const char *path, bool background)</argsstring>
+        <name>execute_file</name>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>background</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>tries to xdg-open the file </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/os.cpp" line="102" column="1" bodyfile="libopenage/util/os.cpp" bodystart="102" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>similar in its goals to Python&apos;s os module </para>
+    </detaileddescription>
+    <location file="libopenage/util/os.cpp" line="26" column="1"/>
+  </compounddef>
+</doxygen>

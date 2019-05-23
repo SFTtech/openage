@@ -1,0 +1,755 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="container_8cpp" kind="file" language="C++">
+    <compoundname>container.cpp</compoundname>
+    <includes refid="testing_8h" local="yes">../../testing/testing.h</includes>
+    <includes refid="curve_8h" local="yes">../curve.h</includes>
+    <includes refid="continuous_8h" local="yes">../continuous.h</includes>
+    <includes refid="discrete_8h" local="yes">../discrete.h</includes>
+    <includes refid="queue_8h" local="yes">../queue.h</includes>
+    <includes refid="map_8h" local="yes">../map.h</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">unordered_set</includes>
+    <incdepgraph>
+      <node id="5376">
+        <label>list</label>
+      </node>
+      <node id="5399">
+        <label>eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5400" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+      </node>
+      <node id="5366">
+        <label>atomic</label>
+      </node>
+      <node id="5382">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="5383" relation="include">
+        </childnode>
+        <childnode refid="5384" relation="include">
+        </childnode>
+        <childnode refid="5385" relation="include">
+        </childnode>
+        <childnode refid="5372" relation="include">
+        </childnode>
+        <childnode refid="5386" relation="include">
+        </childnode>
+        <childnode refid="5387" relation="include">
+        </childnode>
+        <childnode refid="5367" relation="include">
+        </childnode>
+        <childnode refid="5388" relation="include">
+        </childnode>
+      </node>
+      <node id="5372">
+        <label>iomanip</label>
+      </node>
+      <node id="5371">
+        <label>functional</label>
+      </node>
+      <node id="5386">
+        <label>limits</label>
+      </node>
+      <node id="5397">
+        <label>eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5398" relation="include">
+        </childnode>
+        <childnode refid="5399" relation="include">
+        </childnode>
+        <childnode refid="5401" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+      </node>
+      <node id="5412">
+        <label>iterator</label>
+      </node>
+      <node id="5395">
+        <label>../event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5376" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5397" relation="include">
+        </childnode>
+        <childnode refid="5403" relation="include">
+        </childnode>
+        <childnode refid="5404" relation="include">
+        </childnode>
+        <childnode refid="5405" relation="include">
+        </childnode>
+      </node>
+      <node id="5361">
+        <label>cstdint</label>
+      </node>
+      <node id="5411">
+        <label>iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+      </node>
+      <node id="5409">
+        <label>../queue.h</label>
+        <link refid="queue_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5410" relation="include">
+        </childnode>
+        <childnode refid="5413" relation="include">
+        </childnode>
+        <childnode refid="5353" relation="include">
+        </childnode>
+      </node>
+      <node id="5369">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5370" relation="include">
+        </childnode>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5372" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5373" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5374" relation="include">
+        </childnode>
+      </node>
+      <node id="5414">
+        <label>../map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5415" relation="include">
+        </childnode>
+        <childnode refid="5407" relation="include">
+        </childnode>
+        <childnode refid="5353" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+      </node>
+      <node id="5385">
+        <label>cmath</label>
+      </node>
+      <node id="5403">
+        <label>eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5393" relation="include">
+        </childnode>
+      </node>
+      <node id="5355">
+        <label>stdexcept</label>
+      </node>
+      <node id="5381">
+        <label>../curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="5361" relation="include">
+        </childnode>
+        <childnode refid="5382" relation="include">
+        </childnode>
+      </node>
+      <node id="5392">
+        <label>value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="5393" relation="include">
+        </childnode>
+        <childnode refid="5394" relation="include">
+        </childnode>
+        <childnode refid="5385" relation="include">
+        </childnode>
+      </node>
+      <node id="5375">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5376" relation="include">
+        </childnode>
+        <childnode refid="5377" relation="include">
+        </childnode>
+        <childnode refid="5378" relation="include">
+        </childnode>
+      </node>
+      <node id="5370">
+        <label>cstdarg</label>
+      </node>
+      <node id="5356">
+        <label>string</label>
+      </node>
+      <node id="5410">
+        <label>queue_filter_iterator.h</label>
+        <link refid="queue__filter__iterator_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5411" relation="include">
+        </childnode>
+        <childnode refid="5412" relation="include">
+        </childnode>
+        <childnode refid="5386" relation="include">
+        </childnode>
+      </node>
+      <node id="5360">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5361" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5362" relation="include">
+        </childnode>
+        <childnode refid="5363" relation="include">
+        </childnode>
+        <childnode refid="5365" relation="include">
+        </childnode>
+        <childnode refid="5375" relation="include">
+        </childnode>
+        <childnode refid="5378" relation="include">
+        </childnode>
+      </node>
+      <node id="5363">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5364" relation="include">
+        </childnode>
+      </node>
+      <node id="5365">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5366" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5367" relation="include">
+        </childnode>
+        <childnode refid="5357" relation="include">
+        </childnode>
+        <childnode refid="5368" relation="include">
+        </childnode>
+        <childnode refid="5369" relation="include">
+        </childnode>
+      </node>
+      <node id="5398">
+        <label>unordered_set</label>
+      </node>
+      <node id="5387">
+        <label>ostream</label>
+      </node>
+      <node id="5391">
+        <label>../continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="5367" relation="include">
+        </childnode>
+        <childnode refid="5392" relation="include">
+        </childnode>
+        <childnode refid="5405" relation="include">
+        </childnode>
+      </node>
+      <node id="5389">
+        <label>limits.h</label>
+      </node>
+      <node id="5352">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5353" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5355" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5357" relation="include">
+        </childnode>
+        <childnode refid="5360" relation="include">
+        </childnode>
+      </node>
+      <node id="5388">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="5383" relation="include">
+        </childnode>
+        <childnode refid="5389" relation="include">
+        </childnode>
+        <childnode refid="5385" relation="include">
+        </childnode>
+        <childnode refid="5390" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5374" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5352" relation="include">
+        </childnode>
+        <childnode refid="5357" relation="include">
+        </childnode>
+      </node>
+      <node id="5400">
+        <label>any</label>
+      </node>
+      <node id="5380">
+        <label>typeinfo</label>
+      </node>
+      <node id="5401">
+        <label>eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="5402" relation="include">
+        </childnode>
+        <childnode refid="5388" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+      </node>
+      <node id="5394">
+        <label>keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="5353" relation="include">
+        </childnode>
+        <childnode refid="5386" relation="include">
+        </childnode>
+        <childnode refid="5376" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5395" relation="include">
+        </childnode>
+        <childnode refid="5352" relation="include">
+        </childnode>
+      </node>
+      <node id="5393">
+        <label>../event/eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5376" relation="include">
+        </childnode>
+        <childnode refid="5354" relation="include">
+        </childnode>
+      </node>
+      <node id="5407">
+        <label>optional</label>
+      </node>
+      <node id="5374">
+        <label>vector</label>
+      </node>
+      <node id="5405">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="5378" relation="include">
+        </childnode>
+        <childnode refid="5360" relation="include">
+        </childnode>
+      </node>
+      <node id="5358">
+        <label>ciso646</label>
+      </node>
+      <node id="5408">
+        <label>utility</label>
+      </node>
+      <node id="5373">
+        <label>sstream</label>
+      </node>
+      <node id="5357">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5358" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+        <childnode refid="5359" relation="include">
+        </childnode>
+      </node>
+      <node id="5359">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5359" relation="include">
+        </childnode>
+      </node>
+      <node id="5368">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5353" relation="include">
+        </childnode>
+        <childnode refid="5356" relation="include">
+        </childnode>
+      </node>
+      <node id="5378">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5379" relation="include">
+        </childnode>
+      </node>
+      <node id="5364">
+        <label>cstdlib</label>
+      </node>
+      <node id="5404">
+        <label>event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5399" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+      </node>
+      <node id="5353">
+        <label>iostream</label>
+      </node>
+      <node id="5406">
+        <label>../discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="5407" relation="include">
+        </childnode>
+        <childnode refid="5408" relation="include">
+        </childnode>
+        <childnode refid="5392" relation="include">
+        </childnode>
+      </node>
+      <node id="5402">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="5354" relation="include">
+        </childnode>
+        <childnode refid="5371" relation="include">
+        </childnode>
+        <childnode refid="5367" relation="include">
+        </childnode>
+        <childnode refid="5398" relation="include">
+        </childnode>
+        <childnode refid="5357" relation="include">
+        </childnode>
+        <childnode refid="5352" relation="include">
+        </childnode>
+      </node>
+      <node id="5413">
+        <label>deque</label>
+      </node>
+      <node id="5396">
+        <label>unordered_map</label>
+      </node>
+      <node id="5384">
+        <label>climits</label>
+      </node>
+      <node id="5351">
+        <label>../../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="5352" relation="include">
+        </childnode>
+      </node>
+      <node id="5377">
+        <label>mutex</label>
+      </node>
+      <node id="5367">
+        <label>type_traits</label>
+      </node>
+      <node id="5362">
+        <label>config.h</label>
+      </node>
+      <node id="5383">
+        <label>algorithm</label>
+      </node>
+      <node id="5350">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+        <childnode refid="5351" relation="include">
+        </childnode>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5391" relation="include">
+        </childnode>
+        <childnode refid="5406" relation="include">
+        </childnode>
+        <childnode refid="5409" relation="include">
+        </childnode>
+        <childnode refid="5414" relation="include">
+        </childnode>
+        <childnode refid="5396" relation="include">
+        </childnode>
+        <childnode refid="5398" relation="include">
+        </childnode>
+      </node>
+      <node id="5390">
+        <label>cstring</label>
+      </node>
+      <node id="5354">
+        <label>memory</label>
+      </node>
+      <node id="5379">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5353" relation="include">
+        </childnode>
+        <childnode refid="5380" relation="include">
+        </childnode>
+        <childnode refid="5357" relation="include">
+        </childnode>
+      </node>
+      <node id="5415">
+        <label>map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="5381" relation="include">
+        </childnode>
+        <childnode refid="5411" relation="include">
+        </childnode>
+        <childnode refid="5412" relation="include">
+        </childnode>
+        <childnode refid="5386" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structopenage_1_1curve_1_1tests_1_1map__test__element" prot="public">openage::curve::tests::map_test_element</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve_1_1tests">openage::curve::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../curve.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../continuous.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../discrete.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../queue.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../map.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1curve_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve_1_1tests" kindref="compound">openage::curve::tests</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="structopenage_1_1curve_1_1tests_1_1map__test__element" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element" kindref="compound">map_test_element</ref><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab5ee4a5eb2bcc16a37e523b7c86e05fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab5ee4a5eb2bcc16a37e523b7c86e05fc" kindref="member">map_test_element</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>v)<sp/>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" kindref="member">value</ref>(v)<sp/>{}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab64149aebddf040c8d0b526a6a0a3098" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1ab64149aebddf040c8d0b526a6a0a3098" kindref="member">operator != </ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rhs)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value<sp/>!=<sp/>rhs;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="namespaceopenage_1_1curve_1_1tests_1ae83c263763307d2e883c942afdeb6f2f" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1curve_1_1tests_1ae83c263763307d2e883c942afdeb6f2f" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;o,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element" kindref="compound">map_test_element</ref><sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>o<sp/>&lt;&lt;<sp/>e.<ref refid="structopenage_1_1curve_1_1tests_1_1map__test__element_1a7b2b75139511316eaab4d6442f64f18c" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>o;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t&gt;</highlight></codeline>
+<codeline lineno="34" refid="namespaceopenage_1_1curve_1_1tests_1adaea2f0357531c64ef6af72d720e37f2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1adaea2f0357531c64ef6af72d720e37f2" kindref="member">dump</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;key_t,<sp/>val_t&gt;<sp/>&amp;<ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>i.first<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i.second<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" kindref="member">test_map</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(std::is_copy_constructible&lt;<ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/><ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap&lt;int, int&gt;</ref>&gt;&gt;::value,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UnorderedMapIterator<sp/>not<sp/>Copy<sp/>Constructable<sp/>able&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(std::is_copy_assignable&lt;<ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/><ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap&lt;int, int&gt;</ref>&gt;&gt;::value,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UnorderedMapIterator<sp/>not<sp/>Copy<sp/>Assignable&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap&lt;int, int&gt;</ref><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.insert(0,<sp/>10,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.insert(5,<sp/>10,<sp/>5,<sp/>1);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.insert(100,<sp/>200,<sp/>200,<sp/>2);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Basic<sp/>tests<sp/>test<sp/>lookup<sp/>in<sp/>the<sp/>middle<sp/>of<sp/>the<sp/>range.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(2,<sp/>0);<sp/></highlight><highlight class="comment">//At<sp/>timestamp<sp/>2<sp/>element<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>0);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(20,<sp/>5);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(7,<sp/>5);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>1);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(20,<sp/>5);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(2,<sp/>5);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(150,<sp/>200);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>2);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(500,<sp/>200);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(5,<sp/>200);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>2.0:<sp/>test<sp/>at<sp/>the<sp/>boundaries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(0,<sp/>0);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(10,<sp/>0);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(5,<sp/>5);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>1);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(10,<sp/>5);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(100,<sp/>200);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.value().value(),<sp/>2);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.at(200,<sp/>200);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(t.has_value(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>3.0<sp/>Iterations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Iteration<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_map&lt;int,<sp/>int&gt;<sp/>reference;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference[5]<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference[200]<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.begin(0);<sp/>it<sp/>!=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.end();<sp/>++it)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Get<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.key());</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference[5]<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.begin(1);<sp/>it<sp/>!=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.end(90);<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.key());</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference[5]<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.between(1,90);<sp/>it<sp/>!=<sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>.end();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.key());</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" kindref="member">test_list</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" kindref="member">test_queue</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(std::is_copy_constructible&lt;<ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/><ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue&lt;int&gt;</ref>&gt;&gt;::value,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;QueueIterator<sp/>not<sp/>Copy<sp/>Constructable<sp/>able&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(std::is_copy_assignable&lt;<ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/><ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue&lt;int&gt;</ref>&gt;&gt;::value,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;QueueIterator<sp/>not<sp/>Copy<sp/>Assignable&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue&lt;int&gt;</ref><sp/>q;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" kindref="member">insert</ref>(0,<sp/>1);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" kindref="member">insert</ref>(2,<sp/>2);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" kindref="member">insert</ref>(4,<sp/>3);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" kindref="member">insert</ref>(10,<sp/>4);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" kindref="member">insert</ref>(100001,<sp/>5);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(0),<sp/>1);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(1),<sp/>2);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(2),<sp/>2);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(3),<sp/>3);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(4),<sp/>3);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(5),<sp/>4);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(10),<sp/>4);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(12),<sp/>5);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(*q.<ref refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" kindref="member">begin</ref>(100000),<sp/>5);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_set&lt;int&gt;<sp/>reference<sp/>=<sp/>{1,2,3};</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" kindref="member">between</ref>(0,6);<sp/>it<sp/>!=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" kindref="member">end</ref>();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.value());</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_set&lt;int&gt;<sp/>reference<sp/>=<sp/>{2,3,4};</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" kindref="member">between</ref>(1,40);<sp/>it<sp/>!=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" kindref="member">end</ref>();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.value());</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_set&lt;int&gt;<sp/>reference<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" kindref="member">between</ref>(30,40);<sp/>it<sp/>!=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" kindref="member">end</ref>();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.value());</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_set&lt;int&gt;<sp/>reference<sp/>=<sp/>{1,2,3,4};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" kindref="member">between</ref>(0,40);<sp/>it<sp/>!=<sp/>q.<ref refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" kindref="member">end</ref>();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ri<sp/>=<sp/>reference.find(it.value());</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ri<sp/>!=<sp/>reference.end())<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference.erase(ri);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(reference.empty(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1aafe8d47259322a390c43cae62d308296" kindref="member">test_map</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1a994d019a14acd704605a0ccff85558c8" kindref="member">test_list</ref>();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1curve_1_1tests_1ae4b27fadf76c2a10960f6b7e7ff7c724" kindref="member">test_queue</ref>();</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/tests/container.cpp"/>
+  </compounddef>
+</doxygen>

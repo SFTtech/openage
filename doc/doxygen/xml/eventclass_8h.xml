@@ -1,0 +1,643 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="eventclass_8h" kind="file" language="C++">
+    <compoundname>eventclass.h</compoundname>
+    <includes refid="curve_8h" local="yes">../curve/curve.h</includes>
+    <includes local="no">any</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="eventqueue_8h" local="yes">libopenage/event/eventqueue.h</includedby>
+    <includedby refid="event_2event_8h" local="yes">libopenage/event/event.h</includedby>
+    <includedby refid="event_2event_8cpp" local="yes">libopenage/event/event.cpp</includedby>
+    <includedby refid="eventclass_8cpp" local="yes">libopenage/event/eventclass.cpp</includedby>
+    <includedby refid="eventqueue_8cpp" local="yes">libopenage/event/eventqueue.cpp</includedby>
+    <includedby refid="eventtarget_8cpp" local="yes">libopenage/event/eventtarget.cpp</includedby>
+    <includedby refid="loop_8cpp" local="yes">libopenage/event/loop.cpp</includedby>
+    <incdepgraph>
+      <node id="7677">
+        <label>list</label>
+      </node>
+      <node id="7642">
+        <label>libopenage/event/eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="7643" relation="include">
+        </childnode>
+        <childnode refid="7682" relation="include">
+        </childnode>
+        <childnode refid="7658" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7683" relation="include">
+        </childnode>
+      </node>
+      <node id="7670">
+        <label>atomic</label>
+      </node>
+      <node id="7645">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="7646" relation="include">
+        </childnode>
+        <childnode refid="7647" relation="include">
+        </childnode>
+        <childnode refid="7648" relation="include">
+        </childnode>
+        <childnode refid="7649" relation="include">
+        </childnode>
+        <childnode refid="7650" relation="include">
+        </childnode>
+        <childnode refid="7651" relation="include">
+        </childnode>
+        <childnode refid="7652" relation="include">
+        </childnode>
+        <childnode refid="7653" relation="include">
+        </childnode>
+      </node>
+      <node id="7674">
+        <label>functional</label>
+      </node>
+      <node id="7649">
+        <label>iomanip</label>
+      </node>
+      <node id="7650">
+        <label>limits</label>
+      </node>
+      <node id="7644">
+        <label>cstdint</label>
+      </node>
+      <node id="7672">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="7673" relation="include">
+        </childnode>
+        <childnode refid="7674" relation="include">
+        </childnode>
+        <childnode refid="7649" relation="include">
+        </childnode>
+        <childnode refid="7658" relation="include">
+        </childnode>
+        <childnode refid="7675" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7657" relation="include">
+        </childnode>
+      </node>
+      <node id="7648">
+        <label>cmath</label>
+      </node>
+      <node id="7661">
+        <label>stdexcept</label>
+      </node>
+      <node id="7643">
+        <label>../curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7645" relation="include">
+        </childnode>
+      </node>
+      <node id="7676">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="7677" relation="include">
+        </childnode>
+        <childnode refid="7678" relation="include">
+        </childnode>
+        <childnode refid="7679" relation="include">
+        </childnode>
+      </node>
+      <node id="7673">
+        <label>cstdarg</label>
+      </node>
+      <node id="7656">
+        <label>string</label>
+      </node>
+      <node id="7665">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="7644" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7666" relation="include">
+        </childnode>
+        <childnode refid="7667" relation="include">
+        </childnode>
+        <childnode refid="7669" relation="include">
+        </childnode>
+        <childnode refid="7676" relation="include">
+        </childnode>
+        <childnode refid="7679" relation="include">
+        </childnode>
+      </node>
+      <node id="7667">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="7668" relation="include">
+        </childnode>
+      </node>
+      <node id="7669">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="7670" relation="include">
+        </childnode>
+        <childnode refid="7658" relation="include">
+        </childnode>
+        <childnode refid="7652" relation="include">
+        </childnode>
+        <childnode refid="7662" relation="include">
+        </childnode>
+        <childnode refid="7671" relation="include">
+        </childnode>
+        <childnode refid="7672" relation="include">
+        </childnode>
+      </node>
+      <node id="7651">
+        <label>ostream</label>
+      </node>
+      <node id="7654">
+        <label>limits.h</label>
+      </node>
+      <node id="7659">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="7660" relation="include">
+        </childnode>
+        <childnode refid="7658" relation="include">
+        </childnode>
+        <childnode refid="7661" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7662" relation="include">
+        </childnode>
+        <childnode refid="7665" relation="include">
+        </childnode>
+      </node>
+      <node id="7653">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="7646" relation="include">
+        </childnode>
+        <childnode refid="7654" relation="include">
+        </childnode>
+        <childnode refid="7648" relation="include">
+        </childnode>
+        <childnode refid="7655" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7657" relation="include">
+        </childnode>
+        <childnode refid="7658" relation="include">
+        </childnode>
+        <childnode refid="7659" relation="include">
+        </childnode>
+        <childnode refid="7662" relation="include">
+        </childnode>
+      </node>
+      <node id="7682">
+        <label>any</label>
+      </node>
+      <node id="7681">
+        <label>typeinfo</label>
+      </node>
+      <node id="7657">
+        <label>vector</label>
+      </node>
+      <node id="7663">
+        <label>ciso646</label>
+      </node>
+      <node id="7675">
+        <label>sstream</label>
+      </node>
+      <node id="7662">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="7663" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+        <childnode refid="7664" relation="include">
+        </childnode>
+      </node>
+      <node id="7664">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="7664" relation="include">
+        </childnode>
+      </node>
+      <node id="7671">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="7660" relation="include">
+        </childnode>
+        <childnode refid="7656" relation="include">
+        </childnode>
+      </node>
+      <node id="7679">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="7680" relation="include">
+        </childnode>
+      </node>
+      <node id="7668">
+        <label>cstdlib</label>
+      </node>
+      <node id="7660">
+        <label>iostream</label>
+      </node>
+      <node id="7683">
+        <label>unordered_map</label>
+      </node>
+      <node id="7647">
+        <label>climits</label>
+      </node>
+      <node id="7678">
+        <label>mutex</label>
+      </node>
+      <node id="7652">
+        <label>type_traits</label>
+      </node>
+      <node id="7666">
+        <label>config.h</label>
+      </node>
+      <node id="7646">
+        <label>algorithm</label>
+      </node>
+      <node id="7655">
+        <label>cstring</label>
+      </node>
+      <node id="7658">
+        <label>memory</label>
+      </node>
+      <node id="7680">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="7660" relation="include">
+        </childnode>
+        <childnode refid="7681" relation="include">
+        </childnode>
+        <childnode refid="7662" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7684">
+        <label>libopenage/event/eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="7685" relation="include">
+        </childnode>
+        <childnode refid="7708" relation="include">
+        </childnode>
+        <childnode refid="7709" relation="include">
+        </childnode>
+        <childnode refid="7710" relation="include">
+        </childnode>
+        <childnode refid="7707" relation="include">
+        </childnode>
+        <childnode refid="7704" relation="include">
+        </childnode>
+        <childnode refid="7705" relation="include">
+        </childnode>
+      </node>
+      <node id="7710">
+        <label>libopenage/event/eventclass.cpp</label>
+        <link refid="eventclass_8cpp"/>
+      </node>
+      <node id="7697">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="7685">
+        <label>libopenage/event/eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="7686" relation="include">
+        </childnode>
+        <childnode refid="7707" relation="include">
+        </childnode>
+        <childnode refid="7705" relation="include">
+        </childnode>
+      </node>
+      <node id="7704">
+        <label>libopenage/event/eventtarget.cpp</label>
+        <link refid="eventtarget_8cpp"/>
+      </node>
+      <node id="7686">
+        <label>libopenage/event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="7687" relation="include">
+        </childnode>
+        <childnode refid="7692" relation="include">
+        </childnode>
+        <childnode refid="7693" relation="include">
+        </childnode>
+        <childnode refid="7704" relation="include">
+        </childnode>
+        <childnode refid="7705" relation="include">
+        </childnode>
+        <childnode refid="7706" relation="include">
+        </childnode>
+      </node>
+      <node id="7692">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="7705">
+        <label>libopenage/event/loop.cpp</label>
+        <link refid="loop_8cpp"/>
+      </node>
+      <node id="7699">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="7695">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="7701">
+        <label>libopenage/curve/discrete.cpp</label>
+        <link refid="discrete_8cpp"/>
+      </node>
+      <node id="7709">
+        <label>libopenage/event/event.cpp</label>
+        <link refid="event_2event_8cpp"/>
+      </node>
+      <node id="7688">
+        <label>libopenage/curve/value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="7689" relation="include">
+        </childnode>
+        <childnode refid="7700" relation="include">
+        </childnode>
+        <childnode refid="7702" relation="include">
+        </childnode>
+      </node>
+      <node id="7698">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="7696" relation="include">
+        </childnode>
+        <childnode refid="7699" relation="include">
+        </childnode>
+      </node>
+      <node id="7707">
+        <label>libopenage/event/eventqueue.cpp</label>
+        <link refid="eventqueue_8cpp"/>
+      </node>
+      <node id="7703">
+        <label>libopenage/curve/keyframe_container.cpp</label>
+        <link refid="keyframe__container_8cpp"/>
+      </node>
+      <node id="7689">
+        <label>libopenage/curve/continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="7690" relation="include">
+        </childnode>
+        <childnode refid="7691" relation="include">
+        </childnode>
+        <childnode refid="7692" relation="include">
+        </childnode>
+        <childnode refid="7693" relation="include">
+        </childnode>
+      </node>
+      <node id="7696">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="7687">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="7688" relation="include">
+        </childnode>
+        <childnode refid="7703" relation="include">
+        </childnode>
+        <childnode refid="7692" relation="include">
+        </childnode>
+      </node>
+      <node id="7694">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="7695" relation="include">
+        </childnode>
+        <childnode refid="7696" relation="include">
+        </childnode>
+      </node>
+      <node id="7706">
+        <label>libopenage/event/tests.cpp</label>
+        <link refid="event_2tests_8cpp"/>
+      </node>
+      <node id="7708">
+        <label>libopenage/event/event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="7686" relation="include">
+        </childnode>
+        <childnode refid="7696" relation="include">
+        </childnode>
+        <childnode refid="7709" relation="include">
+        </childnode>
+        <childnode refid="7710" relation="include">
+        </childnode>
+        <childnode refid="7707" relation="include">
+        </childnode>
+        <childnode refid="7711" relation="include">
+        </childnode>
+        <childnode refid="7704" relation="include">
+        </childnode>
+        <childnode refid="7705" relation="include">
+        </childnode>
+        <childnode refid="7706" relation="include">
+        </childnode>
+      </node>
+      <node id="7700">
+        <label>libopenage/curve/discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="7701" relation="include">
+        </childnode>
+        <childnode refid="7691" relation="include">
+        </childnode>
+        <childnode refid="7692" relation="include">
+        </childnode>
+        <childnode refid="7693" relation="include">
+        </childnode>
+      </node>
+      <node id="7702">
+        <label>libopenage/curve/value_container.cpp</label>
+        <link refid="value__container_8cpp"/>
+      </node>
+      <node id="7693">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="7694" relation="include">
+        </childnode>
+        <childnode refid="7697" relation="include">
+        </childnode>
+        <childnode refid="7696" relation="include">
+        </childnode>
+        <childnode refid="7698" relation="include">
+        </childnode>
+      </node>
+      <node id="7711">
+        <label>libopenage/event/eventstore.cpp</label>
+        <link refid="eventstore_8cpp"/>
+      </node>
+      <node id="7691">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="7690">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1event_1_1_event_class" prot="public">openage::event::EventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_class_1_1param__map" prot="public">openage::event::EventClass::param_map</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_dependency_event_class" prot="public">openage::event::DependencyEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_dependency_immediately_event_class" prot="public">openage::event::DependencyImmediatelyEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_trigger_event_class" prot="public">openage::event::TriggerEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_repeat_event_class" prot="public">openage::event::RepeatEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_once_event_class" prot="public">openage::event::OnceEventClass</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1event">openage::event</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../curve/curve.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;any&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1event" kindref="compound">openage::event</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Event;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Loop;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EventTarget;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">State;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1event_1_1_event_class" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" kindref="member">trigger_type</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188" kindref="member">DEPENDENCY</ref>,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09" kindref="member">DEPENDENCY_IMMEDIATELY</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620" kindref="member">TRIGGER</ref>,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555" kindref="member">REPEAT</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24" kindref="member">ONCE</ref>,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1event_1_1_event_class_1_1param__map" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">param_map</ref><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" kindref="member">map_t</ref><sp/>=<sp/>std::unordered_map&lt;std::string,<sp/>std::any&gt;;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5d82dce19e49568304b224f68d882959" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5d82dce19e49568304b224f68d882959" kindref="member">param_map</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="77" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a0e607d95c4a66149da4d720793b06e1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a0e607d95c4a66149da4d720793b06e1e" kindref="member">param_map</ref>(std::initializer_list&lt;map_t::value_type&gt;<sp/>l)<sp/>:<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>(l)<sp/>{}</highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a65087770e8a4464f4bbff75a239d9030" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a65087770e8a4464f4bbff75a239d9030" kindref="member">param_map</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" kindref="member">map_t</ref><sp/>&amp;<ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>)<sp/>:<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>{<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(<ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>)}<sp/>{}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="85" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a01b87e6f9de36ce10f991c0cbddcd384" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a01b87e6f9de36ce10f991c0cbddcd384" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;defaultval=T())</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.find(key);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.end()<sp/>&amp;&amp;<sp/>this-&gt;check_type&lt;T&gt;(it))<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::any_cast&lt;T&gt;(it-&gt;second);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultval;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a4c7f73fe4acc0ed28e06ef69f07ef26e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a4c7f73fe4acc0ed28e06ef69f07ef26e" kindref="member">contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.find(key)<sp/>!=<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.end();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Type&gt;</highlight></codeline>
+<codeline lineno="105" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1aeaf58d316c8416ac8d8597b6f635973d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1aeaf58d316c8416ac8d8597b6f635973d" kindref="member">check_type</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.find(key);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;check_type&lt;Type&gt;(it);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="115" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1ac901f54cef25e8428e745320ff733bc0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1ac901f54cef25e8428e745320ff733bc0" kindref="member">check_type</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>map_t::const_iterator<sp/>&amp;it)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second.type()<sp/>==<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" kindref="member">map_t</ref><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" kindref="member">map</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" kindref="member">EventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" kindref="member">trigger_type</ref><sp/>&amp;<ref refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" kindref="member">type</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" kindref="member">~EventClass</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" kindref="member">trigger_type</ref><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" kindref="member">id</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e" kindref="member">setup_event</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Event&gt;<sp/>&amp;event,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;State&gt;<sp/>&amp;state)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c" kindref="member">invoke</ref>(<ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref><sp/>&amp;loop,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;EventTarget&gt;<sp/>&amp;target,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;State&gt;<sp/>&amp;state,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">curve::time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">param_map</ref><sp/>&amp;params)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">curve::time_t</ref><sp/><ref refid="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b" kindref="member">predict_invoke_time</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;EventTarget&gt;<sp/>&amp;target,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;State&gt;<sp/>&amp;state,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">curve::time_t</ref><sp/>&amp;at)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="186" refid="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" kindref="member">_id</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//<sp/>helper<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classopenage_1_1event_1_1_dependency_event_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_dependency_event_class" kindref="compound">DependencyEventClass</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_dependency_event_class_1a51e8b8a3e46c9bebecd84b84e8dd049d" kindref="member">DependencyEventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classopenage_1_1event_1_1_dependency_immediately_event_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_dependency_immediately_event_class" kindref="compound">DependencyImmediatelyEventClass</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_dependency_immediately_event_class_1a86d6e8b89d11bb739ab50836dc081466" kindref="member">DependencyImmediatelyEventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classopenage_1_1event_1_1_trigger_event_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_trigger_event_class" kindref="compound">TriggerEventClass</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_trigger_event_class_1a11a43643c69c6b39fe3b30e62c479b68" kindref="member">TriggerEventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classopenage_1_1event_1_1_repeat_event_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_repeat_event_class" kindref="compound">RepeatEventClass</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_repeat_event_class_1aac7229a03c3bb47b96e19441e26f94b6" kindref="member">RepeatEventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="classopenage_1_1event_1_1_once_event_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1event_1_1_once_event_class" kindref="compound">OnceEventClass</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1event_1_1_once_event_class_1ac6408645e243f6d995ef42b2425eda80" kindref="member">OnceEventClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::event</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/event/eventclass.h"/>
+  </compounddef>
+</doxygen>

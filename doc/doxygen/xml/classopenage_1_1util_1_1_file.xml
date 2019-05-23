@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_file" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::File</compoundname>
+    <includes refid="file_8h" local="no">file.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_file_1a5810a6cf25eb75a5a75e517db3af2f21" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">filelike::FileLike::seek_t</ref></type>
+        <definition>using openage::util::File::seek_t =  filelike::FileLike::seek_t</definition>
+        <argsstring></argsstring>
+        <name>seek_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="41" column="1" bodyfile="libopenage/util/file.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_file_1a54b322db0bfa26dde6b4285b3675a022" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">filelike::FileLike::mode_t</ref></type>
+        <definition>using openage::util::File::mode_t =  filelike::FileLike::mode_t</definition>
+        <argsstring></argsstring>
+        <name>mode_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="42" column="1" bodyfile="libopenage/util/file.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like" kindref="compound">filelike::FileLike</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;filelike::FileLike&gt; openage::util::File::filelike</definition>
+        <argsstring></argsstring>
+        <name>filelike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="105" column="1" bodyfile="libopenage/util/file.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1abd4ad67daa864e123cfb9516e2d971fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::File::File</definition>
+        <argsstring>()</argsstring>
+        <name>File</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Empty constructor, pls don&apos;t use. It only exists because Cython needs it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="48" column="1" bodyfile="libopenage/util/file.cpp" bodystart="22" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a18664086a7fa611860a6b083b341f498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::File::File</definition>
+        <argsstring>(const std::string &amp;path, int mode)</argsstring>
+        <name>File</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open a filesystem path, int version. this is just the integer value of the mode_t, because Cython... </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="54" column="1" bodyfile="libopenage/util/file.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a367bf653cb8be86795d9bbdab2786d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::File::File</definition>
+        <argsstring>(const std::string &amp;path, mode_t mode=mode_t::R)</argsstring>
+        <name>File</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">mode_t</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" kindref="member">mode_t::R</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open a filesystem path. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="59" column="1" bodyfile="libopenage/util/file.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a0d233d6eae947fe6cf05c84c35fefbfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::File::File</definition>
+        <argsstring>(std::shared_ptr&lt; filelike::FileLike &gt; filelike)</argsstring>
+        <name>File</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like" kindref="compound">filelike::FileLike</ref> &gt;</type>
+          <declname>filelike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a file from an already created filelike. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="64" column="1" bodyfile="libopenage/util/file.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a286c00c708ae659862efd1c2050e05d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::File::File</definition>
+        <argsstring>(py::Obj filelike)</argsstring>
+        <name>File</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref></type>
+          <declname>filelike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps a python filelike object that is already open. This is called from Cython.</para>
+<para>You will probably never call that manually. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="72" column="1" bodyfile="libopenage/util/file.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a8d7fbc78b3b74b1015a8570724da59b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::util::File::~File</definition>
+        <argsstring>()=default</argsstring>
+        <name>~File</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::File::read</definition>
+        <argsstring>(ssize_t max=-1)</argsstring>
+        <name>read</name>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read data from the file and return a string. If max is negative, return the full remaining file. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="80" column="1" bodyfile="libopenage/util/file.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1aed79a152572059372a4496e308bb9ee2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::File::read_to</definition>
+        <argsstring>(void *buf, ssize_t max=-1)</argsstring>
+        <name>read_to</name>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read data from the file into a buffer, which has to be large enough to fit max bytes. If max is negative, read the full remaining file, so buf has to be as big as the remaining file size.</para>
+<para>Returns the number of bytes that were read. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="90" column="1" bodyfile="libopenage/util/file.cpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a6682ee05b430743452fbc42d3dcea800" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::File::readable</definition>
+        <argsstring>()</argsstring>
+        <name>readable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="91" column="1" bodyfile="libopenage/util/file.cpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a2af9c4fbb1c9d38f9ecf08de619f7cdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::File::write</definition>
+        <argsstring>(const std::string &amp;data)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="92" column="1" bodyfile="libopenage/util/file.cpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a41ad13e452b2d6fcad1c7e07a41b82e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::File::writable</definition>
+        <argsstring>()</argsstring>
+        <name>writable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="93" column="1" bodyfile="libopenage/util/file.cpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1af23a5e1bf2dc780945af6530622b84b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::File::seek</definition>
+        <argsstring>(ssize_t offset, seek_t how=seek_t::SET)</argsstring>
+        <name>seek</name>
+        <param>
+          <type>ssize_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref></type>
+          <declname>how</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" kindref="member">seek_t::SET</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="94" column="1" bodyfile="libopenage/util/file.cpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a08649ee491d34b80d13caf2e6edafdc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::File::seekable</definition>
+        <argsstring>()</argsstring>
+        <name>seekable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="95" column="1" bodyfile="libopenage/util/file.cpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a27557ca3420295dbe0a09030ea19bd77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::File::tell</definition>
+        <argsstring>()</argsstring>
+        <name>tell</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="96" column="1" bodyfile="libopenage/util/file.cpp" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a529bcc6a1c3b4b68db36e6524340cc11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::File::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="97" column="1" bodyfile="libopenage/util/file.cpp" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a16aa84a70631bdf34399a3a6c60d68f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::File::flush</definition>
+        <argsstring>()</argsstring>
+        <name>flush</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="98" column="1" bodyfile="libopenage/util/file.cpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1ac0570e3a8b6d30b99ee21c99f0c9a7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ssize_t</type>
+        <definition>ssize_t openage::util::File::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="99" column="1" bodyfile="libopenage/util/file.cpp" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::util::File::get_lines</definition>
+        <argsstring>()</argsstring>
+        <name>get_lines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="100" column="1" bodyfile="libopenage/util/file.cpp" bodystart="101" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like" kindref="compound">filelike::FileLike</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; filelike::FileLike &gt; openage::util::File::get_fileobj</definition>
+        <argsstring>() const</argsstring>
+        <name>get_fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="102" column="1" bodyfile="libopenage/util/file.cpp" bodystart="117" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_file_1a5d71d8a71a32c9e3089e8e42c2783c9e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const File &amp;file)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.h" line="107" column="1" bodyfile="libopenage/util/file.cpp" bodystart="122" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Generic <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> implementation, used in our filesystem-like and file-like abtraction system. Can be created from Python :)</para>
+<para>TODO: maybe inherit from std::iostream so we can use it the c++-way</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>: <ref refid="classopenage_1_1util_1_1_file_1abd4ad67daa864e123cfb9516e2d971fc" kindref="member">File()</ref> noexcept File(const string &amp;path, int mode) except + File(PyObj) except +</para>
+<para>shared_ptr[FileLike] <ref refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" kindref="member">get_fileobj()</ref> except + </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1484">
+        <label>openage::util::File</label>
+        <link refid="classopenage_1_1util_1_1_file"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/file.h" line="39" column="1" bodyfile="libopenage/util/file.h" bodystart="39" bodyend="108"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_file_1a529bcc6a1c3b4b68db36e6524340cc11" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1abd4ad67daa864e123cfb9516e2d971fc" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>File</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a18664086a7fa611860a6b083b341f498" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>File</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a367bf653cb8be86795d9bbdab2786d4f" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>File</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a0d233d6eae947fe6cf05c84c35fefbfb" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>File</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a286c00c708ae659862efd1c2050e05d3" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>File</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a909061fe4f7083e2b59f2c0076bb562d" prot="protected" virt="non-virtual"><scope>openage::util::File</scope><name>filelike</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a16aa84a70631bdf34399a3a6c60d68f5" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a7a1e89595deb28915427dbe3b011fe8a" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>get_fileobj</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a4712008e4434f121e00ba41a29789db9" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>get_lines</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a54b322db0bfa26dde6b4285b3675a022" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>mode_t</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a5d71d8a71a32c9e3089e8e42c2783c9e" prot="protected" virt="non-virtual"><scope>openage::util::File</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1ac7c3188dd66e5b7aa84bc5a538c93885" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1aed79a152572059372a4496e308bb9ee2" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>read_to</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a6682ee05b430743452fbc42d3dcea800" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1af23a5e1bf2dc780945af6530622b84b0" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a5810a6cf25eb75a5a75e517db3af2f21" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>seek_t</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a08649ee491d34b80d13caf2e6edafdc1" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1ac0570e3a8b6d30b99ee21c99f0c9a7c5" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>size</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a27557ca3420295dbe0a09030ea19bd77" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a41ad13e452b2d6fcad1c7e07a41b82e1" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a2af9c4fbb1c9d38f9ecf08de619f7cdb" prot="public" virt="non-virtual"><scope>openage::util::File</scope><name>write</name></member>
+      <member refid="classopenage_1_1util_1_1_file_1a8d7fbc78b3b74b1015a8570724da59b7" prot="public" virt="virtual"><scope>openage::util::File</scope><name>~File</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

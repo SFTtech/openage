@@ -1,0 +1,453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="rng__tests_8cpp" kind="file" language="C++">
+    <compoundname>rng_tests.cpp</compoundname>
+    <includes refid="rng_8h" local="yes">rng.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">cmath</includes>
+    <incdepgraph>
+      <node id="23890">
+        <label>list</label>
+      </node>
+      <node id="23879">
+        <label>atomic</label>
+      </node>
+      <node id="23886">
+        <label>iomanip</label>
+      </node>
+      <node id="23885">
+        <label>functional</label>
+      </node>
+      <node id="23895">
+        <label>limits</label>
+      </node>
+      <node id="23874">
+        <label>cstdint</label>
+      </node>
+      <node id="23883">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23884" relation="include">
+        </childnode>
+        <childnode refid="23885" relation="include">
+        </childnode>
+        <childnode refid="23886" relation="include">
+        </childnode>
+        <childnode refid="23880" relation="include">
+        </childnode>
+        <childnode refid="23887" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+        <childnode refid="23888" relation="include">
+        </childnode>
+      </node>
+      <node id="23896">
+        <label>cmath</label>
+      </node>
+      <node id="23893">
+        <label>stdexcept</label>
+      </node>
+      <node id="23889">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23890" relation="include">
+        </childnode>
+        <childnode refid="23891" relation="include">
+        </childnode>
+        <childnode refid="23867" relation="include">
+        </childnode>
+      </node>
+      <node id="23884">
+        <label>cstdarg</label>
+      </node>
+      <node id="23865">
+        <label>string</label>
+      </node>
+      <node id="23873">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23874" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+        <childnode refid="23875" relation="include">
+        </childnode>
+        <childnode refid="23876" relation="include">
+        </childnode>
+        <childnode refid="23878" relation="include">
+        </childnode>
+        <childnode refid="23889" relation="include">
+        </childnode>
+        <childnode refid="23867" relation="include">
+        </childnode>
+      </node>
+      <node id="23876">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23877" relation="include">
+        </childnode>
+      </node>
+      <node id="23863">
+        <label>rng.h</label>
+        <link refid="rng_8h"/>
+        <childnode refid="23864" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+      </node>
+      <node id="23878">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23879" relation="include">
+        </childnode>
+        <childnode refid="23880" relation="include">
+        </childnode>
+        <childnode refid="23881" relation="include">
+        </childnode>
+        <childnode refid="23870" relation="include">
+        </childnode>
+        <childnode refid="23882" relation="include">
+        </childnode>
+        <childnode refid="23883" relation="include">
+        </childnode>
+      </node>
+      <node id="23892">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23864" relation="include">
+        </childnode>
+        <childnode refid="23880" relation="include">
+        </childnode>
+        <childnode refid="23893" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+        <childnode refid="23870" relation="include">
+        </childnode>
+        <childnode refid="23873" relation="include">
+        </childnode>
+      </node>
+      <node id="23869">
+        <label>typeinfo</label>
+      </node>
+      <node id="23888">
+        <label>vector</label>
+      </node>
+      <node id="23866">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23867" relation="include">
+        </childnode>
+        <childnode refid="23873" relation="include">
+        </childnode>
+      </node>
+      <node id="23871">
+        <label>ciso646</label>
+      </node>
+      <node id="23862">
+        <label>libopenage/rng/rng_tests.cpp</label>
+        <link refid="rng__tests_8cpp"/>
+        <childnode refid="23863" relation="include">
+        </childnode>
+        <childnode refid="23866" relation="include">
+        </childnode>
+        <childnode refid="23892" relation="include">
+        </childnode>
+        <childnode refid="23894" relation="include">
+        </childnode>
+        <childnode refid="23895" relation="include">
+        </childnode>
+        <childnode refid="23888" relation="include">
+        </childnode>
+        <childnode refid="23896" relation="include">
+        </childnode>
+      </node>
+      <node id="23887">
+        <label>sstream</label>
+      </node>
+      <node id="23870">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23871" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+        <childnode refid="23872" relation="include">
+        </childnode>
+      </node>
+      <node id="23872">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23872" relation="include">
+        </childnode>
+      </node>
+      <node id="23882">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23864" relation="include">
+        </childnode>
+        <childnode refid="23865" relation="include">
+        </childnode>
+      </node>
+      <node id="23867">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23868" relation="include">
+        </childnode>
+      </node>
+      <node id="23877">
+        <label>cstdlib</label>
+      </node>
+      <node id="23864">
+        <label>iostream</label>
+      </node>
+      <node id="23894">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="23892" relation="include">
+        </childnode>
+      </node>
+      <node id="23891">
+        <label>mutex</label>
+      </node>
+      <node id="23881">
+        <label>type_traits</label>
+      </node>
+      <node id="23875">
+        <label>config.h</label>
+      </node>
+      <node id="23880">
+        <label>memory</label>
+      </node>
+      <node id="23868">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23864" relation="include">
+        </childnode>
+        <childnode refid="23869" relation="include">
+        </childnode>
+        <childnode refid="23870" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1rng">openage::rng</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1rng_1_1tests">openage::rng::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rng_8h" kindref="compound">rng.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">rng<sp/>{</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1rng_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref><sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>18);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" kindref="member">difference_factor</ref><sp/>=<sp/>0.1;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" kindref="member">freq_dist</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>one<sp/>random<sp/>sample<sp/>from<sp/>the<sp/>generator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>sample;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>number<sp/>of<sp/>possible<sp/>chars,<sp/>likely<sp/>256.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>bucket_count.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dsize<sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;unsigned char&gt;::max</ref>()<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>each<sp/>bucket<sp/>should<sp/>be<sp/>selected<sp/>n/bucket_count<sp/>times.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>each<sp/>sample<sp/>contains<sp/>multiple<sp/>chars.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mean<sp/>=<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(sample)<sp/>*<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>)<sp/>/<sp/>dsize;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>maximum<sp/>difference<sp/>from<sp/>the<sp/>expected<sp/>mean.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_diff<sp/>=<sp/>mean<sp/>*<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" kindref="member">difference_factor</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>holds<sp/>one<sp/>entry<sp/>for<sp/>each<sp/>char<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buckets[dsize];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;dat<sp/>:<sp/>buckets)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dat<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>myrng{<ref refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" kindref="member">time_seed</ref>()};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sample<sp/>=<sp/>myrng();<sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>a<sp/>random<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*valptr<sp/>=<sp/>reinterpret_cast&lt;unsigned<sp/>char*&gt;(&amp;sample);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>each<sp/>bit<sp/>of<sp/>the<sp/>generated<sp/>value:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>increment<sp/>the<sp/>&quot;weight&quot;<sp/>of<sp/>the<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(sample);<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>randomly<sp/>increment<sp/>one<sp/>of<sp/>the<sp/>buckets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>rbyte<sp/>=<sp/>valptr[j];</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buckets[rbyte]<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>if<sp/>each<sp/>bucket<sp/>was<sp/>selected<sp/>the<sp/>amount<sp/>we<sp/>expected.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/>:<sp/>buckets)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>(mean<sp/>-<sp/>count)<sp/>&gt;<sp/>max_diff<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" kindref="member">bool_dist</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>expected<sp/>=<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref><sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_diff<sp/>=<sp/>expected<sp/>*<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" kindref="member">difference_factor</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>mybool{<ref refid="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" kindref="member">random_seed</ref>()};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_true<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mybool()<sp/>&amp;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_true<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>(num_true<sp/>-<sp/>expected)<sp/>&gt;<sp/>max_diff<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" kindref="member">real_dist</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bckt_cnt<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref><sp/>&gt;&gt;<sp/>11;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/>mean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref><sp/>/<sp/>bckt_cnt;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/>max_diff<sp/><sp/><sp/><sp/>=<sp/>mean<sp/>*<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" kindref="member">difference_factor</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/>max_sumdiff<sp/>=<sp/>(<ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>/2)<sp/>*<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a77d64f9421e625efe391f7261e17d621" kindref="member">difference_factor</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>ssize_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buckets[bckt_cnt+1];</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;dat<sp/>:<sp/>buckets)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dat<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>myrng{<ref refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" kindref="member">time_seed</ref>()};</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref><sp/>=<sp/>myrng.real();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buckets[static_cast&lt;size_t&gt;(<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref><sp/>*<sp/>bckt_cnt)]<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>(sum<sp/>-<sp/>(<ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref><sp/>/<sp/>2))<sp/>&gt;<sp/>max_sumdiff<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>bckt_cnt;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>(mean<sp/>-<sp/>buckets[i])<sp/>&gt;<sp/>max_diff<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>buckets[bckt_cnt]<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" kindref="member">reproduce</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" kindref="member">time_seed</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test0{<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test1{<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>};</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>seed<sp/>both<sp/>rngs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>initstr[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;abcdefghijk&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>test0.seed(initstr,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(initstr));</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>test1.seed(initstr,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(initstr));</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>same<sp/>result<sp/>expected,<sp/>as<sp/>we<sp/>only<sp/>use<sp/>the<sp/>first<sp/>3<sp/>chars<sp/>as<sp/>seed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>initstr2[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;abcqq&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>test0.seed(initstr,<sp/>3);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>test1.seed(initstr2,<sp/>3);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>sure<sp/>that<sp/>seeding<sp/>with<sp/>nullptr<sp/>fails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(test0.seed(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>0));</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="namespaceopenage_1_1rng_1_1tests_1a265e3eddfd2efda00d3f1d1d9291469d" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a265e3eddfd2efda00d3f1d1d9291469d" kindref="member">serialize</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>seeded<sp/>rng</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>duplicate<sp/>state<sp/>to<sp/>another<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test0{<ref refid="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" kindref="member">random_seed</ref>()};</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test1{test0.<ref refid="classopenage_1_1rng_1_1_r_n_g_1a3d2fc24293e9eb420a93a696b544d812" kindref="member">to_string</ref>()};</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(test0.from_string(</highlight><highlight class="stringliteral">&quot;100<sp/>aa&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(test0.from_string(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(test0.from_string(</highlight><highlight class="stringliteral">&quot;100&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(test0.from_string(</highlight><highlight class="stringliteral">&quot;100<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" kindref="member">fill</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>1<sp/>&lt;&lt;<sp/>7;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>data[n];</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test0{<ref refid="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" kindref="member">random_seed</ref>()};</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test1{test0};</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>test0.<ref refid="classopenage_1_1rng_1_1_r_n_g_1a77a4af9133abbcd242c9adf3921bbd89" kindref="member">fill</ref>(data,<sp/>n);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test1()<sp/>==<sp/>data[i]<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="namespaceopenage_1_1rng_1_1tests_1a3b24c3f995bfb45b9d833030720bd88f" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a3b24c3f995bfb45b9d833030720bd88f" kindref="member">fill_real</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>1<sp/>&lt;&lt;<sp/>7;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test0{<ref refid="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" kindref="member">time_seed</ref>()};</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref><sp/>test1{test0};</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>data[n];</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>test1.<ref refid="classopenage_1_1rng_1_1_r_n_g_1ab7dbd0bef0c06a30b6724f2352af833c" kindref="member">fill_real</ref>(data,<sp/>n);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0.real()<sp/>==<sp/>data[i]<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a55fc432b6842a4bfc68b95c5ab41dc01" kindref="member">num_rand</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test0()<sp/>==<sp/>test1()<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="namespaceopenage_1_1rng_1_1tests_1ae22d2c6364226e0169f0eed1c9701592" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1ae22d2c6364226e0169f0eed1c9701592" kindref="member">run</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1acad40865d58b96a35f6f453e04642f00" kindref="member">freq_dist</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1ab46fd4b091c16460f3ed825fe2ec269b" kindref="member">bool_dist</ref>();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a1270464ae98991431da5e3fa6ee60ab5" kindref="member">real_dist</ref>();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1aa77427d76c14080c4993edd5b79a293e" kindref="member">reproduce</ref>();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" kindref="member">fill</ref>();</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1rng_1_1tests_1a3b24c3f995bfb45b9d833030720bd88f" kindref="member">fill_real</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::rng::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/rng/rng_tests.cpp"/>
+  </compounddef>
+</doxygen>

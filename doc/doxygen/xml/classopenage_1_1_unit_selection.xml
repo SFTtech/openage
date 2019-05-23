@@ -1,0 +1,815 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_unit_selection" kind="class" language="C++" prot="public">
+    <compoundname>openage::UnitSelection</compoundname>
+    <basecompoundref refid="classopenage_1_1_hud_handler" prot="public" virt="non-virtual">openage::HudHandler</basecompoundref>
+    <includes refid="selection_8h" local="no">selection.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1abafc015ba5af4732d6b00ddec9517c31" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref>, <ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref> &gt;</type>
+        <definition>std::unordered_map&lt;id_t, UnitReference&gt; openage::UnitSelection::units</definition>
+        <argsstring></argsstring>
+        <name>units</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="102" column="1" bodyfile="libopenage/unit/selection.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1aa2054e5dfae57e3f3ca0636a2f317fbd" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" kindref="member">selection_type_t</ref></type>
+        <definition>selection_type_t openage::UnitSelection::selection_type</definition>
+        <argsstring></argsstring>
+        <name>selection_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="103" column="1" bodyfile="libopenage/unit/selection.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1ab3a8ab0e359201269d72098c0c145d87" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::UnitSelection::drag_active</definition>
+        <argsstring></argsstring>
+        <name>drag_active</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="105" column="1" bodyfile="libopenage/unit/selection.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1a3605e8a7e9e8c75b869556cd4b8174ac" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+        <definition>coord::camgame openage::UnitSelection::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <initializer>= {0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="107" column="1" bodyfile="libopenage/unit/selection.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1a9e6b650380d7ef95ba29850854ce5321" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+        <definition>coord::camgame openage::UnitSelection::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <initializer>= {0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="107" column="1" bodyfile="libopenage/unit/selection.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1a8ba5135a6b9c5a2d88ad2318c7f46952" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::UnitSelection::font_size</definition>
+        <argsstring></argsstring>
+        <name>font_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="108" column="1" bodyfile="libopenage/unit/selection.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_selection_1ab6d8f001c538379db6c2f56cb44859f0" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+        <definition>Engine* openage::UnitSelection::engine</definition>
+        <argsstring></argsstring>
+        <name>engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> where this selection is attached to. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="113" column="1" bodyfile="libopenage/unit/selection.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a8a9f8a205468f01d0f13a8858722e30b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitSelection::UnitSelection</definition>
+        <argsstring>(Engine *engine)</argsstring>
+        <name>UnitSelection</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="40" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="20" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitSelection::on_drawhud</definition>
+        <argsstring>() override</argsstring>
+        <name>on_drawhud</name>
+        <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the drawing action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="42" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="28" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a100fae0b7f4993a90a984c57024ecfe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::drag_begin</definition>
+        <argsstring>(coord::camgame pos)</argsstring>
+        <name>drag_begin</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="43" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a35322bea7ad954fe4fefd8e2dfbac60f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::drag_update</definition>
+        <argsstring>(coord::camgame pos)</argsstring>
+        <name>drag_update</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="44" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="101" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a6b4a0b9275c8ebf623d50a7509487623" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::drag_release</definition>
+        <argsstring>(const Player &amp;player, Terrain *terrain, bool append=false)</argsstring>
+        <name>drag_release</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> *</type>
+          <declname>terrain</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="45" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="108" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1aa97b9724248f01b525488bbba21d6b59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="47" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="118" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1ae76387eeee60f994b678d79ca4a198e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::toggle_unit</definition>
+        <argsstring>(const Player &amp;player, Unit *u, bool append=false)</argsstring>
+        <name>toggle_unit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="49" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="128" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1ac7668d88460dbf57f79a75cbe55e34f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::add_unit</definition>
+        <argsstring>(const Player &amp;player, Unit *u, bool append=false)</argsstring>
+        <name>add_unit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="50" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="136" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a55faa863da0461730ad3deed70b726c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::remove_unit</definition>
+        <argsstring>(Unit *u)</argsstring>
+        <name>remove_unit</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="51" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="170" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1ab7bbbd3ae208b61e3fae02eca886e134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" kindref="member">selection_type_t</ref></type>
+        <definition>selection_type_t openage::UnitSelection::get_selection_type</definition>
+        <argsstring>()</argsstring>
+        <name>get_selection_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="53" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="179" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a2cc48ccbea18ec579f9ad27a89b1d96a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::kill_unit</definition>
+        <argsstring>(const Player &amp;player)</argsstring>
+        <name>kill_unit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>kill a single unit in the selection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="58" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="183" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a641ba956ba51e5ec47130cec3ffe9085" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitSelection::contains_builders</definition>
+        <argsstring>(const Player &amp;player)</argsstring>
+        <name>contains_builders</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks whether there are any builders in the selection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="63" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="206" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a07df9837a02027bf139d1cecfb541b4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitSelection::contains_military</definition>
+        <argsstring>(const Player &amp;player)</argsstring>
+        <name>contains_military</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks whether there are any military units (i.e. non-builders) in the selection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="68" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="217" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1ae351437c3a9fafc071961486f7eef075" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::select_point</definition>
+        <argsstring>(const Player &amp;player, Terrain *terrain, coord::camgame p, bool append=false)</argsstring>
+        <name>select_point</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> *</type>
+          <declname>terrain</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>point unit selection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="73" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="228" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::select_space</definition>
+        <argsstring>(const Player &amp;player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append=false)</argsstring>
+        <name>select_space</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> *</type>
+          <declname>terrain</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref></type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>append</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>boxed unit selection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="78" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="246" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a0ad857ab54207bdaa9719fc01410f101" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::all_invoke</definition>
+        <argsstring>(Command &amp;cmd)</argsstring>
+        <name>all_invoke</name>
+        <param>
+          <type><ref refid="classopenage_1_1_command" kindref="compound">Command</ref> &amp;</type>
+          <declname>cmd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>uses command on every selected unit </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="83" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="272" bodyend="281"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1ac96d0e9e50c7efe2810017f60aa7a6ce" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitSelection::show_attributes</definition>
+        <argsstring>(Unit *)</argsstring>
+        <name>show_attributes</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>u</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Must be given a valid unit to display text attribute indicators. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="89" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="283" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_selection_1a9ec8fd5cfcfa451cce1123ff87894719" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1a7174088e5b9a132b1bccacbee82a35cd" kindref="member">selection_type_t</ref></type>
+        <definition>selection_type_t openage::UnitSelection::get_unit_selection_type</definition>
+        <argsstring>(const Player &amp;player, Unit *)</argsstring>
+        <name>get_unit_selection_type</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>u</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether the currently selected units may be selected at the same time If not, deselect some units This is the order in which the checks occur: Own units &gt; own <ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">building(s)</ref> &gt; enemy unit &gt; enemy building &gt; any object</para>
+<para>So you can select a group of units, or a building (or multiple if append is on) Enemy units, enemy buildings and other objects may only be selected one at a time </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/selection.h" line="100" column="1" bodyfile="libopenage/unit/selection.cpp" bodystart="319" bodyend="329"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>a user interface component allowing control of a selected group </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4760">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="4759">
+        <label>openage::UnitSelection</label>
+        <link refid="classopenage_1_1_unit_selection"/>
+        <childnode refid="4760" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4795">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="4770">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4771">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="4772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4796">
+        <label>openage::coord::camgame_delta</label>
+        <link refid="structopenage_1_1coord_1_1camgame__delta"/>
+        <childnode refid="4797" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4768">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="4774">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="4775" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="4776" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="4777">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="4767">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="4768" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4772">
+        <label>QObject</label>
+      </node>
+      <node id="4773">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="4770" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="4799">
+        <label>openage::coord::camgame</label>
+        <link refid="structopenage_1_1coord_1_1camgame"/>
+        <childnode refid="4800" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4794">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="4795" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4780">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+      <node id="4765">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="4765" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="4792">
+        <label>openage::coord::viewport</label>
+        <link refid="structopenage_1_1coord_1_1viewport"/>
+        <childnode refid="4793" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4788">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="4773" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="4781" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4790">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="4800">
+        <label>CoordXYAbsolute&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="4776">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="4777" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4762">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="4787">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="4783">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="4784" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4797">
+        <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="4775">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="4784">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="4778">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="4779" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="4785">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="4781" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4761">
+        <label>openage::UnitSelection</label>
+        <link refid="classopenage_1_1_unit_selection"/>
+        <childnode refid="4762" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4763" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+        <childnode refid="4799" relation="usage">
+          <edgelabel>-start</edgelabel>
+          <edgelabel>-end</edgelabel>
+        </childnode>
+      </node>
+      <node id="4789">
+        <label>openage::gui::EngineQMLInfo</label>
+        <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
+        <childnode refid="4790" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4770" relation="usage">
+          <edgelabel>+asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="4763" relation="usage">
+          <edgelabel>+engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="4798">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="4775" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4769">
+        <label>openage::util::Profiler</label>
+        <link refid="classopenage_1_1util_1_1_profiler"/>
+        <childnode refid="4763" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="4763">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="4764" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4765" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4766" relation="usage">
+          <edgelabel>+drawing_huds</edgelabel>
+          <edgelabel>+drawing_debug_overlay</edgelabel>
+        </childnode>
+        <childnode refid="4769" relation="usage">
+          <edgelabel>-profiler</edgelabel>
+        </childnode>
+        <childnode refid="4770" relation="usage">
+          <edgelabel>-root_dir</edgelabel>
+        </childnode>
+        <childnode refid="4771" relation="usage">
+          <edgelabel>+gui_signals</edgelabel>
+        </childnode>
+        <childnode refid="4773" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="4774" relation="usage">
+          <edgelabel>-screenshot_manager</edgelabel>
+        </childnode>
+        <childnode refid="4778" relation="usage">
+          <edgelabel>-fps_counter</edgelabel>
+        </childnode>
+        <childnode refid="4780" relation="usage">
+          <edgelabel>+external_profiler</edgelabel>
+        </childnode>
+        <childnode refid="4781" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+        <childnode refid="4789" relation="usage">
+          <edgelabel>-qml_info</edgelabel>
+        </childnode>
+        <childnode refid="4791" relation="usage">
+          <edgelabel>+coord</edgelabel>
+        </childnode>
+        <childnode refid="4775" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="4788" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+        <childnode refid="4798" relation="usage">
+          <edgelabel>-audio_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4793">
+        <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="4764">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="4766">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4786">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="4787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4779">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+      <node id="4782">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="4781">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="4782" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4783" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="4785" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="4786" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="4788" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4791">
+        <label>openage::coord::CoordManager</label>
+        <link refid="classopenage_1_1coord_1_1_coord_manager"/>
+        <childnode refid="4792" relation="usage">
+          <edgelabel>+camgame_viewport</edgelabel>
+          <edgelabel>+camhud_viewport</edgelabel>
+        </childnode>
+        <childnode refid="4794" relation="usage">
+          <edgelabel>+camgame_phys</edgelabel>
+        </childnode>
+        <childnode refid="4796" relation="usage">
+          <edgelabel>+tile_size</edgelabel>
+        </childnode>
+        <childnode refid="4776" relation="usage">
+          <edgelabel>+viewport_size</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/selection.h" line="38" column="1" bodyfile="libopenage/unit/selection.h" bodystart="38" bodyend="114"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_selection_1ac7668d88460dbf57f79a75cbe55e34f3" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>add_unit</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a0ad857ab54207bdaa9719fc01410f101" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>all_invoke</name></member>
+      <member refid="classopenage_1_1_unit_selection_1aa97b9724248f01b525488bbba21d6b59" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>clear</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a641ba956ba51e5ec47130cec3ffe9085" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>contains_builders</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a07df9837a02027bf139d1cecfb541b4d" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>contains_military</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ab3a8ab0e359201269d72098c0c145d87" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>drag_active</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a100fae0b7f4993a90a984c57024ecfe2" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>drag_begin</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a6b4a0b9275c8ebf623d50a7509487623" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>drag_release</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a35322bea7ad954fe4fefd8e2dfbac60f" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>drag_update</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a9e6b650380d7ef95ba29850854ce5321" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>end</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ab6d8f001c538379db6c2f56cb44859f0" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>engine</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a8ba5135a6b9c5a2d88ad2318c7f46952" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>font_size</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ab7bbbd3ae208b61e3fae02eca886e134" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>get_selection_type</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a9ec8fd5cfcfa451cce1123ff87894719" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>get_unit_selection_type</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a2cc48ccbea18ec579f9ad27a89b1d96a" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>kill_unit</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a0a21b9382975a037b94a1331628b320c" prot="public" virt="virtual"><scope>openage::UnitSelection</scope><name>on_drawhud</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a55faa863da0461730ad3deed70b726c2" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>remove_unit</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ae351437c3a9fafc071961486f7eef075" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>select_point</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a1c3efeb8415c50094d66844e69402342" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>select_space</name></member>
+      <member refid="classopenage_1_1_unit_selection_1aa2054e5dfae57e3f3ca0636a2f317fbd" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>selection_type</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ac96d0e9e50c7efe2810017f60aa7a6ce" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>show_attributes</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a3605e8a7e9e8c75b869556cd4b8174ac" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>start</name></member>
+      <member refid="classopenage_1_1_unit_selection_1ae76387eeee60f994b678d79ca4a198e8" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>toggle_unit</name></member>
+      <member refid="classopenage_1_1_unit_selection_1abafc015ba5af4732d6b00ddec9517c31" prot="private" virt="non-virtual"><scope>openage::UnitSelection</scope><name>units</name></member>
+      <member refid="classopenage_1_1_unit_selection_1a8a9f8a205468f01d0f13a8858722e30b" prot="public" virt="non-virtual"><scope>openage::UnitSelection</scope><name>UnitSelection</name></member>
+      <member refid="classopenage_1_1_hud_handler_1a5b1435a782148709e7acf4a0dd94189f" prot="public" virt="virtual"><scope>openage::UnitSelection</scope><name>~HudHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

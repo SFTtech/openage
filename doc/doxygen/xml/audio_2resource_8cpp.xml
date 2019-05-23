@@ -1,0 +1,1150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="audio_2resource_8cpp" kind="file" language="C++">
+    <compoundname>resource.cpp</compoundname>
+    <includes refid="audio_2resource_8h" local="yes">resource.h</includes>
+    <includes refid="engine_8h" local="yes">../engine.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="dynamic__resource_8h" local="yes">dynamic_resource.h</includes>
+    <includes refid="in__memory__resource_8h" local="yes">in_memory_resource.h</includes>
+    <incdepgraph>
+      <node id="1845">
+        <label>list</label>
+      </node>
+      <node id="1837">
+        <label>atomic</label>
+      </node>
+      <node id="1868">
+        <label>coord/coordmanager.h</label>
+        <link refid="coordmanager_8h"/>
+        <childnode refid="1869" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+        <childnode refid="1883" relation="include">
+        </childnode>
+      </node>
+      <node id="1810">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+        <childnode refid="1811" relation="include">
+        </childnode>
+        <childnode refid="1857" relation="include">
+        </childnode>
+        <childnode refid="1830" relation="include">
+        </childnode>
+        <childnode refid="1928" relation="include">
+        </childnode>
+        <childnode refid="1931" relation="include">
+        </childnode>
+      </node>
+      <node id="1876">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="1871" relation="include">
+        </childnode>
+        <childnode refid="1877" relation="include">
+        </childnode>
+        <childnode refid="1873" relation="include">
+        </childnode>
+        <childnode refid="1842" relation="include">
+        </childnode>
+        <childnode refid="1878" relation="include">
+        </childnode>
+        <childnode refid="1854" relation="include">
+        </childnode>
+        <childnode refid="1838" relation="include">
+        </childnode>
+        <childnode refid="1870" relation="include">
+        </childnode>
+      </node>
+      <node id="1842">
+        <label>iomanip</label>
+      </node>
+      <node id="1823">
+        <label>functional</label>
+      </node>
+      <node id="1892">
+        <label>queue</label>
+      </node>
+      <node id="1811">
+        <label>resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+        <childnode refid="1816" relation="include">
+        </childnode>
+        <childnode refid="1856" relation="include">
+        </childnode>
+      </node>
+      <node id="1878">
+        <label>limits</label>
+      </node>
+      <node id="1875">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+        <childnode refid="1876" relation="include">
+        </childnode>
+      </node>
+      <node id="1888">
+        <label>guisys/public/gui_singleton_items_info.h</label>
+        <link refid="gui__singleton__items__info_8h"/>
+      </node>
+      <node id="1865">
+        <label>hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="1866" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+      </node>
+      <node id="1849">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+      </node>
+      <node id="1860">
+        <label>QObject</label>
+      </node>
+      <node id="1906">
+        <label>input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1858" relation="include">
+        </childnode>
+        <childnode refid="1889" relation="include">
+        </childnode>
+        <childnode refid="1907" relation="include">
+        </childnode>
+        <childnode refid="1908" relation="include">
+        </childnode>
+        <childnode refid="1910" relation="include">
+        </childnode>
+      </node>
+      <node id="1820">
+        <label>cstdint</label>
+      </node>
+      <node id="1879">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="1930">
+        <label>../datastructure/concurrent_queue.h</label>
+        <link refid="concurrent__queue_8h"/>
+        <childnode refid="1891" relation="include">
+        </childnode>
+        <childnode refid="1824" relation="include">
+        </childnode>
+        <childnode refid="1892" relation="include">
+        </childnode>
+        <childnode refid="1893" relation="include">
+        </childnode>
+      </node>
+      <node id="1885">
+        <label>stdlib.h</label>
+      </node>
+      <node id="1926">
+        <label>screenshot.h</label>
+        <link refid="screenshot_8h"/>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1927" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+      </node>
+      <node id="1840">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="1841" relation="include">
+        </childnode>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1842" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1843" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+      </node>
+      <node id="1895">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="1831" relation="include">
+        </childnode>
+      </node>
+      <node id="1894">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1895" relation="include">
+        </childnode>
+        <childnode refid="1896" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+      </node>
+      <node id="1829">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="1830" relation="include">
+        </childnode>
+      </node>
+      <node id="1814">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+      </node>
+      <node id="1873">
+        <label>cmath</label>
+      </node>
+      <node id="1831">
+        <label>stdexcept</label>
+      </node>
+      <node id="1828">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="1917">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+      </node>
+      <node id="1922">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="1923" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1838" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1869" relation="include">
+        </childnode>
+        <childnode refid="1924" relation="include">
+        </childnode>
+      </node>
+      <node id="1844">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="1845" relation="include">
+        </childnode>
+        <childnode refid="1824" relation="include">
+        </childnode>
+        <childnode refid="1846" relation="include">
+        </childnode>
+      </node>
+      <node id="1841">
+        <label>cstdarg</label>
+      </node>
+      <node id="1813">
+        <label>string</label>
+      </node>
+      <node id="1832">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1833" relation="include">
+        </childnode>
+        <childnode refid="1834" relation="include">
+        </childnode>
+        <childnode refid="1836" relation="include">
+        </childnode>
+        <childnode refid="1844" relation="include">
+        </childnode>
+        <childnode refid="1846" relation="include">
+        </childnode>
+      </node>
+      <node id="1834">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="1835" relation="include">
+        </childnode>
+      </node>
+      <node id="1836">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="1837" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1838" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+        <childnode refid="1839" relation="include">
+        </childnode>
+        <childnode refid="1840" relation="include">
+        </childnode>
+      </node>
+      <node id="1913">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="1909">
+        <label>unordered_set</label>
+      </node>
+      <node id="1884">
+        <label>cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1885" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1886" relation="include">
+        </childnode>
+        <childnode refid="1822" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+      </node>
+      <node id="1889">
+        <label>handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="1858" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+      </node>
+      <node id="1897">
+        <label>exception</label>
+      </node>
+      <node id="1899">
+        <label>stddef.h</label>
+      </node>
+      <node id="1863">
+        <label>fstream</label>
+      </node>
+      <node id="1854">
+        <label>ostream</label>
+      </node>
+      <node id="1887">
+        <label>gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="1817" relation="include">
+        </childnode>
+        <childnode refid="1888" relation="include">
+        </childnode>
+      </node>
+      <node id="1890">
+        <label>job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="1837" relation="include">
+        </childnode>
+        <childnode refid="1891" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1824" relation="include">
+        </childnode>
+        <childnode refid="1892" relation="include">
+        </childnode>
+        <childnode refid="1893" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1894" relation="include">
+        </childnode>
+        <childnode refid="1902" relation="include">
+        </childnode>
+        <childnode refid="1903" relation="include">
+        </childnode>
+        <childnode refid="1904" relation="include">
+        </childnode>
+        <childnode refid="1900" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+      </node>
+      <node id="1819">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1821" relation="include">
+        </childnode>
+        <childnode refid="1822" relation="include">
+        </childnode>
+      </node>
+      <node id="1856">
+        <label>types.h</label>
+        <link refid="audio_2types_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+      </node>
+      <node id="1929">
+        <label>dynamic_loader.h</label>
+        <link refid="dynamic__loader_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1853" relation="include">
+        </childnode>
+        <childnode refid="1856" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+      </node>
+      <node id="1872">
+        <label>limits.h</label>
+      </node>
+      <node id="1816">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+        <childnode refid="1853" relation="include">
+        </childnode>
+        <childnode refid="1855" relation="include">
+        </childnode>
+      </node>
+      <node id="1830">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1831" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+        <childnode refid="1832" relation="include">
+        </childnode>
+      </node>
+      <node id="1870">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="1871" relation="include">
+        </childnode>
+        <childnode refid="1872" relation="include">
+        </childnode>
+        <childnode refid="1873" relation="include">
+        </childnode>
+        <childnode refid="1874" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1830" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+      </node>
+      <node id="1910">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1911" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1907" relation="include">
+        </childnode>
+        <childnode refid="1908" relation="include">
+        </childnode>
+      </node>
+      <node id="1880">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="1905">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="1837" relation="include">
+        </childnode>
+        <childnode refid="1891" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1892" relation="include">
+        </childnode>
+        <childnode refid="1893" relation="include">
+        </childnode>
+        <childnode refid="1900" relation="include">
+        </childnode>
+      </node>
+      <node id="1858">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="1914">
+        <label>util/externalprofiler.h</label>
+        <link refid="externalprofiler_8h"/>
+      </node>
+      <node id="1891">
+        <label>condition_variable</label>
+      </node>
+      <node id="1848">
+        <label>typeinfo</label>
+      </node>
+      <node id="1864">
+        <label>audio/audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1858" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+        <childnode refid="1865" relation="include">
+        </childnode>
+        <childnode refid="1867" relation="include">
+        </childnode>
+        <childnode refid="1816" relation="include">
+        </childnode>
+      </node>
+      <node id="1867">
+        <label>sound.h</label>
+        <link refid="sound_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+      </node>
+      <node id="1923">
+        <label>bitset</label>
+      </node>
+      <node id="1903">
+        <label>job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1830" relation="include">
+        </childnode>
+        <childnode refid="1894" relation="include">
+        </childnode>
+        <childnode refid="1902" relation="include">
+        </childnode>
+        <childnode refid="1904" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+        <childnode refid="1905" relation="include">
+        </childnode>
+      </node>
+      <node id="1882">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="1866">
+        <label>tuple</label>
+      </node>
+      <node id="1927">
+        <label>ctime</label>
+      </node>
+      <node id="1857">
+        <label>../engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1858" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1860" relation="include">
+        </childnode>
+        <childnode refid="1861" relation="include">
+        </childnode>
+        <childnode refid="1862" relation="include">
+        </childnode>
+        <childnode refid="1864" relation="include">
+        </childnode>
+        <childnode refid="1868" relation="include">
+        </childnode>
+        <childnode refid="1869" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+        <childnode refid="1884" relation="include">
+        </childnode>
+        <childnode refid="1887" relation="include">
+        </childnode>
+        <childnode refid="1889" relation="include">
+        </childnode>
+        <childnode refid="1890" relation="include">
+        </childnode>
+        <childnode refid="1906" relation="include">
+        </childnode>
+        <childnode refid="1907" relation="include">
+        </childnode>
+        <childnode refid="1912" relation="include">
+        </childnode>
+        <childnode refid="1914" relation="include">
+        </childnode>
+        <childnode refid="1915" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+        <childnode refid="1918" relation="include">
+        </childnode>
+        <childnode refid="1921" relation="include">
+        </childnode>
+        <childnode refid="1840" relation="include">
+        </childnode>
+        <childnode refid="1926" relation="include">
+        </childnode>
+      </node>
+      <node id="1853">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="1854" relation="include">
+        </childnode>
+      </node>
+      <node id="1928">
+        <label>dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="1837" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1866" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1814" relation="include">
+        </childnode>
+        <childnode refid="1929" relation="include">
+        </childnode>
+        <childnode refid="1853" relation="include">
+        </childnode>
+        <childnode refid="1811" relation="include">
+        </childnode>
+        <childnode refid="1856" relation="include">
+        </childnode>
+        <childnode refid="1930" relation="include">
+        </childnode>
+        <childnode refid="1902" relation="include">
+        </childnode>
+        <childnode refid="1903" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+      </node>
+      <node id="1925">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1883" relation="include">
+        </childnode>
+        <childnode refid="1889" relation="include">
+        </childnode>
+        <childnode refid="1917" relation="include">
+        </childnode>
+      </node>
+      <node id="1901">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+      </node>
+      <node id="1911">
+        <label>stack</label>
+      </node>
+      <node id="1818">
+        <label>vector</label>
+      </node>
+      <node id="1861">
+        <label>log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1846" relation="include">
+        </childnode>
+        <childnode refid="1832" relation="include">
+        </childnode>
+      </node>
+      <node id="1826">
+        <label>ciso646</label>
+      </node>
+      <node id="1907">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+        <childnode refid="1908" relation="include">
+        </childnode>
+      </node>
+      <node id="1896">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="1837" relation="include">
+        </childnode>
+        <childnode refid="1897" relation="include">
+        </childnode>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1898" relation="include">
+        </childnode>
+        <childnode refid="1830" relation="include">
+        </childnode>
+        <childnode refid="1895" relation="include">
+        </childnode>
+        <childnode refid="1900" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+      </node>
+      <node id="1886">
+        <label>utility</label>
+      </node>
+      <node id="1919">
+        <label>array</label>
+      </node>
+      <node id="1843">
+        <label>sstream</label>
+      </node>
+      <node id="1825">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="1826" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1827" relation="include">
+        </childnode>
+      </node>
+      <node id="1850">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1851" relation="include">
+        </childnode>
+        <childnode refid="1819" relation="include">
+        </childnode>
+      </node>
+      <node id="1827">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="1827" relation="include">
+        </childnode>
+      </node>
+      <node id="1924">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+      </node>
+      <node id="1839">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+      </node>
+      <node id="1846">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="1847" relation="include">
+        </childnode>
+      </node>
+      <node id="1881">
+        <label>pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="1882" relation="include">
+        </childnode>
+        <childnode refid="1875" relation="include">
+        </childnode>
+      </node>
+      <node id="1852">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="1851">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+      </node>
+      <node id="1835">
+        <label>cstdlib</label>
+      </node>
+      <node id="1815">
+        <label>iostream</label>
+      </node>
+      <node id="1912">
+        <label>options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1913" relation="include">
+        </childnode>
+      </node>
+      <node id="1921">
+        <label>unit/selection.h</label>
+        <link refid="selection_8h"/>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+        <childnode refid="1889" relation="include">
+        </childnode>
+        <childnode refid="1922" relation="include">
+        </childnode>
+        <childnode refid="1925" relation="include">
+        </childnode>
+      </node>
+      <node id="1902">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="1897" relation="include">
+        </childnode>
+        <childnode refid="1812" relation="include">
+        </childnode>
+        <childnode refid="1896" relation="include">
+        </childnode>
+      </node>
+      <node id="1859">
+        <label>unordered_map</label>
+      </node>
+      <node id="1904">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1896" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+      </node>
+      <node id="1822">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1824" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+        <childnode refid="1828" relation="include">
+        </childnode>
+        <childnode refid="1829" relation="include">
+        </childnode>
+        <childnode refid="1849" relation="include">
+        </childnode>
+      </node>
+      <node id="1877">
+        <label>climits</label>
+      </node>
+      <node id="1824">
+        <label>mutex</label>
+      </node>
+      <node id="1920">
+        <label>chrono</label>
+      </node>
+      <node id="1931">
+        <label>in_memory_resource.h</label>
+        <link refid="in__memory__resource_8h"/>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1853" relation="include">
+        </childnode>
+        <childnode refid="1811" relation="include">
+        </childnode>
+        <childnode refid="1856" relation="include">
+        </childnode>
+        <childnode refid="1817" relation="include">
+        </childnode>
+      </node>
+      <node id="1898">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="1899" relation="include">
+        </childnode>
+      </node>
+      <node id="1893">
+        <label>thread</label>
+      </node>
+      <node id="1817">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1819" relation="include">
+        </childnode>
+        <childnode refid="1850" relation="include">
+        </childnode>
+        <childnode refid="1852" relation="include">
+        </childnode>
+      </node>
+      <node id="1908">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1909" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+        <childnode refid="1858" relation="include">
+        </childnode>
+      </node>
+      <node id="1883">
+        <label>tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="1875" relation="include">
+        </childnode>
+        <childnode refid="1879" relation="include">
+        </childnode>
+        <childnode refid="1880" relation="include">
+        </childnode>
+        <childnode refid="1870" relation="include">
+        </childnode>
+      </node>
+      <node id="1821">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="1918">
+        <label>util/profiler.h</label>
+        <link refid="profiler_8h"/>
+        <childnode refid="1919" relation="include">
+        </childnode>
+        <childnode refid="1920" relation="include">
+        </childnode>
+        <childnode refid="1859" relation="include">
+        </childnode>
+        <childnode refid="1818" relation="include">
+        </childnode>
+        <childnode refid="1813" relation="include">
+        </childnode>
+      </node>
+      <node id="1838">
+        <label>type_traits</label>
+      </node>
+      <node id="1833">
+        <label>config.h</label>
+      </node>
+      <node id="1855">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="1854" relation="include">
+        </childnode>
+      </node>
+      <node id="1871">
+        <label>algorithm</label>
+      </node>
+      <node id="1900">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="1823" relation="include">
+        </childnode>
+        <childnode refid="1901" relation="include">
+        </childnode>
+      </node>
+      <node id="1869">
+        <label>phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="1870" relation="include">
+        </childnode>
+        <childnode refid="1875" relation="include">
+        </childnode>
+        <childnode refid="1879" relation="include">
+        </childnode>
+        <childnode refid="1880" relation="include">
+        </childnode>
+      </node>
+      <node id="1874">
+        <label>cstring</label>
+      </node>
+      <node id="1862">
+        <label>log/file_logsink.h</label>
+        <link refid="file__logsink_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+        <childnode refid="1863" relation="include">
+        </childnode>
+        <childnode refid="1844" relation="include">
+        </childnode>
+      </node>
+      <node id="1916">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="1820" relation="include">
+        </childnode>
+        <childnode refid="1917" relation="include">
+        </childnode>
+      </node>
+      <node id="1812">
+        <label>memory</label>
+      </node>
+      <node id="1915">
+        <label>util/fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="1916" relation="include">
+        </childnode>
+      </node>
+      <node id="1847">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="1815" relation="include">
+        </childnode>
+        <childnode refid="1848" relation="include">
+        </childnode>
+        <childnode refid="1825" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio_2resource_8h" kindref="compound">resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__resource_8h" kindref="compound">dynamic_resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="in__memory__resource_8h" kindref="compound">in_memory_resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1audio_1_1_resource_1a85abebc7740a31274aa0510527929479" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_resource_1a85abebc7740a31274aa0510527929479" kindref="member">Resource::Resource</ref>(<ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref><sp/>*manager,<sp/><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/>category,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>manager{<ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>category{category},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">{</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">}<sp/>{}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1audio_1_1_resource_1aaaa8563a969d83cdb37eb80ddfd44950" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_resource_1aaaa8563a969d83cdb37eb80ddfd44950" kindref="member">Resource::get_category</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" kindref="member">category</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1audio_1_1_resource_1ae81d8c100e6135f26ecc74e8a90320ee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_resource_1ae81d8c100e6135f26ecc74e8a90320ee" kindref="member">Resource::get_id</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_resource_1a8231960a44778565f6ccc6f916de4572" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" refkind="member"><highlight class="normal">std::shared_ptr&lt;Resource&gt;<sp/><ref refid="classopenage_1_1audio_1_1_resource_1a01dfa61156a48fe06ea5e3c22978f378" kindref="member">Resource::create_resource</ref>(<ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref><sp/>*manager,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1resource__def" kindref="compound">resource_def</ref><sp/>&amp;def)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(not<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" kindref="member">location</ref>.<ref refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" kindref="member">is_file</ref>()))<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;sound<sp/>file<sp/>does<sp/>not<sp/>exist:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" kindref="member">location</ref>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(def.<ref refid="structopenage_1_1audio_1_1resource__def_1a4032e08e996f19bf32d35ddca7e27cfe" kindref="member">loader_policy</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a722a256b864f768da20a4b31fdc6dfec" kindref="member">loader_policy_t::IN_MEMORY</ref>:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;InMemoryResource&gt;(</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a253e50cfe98199360536666d8b7018fb" kindref="member">category</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a97ed11aa01687333bed2be5db9f92e5b" kindref="member">id</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" kindref="member">location</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1ac318fa69d3ea2d0b90658e98d22ec983" kindref="member">format</ref></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a0fcc90da4811c877ba9f9c12f7d60bc9" kindref="member">loader_policy_t::DYNAMIC</ref>:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;DynamicResource&gt;(</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a253e50cfe98199360536666d8b7018fb" kindref="member">category</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a97ed11aa01687333bed2be5db9f92e5b" kindref="member">id</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" kindref="member">location</ref>,<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1ac318fa69d3ea2d0b90658e98d22ec983" kindref="member">format</ref></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>loader<sp/>policy:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>def.<ref refid="structopenage_1_1audio_1_1resource__def_1a4032e08e996f19bf32d35ddca7e27cfe" kindref="member">loader_policy</ref>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/resource.cpp"/>
+  </compounddef>
+</doxygen>

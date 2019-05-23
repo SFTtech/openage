@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1renderer" kind="namespace" language="C++">
+    <compoundname>openage::renderer</compoundname>
+    <innerclass refid="classopenage_1_1renderer_1_1_color" prot="public">openage::renderer::Color</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_font" prot="public">openage::renderer::Font</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1font__description" prot="public">openage::renderer::font_description</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_font_manager" prot="public">openage::renderer::FontManager</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_free_type_library" prot="public">openage::renderer::FreeTypeLibrary</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_geometry" prot="public">openage::renderer::Geometry</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_glyph" prot="public">openage::renderer::Glyph</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_glyph_atlas" prot="public">openage::renderer::GlyphAtlas</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_renderable" prot="public">openage::renderer::Renderable</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_renderer" prot="public">openage::renderer::Renderer</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_render_pass" prot="public">openage::renderer::RenderPass</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_render_target" prot="public">openage::renderer::RenderTarget</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_s_d_l" prot="public">openage::renderer::SDL</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_shader_program" prot="public">openage::renderer::ShaderProgram</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1text__render__task" prot="public">openage::renderer::text_render_task</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1text__render__vertex" prot="public">openage::renderer::text_render_vertex</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_text_renderer" prot="public">openage::renderer::TextRenderer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_texture2d" prot="public">openage::renderer::Texture2d</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_texture2d_array" prot="public">openage::renderer::Texture2dArray</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_uniform_input" prot="public">openage::renderer::UniformInput</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_window" prot="public">openage::renderer::Window</innerclass>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1resources">openage::renderer::resources</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1tests">openage::renderer::tests</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>font_direction</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1" prot="public">
+          <name>left_to_right</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a74ecbc5c277e2952aac1ac167699d74c" prot="public">
+          <name>right_to_left</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202ad7ea855d3aeb1a739a24e932a7bce30f" prot="public">
+          <name>top_to_bottom</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202ab0bbb8506521265f19fa24cf86c91b9d" prot="public">
+          <name>bottom_to_top</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enumeration of the possible font directions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="40" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>geometry_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8ccaf8abdf5b19a729759024275eaeb19a6a" prot="public">
+          <name>bufferless_quad</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>This passes 4 vertices with undefined positions to the shader. The shader has to set the positions itself (e.g. using gl_VertexID in OpenGL). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20" prot="public">
+          <name>mesh</name>
+          <briefdescription>
+<para>This passes valid geometry defined by a mesh to the shader. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of geometry. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/geometry.h" line="14" column="1" bodyfile="libopenage/renderer/geometry.h" bodystart="14" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>using openage::renderer::codepoint_t = typedef unsigned int</definition>
+        <argsstring></argsstring>
+        <name>codepoint_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="21" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1a05d13faf6efcd556555aadefa0b8c790" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::renderer::FREETYPE_UNIT</definition>
+        <argsstring></argsstring>
+        <name>FREETYPE_UNIT</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="19" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1aa4a29402bec7109897aff2d888ce897b" prot="public" static="no" mutable="no">
+        <type>**A shader input mapping is only allowed when there is a single element in buffers In such a</type>
+        <definition>* * A shader input mapping is only allowed when there is a single element in buffers In such a openage::renderer::case</definition>
+        <argsstring></argsstring>
+        <name>case</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/vertex_array.h" line="35" column="1" bodyfile="libopenage/renderer/opengl/vertex_array.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a233b952107a09f725a9c2dac55874819" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>hb_direction_t</type>
+        <definition>static hb_direction_t openage::renderer::get_hb_font_direction</definition>
+        <argsstring>(const font_description &amp;description)</argsstring>
+        <name>get_hb_font_direction</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.cpp" line="70" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="70" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a9a3fdbe0aa35e12ed4279f4c183977d4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>hb_language_t</type>
+        <definition>static hb_language_t openage::renderer::get_hb_font_language</definition>
+        <argsstring>(const font_description &amp;description)</argsstring>
+        <name>get_hb_font_language</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.cpp" line="84" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1ab2140e3e546fd699e5d7f52ca03fd8eb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>hb_script_t</type>
+        <definition>static hb_script_t openage::renderer::get_hb_font_script</definition>
+        <argsstring>(const font_description &amp;description)</argsstring>
+        <name>get_hb_font_script</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.cpp" line="88" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>**A shader input mapping is only allowed when there is a single element in buffers In such a *the vertex inputs are paired with VAO attributes according to the mapping instead of in ascending order *</type>
+        <definition>* * A shader input mapping is only allowed when there is a single element in buffers In such a * the vertex inputs are paired with VAO attributes according to the mapping instead of in ascending order* openage::renderer::GlVertexArray</definition>
+        <argsstring>(std::vector&lt; std::pair&lt; GlBuffer const &amp;, resources::VertexInputInfo const &amp; &gt;&gt; buffers)</argsstring>
+        <name>GlVertexArray</name>
+        <param>
+          <type>std::vector&lt; std::pair&lt; GlBuffer const &amp;, <ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">resources::VertexInputInfo</ref> const &amp; &gt;&gt;</type>
+          <declname>buffers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/vertex_array.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a9c82a7ed0e956a3163802174ae64abf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::GlVertexArray</definition>
+        <argsstring>(GlBuffer const &amp;, resources::VertexInputInfo const &amp;)</argsstring>
+        <name>GlVertexArray</name>
+        <param>
+          <type>GlBuffer const &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">resources::VertexInputInfo</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+<para>Executes the buffer list constructor with one element. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/vertex_array.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a3a955bf0328bccf0575751c5ed79f575" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::GlVertexArray</definition>
+        <argsstring>()</argsstring>
+        <name>GlVertexArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The default constructor initializes an empty VAO with no attributes. This is useful for bufferless drawing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/vertex_array.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::bind</definition>
+        <argsstring>() const</argsstring>
+        <name>bind</name>
+        <briefdescription>
+<para>Make this vertex array object the current one. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/vertex_array.h" line="47" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::make_sdl_available</definition>
+        <argsstring>()</argsstring>
+        <name>make_sdl_available</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Lazily initializes the global <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> singleton if it isn&apos;t yet available, otherwise does nothing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/sdl_global.cpp" line="56" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/engine.h" line="42" column="1"/>
+  </compounddef>
+</doxygen>

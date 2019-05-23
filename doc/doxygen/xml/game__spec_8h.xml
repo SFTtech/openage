@@ -1,0 +1,1163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__spec_8h" kind="file" language="C++">
+    <compoundname>game_spec.h</compoundname>
+    <includes refid="job_8h" local="yes">../job/job.h</includes>
+    <includes local="yes">../gamedata/gamedata.gen.h</includes>
+    <includes local="yes">../gamedata/graphic.gen.h</includes>
+    <includes refid="terrain_8h" local="yes">../terrain/terrain.h</includes>
+    <includes refid="unit__texture_8h" local="yes">../unit/unit_texture.h</includes>
+    <includes refid="csv_8h" local="yes">../util/csv.h</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">QObject</includes>
+    <includedby refid="civilisation_8h" local="yes">libopenage/gamestate/civilisation.h</includedby>
+    <includedby refid="game__control_8cpp" local="yes">libopenage/game_control.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
+    <includedby refid="game__main_8cpp" local="yes">libopenage/gamestate/game_main.cpp</includedby>
+    <includedby refid="game__save_8cpp" local="yes">libopenage/gamestate/game_save.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
+    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="category__contents__list__model_8h" local="yes">libopenage/gui/category_contents_list_model.h</includedby>
+    <includedby refid="game__creator_8cpp" local="yes">libopenage/gui/game_creator.cpp</includedby>
+    <includedby refid="game__spec__link_8h" local="yes">libopenage/gui/game_spec_link.h</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__filename__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__id__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</includedby>
+    <includedby refid="gui__game__spec__image__provider__impl_8cpp" local="yes">libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</includedby>
+    <includedby refid="unit__texture_8cpp" local="yes">libopenage/unit/unit_texture.cpp</includedby>
+    <incdepgraph>
+      <node id="9715">
+        <label>list</label>
+      </node>
+      <node id="9690">
+        <label>atomic</label>
+      </node>
+      <node id="9741">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="9742" relation="include">
+        </childnode>
+        <childnode refid="9743" relation="include">
+        </childnode>
+        <childnode refid="9744" relation="include">
+        </childnode>
+        <childnode refid="9711" relation="include">
+        </childnode>
+        <childnode refid="9745" relation="include">
+        </childnode>
+        <childnode refid="9746" relation="include">
+        </childnode>
+        <childnode refid="9707" relation="include">
+        </childnode>
+        <childnode refid="9747" relation="include">
+        </childnode>
+      </node>
+      <node id="9711">
+        <label>iomanip</label>
+      </node>
+      <node id="9691">
+        <label>functional</label>
+      </node>
+      <node id="9745">
+        <label>limits</label>
+      </node>
+      <node id="9740">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="9702" relation="include">
+        </childnode>
+        <childnode refid="9741" relation="include">
+        </childnode>
+      </node>
+      <node id="9685">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="9686" relation="include">
+        </childnode>
+        <childnode refid="9723" relation="include">
+        </childnode>
+        <childnode refid="9724" relation="include">
+        </childnode>
+        <childnode refid="9725" relation="include">
+        </childnode>
+        <childnode refid="9762" relation="include">
+        </childnode>
+        <childnode refid="9763" relation="include">
+        </childnode>
+        <childnode refid="9727" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9765" relation="include">
+        </childnode>
+      </node>
+      <node id="9756">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="9757" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9758" relation="include">
+        </childnode>
+        <childnode refid="9753" relation="include">
+        </childnode>
+        <childnode refid="9755" relation="include">
+        </childnode>
+        <childnode refid="9759" relation="include">
+        </childnode>
+        <childnode refid="9760" relation="include">
+        </childnode>
+        <childnode refid="9729" relation="include">
+        </childnode>
+      </node>
+      <node id="9735">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+      </node>
+      <node id="9765">
+        <label>QObject</label>
+      </node>
+      <node id="9702">
+        <label>cstdint</label>
+      </node>
+      <node id="9750">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="9709">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="9710" relation="include">
+        </childnode>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9711" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9712" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+      </node>
+      <node id="9720">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="9696" relation="include">
+        </childnode>
+      </node>
+      <node id="9734">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="9694" relation="include">
+        </childnode>
+      </node>
+      <node id="9744">
+        <label>cmath</label>
+      </node>
+      <node id="9723">
+        <label>../gamedata/gamedata.gen.h</label>
+      </node>
+      <node id="9696">
+        <label>stdexcept</label>
+      </node>
+      <node id="9733">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="9728">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="9703" relation="include">
+        </childnode>
+        <childnode refid="9727" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9729" relation="include">
+        </childnode>
+      </node>
+      <node id="9714">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="9715" relation="include">
+        </childnode>
+        <childnode refid="9716" relation="include">
+        </childnode>
+        <childnode refid="9717" relation="include">
+        </childnode>
+      </node>
+      <node id="9710">
+        <label>cstdarg</label>
+      </node>
+      <node id="9697">
+        <label>string</label>
+      </node>
+      <node id="9701">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="9702" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9703" relation="include">
+        </childnode>
+        <childnode refid="9704" relation="include">
+        </childnode>
+        <childnode refid="9706" relation="include">
+        </childnode>
+        <childnode refid="9714" relation="include">
+        </childnode>
+        <childnode refid="9717" relation="include">
+        </childnode>
+      </node>
+      <node id="9704">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="9705" relation="include">
+        </childnode>
+      </node>
+      <node id="9706">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="9690" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9707" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+        <childnode refid="9708" relation="include">
+        </childnode>
+        <childnode refid="9709" relation="include">
+        </childnode>
+      </node>
+      <node id="9687">
+        <label>exception</label>
+      </node>
+      <node id="9693">
+        <label>stddef.h</label>
+      </node>
+      <node id="9764">
+        <label>fstream</label>
+      </node>
+      <node id="9746">
+        <label>ostream</label>
+      </node>
+      <node id="9730">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="9702" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9731" relation="include">
+        </childnode>
+        <childnode refid="9732" relation="include">
+        </childnode>
+      </node>
+      <node id="9748">
+        <label>limits.h</label>
+      </node>
+      <node id="9694">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="9695" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9696" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+        <childnode refid="9701" relation="include">
+        </childnode>
+      </node>
+      <node id="9747">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="9742" relation="include">
+        </childnode>
+        <childnode refid="9748" relation="include">
+        </childnode>
+        <childnode refid="9744" relation="include">
+        </childnode>
+        <childnode refid="9749" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9694" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+      </node>
+      <node id="9763">
+        <label>../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="9705" relation="include">
+        </childnode>
+        <childnode refid="9749" relation="include">
+        </childnode>
+        <childnode refid="9764" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9727" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9694" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+        <childnode refid="9738" relation="include">
+        </childnode>
+        <childnode refid="9729" relation="include">
+        </childnode>
+      </node>
+      <node id="9751">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="9719">
+        <label>typeinfo</label>
+      </node>
+      <node id="9762">
+        <label>../unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="9702" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9752" relation="include">
+        </childnode>
+        <childnode refid="9724" relation="include">
+        </childnode>
+      </node>
+      <node id="9754">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="9722">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="9691" relation="include">
+        </childnode>
+      </node>
+      <node id="9713">
+        <label>vector</label>
+      </node>
+      <node id="9699">
+        <label>ciso646</label>
+      </node>
+      <node id="9689">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="9690" relation="include">
+        </childnode>
+        <childnode refid="9687" relation="include">
+        </childnode>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9692" relation="include">
+        </childnode>
+        <childnode refid="9694" relation="include">
+        </childnode>
+        <childnode refid="9720" relation="include">
+        </childnode>
+        <childnode refid="9721" relation="include">
+        </childnode>
+        <childnode refid="9722" relation="include">
+        </childnode>
+      </node>
+      <node id="9759">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="9757" relation="include">
+        </childnode>
+      </node>
+      <node id="9712">
+        <label>sstream</label>
+      </node>
+      <node id="9698">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="9699" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9700" relation="include">
+        </childnode>
+      </node>
+      <node id="9736">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9737" relation="include">
+        </childnode>
+        <childnode refid="9730" relation="include">
+        </childnode>
+      </node>
+      <node id="9700">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="9700" relation="include">
+        </childnode>
+      </node>
+      <node id="9757">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="9708">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="9695" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+      </node>
+      <node id="9717">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="9718" relation="include">
+        </childnode>
+      </node>
+      <node id="9753">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="9754" relation="include">
+        </childnode>
+        <childnode refid="9740" relation="include">
+        </childnode>
+      </node>
+      <node id="9738">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="9758">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="9737">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="9695" relation="include">
+        </childnode>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+      </node>
+      <node id="9705">
+        <label>cstdlib</label>
+      </node>
+      <node id="9695">
+        <label>iostream</label>
+      </node>
+      <node id="9686">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="9687" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9689" relation="include">
+        </childnode>
+      </node>
+      <node id="9760">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="9761" relation="include">
+        </childnode>
+        <childnode refid="9757" relation="include">
+        </childnode>
+      </node>
+      <node id="9727">
+        <label>unordered_map</label>
+      </node>
+      <node id="9732">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9716" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+        <childnode refid="9733" relation="include">
+        </childnode>
+        <childnode refid="9734" relation="include">
+        </childnode>
+        <childnode refid="9735" relation="include">
+        </childnode>
+      </node>
+      <node id="9743">
+        <label>climits</label>
+      </node>
+      <node id="9716">
+        <label>mutex</label>
+      </node>
+      <node id="9739">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="9740" relation="include">
+        </childnode>
+        <childnode refid="9750" relation="include">
+        </childnode>
+        <childnode refid="9751" relation="include">
+        </childnode>
+      </node>
+      <node id="9692">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="9693" relation="include">
+        </childnode>
+      </node>
+      <node id="9729">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="9697" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9730" relation="include">
+        </childnode>
+        <childnode refid="9736" relation="include">
+        </childnode>
+        <childnode refid="9738" relation="include">
+        </childnode>
+      </node>
+      <node id="9755">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="9740" relation="include">
+        </childnode>
+        <childnode refid="9750" relation="include">
+        </childnode>
+        <childnode refid="9751" relation="include">
+        </childnode>
+        <childnode refid="9747" relation="include">
+        </childnode>
+      </node>
+      <node id="9731">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="9707">
+        <label>type_traits</label>
+      </node>
+      <node id="9726">
+        <label>set</label>
+      </node>
+      <node id="9703">
+        <label>config.h</label>
+      </node>
+      <node id="9742">
+        <label>algorithm</label>
+      </node>
+      <node id="9721">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9722" relation="include">
+        </childnode>
+      </node>
+      <node id="9752">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="9747" relation="include">
+        </childnode>
+        <childnode refid="9740" relation="include">
+        </childnode>
+        <childnode refid="9750" relation="include">
+        </childnode>
+        <childnode refid="9751" relation="include">
+        </childnode>
+      </node>
+      <node id="9749">
+        <label>cstring</label>
+      </node>
+      <node id="9724">
+        <label>../gamedata/graphic.gen.h</label>
+      </node>
+      <node id="9725">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="9691" relation="include">
+        </childnode>
+        <childnode refid="9688" relation="include">
+        </childnode>
+        <childnode refid="9693" relation="include">
+        </childnode>
+        <childnode refid="9726" relation="include">
+        </childnode>
+        <childnode refid="9727" relation="include">
+        </childnode>
+        <childnode refid="9713" relation="include">
+        </childnode>
+        <childnode refid="9728" relation="include">
+        </childnode>
+        <childnode refid="9739" relation="include">
+        </childnode>
+        <childnode refid="9752" relation="include">
+        </childnode>
+        <childnode refid="9753" relation="include">
+        </childnode>
+        <childnode refid="9755" relation="include">
+        </childnode>
+        <childnode refid="9756" relation="include">
+        </childnode>
+        <childnode refid="9747" relation="include">
+        </childnode>
+      </node>
+      <node id="9688">
+        <label>memory</label>
+      </node>
+      <node id="9761">
+        <label>initializer_list</label>
+      </node>
+      <node id="9718">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="9695" relation="include">
+        </childnode>
+        <childnode refid="9719" relation="include">
+        </childnode>
+        <childnode refid="9698" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9807">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="9812">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="9805">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="9785" relation="include">
+        </childnode>
+        <childnode refid="9806" relation="include">
+        </childnode>
+        <childnode refid="9807" relation="include">
+        </childnode>
+      </node>
+      <node id="9766">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="9767" relation="include">
+        </childnode>
+        <childnode refid="9772" relation="include">
+        </childnode>
+        <childnode refid="9780" relation="include">
+        </childnode>
+        <childnode refid="9781" relation="include">
+        </childnode>
+        <childnode refid="9782" relation="include">
+        </childnode>
+        <childnode refid="9789" relation="include">
+        </childnode>
+        <childnode refid="9783" relation="include">
+        </childnode>
+        <childnode refid="9804" relation="include">
+        </childnode>
+        <childnode refid="9785" relation="include">
+        </childnode>
+        <childnode refid="9805" relation="include">
+        </childnode>
+        <childnode refid="9808" relation="include">
+        </childnode>
+        <childnode refid="9809" relation="include">
+        </childnode>
+        <childnode refid="9810" relation="include">
+        </childnode>
+        <childnode refid="9811" relation="include">
+        </childnode>
+        <childnode refid="9812" relation="include">
+        </childnode>
+        <childnode refid="9813" relation="include">
+        </childnode>
+      </node>
+      <node id="9767">
+        <label>libopenage/gamestate/civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="9768" relation="include">
+        </childnode>
+        <childnode refid="9803" relation="include">
+        </childnode>
+        <childnode refid="9789" relation="include">
+        </childnode>
+      </node>
+      <node id="9793">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="9773">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="9774" relation="include">
+        </childnode>
+        <childnode refid="9775" relation="include">
+        </childnode>
+        <childnode refid="9776" relation="include">
+        </childnode>
+        <childnode refid="9777" relation="include">
+        </childnode>
+        <childnode refid="9778" relation="include">
+        </childnode>
+      </node>
+      <node id="9800">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="9795">
+        <label>libopenage/gamestate/cost.cpp</label>
+        <link refid="cost_8cpp"/>
+      </node>
+      <node id="9774">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="9775" relation="include">
+        </childnode>
+      </node>
+      <node id="9791">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="9780">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="9789">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="9797">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="9779">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="9776">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="9811">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="9775">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="9802">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="9768">
+        <label>libopenage/gamestate/player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="9769" relation="include">
+        </childnode>
+        <childnode refid="9788" relation="include">
+        </childnode>
+        <childnode refid="9795" relation="include">
+        </childnode>
+        <childnode refid="9796" relation="include">
+        </childnode>
+        <childnode refid="9797" relation="include">
+        </childnode>
+        <childnode refid="9798" relation="include">
+        </childnode>
+        <childnode refid="9799" relation="include">
+        </childnode>
+        <childnode refid="9800" relation="include">
+        </childnode>
+        <childnode refid="9801" relation="include">
+        </childnode>
+        <childnode refid="9802" relation="include">
+        </childnode>
+      </node>
+      <node id="9809">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="9788">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="9780" relation="include">
+        </childnode>
+        <childnode refid="9782" relation="include">
+        </childnode>
+        <childnode refid="9789" relation="include">
+        </childnode>
+        <childnode refid="9790" relation="include">
+        </childnode>
+        <childnode refid="9791" relation="include">
+        </childnode>
+        <childnode refid="9792" relation="include">
+        </childnode>
+        <childnode refid="9793" relation="include">
+        </childnode>
+        <childnode refid="9794" relation="include">
+        </childnode>
+      </node>
+      <node id="9771">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="9772" relation="include">
+        </childnode>
+        <childnode refid="9773" relation="include">
+        </childnode>
+        <childnode refid="9778" relation="include">
+        </childnode>
+        <childnode refid="9779" relation="include">
+        </childnode>
+      </node>
+      <node id="9813">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="9785">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="9790">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="9798">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="9792">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="9784">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="9777" relation="include">
+        </childnode>
+        <childnode refid="9785" relation="include">
+        </childnode>
+        <childnode refid="9786" relation="include">
+        </childnode>
+        <childnode refid="9787" relation="include">
+        </childnode>
+      </node>
+      <node id="9770">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="9794">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="9769">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="9770" relation="include">
+        </childnode>
+        <childnode refid="9771" relation="include">
+        </childnode>
+        <childnode refid="9780" relation="include">
+        </childnode>
+        <childnode refid="9781" relation="include">
+        </childnode>
+        <childnode refid="9782" relation="include">
+        </childnode>
+        <childnode refid="9783" relation="include">
+        </childnode>
+        <childnode refid="9784" relation="include">
+        </childnode>
+        <childnode refid="9785" relation="include">
+        </childnode>
+        <childnode refid="9787" relation="include">
+        </childnode>
+      </node>
+      <node id="9810">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="9783">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="9801">
+        <label>libopenage/unit/research.cpp</label>
+        <link refid="research_8cpp"/>
+      </node>
+      <node id="9782">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="9804">
+        <label>libopenage/gui/category_contents_list_model.h</label>
+        <link refid="category__contents__list__model_8h"/>
+        <childnode refid="9776" relation="include">
+        </childnode>
+      </node>
+      <node id="9796">
+        <label>libopenage/gamestate/market.cpp</label>
+        <link refid="market_8cpp"/>
+      </node>
+      <node id="9777">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="9781">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="9808">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+      <node id="9799">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="9786">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="9803">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+      </node>
+      <node id="9772">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="9787">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="9778">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="9806">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1_sound" prot="public">openage::Sound</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec" prot="public">openage::GameSpec</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec_handle" prot="public">openage::GameSpecHandle</innerclass>
+    <innerclass refid="classopenage_1_1_game_spec_signals" prot="public">openage::GameSpecSignals</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../job/job.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamedata/gamedata.gen.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamedata/graphic.gen.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../terrain/terrain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../unit/unit_texture.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/csv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AssetManager;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GameSpec;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UnitType;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">UnitTypeMeta;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Player;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>=<sp/>int;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="namespaceopenage_1a80fe26a181494ba07762b46df300d016" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a80fe26a181494ba07762b46df300d016" kindref="member">unit_type_list</ref><sp/>=<sp/>std::vector&lt;std::shared_ptr&lt;UnitType&gt;&gt;;</highlight></codeline>
+<codeline lineno="36" refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>=<sp/>std::vector&lt;std::shared_ptr&lt;UnitTypeMeta&gt;&gt;;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1_sound" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1_sound_1a455248d7cd4b745b0816a5b34d5acd48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_sound_1a455248d7cd4b745b0816a5b34d5acd48" kindref="member">Sound</ref>(<ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>*spec,<sp/>std::vector&lt;int&gt;<sp/>&amp;&amp;<ref refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" kindref="member">sound_items</ref>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" kindref="member">sound_items</ref>{<ref refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" kindref="member">sound_items</ref>},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" kindref="member">game_spec</ref>{spec}<sp/>{}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_sound_1a526acd600cd69f6f421a253fc169398b" kindref="member">play</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="classopenage_1_1_sound_1a13e53bc9f4210f9fc020661994a72f47" kindref="member">sound_items</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>*<ref refid="classopenage_1_1_sound_1ab5fb74b970363e956f0aaa2386d8c568" kindref="member">game_spec</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1_game_spec" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_game_spec_1a223fd0aa6ecdf3163f76f97ac766628e" kindref="member">GameSpec</ref>(<ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref><sp/>*am);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a974dc4e7af42ddcc30b637f7e7861695" kindref="member">~GameSpec</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a4de64c8c4a5463dc086f082659147b02" kindref="member">initialize</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a19adf3ebe5c03a18675ef8dcd0a3c0d5" kindref="member">load_complete</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1a646cb1f106e9a5a853d8be6065836572" kindref="member">get_terrain_meta</ref>();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/><ref refid="classopenage_1_1_game_spec_1ab7c5520835aa0ed3163340bb70e21f20" kindref="member">get_slp_graphic</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>slp);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" kindref="member">get_texture</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>graphic_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1a949e9f7d9b1017a7f399c55a2bd60c9a" kindref="member">get_texture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;file_name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_metafile=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;UnitTexture&gt;<sp/><ref refid="classopenage_1_1_game_spec_1a7ac1e52c333dbceea615911bd705fb88" kindref="member">get_unit_texture</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>graphic_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1a1b83c8dcc455fd32056c418a993eb506" kindref="member">get_sound</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>sound_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::graphic<sp/>*<ref refid="classopenage_1_1_game_spec_1aa1f8784ca6aab9da489457d22b386443" kindref="member">get_graphic_data</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>grp_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;const<sp/>gamedata::unit_command<sp/>*&gt;<sp/><ref refid="classopenage_1_1_game_spec_1a37f6ca1f38ef68e4521d7536fb7d49e8" kindref="member">get_command_data</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>unit_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1_game_spec_1a8589a31ec688308502a6d381a1a72235" kindref="member">get_civ_name</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>civ_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1ab009229f56624608b53820adf2895cbc" kindref="member">create_unit_types</ref>(<ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>&amp;objects,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>civ_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1a3a21c92c49ec4d0add95e8aacd83ebe0" kindref="member">get_asset_manager</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a4183e5b82dd51fd66629d287026b5daa" kindref="member">valid_graphic_id</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1ad72bef762bb38fb93c944d490bf5c113" kindref="member">create_abilities</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::empiresdat<sp/>&amp;<ref refid="classopenage_1_1_game_spec_1ae74164c6aad1ea4d1ed4c4368b91711a" kindref="member">gamedata</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1acbe30bd72e3a9ef46c461e497d726711" kindref="member">load_building</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::building_unit<sp/>&amp;,<sp/><ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a51a1664688173a588e6ead16703f8e82" kindref="member">load_living</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::living_unit<sp/>&amp;,<sp/><ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1af210d4508dea9f8f87aa98c3fc0e3359" kindref="member">load_object</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::unit_object<sp/>&amp;,<sp/><ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a67579e89ee667f00dc301433a23458af" kindref="member">load_missile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::missile_unit<sp/>&amp;,<sp/><ref refid="namespaceopenage_1a8a043d5389cb7a625dec595ea4b40636" kindref="member">unit_meta_list</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a6f6bbcfb3a4dd8586bbed00f62054bf1" kindref="member">load_terrain</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::empiresdat<sp/>&amp;<ref refid="classopenage_1_1_game_spec_1ae74164c6aad1ea4d1ed4c4368b91711a" kindref="member">gamedata</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a979c8104ad4832b1912e703f19558bc9" kindref="member">on_gamedata_loaded</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::empiresdat<sp/>&amp;<ref refid="classopenage_1_1_game_spec_1ae74164c6aad1ea4d1ed4c4368b91711a" kindref="member">gamedata</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="classopenage_1_1_game_spec_1ae2b8a6bdf7a14d4dfa22a963edf0d24b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref><sp/>*<ref refid="classopenage_1_1_game_spec_1ae2b8a6bdf7a14d4dfa22a963edf0d24b" kindref="member">assetmanager</ref>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="classopenage_1_1_game_spec_1ae74164c6aad1ea4d1ed4c4368b91711a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;gamedata::empiresdat&gt;<sp/><ref refid="classopenage_1_1_game_spec_1ae74164c6aad1ea4d1ed4c4368b91711a" kindref="member">gamedata</ref>;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classopenage_1_1_game_spec_1a7fc2fe6626e99e9bab20b66287e5f58a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref><sp/><ref refid="classopenage_1_1_game_spec_1a7fc2fe6626e99e9bab20b66287e5f58a" kindref="member">terrain_data</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="classopenage_1_1_game_spec_1a7cefb930be58e9a11ab308c2c1fca351" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;index_t,<sp/>index_t&gt;<sp/><ref refid="classopenage_1_1_game_spec_1a7cefb930be58e9a11ab308c2c1fca351" kindref="member">slp_to_graphic</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classopenage_1_1_game_spec_1a6e01d394f1d6b8c85ee0922f4cee072b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;index_t,<sp/>const<sp/>gamedata::graphic<sp/>*&gt;<sp/><ref refid="classopenage_1_1_game_spec_1a6e01d394f1d6b8c85ee0922f4cee072b" kindref="member">graphics</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classopenage_1_1_game_spec_1a64c200779cfffebb00b3bdf830b781f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;index_t,<sp/>std::vector&lt;const<sp/>gamedata::unit_command<sp/>*&gt;&gt;<sp/><ref refid="classopenage_1_1_game_spec_1a64c200779cfffebb00b3bdf830b781f5" kindref="member">commands</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classopenage_1_1_game_spec_1ad3367d0a1791303b8198e31fd5b4a22d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;index_t,<sp/>std::shared_ptr&lt;UnitTexture&gt;&gt;<sp/><ref refid="classopenage_1_1_game_spec_1ad3367d0a1791303b8198e31fd5b4a22d" kindref="member">unit_textures</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="classopenage_1_1_game_spec_1aafe40f5b33c85b4d7266b85814c5292a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;index_t,<sp/>Sound&gt;<sp/><ref refid="classopenage_1_1_game_spec_1aafe40f5b33c85b4d7266b85814c5292a" kindref="member">available_sounds</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="classopenage_1_1_game_spec_1a4cc5785668275bd468264822e2326acc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_1a4cc5785668275bd468264822e2326acc" kindref="member">gamedata_loaded</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiItemLink;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GameSpecSignals;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="classopenage_1_1_game_spec_handle" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_game_spec_handle" kindref="compound">GameSpecHandle</ref><sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a23718c700764a8ffe7e3e82218b56dc8" kindref="member">GameSpecHandle</ref>(<ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">qtsdl::GuiItemLink</ref><sp/>*<ref refid="classopenage_1_1_game_spec_handle_1aebe7334bc966e3899eb8e0faa9c321fb" kindref="member">gui_link</ref>);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1ab7fe02e9268aff99041da5e2684d2e4d" kindref="member">set_active</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a54699d8be271264a4feb3ddffe169865" kindref="member">active</ref>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1ad9c03812749a8ac9b21960e0f5bb462e" kindref="member">set_asset_manager</ref>(<ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref><sp/>*<ref refid="classopenage_1_1_game_spec_handle_1a874f61fef1e91022de73339303291d0a" kindref="member">asset_manager</ref>);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a66912843935edcdb600cd47bc58e6cb0" kindref="member">is_ready</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a019a81d88722206e82c7b5c87ddfe04f" kindref="member">invalidate</ref>();</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a4598e32e6a01733806234d193a871255" kindref="member">announce_spec</ref>();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSpec&gt;<sp/><ref refid="classopenage_1_1_game_spec_handle_1aaf18425a59c8ec0b7e7fa176c64b8bc8" kindref="member">get_spec</ref>();</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1ab95bd8daf4250f175a5ebb3c6753277d" kindref="member">start_loading_if_needed</ref>();</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1afcf8867f4e0077e6a8a2a6fe6c0c98ff" kindref="member">start_load_job</ref>();</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1ab576a5e43a862b3383b7ba1e19b73545" kindref="member">on_loaded</ref>(<ref refid="namespaceopenage_1_1job_1aa7f614139b9f8585d91285475c260c2f" kindref="member">job::result_function_t&lt;bool&gt;</ref><sp/>result);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="classopenage_1_1_game_spec_handle_1a9794524a651ba717256e50a0fa4e0a37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSpec&gt;<sp/><ref refid="classopenage_1_1_game_spec_handle_1a9794524a651ba717256e50a0fa4e0a37" kindref="member">spec</ref>;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="classopenage_1_1_game_spec_handle_1a54699d8be271264a4feb3ddffe169865" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_handle_1a54699d8be271264a4feb3ddffe169865" kindref="member">active</ref>;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="classopenage_1_1_game_spec_handle_1a874f61fef1e91022de73339303291d0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_asset_manager" kindref="compound">AssetManager</ref><sp/>*<ref refid="classopenage_1_1_game_spec_handle_1a874f61fef1e91022de73339303291d0a" kindref="member">asset_manager</ref>;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="317" refid="classopenage_1_1_game_spec_handle_1a05d8b8251196b389e267b646e6356526" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GameSpecSignals&gt;<sp/><ref refid="classopenage_1_1_game_spec_handle_1a05d8b8251196b389e267b646e6356526" kindref="member">gui_signals</ref>;</highlight></codeline>
+<codeline lineno="318" refid="classopenage_1_1_game_spec_handle_1aebe7334bc966e3899eb8e0faa9c321fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">qtsdl::GuiItemLink</ref><sp/>*<ref refid="classopenage_1_1_game_spec_handle_1aebe7334bc966e3899eb8e0faa9c321fb" kindref="member">gui_link</ref>;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="classopenage_1_1_game_spec_signals" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_game_spec_signals" kindref="compound">GameSpecSignals</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="325"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Some<sp/>load<sp/>job<sp/>has<sp/>finished.</highlight></codeline>
+<codeline lineno="328"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="329"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>To<sp/>be<sp/>sure<sp/>that<sp/>the<sp/>latest<sp/>result<sp/>is<sp/>used,<sp/>do<sp/>the<sp/>verification<sp/>at<sp/>the<sp/>point<sp/>of<sp/>use.</highlight></codeline>
+<codeline lineno="330"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_signals_1a300d101b0396c210eafbcb280072344f" kindref="member">load_job_finished</ref>();</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_game_spec_signals_1a7f06ba187ea65c3b4f2c929d611f5aa9" kindref="member">game_spec_loaded</ref>(std::shared_ptr&lt;GameSpec&gt;<sp/>loaded_game_spec);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/game_spec.h"/>
+  </compounddef>
+</doxygen>

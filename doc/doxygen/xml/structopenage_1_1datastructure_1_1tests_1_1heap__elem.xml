@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1datastructure_1_1tests_1_1heap__elem" kind="struct" language="C++" prot="public">
+    <compoundname>openage::datastructure::tests::heap_elem</compoundname>
+    <includes refid="datastructure_2tests_8h" local="no">tests.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::datastructure::tests::heap_elem::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.h" line="16" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ac0b605463494caffa7196ececd213bbb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::datastructure::tests::heap_elem::operator&lt;</definition>
+        <argsstring>(const heap_elem &amp;other) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem" kindref="compound">heap_elem</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.h" line="18" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1a3ec8091028766963e2b799c8d8bc8bc4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::datastructure::tests::heap_elem::operator==</definition>
+        <argsstring>(const heap_elem &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem" kindref="compound">heap_elem</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.h" line="22" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>simplest priority queue element that supports reordering. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2917">
+        <label>openage::datastructure::tests::heap_elem</label>
+        <link refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/tests.h" line="15" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="15" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ab0e7b1c4bb0c765cfa66b411957fbe4e" prot="public" virt="non-virtual"><scope>openage::datastructure::tests::heap_elem</scope><name>data</name></member>
+      <member refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1ac0b605463494caffa7196ececd213bbb" prot="public" virt="non-virtual"><scope>openage::datastructure::tests::heap_elem</scope><name>operator&lt;</name></member>
+      <member refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem_1a3ec8091028766963e2b799c8d8bc8bc4" prot="public" virt="non-virtual"><scope>openage::datastructure::tests::heap_elem</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

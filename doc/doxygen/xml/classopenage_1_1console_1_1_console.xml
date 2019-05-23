@@ -1,0 +1,763 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1console_1_1_console" kind="class" language="C++" prot="public">
+    <compoundname>openage::console::Console</compoundname>
+    <basecompoundref refid="classopenage_1_1_input_handler" prot="private" virt="non-virtual">openage::InputHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1_tick_handler" prot="private" virt="non-virtual">openage::TickHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1_hud_handler" prot="private" virt="non-virtual">openage::HudHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1_resize_handler" prot="private" virt="non-virtual">openage::ResizeHandler</basecompoundref>
+    <includes refid="console_8h" local="no">console.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1a275f8903f340585c59536854129d4931" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+        <definition>Engine* openage::console::Console::engine</definition>
+        <argsstring></argsstring>
+        <name>engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="60" column="1" bodyfile="libopenage/console/console.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1a005c1608c8128b7312134b47be2ca2ca" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref></type>
+        <definition>coord::camhud openage::console::Console::bottomleft</definition>
+        <argsstring></argsstring>
+        <name>bottomleft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="63" column="1" bodyfile="libopenage/console/console.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1ac0aa3142154a9048bcebf0681efccec8" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref></type>
+        <definition>coord::camhud openage::console::Console::topright</definition>
+        <argsstring></argsstring>
+        <name>topright</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="64" column="1" bodyfile="libopenage/console/console.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1affa7cf7767200b98fd7e3b9e2ed7fea7" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref></type>
+        <definition>coord::camhud openage::console::Console::charsize</definition>
+        <argsstring></argsstring>
+        <name>charsize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="65" column="1" bodyfile="libopenage/console/console.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenage_1_1util_1_1col" kindref="compound">util::col</ref> &gt;</type>
+        <definition>std::vector&lt;util::col&gt; openage::console::Console::termcolors</definition>
+        <argsstring></argsstring>
+        <name>termcolors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="67" column="1" bodyfile="libopenage/console/console.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1aa5ddaf2967b33d917593dd147a1058ee" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::Console::visible</definition>
+        <argsstring></argsstring>
+        <name>visible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="69" column="1" bodyfile="libopenage/console/console.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref></type>
+        <definition>Buf openage::console::Console::buf</definition>
+        <argsstring></argsstring>
+        <name>buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="71" column="1" bodyfile="libopenage/console/console.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1ab1d376fb1fd8b179e8c464671e16ba3a" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">renderer::Font</ref></type>
+        <definition>renderer::Font openage::console::Console::font</definition>
+        <argsstring></argsstring>
+        <name>font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="72" column="1" bodyfile="libopenage/console/console.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1a103f6555f63a2cc87eef702322c66585" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">input::InputContext</ref></type>
+        <definition>input::InputContext openage::console::Console::input_context</definition>
+        <argsstring></argsstring>
+        <name>input_context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="74" column="1" bodyfile="libopenage/console/console.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_console_1ad348b9c975750b5b6f6f9f533ca8bcea" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::console::Console::command</definition>
+        <argsstring></argsstring>
+        <name>command</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="77" column="1" bodyfile="libopenage/console/console.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a0e1f861a8f19ed84b00c580d50d9f49f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::Console::Console</definition>
+        <argsstring>(Engine *engine)</argsstring>
+        <name>Console</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="28" column="1" bodyfile="libopenage/console/console.cpp" bodystart="25" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1ae2d69839f8be1652ba4f61b9af4c8bb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::Console::~Console</definition>
+        <argsstring>()</argsstring>
+        <name>~Console</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="29" column="1" bodyfile="libopenage/console/console.cpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Console::load_colors</definition>
+        <argsstring>(std::vector&lt; gamedata::palette_color &gt; &amp;colortable)</argsstring>
+        <name>load_colors</name>
+        <param>
+          <type>std::vector&lt; gamedata::palette_color &gt; &amp;</type>
+          <declname>colortable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>load the consoles color table </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="34" column="1" bodyfile="libopenage/console/console.cpp" bodystart="50" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Console::register_to_engine</definition>
+        <argsstring>()</argsstring>
+        <name>register_to_engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register this console to the engine. this leads to the drawing calls, and input handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="40" column="1" bodyfile="libopenage/console/console.cpp" bodystart="60" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Console::set_visible</definition>
+        <argsstring>(bool make_visible)</argsstring>
+        <name>set_visible</name>
+        <param>
+          <type>bool</type>
+          <declname>make_visible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="42" column="1" bodyfile="libopenage/console/console.cpp" bodystart="110" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a4d97e8f7fc2d7ba24490bf5f0b494332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Console::write</definition>
+        <argsstring>(const char *text)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const char *</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>prints the given text on the console. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="47" column="1" bodyfile="libopenage/console/console.cpp" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Console::interpret</definition>
+        <argsstring>(const std::string &amp;command)</argsstring>
+        <name>interpret</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a temporary console command interpreter </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="52" column="1" bodyfile="libopenage/console/console.cpp" bodystart="126" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::console::Console::on_drawhud</definition>
+        <argsstring>() override</argsstring>
+        <name>on_drawhud</name>
+        <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the drawing action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="54" column="1" bodyfile="libopenage/console/console.cpp" bodystart="164" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1ae061753f445808da5dbc813dd0e0f4da" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::console::Console::on_tick</definition>
+        <argsstring>() override</argsstring>
+        <name>on_tick</name>
+        <reimplements refid="classopenage_1_1_tick_handler_1a1a30e127fd708cf29600b0aa0ff402f7">on_tick</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the tick action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="55" column="1" bodyfile="libopenage/console/console.cpp" bodystart="154" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1af42e9fbab2caf9c762303b7d55f85d3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::console::Console::on_input</definition>
+        <argsstring>(SDL_Event *event) override</argsstring>
+        <name>on_input</name>
+        <reimplements refid="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5">on_input</reimplements>
+        <param>
+          <type>SDL_Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the input handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="56" column="1" bodyfile="libopenage/console/console.cpp" bodystart="174" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_console_1a9e8a7d06ccbf4e5bf402e87cf4726ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::console::Console::on_resize</definition>
+        <argsstring>(coord::viewport_delta new_size) override</argsstring>
+        <name>on_resize</name>
+        <reimplements refid="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d">on_resize</reimplements>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the resize handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/console.h" line="57" column="1" bodyfile="libopenage/console/console.cpp" bodystart="192" bodyend="200"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="818">
+        <label>openage::TickHandler</label>
+        <link refid="classopenage_1_1_tick_handler"/>
+      </node>
+      <node id="816">
+        <label>openage::console::Console</label>
+        <link refid="classopenage_1_1console_1_1_console"/>
+        <childnode refid="817" relation="private-inheritance">
+        </childnode>
+        <childnode refid="818" relation="private-inheritance">
+        </childnode>
+        <childnode refid="819" relation="private-inheritance">
+        </childnode>
+        <childnode refid="820" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="819">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="820">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="817">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="869">
+        <label>CoordXYAbsolute&lt; pixel_t, camhud, camhud_delta &gt;</label>
+      </node>
+      <node id="858">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="836">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="843">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="844" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="868">
+        <label>openage::coord::camhud</label>
+        <link refid="structopenage_1_1coord_1_1camhud"/>
+        <childnode refid="869" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="859">
+        <label>openage::coord::camgame_delta</label>
+        <link refid="structopenage_1_1coord_1_1camgame__delta"/>
+        <childnode refid="860" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="841">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="845">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="846" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="847" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="848">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="823">
+        <label>openage::TickHandler</label>
+        <link refid="classopenage_1_1_tick_handler"/>
+      </node>
+      <node id="840">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="841" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="844">
+        <label>QObject</label>
+      </node>
+      <node id="867">
+        <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
+      </node>
+      <node id="835">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="836" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="857">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="858" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="821">
+        <label>openage::console::Console</label>
+        <link refid="classopenage_1_1console_1_1_console"/>
+        <childnode refid="822" relation="private-inheritance">
+        </childnode>
+        <childnode refid="823" relation="private-inheritance">
+        </childnode>
+        <childnode refid="824" relation="private-inheritance">
+        </childnode>
+        <childnode refid="825" relation="private-inheritance">
+        </childnode>
+        <childnode refid="826" relation="usage">
+          <edgelabel>+font</edgelabel>
+        </childnode>
+        <childnode refid="828" relation="usage">
+          <edgelabel>+input_context</edgelabel>
+        </childnode>
+        <childnode refid="837" relation="usage">
+          <edgelabel>#engine</edgelabel>
+        </childnode>
+        <childnode refid="862" relation="usage">
+          <edgelabel>+buf</edgelabel>
+        </childnode>
+        <childnode refid="868" relation="usage">
+          <edgelabel>+charsize</edgelabel>
+          <edgelabel>+bottomleft</edgelabel>
+          <edgelabel>+topright</edgelabel>
+        </childnode>
+      </node>
+      <node id="851">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+      <node id="838">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="838" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="855">
+        <label>openage::coord::viewport</label>
+        <link refid="structopenage_1_1coord_1_1viewport"/>
+        <childnode refid="856" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="834">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="835" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="829" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="853">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="847">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="848" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="824">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="865">
+        <label>openage::util::utf8_decoder</label>
+        <link refid="classopenage_1_1util_1_1utf8__decoder"/>
+      </node>
+      <node id="833">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="863">
+        <label>openage::console::buf_char</label>
+        <link refid="structopenage_1_1console_1_1buf__char"/>
+      </node>
+      <node id="830">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="831" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="860">
+        <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="846">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="831">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="849">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="850" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="828">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="829" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="852">
+        <label>openage::gui::EngineQMLInfo</label>
+        <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
+        <childnode refid="853" relation="public-inheritance">
+        </childnode>
+        <childnode refid="836" relation="usage">
+          <edgelabel>+asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="837" relation="usage">
+          <edgelabel>+engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="861">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="846" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="842">
+        <label>openage::util::Profiler</label>
+        <link refid="classopenage_1_1util_1_1_profiler"/>
+        <childnode refid="837" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="837">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="825" relation="public-inheritance">
+        </childnode>
+        <childnode refid="838" relation="public-inheritance">
+        </childnode>
+        <childnode refid="839" relation="usage">
+          <edgelabel>+drawing_huds</edgelabel>
+          <edgelabel>+drawing_debug_overlay</edgelabel>
+        </childnode>
+        <childnode refid="842" relation="usage">
+          <edgelabel>-profiler</edgelabel>
+        </childnode>
+        <childnode refid="836" relation="usage">
+          <edgelabel>-root_dir</edgelabel>
+        </childnode>
+        <childnode refid="843" relation="usage">
+          <edgelabel>+gui_signals</edgelabel>
+        </childnode>
+        <childnode refid="835" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="845" relation="usage">
+          <edgelabel>-screenshot_manager</edgelabel>
+        </childnode>
+        <childnode refid="849" relation="usage">
+          <edgelabel>-fps_counter</edgelabel>
+        </childnode>
+        <childnode refid="851" relation="usage">
+          <edgelabel>+external_profiler</edgelabel>
+        </childnode>
+        <childnode refid="829" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+        <childnode refid="852" relation="usage">
+          <edgelabel>-qml_info</edgelabel>
+        </childnode>
+        <childnode refid="854" relation="usage">
+          <edgelabel>+coord</edgelabel>
+        </childnode>
+        <childnode refid="846" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="834" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+        <childnode refid="861" relation="usage">
+          <edgelabel>-audio_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="856">
+        <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="866">
+        <label>openage::coord::term</label>
+        <link refid="structopenage_1_1coord_1_1term"/>
+        <childnode refid="867" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="825">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="839">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="840" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="832">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="833" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="864">
+        <label>openage::console::buf_line</label>
+        <link refid="structopenage_1_1console_1_1buf__line"/>
+      </node>
+      <node id="850">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+      <node id="826">
+        <label>openage::renderer::Font</label>
+        <link refid="classopenage_1_1renderer_1_1_font"/>
+        <childnode refid="827" relation="usage">
+          <edgelabel>+description</edgelabel>
+        </childnode>
+      </node>
+      <node id="827">
+        <label>openage::renderer::font_description</label>
+        <link refid="structopenage_1_1renderer_1_1font__description"/>
+      </node>
+      <node id="822">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="862">
+        <label>openage::console::Buf</label>
+        <link refid="classopenage_1_1console_1_1_buf"/>
+        <childnode refid="863" relation="usage">
+          <edgelabel>+chrdata_end</edgelabel>
+          <edgelabel>+screen_chrdata</edgelabel>
+          <edgelabel>+chrdata</edgelabel>
+          <edgelabel>+current_char_fmt</edgelabel>
+          <edgelabel>+default_char_fmt</edgelabel>
+        </childnode>
+        <childnode refid="864" relation="usage">
+          <edgelabel>+linedata</edgelabel>
+          <edgelabel>+screen_linedata</edgelabel>
+          <edgelabel>+linedata_end</edgelabel>
+        </childnode>
+        <childnode refid="865" relation="usage">
+          <edgelabel>+streamdecoder</edgelabel>
+        </childnode>
+        <childnode refid="866" relation="usage">
+          <edgelabel>+cursorpos</edgelabel>
+          <edgelabel>+dims</edgelabel>
+          <edgelabel>+saved_cursorpos</edgelabel>
+        </childnode>
+      </node>
+      <node id="829">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="822" relation="public-inheritance">
+        </childnode>
+        <childnode refid="830" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="828" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="832" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="834" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="854">
+        <label>openage::coord::CoordManager</label>
+        <link refid="classopenage_1_1coord_1_1_coord_manager"/>
+        <childnode refid="855" relation="usage">
+          <edgelabel>+camgame_viewport</edgelabel>
+          <edgelabel>+camhud_viewport</edgelabel>
+        </childnode>
+        <childnode refid="857" relation="usage">
+          <edgelabel>+camgame_phys</edgelabel>
+        </childnode>
+        <childnode refid="859" relation="usage">
+          <edgelabel>+tile_size</edgelabel>
+        </childnode>
+        <childnode refid="847" relation="usage">
+          <edgelabel>+viewport_size</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/console/console.h" line="25" column="1" bodyfile="libopenage/console/console.h" bodystart="25" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1console_1_1_console_1a005c1608c8128b7312134b47be2ca2ca" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>bottomleft</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>buf</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1affa7cf7767200b98fd7e3b9e2ed7fea7" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>charsize</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ad348b9c975750b5b6f6f9f533ca8bcea" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>command</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a0e1f861a8f19ed84b00c580d50d9f49f" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>Console</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a275f8903f340585c59536854129d4931" prot="protected" virt="non-virtual"><scope>openage::console::Console</scope><name>engine</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ab1d376fb1fd8b179e8c464671e16ba3a" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>font</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a103f6555f63a2cc87eef702322c66585" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>input_context</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>interpret</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>load_colors</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" prot="public" virt="virtual"><scope>openage::console::Console</scope><name>on_drawhud</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1af42e9fbab2caf9c762303b7d55f85d3a" prot="public" virt="virtual"><scope>openage::console::Console</scope><name>on_input</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a9e8a7d06ccbf4e5bf402e87cf4726ffb" prot="public" virt="virtual"><scope>openage::console::Console</scope><name>on_resize</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ae061753f445808da5dbc813dd0e0f4da" prot="public" virt="virtual"><scope>openage::console::Console</scope><name>on_tick</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>register_to_engine</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>set_visible</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>termcolors</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ac0aa3142154a9048bcebf0681efccec8" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>topright</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1aa5ddaf2967b33d917593dd147a1058ee" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>visible</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1a4d97e8f7fc2d7ba24490bf5f0b494332" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>write</name></member>
+      <member refid="classopenage_1_1console_1_1_console_1ae2d69839f8be1652ba4f61b9af4c8bb3" prot="public" virt="non-virtual"><scope>openage::console::Console</scope><name>~Console</name></member>
+      <member refid="classopenage_1_1_hud_handler_1a5b1435a782148709e7acf4a0dd94189f" prot="private" virt="virtual"><scope>openage::console::Console</scope><name>~HudHandler</name></member>
+      <member refid="classopenage_1_1_input_handler_1abdb25a0f6baffa8c6bd4d69671565fc6" prot="private" virt="virtual"><scope>openage::console::Console</scope><name>~InputHandler</name></member>
+      <member refid="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="private" virt="virtual"><scope>openage::console::Console</scope><name>~ResizeHandler</name></member>
+      <member refid="classopenage_1_1_tick_handler_1ac15f0f314627bf50bbd1c9a4d430fd5c" prot="private" virt="virtual"><scope>openage::console::Console</scope><name>~TickHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

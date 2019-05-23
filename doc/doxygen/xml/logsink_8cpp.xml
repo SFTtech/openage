@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="logsink_8cpp" kind="file" language="C++">
+    <compoundname>logsink.cpp</compoundname>
+    <includes refid="logsink_8h" local="yes">logsink.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes refid="message_8h" local="yes">message.h</includes>
+    <incdepgraph>
+      <node id="17298">
+        <label>list</label>
+      </node>
+      <node id="17315">
+        <label>atomic</label>
+      </node>
+      <node id="17322">
+        <label>iomanip</label>
+      </node>
+      <node id="17321">
+        <label>functional</label>
+      </node>
+      <node id="17310">
+        <label>cstdint</label>
+      </node>
+      <node id="17319">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="17320" relation="include">
+        </childnode>
+        <childnode refid="17321" relation="include">
+        </childnode>
+        <childnode refid="17322" relation="include">
+        </childnode>
+        <childnode refid="17316" relation="include">
+        </childnode>
+        <childnode refid="17323" relation="include">
+        </childnode>
+        <childnode refid="17306" relation="include">
+        </childnode>
+        <childnode refid="17324" relation="include">
+        </childnode>
+      </node>
+      <node id="17297">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="17298" relation="include">
+        </childnode>
+        <childnode refid="17299" relation="include">
+        </childnode>
+        <childnode refid="17300" relation="include">
+        </childnode>
+      </node>
+      <node id="17320">
+        <label>cstdarg</label>
+      </node>
+      <node id="17306">
+        <label>string</label>
+      </node>
+      <node id="17309">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="17310" relation="include">
+        </childnode>
+        <childnode refid="17306" relation="include">
+        </childnode>
+        <childnode refid="17311" relation="include">
+        </childnode>
+        <childnode refid="17312" relation="include">
+        </childnode>
+        <childnode refid="17314" relation="include">
+        </childnode>
+        <childnode refid="17297" relation="include">
+        </childnode>
+        <childnode refid="17300" relation="include">
+        </childnode>
+      </node>
+      <node id="17312">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="17313" relation="include">
+        </childnode>
+      </node>
+      <node id="17314">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="17315" relation="include">
+        </childnode>
+        <childnode refid="17316" relation="include">
+        </childnode>
+        <childnode refid="17317" relation="include">
+        </childnode>
+        <childnode refid="17304" relation="include">
+        </childnode>
+        <childnode refid="17318" relation="include">
+        </childnode>
+        <childnode refid="17319" relation="include">
+        </childnode>
+      </node>
+      <node id="17303">
+        <label>typeinfo</label>
+      </node>
+      <node id="17324">
+        <label>vector</label>
+      </node>
+      <node id="17305">
+        <label>ciso646</label>
+      </node>
+      <node id="17323">
+        <label>sstream</label>
+      </node>
+      <node id="17304">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="17305" relation="include">
+        </childnode>
+        <childnode refid="17306" relation="include">
+        </childnode>
+        <childnode refid="17307" relation="include">
+        </childnode>
+      </node>
+      <node id="17307">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="17307" relation="include">
+        </childnode>
+      </node>
+      <node id="17318">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="17302" relation="include">
+        </childnode>
+        <childnode refid="17306" relation="include">
+        </childnode>
+      </node>
+      <node id="17300">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="17301" relation="include">
+        </childnode>
+      </node>
+      <node id="17313">
+        <label>cstdlib</label>
+      </node>
+      <node id="17302">
+        <label>iostream</label>
+      </node>
+      <node id="17299">
+        <label>mutex</label>
+      </node>
+      <node id="17317">
+        <label>type_traits</label>
+      </node>
+      <node id="17311">
+        <label>config.h</label>
+      </node>
+      <node id="17308">
+        <label>algorithm</label>
+      </node>
+      <node id="17316">
+        <label>memory</label>
+      </node>
+      <node id="17301">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="17302" relation="include">
+        </childnode>
+        <childnode refid="17303" relation="include">
+        </childnode>
+        <childnode refid="17304" relation="include">
+        </childnode>
+      </node>
+      <node id="17296">
+        <label>libopenage/log/logsink.cpp</label>
+        <link refid="logsink_8cpp"/>
+        <childnode refid="17297" relation="include">
+        </childnode>
+        <childnode refid="17308" relation="include">
+        </childnode>
+        <childnode refid="17309" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logsink_8h" kindref="compound">logsink.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8h" kindref="compound">message.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_log_sink_1aea8f646801e461e689465c769f63136c" kindref="member">LogSink::LogSink</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">LogSinkList::instance</ref>().<ref refid="classopenage_1_1log_1_1_log_sink_list_1ad4d92156846b759588637ea53a2d0dab" kindref="member">add</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" kindref="member">set_loglevel</ref>(level::dbg);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1log_1_1_log_sink_1a39411101da7dacb22ae1bea3f6a1f5e6" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_log_sink_1a39411101da7dacb22ae1bea3f6a1f5e6" kindref="member">LogSink::~LogSink</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">LogSinkList::instance</ref>().<ref refid="classopenage_1_1log_1_1_log_sink_list_1a1ab4e5d0b202df164509a5174809685e" kindref="member">remove</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_1ac795e3966c4816c4c09fab3a68642cca" kindref="member">LogSink::set_loglevel</ref>(<ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref><sp/>loglevel)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;loglevel<sp/>=<sp/><ref refid="classopenage_1_1log_1_1_log_sink_1a3ae8124ae0d14babd800567c9f55493a" kindref="member">loglevel</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">LogSinkList::instance</ref>().<ref refid="classopenage_1_1log_1_1_log_sink_list_1a92501d950b96e9c1978e9112f91773d2" kindref="member">loglevel_changed</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1log_1_1_log_sink_list_1ac1614b4d9555bd540f84ef2645c6c103" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_log_sink_list_1ac1614b4d9555bd540f84ef2645c6c103" kindref="member">LogSinkList::LogSinkList</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" kindref="member">set_lowest_loglevel</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_log_sink_list" kindref="compound">LogSinkList</ref><sp/>&amp;<ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">LogSinkList::instance</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list" kindref="compound">LogSinkList</ref><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">instance</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">instance</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" kindref="member">LogSinkList::log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref><sp/>&amp;msg,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref><sp/>*source)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1af1380df6ea4faddd31d7e9c9b4dfd5a9" kindref="member">sinks_mutex</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*sink<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1ad0cfead73eb07b95f1fd10edbeaa62ce" kindref="member">sinks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>more<sp/>sophisticated<sp/>filtering<sp/>(iptables-chains-like)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(msg.<ref refid="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" kindref="member">lvl</ref><sp/>&gt;=<sp/>sink-&gt;loglevel)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sink-&gt;output_log_message(msg,<sp/>source);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classopenage_1_1log_1_1_log_sink_list_1ad4d92156846b759588637ea53a2d0dab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1ad4d92156846b759588637ea53a2d0dab" kindref="member">LogSinkList::add</ref>(<ref refid="classopenage_1_1log_1_1_log_sink" kindref="compound">LogSink</ref><sp/>*sink)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1af1380df6ea4faddd31d7e9c9b4dfd5a9" kindref="member">sinks_mutex</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1ad0cfead73eb07b95f1fd10edbeaa62ce" kindref="member">sinks</ref>.push_back(sink);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" kindref="member">set_lowest_loglevel</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1log_1_1_log_sink_list_1a92501d950b96e9c1978e9112f91773d2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a92501d950b96e9c1978e9112f91773d2" kindref="member">LogSinkList::loglevel_changed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1af1380df6ea4faddd31d7e9c9b4dfd5a9" kindref="member">sinks_mutex</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" kindref="member">set_lowest_loglevel</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" kindref="member">LogSinkList::set_lowest_loglevel</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1aa64c292b08e2895d2d00ed08f02defa2" kindref="member">lowest_loglevel</ref><sp/>=<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a26a4b44a837bf97b972628509912b4a5" kindref="member">level::MAX</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*sink<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1ad0cfead73eb07b95f1fd10edbeaa62ce" kindref="member">sinks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1aa64c292b08e2895d2d00ed08f02defa2" kindref="member">lowest_loglevel</ref><sp/>=<sp/><ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::min</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1aa64c292b08e2895d2d00ed08f02defa2" kindref="member">lowest_loglevel</ref>,<sp/>sink-&gt;loglevel);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1log_1_1_log_sink_list_1a1ab4e5d0b202df164509a5174809685e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a1ab4e5d0b202df164509a5174809685e" kindref="member">LogSinkList::remove</ref>(<ref refid="classopenage_1_1log_1_1_log_sink" kindref="compound">LogSink</ref><sp/>*sink)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1af1380df6ea4faddd31d7e9c9b4dfd5a9" kindref="member">sinks_mutex</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1ad0cfead73eb07b95f1fd10edbeaa62ce" kindref="member">sinks</ref>.remove(sink);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1a6a410aaea79c35f3e06113b1096ee248" kindref="member">set_lowest_loglevel</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1log_1_1_log_sink_list_1a8255667455a46558739de3cd0a514286" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a8255667455a46558739de3cd0a514286" kindref="member">LogSinkList::supports_loglevel</ref>(<ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref><sp/>loglevel)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1af1380df6ea4faddd31d7e9c9b4dfd5a9" kindref="member">sinks_mutex</ref>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>loglevel<sp/>&gt;=<sp/>this-&gt;<ref refid="classopenage_1_1log_1_1_log_sink_list_1aa64c292b08e2895d2d00ed08f02defa2" kindref="member">lowest_loglevel</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/log/logsink.cpp"/>
+  </compounddef>
+</doxygen>

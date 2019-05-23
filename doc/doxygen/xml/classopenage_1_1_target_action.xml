@@ -1,0 +1,669 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_target_action" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::TargetAction</compoundname>
+    <basecompoundref refid="classopenage_1_1_unit_action" prot="public" virt="non-virtual">openage::UnitAction</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attack_action" prot="public" virt="non-virtual">openage::AttackAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_build_action" prot="public" virt="non-virtual">openage::BuildAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_convert_action" prot="public" virt="non-virtual">openage::ConvertAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_garrison_action" prot="public" virt="non-virtual">openage::GarrisonAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_gather_action" prot="public" virt="non-virtual">openage::GatherAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_heal_action" prot="public" virt="non-virtual">openage::HealAction</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_repair_action" prot="public" virt="non-virtual">openage::RepairAction</derivedcompoundref>
+    <includes refid="unit_2action_8h" local="no">action.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1af0c0298b57d0752f89b4e732f7446f78" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::TargetAction::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="260" column="1" bodyfile="libopenage/unit/action.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1ab11cdd208c9eb76eb88bfdea0c0d054a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::TargetAction::target_type_id</definition>
+        <argsstring></argsstring>
+        <name>target_type_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="261" column="1" bodyfile="libopenage/unit/action.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1a5b6ca88d9b6aec08b4d03697f0cd03a1" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::TargetAction::repath_attempts</definition>
+        <argsstring></argsstring>
+        <name>repath_attempts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="262" column="1" bodyfile="libopenage/unit/action.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1ace49b8e31592f2e8671dff1d681e8a59" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::TargetAction::end_action</definition>
+        <argsstring></argsstring>
+        <name>end_action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="263" column="1" bodyfile="libopenage/unit/action.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1a440df45773b6e3b6e2a0b60f1ba6ca98" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::TargetAction::dist_to_target</definition>
+        <argsstring></argsstring>
+        <name>dist_to_target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>tracks distance to target from last update </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="268" column="1" bodyfile="libopenage/unit/action.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_target_action_1abf5a6940a40fea92b70b36482c1d1ee0" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::TargetAction::radius</definition>
+        <argsstring></argsstring>
+        <name>radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="268" column="1" bodyfile="libopenage/unit/action.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_target_action_1adc56f07dc94e70968fb02276f1a3ae57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TargetAction::TargetAction</definition>
+        <argsstring>(Unit *e, graphic_type gt, UnitReference r, coord::phys_t action_rad)</argsstring>
+        <name>TargetAction</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" kindref="member">graphic_type</ref></type>
+          <declname>gt</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>action_rad</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>action_rad is how close a unit must come to another unit to be considered to touch the other, for example in gathering resource and melee attack </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="225" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="218" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a8ac661518fe44bcbdca2f97212d90bf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TargetAction::TargetAction</definition>
+        <argsstring>(Unit *e, graphic_type gt, UnitReference r)</argsstring>
+        <name>TargetAction</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a5e6378e44a27518a589cc11f2ee36a3b" kindref="member">graphic_type</ref></type>
+          <declname>gt</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this constructor uses the default action radius formula which will bring the object as near to the target as the pathing grid will allow. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="231" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="237" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a18396367c24eafefd498e141875fed8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual openage::TargetAction::~TargetAction</definition>
+        <argsstring>()</argsstring>
+        <name>~TargetAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="232" column="1" bodyfile="libopenage/unit/action.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1af63a55c8043382d2648815d46e2c4c92" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::TargetAction::update</definition>
+        <argsstring>(unsigned int time) override</argsstring>
+        <name>update</name>
+        <reimplements refid="classopenage_1_1_unit_action_1a0196263da38bfa208d50c2241809cd62">update</reimplements>
+        <param>
+          <type>unsigned int</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>each action has its own update functionality which gets called when this is the active action </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="234" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="242" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1ac489c70f995ea358f685676e403df8cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::TargetAction::on_completion</definition>
+        <argsstring>() override</argsstring>
+        <name>on_completion</name>
+        <reimplements refid="classopenage_1_1_unit_action_1ac84d3cbfa3c489b3975952af157929cb">on_completion</reimplements>
+        <reimplementedby refid="classopenage_1_1_build_action_1a9f64ee829cfb671065dcfc7c876c346e">on_completion</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>action to perform when popped from a units action stack </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="235" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="277" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1acd97248a087415b6d08fa3e97e90397d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::TargetAction::completed</definition>
+        <argsstring>() const override</argsstring>
+        <name>completed</name>
+        <reimplements refid="classopenage_1_1_unit_action_1a7814554a94e930595ed5dad9b0f03255">completed</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets called for all actions on stack each update cycle <simplesect kind="return"><para>true when action is completed so it and everything above it can be popped </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="236" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="290" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a50d20cedc299a1257f5a8dc2c0396b72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::TargetAction::allow_interupt</definition>
+        <argsstring>() const override</argsstring>
+        <name>allow_interupt</name>
+        <reimplements refid="classopenage_1_1_unit_action_1a622cf307ee5d3f8f4581d9a7ec7ecfbf">allow_interupt</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks if the action can be interrupted, allowing it to be popped if the user specifies a new action, if false the action must reach a completed state before removal eg dead action must be completed and cannot be discarded </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="237" column="1" bodyfile="libopenage/unit/action.h" bodystart="237" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a1152581f6979e3fd89a6ce4e6a4eded2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::TargetAction::allow_control</definition>
+        <argsstring>() const override</argsstring>
+        <name>allow_control</name>
+        <reimplements refid="classopenage_1_1_unit_action_1a3e222303072f926fa7c925163b8ac10c">allow_control</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>control whether stack can discard the action automatically and should the stack be modifiable when this action is on top</para>
+<para>if true this action must complete and will not allow new actions to be pushed while it is active and also does not update the secondary actions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="238" column="1" bodyfile="libopenage/unit/action.h" bodystart="238" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string openage::TargetAction::name</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>name</name>
+        <reimplements refid="classopenage_1_1_unit_action_1a67647c63a20cec9714a6463b1c823a70">name</reimplements>
+        <reimplementedby refid="classopenage_1_1_garrison_action_1a196a384261e4e6624faa2db6c970d9e4">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_build_action_1a0277fa2bdd5367376df7fc4084cccd18">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_repair_action_1a1817a51710b65024edd0d811683f1f96">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_gather_action_1ac69d3b907af6b3a737e64779f46e4bd4">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_attack_action_1af9602b031e61a4bc8b06596b494ffa3a">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_heal_action_1ad4da9c08bcfd22e4287aa508730e02e2">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_convert_action_1ace65fad3f2004e467446b03fdf1f12bb">name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>debug string to identify action types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="239" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a0689cb2d55ae8ad82e704c79b4596bca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::TargetAction::update_in_range</definition>
+        <argsstring>(unsigned int, Unit *)=0</argsstring>
+        <name>update_in_range</name>
+        <reimplementedby refid="classopenage_1_1_garrison_action_1ae38a294e107776e93a2a4198fed82b9e">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_build_action_1a808f1932658b9bbdb98849c406e1d426">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_repair_action_1ae093970227ea03a75f1ee278770640f0">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_gather_action_1ae49e08d7e107415297f6c58320570858">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_attack_action_1af3e4ae03273bd3d6ea4b5a196ce6351c">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_heal_action_1a95b9324fe05d86e7528f3a5334b6fc7c">update_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_convert_action_1a55db575cd964d3900afde6969e93dcfe">update_in_range</reimplementedby>
+        <param>
+          <type>unsigned int</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Control units action when in range of the target </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="244" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a32fc1723b0f6ce5e3bdb76794ff1ccf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::TargetAction::on_completion_in_range</definition>
+        <argsstring>(int target_type)=0</argsstring>
+        <name>on_completion_in_range</name>
+        <reimplementedby refid="classopenage_1_1_garrison_action_1a3aea7ec7c376adb40dee1d9cdc94fd25">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_build_action_1a4b2708cddc233df42c55c93cce4c3768">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_repair_action_1af04fb9e6fe97ed9891db7130698e5502">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_attack_action_1a81feceee7d59ee1b7b1451da070819bd">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_heal_action_1afce58e504c017064316f4973cdcb38c6">on_completion_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_convert_action_1a505c0166e44a58f7ed38a18f20044f47">on_completion_in_range</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>target_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="245" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a43bd7367738e16d715df0a1bfbd080cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::TargetAction::completed_in_range</definition>
+        <argsstring>(Unit *) const =0</argsstring>
+        <name>completed_in_range</name>
+        <reimplementedby refid="classopenage_1_1_garrison_action_1a842b80d5d090c1fb0ba6b3c6dfacf8b3">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_build_action_1a7f3e8b2b3bff26c39e9bd24ba6cf0f70">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_repair_action_1a8559cb6b16e07caa6635517db0a064f1">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_gather_action_1a1234dabb1549d67aaa1dbf3db7fce494">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_attack_action_1a9a21f5da5f56d1c157b0a1806a8e49e3">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_heal_action_1ad6d47ca5bb338861aa787901f64aafe2">completed_in_range</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_convert_action_1a5f925361d63b2d1186b142b26e367b6a">completed_in_range</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="246" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a285c6a59466e76c934a21221e9990f86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::TargetAction::distance_to_target</definition>
+        <argsstring>()</argsstring>
+        <name>distance_to_target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="248" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="299" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a2ad32343ebe475f1f3c1477f659314db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        <definition>Unit * openage::TargetAction::update_distance</definition>
+        <argsstring>()</argsstring>
+        <name>update_distance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="249" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="303" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a234df6738799d71928d3fc3acc8d39ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::TargetAction::get_target</definition>
+        <argsstring>() const</argsstring>
+        <name>get_target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="251" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="321" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a4f8c4aca219e96e7e0f2e8439385d7b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::TargetAction::get_target_type_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_target_type_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="252" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="325" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_target_action_1a48de4ef9580b1202464808af55b78fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::TargetAction::set_target</definition>
+        <argsstring>(UnitReference new_target)</argsstring>
+        <name>set_target</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+          <declname>new_target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>changes target, ending action when new target is invalid </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="257" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="329" bodyend="337"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Base class for actions which target another unit such as gather, attack, heal and convert TODO implement min range </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4290">
+        <label>openage::AttackAction</label>
+        <link refid="classopenage_1_1_attack_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4292">
+        <label>openage::ConvertAction</label>
+        <link refid="classopenage_1_1_convert_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4289">
+        <label>openage::UnitAction</label>
+        <link refid="classopenage_1_1_unit_action"/>
+      </node>
+      <node id="4296">
+        <label>openage::RepairAction</label>
+        <link refid="classopenage_1_1_repair_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4295">
+        <label>openage::HealAction</label>
+        <link refid="classopenage_1_1_heal_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4291">
+        <label>openage::BuildAction</label>
+        <link refid="classopenage_1_1_build_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4288">
+        <label>openage::TargetAction</label>
+        <link refid="classopenage_1_1_target_action"/>
+        <childnode refid="4289" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4294">
+        <label>openage::GatherAction</label>
+        <link refid="classopenage_1_1_gather_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4293">
+        <label>openage::GarrisonAction</label>
+        <link refid="classopenage_1_1_garrison_action"/>
+        <childnode refid="4288" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4316">
+        <label>openage::UnitReference</label>
+        <link refid="classopenage_1_1_unit_reference"/>
+      </node>
+      <node id="4311">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="4309" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4310" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="4298">
+        <label>openage::UnitAction</label>
+        <link refid="classopenage_1_1_unit_action"/>
+        <childnode refid="4299" relation="usage">
+          <edgelabel>#entity</edgelabel>
+        </childnode>
+      </node>
+      <node id="4308">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="4309" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4307" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="4309">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="4301">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="4302" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="4304" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="4305" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="4307" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="4310">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="4311" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="4299">
+        <label>openage::Unit</label>
+        <link refid="classopenage_1_1_unit"/>
+        <childnode refid="4300" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4301" relation="usage">
+          <edgelabel>+unit_type</edgelabel>
+        </childnode>
+        <childnode refid="4314" relation="usage">
+          <edgelabel>-container</edgelabel>
+        </childnode>
+        <childnode refid="4304" relation="usage">
+          <edgelabel>+attributes</edgelabel>
+        </childnode>
+      </node>
+      <node id="4313">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="4304">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="4307">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="4308" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="4310" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="4306" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="4312" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="4313" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="4300">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+      <node id="4302">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="4303" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4306">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="4312">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="4297">
+        <label>openage::TargetAction</label>
+        <link refid="classopenage_1_1_target_action"/>
+        <childnode refid="4298" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4315" relation="usage">
+          <edgelabel>-dist_to_target</edgelabel>
+          <edgelabel>-radius</edgelabel>
+        </childnode>
+        <childnode refid="4316" relation="usage">
+          <edgelabel>-target</edgelabel>
+        </childnode>
+      </node>
+      <node id="4305">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="4306" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="4315">
+        <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+      <node id="4314">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+      <node id="4303">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/action.h" line="217" column="1" bodyfile="libopenage/unit/action.h" bodystart="217" bodyend="270"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>adjacent_range</name></member>
+      <member refid="classopenage_1_1_target_action_1a1152581f6979e3fd89a6ce4e6a4eded2" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>allow_control</name></member>
+      <member refid="classopenage_1_1_target_action_1a50d20cedc299a1257f5a8dc2c0396b72" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>allow_interupt</name></member>
+      <member refid="classopenage_1_1_target_action_1acd97248a087415b6d08fa3e97e90397d" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>completed</name></member>
+      <member refid="classopenage_1_1_target_action_1a43bd7367738e16d715df0a1bfbd080cf" prot="public" virt="pure-virtual"><scope>openage::TargetAction</scope><name>completed_in_range</name></member>
+      <member refid="classopenage_1_1_unit_action_1abfdd7e2764fd795c02ce0a5471563508" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>current_frame</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6cd7405af72dd0cf3994cee74608cf8b" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>current_graphics</name></member>
+      <member refid="classopenage_1_1_unit_action_1a7beffb7ad454cf467d7a6b843df939c7" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>damage_unit</name></member>
+      <member refid="classopenage_1_1_unit_action_1a0bbcb9637ce725b95cbe818204921e4f" prot="protected" virt="non-virtual"><scope>openage::TargetAction</scope><name>debug_draw_action</name></member>
+      <member refid="classopenage_1_1_target_action_1a440df45773b6e3b6e2a0b60f1ba6ca98" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>dist_to_target</name></member>
+      <member refid="classopenage_1_1_target_action_1a285c6a59466e76c934a21221e9990f86" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>distance_to_target</name></member>
+      <member refid="classopenage_1_1_unit_action_1aef5ad04daa194a06790b4f36ed8a3e83" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>draw_debug</name></member>
+      <member refid="classopenage_1_1_target_action_1ace49b8e31592f2e8671dff1d681e8a59" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>end_action</name></member>
+      <member refid="classopenage_1_1_unit_action_1a5d47af0412db504ab95c58b12418d55c" prot="protected" virt="non-virtual"><scope>openage::TargetAction</scope><name>entity</name></member>
+      <member refid="classopenage_1_1_unit_action_1a3ab11130480adc3cfe156af7cfb7a58d" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>face_towards</name></member>
+      <member refid="classopenage_1_1_unit_action_1a8f995b745da73c4e95ec83d8b14c38c6" prot="protected" virt="non-virtual"><scope>openage::TargetAction</scope><name>frame</name></member>
+      <member refid="classopenage_1_1_unit_action_1a5d0154b413ca914966b9796bc37193b8" prot="protected" virt="non-virtual"><scope>openage::TargetAction</scope><name>frame_rate</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6e508baa62ec19cd81bea7fce1721e17" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>get_attack_range</name></member>
+      <member refid="classopenage_1_1_unit_action_1a40320d4e1be2a48373f5b9b0f6bef2ef" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>get_heal_range</name></member>
+      <member refid="classopenage_1_1_target_action_1a234df6738799d71928d3fc3acc8d39ab" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>get_target</name></member>
+      <member refid="classopenage_1_1_target_action_1a4f8c4aca219e96e7e0f2e8439385d7b1" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>get_target_type_id</name></member>
+      <member refid="classopenage_1_1_unit_action_1afe08a940aa0b7040c3a59d816de00fed" prot="protected" virt="non-virtual"><scope>openage::TargetAction</scope><name>graphic</name></member>
+      <member refid="classopenage_1_1_unit_action_1a16660bd780984c6f11ba30e0c7f634ad" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>move_to</name></member>
+      <member refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d" prot="public" virt="pure-virtual"><scope>openage::TargetAction</scope><name>name</name></member>
+      <member refid="classopenage_1_1_target_action_1ac489c70f995ea358f685676e403df8cc" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>on_completion</name></member>
+      <member refid="classopenage_1_1_target_action_1a32fc1723b0f6ce5e3bdb76794ff1ccf1" prot="public" virt="pure-virtual"><scope>openage::TargetAction</scope><name>on_completion_in_range</name></member>
+      <member refid="classopenage_1_1_target_action_1abf5a6940a40fea92b70b36482c1d1ee0" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>radius</name></member>
+      <member refid="classopenage_1_1_target_action_1a5b6ca88d9b6aec08b4d03697f0cd03a1" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>repath_attempts</name></member>
+      <member refid="classopenage_1_1_target_action_1a48de4ef9580b1202464808af55b78fae" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>set_target</name></member>
+      <member refid="classopenage_1_1_unit_action_1a0a84fac6b39ee42340f67905dd631956" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>show_debug</name></member>
+      <member refid="classopenage_1_1_target_action_1af0c0298b57d0752f89b4e732f7446f78" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>target</name></member>
+      <member refid="classopenage_1_1_target_action_1ab11cdd208c9eb76eb88bfdea0c0d054a" prot="private" virt="non-virtual"><scope>openage::TargetAction</scope><name>target_type_id</name></member>
+      <member refid="classopenage_1_1_target_action_1adc56f07dc94e70968fb02276f1a3ae57" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>TargetAction</name></member>
+      <member refid="classopenage_1_1_target_action_1a8ac661518fe44bcbdca2f97212d90bf7" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>TargetAction</name></member>
+      <member refid="classopenage_1_1_unit_action_1acbadd90ff8cee12d01aa9fd490501c1a" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>type</name></member>
+      <member refid="classopenage_1_1_unit_action_1a3fd3dd936ea6a850726bcfce9664909a" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>UnitAction</name></member>
+      <member refid="classopenage_1_1_target_action_1af63a55c8043382d2648815d46e2c4c92" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>update</name></member>
+      <member refid="classopenage_1_1_target_action_1a2ad32343ebe475f1f3c1477f659314db" prot="public" virt="non-virtual"><scope>openage::TargetAction</scope><name>update_distance</name></member>
+      <member refid="classopenage_1_1_target_action_1a0689cb2d55ae8ad82e704c79b4596bca" prot="public" virt="pure-virtual"><scope>openage::TargetAction</scope><name>update_in_range</name></member>
+      <member refid="classopenage_1_1_target_action_1a18396367c24eafefd498e141875fed8a" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>~TargetAction</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6e4ff108bc1f10e40777ae36710e7a65" prot="public" virt="virtual"><scope>openage::TargetAction</scope><name>~UnitAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

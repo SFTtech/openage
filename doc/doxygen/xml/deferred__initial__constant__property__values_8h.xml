@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="deferred__initial__constant__property__values_8h" kind="file" language="C++">
+    <compoundname>deferred_initial_constant_property_values.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">functional</includes>
+    <includedby refid="gui__item_8h" local="yes">libopenage/gui/guisys/link/gui_item.h</includedby>
+    <includedby refid="deferred__initial__constant__property__values_8cpp" local="yes">libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp</includedby>
+    <includedby refid="gui__live__reloader_8cpp" local="yes">libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</includedby>
+    <incdepgraph>
+      <node id="13300">
+        <label>functional</label>
+      </node>
+      <node id="13298">
+        <label>libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="13299" relation="include">
+        </childnode>
+        <childnode refid="13300" relation="include">
+        </childnode>
+      </node>
+      <node id="13299">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13317">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="13316">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="13313" relation="include">
+        </childnode>
+        <childnode refid="13311" relation="include">
+        </childnode>
+        <childnode refid="13317" relation="include">
+        </childnode>
+      </node>
+      <node id="13322">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+      </node>
+      <node id="13325">
+        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <link refid="gui__live__reloader_8cpp"/>
+      </node>
+      <node id="13303">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="13304" relation="include">
+        </childnode>
+        <childnode refid="13305" relation="include">
+        </childnode>
+        <childnode refid="13306" relation="include">
+        </childnode>
+        <childnode refid="13307" relation="include">
+        </childnode>
+        <childnode refid="13308" relation="include">
+        </childnode>
+      </node>
+      <node id="13326">
+        <label>libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp</label>
+        <link refid="deferred__initial__constant__property__values_8cpp"/>
+      </node>
+      <node id="13304">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="13305" relation="include">
+        </childnode>
+      </node>
+      <node id="13301">
+        <label>libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="13302" relation="include">
+        </childnode>
+        <childnode refid="13326" relation="include">
+        </childnode>
+        <childnode refid="13325" relation="include">
+        </childnode>
+      </node>
+      <node id="13302">
+        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="13303" relation="include">
+        </childnode>
+        <childnode refid="13309" relation="include">
+        </childnode>
+        <childnode refid="13312" relation="include">
+        </childnode>
+        <childnode refid="13316" relation="include">
+        </childnode>
+        <childnode refid="13318" relation="include">
+        </childnode>
+        <childnode refid="13321" relation="include">
+        </childnode>
+        <childnode refid="13323" relation="include">
+        </childnode>
+        <childnode refid="13324" relation="include">
+        </childnode>
+        <childnode refid="13325" relation="include">
+        </childnode>
+      </node>
+      <node id="13306">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="13305">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="13323">
+        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <link refid="gui__item_8cpp"/>
+      </node>
+      <node id="13320">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="13313">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="13312">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="13307" relation="include">
+        </childnode>
+        <childnode refid="13313" relation="include">
+        </childnode>
+        <childnode refid="13314" relation="include">
+        </childnode>
+        <childnode refid="13315" relation="include">
+        </childnode>
+      </node>
+      <node id="13310">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="13309">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="13310" relation="include">
+        </childnode>
+        <childnode refid="13311" relation="include">
+        </childnode>
+      </node>
+      <node id="13319">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="13313" relation="include">
+        </childnode>
+        <childnode refid="13315" relation="include">
+        </childnode>
+        <childnode refid="13320" relation="include">
+        </childnode>
+      </node>
+      <node id="13321">
+        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="13319" relation="include">
+        </childnode>
+      </node>
+      <node id="13307">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="13324">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+      <node id="13318">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="13319" relation="include">
+        </childnode>
+        <childnode refid="13321" relation="include">
+        </childnode>
+        <childnode refid="13322" relation="include">
+        </childnode>
+      </node>
+      <node id="13314">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="13315">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="13308">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="13311">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_deferred_initial_constant_property_values" prot="public">qtsdl::DeferredInitialConstantPropertyValues</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classqtsdl_1_1_deferred_initial_constant_property_values" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values" kindref="compound">DeferredInitialConstantPropertyValues</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" kindref="member">DeferredInitialConstantPropertyValues</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" kindref="member">~DeferredInitialConstantPropertyValues</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" kindref="member">apply_static_properties</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" kindref="member">clear_static_properties</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" kindref="member">is_init_over</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" kindref="member">init_over</ref>;</highlight></codeline>
+<codeline lineno="36" refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::function&lt;void()&gt;&gt;<sp/><ref refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" kindref="member">static_properties_assignments</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h"/>
+  </compounddef>
+</doxygen>

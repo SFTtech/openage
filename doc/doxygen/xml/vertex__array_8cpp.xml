@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vertex__array_8cpp" kind="file" language="C++">
+    <compoundname>vertex_array.cpp</compoundname>
+    <includes refid="vertex__array_8h" local="yes">vertex_array.h</includes>
+    <includes local="no">map</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="constexpr__map_8h" local="yes">../../datastructure/constexpr_map.h</includes>
+    <includes refid="lookup_8h" local="yes">lookup.h</includes>
+    <incdepgraph>
+      <node id="22719">
+        <label>list</label>
+      </node>
+      <node id="22733">
+        <label>lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="22729" relation="include">
+        </childnode>
+        <childnode refid="22734" relation="include">
+        </childnode>
+        <childnode refid="22685" relation="include">
+        </childnode>
+      </node>
+      <node id="22711">
+        <label>atomic</label>
+      </node>
+      <node id="22716">
+        <label>iomanip</label>
+      </node>
+      <node id="22696">
+        <label>functional</label>
+      </node>
+      <node id="22723">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="22696" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+      </node>
+      <node id="22688">
+        <label>cstdint</label>
+      </node>
+      <node id="22685">
+        <label>../resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22687" relation="include">
+        </childnode>
+        <childnode refid="22688" relation="include">
+        </childnode>
+        <childnode refid="22689" relation="include">
+        </childnode>
+        <childnode refid="22690" relation="include">
+        </childnode>
+        <childnode refid="22691" relation="include">
+        </childnode>
+      </node>
+      <node id="22714">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="22715" relation="include">
+        </childnode>
+        <childnode refid="22696" relation="include">
+        </childnode>
+        <childnode refid="22716" relation="include">
+        </childnode>
+        <childnode refid="22705" relation="include">
+        </childnode>
+        <childnode refid="22717" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+      </node>
+      <node id="22702">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="22703" relation="include">
+        </childnode>
+      </node>
+      <node id="22706">
+        <label>stdexcept</label>
+      </node>
+      <node id="22701">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="22718">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="22719" relation="include">
+        </childnode>
+        <childnode refid="22697" relation="include">
+        </childnode>
+        <childnode refid="22720" relation="include">
+        </childnode>
+      </node>
+      <node id="22715">
+        <label>cstdarg</label>
+      </node>
+      <node id="22692">
+        <label>string</label>
+      </node>
+      <node id="22707">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="22688" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22708" relation="include">
+        </childnode>
+        <childnode refid="22709" relation="include">
+        </childnode>
+        <childnode refid="22710" relation="include">
+        </childnode>
+        <childnode refid="22718" relation="include">
+        </childnode>
+        <childnode refid="22720" relation="include">
+        </childnode>
+      </node>
+      <node id="22709">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="22689" relation="include">
+        </childnode>
+      </node>
+      <node id="22710">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="22711" relation="include">
+        </childnode>
+        <childnode refid="22705" relation="include">
+        </childnode>
+        <childnode refid="22712" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+        <childnode refid="22713" relation="include">
+        </childnode>
+        <childnode refid="22714" relation="include">
+        </childnode>
+      </node>
+      <node id="22730">
+        <label>map</label>
+      </node>
+      <node id="22738">
+        <label>fstream</label>
+      </node>
+      <node id="22693">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="22688" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22694" relation="include">
+        </childnode>
+        <childnode refid="22695" relation="include">
+        </childnode>
+      </node>
+      <node id="22703">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="22704" relation="include">
+        </childnode>
+        <childnode refid="22705" relation="include">
+        </childnode>
+        <childnode refid="22706" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+        <childnode refid="22707" relation="include">
+        </childnode>
+      </node>
+      <node id="22736">
+        <label>../../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="22689" relation="include">
+        </childnode>
+        <childnode refid="22737" relation="include">
+        </childnode>
+        <childnode refid="22738" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22687" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22703" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+        <childnode refid="22726" relation="include">
+        </childnode>
+        <childnode refid="22691" relation="include">
+        </childnode>
+      </node>
+      <node id="22731">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="22696" relation="include">
+        </childnode>
+        <childnode refid="22732" relation="include">
+        </childnode>
+        <childnode refid="22703" relation="include">
+        </childnode>
+      </node>
+      <node id="22722">
+        <label>typeinfo</label>
+      </node>
+      <node id="22690">
+        <label>optional</label>
+      </node>
+      <node id="22686">
+        <label>vector</label>
+      </node>
+      <node id="22683">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+        <childnode refid="22684" relation="include">
+        </childnode>
+        <childnode refid="22730" relation="include">
+        </childnode>
+        <childnode refid="22703" relation="include">
+        </childnode>
+        <childnode refid="22731" relation="include">
+        </childnode>
+        <childnode refid="22733" relation="include">
+        </childnode>
+      </node>
+      <node id="22699">
+        <label>ciso646</label>
+      </node>
+      <node id="22732">
+        <label>utility</label>
+      </node>
+      <node id="22717">
+        <label>sstream</label>
+      </node>
+      <node id="22698">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="22699" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22700" relation="include">
+        </childnode>
+      </node>
+      <node id="22724">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="22705" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22725" relation="include">
+        </childnode>
+        <childnode refid="22693" relation="include">
+        </childnode>
+      </node>
+      <node id="22700">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="22700" relation="include">
+        </childnode>
+      </node>
+      <node id="22729">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="22713">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="22704" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+      </node>
+      <node id="22720">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="22721" relation="include">
+        </childnode>
+      </node>
+      <node id="22726">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="22684">
+        <label>vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="22685" relation="include">
+        </childnode>
+        <childnode refid="22727" relation="include">
+        </childnode>
+        <childnode refid="22728" relation="include">
+        </childnode>
+      </node>
+      <node id="22725">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="22704" relation="include">
+        </childnode>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+      </node>
+      <node id="22689">
+        <label>cstdlib</label>
+      </node>
+      <node id="22704">
+        <label>iostream</label>
+      </node>
+      <node id="22687">
+        <label>unordered_map</label>
+      </node>
+      <node id="22695">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="22696" relation="include">
+        </childnode>
+        <childnode refid="22697" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+        <childnode refid="22701" relation="include">
+        </childnode>
+        <childnode refid="22702" relation="include">
+        </childnode>
+        <childnode refid="22723" relation="include">
+        </childnode>
+      </node>
+      <node id="22735">
+        <label>texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="22688" relation="include">
+        </childnode>
+        <childnode refid="22736" relation="include">
+        </childnode>
+      </node>
+      <node id="22697">
+        <label>mutex</label>
+      </node>
+      <node id="22691">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="22692" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22693" relation="include">
+        </childnode>
+        <childnode refid="22724" relation="include">
+        </childnode>
+        <childnode refid="22726" relation="include">
+        </childnode>
+      </node>
+      <node id="22734">
+        <label>../resources/texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="22688" relation="include">
+        </childnode>
+        <childnode refid="22686" relation="include">
+        </childnode>
+        <childnode refid="22731" relation="include">
+        </childnode>
+        <childnode refid="22735" relation="include">
+        </childnode>
+      </node>
+      <node id="22728">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="22690" relation="include">
+        </childnode>
+        <childnode refid="22696" relation="include">
+        </childnode>
+        <childnode refid="22729" relation="include">
+        </childnode>
+      </node>
+      <node id="22694">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="22712">
+        <label>type_traits</label>
+      </node>
+      <node id="22708">
+        <label>config.h</label>
+      </node>
+      <node id="22737">
+        <label>cstring</label>
+      </node>
+      <node id="22727">
+        <label>buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="22728" relation="include">
+        </childnode>
+      </node>
+      <node id="22705">
+        <label>memory</label>
+      </node>
+      <node id="22721">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="22704" relation="include">
+        </childnode>
+        <childnode refid="22722" relation="include">
+        </childnode>
+        <childnode refid="22698" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vertex__array_8h" kindref="compound">vertex_array.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../datastructure/constexpr_map.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="lookup_8h" kindref="compound">lookup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray::GlVertexArray</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::pair&lt;GlBuffer<sp/>const&amp;,<sp/>resources::VertexInputInfo<sp/>const&amp;&gt;&gt;<sp/>buffers)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>GlSimpleObject([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteVertexArrays(1,<sp/>&amp;handle);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/>handle;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenVertexArrays(1,<sp/>&amp;handle);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/>handle;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" kindref="member">bind</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffers.size()<sp/>==<sp/>1<sp/>and<sp/>buffers[0].second.get_shader_input_map())<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Map<sp/>inputs<sp/>according<sp/>to<sp/>specified<sp/>pairing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>info<sp/>=<sp/>buffers[0].second;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>in_map<sp/>=<sp/>*info.get_shader_input_map();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>in<sp/>=<sp/>info.get_inputs();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>buf<sp/>=<sp/>buffers[0].first;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf.bind(GL_ARRAY_BUFFER);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::map&lt;size_t,<sp/>size_t&gt;<sp/>in_map_sorted(in_map.begin(),<sp/>in_map.end());</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>next_idx<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info.get_layout()<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50ca4cc854cc056515cc2befbc91f30d07b0" kindref="member">resources::vertex_layout_t::AOS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mapping<sp/>:<sp/>in_map_sorted)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mapping.first<sp/>!=<sp/>next_idx)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Some<sp/>attributes<sp/>were<sp/>skipped,<sp/>so<sp/>add<sp/>them<sp/>to<sp/>the<sp/>offset<sp/>without<sp/>enabling<sp/>in<sp/>VAO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>next_idx;<sp/>i<sp/>&lt;<sp/>mapping.first;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in[i]);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertexAttribPointer(</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mapping.second,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" kindref="member">resources::vertex_input_count</ref>(in[mapping.first]),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" kindref="member">GL_VERT_IN_ELEM_TYPE</ref>.get(in[mapping.first]),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info.vert_size(),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reinterpret_cast&lt;void*&gt;(offset)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in[mapping.first]);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_idx<sp/>=<sp/>mapping.first<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info.get_layout()<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50cabe5a791366c5f2810d7dd6132dc0f06c" kindref="member">resources::vertex_layout_t::SOA</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>vert_count<sp/>=<sp/>buf.get_size()<sp/>/<sp/>info.vert_size();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mapping<sp/>:<sp/>in_map_sorted)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mapping.first<sp/>!=<sp/>next_idx)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Some<sp/>attributes<sp/>were<sp/>skipped,<sp/>so<sp/>add<sp/>them<sp/>to<sp/>the<sp/>offset<sp/>without<sp/>enabling<sp/>in<sp/>VAO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>next_idx;<sp/>i<sp/>&lt;<sp/>mapping.first;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in[i])<sp/>*<sp/>vert_count;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertexAttribPointer(</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mapping.second,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" kindref="member">resources::vertex_input_count</ref>(in[mapping.first]),</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" kindref="member">GL_VERT_IN_ELEM_TYPE</ref>.get(in[mapping.first]),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reinterpret_cast&lt;void*&gt;(offset)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in[mapping.first])<sp/>*<sp/>vert_count;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_idx<sp/>=<sp/>mapping.first<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>vertex<sp/>format.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Map<sp/>inputs<sp/>in<sp/>ascending<sp/>order</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/>attrib<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>buf_info<sp/>:<sp/>buffers)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;buf<sp/>=<sp/>buf_info.first;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;info<sp/>=<sp/>buf_info.second;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(info.get_shader_input_map()))<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Shader<sp/>input<sp/>mapping<sp/>is<sp/>unsupported<sp/>when<sp/>constructing<sp/>a<sp/>VAO<sp/>from<sp/>multiple<sp/>buffers.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf.bind(GL_ARRAY_BUFFER);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info.get_layout()<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50ca4cc854cc056515cc2befbc91f30d07b0" kindref="member">resources::vertex_layout_t::AOS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>in<sp/>:<sp/>info.get_inputs())<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glEnableVertexAttribArray(attrib);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertexAttribPointer(</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>attrib,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" kindref="member">resources::vertex_input_count</ref>(in),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" kindref="member">GL_VERT_IN_ELEM_TYPE</ref>.get(in),</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info.vert_size(),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reinterpret_cast&lt;void*&gt;(offset)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>attrib<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info.get_layout()<sp/>==<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50cabe5a791366c5f2810d7dd6132dc0f06c" kindref="member">resources::vertex_layout_t::SOA</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>vert_count<sp/>=<sp/>buf.get_size()<sp/>/<sp/>info.vert_size();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>in<sp/>:<sp/>info.get_inputs())<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glEnableVertexAttribArray(attrib);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertexAttribPointer(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>attrib,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" kindref="member">resources::vertex_input_count</ref>(in),</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" kindref="member">GL_VERT_IN_ELEM_TYPE</ref>.get(in),</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reinterpret_cast&lt;void*&gt;(offset)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" kindref="member">resources::vertex_input_size</ref>(in)<sp/>*<sp/>vert_count;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>attrib<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>vertex<sp/>layout.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray::GlVertexArray</ref>(GlBuffer<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>buf,<sp/>resources::VertexInputInfo<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>info)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray</ref>(<sp/>{<sp/>{<sp/>buf,<sp/>info<sp/>}<sp/>}<sp/>)<sp/>{}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray::GlVertexArray</ref>()</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>GlSimpleObject([]<sp/>(GLuint<sp/>handle)<sp/>{<sp/>glDeleteVertexArrays(1,<sp/>&amp;handle);<sp/>}<sp/>)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/>handle;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenVertexArrays(1,<sp/>&amp;handle);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;handle<sp/>=<sp/>handle;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" kindref="member">GlVertexArray::bind</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindVertexArray(*this-&gt;handle);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enabling<sp/>the<sp/>vertexAttribArrays<sp/>here<sp/>again<sp/>is<sp/>unnecessary,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>because<sp/>the<sp/>VAO<sp/>bind<sp/>does<sp/>it<sp/>anyway.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/vertex_array.cpp"/>
+  </compounddef>
+</doxygen>

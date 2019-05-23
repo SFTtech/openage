@@ -1,0 +1,680 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1pyinterface_1_1_func" kind="class" language="C++" prot="public">
+    <compoundname>openage::pyinterface::Func</compoundname>
+    <includes refid="functional_8h" local="no">functional.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>ReturnType</declname>
+        <defname>ReturnType</defname>
+      </param>
+      <param>
+        <type>typename ...</type>
+        <declname>ArgTypes</declname>
+        <defname>ArgTypes</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" prot="private" static="no" mutable="no">
+        <type>std::function&lt; ReturnType(ArgTypes ...)&gt;</type>
+        <definition>std::function&lt;ReturnType (ArgTypes ...)&gt; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::fptr</definition>
+        <argsstring></argsstring>
+        <name>fptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="248" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a9aafa14c1e14d75e4c65258650e2281b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::Func</definition>
+        <argsstring>()</argsstring>
+        <name>Func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="60" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::Func</definition>
+        <argsstring>(F &amp;&amp;f)</argsstring>
+        <name>Func</name>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="66" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::Func</definition>
+        <argsstring>(std::reference_wrapper&lt; F &gt; f)</argsstring>
+        <name>Func</name>
+        <param>
+          <type>std::reference_wrapper&lt; F &gt;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="71" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::Func</definition>
+        <argsstring>(const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;f)</argsstring>
+        <name>Func</name>
+        <param>
+          <type>const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="76" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::Func</definition>
+        <argsstring>(std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;&amp;f)</argsstring>
+        <name>Func</name>
+        <param>
+          <type>std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="80" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>Func&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(F &amp;&amp;f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="86" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a79f4926a369a8e3cf54214abe80257a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>Func&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(std::reference_wrapper&lt; F &gt; f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>std::reference_wrapper&lt; F &gt;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="92" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa4c47359a02ab210750ba35bf012ff37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>Func&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="98" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a0193d5a98fe674619cd1d9b8d00d6b55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>Func&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;&amp;f)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;&amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="103" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::check_fptr</definition>
+        <argsstring>() const</argsstring>
+        <name>check_fptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>raises an Error if this-&gt;fptr is still uninitialized. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="111" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="111" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ReturnType</type>
+        <definition>ReturnType openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::call</definition>
+        <argsstring>(ArgTypes ...args) const</argsstring>
+        <name>call</name>
+        <param>
+          <type>ArgTypes ...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for direct usage (mostly from Cython) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="126" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::operator const std::function&lt; ReturnType</definition>
+        <argsstring>(ArgTypes ...)&gt; &amp;() const</argsstring>
+        <name>operator const std::function&lt; ReturnType</name>
+        <param>
+          <type>ArgTypes ...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for implicit conversion to std::function, for usage in a context where std::function would be expected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="135" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::function&lt; ReturnType(ArgTypes ...)&gt; &amp;</type>
+        <definition>const std::function&lt;ReturnType (ArgTypes ...)&gt;&amp; openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for explicit conversion to std::function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="143" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ...</type>
+            <declname>BoundArgTypes</declname>
+            <defname>BoundArgTypes</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind</definition>
+        <argsstring>(util::FunctionPtr&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt; f, BoundArgTypes ...bound_args)</argsstring>
+        <name>bind</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgTypes ...</type>
+          <declname>bound_args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>For manual binding of function pointers and arguments (from Cython; in C++, assign lambdas).</para>
+<para>Adds additional code that catches and converts Python exceptions to C++ exceptions.</para>
+<para>The &apos;<ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&apos; argument is due to <ulink url="http://stackoverflow.com/questions/31040075">http://stackoverflow.com/questions/31040075</ulink>. Note that with clang, it&apos;s possible to directly pass function pointers, while with gcc they need to be explicitly converted. Meh. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="158" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ...</type>
+            <declname>BoundArgTypes</declname>
+            <defname>BoundArgTypes</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_noexcept</definition>
+        <argsstring>(util::FunctionPtr&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt; f, BoundArgTypes ...bound_args)</argsstring>
+        <name>bind_noexcept</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgTypes ...</type>
+          <declname>bound_args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Like bind, but does <emphasis>not</emphasis> add an exception checker. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="194" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="194" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind0</definition>
+        <argsstring>(ReturnType(*f)(ArgTypes ...))</argsstring>
+        <name>bind0</name>
+        <param>
+          <type>ReturnType(*)(ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="201" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="201" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_noexcept0</definition>
+        <argsstring>(ReturnType(*f)(ArgTypes ...))</argsstring>
+        <name>bind_noexcept0</name>
+        <param>
+          <type>ReturnType(*)(ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="206" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="206" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind1</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, ArgTypes ...), BoundArgType0 bound_arg0)</argsstring>
+        <name>bind1</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="212" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="212" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_noexcept1</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, ArgTypes ...), BoundArgType0 bound_arg0)</argsstring>
+        <name>bind_noexcept1</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="218" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="218" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+          <param>
+            <type>typename BoundArgType1</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind2</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, BoundArgType1, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1)</argsstring>
+        <name>bind2</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, BoundArgType1, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <param>
+          <type>BoundArgType1</type>
+          <declname>bound_arg1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="224" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="224" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+          <param>
+            <type>typename BoundArgType1</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_noexcept2</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, BoundArgType1, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1)</argsstring>
+        <name>bind_noexcept2</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, BoundArgType1, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <param>
+          <type>BoundArgType1</type>
+          <declname>bound_arg1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="230" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="230" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+          <param>
+            <type>typename BoundArgType1</type>
+          </param>
+          <param>
+            <type>typename BoundArgType2</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind3</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2)</argsstring>
+        <name>bind3</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <param>
+          <type>BoundArgType1</type>
+          <declname>bound_arg1</declname>
+        </param>
+        <param>
+          <type>BoundArgType2</type>
+          <declname>bound_arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="236" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="236" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename BoundArgType0</type>
+          </param>
+          <param>
+            <type>typename BoundArgType1</type>
+          </param>
+          <param>
+            <type>typename BoundArgType2</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_noexcept3</definition>
+        <argsstring>(ReturnType(*f)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...), BoundArgType0 bound_arg0, BoundArgType1 bound_arg1, BoundArgType2 bound_arg2)</argsstring>
+        <name>bind_noexcept3</name>
+        <param>
+          <type>ReturnType(*)(BoundArgType0, BoundArgType1, BoundArgType2, ArgTypes ...)</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgType0</type>
+          <declname>bound_arg0</declname>
+        </param>
+        <param>
+          <type>BoundArgType1</type>
+          <declname>bound_arg1</declname>
+        </param>
+        <param>
+          <type>BoundArgType2</type>
+          <declname>bound_arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="242" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="242" bodyend="245"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1acea6cb67bc0e8ea78d513f6db4e2e477" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>return_type_is_void</declname>
+            <defname>return_type_is_void</defname>
+          </param>
+          <param>
+            <type>typename ...</type>
+            <declname>BoundArgTypes</declname>
+            <defname>BoundArgTypes</defname>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; return_type_is_void &gt;::type</type>
+        <definition>std::enable_if&lt;return_type_is_void&gt;::type openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_catchexcept_impl</definition>
+        <argsstring>(util::FunctionPtr&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt; f, BoundArgTypes ...bound_args)</argsstring>
+        <name>bind_catchexcept_impl</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgTypes ...</type>
+          <declname>bound_args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with void return types. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="168" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="168" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>bool</type>
+            <declname>return_type_is_void</declname>
+            <defname>return_type_is_void</defname>
+          </param>
+          <param>
+            <type>typename ...</type>
+            <declname>BoundArgTypes</declname>
+            <defname>BoundArgTypes</defname>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; not return_type_is_void &gt;::type</type>
+        <definition>std::enable_if&lt;not return_type_is_void&gt;::type openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;::bind_catchexcept_impl</definition>
+        <argsstring>(util::FunctionPtr&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt; f, BoundArgTypes ...bound_args)</argsstring>
+        <name>bind_catchexcept_impl</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_function_ptr" kindref="compound">util::FunctionPtr</ref>&lt; ReturnType, BoundArgTypes ..., ArgTypes ... &gt;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>BoundArgTypes ...</type>
+          <declname>bound_args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specialization for <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> with non-void return types. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="180" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="180" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds a function pointer, with bound arguments.</para>
+<para>Can be filled via its implicit copy constructor, operator = or <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref>.</para>
+<para>operator = is designed for usage from C++, and accepts set() sets it to an existing std::function object one of its <ref refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" kindref="member">bind()</ref> members.</para>
+<para>It&apos;s auto-converted to std::function, and can be called via <ref refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" kindref="member">call()</ref>.</para>
+<para>Designed to allow Cython to call C++ functions that accept std::function callbacks, and to provide a callback function type for Cython to offer to C++.</para>
+<para>As of right now, Cython doesn&apos;t support variadic templates [<ulink url="https://mail.python.org/pipermail/cython-devel/2015-June/004429.html">https://mail.python.org/pipermail/cython-devel/2015-June/004429.html</ulink>].</para>
+<para>Thus, <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref> has aliases to allow usage like regular templated types, one for each number of arguments:</para>
+<para>from libopenage.pyinterface.functional import Func2 void myfunc(float a0, int a1, int a2): pass Func2[void, int, int] fobj <ref refid="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" kindref="member">Func2.bind1</ref><ulink url="myfunc, 5.0">float</ulink></para>
+<para>There are definitions up to Func5 and bind3; if you encounter a situation where you&apos;d need more, maybe you should re-think some of your life choices.</para>
+<para>Note that you shouldn&apos;t use this type purely internally in Cython, since if you bind a Cython function and call it from Cython, every Exception would be needlessly converted from Py to C++ to Py...</para>
+<para>For global function pointers that should be initialized at pyinterface initialization time, use <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> instead of <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>; that class has some additional code to verify successful initialization. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1560">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pyinterface/functional.h" line="58" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="58" bodyend="249"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind0</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind1</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind2</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind3</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1acea6cb67bc0e8ea78d513f6db4e2e477" prot="private" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_catchexcept_impl</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a46b2a8ba15d152e0d0ef9110dbf7b3f2" prot="private" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_catchexcept_impl</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_noexcept</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_noexcept0</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_noexcept1</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_noexcept2</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>bind_noexcept3</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>call</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>check_fptr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a4d8d1e21e00ba9a5da7606354abb136a" prot="private" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>fptr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a9aafa14c1e14d75e4c65258650e2281b" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>get</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>operator const std::function&lt; ReturnType</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a79f4926a369a8e3cf54214abe80257a6" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa4c47359a02ab210750ba35bf012ff37" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a0193d5a98fe674619cd1d9b8d00d6b55" prot="public" virt="non-virtual"><scope>openage::pyinterface::Func</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

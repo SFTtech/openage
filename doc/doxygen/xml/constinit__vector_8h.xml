@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="constinit__vector_8h" kind="file" language="C++">
+    <compoundname>constinit_vector.h</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">memory</includes>
+    <includes refid="compiler_8h" local="yes">compiler.h</includes>
+    <includedby refid="constinit__vector_8cpp" local="yes">libopenage/util/constinit_vector.cpp</includedby>
+    <incdepgraph>
+      <node id="28151">
+        <label>string</label>
+      </node>
+      <node id="28146">
+        <label>libopenage/util/constinit_vector.h</label>
+        <link refid="constinit__vector_8h"/>
+        <childnode refid="28147" relation="include">
+        </childnode>
+        <childnode refid="28148" relation="include">
+        </childnode>
+        <childnode refid="28149" relation="include">
+        </childnode>
+      </node>
+      <node id="28150">
+        <label>ciso646</label>
+      </node>
+      <node id="28149">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28150" relation="include">
+        </childnode>
+        <childnode refid="28151" relation="include">
+        </childnode>
+        <childnode refid="28152" relation="include">
+        </childnode>
+      </node>
+      <node id="28152">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28152" relation="include">
+        </childnode>
+      </node>
+      <node id="28147">
+        <label>algorithm</label>
+      </node>
+      <node id="28148">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="28154">
+        <label>libopenage/util/constinit_vector.cpp</label>
+        <link refid="constinit__vector_8cpp"/>
+      </node>
+      <node id="28153">
+        <label>libopenage/util/constinit_vector.h</label>
+        <link refid="constinit__vector_8h"/>
+        <childnode refid="28154" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1_const_init_vector" prot="public">openage::util::ConstInitVector</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="compiler_8h" kindref="compound">compiler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1util_1_1_const_init_vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1util_1_1_const_init_vector_1aa937103ff0cf9cfcfdc40c5b588f520a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1aa937103ff0cf9cfcfdc40c5b588f520a" kindref="member">ConstInitVector</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">},<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>{16},<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref>{0}<sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1afe5d1ab55d507b83b5cd292f09215d5c" kindref="member">~ConstInitVector</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::allocator&lt;T&gt;<sp/>alloc;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.destroy(&amp;this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.deallocate(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1aa937103ff0cf9cfcfdc40c5b588f520a" kindref="member">ConstInitVector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;T&gt;</ref><sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1aa937103ff0cf9cfcfdc40c5b588f520a" kindref="member">ConstInitVector</ref>(<ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;T&gt;</ref><sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7932239e906a33dd0ec0c6368d988595" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;T&gt;</ref><sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7932239e906a33dd0ec0c6368d988595" kindref="member">operator =</ref>(<ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;T&gt;</ref><sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" kindref="member">push_back</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::allocator&lt;T&gt;<sp/>alloc;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>obj<sp/>is<sp/>fresh<sp/>and<sp/>needs<sp/>to<sp/>allocate<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref><sp/>=<sp/>alloc.allocate(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref><sp/>==<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>obj<sp/>is<sp/>full<sp/>and<sp/>needs<sp/>to<sp/>resize<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>newcapacity<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref><sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>*newdata<sp/>=<sp/>alloc.allocate(newcapacity);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.construct(&amp;newdata[i],<sp/>std::move_if_noexcept(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>[i]));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.destroy(&amp;this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.deallocate(this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>,<sp/>this-&gt;capacity);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref><sp/>=<sp/>newdata;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;capacity<sp/>=<sp/>newcapacity;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>val<sp/>at<sp/>the<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alloc.construct(&amp;this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>[this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref>],<sp/>val);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;count<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1util_1_1_const_init_vector_1a480596ddb84d5de0cf5efd05a8ada773" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a480596ddb84d5de0cf5efd05a8ada773" kindref="member">operator[] </ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>idx)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>[idx];</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" kindref="member">size</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="94" refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*<ref refid="classopenage_1_1util_1_1_const_init_vector_1a513a7f0d7c006a44a0d870cfea7bdf3e" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="95" refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1ae798749afd7c6cd370a440b65fe762d3" kindref="member">capacity</ref>;</highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector_1a7865b21f7d5faf61031a76fe3e3acd91" kindref="member">count</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/constinit_vector.h"/>
+  </compounddef>
+</doxygen>

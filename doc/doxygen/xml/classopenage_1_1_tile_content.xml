@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_tile_content" kind="class" language="C++" prot="public">
+    <compoundname>openage::TileContent</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_tile_content_1ac370821023f0c2e78ef4ab0c27c7bf09" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+        <definition>terrain_t openage::TileContent::terrain_id</definition>
+        <argsstring></argsstring>
+        <name>terrain_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="58" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> * &gt;</type>
+        <definition>std::vector&lt;TerrainObject *&gt; openage::TileContent::obj</definition>
+        <argsstring></argsstring>
+        <name>obj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="59" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_tile_content_1a5d266a55d460605258299b7950b1dfc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TileContent::TileContent</definition>
+        <argsstring>()</argsstring>
+        <name>TileContent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="56" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_tile_content_1aa9e037cf0a97b5a1957337f283747968" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TileContent::~TileContent</definition>
+        <argsstring>()</argsstring>
+        <name>~TileContent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="57" column="1" bodyfile="libopenage/terrain/terrain.cpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>describes the properties of one terrain tile.</para>
+<para>this includes the terrain_id (ice, water, grass, ...) and the list of objects which have a bounding box overlapping the tile </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4518">
+        <label>openage::TileContent</label>
+        <link refid="classopenage_1_1_tile_content"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="54" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="54" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_tile_content_1aaeff054a61d61cc0c65cfefcc78de233" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>obj</name></member>
+      <member refid="classopenage_1_1_tile_content_1ac370821023f0c2e78ef4ab0c27c7bf09" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>terrain_id</name></member>
+      <member refid="classopenage_1_1_tile_content_1a5d266a55d460605258299b7950b1dfc1" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>TileContent</name></member>
+      <member refid="classopenage_1_1_tile_content_1aa9e037cf0a97b5a1957337f283747968" prot="public" virt="non-virtual"><scope>openage::TileContent</scope><name>~TileContent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

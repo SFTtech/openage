@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1input__delta" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::input_delta</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordXYRelative&lt; pixel_t, input, input_delta &gt;</basecompoundref>
+    <includes refid="pixel_8h" local="no">pixel.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">viewport_delta</ref></type>
+        <definition>viewport_delta openage::coord::input_delta::to_viewport</definition>
+        <argsstring>(const CoordManager &amp;mgr) const</argsstring>
+        <name>to_viewport</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/pixel.h" line="90" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="103" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1input__delta_1abc20c3dad9b05730566a6f2fe224cdbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">camgame_delta</ref></type>
+        <definition>camgame_delta openage::coord::input_delta::to_camgame</definition>
+        <argsstring>(const CoordManager &amp;mgr) const</argsstring>
+        <name>to_camgame</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/pixel.h" line="91" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="113" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1input__delta_1a508c2df08f42b8754cc07ed1e4c6f309" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">phys3_delta</ref></type>
+        <definition>phys3_delta openage::coord::input_delta::to_phys3</definition>
+        <argsstring>(const CoordManager &amp;mgr, phys_t up=phys_t::zero()) const</argsstring>
+        <name>to_phys3</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">CoordManager</ref> &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">phys_t</ref></type>
+          <declname>up</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_fixed_point_1ac15c9eac48a2d30284089c642f7176b5" kindref="member">phys_t::zero</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/pixel.h" line="92" column="1" bodyfile="libopenage/coord/pixel.cpp" bodystart="118" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2982">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="2981">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="2982" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2984">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="2983">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="2984" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/pixel.h" line="87" column="1" bodyfile="libopenage/coord/pixel.h" bodystart="87" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1coord_1_1input__delta_1abc20c3dad9b05730566a6f2fe224cdbc" prot="public" virt="non-virtual"><scope>openage::coord::input_delta</scope><name>to_camgame</name></member>
+      <member refid="structopenage_1_1coord_1_1input__delta_1a508c2df08f42b8754cc07ed1e4c6f309" prot="public" virt="non-virtual"><scope>openage::coord::input_delta</scope><name>to_phys3</name></member>
+      <member refid="structopenage_1_1coord_1_1input__delta_1a28c98fe72a1613ad6092eba2b5c505ab" prot="public" virt="non-virtual"><scope>openage::coord::input_delta</scope><name>to_viewport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

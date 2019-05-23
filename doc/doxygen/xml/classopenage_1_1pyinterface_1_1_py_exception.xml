@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1pyinterface_1_1_py_exception" kind="class" language="C++" prot="public">
+    <compoundname>openage::pyinterface::PyException</compoundname>
+    <basecompoundref refid="classopenage_1_1error_1_1_error" prot="public" virt="non-virtual">openage::error::Error</basecompoundref>
+    <includes refid="pyexception_8h" local="no">pyexception.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1pyinterface_1_1_py_exception_1ac541a09011ddd24b3e16700f9979b3fc" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyException::py_obj</definition>
+        <argsstring></argsstring>
+        <name>py_obj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reference to the Python exception object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="71" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyException::type_name</definition>
+        <argsstring>() const override</argsstring>
+        <name>type_name</name>
+        <reimplements refid="classopenage_1_1error_1_1_error_1a6c5c486df5943aa399b6c051d9eb9059">type_name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the type name of py_obj. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="65" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="35" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyException::init_backtrace</definition>
+        <argsstring>()</argsstring>
+        <name>init_backtrace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes this-&gt;backtrace with a <ref refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace" kindref="compound">PyExceptionBacktrace</ref> object that points at this-&gt;py_obj-&gt;get_ref(). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="78" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Thrown by <ref refid="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" kindref="member">translate_exc_py_to_cpp()</ref> from <ref refid="exctranslate_8h" kindref="compound">exctranslate.h</ref>.</para>
+<para>These objects are constructed entirely empty, and designed to be filled from <ref refid="namespaceopenage_1_1pyinterface_1a29e783fc0db24c266caed883f5781e96" kindref="member">describe_py_exception()</ref>.</para>
+<para>pxd:</para>
+<para>cppclass PyException(Error): <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> py_obj void <ref refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" kindref="member">init_backtrace()</ref> except + </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3781">
+        <label>runtime_error</label>
+      </node>
+      <node id="3779">
+        <label>openage::pyinterface::PyException</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
+        <childnode refid="3780" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3780">
+        <label>openage::error::Error</label>
+        <link refid="classopenage_1_1error_1_1_error"/>
+        <childnode refid="3781" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3784">
+        <label>runtime_error</label>
+      </node>
+      <node id="3785">
+        <label>openage::log::message</label>
+        <link refid="structopenage_1_1log_1_1message"/>
+        <childnode refid="3786" relation="usage">
+          <edgelabel>+lvl</edgelabel>
+        </childnode>
+      </node>
+      <node id="3782">
+        <label>openage::pyinterface::PyException</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception"/>
+        <childnode refid="3783" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3790" relation="usage">
+          <edgelabel>+py_obj</edgelabel>
+        </childnode>
+      </node>
+      <node id="3789">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="3787">
+        <label>openage::util::Enum&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="3788" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3786">
+        <label>openage::log::level</label>
+        <link refid="structopenage_1_1log_1_1level"/>
+        <childnode refid="3787" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3788" relation="usage">
+          <edgelabel>+NOOPTIMIZE</edgelabel>
+        </childnode>
+      </node>
+      <node id="3783">
+        <label>openage::error::Error</label>
+        <link refid="classopenage_1_1error_1_1_error"/>
+        <childnode refid="3784" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3785" relation="usage">
+          <edgelabel>+msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="3788">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="3789" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3790">
+        <label>openage::pyinterface::PyObjectRef</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_object_ref"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pyinterface/pyexception.h" line="60" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="60" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1error_1_1_error_1a8ad0320b8e32d6f187d0f4a74bd89d69" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>backtrace</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1ad7fc5249c96f6c6e2c3bfa55dfe8235b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>debug_break_on_create</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a755a7891dfe08412bc2312f29b0e618d" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>Error</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_1aa8b1811a748a3b9098ecea916a925393" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>init_backtrace</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>msg</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_1ac541a09011ddd24b3e16700f9979b3fc" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>py_obj</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>rethrow_cause</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a27cbe56bc7dbab4d399072ef87fe2014" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>store_cause</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1a1a6de651093edf2d3673cd0d146992e4" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>trim_backtrace</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" prot="public" virt="virtual"><scope>openage::pyinterface::PyException</scope><name>type_name</name></member>
+      <member refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyException</scope><name>what</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="error_2handlers_8cpp" kind="file" language="C++">
+    <compoundname>handlers.cpp</compoundname>
+    <includes refid="error_2handlers_8h" local="yes">handlers.h</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">typeinfo</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">unistd.h</includes>
+    <includes refid="signal_8h" local="yes">../util/signal.h</includes>
+    <includes refid="init_8h" local="yes">../util/init.h</includes>
+    <includes refid="language_8h" local="yes">../util/language.h</includes>
+    <includes refid="error_2error_8h" local="yes">error.h</includes>
+    <includes refid="stackanalyzer_8h" local="yes">stackanalyzer.h</includes>
+    <incdepgraph>
+      <node id="6338">
+        <label>list</label>
+      </node>
+      <node id="6329">
+        <label>atomic</label>
+      </node>
+      <node id="6342">
+        <label>stackanalyzer.h</label>
+        <link refid="stackanalyzer_8h"/>
+        <childnode refid="6343" relation="include">
+        </childnode>
+      </node>
+      <node id="6334">
+        <label>iomanip</label>
+      </node>
+      <node id="6318">
+        <label>functional</label>
+      </node>
+      <node id="6343">
+        <label>backtrace.h</label>
+        <link refid="backtrace_8h"/>
+        <childnode refid="6336" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+        <childnode refid="6313" relation="include">
+        </childnode>
+        <childnode refid="6318" relation="include">
+        </childnode>
+      </node>
+      <node id="6324">
+        <label>cstdint</label>
+      </node>
+      <node id="6332">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="6333" relation="include">
+        </childnode>
+        <childnode refid="6318" relation="include">
+        </childnode>
+        <childnode refid="6334" relation="include">
+        </childnode>
+        <childnode refid="6321" relation="include">
+        </childnode>
+        <childnode refid="6335" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+        <childnode refid="6336" relation="include">
+        </childnode>
+      </node>
+      <node id="6322">
+        <label>stdexcept</label>
+      </node>
+      <node id="6319">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="6337">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="6338" relation="include">
+        </childnode>
+        <childnode refid="6339" relation="include">
+        </childnode>
+        <childnode refid="6340" relation="include">
+        </childnode>
+      </node>
+      <node id="6333">
+        <label>cstdarg</label>
+      </node>
+      <node id="6310">
+        <label>string</label>
+      </node>
+      <node id="6323">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="6324" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+        <childnode refid="6325" relation="include">
+        </childnode>
+        <childnode refid="6326" relation="include">
+        </childnode>
+        <childnode refid="6328" relation="include">
+        </childnode>
+        <childnode refid="6337" relation="include">
+        </childnode>
+        <childnode refid="6340" relation="include">
+        </childnode>
+      </node>
+      <node id="6326">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="6327" relation="include">
+        </childnode>
+      </node>
+      <node id="6328">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="6329" relation="include">
+        </childnode>
+        <childnode refid="6321" relation="include">
+        </childnode>
+        <childnode refid="6330" relation="include">
+        </childnode>
+        <childnode refid="6308" relation="include">
+        </childnode>
+        <childnode refid="6331" relation="include">
+        </childnode>
+        <childnode refid="6332" relation="include">
+        </childnode>
+      </node>
+      <node id="6307">
+        <label>handlers.h</label>
+        <link refid="error_2handlers_8h"/>
+        <childnode refid="6308" relation="include">
+        </childnode>
+      </node>
+      <node id="6312">
+        <label>exception</label>
+      </node>
+      <node id="6320">
+        <label>error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="6313" relation="include">
+        </childnode>
+        <childnode refid="6321" relation="include">
+        </childnode>
+        <childnode refid="6322" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+        <childnode refid="6308" relation="include">
+        </childnode>
+        <childnode refid="6323" relation="include">
+        </childnode>
+      </node>
+      <node id="6314">
+        <label>typeinfo</label>
+      </node>
+      <node id="6316">
+        <label>unistd.h</label>
+      </node>
+      <node id="6336">
+        <label>vector</label>
+      </node>
+      <node id="6309">
+        <label>ciso646</label>
+      </node>
+      <node id="6335">
+        <label>sstream</label>
+      </node>
+      <node id="6308">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="6309" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+        <childnode refid="6311" relation="include">
+        </childnode>
+      </node>
+      <node id="6311">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="6311" relation="include">
+        </childnode>
+      </node>
+      <node id="6331">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="6313" relation="include">
+        </childnode>
+        <childnode refid="6310" relation="include">
+        </childnode>
+      </node>
+      <node id="6340">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="6341" relation="include">
+        </childnode>
+      </node>
+      <node id="6327">
+        <label>cstdlib</label>
+      </node>
+      <node id="6313">
+        <label>iostream</label>
+      </node>
+      <node id="6339">
+        <label>mutex</label>
+      </node>
+      <node id="6330">
+        <label>type_traits</label>
+      </node>
+      <node id="6325">
+        <label>config.h</label>
+      </node>
+      <node id="6306">
+        <label>libopenage/error/handlers.cpp</label>
+        <link refid="error_2handlers_8cpp"/>
+        <childnode refid="6307" relation="include">
+        </childnode>
+        <childnode refid="6312" relation="include">
+        </childnode>
+        <childnode refid="6313" relation="include">
+        </childnode>
+        <childnode refid="6314" relation="include">
+        </childnode>
+        <childnode refid="6315" relation="include">
+        </childnode>
+        <childnode refid="6316" relation="include">
+        </childnode>
+        <childnode refid="6311" relation="include">
+        </childnode>
+        <childnode refid="6317" relation="include">
+        </childnode>
+        <childnode refid="6319" relation="include">
+        </childnode>
+        <childnode refid="6320" relation="include">
+        </childnode>
+        <childnode refid="6342" relation="include">
+        </childnode>
+      </node>
+      <node id="6315">
+        <label>cstring</label>
+      </node>
+      <node id="6317">
+        <label>../util/init.h</label>
+        <link refid="init_8h"/>
+        <childnode refid="6318" relation="include">
+        </childnode>
+      </node>
+      <node id="6321">
+        <label>memory</label>
+      </node>
+      <node id="6341">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="6313" relation="include">
+        </childnode>
+        <childnode refid="6314" relation="include">
+        </childnode>
+        <childnode refid="6308" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>holds<sp/>handlers<sp/>for<sp/>std::terminate<sp/>and<sp/>SIGSEGV.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>The<sp/>handlers<sp/>print<sp/>stack<sp/>trace<sp/>and<sp/>(for<sp/>terminate)<sp/>exception<sp/>information,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>before<sp/>allowing<sp/>the<sp/>program<sp/>to<sp/>exit.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>The<sp/>handlers<sp/>are<sp/>installed<sp/>when<sp/>loading<sp/>the<sp/>library,<sp/>and<sp/>uninstalled</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>when<sp/>unloading<sp/>it.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error_2handlers_8h" kindref="compound">handlers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeinfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;io.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/signal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/init.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/language.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error_2error_8h" kindref="compound">error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stackanalyzer_8h" kindref="compound">stackanalyzer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">error<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">[[noreturn]]<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" kindref="member">terminate_handler</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" kindref="member">sigsegv_handler</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>unused<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" kindref="member">exit_handler</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>global<sp/>state<sp/>has<sp/>internal<sp/>linkage<sp/>only.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">namespace<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exit_ok;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" kindref="member">std::terminate_handler</ref><sp/>old_terminate_handler;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__FreeBSD__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sig_t<sp/>sighandler_t;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">sighandler_t<sp/>old_sigsegv_handler;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">util::OnInit<sp/>install_handlers([]()<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>old_sigsegv_handler<sp/>=<sp/>signal(SIGSEGV,<sp/><ref refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" kindref="member">sigsegv_handler</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>old_terminate_handler<sp/>=<sp/>std::set_terminate(<ref refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" kindref="member">terminate_handler</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>exit_ok<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>atexit(<ref refid="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" kindref="member">exit_handler</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">});</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">util::OnDeInit<sp/>restore_handlers([]()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set_terminate(old_terminate_handler);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(SIGSEGV,<sp/>old_sigsegv_handler);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">});</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" refkind="member"><highlight class="normal">[[noreturn]]<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1ae713528ccc0e378838c233a2a405026a" kindref="member">terminate_handler</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>immediately<sp/>unset<sp/>this<sp/>handler,<sp/>to<sp/>avoid<sp/>endless<sp/>recursions<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>terminate()<sp/>is<sp/>accidentially<sp/>triggered<sp/>from<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set_terminate(old_terminate_handler);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n\x1b[31;1mFATAL:<sp/>terminate<sp/>has<sp/>been<sp/>called\x1b[m&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::exception_ptr<sp/>e_ptr<sp/>=<sp/>std::current_exception())<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n\x1b[33muncaught<sp/>exception\x1b[m\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::rethrow_exception(e_ptr);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref><sp/>&amp;exc)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>exc<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;exc)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;std::exception<sp/>of<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" kindref="member">util::demangle</ref>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(exc).name())<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>exc.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;non-standard<sp/>exception<sp/>object&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n\x1b[33mcurrent<sp/>stack:\x1b[m\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref><sp/>backtrace;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>backtrace.<ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>backtrace<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>die<sp/>again<sp/>to<sp/>enable<sp/>debugger<sp/>functionality.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>maybe<sp/>print<sp/>some<sp/>additional<sp/>useful<sp/>info<sp/>that<sp/>we<sp/>forgot<sp/>about.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>we<sp/>maybe<sp/>want<sp/>to<sp/>prevent<sp/>that<sp/>for<sp/>end-users.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\x1b[33mhanding<sp/>over<sp/>to<sp/>the<sp/>system...\x1b[m\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1afafcc06f7279949f56f93e5506656528" kindref="member">sigsegv_handler</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>unused<sp/>*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>theory,<sp/>this<sp/>handler<sp/>may<sp/>only<sp/>call<sp/>async-signal-safe<sp/>functions,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>such<sp/>as<sp/>write().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\n\x1b[31;1mSIGSEGV\x1b[m\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a8cb190d6ba8c160e1453ff4379dd2dcb" kindref="member">util::ignore_result</ref>(write(1,<sp/>message,<sp/><ref refid="namespaceopenage_1_1util_1_1constexpr___1a72a87a05e383ec62bf0b60359f314df7" kindref="member">strlen</ref>(message)));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>however,<sp/>everything<sp/>is<sp/>broken<sp/>anyways.<sp/>can&apos;t<sp/>hurt<sp/>to<sp/>try<sp/>to<sp/>print</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>more<sp/>useful<sp/>info.<sp/>fuck<sp/>the<sp/>police!<sp/>wheeee!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::terminate();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1a456dc46fa28ef457ef19c8f879c256b1" kindref="member">exit_handler</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>handler<sp/>is<sp/>registered<sp/>to<sp/>run<sp/>atexit().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>used<sp/>to<sp/>catch<sp/>calls<sp/>to<sp/>exit()<sp/>that<sp/>occur<sp/>somewhere<sp/>inside</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>running<sp/>game<sp/>(while<sp/>exit_ok<sp/>==<sp/>false).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exit()<sp/>should<sp/>never<sp/>be<sp/>invoked<sp/>directly<sp/>while<sp/>the<sp/>game<sp/>is<sp/>running,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>some<sp/>libraries<sp/>such<sp/>as<sp/>libepoxy<sp/>might<sp/>do<sp/>it<sp/>anyway.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>actual<sp/>proper<sp/>way<sp/>of<sp/>exiting<sp/>the<sp/>running<sp/>game<sp/>is<sp/>via<sp/>throwing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>exception<sp/>or<sp/>similar<sp/>action.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(exit_ok)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\x1b[31;1mexit()<sp/>was<sp/>called<sp/>in<sp/>an<sp/>illegal<sp/>place\x1b[m\n&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="namespaceopenage_1_1error_1aa782a00ec80760003f986c063aef169d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1error_1aa782a00ec80760003f986c063aef169d" kindref="member">set_exit_ok</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>exit_ok<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/error/handlers.cpp"/>
+  </compounddef>
+</doxygen>

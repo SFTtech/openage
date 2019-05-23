@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__callback_8cpp" kind="file" language="C++">
+    <compoundname>gui_callback.cpp</compoundname>
+    <includes refid="gui__callback_8h" local="yes">gui_callback.h</includes>
+    <includes local="no">cassert</includes>
+    <incdepgraph>
+      <node id="12963">
+        <label>functional</label>
+      </node>
+      <node id="12964">
+        <label>QObject</label>
+      </node>
+      <node id="12966">
+        <label>cassert</label>
+      </node>
+      <node id="12965">
+        <label>QMetaType</label>
+      </node>
+      <node id="12962">
+        <label>gui_callback.h</label>
+        <link refid="gui__callback_8h"/>
+        <childnode refid="12963" relation="include">
+        </childnode>
+        <childnode refid="12964" relation="include">
+        </childnode>
+        <childnode refid="12965" relation="include">
+        </childnode>
+      </node>
+      <node id="12961">
+        <label>libopenage/gui/guisys/private/gui_callback.cpp</label>
+        <link refid="gui__callback_8cpp"/>
+        <childnode refid="12962" relation="include">
+        </childnode>
+        <childnode refid="12966" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__callback_8h" kindref="compound">gui_callback.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qRegisterMetaType&lt;std::function&lt;void()&gt;&gt;(</highlight><highlight class="stringliteral">&quot;function&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classqtsdl_1_1_gui_callback_1a1069c0650f91b910170a3ece87b61a6f" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_callback_1a1069c0650f91b910170a3ece87b61a6f" kindref="member">GuiCallback::GuiCallback</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{}<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classqtsdl_1_1_gui_callback_1a001c8164e036b5b3567f3f32098a53ed" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_callback_1a001c8164e036b5b3567f3f32098a53ed" kindref="member">GuiCallback::~GuiCallback</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" kindref="member">GuiCallback::process</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>&amp;f)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>f();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_callback.cpp"/>
+  </compounddef>
+</doxygen>

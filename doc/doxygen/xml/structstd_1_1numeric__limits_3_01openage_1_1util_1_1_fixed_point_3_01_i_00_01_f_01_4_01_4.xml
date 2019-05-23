@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</compoundname>
+    <includes refid="fixed__point_8h" local="no">fixed_point.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename I</type>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>F</declname>
+        <defname>F</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a6691046f0043d8eede86b6c920718b0e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>static constexpr openage::util::FixedPoint&lt;I, F&gt; std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::min</definition>
+        <argsstring>()</argsstring>
+        <name>min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="511" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="511" bodyend="513"/>
+      </memberdef>
+      <memberdef kind="function" id="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1acd9652a369be3466ee4753147f2ec823" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>static constexpr openage::util::FixedPoint&lt;I, F&gt; std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::max</definition>
+        <argsstring>()</argsstring>
+        <name>max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="515" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="515" bodyend="517"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3373">
+        <label>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</label>
+        <link refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fixed_point.h" line="510" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="510" bodyend="518"/>
+    <listofallmembers>
+      <member refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1acd9652a369be3466ee4753147f2ec823" prot="public" virt="non-virtual"><scope>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>max</name></member>
+      <member refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a6691046f0043d8eede86b6c920718b0e" prot="public" virt="non-virtual"><scope>std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>min</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

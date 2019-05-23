@@ -1,0 +1,415 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_gather_action" kind="class" language="C++" prot="public">
+    <compoundname>openage::GatherAction</compoundname>
+    <basecompoundref refid="classopenage_1_1_target_action" prot="public" virt="non-virtual">openage::TargetAction</basecompoundref>
+    <includes refid="unit_2action_8h" local="no">action.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_gather_action_1ac68160161d98b20ed137df83c1be2763" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::GatherAction::complete</definition>
+        <argsstring></argsstring>
+        <name>complete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="553" column="1" bodyfile="libopenage/unit/action.h" bodystart="553" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_gather_action_1a84f2390c263f5263442d816ffc1f7325" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::GatherAction::target_resource</definition>
+        <argsstring></argsstring>
+        <name>target_resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="553" column="1" bodyfile="libopenage/unit/action.h" bodystart="553" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_gather_action_1adf5b4ae906a77b4afc1338a6dcc6cbe2" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::GatherAction::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="554" column="1" bodyfile="libopenage/unit/action.h" bodystart="554" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_gather_action_1a61ec0ea56e1fe10f0afb685ce8e5135e" prot="private" static="no" mutable="no">
+        <type>gamedata::unit_classes</type>
+        <definition>gamedata::unit_classes openage::GatherAction::resource_class</definition>
+        <argsstring></argsstring>
+        <name>resource_class</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="555" column="1" bodyfile="libopenage/unit/action.h" bodystart="555" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1ae433349aed9b3228f3b5030c270d23f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::GatherAction::GatherAction</definition>
+        <argsstring>(Unit *e, UnitReference tar)</argsstring>
+        <name>GatherAction</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+          <declname>tar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="544" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="1020" bodyend="1046"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1ace33d947d69c60190f8259bebc8ca52b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::GatherAction::~GatherAction</definition>
+        <argsstring>()</argsstring>
+        <name>~GatherAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="545" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="1048" bodyend="1048"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1ae49e08d7e107415297f6c58320570858" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::GatherAction::update_in_range</definition>
+        <argsstring>(unsigned int time, Unit *target_unit) override</argsstring>
+        <name>update_in_range</name>
+        <reimplements refid="classopenage_1_1_target_action_1a0689cb2d55ae8ad82e704c79b4596bca">update_in_range</reimplements>
+        <param>
+          <type>unsigned int</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Control units action when in range of the target </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="547" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="1050" bodyend="1133"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::GatherAction::on_completion_in_range</definition>
+        <argsstring>(int target_type) override</argsstring>
+        <name>on_completion_in_range</name>
+        <reimplements refid="classopenage_1_1_target_action_1a32fc1723b0f6ce5e3bdb76794ff1ccf1">on_completion_in_range</reimplements>
+        <param>
+          <type>int</type>
+          <declname>target_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="548" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="1135" bodyend="1153"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1a1234dabb1549d67aaa1dbf3db7fce494" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::GatherAction::completed_in_range</definition>
+        <argsstring>(Unit *) const override</argsstring>
+        <name>completed_in_range</name>
+        <reimplements refid="classopenage_1_1_target_action_1a43bd7367738e16d715df0a1bfbd080cf">completed_in_range</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="549" column="1" bodyfile="libopenage/unit/action.h" bodystart="549" bodyend="549"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1ac69d3b907af6b3a737e64779f46e4bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::GatherAction::name</definition>
+        <argsstring>() const override</argsstring>
+        <name>name</name>
+        <reimplements refid="classopenage_1_1_target_action_1ab57d1777fed0ced4ee1e6788ee5e445d">name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>debug string to identify action types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="550" column="1" bodyfile="libopenage/unit/action.h" bodystart="550" bodyend="550"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_gather_action_1a578fcecec436b05efb5059bbb35837fe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::GatherAction::nearest_dropsite</definition>
+        <argsstring>(game_resource res_type)</argsstring>
+        <name>nearest_dropsite</name>
+        <param>
+          <type><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="556" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="1155" bodyend="1179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>gathers resource from another object </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2314">
+        <label>openage::UnitAction</label>
+        <link refid="classopenage_1_1_unit_action"/>
+      </node>
+      <node id="2313">
+        <label>openage::TargetAction</label>
+        <link refid="classopenage_1_1_target_action"/>
+        <childnode refid="2314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2312">
+        <label>openage::GatherAction</label>
+        <link refid="classopenage_1_1_gather_action"/>
+        <childnode refid="2313" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2335">
+        <label>openage::UnitReference</label>
+        <link refid="classopenage_1_1_unit_reference"/>
+      </node>
+      <node id="2330">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="2328" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2329" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="2317">
+        <label>openage::UnitAction</label>
+        <link refid="classopenage_1_1_unit_action"/>
+        <childnode refid="2318" relation="usage">
+          <edgelabel>#entity</edgelabel>
+        </childnode>
+      </node>
+      <node id="2327">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="2328" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2326" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="2328">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="2320">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="2321" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="2323" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="2324" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="2326" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="2329">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="2330" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="2318">
+        <label>openage::Unit</label>
+        <link refid="classopenage_1_1_unit"/>
+        <childnode refid="2319" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2320" relation="usage">
+          <edgelabel>+unit_type</edgelabel>
+        </childnode>
+        <childnode refid="2333" relation="usage">
+          <edgelabel>-container</edgelabel>
+        </childnode>
+        <childnode refid="2323" relation="usage">
+          <edgelabel>+attributes</edgelabel>
+        </childnode>
+      </node>
+      <node id="2332">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="2323">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="2326">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="2327" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="2329" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="2325" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="2331" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="2332" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="2319">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+      <node id="2321">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="2322" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2325">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="2331">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="2316">
+        <label>openage::TargetAction</label>
+        <link refid="classopenage_1_1_target_action"/>
+        <childnode refid="2317" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2334" relation="usage">
+          <edgelabel>-dist_to_target</edgelabel>
+          <edgelabel>-radius</edgelabel>
+        </childnode>
+        <childnode refid="2335" relation="usage">
+          <edgelabel>-target</edgelabel>
+        </childnode>
+      </node>
+      <node id="2315">
+        <label>openage::GatherAction</label>
+        <link refid="classopenage_1_1_gather_action"/>
+        <childnode refid="2316" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2335" relation="usage">
+          <edgelabel>-target</edgelabel>
+        </childnode>
+      </node>
+      <node id="2324">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="2325" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="2334">
+        <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+      <node id="2333">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+      <node id="2322">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/action.h" line="542" column="1" bodyfile="libopenage/unit/action.h" bodystart="542" bodyend="557"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_action_1a6a13e1e645b744982544ae65ef1addf3" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>adjacent_range</name></member>
+      <member refid="classopenage_1_1_target_action_1a1152581f6979e3fd89a6ce4e6a4eded2" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>allow_control</name></member>
+      <member refid="classopenage_1_1_target_action_1a50d20cedc299a1257f5a8dc2c0396b72" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>allow_interupt</name></member>
+      <member refid="classopenage_1_1_gather_action_1ac68160161d98b20ed137df83c1be2763" prot="private" virt="non-virtual"><scope>openage::GatherAction</scope><name>complete</name></member>
+      <member refid="classopenage_1_1_target_action_1acd97248a087415b6d08fa3e97e90397d" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>completed</name></member>
+      <member refid="classopenage_1_1_gather_action_1a1234dabb1549d67aaa1dbf3db7fce494" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>completed_in_range</name></member>
+      <member refid="classopenage_1_1_unit_action_1abfdd7e2764fd795c02ce0a5471563508" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>current_frame</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6cd7405af72dd0cf3994cee74608cf8b" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>current_graphics</name></member>
+      <member refid="classopenage_1_1_unit_action_1a7beffb7ad454cf467d7a6b843df939c7" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>damage_unit</name></member>
+      <member refid="classopenage_1_1_unit_action_1a0bbcb9637ce725b95cbe818204921e4f" prot="protected" virt="non-virtual"><scope>openage::GatherAction</scope><name>debug_draw_action</name></member>
+      <member refid="classopenage_1_1_target_action_1a285c6a59466e76c934a21221e9990f86" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>distance_to_target</name></member>
+      <member refid="classopenage_1_1_unit_action_1aef5ad04daa194a06790b4f36ed8a3e83" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>draw_debug</name></member>
+      <member refid="classopenage_1_1_unit_action_1a5d47af0412db504ab95c58b12418d55c" prot="protected" virt="non-virtual"><scope>openage::GatherAction</scope><name>entity</name></member>
+      <member refid="classopenage_1_1_unit_action_1a3ab11130480adc3cfe156af7cfb7a58d" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>face_towards</name></member>
+      <member refid="classopenage_1_1_unit_action_1a8f995b745da73c4e95ec83d8b14c38c6" prot="protected" virt="non-virtual"><scope>openage::GatherAction</scope><name>frame</name></member>
+      <member refid="classopenage_1_1_unit_action_1a5d0154b413ca914966b9796bc37193b8" prot="protected" virt="non-virtual"><scope>openage::GatherAction</scope><name>frame_rate</name></member>
+      <member refid="classopenage_1_1_gather_action_1ae433349aed9b3228f3b5030c270d23f2" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>GatherAction</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6e508baa62ec19cd81bea7fce1721e17" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>get_attack_range</name></member>
+      <member refid="classopenage_1_1_unit_action_1a40320d4e1be2a48373f5b9b0f6bef2ef" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>get_heal_range</name></member>
+      <member refid="classopenage_1_1_target_action_1a234df6738799d71928d3fc3acc8d39ab" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>get_target</name></member>
+      <member refid="classopenage_1_1_target_action_1a4f8c4aca219e96e7e0f2e8439385d7b1" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>get_target_type_id</name></member>
+      <member refid="classopenage_1_1_unit_action_1afe08a940aa0b7040c3a59d816de00fed" prot="protected" virt="non-virtual"><scope>openage::GatherAction</scope><name>graphic</name></member>
+      <member refid="classopenage_1_1_unit_action_1a16660bd780984c6f11ba30e0c7f634ad" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>move_to</name></member>
+      <member refid="classopenage_1_1_gather_action_1ac69d3b907af6b3a737e64779f46e4bd4" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>name</name></member>
+      <member refid="classopenage_1_1_gather_action_1a578fcecec436b05efb5059bbb35837fe" prot="private" virt="non-virtual"><scope>openage::GatherAction</scope><name>nearest_dropsite</name></member>
+      <member refid="classopenage_1_1_target_action_1ac489c70f995ea358f685676e403df8cc" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>on_completion</name></member>
+      <member refid="classopenage_1_1_gather_action_1ab76d756df9989badfa91e272f85dee9c" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>on_completion_in_range</name></member>
+      <member refid="classopenage_1_1_gather_action_1a61ec0ea56e1fe10f0afb685ce8e5135e" prot="private" virt="non-virtual"><scope>openage::GatherAction</scope><name>resource_class</name></member>
+      <member refid="classopenage_1_1_target_action_1a48de4ef9580b1202464808af55b78fae" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>set_target</name></member>
+      <member refid="classopenage_1_1_unit_action_1a0a84fac6b39ee42340f67905dd631956" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>show_debug</name></member>
+      <member refid="classopenage_1_1_gather_action_1adf5b4ae906a77b4afc1338a6dcc6cbe2" prot="private" virt="non-virtual"><scope>openage::GatherAction</scope><name>target</name></member>
+      <member refid="classopenage_1_1_gather_action_1a84f2390c263f5263442d816ffc1f7325" prot="private" virt="non-virtual"><scope>openage::GatherAction</scope><name>target_resource</name></member>
+      <member refid="classopenage_1_1_target_action_1adc56f07dc94e70968fb02276f1a3ae57" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>TargetAction</name></member>
+      <member refid="classopenage_1_1_target_action_1a8ac661518fe44bcbdca2f97212d90bf7" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>TargetAction</name></member>
+      <member refid="classopenage_1_1_unit_action_1acbadd90ff8cee12d01aa9fd490501c1a" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>type</name></member>
+      <member refid="classopenage_1_1_unit_action_1a3fd3dd936ea6a850726bcfce9664909a" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>UnitAction</name></member>
+      <member refid="classopenage_1_1_target_action_1af63a55c8043382d2648815d46e2c4c92" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>update</name></member>
+      <member refid="classopenage_1_1_target_action_1a2ad32343ebe475f1f3c1477f659314db" prot="public" virt="non-virtual"><scope>openage::GatherAction</scope><name>update_distance</name></member>
+      <member refid="classopenage_1_1_gather_action_1ae49e08d7e107415297f6c58320570858" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>update_in_range</name></member>
+      <member refid="classopenage_1_1_gather_action_1ace33d947d69c60190f8259bebc8ca52b" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>~GatherAction</name></member>
+      <member refid="classopenage_1_1_target_action_1a18396367c24eafefd498e141875fed8a" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>~TargetAction</name></member>
+      <member refid="classopenage_1_1_unit_action_1a6e4ff108bc1f10e40777ae36710e7a65" prot="public" virt="virtual"><scope>openage::GatherAction</scope><name>~UnitAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

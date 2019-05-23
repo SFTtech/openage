@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_shared_attribute_container" kind="class" language="C++" prot="public">
+    <compoundname>openage::SharedAttributeContainer</compoundname>
+    <basecompoundref refid="classopenage_1_1_attribute_container" prot="public" virt="non-virtual">openage::AttributeContainer</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::armor &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::attack &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::dropsite &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::heal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::hitpoints &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::multitype &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1owner_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::owner &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::population &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::resource_generator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::speed &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::storage &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4" prot="public" virt="non-virtual">openage::Attribute&lt; attr_type::worker &gt;</derivedcompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_shared_attribute_container_1a388e553da5021f1cbfe8cfd46af315fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::SharedAttributeContainer::SharedAttributeContainer</definition>
+        <argsstring>(attr_type t)</argsstring>
+        <name>SharedAttributeContainer</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36" kindref="member">attr_type</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="154" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_shared_attribute_container_1a7fbb1dd2c3df6e5cd65cded8fac7c392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::SharedAttributeContainer::shared</definition>
+        <argsstring>() const override</argsstring>
+        <name>shared</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a6e8b1a74ffd097ae82dd7b1bc0d6e6a2">shared</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>shared attributes are common across all units of one type, such as max hp, and gather rates</para>
+<para>non shared attributes include a units current hp, and the amount a villager is carrying </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="158" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Wraps a templated shared attribute</para>
+<para>Shared attributes are common across all units of one type </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4167">
+        <label>openage::Attribute&lt; attr_type::storage &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1storage_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4155">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="4156" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4162">
+        <label>openage::Attribute&lt; attr_type::multitype &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4166">
+        <label>openage::Attribute&lt; attr_type::speed &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1speed_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4161">
+        <label>openage::Attribute&lt; attr_type::hitpoints &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1hitpoints_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4163">
+        <label>openage::Attribute&lt; attr_type::owner &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1owner_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4157">
+        <label>openage::Attribute&lt; attr_type::armor &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1armor_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4158">
+        <label>openage::Attribute&lt; attr_type::attack &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4159">
+        <label>openage::Attribute&lt; attr_type::dropsite &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4165">
+        <label>openage::Attribute&lt; attr_type::resource_generator &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1resource__generator_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4156">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="4164">
+        <label>openage::Attribute&lt; attr_type::population &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4160">
+        <label>openage::Attribute&lt; attr_type::heal &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1heal_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4168">
+        <label>openage::Attribute&lt; attr_type::worker &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1worker_01_4"/>
+        <childnode refid="4155" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4169">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="4170" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4170">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="151" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="151" bodyend="161"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::SharedAttributeContainer</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::SharedAttributeContainer</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888" prot="public" virt="pure-virtual"><scope>openage::SharedAttributeContainer</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a7fbb1dd2c3df6e5cd65cded8fac7c392" prot="public" virt="virtual"><scope>openage::SharedAttributeContainer</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a388e553da5021f1cbfe8cfd46af315fc" prot="public" virt="non-virtual"><scope>openage::SharedAttributeContainer</scope><name>SharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::SharedAttributeContainer</scope><name>type</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::SharedAttributeContainer</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

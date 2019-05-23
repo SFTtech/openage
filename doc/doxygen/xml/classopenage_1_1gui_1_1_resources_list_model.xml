@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_resources_list_model" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::ResourcesListModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QAbstractListModel</basecompoundref>
+    <includes refid="resources__list__model_8h" local="no">resources_list_model.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">openage::gui::ActionModeLink</ref></type>
+        <definition>openage::gui::ActionModeLink openage::gui::ResourcesListModel::actionMode</definition>
+        <argsstring></argsstring>
+        <name>actionMode</name>
+        <read>get_action_mode</read>
+        <write>set_action_mode</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="21" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; openage::gui::ResourcesListModel::amounts</definition>
+        <argsstring></argsstring>
+        <name>amounts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="39" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+        <definition>ActionModeLink* openage::gui::ResourcesListModel::action_mode</definition>
+        <argsstring></argsstring>
+        <name>action_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="41" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1a7e4ee813a5fcd9e7dfe74f629c80d4c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::ResourcesListModel::ResourcesListModel</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>ResourcesListModel</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="26" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1a22b3b963aacfc3a4d86a5195c02bfdc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::ResourcesListModel::~ResourcesListModel</definition>
+        <argsstring>()</argsstring>
+        <name>~ResourcesListModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="27" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="33" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+        <definition>ActionModeLink * openage::gui::ResourcesListModel::get_action_mode</definition>
+        <argsstring>() const</argsstring>
+        <name>get_action_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="29" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ResourcesListModel::set_action_mode</definition>
+        <argsstring>(ActionModeLink *action_mode)</argsstring>
+        <name>set_action_mode</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+          <declname>action_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="30" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="40" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_resources_list_model_1a10d6d0fca4a81acbd8d14d9b89bbf438" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ResourcesListModel::on_resource_changed</definition>
+        <argsstring>(game_resource resource, int amount)</argsstring>
+        <name>on_resource_changed</name>
+        <param>
+          <type><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>resource</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="33" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="54" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1ae95e757c9e3abcd727b89efe212b2127" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::gui::ResourcesListModel::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;) const override</argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="36" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_resources_list_model_1ab5a3cadc4c413fbac7ec1de1a00433a7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant openage::gui::ResourcesListModel::data</definition>
+        <argsstring>(const QModelIndex &amp;index, int role=Qt::DisplayRole) const override</argsstring>
+        <name>data</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::DisplayRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/resources_list_model.h" line="37" column="1" bodyfile="libopenage/gui/resources_list_model.cpp" bodystart="71" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classopenage_1_1_resource" kindref="compound">Resource</ref> table for the gui. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4114">
+        <label>openage::gui::ResourcesListModel</label>
+        <link refid="classopenage_1_1gui_1_1_resources_list_model"/>
+        <childnode refid="4115" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4115">
+        <label>QAbstractListModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4120">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="4121" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4123">
+        <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="4116">
+        <label>openage::gui::ResourcesListModel</label>
+        <link refid="classopenage_1_1gui_1_1_resources_list_model"/>
+        <childnode refid="4117" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4118" relation="usage">
+          <edgelabel>-action_mode</edgelabel>
+        </childnode>
+      </node>
+      <node id="4118">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="4119" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4122">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="4123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4117">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="4119">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="4120" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4122" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4121">
+        <label>OutputModeLink</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/resources_list_model.h" line="20" column="1" bodyfile="libopenage/gui/resources_list_model.h" bodystart="20" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" prot="private" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" prot="public" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>actionMode</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" prot="private" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>amounts</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1ab5a3cadc4c413fbac7ec1de1a00433a7" prot="private" virt="virtual"><scope>openage::gui::ResourcesListModel</scope><name>data</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" prot="public" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>get_action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1a10d6d0fca4a81acbd8d14d9b89bbf438" prot="private" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>on_resource_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1a7e4ee813a5fcd9e7dfe74f629c80d4c4" prot="public" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>ResourcesListModel</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1ae95e757c9e3abcd727b89efe212b2127" prot="private" virt="virtual"><scope>openage::gui::ResourcesListModel</scope><name>rowCount</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" prot="public" virt="non-virtual"><scope>openage::gui::ResourcesListModel</scope><name>set_action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_resources_list_model_1a22b3b963aacfc3a4d86a5195c02bfdc0" prot="public" virt="virtual"><scope>openage::gui::ResourcesListModel</scope><name>~ResourcesListModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

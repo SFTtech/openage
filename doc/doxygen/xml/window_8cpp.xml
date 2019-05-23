@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="window_8cpp" kind="file" language="C++">
+    <compoundname>window.cpp</compoundname>
+    <includes refid="window_8h" local="yes">window.h</includes>
+    <incdepgraph>
+      <node id="22874">
+        <label>functional</label>
+      </node>
+      <node id="22873">
+        <label>window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="22874" relation="include">
+        </childnode>
+        <childnode refid="22875" relation="include">
+        </childnode>
+        <childnode refid="22876" relation="include">
+        </childnode>
+        <childnode refid="22877" relation="include">
+        </childnode>
+        <childnode refid="22878" relation="include">
+        </childnode>
+      </node>
+      <node id="22872">
+        <label>libopenage/renderer/window.cpp</label>
+        <link refid="window_8cpp"/>
+        <childnode refid="22873" relation="include">
+        </childnode>
+      </node>
+      <node id="22877">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="22876">
+        <label>vector</label>
+      </node>
+      <node id="22878">
+        <label>renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="22876" relation="include">
+        </childnode>
+        <childnode refid="22875" relation="include">
+        </childnode>
+      </node>
+      <node id="22875">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="window_8h" kindref="compound">window.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classopenage_1_1renderer_1_1_window_1a604ae9d1732215d4cd2617778f516ac7" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_window_1a604ae9d1732215d4cd2617778f516ac7" kindref="member">Window::Window</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>size(<ref refid="namespacestd" kindref="compound">std</ref>::make_pair(width,<sp/>height))<sp/>{}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1renderer_1_1_window_1a1bf53e4db756c04ed522a975573b36a6" refkind="member"><highlight class="normal">std::pair&lt;size_t,<sp/>size_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_window_1a1bf53e4db756c04ed522a975573b36a6" kindref="member">Window::get_size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1renderer_1_1_window_1a8fa5671d7e11d9797cd19d4258ddc69b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a8fa5671d7e11d9797cd19d4258ddc69b" kindref="member">Window::should_close</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a7fdf5fbab00699344b8ce451cc73e688" kindref="member">should_be_closed</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ad5c7edd81a2909b1b75b70095f61d47c" kindref="member">Window::add_mouse_button_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a5d6f0b1021b7b7a0460303b588e64c45" kindref="member">mouse_button_cb_t</ref>&amp;<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a13488daef83f3f84d9275dfb2aac7cfd" kindref="member">on_mouse_button</ref>.push_back(cb);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1renderer_1_1_window_1acd1c8a5130d6e3d6db05035c1e9d9e26" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1acd1c8a5130d6e3d6db05035c1e9d9e26" kindref="member">Window::add_mouse_wheel_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a37a3323f44e9f362a6ea8eab5ee97186" kindref="member">mouse_wheel_cb_t</ref>&amp;<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a9499b8211b2a3bab0b9942f6a098380d" kindref="member">on_mouse_wheel</ref>.push_back(cb);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1renderer_1_1_window_1a822983220cdde11447b7e66cb9f02178" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a822983220cdde11447b7e66cb9f02178" kindref="member">Window::add_key_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1a080758683dbea7ce6f185d3b8d8da929" kindref="member">key_cb_t</ref>&amp;<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1adc14f04028ef5322055dc37569a173f5" kindref="member">on_key</ref>.push_back(cb);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ad63c0200f828c7134ddc81ce711c171b" kindref="member">Window::add_resize_callback</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_window_1ab856fe913343bbc5ce12cc45cec0e144" kindref="member">resize_cb_t</ref>&amp;<sp/>cb)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1a562d2533dabf72a06426c3c9d7cef261" kindref="member">on_resize</ref>.push_back(cb);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/window.cpp"/>
+  </compounddef>
+</doxygen>

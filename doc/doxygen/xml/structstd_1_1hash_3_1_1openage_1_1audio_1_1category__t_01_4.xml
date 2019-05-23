@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt;::openage::audio::category_t &gt;</compoundname>
+    <includes refid="hash__functions_8h" local="no">hash_functions.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4_1a8b7cf7bb4c4e4a280a90996d8c8cdd60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt;::openage::audio::category_t &gt;::operator()</definition>
+        <argsstring>(const ::openage::audio::category_t &amp;c) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const ::<ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">openage::audio::category_t</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/hash_functions.h" line="13" column="1" bodyfile="libopenage/audio/hash_functions.h" bodystart="13" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2843">
+        <label>std::hash&lt;::openage::audio::category_t &gt;</label>
+        <link refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/hash_functions.h" line="12" column="1" bodyfile="libopenage/audio/hash_functions.h" bodystart="12" bodyend="16"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4_1a8b7cf7bb4c4e4a280a90996d8c8cdd60" prot="public" virt="non-virtual"><scope>std::hash&lt;::openage::audio::category_t &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

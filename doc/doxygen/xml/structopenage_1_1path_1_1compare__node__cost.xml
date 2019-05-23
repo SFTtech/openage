@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1path_1_1compare__node__cost" kind="struct" language="C++" prot="public">
+    <compoundname>openage::path::compare_node_cost</compoundname>
+    <includes refid="pathfinding_2path_8h" local="no">path.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1path_1_1compare__node__cost_1a04f9002ed4c203b6f27f64ef8d478770" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::path::compare_node_cost::operator()</definition>
+        <argsstring>(const node_pt &amp;lhs, const node_pt &amp;rhs) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/path.h" line="49" column="1" bodyfile="libopenage/pathfinding/path.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Cost comparison for node_pt. Extracts the ptr from the shared_ptr. Calls operator &lt; on <ref refid="classopenage_1_1path_1_1_node" kindref="compound">Node</ref>. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="810">
+        <label>openage::path::compare_node_cost</label>
+        <link refid="structopenage_1_1path_1_1compare__node__cost"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pathfinding/path.h" line="48" column="1" bodyfile="libopenage/pathfinding/path.h" bodystart="48" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1path_1_1compare__node__cost_1a04f9002ed4c203b6f27f64ef8d478770" prot="public" virt="non-virtual"><scope>openage::path::compare_node_cost</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1pyinterface_1_1_py_exception_backtrace" kind="class" language="C++" prot="public">
+    <compoundname>openage::pyinterface::PyExceptionBacktrace</compoundname>
+    <basecompoundref refid="classopenage_1_1error_1_1_backtrace" prot="public" virt="non-virtual">openage::error::Backtrace</basecompoundref>
+    <includes refid="pyexception_8h" local="no">pyexception.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1a6fdae658b88f0eee99c803e265d5ae97" prot="private" static="no" mutable="no">
+        <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+        <definition>PyObject* openage::pyinterface::PyExceptionBacktrace::ref</definition>
+        <argsstring></argsstring>
+        <name>ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="44" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1a9a4a6dfca267f9bffc012c31b8901d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyExceptionBacktrace::PyExceptionBacktrace</definition>
+        <argsstring>(PyObject *ref)</argsstring>
+        <name>PyExceptionBacktrace</name>
+        <param>
+          <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ref is a raw reference to the associated PyObject. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="36" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1ac33230cda520fbd8269fc58154607d29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyExceptionBacktrace::get_symbols</definition>
+        <argsstring>(std::function&lt; void(const error::backtrace_symbol *)&gt; cb, bool reversed) const override</argsstring>
+        <name>get_symbols</name>
+        <param>
+          <type>std::function&lt; void(const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">error::backtrace_symbol</ref> *)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Accesses the associated Python exception object to translate the traceback as needed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.h" line="41" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="11" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An implementation of the abstract Backtrace class that does not collect Backtrace information itself, but instead determines the data on the fly from a Python Exception object. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3791">
+        <label>openage::pyinterface::PyExceptionBacktrace</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace"/>
+        <childnode refid="3792" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3792">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3793">
+        <label>openage::pyinterface::PyExceptionBacktrace</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace"/>
+        <childnode refid="3794" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3794">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pyinterface/pyexception.h" line="31" column="1" bodyfile="libopenage/pyinterface/pyexception.h" bodystart="31" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1ac33230cda520fbd8269fc58154607d29" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>get_symbols</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" prot="public" virt="pure-virtual" ambiguityscope="openage::error::Backtrace::"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>get_symbols</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1a9a4a6dfca267f9bffc012c31b8901d1f" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>PyExceptionBacktrace</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace_1a6fdae658b88f0eee99c803e265d5ae97" prot="private" virt="non-virtual"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>ref</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42" prot="public" virt="virtual"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>trim_to_current_stack_frame</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1abb0eb435370a245c3d5b73f083852d93" prot="public" virt="virtual"><scope>openage::pyinterface::PyExceptionBacktrace</scope><name>~Backtrace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

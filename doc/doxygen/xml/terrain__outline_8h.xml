@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="terrain__outline_8h" kind="file" language="C++">
+    <compoundname>terrain_outline.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes refid="tile_8h" local="yes">../coord/tile.h</includes>
+    <includedby refid="terrain__object_8cpp" local="yes">libopenage/terrain/terrain_object.cpp</includedby>
+    <includedby refid="terrain__outline_8cpp" local="yes">libopenage/terrain/terrain_outline.cpp</includedby>
+    <includedby refid="producer_8cpp" local="yes">libopenage/unit/producer.cpp</includedby>
+    <incdepgraph>
+      <node id="24931">
+        <label>list</label>
+      </node>
+      <node id="24924">
+        <label>atomic</label>
+      </node>
+      <node id="24900">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="24901" relation="include">
+        </childnode>
+        <childnode refid="24902" relation="include">
+        </childnode>
+        <childnode refid="24903" relation="include">
+        </childnode>
+        <childnode refid="24904" relation="include">
+        </childnode>
+        <childnode refid="24905" relation="include">
+        </childnode>
+        <childnode refid="24906" relation="include">
+        </childnode>
+        <childnode refid="24907" relation="include">
+        </childnode>
+        <childnode refid="24908" relation="include">
+        </childnode>
+      </node>
+      <node id="24928">
+        <label>functional</label>
+      </node>
+      <node id="24904">
+        <label>iomanip</label>
+      </node>
+      <node id="24905">
+        <label>limits</label>
+      </node>
+      <node id="24898">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="24899" relation="include">
+        </childnode>
+        <childnode refid="24900" relation="include">
+        </childnode>
+      </node>
+      <node id="24899">
+        <label>cstdint</label>
+      </node>
+      <node id="24936">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="24926">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="24927" relation="include">
+        </childnode>
+        <childnode refid="24928" relation="include">
+        </childnode>
+        <childnode refid="24904" relation="include">
+        </childnode>
+        <childnode refid="24896" relation="include">
+        </childnode>
+        <childnode refid="24929" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+        <childnode refid="24912" relation="include">
+        </childnode>
+      </node>
+      <node id="24903">
+        <label>cmath</label>
+      </node>
+      <node id="24915">
+        <label>stdexcept</label>
+      </node>
+      <node id="24895">
+        <label>libopenage/terrain/terrain_outline.h</label>
+        <link refid="terrain__outline_8h"/>
+        <childnode refid="24896" relation="include">
+        </childnode>
+        <childnode refid="24897" relation="include">
+        </childnode>
+      </node>
+      <node id="24930">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="24931" relation="include">
+        </childnode>
+        <childnode refid="24932" relation="include">
+        </childnode>
+        <childnode refid="24933" relation="include">
+        </childnode>
+      </node>
+      <node id="24927">
+        <label>cstdarg</label>
+      </node>
+      <node id="24911">
+        <label>string</label>
+      </node>
+      <node id="24919">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="24899" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+        <childnode refid="24920" relation="include">
+        </childnode>
+        <childnode refid="24921" relation="include">
+        </childnode>
+        <childnode refid="24923" relation="include">
+        </childnode>
+        <childnode refid="24930" relation="include">
+        </childnode>
+        <childnode refid="24933" relation="include">
+        </childnode>
+      </node>
+      <node id="24921">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="24922" relation="include">
+        </childnode>
+      </node>
+      <node id="24923">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="24924" relation="include">
+        </childnode>
+        <childnode refid="24896" relation="include">
+        </childnode>
+        <childnode refid="24907" relation="include">
+        </childnode>
+        <childnode refid="24916" relation="include">
+        </childnode>
+        <childnode refid="24925" relation="include">
+        </childnode>
+        <childnode refid="24926" relation="include">
+        </childnode>
+      </node>
+      <node id="24906">
+        <label>ostream</label>
+      </node>
+      <node id="24909">
+        <label>limits.h</label>
+      </node>
+      <node id="24913">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="24914" relation="include">
+        </childnode>
+        <childnode refid="24896" relation="include">
+        </childnode>
+        <childnode refid="24915" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+        <childnode refid="24916" relation="include">
+        </childnode>
+        <childnode refid="24919" relation="include">
+        </childnode>
+      </node>
+      <node id="24908">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="24901" relation="include">
+        </childnode>
+        <childnode refid="24909" relation="include">
+        </childnode>
+        <childnode refid="24903" relation="include">
+        </childnode>
+        <childnode refid="24910" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+        <childnode refid="24912" relation="include">
+        </childnode>
+        <childnode refid="24896" relation="include">
+        </childnode>
+        <childnode refid="24913" relation="include">
+        </childnode>
+        <childnode refid="24916" relation="include">
+        </childnode>
+      </node>
+      <node id="24937">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="24935">
+        <label>typeinfo</label>
+      </node>
+      <node id="24912">
+        <label>vector</label>
+      </node>
+      <node id="24917">
+        <label>ciso646</label>
+      </node>
+      <node id="24929">
+        <label>sstream</label>
+      </node>
+      <node id="24916">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="24917" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+        <childnode refid="24918" relation="include">
+        </childnode>
+      </node>
+      <node id="24918">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="24918" relation="include">
+        </childnode>
+      </node>
+      <node id="24925">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="24914" relation="include">
+        </childnode>
+        <childnode refid="24911" relation="include">
+        </childnode>
+      </node>
+      <node id="24933">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="24934" relation="include">
+        </childnode>
+      </node>
+      <node id="24922">
+        <label>cstdlib</label>
+      </node>
+      <node id="24914">
+        <label>iostream</label>
+      </node>
+      <node id="24902">
+        <label>climits</label>
+      </node>
+      <node id="24932">
+        <label>mutex</label>
+      </node>
+      <node id="24897">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="24898" relation="include">
+        </childnode>
+        <childnode refid="24936" relation="include">
+        </childnode>
+        <childnode refid="24937" relation="include">
+        </childnode>
+        <childnode refid="24908" relation="include">
+        </childnode>
+      </node>
+      <node id="24907">
+        <label>type_traits</label>
+      </node>
+      <node id="24920">
+        <label>config.h</label>
+      </node>
+      <node id="24901">
+        <label>algorithm</label>
+      </node>
+      <node id="24910">
+        <label>cstring</label>
+      </node>
+      <node id="24896">
+        <label>memory</label>
+      </node>
+      <node id="24934">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="24914" relation="include">
+        </childnode>
+        <childnode refid="24935" relation="include">
+        </childnode>
+        <childnode refid="24916" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="24941">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="24938">
+        <label>libopenage/terrain/terrain_outline.h</label>
+        <link refid="terrain__outline_8h"/>
+        <childnode refid="24939" relation="include">
+        </childnode>
+        <childnode refid="24940" relation="include">
+        </childnode>
+        <childnode refid="24941" relation="include">
+        </childnode>
+      </node>
+      <node id="24940">
+        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <link refid="terrain__outline_8cpp"/>
+      </node>
+      <node id="24939">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/tile.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Texture;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">std::shared_ptr&lt;Texture&gt;<sp/><ref refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" kindref="member">square_outline</ref>(coord::tile_delta<sp/>foundation_size);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">std::shared_ptr&lt;Texture&gt;<sp/><ref refid="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" kindref="member">radial_outline</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/terrain/terrain_outline.h"/>
+  </compounddef>
+</doxygen>

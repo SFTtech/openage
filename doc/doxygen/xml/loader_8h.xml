@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="loader_8h" kind="file" language="C++">
+    <compoundname>loader.h</compoundname>
+    <includes local="no">vulkan/vulkan.h</includes>
+    <includedby refid="loader_8cpp" local="yes">libopenage/renderer/vulkan/loader.cpp</includedby>
+    <includedby refid="windowvk_8h" local="yes">libopenage/renderer/vulkan/windowvk.h</includedby>
+    <incdepgraph>
+      <node id="23695">
+        <label>libopenage/renderer/vulkan/loader.h</label>
+        <link refid="loader_8h"/>
+        <childnode refid="23696" relation="include">
+        </childnode>
+      </node>
+      <node id="23696">
+        <label>vulkan/vulkan.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="23697">
+        <label>libopenage/renderer/vulkan/loader.h</label>
+        <link refid="loader_8h"/>
+        <childnode refid="23698" relation="include">
+        </childnode>
+        <childnode refid="23699" relation="include">
+        </childnode>
+      </node>
+      <node id="23698">
+        <label>libopenage/renderer/vulkan/loader.cpp</label>
+        <link refid="loader_8cpp"/>
+      </node>
+      <node id="23700">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+      </node>
+      <node id="23699">
+        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <link refid="windowvk_8h"/>
+        <childnode refid="23700" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" prot="public">openage::renderer::vulkan::VlkLoader</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vulkan/vulkan.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" kindref="compound">VlkLoader</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PFN_vkCreateDebugReportCallbackEXT<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" kindref="member">pCreateDebugReportCallbackEXT</ref>;</highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>PFN_vkDestroyDebugReportCallbackEXT<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" kindref="member">pDestroyDebugReportCallbackEXT</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" kindref="member">inited</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a4ef8a837fbbfe62d5f4a76cf836566c7" kindref="member">VlkLoader</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" kindref="member">init</ref>(VkInstance);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>VkResult<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" kindref="member">vkCreateDebugReportCallbackEXT</ref>(</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkInstance<sp/>instance,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VkDebugReportCallbackCreateInfoEXT*<sp/>pCreateInfo,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VkAllocationCallbacks*<sp/>pAllocator,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkDebugReportCallbackEXT*<sp/>pCallback</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" kindref="member">vkDestroyDebugReportCallbackEXT</ref>(</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkInstance<sp/>instance,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkDebugReportCallbackEXT<sp/>callback,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VkAllocationCallbacks*<sp/>pAllocator</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/loader.h"/>
+  </compounddef>
+</doxygen>

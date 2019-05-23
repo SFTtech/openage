@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_value_container" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::curve::ValueContainer</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_event_target" prot="public" virt="non-virtual">openage::event::EventTarget</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1curve_1_1_continuous" prot="public" virt="non-virtual">openage::curve::Continuous&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1curve_1_1_discrete" prot="public" virt="non-virtual">openage::curve::Discrete&lt; T &gt;</derivedcompoundref>
+    <includes refid="value__container_8h" local="no">value_container.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_value_container_1a565150e1c3965878953bca2afa1c1ad2" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container" kindref="compound">KeyframeContainer</ref>&lt; T &gt;</type>
+        <definition>KeyframeContainer&lt;T&gt; openage::curve::ValueContainer&lt; T &gt;::container</definition>
+        <argsstring></argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores all the keyframes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="48" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t openage::curve::ValueContainer&lt; T &gt;::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Identifier for the container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="53" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_value_container_1af307dc2d35246999cea18dfb1d478be9" prot="protected" static="no" mutable="yes">
+        <type><ref refid="classopenage_1_1curve_1_1_keyframe_container" kindref="compound">KeyframeContainer</ref>&lt; T &gt;::KeyframeIterator</type>
+        <definition>KeyframeContainer&lt;T&gt;::KeyframeIterator openage::curve::ValueContainer&lt; T &gt;::last_element</definition>
+        <argsstring></argsstring>
+        <name>last_element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cache the iterator for quickly finding the end </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="58" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1aa901d833956ff09b5fa00f3fb126e8fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::ValueContainer&lt; T &gt;::ValueContainer</definition>
+        <argsstring>(const std::shared_ptr&lt; event::Loop &gt; &amp;mgr, size_t id, const EventTarget::single_change_notifier &amp;notifier=nullptr)</argsstring>
+        <name>ValueContainer</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">event::Loop</ref> &gt; &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const EventTarget::single_change_notifier &amp;</type>
+          <declname>notifier</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="16" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="16" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1aa72ebf92805c7aed981f9c3fbf2c7efb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::curve::ValueContainer&lt; T &gt;::~ValueContainer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ValueContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="25" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af35f74af0eb47d6c852c5b8f8f83ae60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>T</type>
+        <definition>virtual T openage::curve::ValueContainer&lt; T &gt;::get</definition>
+        <argsstring>(const time_t &amp;t) const =0</argsstring>
+        <name>get</name>
+        <reimplementedby refid="classopenage_1_1curve_1_1_continuous_1a2af59e706890b3ed70d0059ba1ae766e">get</reimplementedby>
+        <reimplementedby refid="classopenage_1_1curve_1_1_discrete_1ab4746bae3f4c7d01312e530b0e5150d5">get</reimplementedby>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="27" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1a21af7f25367a85a49ed2d2391d8ffd3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>T</type>
+        <definition>virtual T openage::curve::ValueContainer&lt; T &gt;::operator()</definition>
+        <argsstring>(const time_t &amp;now)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>now</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="29" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, const T &amp; &gt;</type>
+        <definition>std::pair&lt; time_t, const T &amp; &gt; openage::curve::ValueContainer&lt; T &gt;::frame</definition>
+        <argsstring>(const time_t &amp;) const</argsstring>
+        <name>frame</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="33" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref>, const T &amp; &gt;</type>
+        <definition>std::pair&lt; time_t, const T &amp; &gt; openage::curve::ValueContainer&lt; T &gt;::next_frame</definition>
+        <argsstring>(const time_t &amp;) const</argsstring>
+        <name>next_frame</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="34" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="98" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::curve::ValueContainer&lt; T &gt;::set_last</definition>
+        <argsstring>(const time_t &amp;at, const T &amp;value)</argsstring>
+        <name>set_last</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="37" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="63" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::curve::ValueContainer&lt; T &gt;::set_insert</definition>
+        <argsstring>(const time_t &amp;at, const T &amp;value)</argsstring>
+        <name>set_insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="38" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_value_container_1aa4ccad0b4eae016862241e5a662575c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>virtual size_t openage::curve::ValueContainer&lt; T &gt;::id</definition>
+        <argsstring>() const override</argsstring>
+        <name>id</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_target_1ac33e23507125a3a248eb8d031e8f39ed">id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Give a unique event system identifier for the entity </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/value_container.h" line="40" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="40" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4907">
+        <label>openage::curve::Discrete&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_discrete"/>
+        <childnode refid="4904" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4906">
+        <label>openage::curve::Continuous&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_continuous"/>
+        <childnode refid="4904" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4905">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+      <node id="4904">
+        <label>openage::curve::ValueContainer&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_value_container"/>
+        <childnode refid="4905" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4909">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+      <node id="4908">
+        <label>openage::curve::ValueContainer&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_value_container"/>
+        <childnode refid="4909" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/value_container.h" line="14" column="1" bodyfile="libopenage/curve/value_container.h" bodystart="14" bodyend="59"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_value_container_1ab4f6249d04c614100240ca09d6704ba4" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>_id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>add_dependent</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>changes</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a565150e1c3965878953bca2afa1c1ad2" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>container</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1abe6736c7ec9aeba96a045c9e517bdf66" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>EventTarget</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af22c2d98ebfbec213ca2257869022e3e" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>frame</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af35f74af0eb47d6c852c5b8f8f83ae60" prot="public" virt="pure-virtual"><scope>openage::curve::ValueContainer</scope><name>get</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa4ccad0b4eae016862241e5a662575c6" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>id</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af307dc2d35246999cea18dfb1d478be9" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>last_element</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a9af089eef9feb357fe0e36fad9397b8c" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>next_frame</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1a21af7f25367a85a49ed2d2391d8ffd3f" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>operator()</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1af7643c2abd7b18238a3092ac4f186368" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>set_insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1acb0b0b216cb64435edf52a01d16f70db" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>set_last</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" prot="public" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>show_dependents</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a10a6498be4aac6daa9c254fbb59cd5cb" prot="public" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>single_change_notifier</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" prot="protected" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>trigger</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa901d833956ff09b5fa00f3fb126e8fb" prot="public" virt="non-virtual"><scope>openage::curve::ValueContainer</scope><name>ValueContainer</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1af2ea4d43df8ac5dad62ce41a5a300dca" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>~EventTarget</name></member>
+      <member refid="classopenage_1_1curve_1_1_value_container_1aa72ebf92805c7aed981f9c3fbf2c7efb" prot="public" virt="virtual"><scope>openage::curve::ValueContainer</scope><name>~ValueContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

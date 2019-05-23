@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_trigger_event_class" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::TriggerEventClass</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_event_class" prot="public" virt="non-virtual">openage::event::EventClass</basecompoundref>
+    <includes refid="eventclass_8h" local="no">eventclass.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_trigger_event_class_1a11a43643c69c6b39fe3b30e62c479b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::TriggerEventClass::TriggerEventClass</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>TriggerEventClass</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="204" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4591">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="4590">
+        <label>openage::event::TriggerEventClass</label>
+        <link refid="classopenage_1_1event_1_1_trigger_event_class"/>
+        <childnode refid="4591" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4593">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="4592">
+        <label>openage::event::TriggerEventClass</label>
+        <link refid="classopenage_1_1event_1_1_trigger_event_class"/>
+        <childnode refid="4593" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventclass.h" line="202" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="202" bodyend="205"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::TriggerEventClass</scope><name>EventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::TriggerEventClass</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c" prot="public" virt="pure-virtual"><scope>openage::event::TriggerEventClass</scope><name>invoke</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b" prot="public" virt="pure-virtual"><scope>openage::event::TriggerEventClass</scope><name>predict_invoke_time</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e" prot="public" virt="pure-virtual"><scope>openage::event::TriggerEventClass</scope><name>setup_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" prot="public" virt="non-virtual"><scope>openage::event::TriggerEventClass</scope><name>trigger_type</name></member>
+      <member refid="classopenage_1_1event_1_1_trigger_event_class_1a11a43643c69c6b39fe3b30e62c479b68" prot="public" virt="non-virtual"><scope>openage::event::TriggerEventClass</scope><name>TriggerEventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" prot="public" virt="non-virtual"><scope>openage::event::TriggerEventClass</scope><name>type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" virt="virtual"><scope>openage::event::TriggerEventClass</scope><name>~EventClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::VlkDrawableDisplay</compoundname>
+    <includes refid="vulkan_2render__target_8h" local="no">render_target.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" prot="public" static="no" mutable="no">
+        <type>VkDevice</type>
+        <definition>VkDevice openage::renderer::vulkan::VlkDrawableDisplay::device</definition>
+        <argsstring></argsstring>
+        <name>device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="21" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a3c1ff8b52e6e79b4cf87015ac43d2b48" prot="public" static="no" mutable="no">
+        <type>VkSwapchainKHR</type>
+        <definition>VkSwapchainKHR openage::renderer::vulkan::VlkDrawableDisplay::swapchain</definition>
+        <argsstring></argsstring>
+        <name>swapchain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" prot="public" static="no" mutable="no">
+        <type>VkFormat</type>
+        <definition>VkFormat openage::renderer::vulkan::VlkDrawableDisplay::format</definition>
+        <argsstring></argsstring>
+        <name>format</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="23" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" prot="public" static="no" mutable="no">
+        <type>VkExtent2D</type>
+        <definition>VkExtent2D openage::renderer::vulkan::VlkDrawableDisplay::extent</definition>
+        <argsstring></argsstring>
+        <name>extent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="24" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac8abd0f9fec7d297486c98a61c3fbf8a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; VkImage &gt;</type>
+        <definition>std::vector&lt;VkImage&gt; openage::renderer::vulkan::VlkDrawableDisplay::images</definition>
+        <argsstring></argsstring>
+        <name>images</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a6d3748506abbdaa6fe3a26bbae7d459e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; VkImageView &gt;</type>
+        <definition>std::vector&lt;VkImageView&gt; openage::renderer::vulkan::VlkDrawableDisplay::image_views</definition>
+        <argsstring></argsstring>
+        <name>image_views</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="26" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1add9c86e8e37d8896297bcbdea71d430b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; VkFramebuffer &gt;</type>
+        <definition>std::vector&lt;VkFramebuffer&gt; openage::renderer::vulkan::VlkDrawableDisplay::framebuffers</definition>
+        <argsstring></argsstring>
+        <name>framebuffers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="27" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VkSurfaceFormatKHR</type>
+        <definition>VkSurfaceFormatKHR openage::renderer::vulkan::VlkDrawableDisplay::choose_best_surface_format</definition>
+        <argsstring>(std::vector&lt; VkSurfaceFormatKHR &gt; const &amp;formats)</argsstring>
+        <name>choose_best_surface_format</name>
+        <param>
+          <type>std::vector&lt; VkSurfaceFormatKHR &gt; const &amp;</type>
+          <declname>formats</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="29" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>VkPresentModeKHR</type>
+        <definition>VkPresentModeKHR openage::renderer::vulkan::VlkDrawableDisplay::choose_best_present_mode</definition>
+        <argsstring>(std::vector&lt; VkPresentModeKHR &gt; const &amp;modes)</argsstring>
+        <name>choose_best_present_mode</name>
+        <param>
+          <type>std::vector&lt; VkPresentModeKHR &gt; const &amp;</type>
+          <declname>modes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="50" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="50" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkDrawableDisplay::VlkDrawableDisplay</definition>
+        <argsstring>(VkDevice device, SurfaceSupportDetails details)</argsstring>
+        <name>VlkDrawableDisplay</name>
+        <param>
+          <type>VkDevice</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" kindref="compound">SurfaceSupportDetails</ref></type>
+          <declname>details</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="73" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="73" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a53d560e04eaa3886ef7993c6607746ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkDrawableDisplay::~VlkDrawableDisplay</definition>
+        <argsstring>()</argsstring>
+        <name>~VlkDrawableDisplay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/render_target.h" line="150" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="150" bodyend="152"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A Vulkan representation of a display target that can be drawn onto directly, that is <emphasis>not</emphasis> by copying data from another object. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4946">
+        <label>openage::renderer::vulkan::VlkDrawableDisplay</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/render_target.h" line="18" column="1" bodyfile="libopenage/renderer/vulkan/render_target.h" bodystart="18" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>choose_best_present_mode</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>choose_best_surface_format</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>device</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>extent</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>format</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1add9c86e8e37d8896297bcbdea71d430b" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>framebuffers</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a6d3748506abbdaa6fe3a26bbae7d459e" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>image_views</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac8abd0f9fec7d297486c98a61c3fbf8a" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>images</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a3c1ff8b52e6e79b4cf87015ac43d2b48" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>swapchain</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>VlkDrawableDisplay</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a53d560e04eaa3886ef7993c6607746ea" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkDrawableDisplay</scope><name>~VlkDrawableDisplay</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

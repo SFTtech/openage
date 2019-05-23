@@ -1,0 +1,448 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="exctranslate__tests_8cpp" kind="file" language="C++">
+    <compoundname>exctranslate_tests.cpp</compoundname>
+    <includes refid="exctranslate__tests_8h" local="yes">exctranslate_tests.h</includes>
+    <includes local="no">vector</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <includes refid="pyexception_8h" local="yes">pyexception.h</includes>
+    <incdepgraph>
+      <node id="19476">
+        <label>list</label>
+      </node>
+      <node id="19467">
+        <label>atomic</label>
+      </node>
+      <node id="19472">
+        <label>iomanip</label>
+      </node>
+      <node id="19449">
+        <label>functional</label>
+      </node>
+      <node id="19484">
+        <label>../error/backtrace.h</label>
+        <link refid="backtrace_8h"/>
+        <childnode refid="19474" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19458" relation="include">
+        </childnode>
+        <childnode refid="19449" relation="include">
+        </childnode>
+      </node>
+      <node id="19480">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="19449" relation="include">
+        </childnode>
+        <childnode refid="19451" relation="include">
+        </childnode>
+      </node>
+      <node id="19462">
+        <label>cstdint</label>
+      </node>
+      <node id="19470">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="19471" relation="include">
+        </childnode>
+        <childnode refid="19449" relation="include">
+        </childnode>
+        <childnode refid="19472" relation="include">
+        </childnode>
+        <childnode refid="19459" relation="include">
+        </childnode>
+        <childnode refid="19473" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19474" relation="include">
+        </childnode>
+      </node>
+      <node id="19447">
+        <label>exctranslate_tests.h</label>
+        <link refid="exctranslate__tests_8h"/>
+        <childnode refid="19448" relation="include">
+        </childnode>
+      </node>
+      <node id="19456">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="19457" relation="include">
+        </childnode>
+      </node>
+      <node id="19460">
+        <label>stdexcept</label>
+      </node>
+      <node id="19455">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="19475">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="19476" relation="include">
+        </childnode>
+        <childnode refid="19450" relation="include">
+        </childnode>
+        <childnode refid="19477" relation="include">
+        </childnode>
+      </node>
+      <node id="19471">
+        <label>cstdarg</label>
+      </node>
+      <node id="19453">
+        <label>string</label>
+      </node>
+      <node id="19461">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="19462" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19463" relation="include">
+        </childnode>
+        <childnode refid="19464" relation="include">
+        </childnode>
+        <childnode refid="19466" relation="include">
+        </childnode>
+        <childnode refid="19475" relation="include">
+        </childnode>
+        <childnode refid="19477" relation="include">
+        </childnode>
+      </node>
+      <node id="19464">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="19465" relation="include">
+        </childnode>
+      </node>
+      <node id="19466">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="19467" relation="include">
+        </childnode>
+        <childnode refid="19459" relation="include">
+        </childnode>
+        <childnode refid="19468" relation="include">
+        </childnode>
+        <childnode refid="19451" relation="include">
+        </childnode>
+        <childnode refid="19469" relation="include">
+        </childnode>
+        <childnode refid="19470" relation="include">
+        </childnode>
+      </node>
+      <node id="19485">
+        <label>pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="19462" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19474" relation="include">
+        </childnode>
+        <childnode refid="19486" relation="include">
+        </childnode>
+        <childnode refid="19448" relation="include">
+        </childnode>
+      </node>
+      <node id="19457">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="19458" relation="include">
+        </childnode>
+        <childnode refid="19459" relation="include">
+        </childnode>
+        <childnode refid="19460" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19451" relation="include">
+        </childnode>
+        <childnode refid="19461" relation="include">
+        </childnode>
+      </node>
+      <node id="19479">
+        <label>typeinfo</label>
+      </node>
+      <node id="19474">
+        <label>vector</label>
+      </node>
+      <node id="19481">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="19477" relation="include">
+        </childnode>
+        <childnode refid="19461" relation="include">
+        </childnode>
+      </node>
+      <node id="19452">
+        <label>ciso646</label>
+      </node>
+      <node id="19446">
+        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <link refid="exctranslate__tests_8cpp"/>
+        <childnode refid="19447" relation="include">
+        </childnode>
+        <childnode refid="19474" relation="include">
+        </childnode>
+        <childnode refid="19481" relation="include">
+        </childnode>
+        <childnode refid="19482" relation="include">
+        </childnode>
+        <childnode refid="19483" relation="include">
+        </childnode>
+      </node>
+      <node id="19473">
+        <label>sstream</label>
+      </node>
+      <node id="19451">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="19452" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19454" relation="include">
+        </childnode>
+      </node>
+      <node id="19454">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="19454" relation="include">
+        </childnode>
+      </node>
+      <node id="19469">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="19458" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+      </node>
+      <node id="19477">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="19478" relation="include">
+        </childnode>
+      </node>
+      <node id="19465">
+        <label>cstdlib</label>
+      </node>
+      <node id="19458">
+        <label>iostream</label>
+      </node>
+      <node id="19448">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="19449" relation="include">
+        </childnode>
+        <childnode refid="19450" relation="include">
+        </childnode>
+        <childnode refid="19451" relation="include">
+        </childnode>
+        <childnode refid="19455" relation="include">
+        </childnode>
+        <childnode refid="19456" relation="include">
+        </childnode>
+        <childnode refid="19480" relation="include">
+        </childnode>
+      </node>
+      <node id="19482">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="19457" relation="include">
+        </childnode>
+      </node>
+      <node id="19450">
+        <label>mutex</label>
+      </node>
+      <node id="19483">
+        <label>pyexception.h</label>
+        <link refid="pyexception_8h"/>
+        <childnode refid="19459" relation="include">
+        </childnode>
+        <childnode refid="19453" relation="include">
+        </childnode>
+        <childnode refid="19474" relation="include">
+        </childnode>
+        <childnode refid="19457" relation="include">
+        </childnode>
+        <childnode refid="19484" relation="include">
+        </childnode>
+        <childnode refid="19448" relation="include">
+        </childnode>
+        <childnode refid="19485" relation="include">
+        </childnode>
+      </node>
+      <node id="19486">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="19468">
+        <label>type_traits</label>
+      </node>
+      <node id="19463">
+        <label>config.h</label>
+      </node>
+      <node id="19459">
+        <label>memory</label>
+      </node>
+      <node id="19478">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="19458" relation="include">
+        </childnode>
+        <childnode refid="19479" relation="include">
+        </childnode>
+        <childnode refid="19451" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface_1_1tests">openage::pyinterface::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="exctranslate__tests_8h" kindref="compound">exctranslate_tests.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pyexception_8h" kindref="compound">pyexception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pyinterface<sp/>{</highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1pyinterface_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=3&gt;</highlight></codeline>
+<codeline lineno="18" refid="namespaceopenage_1_1pyinterface_1_1tests_1a18de7d70653d513f4e6fd5e8cb4fe0cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a18de7d70653d513f4e6fd5e8cb4fe0cd" kindref="member">throw_foo</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a18de7d70653d513f4e6fd5e8cb4fe0cd" kindref="member">throw_foo</ref>&lt;i<sp/>-<sp/>1&gt;();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="24" refid="namespaceopenage_1_1pyinterface_1_1tests_1a406d5229bb14f10c386d0e09c77676d6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a406d5229bb14f10c386d0e09c77676d6" kindref="member">throw_foo&lt;0&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1pyinterface_1_1tests_1ac5cb0834a41caf9f84ee192cc307f24d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ac5cb0834a41caf9f84ee192cc307f24d" kindref="member">err_cpp_to_py_helper</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;rofl&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a18de7d70653d513f4e6fd5e8cb4fe0cd" kindref="member">throw_foo</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a1e06395c26a8fbab8f488d6e573cde6b" kindref="member">err_py_to_cpp</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>due<sp/>to<sp/>the<sp/>nature<sp/>of<sp/>this<sp/>test,<sp/>we<sp/>need<sp/>to<sp/>be<sp/>careful<sp/>about</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>throwing<sp/>TestError<sp/>to<sp/>indicate<sp/>test<sp/>failure...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we&apos;ll<sp/>instead<sp/>call<sp/>this<sp/>helper<sp/>lambda,<sp/>which<sp/>will<sp/>return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>std::string<sp/>error<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>testresult<sp/>=<sp/>[]()<sp/>-&gt;<sp/>std::string<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aedb3b49eb37f36870b17865655b11247" kindref="member">err_py_to_cpp_helper</ref>.call();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;err_py_to_cpp_helper<sp/>didn&apos;t<sp/>throw<sp/>an<sp/>exception&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref><sp/>&amp;exc)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>what<sp/>we<sp/>expected.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>now<sp/>let&apos;s<sp/>see<sp/>whether<sp/>the<sp/>object<sp/>contains<sp/>the<sp/>expected<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(exc.<ref refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" kindref="member">type_name</ref>()<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;openage.cppinterface.exctranslate_tests.Bar&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unexpected<sp/>exc<sp/>typename:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>exc.<ref refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" kindref="member">type_name</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>msg<sp/>=<sp/>exc.<ref refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" kindref="member">what</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(msg<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unexpected<sp/>exc<sp/>message:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>msg;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exc.<ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;exc<sp/>had<sp/>no<sp/>cause&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref><sp/>&amp;cause)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cause.<ref refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" kindref="member">type_name</ref>()<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;openage.testing.testing.TestError&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unexpected<sp/>cause<sp/>typename:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>cause.<ref refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" kindref="member">type_name</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>causemsg<sp/>=<sp/>cause.<ref refid="classopenage_1_1error_1_1_error_1aebb433114d67e8c71b37a3de18019571" kindref="member">what</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(causemsg<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unexpected<sp/>cause<sp/>message:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>causemsg;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cause.<ref refid="classopenage_1_1error_1_1_error_1a2eac361ac1550421b68e453b9a710d4b" kindref="member">rethrow_cause</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;cause<sp/>unexpectedly<sp/>had<sp/>a<sp/>cause<sp/>itself.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;cause)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;exc<sp/>had<sp/>cause<sp/>of<sp/>unexpected<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" kindref="member">util::demangle</ref>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(cause).name());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;exc<sp/>had<sp/>cause<sp/>of<sp/>nonstandard<sp/>type&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;cause)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;exc<sp/>had<sp/>unexpected<sp/>type<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" kindref="member">util::demangle</ref>(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(cause).name());</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;exc<sp/>had<sp/>nonstandard<sp/>type&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(testresult<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(testresult);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="namespaceopenage_1_1pyinterface_1_1tests_1a6ae6b85d3f959e3cec4f7990e76b9c2b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a6ae6b85d3f959e3cec4f7990e76b9c2b" kindref="member">err_py_to_cpp_demo</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aedb3b49eb37f36870b17865655b11247" kindref="member">err_py_to_cpp_helper</ref>.call();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unexpectedly,<sp/>the<sp/>helper<sp/>did<sp/>not<sp/>raise<sp/>an<sp/>Exception&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref><sp/>&amp;err)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>helper<sp/>raised<sp/>the<sp/>following<sp/>Exception:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="namespaceopenage_1_1pyinterface_1_1tests_1ad62ace68d6946aec2ca53e5269bb9946" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ad62ace68d6946aec2ca53e5269bb9946" kindref="member">bounce_call</ref>(<ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func&lt;void&gt;</ref><sp/>func,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>times)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aa2b601816e1678049ffc42740a366ce9" kindref="member">bounce_call_py</ref>.call(func,<sp/>times);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="namespaceopenage_1_1pyinterface_1_1tests_1aedb3b49eb37f36870b17865655b11247" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc&lt;void&gt;</ref><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aedb3b49eb37f36870b17865655b11247" kindref="member">err_py_to_cpp_helper</ref>;</highlight></codeline>
+<codeline lineno="128" refid="namespaceopenage_1_1pyinterface_1_1tests_1aa2b601816e1678049ffc42740a366ce9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc&lt;void, Func&lt;void&gt;</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1aa2b601816e1678049ffc42740a366ce9" kindref="member">bounce_call_py</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/exctranslate_tests.cpp"/>
+  </compounddef>
+</doxygen>

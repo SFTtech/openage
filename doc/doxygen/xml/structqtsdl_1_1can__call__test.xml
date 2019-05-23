@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1can__call__test" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::can_call_test</compoundname>
+    <includes refid="gui__item__link_8h" local="no">gui_item_link.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structqtsdl_1_1can__call__test_1a732de8f44ab5dce6eee0749658931533" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename ...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>decltype(std::declval&lt; F &gt;()(std::declval&lt; Args &gt;()...), std::true_type())</type>
+        <definition>static decltype(std::declval&lt;F&gt;()(std::declval&lt;Args&gt;()...), std::true_type()) qtsdl::can_call_test::f</definition>
+        <argsstring>(int)</argsstring>
+        <name>f</name>
+        <param>
+          <type>int</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structqtsdl_1_1can__call__test_1a61e6cdd9c62e37f15fec40b2e9302202" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename ...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::false_type</type>
+        <definition>static std::false_type qtsdl::can_call_test::f</definition>
+        <argsstring>(...)</argsstring>
+        <name>f</name>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item_link.h" line="94" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Checking that callable can be called with given argument types. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="734">
+        <label>qtsdl::can_call_test</label>
+        <link refid="structqtsdl_1_1can__call__test"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item_link.h" line="89" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="89" bodyend="95"/>
+    <listofallmembers>
+      <member refid="structqtsdl_1_1can__call__test_1a732de8f44ab5dce6eee0749658931533" prot="public" virt="non-virtual"><scope>qtsdl::can_call_test</scope><name>f</name></member>
+      <member refid="structqtsdl_1_1can__call__test_1a61e6cdd9c62e37f15fec40b2e9302202" prot="public" virt="non-virtual"><scope>qtsdl::can_call_test</scope><name>f</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

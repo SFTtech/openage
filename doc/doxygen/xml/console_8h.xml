@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="console_8h" kind="file" language="C++">
+    <compoundname>console.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes refid="buf_8h" local="yes">buf.h</includes>
+    <includes refid="handlers_8h" local="yes">../handlers.h</includes>
+    <includes refid="pixel_8h" local="yes">../coord/pixel.h</includes>
+    <includes refid="input__manager_8h" local="yes">../input/input_manager.h</includes>
+    <includes refid="util_2color_8h" local="yes">../util/color.h</includes>
+    <includes refid="font_8h" local="yes">../renderer/font/font.h</includes>
+    <includes local="yes">../gamedata/color.gen.h</includes>
+    <includedby refid="console_8cpp" local="yes">libopenage/console/console.cpp</includedby>
+    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
+    <includedby refid="console_2tests_8cpp" local="yes">libopenage/console/tests.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">libopenage/main.cpp</includedby>
+    <incdepgraph>
+      <node id="2657">
+        <label>../gamedata/color.gen.h</label>
+      </node>
+      <node id="2641">
+        <label>list</label>
+      </node>
+      <node id="2634">
+        <label>atomic</label>
+      </node>
+      <node id="2610">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="2611" relation="include">
+        </childnode>
+        <childnode refid="2612" relation="include">
+        </childnode>
+        <childnode refid="2613" relation="include">
+        </childnode>
+        <childnode refid="2614" relation="include">
+        </childnode>
+        <childnode refid="2615" relation="include">
+        </childnode>
+        <childnode refid="2616" relation="include">
+        </childnode>
+        <childnode refid="2617" relation="include">
+        </childnode>
+        <childnode refid="2618" relation="include">
+        </childnode>
+      </node>
+      <node id="2646">
+        <label>../util/unicode.h</label>
+        <link refid="unicode_8h"/>
+        <childnode refid="2603" relation="include">
+        </childnode>
+        <childnode refid="2604" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+      </node>
+      <node id="2638">
+        <label>functional</label>
+      </node>
+      <node id="2614">
+        <label>iomanip</label>
+      </node>
+      <node id="2658">
+        <label>../renderer/font/font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2659" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2660" relation="include">
+        </childnode>
+        <childnode refid="2662" relation="include">
+        </childnode>
+      </node>
+      <node id="2615">
+        <label>limits</label>
+      </node>
+      <node id="2608">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="2609" relation="include">
+        </childnode>
+        <childnode refid="2610" relation="include">
+        </childnode>
+      </node>
+      <node id="2656">
+        <label>../util/color.h</label>
+        <link refid="util_2color_8h"/>
+        <childnode refid="2657" relation="include">
+        </childnode>
+      </node>
+      <node id="2649">
+        <label>../input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="2638" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2601" relation="include">
+        </childnode>
+        <childnode refid="2647" relation="include">
+        </childnode>
+        <childnode refid="2650" relation="include">
+        </childnode>
+        <childnode refid="2652" relation="include">
+        </childnode>
+        <childnode refid="2654" relation="include">
+        </childnode>
+      </node>
+      <node id="2609">
+        <label>cstdint</label>
+      </node>
+      <node id="2603">
+        <label>stdint.h</label>
+      </node>
+      <node id="2604">
+        <label>stdlib.h</label>
+      </node>
+      <node id="2636">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="2637" relation="include">
+        </childnode>
+        <childnode refid="2638" relation="include">
+        </childnode>
+        <childnode refid="2614" relation="include">
+        </childnode>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2639" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+      </node>
+      <node id="2599">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2601" relation="include">
+        </childnode>
+        <childnode refid="2602" relation="include">
+        </childnode>
+        <childnode refid="2647" relation="include">
+        </childnode>
+        <childnode refid="2648" relation="include">
+        </childnode>
+        <childnode refid="2649" relation="include">
+        </childnode>
+        <childnode refid="2656" relation="include">
+        </childnode>
+        <childnode refid="2658" relation="include">
+        </childnode>
+        <childnode refid="2657" relation="include">
+        </childnode>
+      </node>
+      <node id="2660">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="2632" relation="include">
+        </childnode>
+        <childnode refid="2661" relation="include">
+        </childnode>
+      </node>
+      <node id="2606">
+        <label>../coord/term.h</label>
+        <link refid="term_8h"/>
+        <childnode refid="2607" relation="include">
+        </childnode>
+        <childnode refid="2608" relation="include">
+        </childnode>
+      </node>
+      <node id="2613">
+        <label>cmath</label>
+      </node>
+      <node id="2625">
+        <label>stdexcept</label>
+      </node>
+      <node id="2640">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="2641" relation="include">
+        </childnode>
+        <childnode refid="2642" relation="include">
+        </childnode>
+        <childnode refid="2643" relation="include">
+        </childnode>
+      </node>
+      <node id="2637">
+        <label>cstdarg</label>
+      </node>
+      <node id="2621">
+        <label>string</label>
+      </node>
+      <node id="2629">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="2609" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2630" relation="include">
+        </childnode>
+        <childnode refid="2631" relation="include">
+        </childnode>
+        <childnode refid="2633" relation="include">
+        </childnode>
+        <childnode refid="2640" relation="include">
+        </childnode>
+        <childnode refid="2643" relation="include">
+        </childnode>
+      </node>
+      <node id="2631">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="2632" relation="include">
+        </childnode>
+      </node>
+      <node id="2633">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="2634" relation="include">
+        </childnode>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2617" relation="include">
+        </childnode>
+        <childnode refid="2626" relation="include">
+        </childnode>
+        <childnode refid="2635" relation="include">
+        </childnode>
+        <childnode refid="2636" relation="include">
+        </childnode>
+      </node>
+      <node id="2653">
+        <label>unordered_set</label>
+      </node>
+      <node id="2647">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="2601" relation="include">
+        </childnode>
+        <childnode refid="2648" relation="include">
+        </childnode>
+      </node>
+      <node id="2616">
+        <label>ostream</label>
+      </node>
+      <node id="2619">
+        <label>limits.h</label>
+      </node>
+      <node id="2623">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="2624" relation="include">
+        </childnode>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2625" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2626" relation="include">
+        </childnode>
+        <childnode refid="2629" relation="include">
+        </childnode>
+      </node>
+      <node id="2618">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="2611" relation="include">
+        </childnode>
+        <childnode refid="2619" relation="include">
+        </childnode>
+        <childnode refid="2613" relation="include">
+        </childnode>
+        <childnode refid="2620" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2623" relation="include">
+        </childnode>
+        <childnode refid="2626" relation="include">
+        </childnode>
+      </node>
+      <node id="2654">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="2638" relation="include">
+        </childnode>
+        <childnode refid="2655" relation="include">
+        </childnode>
+        <childnode refid="2651" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2650" relation="include">
+        </childnode>
+        <childnode refid="2652" relation="include">
+        </childnode>
+      </node>
+      <node id="2601">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="2605">
+        <label>sys/types.h</label>
+      </node>
+      <node id="2645">
+        <label>typeinfo</label>
+      </node>
+      <node id="2607">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="2655">
+        <label>stack</label>
+      </node>
+      <node id="2600">
+        <label>vector</label>
+      </node>
+      <node id="2627">
+        <label>ciso646</label>
+      </node>
+      <node id="2650">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="2638" relation="include">
+        </childnode>
+        <childnode refid="2651" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2648" relation="include">
+        </childnode>
+        <childnode refid="2652" relation="include">
+        </childnode>
+      </node>
+      <node id="2661">
+        <label>array</label>
+      </node>
+      <node id="2639">
+        <label>sstream</label>
+      </node>
+      <node id="2626">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="2627" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2628" relation="include">
+        </childnode>
+      </node>
+      <node id="2663">
+        <label>ft2build.h</label>
+      </node>
+      <node id="2628">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="2628" relation="include">
+        </childnode>
+      </node>
+      <node id="2635">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="2624" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+      </node>
+      <node id="2643">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="2644" relation="include">
+        </childnode>
+      </node>
+      <node id="2648">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="2607" relation="include">
+        </childnode>
+        <childnode refid="2608" relation="include">
+        </childnode>
+      </node>
+      <node id="2632">
+        <label>cstdlib</label>
+      </node>
+      <node id="2624">
+        <label>iostream</label>
+      </node>
+      <node id="2602">
+        <label>buf.h</label>
+        <link refid="buf_8h"/>
+        <childnode refid="2603" relation="include">
+        </childnode>
+        <childnode refid="2604" relation="include">
+        </childnode>
+        <childnode refid="2605" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2606" relation="include">
+        </childnode>
+        <childnode refid="2626" relation="include">
+        </childnode>
+        <childnode refid="2646" relation="include">
+        </childnode>
+      </node>
+      <node id="2651">
+        <label>unordered_map</label>
+      </node>
+      <node id="2612">
+        <label>climits</label>
+      </node>
+      <node id="2642">
+        <label>mutex</label>
+      </node>
+      <node id="2652">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="2651" relation="include">
+        </childnode>
+        <childnode refid="2653" relation="include">
+        </childnode>
+        <childnode refid="2600" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2601" relation="include">
+        </childnode>
+      </node>
+      <node id="2617">
+        <label>type_traits</label>
+      </node>
+      <node id="2630">
+        <label>config.h</label>
+      </node>
+      <node id="2662">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="2663" relation="include">
+        </childnode>
+        <childnode refid="2622" relation="include">
+        </childnode>
+        <childnode refid="2621" relation="include">
+        </childnode>
+        <childnode refid="2651" relation="include">
+        </childnode>
+        <childnode refid="2623" relation="include">
+        </childnode>
+      </node>
+      <node id="2611">
+        <label>algorithm</label>
+      </node>
+      <node id="2620">
+        <label>cstring</label>
+      </node>
+      <node id="2622">
+        <label>memory</label>
+      </node>
+      <node id="2659">
+        <label>typeindex</label>
+      </node>
+      <node id="2644">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="2624" relation="include">
+        </childnode>
+        <childnode refid="2645" relation="include">
+        </childnode>
+        <childnode refid="2626" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2664">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="2665" relation="include">
+        </childnode>
+        <childnode refid="2666" relation="include">
+        </childnode>
+        <childnode refid="2667" relation="include">
+        </childnode>
+        <childnode refid="2668" relation="include">
+        </childnode>
+        <childnode refid="2669" relation="include">
+        </childnode>
+      </node>
+      <node id="2668">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="2669">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2665">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="2666">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="2667">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1console_1_1_console" prot="public">openage::console::Console</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1console">openage::console</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="buf_8h" kindref="compound">buf.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../handlers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/pixel.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../input/input_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/color.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../renderer/font/font.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamedata/color.gen.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Engine;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">console<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1console_1_1_console" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1console_1_1_console" kindref="compound">Console</ref><sp/>:<sp/><ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref>,<sp/><ref refid="classopenage_1_1_tick_handler" kindref="compound">TickHandler</ref>,<sp/><ref refid="classopenage_1_1_hud_handler" kindref="compound">HudHandler</ref>,<sp/><ref refid="classopenage_1_1_resize_handler" kindref="compound">ResizeHandler</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1console_1_1_console_1a0e1f861a8f19ed84b00c580d50d9f49f" kindref="member">Console</ref>(<ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*<ref refid="classopenage_1_1console_1_1_console_1a275f8903f340585c59536854129d4931" kindref="member">engine</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1console_1_1_console_1ae2d69839f8be1652ba4f61b9af4c8bb3" kindref="member">~Console</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a31dd3007762052acacdb2b1750bc3905" kindref="member">load_colors</ref>(std::vector&lt;gamedata::palette_color&gt;<sp/>&amp;colortable);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1ab5e30408417ac212bd3f35e50edd3a82" kindref="member">register_to_engine</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a8a86e7fece57c47da16e37633c624ece" kindref="member">set_visible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>make_visible);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a4d97e8f7fc2d7ba24490bf5f0b494332" kindref="member">write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*text);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a4e0359f0f3cbbf66da045ba1a33ffa57" kindref="member">interpret</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classopenage_1_1console_1_1_console_1ad348b9c975750b5b6f6f9f533ca8bcea" kindref="member">command</ref>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a1ce3c30cdc768559e11fc548cbcbddd8" kindref="member">on_drawhud</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1ae061753f445808da5dbc813dd0e0f4da" kindref="member">on_tick</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1af42e9fbab2caf9c762303b7d55f85d3a" kindref="member">on_input</ref>(SDL_Event<sp/>*event)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1a9e8a7d06ccbf4e5bf402e87cf4726ffb" kindref="member">on_resize</ref>(<ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref><sp/>new_size)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1console_1_1_console_1a275f8903f340585c59536854129d4931" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*<ref refid="classopenage_1_1console_1_1_console_1a275f8903f340585c59536854129d4931" kindref="member">engine</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63" refid="classopenage_1_1console_1_1_console_1a005c1608c8128b7312134b47be2ca2ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1a005c1608c8128b7312134b47be2ca2ca" kindref="member">bottomleft</ref>;</highlight></codeline>
+<codeline lineno="64" refid="classopenage_1_1console_1_1_console_1ac0aa3142154a9048bcebf0681efccec8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1ac0aa3142154a9048bcebf0681efccec8" kindref="member">topright</ref>;</highlight></codeline>
+<codeline lineno="65" refid="classopenage_1_1console_1_1_console_1affa7cf7767200b98fd7e3b9e2ed7fea7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1affa7cf7767200b98fd7e3b9e2ed7fea7" kindref="member">charsize</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;util::col&gt;<sp/><ref refid="classopenage_1_1console_1_1_console_1a6464555281f8b3e43de594460911737c" kindref="member">termcolors</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1console_1_1_console_1aa5ddaf2967b33d917593dd147a1058ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1console_1_1_console_1aa5ddaf2967b33d917593dd147a1058ee" kindref="member">visible</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1a8557c875f6648526e3e17264aed71210" kindref="member">buf</ref>;</highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1console_1_1_console_1ab1d376fb1fd8b179e8c464671e16ba3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">renderer::Font</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1ab1d376fb1fd8b179e8c464671e16ba3a" kindref="member">font</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1console_1_1_console_1a103f6555f63a2cc87eef702322c66585" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">input::InputContext</ref><sp/><ref refid="classopenage_1_1console_1_1_console_1a103f6555f63a2cc87eef702322c66585" kindref="member">input_context</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>command<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classopenage_1_1console_1_1_console_1ad348b9c975750b5b6f6f9f533ca8bcea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1console_1_1_console_1ad348b9c975750b5b6f6f9f533ca8bcea" kindref="member">command</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::console</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/console/console.h"/>
+  </compounddef>
+</doxygen>

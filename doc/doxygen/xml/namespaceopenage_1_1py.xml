@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1py" kind="namespace" language="C++">
+    <compoundname>openage::py</compoundname>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" prot="public" static="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">pyinterface::PyObjectRef</ref></type>
+        <definition>using openage::py::Obj = typedef pyinterface::PyObjectRef</definition>
+        <argsstring></argsstring>
+        <name>Obj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Python object reference. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="381" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="381" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::builtin</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>builtin</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>getattr(importlib.import_module(&quot;builtins&quot;), name) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="317" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="317" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::import</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>import</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>importlib.import_module(name) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="324" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="324" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::str</definition>
+        <argsstring>(const std::string &amp;value)</argsstring>
+        <name>str</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>str(value); </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="331" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="331" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::bytes</definition>
+        <argsstring>(const std::string &amp;value)</argsstring>
+        <name>bytes</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bytes(value) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="338" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="338" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::integer</definition>
+        <argsstring>(int value)</argsstring>
+        <name>integer</name>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>int(value) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="345" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="345" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::dict</definition>
+        <argsstring>()</argsstring>
+        <name>dict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict()</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="352" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="352" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">Obj</ref></type>
+        <definition>Obj openage::py::list</definition>
+        <argsstring>()</argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list()</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="359" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="359" bodyend="363"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Convenience functions and types for the python interface. </para>
+    </detaileddescription>
+    <location file="libopenage/pyinterface/pyobject.cpp" line="313" column="1"/>
+  </compounddef>
+</doxygen>

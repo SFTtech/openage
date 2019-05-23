@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_unordered_map" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::UnorderedMap</compoundname>
+    <includes refid="map_8h" local="no">map.h</includes>
+    <innerclass refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" prot="private">openage::curve::UnorderedMap::map_element</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>key_t</declname>
+        <defname>key_t</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>val_t</declname>
+        <defname>val_t</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_unordered_map_1abf74f2a6d59323e9ad9458e8d91b9258" prot="public" static="no">
+        <type>typename std::unordered_map&lt; key_t, <ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" kindref="compound">map_element</ref> &gt;::<ref refid="classopenage_1_1curve_1_1_unordered_map_1abf74f2a6d59323e9ad9458e8d91b9258" kindref="member">const_iterator</ref></type>
+        <definition>using openage::curve::UnorderedMap&lt; key_t, val_t &gt;::const_iterator =  typename std::unordered_map&lt;key_t, map_element&gt;::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="41" column="1" bodyfile="libopenage/curve/map.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_unordered_map_1ad67364bdecc861f16e38d1e17deac202" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; key_t, <ref refid="structopenage_1_1curve_1_1_unordered_map_1_1map__element" kindref="compound">map_element</ref> &gt;</type>
+        <definition>std::unordered_map&lt;key_t, map_element&gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::container</definition>
+        <argsstring></argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data holder. Maps keys to map elements. Map elements themselves store when they are valid. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="38" column="1" bodyfile="libopenage/curve/map.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a71ab04bbbcc0c9bc9ef02baf236d94b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt; &gt;</type>
+        <definition>std::optional&lt; MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::operator()</definition>
+        <argsstring>(const time_t &amp;, const key_t &amp;) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <defname>key</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="44" column="1" bodyfile="libopenage/curve/map.h" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1ab7e91da88c63f0bc632cf38572706fc5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt; &gt;</type>
+        <definition>std::optional&lt; MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::at</definition>
+        <argsstring>(const time_t &amp;, const key_t &amp;) const</argsstring>
+        <name>at</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <defname>key</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="47" column="1" bodyfile="libopenage/curve/map.h" bodystart="94" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a3d59e255c6113d5e517ba2f69e6927ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt;</type>
+        <definition>MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::begin</definition>
+        <argsstring>(const time_t &amp;e=std::numeric_limits&lt; time_t &gt;::max()) const</argsstring>
+        <name>begin</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>e</declname>
+          <defval>std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="50" column="1" bodyfile="libopenage/curve/map.h" bodystart="114" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1af9481e8e9e7cba29a319bd1bea5be0c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt;</type>
+        <definition>MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::end</definition>
+        <argsstring>(const time_t &amp;e=std::numeric_limits&lt; time_t &gt;::max()) const</argsstring>
+        <name>end</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>e</declname>
+          <defval>std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="53" column="1" bodyfile="libopenage/curve/map.h" bodystart="124" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt;</type>
+        <definition>MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::insert</definition>
+        <argsstring>(const time_t &amp;birth, const key_t &amp;, const val_t &amp;)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>birth</declname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <defname>key</defname>
+        </param>
+        <param>
+          <type>const val_t &amp;</type>
+          <defname>value</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="56" column="1" bodyfile="libopenage/curve/map.h" bodystart="149" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a0794cb0a2bca785e61ce8a8f1fd2ff8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt;</type>
+        <definition>MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::insert</definition>
+        <argsstring>(const time_t &amp;birth, const time_t &amp;death, const key_t &amp;key, const val_t &amp;value)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>birth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>death</declname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const val_t &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="59" column="1" bodyfile="libopenage/curve/map.h" bodystart="161" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a74e9ff15f6b3176742a166d7e7c7b5f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; key_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt;</type>
+        <definition>MapFilterIterator&lt; key_t, val_t, UnorderedMap&lt; key_t, val_t &gt; &gt; openage::curve::UnorderedMap&lt; key_t, val_t &gt;::between</definition>
+        <argsstring>(const time_t &amp;start, const time_t &amp;to) const</argsstring>
+        <name>between</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="62" column="1" bodyfile="libopenage/curve/map.h" bodystart="134" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::birth</definition>
+        <argsstring>(const time_t &amp;, const key_t &amp;)</argsstring>
+        <name>birth</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <defname>key</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="64" column="1" bodyfile="libopenage/curve/map.h" bodystart="175" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1afc343e3cce6523cc598efd2fb3a30952" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::birth</definition>
+        <argsstring>(const time_t &amp;, const MapFilterIterator&lt; val_t, val_t, UnorderedMap &gt; &amp;)</argsstring>
+        <name>birth</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; val_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt; &amp;</type>
+          <defname>it</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="65" column="1" bodyfile="libopenage/curve/map.h" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::kill</definition>
+        <argsstring>(const time_t &amp;, const key_t &amp;)</argsstring>
+        <name>kill</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const key_t &amp;</type>
+          <defname>key</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="68" column="1" bodyfile="libopenage/curve/map.h" bodystart="191" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a1462828461d5615ecb2d0c613637aa74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::kill</definition>
+        <argsstring>(const time_t &amp;, const MapFilterIterator&lt; val_t, val_t, UnorderedMap &gt; &amp;)</argsstring>
+        <name>kill</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref>&lt; val_t, val_t, <ref refid="classopenage_1_1curve_1_1_unordered_map" kindref="compound">UnorderedMap</ref> &gt; &amp;</type>
+          <defname>it</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="69" column="1" bodyfile="libopenage/curve/map.h" bodystart="200" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::clean</definition>
+        <argsstring>(const time_t &amp;)</argsstring>
+        <name>clean</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="73" column="1" bodyfile="libopenage/curve/map.h" bodystart="206" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_unordered_map_1a9089d0b0dc73dde810956090bb44d52f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::UnorderedMap&lt; key_t, val_t &gt;::dump</definition>
+        <argsstring>()</argsstring>
+        <name>dump</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gdb helper method. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/map.h" line="78" column="1" bodyfile="libopenage/curve/map.h" bodystart="78" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Map that keeps track of the lifetime of the contained elements. Make sure that no key is reused. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4868">
+        <label>openage::curve::UnorderedMap&lt; key_t, val_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_unordered_map"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/map.h" line="20" column="1" bodyfile="libopenage/curve/map.h" bodystart="20" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1ab7e91da88c63f0bc632cf38572706fc5" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>at</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a3d59e255c6113d5e517ba2f69e6927ea" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>begin</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a74e9ff15f6b3176742a166d7e7c7b5f2" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>between</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a1f17e1e6fafe110bb49b6da9686e19c3" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>birth</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1afc343e3cce6523cc598efd2fb3a30952" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>birth</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1aa3f1194fff6065febbcacb5bf64e2d37" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>clean</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1abf74f2a6d59323e9ad9458e8d91b9258" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>const_iterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1ad67364bdecc861f16e38d1e17deac202" prot="private" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>container</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a9089d0b0dc73dde810956090bb44d52f" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>dump</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1af9481e8e9e7cba29a319bd1bea5be0c8" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>end</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1af1b1051f0bf23fc91b3f153b8a9ba2df" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a0794cb0a2bca785e61ce8a8f1fd2ff8f" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a7f5ff15a861eb528fd47a2d2a8b920d3" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>kill</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a1462828461d5615ecb2d0c613637aa74" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>kill</name></member>
+      <member refid="classopenage_1_1curve_1_1_unordered_map_1a71ab04bbbcc0c9bc9ef02baf236d94b9" prot="public" virt="non-virtual"><scope>openage::curve::UnorderedMap</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

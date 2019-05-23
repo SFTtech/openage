@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlRenderTarget</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_render_target" prot="public" virt="non-virtual">openage::renderer::RenderTarget</basecompoundref>
+    <includes refid="opengl_2render__target_8h" local="no">render_target.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a81d91ab326c675314d5fe7c284ed186a" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2e" kindref="member">gl_render_target_t</ref></type>
+        <definition>gl_render_target_t openage::renderer::opengl::GlRenderTarget::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="44" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a1421b3d95181c3ea5daf8ba92492aca5" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer" kindref="compound">GlFramebuffer</ref> &gt;</type>
+        <definition>std::optional&lt;GlFramebuffer&gt; openage::renderer::opengl::GlRenderTarget::framebuffer</definition>
+        <argsstring></argsstring>
+        <name>framebuffer</name>
+        <briefdescription>
+<para>For textures target type, the framebuffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="47" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ae3f14c0c2c27e0622bfc3ba847481cfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlRenderTarget::GlRenderTarget</definition>
+        <argsstring>()</argsstring>
+        <name>GlRenderTarget</name>
+        <briefdescription>
+<para>Construct a render target pointed at the default framebuffer - the window. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="10" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1afc45710e731b96fddd74dd96cab6347d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlRenderTarget::GlRenderTarget</definition>
+        <argsstring>(std::vector&lt; const GlTexture2d * &gt; textures)</argsstring>
+        <name>GlRenderTarget</name>
+        <param>
+          <type>std::vector&lt; const <ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d" kindref="compound">GlTexture2d</ref> * &gt;</type>
+          <declname>textures</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct a render target pointing at the given textures. <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> are attached to points specific to their pixel format, e.g. a depth texture will be set as the depth target. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="35" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlRenderTarget::bind_write</definition>
+        <argsstring>() const</argsstring>
+        <name>bind_write</name>
+        <briefdescription>
+<para>Bind this render target to be drawn into. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="38" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlRenderTarget::bind_read</definition>
+        <argsstring>() const</argsstring>
+        <name>bind_read</name>
+        <briefdescription>
+<para>Bind this render target to be read from. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="41" column="1" bodyfile="libopenage/renderer/opengl/render_target.cpp" bodystart="26" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents an OpenGL target that can be drawn into. It can be either a framebuffer or the display (the window). </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2407">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="2406">
+        <label>openage::renderer::opengl::GlRenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
+        <childnode refid="2407" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2409">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="2408">
+        <label>openage::renderer::opengl::GlRenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
+        <childnode refid="2409" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/render_target.h" line="27" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="27" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a3f304238b780859f8e85be1aa469c9bf" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>bind_read</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ac6c1217127f93fff237d0fe834d822e2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>bind_write</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a1421b3d95181c3ea5daf8ba92492aca5" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>framebuffer</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1ae3f14c0c2c27e0622bfc3ba847481cfd" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>GlRenderTarget</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1afc45710e731b96fddd74dd96cab6347d" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>GlRenderTarget</name></member>
+      <member refid="classopenage_1_1renderer_1_1_render_target_1a82f0a811d5ef9ed22a3b946eaf523968" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>RenderTarget</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target_1a81d91ab326c675314d5fe7c284ed186a" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>type</name></member>
+      <member refid="classopenage_1_1renderer_1_1_render_target_1a0c525e5ad964ff0e763c2a45299ecebd" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderTarget</scope><name>~RenderTarget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="main__args__link_8h" kind="file" language="C++">
+    <compoundname>main_args_link.h</compoundname>
+    <includes local="no">QObject</includes>
+    <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
+    <includedby refid="main__args__link_8cpp" local="yes">libopenage/gui/main_args_link.cpp</includedby>
+    <incdepgraph>
+      <node id="14899">
+        <label>list</label>
+      </node>
+      <node id="14891">
+        <label>atomic</label>
+      </node>
+      <node id="14896">
+        <label>iomanip</label>
+      </node>
+      <node id="14875">
+        <label>functional</label>
+      </node>
+      <node id="14903">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="14875" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+      </node>
+      <node id="14867">
+        <label>QObject</label>
+      </node>
+      <node id="14872">
+        <label>cstdint</label>
+      </node>
+      <node id="14894">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="14895" relation="include">
+        </childnode>
+        <childnode refid="14875" relation="include">
+        </childnode>
+        <childnode refid="14896" relation="include">
+        </childnode>
+        <childnode refid="14884" relation="include">
+        </childnode>
+        <childnode refid="14897" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14870" relation="include">
+        </childnode>
+      </node>
+      <node id="14881">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="14882" relation="include">
+        </childnode>
+      </node>
+      <node id="14885">
+        <label>stdexcept</label>
+      </node>
+      <node id="14880">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="14898">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="14899" relation="include">
+        </childnode>
+        <childnode refid="14876" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+      </node>
+      <node id="14895">
+        <label>cstdarg</label>
+      </node>
+      <node id="14869">
+        <label>string</label>
+      </node>
+      <node id="14886">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="14872" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14887" relation="include">
+        </childnode>
+        <childnode refid="14888" relation="include">
+        </childnode>
+        <childnode refid="14890" relation="include">
+        </childnode>
+        <childnode refid="14898" relation="include">
+        </childnode>
+        <childnode refid="14900" relation="include">
+        </childnode>
+      </node>
+      <node id="14888">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="14889" relation="include">
+        </childnode>
+      </node>
+      <node id="14890">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="14891" relation="include">
+        </childnode>
+        <childnode refid="14884" relation="include">
+        </childnode>
+        <childnode refid="14892" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+        <childnode refid="14893" relation="include">
+        </childnode>
+        <childnode refid="14894" relation="include">
+        </childnode>
+      </node>
+      <node id="14866">
+        <label>libopenage/gui/main_args_link.h</label>
+        <link refid="main__args__link_8h"/>
+        <childnode refid="14867" relation="include">
+        </childnode>
+        <childnode refid="14868" relation="include">
+        </childnode>
+      </node>
+      <node id="14871">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="14872" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14870" relation="include">
+        </childnode>
+        <childnode refid="14873" relation="include">
+        </childnode>
+        <childnode refid="14874" relation="include">
+        </childnode>
+      </node>
+      <node id="14882">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="14883" relation="include">
+        </childnode>
+        <childnode refid="14884" relation="include">
+        </childnode>
+        <childnode refid="14885" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+        <childnode refid="14886" relation="include">
+        </childnode>
+      </node>
+      <node id="14902">
+        <label>typeinfo</label>
+      </node>
+      <node id="14870">
+        <label>vector</label>
+      </node>
+      <node id="14878">
+        <label>ciso646</label>
+      </node>
+      <node id="14897">
+        <label>sstream</label>
+      </node>
+      <node id="14877">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="14878" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14879" relation="include">
+        </childnode>
+      </node>
+      <node id="14904">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="14884" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14870" relation="include">
+        </childnode>
+        <childnode refid="14905" relation="include">
+        </childnode>
+        <childnode refid="14871" relation="include">
+        </childnode>
+      </node>
+      <node id="14879">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="14879" relation="include">
+        </childnode>
+      </node>
+      <node id="14893">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="14883" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+      </node>
+      <node id="14900">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="14901" relation="include">
+        </childnode>
+      </node>
+      <node id="14906">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="14905">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="14883" relation="include">
+        </childnode>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+      </node>
+      <node id="14889">
+        <label>cstdlib</label>
+      </node>
+      <node id="14883">
+        <label>iostream</label>
+      </node>
+      <node id="14874">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="14875" relation="include">
+        </childnode>
+        <childnode refid="14876" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+        <childnode refid="14880" relation="include">
+        </childnode>
+        <childnode refid="14881" relation="include">
+        </childnode>
+        <childnode refid="14903" relation="include">
+        </childnode>
+      </node>
+      <node id="14876">
+        <label>mutex</label>
+      </node>
+      <node id="14868">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="14869" relation="include">
+        </childnode>
+        <childnode refid="14870" relation="include">
+        </childnode>
+        <childnode refid="14871" relation="include">
+        </childnode>
+        <childnode refid="14904" relation="include">
+        </childnode>
+        <childnode refid="14906" relation="include">
+        </childnode>
+      </node>
+      <node id="14873">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="14892">
+        <label>type_traits</label>
+      </node>
+      <node id="14887">
+        <label>config.h</label>
+      </node>
+      <node id="14884">
+        <label>memory</label>
+      </node>
+      <node id="14901">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="14883" relation="include">
+        </childnode>
+        <childnode refid="14902" relation="include">
+        </childnode>
+        <childnode refid="14877" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14907">
+        <label>libopenage/gui/main_args_link.h</label>
+        <link refid="main__args__link_8h"/>
+        <childnode refid="14908" relation="include">
+        </childnode>
+      </node>
+      <node id="14908">
+        <label>libopenage/gui/main_args_link.cpp</label>
+        <link refid="main__args__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_main_args_link" prot="public">openage::gui::MainArgsLink</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">QT_FORWARD_DECLARE_CLASS(QQmlEngine)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">QT_FORWARD_DECLARE_CLASS(QJSEngine)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1gui_1_1_main_args_link" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_main_args_link" kindref="compound">MainArgsLink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1gui_1_1_main_args_link_1a718d28a7b61d9bef2f95bd932e364c03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref><sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1a718d28a7b61d9bef2f95bd932e364c03" kindref="member">assetDir</ref><sp/>MEMBER<sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" kindref="member">asset_dir</ref><sp/>CONSTANT)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1afae5cee025cfda20b2440abcbb01cef9" kindref="member">MainArgsLink</ref>(QObject<sp/>*parent,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;<ref refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" kindref="member">asset_dir</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1acb2c14a5198daecdc30c44aa2e4ddfec" kindref="member">~MainArgsLink</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QObject*<sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1a27313ca71bc497664ab7a4ade01323e4" kindref="member">provider</ref>(QQmlEngine*,<sp/>QJSEngine*);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/><ref refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" kindref="member">asset_dir</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/main_args_link.h"/>
+  </compounddef>
+</doxygen>

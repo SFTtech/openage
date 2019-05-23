@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1fslike" kind="namespace" language="C++">
+    <compoundname>openage::util::fslike</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1_directory" prot="public">openage::util::fslike::Directory</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" prot="public">openage::util::fslike::FSLike</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1_python" prot="public">openage::util::fslike::Python</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" prot="public" static="no" mutable="no">
+        <type>constexpr char</type>
+        <definition>constexpr char openage::util::fslike::PATHSEP</definition>
+        <argsstring></argsstring>
+        <name>PATHSEP</name>
+        <initializer>= &apos;/&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/native.h" line="13" column="1" bodyfile="libopenage/util/fslike/native.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a58745e546150f688fef38aea4a79f62d" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_is_file</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_is_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="121" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1adb6b99b51b87bdd1555bbdb7d825ebcf" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_is_dir</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_is_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="122" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1abe8d1a76998314cd0b0299a62dd6785e" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_writable</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_writable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="123" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1aff46d25610d837c53fa4da00296bea9b" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; std::vector&lt; std::string &gt;, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; std::vector&lt; std::string &gt;, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_list</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="124" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a7c3f79a881aa369fb0989fe6c5046364" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_mkdirs</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_mkdirs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="125" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1adf6e3f1eaa86e32e959db4c7811b135b" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; File, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_open_r</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_open_r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="126" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1aa5ecccf4f624340bbfc4a232e7b7233b" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; File, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_open_w</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_open_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="127" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1aa51d7a44aca7c081abe0ff6e632e0f24" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; File, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_open_rw</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_open_rw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="128" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1ad6dd5c0c16e9659c91112cd80251c4a2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; File, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_open_a</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_open_a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="129" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a52670ad8a70c09b27de32b6831985de2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; File, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_open_ar</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_open_ar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="130" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1acbd9965cb5857759fe13d98cb606b740" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; Path, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_resolve_r</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_resolve_r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="131" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1afd1f9717e3b0a3c03b0757064f732fc3" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; Path, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_resolve_w</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_resolve_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="132" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a94e28b922b84615a619cf4ba6e602dbf" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref>, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; py::Obj, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_get_native_path</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_get_native_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="134" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1aaa675eab58642d6f4b1c74921fd398d8" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp;, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp;, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_rename</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_rename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="135" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1ae593e16f4b47c11df659a50f8431d49e" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_rmdir</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_rmdir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="136" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a7937af583786f1e81f44a94f4b7b309e" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_touch</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_touch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="137" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a2692fa8f758ce0eddce2e2a43a9bfc5c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_unlink</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_unlink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="138" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a23477e560d8a5a995664fbcda9414f48" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; int, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; int, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_get_mtime</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_get_mtime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="139" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1a2f0988f5df9b52231e5ffd64d92fe490" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; uint64_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, const std::vector&lt; std::string &gt; &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; uint64_t, PyObject *, const std::vector&lt; std::string &gt; &amp; &gt; openage::util::fslike::pyx_fs_get_filesize</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_get_filesize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="140" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1fslike_1ad9a10d50910ce2850da6335c0b37ffd8" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; bool, PyObject * &gt; openage::util::fslike::pyx_fs_is_fslike_directory</definition>
+        <argsstring></argsstring>
+        <name>pyx_fs_is_fslike_directory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.cpp" line="141" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains the filesystem-like object abstraction for C++. With that, filesystem access can be dispatched for transparent archive access, union mounts and more. </para>
+    </detaileddescription>
+    <location file="libopenage/util/fslike/directory.cpp" line="42" column="1"/>
+  </compounddef>
+</doxygen>

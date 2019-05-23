@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_s_d_l" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::SDL</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" prot="private" static="yes" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref></type>
+        <definition>SDL openage::renderer::SDL::sdl</definition>
+        <argsstring></argsstring>
+        <name>sdl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/sdl_global.cpp" line="49" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::renderer::SDL::inited</definition>
+        <argsstring></argsstring>
+        <name>inited</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/sdl_global.cpp" line="50" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void openage::renderer::SDL::make_available</definition>
+        <argsstring>()</argsstring>
+        <name>make_available</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/sdl_global.cpp" line="15" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="15" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::SDL::~SDL</definition>
+        <argsstring>()</argsstring>
+        <name>~SDL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/sdl_global.cpp" line="39" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="39" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A static <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref> singleton manager. Used to lazily initialize <ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4136">
+        <label>openage::renderer::SDL</label>
+        <link refid="classopenage_1_1renderer_1_1_s_d_l"/>
+        <childnode refid="4136" relation="usage">
+          <edgelabel>-sdl</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/sdl_global.cpp" line="13" column="1" bodyfile="libopenage/renderer/sdl_global.cpp" bodystart="13" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" prot="private" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>inited</name></member>
+      <member refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" prot="public" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>make_available</name></member>
+      <member refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" prot="private" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>sdl</name></member>
+      <member refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" prot="public" virt="non-virtual"><scope>openage::renderer::SDL</scope><name>~SDL</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

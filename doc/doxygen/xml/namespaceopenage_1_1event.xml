@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1event" kind="namespace" language="C++">
+    <compoundname>openage::event</compoundname>
+    <innerclass refid="classopenage_1_1event_1_1_dependency_event_class" prot="public">openage::event::DependencyEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_dependency_immediately_event_class" prot="public">openage::event::DependencyImmediatelyEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event" prot="public">openage::event::Event</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_class" prot="public">openage::event::EventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_filter" prot="public">openage::event::EventFilter</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_queue" prot="public">openage::event::EventQueue</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_store" prot="public">openage::event::EventStore</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_target" prot="public">openage::event::EventTarget</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_loop" prot="public">openage::event::Loop</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_once_event_class" prot="public">openage::event::OnceEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_repeat_event_class" prot="public">openage::event::RepeatEventClass</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_state" prot="public">openage::event::State</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_trigger_event_class" prot="public">openage::event::TriggerEventClass</innerclass>
+    <innernamespace refid="namespaceopenage_1_1event_1_1demo">openage::event::demo</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1event_1_1tests">openage::event::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/event/demo/aicontroller.cpp" line="5" column="1"/>
+  </compounddef>
+</doxygen>

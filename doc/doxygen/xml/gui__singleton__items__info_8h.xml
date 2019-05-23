@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__singleton__items__info_8h" kind="file" language="C++">
+    <compoundname>gui_singleton_items_info.h</compoundname>
+    <includedby refid="engine__info_8h" local="yes">libopenage/gui/engine_info.h</includedby>
+    <invincdepgraph>
+      <node id="13612">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="13608">
+        <label>libopenage/gui/guisys/public/gui_singleton_items_info.h</label>
+        <link refid="gui__singleton__items__info_8h"/>
+        <childnode refid="13609" relation="include">
+        </childnode>
+      </node>
+      <node id="13625">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="13631">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="13629">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="13617">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="13619">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="13624">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="13609">
+        <label>libopenage/gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="13610" relation="include">
+        </childnode>
+        <childnode refid="13633" relation="include">
+        </childnode>
+        <childnode refid="13623" relation="include">
+        </childnode>
+        <childnode refid="13634" relation="include">
+        </childnode>
+      </node>
+      <node id="13623">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="13611">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="13613">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="13628">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="13630">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="13620">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="13615">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="13610">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="13611" relation="include">
+        </childnode>
+        <childnode refid="13612" relation="include">
+        </childnode>
+        <childnode refid="13613" relation="include">
+        </childnode>
+        <childnode refid="13614" relation="include">
+        </childnode>
+        <childnode refid="13615" relation="include">
+        </childnode>
+        <childnode refid="13616" relation="include">
+        </childnode>
+        <childnode refid="13617" relation="include">
+        </childnode>
+        <childnode refid="13618" relation="include">
+        </childnode>
+        <childnode refid="13619" relation="include">
+        </childnode>
+        <childnode refid="13620" relation="include">
+        </childnode>
+        <childnode refid="13621" relation="include">
+        </childnode>
+        <childnode refid="13622" relation="include">
+        </childnode>
+        <childnode refid="13623" relation="include">
+        </childnode>
+        <childnode refid="13624" relation="include">
+        </childnode>
+        <childnode refid="13625" relation="include">
+        </childnode>
+        <childnode refid="13626" relation="include">
+        </childnode>
+        <childnode refid="13627" relation="include">
+        </childnode>
+        <childnode refid="13628" relation="include">
+        </childnode>
+        <childnode refid="13629" relation="include">
+        </childnode>
+        <childnode refid="13630" relation="include">
+        </childnode>
+        <childnode refid="13631" relation="include">
+        </childnode>
+        <childnode refid="13632" relation="include">
+        </childnode>
+      </node>
+      <node id="13634">
+        <label>libopenage/gui/main_args_link.cpp</label>
+        <link refid="main__args__link_8cpp"/>
+      </node>
+      <node id="13627">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="13632">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="13626">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="13633">
+        <label>libopenage/gui/engine_info.cpp</label>
+        <link refid="engine__info_8cpp"/>
+      </node>
+      <node id="13621">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="13618">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="13614">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="13622">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="13616">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_singleton_items_info" prot="public">qtsdl::GuiSingletonItemsInfo</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classqtsdl_1_1_gui_singleton_items_info" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_singleton_items_info.h"/>
+  </compounddef>
+</doxygen>

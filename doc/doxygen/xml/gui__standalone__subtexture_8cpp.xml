@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__standalone__subtexture_8cpp" kind="file" language="C++">
+    <compoundname>gui_standalone_subtexture.cpp</compoundname>
+    <includes refid="gui__standalone__subtexture_8h" local="yes">gui_standalone_subtexture.h</includes>
+    <incdepgraph>
+      <node id="14472">
+        <label>libopenage/gui/integration/private/gui_standalone_subtexture.cpp</label>
+        <link refid="gui__standalone__subtexture_8cpp"/>
+        <childnode refid="14473" relation="include">
+        </childnode>
+      </node>
+      <node id="14473">
+        <label>gui_standalone_subtexture.h</label>
+        <link refid="gui__standalone__subtexture_8h"/>
+        <childnode refid="14474" relation="include">
+        </childnode>
+        <childnode refid="14475" relation="include">
+        </childnode>
+      </node>
+      <node id="14475">
+        <label>QSGTexture</label>
+      </node>
+      <node id="14474">
+        <label>QtGui</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__standalone__subtexture_8h" kindref="compound">gui_standalone_subtexture.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a91d3991a935c02c6c206c6158cb0d200" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a91d3991a935c02c6c206c6158cb0d200" kindref="member">GuiStandaloneSubtexture::GuiStandaloneSubtexture</ref>(GLuint<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;size)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>id(id),</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>size(size)<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1afbefb94ab19ce97d8f67bc4f5ef1f53c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1afbefb94ab19ce97d8f67bc4f5ef1f53c" kindref="member">GuiStandaloneSubtexture::~GuiStandaloneSubtexture</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>glDeleteTextures(1,<sp/>&amp;this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" kindref="member">GuiStandaloneSubtexture::bind</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindTexture(GL_TEXTURE_2D,<sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" kindref="member">textureId</ref>());</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a20f2863cf5efecc0f0c39c02044af36f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a20f2863cf5efecc0f0c39c02044af36f" kindref="member">GuiStandaloneSubtexture::hasAlphaChannel</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assume<sp/>32bit<sp/>textures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a4268bd7cbef14c5848fec65e998d2ca7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a4268bd7cbef14c5848fec65e998d2ca7" kindref="member">GuiStandaloneSubtexture::hasMipmaps</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1aed33169bb7552361fad461740fa10bc8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1aed33169bb7552361fad461740fa10bc8" kindref="member">GuiStandaloneSubtexture::isAtlasTexture</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" kindref="member">GuiStandaloneSubtexture::textureId</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a3b12ffcf36a51aea0969dadc31b62ddf" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" refkind="member"><highlight class="normal">QSize<sp/><ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" kindref="member">GuiStandaloneSubtexture::textureSize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/private/gui_standalone_subtexture.cpp"/>
+  </compounddef>
+</doxygen>

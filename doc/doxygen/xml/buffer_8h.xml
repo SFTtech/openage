@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="buffer_8h" kind="file" language="C++">
+    <compoundname>buffer.h</compoundname>
+    <includes refid="simple__object_8h" local="yes">simple_object.h</includes>
+    <includedby refid="buffer_8cpp" local="yes">libopenage/renderer/opengl/buffer.cpp</includedby>
+    <includedby refid="opengl_2geometry_8h" local="yes">libopenage/renderer/opengl/geometry.h</includedby>
+    <includedby refid="vertex__array_8h" local="yes">libopenage/renderer/opengl/vertex_array.h</includedby>
+    <incdepgraph>
+      <node id="20880">
+        <label>functional</label>
+      </node>
+      <node id="20879">
+        <label>optional</label>
+      </node>
+      <node id="20881">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="20878">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="20879" relation="include">
+        </childnode>
+        <childnode refid="20880" relation="include">
+        </childnode>
+        <childnode refid="20881" relation="include">
+        </childnode>
+      </node>
+      <node id="20877">
+        <label>libopenage/renderer/opengl/buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="20878" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20886">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="20887" relation="include">
+        </childnode>
+        <childnode refid="20888" relation="include">
+        </childnode>
+        <childnode refid="20890" relation="include">
+        </childnode>
+      </node>
+      <node id="20888">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="20889">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="20883">
+        <label>libopenage/renderer/opengl/buffer.cpp</label>
+        <link refid="buffer_8cpp"/>
+      </node>
+      <node id="20892">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="20891">
+        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="20884" relation="include">
+        </childnode>
+        <childnode refid="20892" relation="include">
+        </childnode>
+      </node>
+      <node id="20884">
+        <label>libopenage/renderer/opengl/geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="20885" relation="include">
+        </childnode>
+        <childnode refid="20886" relation="include">
+        </childnode>
+        <childnode refid="20888" relation="include">
+        </childnode>
+        <childnode refid="20890" relation="include">
+        </childnode>
+      </node>
+      <node id="20890">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="20885">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="20882">
+        <label>libopenage/renderer/opengl/buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="20883" relation="include">
+        </childnode>
+        <childnode refid="20884" relation="include">
+        </childnode>
+        <childnode refid="20891" relation="include">
+        </childnode>
+      </node>
+      <node id="20887">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="20888" relation="include">
+        </childnode>
+        <childnode refid="20889" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer" prot="public">openage::renderer::opengl::GlBuffer</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="simple__object_8h" kindref="compound">simple_object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer" kindref="compound">GlBuffer</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1aeddc8478dbd3daaf4de76c109a88a8bb" kindref="member">GlBuffer</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>,<sp/>GLenum<sp/>usage<sp/>=<sp/>GL_STATIC_DRAW);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1aeddc8478dbd3daaf4de76c109a88a8bb" kindref="member">GlBuffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>,<sp/>GLenum<sp/>usage<sp/>=<sp/>GL_STATIC_DRAW);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a6b6867a9bcc96e5d36923ce98bd7a635" kindref="member">get_size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a44250c2fc6c0a4fe5bf78595445cff57" kindref="member">upload_data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a25db93a238c2cd0056d897a04d87e35d" kindref="member">bind</ref>(GLenum<sp/>target)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer_1a855347c5b5720a8c5d236fe0d70b159a" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/buffer.h"/>
+  </compounddef>
+</doxygen>

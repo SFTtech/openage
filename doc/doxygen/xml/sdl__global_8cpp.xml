@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="sdl__global_8cpp" kind="file" language="C++">
+    <compoundname>sdl_global.cpp</compoundname>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes local="no">SDL2/SDL_image.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <incdepgraph>
+      <node id="23492">
+        <label>list</label>
+      </node>
+      <node id="23481">
+        <label>atomic</label>
+      </node>
+      <node id="23488">
+        <label>iomanip</label>
+      </node>
+      <node id="23487">
+        <label>functional</label>
+      </node>
+      <node id="23476">
+        <label>cstdint</label>
+      </node>
+      <node id="23465">
+        <label>SDL2/SDL_image.h</label>
+      </node>
+      <node id="23485">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23486" relation="include">
+        </childnode>
+        <childnode refid="23487" relation="include">
+        </childnode>
+        <childnode refid="23488" relation="include">
+        </childnode>
+        <childnode refid="23482" relation="include">
+        </childnode>
+        <childnode refid="23489" relation="include">
+        </childnode>
+        <childnode refid="23473" relation="include">
+        </childnode>
+        <childnode refid="23490" relation="include">
+        </childnode>
+      </node>
+      <node id="23495">
+        <label>stdexcept</label>
+      </node>
+      <node id="23491">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23492" relation="include">
+        </childnode>
+        <childnode refid="23493" relation="include">
+        </childnode>
+        <childnode refid="23467" relation="include">
+        </childnode>
+      </node>
+      <node id="23486">
+        <label>cstdarg</label>
+      </node>
+      <node id="23473">
+        <label>string</label>
+      </node>
+      <node id="23475">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23476" relation="include">
+        </childnode>
+        <childnode refid="23473" relation="include">
+        </childnode>
+        <childnode refid="23477" relation="include">
+        </childnode>
+        <childnode refid="23478" relation="include">
+        </childnode>
+        <childnode refid="23480" relation="include">
+        </childnode>
+        <childnode refid="23491" relation="include">
+        </childnode>
+        <childnode refid="23467" relation="include">
+        </childnode>
+      </node>
+      <node id="23478">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23479" relation="include">
+        </childnode>
+      </node>
+      <node id="23480">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23481" relation="include">
+        </childnode>
+        <childnode refid="23482" relation="include">
+        </childnode>
+        <childnode refid="23483" relation="include">
+        </childnode>
+        <childnode refid="23471" relation="include">
+        </childnode>
+        <childnode refid="23484" relation="include">
+        </childnode>
+        <childnode refid="23485" relation="include">
+        </childnode>
+      </node>
+      <node id="23494">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23469" relation="include">
+        </childnode>
+        <childnode refid="23482" relation="include">
+        </childnode>
+        <childnode refid="23495" relation="include">
+        </childnode>
+        <childnode refid="23473" relation="include">
+        </childnode>
+        <childnode refid="23471" relation="include">
+        </childnode>
+        <childnode refid="23475" relation="include">
+        </childnode>
+      </node>
+      <node id="23464">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="23470">
+        <label>typeinfo</label>
+      </node>
+      <node id="23490">
+        <label>vector</label>
+      </node>
+      <node id="23466">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23467" relation="include">
+        </childnode>
+        <childnode refid="23475" relation="include">
+        </childnode>
+      </node>
+      <node id="23472">
+        <label>ciso646</label>
+      </node>
+      <node id="23489">
+        <label>sstream</label>
+      </node>
+      <node id="23471">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23472" relation="include">
+        </childnode>
+        <childnode refid="23473" relation="include">
+        </childnode>
+        <childnode refid="23474" relation="include">
+        </childnode>
+      </node>
+      <node id="23474">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23474" relation="include">
+        </childnode>
+      </node>
+      <node id="23484">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23469" relation="include">
+        </childnode>
+        <childnode refid="23473" relation="include">
+        </childnode>
+      </node>
+      <node id="23463">
+        <label>libopenage/renderer/sdl_global.cpp</label>
+        <link refid="sdl__global_8cpp"/>
+        <childnode refid="23464" relation="include">
+        </childnode>
+        <childnode refid="23465" relation="include">
+        </childnode>
+        <childnode refid="23466" relation="include">
+        </childnode>
+        <childnode refid="23494" relation="include">
+        </childnode>
+      </node>
+      <node id="23467">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23468" relation="include">
+        </childnode>
+      </node>
+      <node id="23479">
+        <label>cstdlib</label>
+      </node>
+      <node id="23469">
+        <label>iostream</label>
+      </node>
+      <node id="23493">
+        <label>mutex</label>
+      </node>
+      <node id="23483">
+        <label>type_traits</label>
+      </node>
+      <node id="23477">
+        <label>config.h</label>
+      </node>
+      <node id="23482">
+        <label>memory</label>
+      </node>
+      <node id="23468">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23469" relation="include">
+        </childnode>
+        <childnode refid="23470" relation="include">
+        </childnode>
+        <childnode refid="23471" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_s_d_l" prot="public">openage::renderer::SDL</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL_image.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1renderer_1_1_s_d_l" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" kindref="member">make_available</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" kindref="member">inited</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_Init(SDL_INIT_VIDEO)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;SDL<sp/>video<sp/>initialization<sp/>failed:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError()};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>support<sp/>for<sp/>the<sp/>PNG<sp/>image<sp/>formats,<sp/>jpg<sp/>bit:<sp/>IMG_INIT_JPG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wanted_image_formats<sp/>=<sp/>IMG_INIT_PNG;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sdlimg_inited<sp/>=<sp/>IMG_Init(wanted_image_formats);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((sdlimg_inited<sp/>&amp;<sp/>wanted_image_formats)<sp/>!=<sp/>wanted_image_formats)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>PNG<sp/>support:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>IMG_GetError()};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" kindref="member">SDL::sdl</ref><sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_version<sp/>version;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GetVersion(&amp;version);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Initialized<sp/>SDL<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>uint32_t(version.major)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>uint32_t(version.minor)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>uint32_t(version.patch));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" kindref="member">SDL::inited</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1ac8f84c0598966ac7a51ae8139c6c797c" kindref="member">~SDL</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" kindref="member">SDL::inited</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IMG_Quit();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_Quit();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Destroyed<sp/>SDL<sp/>global<sp/>context&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49" refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" kindref="member">sdl</ref>;</highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" kindref="member">inited</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a9c02c346dd03c305bb5f27487bece4ba" kindref="member">SDL::inited</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_s_d_l" kindref="compound">SDL</ref><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a2c34856ebe840e964cedea4dbcb00c4b" kindref="member">SDL::sdl</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" kindref="member">make_sdl_available</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_s_d_l_1a49774bd3b06bf0ac40e5c471fed34013" kindref="member">SDL::make_available</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/sdl_global.cpp"/>
+  </compounddef>
+</doxygen>

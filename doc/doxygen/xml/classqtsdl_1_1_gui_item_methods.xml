@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item_methods" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItemMethods</compoundname>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_core_instantiator" prot="public" virt="non-virtual">qtsdl::GuiItemCoreInstantiator&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_interface" prot="public" virt="non-virtual">qtsdl::GuiItemInterface&lt; T &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual qtsdl::GuiItemMethods&lt; T &gt;::~GuiItemMethods</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiItemMethods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="148" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="148" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>U *</type>
+        <definition>U* qtsdl::GuiItemMethods&lt; T &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get core. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="156" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="156" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+          </param>
+        </templateparamlist>
+        <type>U *</type>
+        <definition>U* qtsdl::GuiItemMethods&lt; T &gt;::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get core. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="169" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="169" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename ...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void qtsdl::GuiItemMethods&lt; T &gt;::i</definition>
+        <argsstring>(F f, Args &amp;&amp;... args)</argsstring>
+        <name>i</name>
+        <param>
+          <type>F</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoke a function in the logic thread (the thread of the core of this object). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="182" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="182" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename P</type>
+          </param>
+          <param>
+            <type>typename A</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void qtsdl::GuiItemMethods&lt; T &gt;::s</definition>
+        <argsstring>(F f, P &amp;p, A &amp;&amp;arg)</argsstring>
+        <name>s</name>
+        <param>
+          <type>F</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>P &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>A &amp;&amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set property. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="196" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="196" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename P</type>
+          </param>
+          <param>
+            <type>typename A</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void qtsdl::GuiItemMethods&lt; T &gt;::sf</definition>
+        <argsstring>(F f, P &amp;p, A &amp;&amp;arg)</argsstring>
+        <name>sf</name>
+        <param>
+          <type>F</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>P &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>A &amp;&amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set property even if it&apos;s the same. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="207" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="207" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename A</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void qtsdl::GuiItemMethods&lt; T &gt;::assign_while_catching_constant_properies_inits</definition>
+        <argsstring>(F f, A &amp;&amp;arg)</argsstring>
+        <name>assign_while_catching_constant_properies_inits</name>
+        <param>
+          <type>F</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>A &amp;&amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Static QML properties assignments during the init phase are stored for a batch assignment at the end of the init phase. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="217" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="217" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Member function of the GuiPersistentItem </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2690">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2691">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2692">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2691" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2693">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2692" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2694">
+        <label>qtsdl::GuiItemInterface&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_interface"/>
+        <childnode refid="2690" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2695">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="144" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="144" bodyend="229"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4491ae15b14efd72465173059446b173" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>assign_while_catching_constant_properies_inits</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemMethods</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>qtsdl::GuiItemMethods</scope><name>~GuiItemMethods</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

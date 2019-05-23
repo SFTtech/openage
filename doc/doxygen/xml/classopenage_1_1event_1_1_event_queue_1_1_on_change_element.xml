@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::EventQueue::OnChangeElement</compoundname>
+    <includes refid="eventqueue_8h" local="no">eventqueue.h</includes>
+    <innerclass refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_equal" prot="public">openage::event::EventQueue::OnChangeElement::Equal</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher" prot="public">openage::event::EventQueue::OnChangeElement::Hasher</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a3983cb8a1cc4722919ee551aff1d9499" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::EventQueue::OnChangeElement::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="30" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ab2fdebca64d5b385157895e96aad229b" prot="public" static="no" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::weak_ptr&lt;Event&gt; openage::event::EventQueue::OnChangeElement::evnt</definition>
+        <argsstring></argsstring>
+        <name>evnt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="31" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a2ecd185040dfb65425159b2fe64c80b7" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t openage::event::EventQueue::OnChangeElement::hash</definition>
+        <argsstring></argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="32" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ac61691a120de0baeb9bf3b3b99b25b18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventQueue::OnChangeElement::OnChangeElement</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;evnt, const curve::time_t &amp;time)</argsstring>
+        <name>OnChangeElement</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>evnt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="27" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="193" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3467">
+        <label>openage::event::EventQueue::OnChangeElement</label>
+        <link refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element"/>
+        <childnode refid="3468" relation="usage">
+          <edgelabel>+time</edgelabel>
+        </childnode>
+      </node>
+      <node id="3468">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventqueue.h" line="25" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="25" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ab2fdebca64d5b385157895e96aad229b" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement</scope><name>evnt</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a2ecd185040dfb65425159b2fe64c80b7" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement</scope><name>hash</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1ac61691a120de0baeb9bf3b3b99b25b18" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement</scope><name>OnChangeElement</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1a3983cb8a1cc4722919ee551aff1d9499" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement</scope><name>time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

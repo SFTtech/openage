@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib" kind="struct" language="C++" prot="private">
+    <compoundname>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1aab4a556ede58c6fb3a7b1726427e2f7c" prot="public" static="no" mutable="no">
+        <type>GLenum</type>
+        <definition>GLenum openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="96" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::location</definition>
+        <argsstring></argsstring>
+        <name>location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="97" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::renderer::opengl::GlShaderProgram::GlVertexAttrib::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="99" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a per-vertex input to the shader program. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2459">
+        <label>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</label>
+        <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/shader_program.h" line="95" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="95" bodyend="100"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1a36c8e009ab2474d0d19ed6fd8de3dfda" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</scope><name>location</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1af191815ee4ad61bbf0cc1f2273ac075a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</scope><name>size</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_vertex_attrib_1aab4a556ede58c6fb3a7b1726427e2f7c" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlVertexAttrib</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

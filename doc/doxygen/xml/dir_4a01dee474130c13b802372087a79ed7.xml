@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_4a01dee474130c13b802372087a79ed7" kind="dir">
+    <compoundname>libopenage/renderer</compoundname>
+    <innerdir refid="dir_71bc918c788390e0c00bc0dfb4f34834">libopenage/renderer/font</innerdir>
+    <innerdir refid="dir_50129a17799df7b67570c4983a7bc841">libopenage/renderer/opengl</innerdir>
+    <innerdir refid="dir_0568487d55e2441d52cc8103196705cb">libopenage/renderer/resources</innerdir>
+    <innerdir refid="dir_5e283aaea65a5b19f33079dd4e180ef8">libopenage/renderer/vulkan</innerdir>
+    <innerfile refid="renderer_2color_8cpp">color.cpp</innerfile>
+    <innerfile refid="renderer_2color_8h">color.h</innerfile>
+    <innerfile refid="geometry_8cpp">geometry.cpp</innerfile>
+    <innerfile refid="geometry_8h">geometry.h</innerfile>
+    <innerfile refid="renderer_8h">renderer.h</innerfile>
+    <innerfile refid="sdl__global_8cpp">sdl_global.cpp</innerfile>
+    <innerfile refid="sdl__global_8h">sdl_global.h</innerfile>
+    <innerfile refid="shader__program_8h">shader_program.h</innerfile>
+    <innerfile refid="renderer_2tests_8cpp">tests.cpp</innerfile>
+    <innerfile refid="renderer_2tests_8h">tests.h</innerfile>
+    <innerfile refid="text_8cpp">text.cpp</innerfile>
+    <innerfile refid="text_8h">text.h</innerfile>
+    <innerfile refid="renderer_2texture_8cpp">texture.cpp</innerfile>
+    <innerfile refid="renderer_2texture_8h">texture.h</innerfile>
+    <innerfile refid="texture__array_8cpp">texture_array.cpp</innerfile>
+    <innerfile refid="texture__array_8h">texture_array.h</innerfile>
+    <innerfile refid="window_8cpp">window.cpp</innerfile>
+    <innerfile refid="window_8h">window.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/"/>
+  </compounddef>
+</doxygen>

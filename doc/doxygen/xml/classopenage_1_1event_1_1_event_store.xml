@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_store" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::EventStore</compoundname>
+    <includes refid="eventstore_8h" local="no">eventstore.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1event_1_1_event_store_1afef869c8828b088e15582eec63ae79bb" prot="public" static="no">
+        <type><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">datastructure::PairingHeap</ref>&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;, <ref refid="structopenage_1_1util_1_1_shared_ptr_less" kindref="compound">util::SharedPtrLess</ref>&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>using openage::event::EventStore::heap_t =  datastructure::PairingHeap&lt;std::shared_ptr&lt;Event&gt;, util::SharedPtrLess&lt;Event&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>heap_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="25" column="1" bodyfile="libopenage/event/eventstore.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" prot="public" static="no">
+        <type>std::unordered_map&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;, <ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1af89a07b90150d0d4606787f0ac202242" kindref="member">heap_t::element_t</ref> &gt;</type>
+        <definition>using openage::event::EventStore::elemmap_t =  std::unordered_map&lt;std::shared_ptr&lt;Event&gt;, heap_t::element_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>elemmap_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="27" column="1" bodyfile="libopenage/event/eventstore.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_store_1afef869c8828b088e15582eec63ae79bb" kindref="member">heap_t</ref></type>
+        <definition>heap_t openage::event::EventStore::heap</definition>
+        <argsstring></argsstring>
+        <name>heap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="46" column="1" bodyfile="libopenage/event/eventstore.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" kindref="member">elemmap_t</ref></type>
+        <definition>elemmap_t openage::event::EventStore::events</definition>
+        <argsstring></argsstring>
+        <name>events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="47" column="1" bodyfile="libopenage/event/eventstore.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventStore::push</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event)</argsstring>
+        <name>push</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="29" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="15" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Event &gt; openage::event::EventStore::pop</definition>
+        <argsstring>()</argsstring>
+        <name>pop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="30" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="28" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1abbad60ac960f4020d813237260867dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+        <definition>const std::shared_ptr&lt; Event &gt; &amp; openage::event::EventStore::top</definition>
+        <argsstring>()</argsstring>
+        <name>top</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="31" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1acf182eb2f89c80bb6c790a24d192398f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::event::EventStore::erase</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event)</argsstring>
+        <name>erase</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="32" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="54" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1ae8a67463b44b369d9402186cf332e247" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventStore::update</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event)</argsstring>
+        <name>update</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="33" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="67" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a4be75c01219e59abd20b9f906c8b7154" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::event::EventStore::contains</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event) const</argsstring>
+        <name>contains</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="34" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a5085887950c62e1061fea8e2edaf76cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventStore::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="35" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1a895a291c20860520abba447e1cd48fd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::event::EventStore::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="36" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1ad91190c9873619a057d067282966d68c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::event::EventStore::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="37" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_store_1af94747a58143a4d16b0f94bd184444be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; Event &gt; &gt; openage::event::EventStore::get_sorted_events</definition>
+        <argsstring>() const</argsstring>
+        <name>get_sorted_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper function that should not be called &apos;in production&apos;. It returns the events in the store sorted by time. Use the <ref refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" kindref="member">pop()</ref> method instead (but with that you can&apos;t iterate). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventstore.h" line="44" column="1" bodyfile="libopenage/event/eventstore.cpp" bodystart="99" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Sorted storage for events. Implemented through a heap that automatically provides the newest event. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1456">
+        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+      <node id="1454">
+        <label>openage::event::EventStore</label>
+        <link refid="classopenage_1_1event_1_1_event_store"/>
+        <childnode refid="1455" relation="usage">
+          <edgelabel>+heap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1455">
+        <label>openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap"/>
+        <childnode refid="1456" relation="usage">
+          <edgelabel>#cmp</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventstore.h" line="20" column="1" bodyfile="libopenage/event/eventstore.h" bodystart="20" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_store_1a5085887950c62e1061fea8e2edaf76cb" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>clear</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1a4be75c01219e59abd20b9f906c8b7154" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>contains</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1a3ee8493fd8f417d1e38fb4bb987d2a75" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>elemmap_t</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1ad91190c9873619a057d067282966d68c" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>empty</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1acf182eb2f89c80bb6c790a24d192398f" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>erase</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1abc046823b545ca825388800a22302ccd" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>events</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1af94747a58143a4d16b0f94bd184444be" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>get_sorted_events</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1a03483370a9104e396d014f7cba7caf1c" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>heap</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1afef869c8828b088e15582eec63ae79bb" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>heap_t</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1a6758260ffbc439c15c70590979acb2f9" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>pop</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1ae17679f5da2da238bc0f423befda3850" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>push</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1a895a291c20860520abba447e1cd48fd0" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>size</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1abbad60ac960f4020d813237260867dcb" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>top</name></member>
+      <member refid="classopenage_1_1event_1_1_event_store_1ae8a67463b44b369d9402186cf332e247" prot="public" virt="non-virtual"><scope>openage::event::EventStore</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

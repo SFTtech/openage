@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_ccad08bb708da2762bd629c3fb99a53c" kind="dir">
+    <compoundname>libopenage/curve</compoundname>
+    <innerdir refid="dir_e278ddfe79368c60cdfafbb290b31a25">libopenage/curve/tests</innerdir>
+    <innerfile refid="continuous_8cpp">continuous.cpp</innerfile>
+    <innerfile refid="continuous_8h">continuous.h</innerfile>
+    <innerfile refid="curve_8cpp">curve.cpp</innerfile>
+    <innerfile refid="curve_8h">curve.h</innerfile>
+    <innerfile refid="discrete_8cpp">discrete.cpp</innerfile>
+    <innerfile refid="discrete_8h">discrete.h</innerfile>
+    <innerfile refid="iterator_8cpp">iterator.cpp</innerfile>
+    <innerfile refid="iterator_8h">iterator.h</innerfile>
+    <innerfile refid="keyframe__container_8cpp">keyframe_container.cpp</innerfile>
+    <innerfile refid="keyframe__container_8h">keyframe_container.h</innerfile>
+    <innerfile refid="map_8cpp">map.cpp</innerfile>
+    <innerfile refid="map_8h">map.h</innerfile>
+    <innerfile refid="map__filter__iterator_8cpp">map_filter_iterator.cpp</innerfile>
+    <innerfile refid="map__filter__iterator_8h">map_filter_iterator.h</innerfile>
+    <innerfile refid="queue_8cpp">queue.cpp</innerfile>
+    <innerfile refid="queue_8h">queue.h</innerfile>
+    <innerfile refid="queue__filter__iterator_8cpp">queue_filter_iterator.cpp</innerfile>
+    <innerfile refid="queue__filter__iterator_8h">queue_filter_iterator.h</innerfile>
+    <innerfile refid="value__container_8cpp">value_container.cpp</innerfile>
+    <innerfile refid="value__container_8h">value_container.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/curve/"/>
+  </compounddef>
+</doxygen>

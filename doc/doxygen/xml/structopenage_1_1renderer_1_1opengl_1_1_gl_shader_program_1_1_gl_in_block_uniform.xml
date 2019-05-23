@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform" kind="struct" language="C++" prot="private">
+    <compoundname>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a9044f88e1ceabf7f5d22be6f30a58cb5" prot="public" static="no" mutable="no">
+        <type>GLenum</type>
+        <definition>GLenum openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="66" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ae81b4d1d60e4ad067156d26ff4655e5e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <briefdescription>
+<para>Offset from the beginning of the block at which this uniform is placed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="68" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The size in bytes of the whole uniform. If the uniform is an array, the size of the whole array. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="71" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a6f67d362d11eaa7cecb6efe02fc50cc5" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::stride</definition>
+        <argsstring></argsstring>
+        <name>stride</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Only relevant for arrays and matrices. In arrays, specifies the distance between the start of each element. In row-major matrices, specifies the distance between the start of each row. In column-major matrices, specifies the distance between the start of each column. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="76" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a5f84567c79b436d3f433fe3d49394b4a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::GlShaderProgram::GlInBlockUniform::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+<para>Only relevant for arrays. The number of elements in the array. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.h" line="78" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a uniform in a named block. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2392">
+        <label>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</label>
+        <link refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/shader_program.h" line="65" column="1" bodyfile="libopenage/renderer/opengl/shader_program.h" bodystart="65" bodyend="79"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a5f84567c79b436d3f433fe3d49394b4a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</scope><name>count</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ae81b4d1d60e4ad067156d26ff4655e5e" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</scope><name>offset</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1ab5288f62d85e08ccc2636241707258c9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</scope><name>size</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a6f67d362d11eaa7cecb6efe02fc50cc5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</scope><name>stride</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1_1_gl_in_block_uniform_1a9044f88e1ceabf7f5d22be6f30a58cb5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShaderProgram::GlInBlockUniform</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

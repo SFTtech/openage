@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_callback" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiCallback</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="gui__callback_8h" local="no">gui_callback.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_callback_1a1069c0650f91b910170a3ece87b61a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiCallback::GuiCallback</definition>
+        <argsstring>()</argsstring>
+        <name>GuiCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_callback.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="13" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_callback_1a001c8164e036b5b3567f3f32098a53ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::GuiCallback::~GuiCallback</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_callback.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="19" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classqtsdl_1_1_gui_callback_1a3cfbf34933c59c043267e2ba916dc15f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiCallback::process_blocking</definition>
+        <argsstring>(const std::function&lt; void()&gt; &amp;f)</argsstring>
+        <name>process_blocking</name>
+        <param>
+          <type>const std::function&lt; void()&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_callback.h" line="20" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiCallback::process</definition>
+        <argsstring>(const std::function&lt; void()&gt; &amp;f)</argsstring>
+        <name>process</name>
+        <param>
+          <type>const std::function&lt; void()&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_callback.h" line="23" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2496">
+        <label>QObject</label>
+      </node>
+      <node id="2495">
+        <label>qtsdl::GuiCallback</label>
+        <link refid="classqtsdl_1_1_gui_callback"/>
+        <childnode refid="2496" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2498">
+        <label>QObject</label>
+      </node>
+      <node id="2497">
+        <label>qtsdl::GuiCallback</label>
+        <link refid="classqtsdl_1_1_gui_callback"/>
+        <childnode refid="2498" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_callback.h" line="12" column="1" bodyfile="libopenage/gui/guisys/private/gui_callback.h" bodystart="12" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_callback_1a1069c0650f91b910170a3ece87b61a6f" prot="public" virt="non-virtual"><scope>qtsdl::GuiCallback</scope><name>GuiCallback</name></member>
+      <member refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" prot="public" virt="non-virtual"><scope>qtsdl::GuiCallback</scope><name>process</name></member>
+      <member refid="classqtsdl_1_1_gui_callback_1a3cfbf34933c59c043267e2ba916dc15f" prot="public" virt="non-virtual"><scope>qtsdl::GuiCallback</scope><name>process_blocking</name></member>
+      <member refid="classqtsdl_1_1_gui_callback_1a001c8164e036b5b3567f3f32098a53ed" prot="public" virt="virtual"><scope>qtsdl::GuiCallback</scope><name>~GuiCallback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_asset_manager_link_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::Unwrap&lt; openage::gui::AssetManagerLink &gt;</compoundname>
+    <includes refid="assetmanager__link_8h" local="no">assetmanager_link.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_asset_manager_link_01_4_1a273403e1eb3c8ebd203cd9fb518d4e63" prot="public" static="no">
+        <type><ref refid="classopenage_1_1_asset_manager" kindref="compound">openage::AssetManager</ref></type>
+        <definition>using qtsdl::Unwrap&lt; openage::gui::AssetManagerLink &gt;::Type =  openage::AssetManager</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/assetmanager_link.h" line="24" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4885">
+        <label>qtsdl::Unwrap&lt; openage::gui::AssetManagerLink &gt;</label>
+        <link refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_asset_manager_link_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/assetmanager_link.h" line="23" column="1" bodyfile="libopenage/gui/assetmanager_link.h" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+      <member refid="structqtsdl_1_1_unwrap_3_01openage_1_1gui_1_1_asset_manager_link_01_4_1a273403e1eb3c8ebd203cd9fb518d4e63" prot="public" virt="non-virtual"><scope>qtsdl::Unwrap&lt; openage::gui::AssetManagerLink &gt;</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

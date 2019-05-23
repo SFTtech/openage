@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vertex__array_8h" kind="file" language="C++">
+    <compoundname>vertex_array.h</compoundname>
+    <includes refid="mesh__data_8h" local="yes">../resources/mesh_data.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includes refid="simple__object_8h" local="yes">simple_object.h</includes>
+    <includedby refid="opengl_2geometry_8h" local="yes">libopenage/renderer/opengl/geometry.h</includedby>
+    <includedby refid="vertex__array_8cpp" local="yes">libopenage/renderer/opengl/vertex_array.cpp</includedby>
+    <incdepgraph>
+      <node id="22775">
+        <label>list</label>
+      </node>
+      <node id="22767">
+        <label>atomic</label>
+      </node>
+      <node id="22772">
+        <label>iomanip</label>
+      </node>
+      <node id="22752">
+        <label>functional</label>
+      </node>
+      <node id="22779">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="22752" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+      </node>
+      <node id="22744">
+        <label>cstdint</label>
+      </node>
+      <node id="22741">
+        <label>../resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="22742" relation="include">
+        </childnode>
+        <childnode refid="22743" relation="include">
+        </childnode>
+        <childnode refid="22744" relation="include">
+        </childnode>
+        <childnode refid="22745" relation="include">
+        </childnode>
+        <childnode refid="22746" relation="include">
+        </childnode>
+        <childnode refid="22747" relation="include">
+        </childnode>
+      </node>
+      <node id="22770">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="22771" relation="include">
+        </childnode>
+        <childnode refid="22752" relation="include">
+        </childnode>
+        <childnode refid="22772" relation="include">
+        </childnode>
+        <childnode refid="22761" relation="include">
+        </childnode>
+        <childnode refid="22773" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22742" relation="include">
+        </childnode>
+      </node>
+      <node id="22758">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="22759" relation="include">
+        </childnode>
+      </node>
+      <node id="22762">
+        <label>stdexcept</label>
+      </node>
+      <node id="22757">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="22774">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="22775" relation="include">
+        </childnode>
+        <childnode refid="22753" relation="include">
+        </childnode>
+        <childnode refid="22776" relation="include">
+        </childnode>
+      </node>
+      <node id="22771">
+        <label>cstdarg</label>
+      </node>
+      <node id="22748">
+        <label>string</label>
+      </node>
+      <node id="22763">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="22744" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22764" relation="include">
+        </childnode>
+        <childnode refid="22765" relation="include">
+        </childnode>
+        <childnode refid="22766" relation="include">
+        </childnode>
+        <childnode refid="22774" relation="include">
+        </childnode>
+        <childnode refid="22776" relation="include">
+        </childnode>
+      </node>
+      <node id="22765">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="22745" relation="include">
+        </childnode>
+      </node>
+      <node id="22766">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="22767" relation="include">
+        </childnode>
+        <childnode refid="22761" relation="include">
+        </childnode>
+        <childnode refid="22768" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+        <childnode refid="22769" relation="include">
+        </childnode>
+        <childnode refid="22770" relation="include">
+        </childnode>
+      </node>
+      <node id="22749">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="22744" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22742" relation="include">
+        </childnode>
+        <childnode refid="22750" relation="include">
+        </childnode>
+        <childnode refid="22751" relation="include">
+        </childnode>
+      </node>
+      <node id="22759">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="22760" relation="include">
+        </childnode>
+        <childnode refid="22761" relation="include">
+        </childnode>
+        <childnode refid="22762" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+        <childnode refid="22763" relation="include">
+        </childnode>
+      </node>
+      <node id="22778">
+        <label>typeinfo</label>
+      </node>
+      <node id="22746">
+        <label>optional</label>
+      </node>
+      <node id="22742">
+        <label>vector</label>
+      </node>
+      <node id="22755">
+        <label>ciso646</label>
+      </node>
+      <node id="22773">
+        <label>sstream</label>
+      </node>
+      <node id="22754">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="22755" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22756" relation="include">
+        </childnode>
+      </node>
+      <node id="22780">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="22761" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22742" relation="include">
+        </childnode>
+        <childnode refid="22781" relation="include">
+        </childnode>
+        <childnode refid="22749" relation="include">
+        </childnode>
+      </node>
+      <node id="22756">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="22756" relation="include">
+        </childnode>
+      </node>
+      <node id="22785">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="22769">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="22760" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+      </node>
+      <node id="22776">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="22777" relation="include">
+        </childnode>
+      </node>
+      <node id="22782">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="22740">
+        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="22741" relation="include">
+        </childnode>
+        <childnode refid="22783" relation="include">
+        </childnode>
+        <childnode refid="22784" relation="include">
+        </childnode>
+      </node>
+      <node id="22781">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="22760" relation="include">
+        </childnode>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+      </node>
+      <node id="22745">
+        <label>cstdlib</label>
+      </node>
+      <node id="22760">
+        <label>iostream</label>
+      </node>
+      <node id="22743">
+        <label>unordered_map</label>
+      </node>
+      <node id="22751">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="22752" relation="include">
+        </childnode>
+        <childnode refid="22753" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+        <childnode refid="22757" relation="include">
+        </childnode>
+        <childnode refid="22758" relation="include">
+        </childnode>
+        <childnode refid="22779" relation="include">
+        </childnode>
+      </node>
+      <node id="22753">
+        <label>mutex</label>
+      </node>
+      <node id="22747">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="22748" relation="include">
+        </childnode>
+        <childnode refid="22742" relation="include">
+        </childnode>
+        <childnode refid="22749" relation="include">
+        </childnode>
+        <childnode refid="22780" relation="include">
+        </childnode>
+        <childnode refid="22782" relation="include">
+        </childnode>
+      </node>
+      <node id="22784">
+        <label>simple_object.h</label>
+        <link refid="simple__object_8h"/>
+        <childnode refid="22746" relation="include">
+        </childnode>
+        <childnode refid="22752" relation="include">
+        </childnode>
+        <childnode refid="22785" relation="include">
+        </childnode>
+      </node>
+      <node id="22750">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="22768">
+        <label>type_traits</label>
+      </node>
+      <node id="22764">
+        <label>config.h</label>
+      </node>
+      <node id="22783">
+        <label>buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="22784" relation="include">
+        </childnode>
+      </node>
+      <node id="22761">
+        <label>memory</label>
+      </node>
+      <node id="22777">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="22760" relation="include">
+        </childnode>
+        <childnode refid="22778" relation="include">
+        </childnode>
+        <childnode refid="22754" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22789">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="22790" relation="include">
+        </childnode>
+        <childnode refid="22791" relation="include">
+        </childnode>
+        <childnode refid="22793" relation="include">
+        </childnode>
+      </node>
+      <node id="22791">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="22792">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="22794">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="22787">
+        <label>libopenage/renderer/opengl/geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="22788" relation="include">
+        </childnode>
+        <childnode refid="22789" relation="include">
+        </childnode>
+        <childnode refid="22791" relation="include">
+        </childnode>
+        <childnode refid="22793" relation="include">
+        </childnode>
+      </node>
+      <node id="22786">
+        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="22787" relation="include">
+        </childnode>
+        <childnode refid="22794" relation="include">
+        </childnode>
+      </node>
+      <node id="22793">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="22788">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="22790">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="22791" relation="include">
+        </childnode>
+        <childnode refid="22792" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array" prot="public">openage::renderer::opengl::GlVertexArray</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../resources/mesh_data.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="buffer_8h" kindref="compound">buffer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="simple__object_8h" kindref="compound">simple_object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array" kindref="compound">GlVertexArray</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" kindref="compound">GlSimpleObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::pair&lt;GlBuffer<sp/>const&amp;,<sp/>resources::VertexInputInfo<sp/>const&amp;&gt;&gt;<sp/>buffers);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray</ref>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer" kindref="compound">GlBuffer</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;,<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kindref="compound">resources::VertexInputInfo</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1a0ddd0825aae12563b5cc995a3333580f" kindref="member">GlVertexArray</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1a00b1f2873c9bbd71a19b3a26bd11d03e" kindref="member">bind</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/vertex_array.h"/>
+  </compounddef>
+</doxygen>

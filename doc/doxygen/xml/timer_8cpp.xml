@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="timer_8cpp" kind="file" language="C++">
+    <compoundname>timer.cpp</compoundname>
+    <includes refid="timer_8h" local="yes">timer.h</includes>
+    <includes local="no">ciso646</includes>
+    <incdepgraph>
+      <node id="32955">
+        <label>cstdint</label>
+      </node>
+      <node id="32956">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="32955" relation="include">
+        </childnode>
+      </node>
+      <node id="32957">
+        <label>ciso646</label>
+      </node>
+      <node id="32953">
+        <label>libopenage/util/timer.cpp</label>
+        <link refid="timer_8cpp"/>
+        <childnode refid="32954" relation="include">
+        </childnode>
+        <childnode refid="32957" relation="include">
+        </childnode>
+      </node>
+      <node id="32954">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="32955" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timer_8h" kindref="compound">timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ciso646&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classopenage_1_1util_1_1_timer_1a1b3d27ae06020bc54ea6cb6f0d7bc72d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_timer_1a1b3d27ae06020bc54ea6cb6f0d7bc72d" kindref="member">Timer::Timer</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>stopped)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" kindref="member">reset</ref>(stopped);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" kindref="member">Timer::reset</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>stopped)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;stopped<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;stopped)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" kindref="member">starttime</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">timing::get_monotonic_time</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" kindref="member">Timer::stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/><ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;stopped<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">timing::get_monotonic_time</ref>()<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" kindref="member">starttime</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" kindref="member">Timer::start</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" kindref="member">starttime</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">timing::get_monotonic_time</ref>()<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/><ref refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" kindref="member">Timer::getval</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">timing::get_monotonic_time</ref>()<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" kindref="member">starttime</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/><ref refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" kindref="member">Timer::getandresetval</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/>result;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" kindref="member">stoppedat</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/>now<sp/>=<sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">timing::get_monotonic_time</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>now<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" kindref="member">starttime</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;starttime<sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" kindref="member">Timer::isstopped</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" kindref="member">stopped</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}}<sp/><sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/timer.cpp"/>
+  </compounddef>
+</doxygen>

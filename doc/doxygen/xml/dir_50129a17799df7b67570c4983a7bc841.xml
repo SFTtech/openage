@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_50129a17799df7b67570c4983a7bc841" kind="dir">
+    <compoundname>libopenage/renderer/opengl</compoundname>
+    <innerfile refid="buffer_8cpp">buffer.cpp</innerfile>
+    <innerfile refid="buffer_8h">buffer.h</innerfile>
+    <innerfile refid="context_8cpp">context.cpp</innerfile>
+    <innerfile refid="context_8h">context.h</innerfile>
+    <innerfile refid="framebuffer_8cpp">framebuffer.cpp</innerfile>
+    <innerfile refid="framebuffer_8h">framebuffer.h</innerfile>
+    <innerfile refid="opengl_2geometry_8cpp">geometry.cpp</innerfile>
+    <innerfile refid="opengl_2geometry_8h">geometry.h</innerfile>
+    <innerfile refid="lookup_8h">lookup.h</innerfile>
+    <innerfile refid="render__target_8cpp">render_target.cpp</innerfile>
+    <innerfile refid="opengl_2render__target_8h">render_target.h</innerfile>
+    <innerfile refid="opengl_2renderer_8cpp">renderer.cpp</innerfile>
+    <innerfile refid="opengl_2renderer_8h">renderer.h</innerfile>
+    <innerfile refid="renderer_2opengl_2shader_8cpp">shader.cpp</innerfile>
+    <innerfile refid="renderer_2opengl_2shader_8h">shader.h</innerfile>
+    <innerfile refid="shader__program_8cpp">shader_program.cpp</innerfile>
+    <innerfile refid="opengl_2shader__program_8h">shader_program.h</innerfile>
+    <innerfile refid="simple__object_8cpp">simple_object.cpp</innerfile>
+    <innerfile refid="simple__object_8h">simple_object.h</innerfile>
+    <innerfile refid="renderer_2opengl_2texture_8cpp">texture.cpp</innerfile>
+    <innerfile refid="renderer_2opengl_2texture_8h">texture.h</innerfile>
+    <innerfile refid="opengl_2texture__array_8cpp">texture_array.cpp</innerfile>
+    <innerfile refid="opengl_2texture__array_8h">texture_array.h</innerfile>
+    <innerfile refid="uniform__input_8h">uniform_input.h</innerfile>
+    <innerfile refid="vertex__array_8cpp">vertex_array.cpp</innerfile>
+    <innerfile refid="vertex__array_8h">vertex_array.h</innerfile>
+    <innerfile refid="opengl_2window_8cpp">window.cpp</innerfile>
+    <innerfile refid="opengl_2window_8h">window.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/opengl/"/>
+  </compounddef>
+</doxygen>

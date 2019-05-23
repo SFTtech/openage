@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_font" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::Font</compoundname>
+    <includes refid="font_8h" local="no">font.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref></type>
+        <definition>font_description openage::renderer::Font::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The description of the font. <simplesect kind="see"><para><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="184" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_1a22ea05097b42c67cedf2f660905b5469" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;FreeTypeLibrary&gt; openage::renderer::Font::freetype_library</definition>
+        <argsstring></argsstring>
+        <name>freetype_library</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="188" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_1ab2f8cb8f9ba1a8c20f7b02076af132cb" prot="private" static="no" mutable="no">
+        <type>hb_font_t *</type>
+        <definition>hb_font_t* openage::renderer::Font::hb_font</definition>
+        <argsstring></argsstring>
+        <name>hb_font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="191" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1adcb46a45ff92688549638433ffeb3492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::Font::Font</definition>
+        <argsstring>(const font_description &amp;description)</argsstring>
+        <name>Font</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a font instance from the description.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the font description. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="103" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="92" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1af575cb844edc48fdb5543a760732d383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::Font::Font</definition>
+        <argsstring>(FontManager *font_manager, const font_description &amp;description)</argsstring>
+        <name>Font</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_font_manager" kindref="compound">FontManager</ref> *</type>
+          <declname>font_manager</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref> &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This constructor is used by the font manager to create a new font instance from the description.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font_manager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font manager. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the font description. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="112" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1a10d4241cf8b85b4a53975aba715b917b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::renderer::Font::~Font</definition>
+        <argsstring>()</argsstring>
+        <name>~Font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="114" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="127" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1a20d9c92be7d85c08a3877b476f479440" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::renderer::Font::get_ascender</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ascender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the typographic ascender of font.</para>
+<para><simplesect kind="return"><para>The ascender of font. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="121" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="136" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1af416cb7a1def85a46eadf5656b419044" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::renderer::Font::get_descender</definition>
+        <argsstring>() const</argsstring>
+        <name>get_descender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the typographic descender of font.</para>
+<para><simplesect kind="return"><para>The descender of font. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="128" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1aa5cbff2acbc06b04b76fb6f7492b24fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::renderer::Font::get_line_height</definition>
+        <argsstring>() const</argsstring>
+        <name>get_line_height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the line spacing of font.</para>
+<para><simplesect kind="return"><para>The font&apos;s line height. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="135" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="146" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1a34cbc0674513e4759c7778fe63e671c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::renderer::Font::get_horizontal_kerning</definition>
+        <argsstring>(codepoint_t left_glyph, codepoint_t right_glyph) const</argsstring>
+        <name>get_horizontal_kerning</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+          <declname>left_glyph</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+          <declname>right_glyph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the kerning adjustment between two glyphs.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>left_glyph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first glyph. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>right_glyph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The next glyph. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The kerning adjustment. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="144" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1a2fac4e6433df045834538de8e814fc13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::renderer::Font::get_advance_width</definition>
+        <argsstring>(const std::string &amp;text) const</argsstring>
+        <name>get_advance_width</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the advance width of a particular string.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string for which the width is to be determined. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The advance width of the specified string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="152" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="162" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1abe0cf25c28e35ade771dd1fda7ae1c5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref> &gt;</type>
+        <definition>std::vector&lt; codepoint_t &gt; openage::renderer::Font::get_glyphs</definition>
+        <argsstring>(const std::string &amp;text) const</argsstring>
+        <name>get_glyphs</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the list of glyphs for a particular string.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string for which the glyphs are to be retrieved. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The list of the glyphs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="160" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="190" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1ae35d5b1032dd1a9d65890b093e09f249" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; unsigned char[]&gt;</type>
+        <definition>std::unique_ptr&lt; unsigned char[]&gt; openage::renderer::Font::load_glyph</definition>
+        <argsstring>(codepoint_t codepoint, Glyph &amp;glyph) const</argsstring>
+        <name>load_glyph</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+          <declname>codepoint</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref> &amp;</type>
+          <declname>glyph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Load a particular glyph&apos;s info and retrieves the glyph&apos;s bitmap data.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>codepoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The glyph. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>glyph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The glyph&apos;s info is loaded in to this object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The glyph&apos;s bitmap data. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="169" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="212" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::Font::initialize</definition>
+        <argsstring>(FT_Library ft_library)</argsstring>
+        <name>initialize</name>
+        <param>
+          <type>FT_Library</type>
+          <declname>ft_library</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the font&apos;s face and creates a harfbuzz font instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ft_library</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The freetype library that should be used to load the font&apos;s face. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="177" column="1" bodyfile="libopenage/renderer/font/font.cpp" bodystart="111" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1503">
+        <label>openage::renderer::Font</label>
+        <link refid="classopenage_1_1renderer_1_1_font"/>
+        <childnode refid="1504" relation="usage">
+          <edgelabel>+description</edgelabel>
+        </childnode>
+      </node>
+      <node id="1504">
+        <label>openage::renderer::font_description</label>
+        <link refid="structopenage_1_1renderer_1_1font__description"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font.h" line="95" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="95" bodyend="193"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>description</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1adcb46a45ff92688549638433ffeb3492" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>Font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1af575cb844edc48fdb5543a760732d383" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>Font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1a22ea05097b42c67cedf2f660905b5469" prot="private" virt="non-virtual"><scope>openage::renderer::Font</scope><name>freetype_library</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1a2fac4e6433df045834538de8e814fc13" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_advance_width</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1a20d9c92be7d85c08a3877b476f479440" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_ascender</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1af416cb7a1def85a46eadf5656b419044" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_descender</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1abe0cf25c28e35ade771dd1fda7ae1c5c" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_glyphs</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1a34cbc0674513e4759c7778fe63e671c4" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_horizontal_kerning</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1aa5cbff2acbc06b04b76fb6f7492b24fe" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>get_line_height</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1ab2f8cb8f9ba1a8c20f7b02076af132cb" prot="private" virt="non-virtual"><scope>openage::renderer::Font</scope><name>hb_font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" prot="private" virt="non-virtual"><scope>openage::renderer::Font</scope><name>initialize</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1ae35d5b1032dd1a9d65890b093e09f249" prot="public" virt="non-virtual"><scope>openage::renderer::Font</scope><name>load_glyph</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_1a10d4241cf8b85b4a53975aba715b917b" prot="public" virt="virtual"><scope>openage::renderer::Font</scope><name>~Font</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,653 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="pathfinding_2tests_8cpp" kind="file" language="C++">
+    <compoundname>tests.cpp</compoundname>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <includes refid="heuristics_8h" local="yes">heuristics.h</includes>
+    <includes refid="pathfinding_2path_8h" local="yes">path.h</includes>
+    <incdepgraph>
+      <node id="3061">
+        <label>list</label>
+      </node>
+      <node id="3050">
+        <label>atomic</label>
+      </node>
+      <node id="3076">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="3071" relation="include">
+        </childnode>
+        <childnode refid="3077" relation="include">
+        </childnode>
+        <childnode refid="3073" relation="include">
+        </childnode>
+        <childnode refid="3057" relation="include">
+        </childnode>
+        <childnode refid="3078" relation="include">
+        </childnode>
+        <childnode refid="3079" relation="include">
+        </childnode>
+        <childnode refid="3052" relation="include">
+        </childnode>
+        <childnode refid="3070" relation="include">
+        </childnode>
+      </node>
+      <node id="3057">
+        <label>iomanip</label>
+      </node>
+      <node id="3056">
+        <label>functional</label>
+      </node>
+      <node id="3078">
+        <label>limits</label>
+      </node>
+      <node id="3067">
+        <label>path.h</label>
+        <link refid="pathfinding_2path_8h"/>
+        <childnode refid="3056" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3068" relation="include">
+        </childnode>
+        <childnode refid="3059" relation="include">
+        </childnode>
+        <childnode refid="3069" relation="include">
+        </childnode>
+        <childnode refid="3082" relation="include">
+        </childnode>
+        <childnode refid="3083" relation="include">
+        </childnode>
+        <childnode refid="3070" relation="include">
+        </childnode>
+      </node>
+      <node id="3075">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3076" relation="include">
+        </childnode>
+      </node>
+      <node id="3045">
+        <label>cstdint</label>
+      </node>
+      <node id="3080">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="3054">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="3055" relation="include">
+        </childnode>
+        <childnode refid="3056" relation="include">
+        </childnode>
+        <childnode refid="3057" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3058" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3059" relation="include">
+        </childnode>
+      </node>
+      <node id="3073">
+        <label>cmath</label>
+      </node>
+      <node id="3065">
+        <label>stdexcept</label>
+      </node>
+      <node id="3060">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="3061" relation="include">
+        </childnode>
+        <childnode refid="3062" relation="include">
+        </childnode>
+        <childnode refid="3036" relation="include">
+        </childnode>
+      </node>
+      <node id="3055">
+        <label>cstdarg</label>
+      </node>
+      <node id="3042">
+        <label>string</label>
+      </node>
+      <node id="3044">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3046" relation="include">
+        </childnode>
+        <childnode refid="3047" relation="include">
+        </childnode>
+        <childnode refid="3049" relation="include">
+        </childnode>
+        <childnode refid="3060" relation="include">
+        </childnode>
+        <childnode refid="3036" relation="include">
+        </childnode>
+      </node>
+      <node id="3047">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="3048" relation="include">
+        </childnode>
+      </node>
+      <node id="3049">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="3050" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3052" relation="include">
+        </childnode>
+        <childnode refid="3040" relation="include">
+        </childnode>
+        <childnode refid="3053" relation="include">
+        </childnode>
+        <childnode refid="3054" relation="include">
+        </childnode>
+      </node>
+      <node id="3084">
+        <label>unordered_set</label>
+      </node>
+      <node id="3079">
+        <label>ostream</label>
+      </node>
+      <node id="3072">
+        <label>limits.h</label>
+      </node>
+      <node id="3064">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="3038" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3065" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3040" relation="include">
+        </childnode>
+        <childnode refid="3044" relation="include">
+        </childnode>
+      </node>
+      <node id="3070">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="3071" relation="include">
+        </childnode>
+        <childnode refid="3072" relation="include">
+        </childnode>
+        <childnode refid="3073" relation="include">
+        </childnode>
+        <childnode refid="3074" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3059" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3064" relation="include">
+        </childnode>
+        <childnode refid="3040" relation="include">
+        </childnode>
+      </node>
+      <node id="3081">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="3039">
+        <label>typeinfo</label>
+      </node>
+      <node id="3059">
+        <label>vector</label>
+      </node>
+      <node id="3035">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="3036" relation="include">
+        </childnode>
+        <childnode refid="3044" relation="include">
+        </childnode>
+      </node>
+      <node id="3041">
+        <label>ciso646</label>
+      </node>
+      <node id="3034">
+        <label>libopenage/pathfinding/tests.cpp</label>
+        <link refid="pathfinding_2tests_8cpp"/>
+        <childnode refid="3035" relation="include">
+        </childnode>
+        <childnode refid="3063" relation="include">
+        </childnode>
+        <childnode refid="3066" relation="include">
+        </childnode>
+        <childnode refid="3067" relation="include">
+        </childnode>
+      </node>
+      <node id="3058">
+        <label>sstream</label>
+      </node>
+      <node id="3040">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="3041" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3043" relation="include">
+        </childnode>
+      </node>
+      <node id="3043">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="3043" relation="include">
+        </childnode>
+      </node>
+      <node id="3053">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="3038" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+      </node>
+      <node id="3036">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="3037" relation="include">
+        </childnode>
+      </node>
+      <node id="3048">
+        <label>cstdlib</label>
+      </node>
+      <node id="3038">
+        <label>iostream</label>
+      </node>
+      <node id="3083">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3056" relation="include">
+        </childnode>
+        <childnode refid="3052" relation="include">
+        </childnode>
+        <childnode refid="3084" relation="include">
+        </childnode>
+        <childnode refid="3040" relation="include">
+        </childnode>
+        <childnode refid="3064" relation="include">
+        </childnode>
+      </node>
+      <node id="3068">
+        <label>unordered_map</label>
+      </node>
+      <node id="3077">
+        <label>climits</label>
+      </node>
+      <node id="3063">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="3064" relation="include">
+        </childnode>
+      </node>
+      <node id="3062">
+        <label>mutex</label>
+      </node>
+      <node id="3082">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="3075" relation="include">
+        </childnode>
+        <childnode refid="3080" relation="include">
+        </childnode>
+        <childnode refid="3081" relation="include">
+        </childnode>
+        <childnode refid="3070" relation="include">
+        </childnode>
+      </node>
+      <node id="3052">
+        <label>type_traits</label>
+      </node>
+      <node id="3046">
+        <label>config.h</label>
+      </node>
+      <node id="3066">
+        <label>heuristics.h</label>
+        <link refid="heuristics_8h"/>
+        <childnode refid="3067" relation="include">
+        </childnode>
+      </node>
+      <node id="3071">
+        <label>algorithm</label>
+      </node>
+      <node id="3069">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="3070" relation="include">
+        </childnode>
+        <childnode refid="3075" relation="include">
+        </childnode>
+        <childnode refid="3080" relation="include">
+        </childnode>
+        <childnode refid="3081" relation="include">
+        </childnode>
+      </node>
+      <node id="3074">
+        <label>cstring</label>
+      </node>
+      <node id="3051">
+        <label>memory</label>
+      </node>
+      <node id="3037">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="3038" relation="include">
+        </childnode>
+        <childnode refid="3039" relation="include">
+        </childnode>
+        <childnode refid="3040" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1path">openage::path</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1path_1_1tests">openage::path::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="heuristics_8h" kindref="compound">heuristics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pathfinding_2path_8h" kindref="compound">path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">path<sp/>{</highlight></codeline>
+<codeline lineno="11" refid="namespaceopenage_1_1path_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="namespaceopenage_1_1path_1_1tests_1ae71248e3b41e24e07f376124cfe95f41" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1ae71248e3b41e24e07f376124cfe95f41" kindref="member">node_0</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p1{1,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p2{1,<sp/>1,<sp/>0};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p3{1,<sp/>-1,<sp/>0};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p4{2,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p5{2,<sp/>2,<sp/>0};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p6{2,<sp/>-2,<sp/>0};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p1,<sp/>n0);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n2<sp/>=<sp/>std::make_unique&lt;Node&gt;(p2,<sp/>n1);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n3<sp/>=<sp/>std::make_unique&lt;Node&gt;(p3,<sp/>n1);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n4<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/>n1);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>how<sp/>the<sp/>factor<sp/>is<sp/>effected<sp/>from<sp/>the<sp/>change<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>direction<sp/>from<sp/>one<sp/>node<sp/>to<sp/>another</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;direction.ne,<sp/>1);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;direction.se,<sp/>0);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>the<sp/>similarity<sp/>between<sp/>nodes<sp/>is<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;direction.ne,<sp/>0);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;direction.se,<sp/>1);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>90<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;direction.ne,<sp/>0);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;direction.se,<sp/>-1);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>90<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;direction.ne,<sp/>-1);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;direction.se,<sp/>0);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>3<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>180<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;factor,<sp/>3);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>that<sp/>the<sp/>distance<sp/>from<sp/>the<sp/>previous<sp/>node<sp/>noes<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>effect<sp/>the<sp/>factor,<sp/>only<sp/>change<sp/>in<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p4,<sp/>n0);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>n2<sp/>=<sp/>std::make_unique&lt;Node&gt;(p5,<sp/>n1);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>n3<sp/>=<sp/>std::make_unique&lt;Node&gt;(p6,<sp/>n1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>n4<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/>n1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;direction.ne,<sp/>1);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;direction.se,<sp/>0);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>the<sp/>similarity<sp/>between<sp/>nodes<sp/>is<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;direction.ne,<sp/>0);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;direction.se,<sp/>1);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>90<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;direction.ne,<sp/>0);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;direction.se,<sp/>-1);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>2<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>90<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;factor,<sp/>2);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;direction.ne,<sp/>-1);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;direction.se,<sp/>0);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expect<sp/>this<sp/>to<sp/>be<sp/>3<sp/>since<sp/>it<sp/>takes<sp/>a<sp/>180<sp/>degree<sp/>turn<sp/>from<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;factor,<sp/>3);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="namespaceopenage_1_1path_1_1tests_1afb103e74376eeb1339fe6204a3f649fe" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1afb103e74376eeb1339fe6204a3f649fe" kindref="member">node_cost_to_0</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>basic<sp/>cost_to<sp/>with<sp/>ne<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p1{10,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p1,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n0-&gt;cost_to(*n1),<sp/>10);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n1-&gt;cost_to(*n0),<sp/>10);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>basic<sp/>cost_to<sp/>with<sp/>se<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p2{0,<sp/>5,<sp/>0};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n2<sp/>=<sp/>std::make_unique&lt;Node&gt;(p2,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n0-&gt;cost_to(*n2),<sp/>5);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n2-&gt;cost_to(*n0),<sp/>5);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>cost_to<sp/>with<sp/>both<sp/>se<sp/>and<sp/>ne:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p3{3,<sp/>4,<sp/>0};<sp/><sp/></highlight><highlight class="comment">//<sp/>-&gt;<sp/>sqrt(3*3<sp/>+<sp/>4*4)<sp/>==<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n3<sp/>=<sp/>std::make_unique&lt;Node&gt;(p3,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n0-&gt;cost_to(*n3),<sp/>5);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n3-&gt;cost_to(*n0),<sp/>5);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>cost_to<sp/>and<sp/>check<sp/>that<sp/>`up`<sp/>has<sp/>no<sp/>effect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p4{3,<sp/>4,<sp/>8};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n4<sp/>=<sp/>std::make_unique&lt;Node&gt;(p4,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n0-&gt;cost_to(*n4),<sp/>5);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(n4-&gt;cost_to(*n0),<sp/>5);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="namespaceopenage_1_1path_1_1tests_1a0907c94ce28302c57452c65f7e218d48" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a0907c94ce28302c57452c65f7e218d48" kindref="member">node_cost_to_1</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>up<sp/>coords<sp/>so<sp/>that<sp/>n1<sp/>will<sp/>have<sp/>a<sp/>direction<sp/>of<sp/>ne<sp/>=<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>n0<sp/>with<sp/>not<sp/>be<sp/>in<sp/>n1s<sp/>neighbors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{-0.125,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p1{0.125,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p1,<sp/>n0);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>expect<sp/>twice<sp/>the<sp/>normal<sp/>cost<sp/>since<sp/>n0<sp/>had<sp/>not<sp/>direction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>thus<sp/>we<sp/>get<sp/>a<sp/>factor<sp/>of<sp/>2<sp/>on<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(n0-&gt;cost_to(*n1),<sp/>0.5,<sp/>0.001);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(n1-&gt;cost_to(*n0),<sp/>0.5,<sp/>0.001);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1a2889597504b5f2d6987d132f1e5682f6" kindref="member">nodemap_t</ref><sp/>visited_tiles;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>visited_tiles[n0-&gt;position]<sp/>=<sp/>n0;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Collect<sp/>the<sp/>costs<sp/>to<sp/>go<sp/>to<sp/>all<sp/>the<sp/>neighbors<sp/>of<sp/>n1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/>costs;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>neighbor<sp/>:<sp/>n1-&gt;get_neighbors(visited_tiles,<sp/>1))<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>costs.push_back(n1-&gt;cost_to(*neighbor));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[0],<sp/>0.45711,<sp/>0.001);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[1],<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[2],<sp/>0.45711,<sp/>0.001);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[3],<sp/>0.5,<sp/>0.001);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[4],<sp/>0.95709,<sp/>0.001);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[5],<sp/>0.75,<sp/>0.001);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[6],<sp/>0.95709,<sp/>0.001);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(costs[7],<sp/>0.5,<sp/>0.001);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="namespaceopenage_1_1path_1_1tests_1a58a788eb28351a5ceec44ce2b152d3a0" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a58a788eb28351a5ceec44ce2b152d3a0" kindref="member">node_generate_backtrace_0</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p1{10,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p2{20,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p3{30,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p1,<sp/>n0);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n2<sp/>=<sp/>std::make_unique&lt;Node&gt;(p2,<sp/>n1);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n3<sp/>=<sp/>std::make_unique&lt;Node&gt;(p3,<sp/>n2);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/>path<sp/>=<sp/>n3-&gt;generate_backtrace();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>(path.<ref refid="classopenage_1_1path_1_1_path_1a6f052fbfe0743c8204c2f37842176976" kindref="member">waypoints</ref>[0]<sp/>==<sp/>*n3)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>(path.<ref refid="classopenage_1_1path_1_1_path_1a6f052fbfe0743c8204c2f37842176976" kindref="member">waypoints</ref>[1]<sp/>==<sp/>*n2)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>(path.<ref refid="classopenage_1_1path_1_1_path_1a6f052fbfe0743c8204c2f37842176976" kindref="member">waypoints</ref>[2]<sp/>==<sp/>*n1)<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="namespaceopenage_1_1path_1_1tests_1a7279af6fded008ace86db25db0e7079d" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a7279af6fded008ace86db25db0e7079d" kindref="member">node_get_neighbors_0</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1a2889597504b5f2d6987d132f1e5682f6" kindref="member">nodemap_t</ref><sp/><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>get_neighbors<sp/>returning<sp/>all<sp/>surounding<sp/>tiles<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>factor<sp/>of<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;node_pt&gt;<sp/>neighbors<sp/>=<sp/>n0-&gt;get_neighbors(<ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(neighbors.size(),<sp/>8);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[0]-&gt;position.ne.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[0]-&gt;position.se.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[1]-&gt;position.ne.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[1]-&gt;position.se.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[2]-&gt;position.ne.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[2]-&gt;position.se.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[3]-&gt;position.ne.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[3]-&gt;position.se.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[4]-&gt;position.ne.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[4]-&gt;position.se.to_double(),<sp/>0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[5]-&gt;position.ne.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[5]-&gt;position.se.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[6]-&gt;position.ne.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[6]-&gt;position.se.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[7]-&gt;position.ne.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[7]-&gt;position.se.to_double(),<sp/>-0.125,<sp/>0.001);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>how<sp/>a<sp/>larger<sp/>scale<sp/>changes<sp/>the<sp/>neighbors<sp/>generated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>neighbors<sp/>=<sp/>n0-&gt;get_neighbors(<ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">map</ref>,<sp/>2);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(neighbors.size(),<sp/>8);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[0]-&gt;position.ne.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[0]-&gt;position.se.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[1]-&gt;position.ne.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[1]-&gt;position.se.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[2]-&gt;position.ne.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[2]-&gt;position.se.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[3]-&gt;position.ne.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[3]-&gt;position.se.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[4]-&gt;position.ne.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[4]-&gt;position.se.to_double(),<sp/>0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[5]-&gt;position.ne.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[5]-&gt;position.se.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[6]-&gt;position.ne.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[6]-&gt;position.se.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[7]-&gt;position.ne.to_double(),<sp/>0,<sp/>0.001);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(neighbors[7]-&gt;position.se.to_double(),<sp/>-0.25,<sp/>0.001);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="namespaceopenage_1_1path_1_1tests_1a324ebb21684cd1e29b46c01160ad4287" refkind="member"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a324ebb21684cd1e29b46c01160ad4287" kindref="member">always_passable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="namespaceopenage_1_1path_1_1tests_1acebd36a125f535d815cd34536e4f1f1f" refkind="member"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1acebd36a125f535d815cd34536e4f1f1f" kindref="member">not_passable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274" refid="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" refkind="member"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" kindref="member">sometimes_passable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;pos)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pos.ne<sp/>==<sp/>20)<sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="namespaceopenage_1_1path_1_1tests_1a22de95f3450a22cac036677b4e01ad63" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a22de95f3450a22cac036677b4e01ad63" kindref="member">node_passable_line_0</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p0{0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>p1{1000,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n0<sp/>=<sp/>std::make_unique&lt;Node&gt;(p0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>n1<sp/>=<sp/>std::make_unique&lt;Node&gt;(p1,<sp/>n0);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">path::passable_line</ref>(n0,<sp/>n1,<sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a324ebb21684cd1e29b46c01160ad4287" kindref="member">path::tests::always_passable</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">path::passable_line</ref>(n0,<sp/>n1,<sp/><ref refid="namespaceopenage_1_1path_1_1tests_1acebd36a125f535d815cd34536e4f1f1f" kindref="member">path::tests::not_passable</ref>),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>next<sp/>2<sp/>cases<sp/>show<sp/>that<sp/>a<sp/>different<sp/>sample<sp/>can<sp/>change<sp/>the<sp/>results</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>same<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">path::passable_line</ref>(n0,<sp/>n1,<sp/><ref refid="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" kindref="member">path::tests::sometimes_passable</ref>,<sp/>10),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">path::passable_line</ref>(n0,<sp/>n1,<sp/><ref refid="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" kindref="member">path::tests::sometimes_passable</ref>,<sp/>50),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="namespaceopenage_1_1path_1_1tests_1a5d1515cb353ed8a23c4d644dc3642e73" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a5d1515cb353ed8a23c4d644dc3642e73" kindref="member">path_node</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1ae71248e3b41e24e07f376124cfe95f41" kindref="member">node_0</ref>();</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1afb103e74376eeb1339fe6204a3f649fe" kindref="member">node_cost_to_0</ref>();</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a0907c94ce28302c57452c65f7e218d48" kindref="member">node_cost_to_1</ref>();</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a58a788eb28351a5ceec44ce2b152d3a0" kindref="member">node_generate_backtrace_0</ref>();</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a7279af6fded008ace86db25db0e7079d" kindref="member">node_get_neighbors_0</ref>();</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1_1tests_1a22de95f3450a22cac036677b4e01ad63" kindref="member">node_passable_line_0</ref>();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>pathfinding</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pathfinding/tests.cpp"/>
+  </compounddef>
+</doxygen>

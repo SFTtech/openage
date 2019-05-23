@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_tick_handler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::TickHandler</compoundname>
+    <derivedcompoundref refid="classopenage_1_1console_1_1_console" prot="private" virt="non-virtual">openage::console::Console</derivedcompoundref>
+    <includes refid="handlers_8h" local="no">handlers.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_tick_handler_1ac15f0f314627bf50bbd1c9a4d430fd5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::TickHandler::~TickHandler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~TickHandler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_tick_handler_1a1a30e127fd708cf29600b0aa0ff402f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::TickHandler::on_tick</definition>
+        <argsstring>()=0</argsstring>
+        <name>on_tick</name>
+        <reimplementedby refid="classopenage_1_1console_1_1_console_1ae061753f445808da5dbc813dd0e0f4da">on_tick</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the tick action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="50" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>superclass for all calculations being done on engine tick. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4479">
+        <label>openage::TickHandler</label>
+        <link refid="classopenage_1_1_tick_handler"/>
+      </node>
+      <node id="4480">
+        <label>openage::console::Console</label>
+        <link refid="classopenage_1_1console_1_1_console"/>
+        <childnode refid="4479" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4481">
+        <label>openage::TickHandler</label>
+        <link refid="classopenage_1_1_tick_handler"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/handlers.h" line="43" column="1" bodyfile="libopenage/handlers.h" bodystart="43" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_tick_handler_1a1a30e127fd708cf29600b0aa0ff402f7" prot="public" virt="pure-virtual"><scope>openage::TickHandler</scope><name>on_tick</name></member>
+      <member refid="classopenage_1_1_tick_handler_1ac15f0f314627bf50bbd1c9a4d430fd5c" prot="public" virt="virtual"><scope>openage::TickHandler</scope><name>~TickHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,818 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_unit_texture" kind="class" language="C++" prot="public">
+    <compoundname>openage::UnitTexture</compoundname>
+    <includes refid="unit__texture_8h" local="no">unit_texture.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a84ef6a1b69e52a09eb997d018f249708" prot="public" static="no" mutable="no">
+        <type>const int16_t</type>
+        <definition>const int16_t openage::UnitTexture::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>const attributes of the graphic </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="40" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a1fe7033557f83325f51cf96b9cdeb378" prot="public" static="no" mutable="no">
+        <type>const int16_t</type>
+        <definition>const int16_t openage::UnitTexture::sound_id</definition>
+        <argsstring></argsstring>
+        <name>sound_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="41" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int openage::UnitTexture::frame_count</definition>
+        <argsstring></argsstring>
+        <name>frame_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="42" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int openage::UnitTexture::angle_count</definition>
+        <argsstring></argsstring>
+        <name>angle_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="43" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1af8e4d853e0c6b111b5df9ebe8dc266b6" prot="public" static="no" mutable="no">
+        <type>const int16_t</type>
+        <definition>const int16_t openage::UnitTexture::mirroring_mode</definition>
+        <argsstring></argsstring>
+        <name>mirroring_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="44" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ac34ee7ace110e62b81936c8a02bec421" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float openage::UnitTexture::frame_rate</definition>
+        <argsstring></argsstring>
+        <name>frame_rate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="45" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1af69c776830224e224867110f6b522cbd" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool openage::UnitTexture::use_up_angles</definition>
+        <argsstring></argsstring>
+        <name>use_up_angles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>draw object with vertical orientation (arrows) adding an addtion degree of orientation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="51" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ad196a81adcf43745f04514e417bb93fa" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool openage::UnitTexture::use_deltas</definition>
+        <argsstring></argsstring>
+        <name>use_deltas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>use delta information </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="56" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+        <definition>const Texture* openage::UnitTexture::texture</definition>
+        <argsstring></argsstring>
+        <name>texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>use a regular texture for drawing </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="92" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a9ffbd182e533b66d58b6dec274b1968c" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitTexture::safe_frame_count</definition>
+        <argsstring></argsstring>
+        <name>safe_frame_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the above frame count covers the entire graphic (with deltas) the actual number in the base texture may be different </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="98" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitTexture::angles_included</definition>
+        <argsstring></argsstring>
+        <name>angles_included</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="99" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a525921d5d14a1c894b50e96857a5f1a1" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitTexture::angles_mirrored</definition>
+        <argsstring></argsstring>
+        <name>angles_mirrored</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="100" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a9e567666c41e6833e544d01d95a59fdd" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitTexture::top_frame</definition>
+        <argsstring></argsstring>
+        <name>top_frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="101" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::UnitTexture::draw_this</definition>
+        <argsstring></argsstring>
+        <name>draw_this</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="104" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1aa56a7948cc4664b188b54e29a5379419" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_sound" kindref="compound">Sound</ref> *</type>
+        <definition>const Sound* openage::UnitTexture::sound</definition>
+        <argsstring></argsstring>
+        <name>sound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="105" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a12ccd7b2560aee281da63987871aead1" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gamedata::graphic_delta &gt;</type>
+        <definition>std::vector&lt;gamedata::graphic_delta&gt; openage::UnitTexture::delta_id</definition>
+        <argsstring></argsstring>
+        <name>delta_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="108" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; std::unique_ptr&lt; <ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> &gt;, <ref refid="structopenage_1_1coord_1_1camgame__delta" kindref="compound">coord::camgame_delta</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;std::unique_ptr&lt;UnitTexture&gt;, coord::camgame_delta&gt; &gt; openage::UnitTexture::deltas</definition>
+        <argsstring></argsstring>
+        <name>deltas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="111" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1a1ebf9eb4f473f2980165d1fc8205aa55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitTexture::UnitTexture</definition>
+        <argsstring>(GameSpec &amp;spec, uint16_t graphic_id, bool delta=true)</argsstring>
+        <name>UnitTexture</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &amp;</type>
+          <declname>spec</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>graphic_id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>delta</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Delta option specifies whether the delta graphics are included.</para>
+<para>Note that the game data contains loops in delta links which mean recursive loading should be avoided </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="34" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1af3784fba2f1d4f68b11815ec32533ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitTexture::UnitTexture</definition>
+        <argsstring>(GameSpec &amp;spec, const gamedata::graphic *graphic, bool delta=true)</argsstring>
+        <name>UnitTexture</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &amp;</type>
+          <declname>spec</declname>
+        </param>
+        <param>
+          <type>const gamedata::graphic *</type>
+          <declname>graphic</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>delta</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="35" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="23" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1a6aa00a6381fb4b555f989f1bfcfd9c7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitTexture::is_valid</definition>
+        <argsstring>() const</argsstring>
+        <name>is_valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>invalid unit textures will cause errors if drawn </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="61" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
+        <definition>coord::viewport openage::UnitTexture::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pixel size of this texture </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="66" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitTexture::sample</definition>
+        <argsstring>(const coord::CoordManager &amp;coord, const coord::camhud &amp;draw_pos, unsigned color=1) const</argsstring>
+        <name>sample</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref> &amp;</type>
+          <declname>draw_pos</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>color</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a sample drawing for hud </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="71" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="48" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitTexture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;coord, const coord::camgame &amp;draw_pos, unsigned int frame, unsigned color) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref> &amp;</type>
+          <declname>draw_pos</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>draw object with no direction </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="76" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="62" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitTexture::draw</definition>
+        <argsstring>(const coord::CoordManager &amp;coord, const coord::camgame &amp;draw_pos, coord::phys3_delta &amp;dir, unsigned int frame, unsigned color) const</argsstring>
+        <name>draw</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref> &amp;</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref> &amp;</type>
+          <declname>draw_pos</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3__delta" kindref="compound">coord::phys3_delta</ref> &amp;</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>draw object with direction </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="81" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="76" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitTexture::initialise</definition>
+        <argsstring>(GameSpec &amp;spec)</argsstring>
+        <name>initialise</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &amp;</type>
+          <declname>spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>initialise graphic data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="86" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="112" bodyend="149"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitTexture::subtexture</definition>
+        <argsstring>(const Texture *t, unsigned int angle, unsigned int frame) const</argsstring>
+        <name>subtexture</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> *</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>find which subtexture should be used for drawing this texture </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_texture.h" line="116" column="1" bodyfile="libopenage/unit/unit_texture.cpp" bodystart="151" bodyend="160"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Handling animated and directional textures based on the game graphics data.</para>
+<para>These objects handle the drawing of regular textures to use a unit&apos;s direction and include delta graphics.</para>
+<para>This type can also deal with playing position based game sounds. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4838">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="4806">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4814">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="4815" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4839">
+        <label>openage::coord::camgame_delta</label>
+        <link refid="structopenage_1_1coord_1_1camgame__delta"/>
+        <childnode refid="4840" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4812">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="4817">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="4818" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="4819" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="4842">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="4820">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="4811">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="4812" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4815">
+        <label>QObject</label>
+      </node>
+      <node id="4816">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="4806" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="4837">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="4838" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4823">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+      <node id="4802">
+        <label>openage::UnitTexture</label>
+        <link refid="classopenage_1_1_unit_texture"/>
+        <childnode refid="4803" relation="usage">
+          <edgelabel>-sound</edgelabel>
+        </childnode>
+        <childnode refid="4844" relation="usage">
+          <edgelabel>-texture</edgelabel>
+        </childnode>
+      </node>
+      <node id="4809">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="4809" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="4835">
+        <label>openage::coord::viewport</label>
+        <link refid="structopenage_1_1coord_1_1viewport"/>
+        <childnode refid="4836" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4831">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="4816" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="4824" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4844">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4806" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+      <node id="4833">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="4819">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="4820" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4804">
+        <label>openage::GameSpec</label>
+        <link refid="classopenage_1_1_game_spec"/>
+        <childnode refid="4805" relation="usage">
+          <edgelabel>-assetmanager</edgelabel>
+        </childnode>
+        <childnode refid="4843" relation="usage">
+          <edgelabel>-terrain_data</edgelabel>
+        </childnode>
+      </node>
+      <node id="4830">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="4826">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="4827" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4840">
+        <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="4818">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="4827">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="4821">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="4822" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="4828">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="4824" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4843">
+        <label>openage::terrain_meta</label>
+        <link refid="structopenage_1_1terrain__meta"/>
+      </node>
+      <node id="4832">
+        <label>openage::gui::EngineQMLInfo</label>
+        <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
+        <childnode refid="4833" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4806" relation="usage">
+          <edgelabel>+asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="4807" relation="usage">
+          <edgelabel>+engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="4841">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="4818" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4813">
+        <label>openage::util::Profiler</label>
+        <link refid="classopenage_1_1util_1_1_profiler"/>
+        <childnode refid="4807" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="4807">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="4808" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4809" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4810" relation="usage">
+          <edgelabel>+drawing_huds</edgelabel>
+          <edgelabel>+drawing_debug_overlay</edgelabel>
+        </childnode>
+        <childnode refid="4813" relation="usage">
+          <edgelabel>-profiler</edgelabel>
+        </childnode>
+        <childnode refid="4806" relation="usage">
+          <edgelabel>-root_dir</edgelabel>
+        </childnode>
+        <childnode refid="4814" relation="usage">
+          <edgelabel>+gui_signals</edgelabel>
+        </childnode>
+        <childnode refid="4816" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="4817" relation="usage">
+          <edgelabel>-screenshot_manager</edgelabel>
+        </childnode>
+        <childnode refid="4821" relation="usage">
+          <edgelabel>-fps_counter</edgelabel>
+        </childnode>
+        <childnode refid="4823" relation="usage">
+          <edgelabel>+external_profiler</edgelabel>
+        </childnode>
+        <childnode refid="4824" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+        <childnode refid="4832" relation="usage">
+          <edgelabel>-qml_info</edgelabel>
+        </childnode>
+        <childnode refid="4834" relation="usage">
+          <edgelabel>+coord</edgelabel>
+        </childnode>
+        <childnode refid="4818" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="4831" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+        <childnode refid="4841" relation="usage">
+          <edgelabel>-audio_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4836">
+        <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="4808">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="4810">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="4811" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4829">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="4830" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4822">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+      <node id="4825">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="4803">
+        <label>openage::Sound</label>
+        <link refid="classopenage_1_1_sound"/>
+        <childnode refid="4804" relation="usage">
+          <edgelabel>+game_spec</edgelabel>
+        </childnode>
+      </node>
+      <node id="4824">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="4825" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4826" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="4828" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="4829" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="4831" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="4805">
+        <label>openage::AssetManager</label>
+        <link refid="classopenage_1_1_asset_manager"/>
+        <childnode refid="4806" relation="usage">
+          <edgelabel>-asset_path</edgelabel>
+        </childnode>
+        <childnode refid="4807" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+        <childnode refid="4842" relation="usage">
+          <edgelabel>+gui_link</edgelabel>
+        </childnode>
+      </node>
+      <node id="4834">
+        <label>openage::coord::CoordManager</label>
+        <link refid="classopenage_1_1coord_1_1_coord_manager"/>
+        <childnode refid="4835" relation="usage">
+          <edgelabel>+camgame_viewport</edgelabel>
+          <edgelabel>+camhud_viewport</edgelabel>
+        </childnode>
+        <childnode refid="4837" relation="usage">
+          <edgelabel>+camgame_phys</edgelabel>
+        </childnode>
+        <childnode refid="4839" relation="usage">
+          <edgelabel>+tile_size</edgelabel>
+        </childnode>
+        <childnode refid="4819" relation="usage">
+          <edgelabel>+viewport_size</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/unit_texture.h" line="26" column="1" bodyfile="libopenage/unit/unit_texture.h" bodystart="26" bodyend="117"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_texture_1a1bc3f091f4aeceb7ba09ac0699ba5640" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>angle_count</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a8a00b125b8948b3d35ed4ee3b0261263" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>angles_included</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a525921d5d14a1c894b50e96857a5f1a1" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>angles_mirrored</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a12ccd7b2560aee281da63987871aead1" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>delta_id</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a46b37c628ef85eb1b8471510b15c9aee" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>deltas</name></member>
+      <member refid="classopenage_1_1_unit_texture_1acd15e688a5bce0b7e7268e90bb9affdd" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_unit_texture_1ae0fe182788f2f7b1f346abf32cbac39a" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_unit_texture_1ab73fc25e6c0bf70e46bfa1367cfa8214" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>draw_this</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a5d5ceeca83c640f1965341eb304d2dbe" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>frame_count</name></member>
+      <member refid="classopenage_1_1_unit_texture_1ac34ee7ace110e62b81936c8a02bec421" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>frame_rate</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a84ef6a1b69e52a09eb997d018f249708" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>id</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a74f56948004978ef96508c6486b34430" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>initialise</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a6aa00a6381fb4b555f989f1bfcfd9c7a" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>is_valid</name></member>
+      <member refid="classopenage_1_1_unit_texture_1af8e4d853e0c6b111b5df9ebe8dc266b6" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>mirroring_mode</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a9ffbd182e533b66d58b6dec274b1968c" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>safe_frame_count</name></member>
+      <member refid="classopenage_1_1_unit_texture_1abcd138ff9ca2160f57812da8d48a39a7" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>sample</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a92df4d1c73e842abeb4b27d45ebd4001" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>size</name></member>
+      <member refid="classopenage_1_1_unit_texture_1aa56a7948cc4664b188b54e29a5379419" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>sound</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a1fe7033557f83325f51cf96b9cdeb378" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>sound_id</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a7fad704b779a60bf744ee6b91ba6d6a2" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>subtexture</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a2d2c675bc5530bea37d2bb94783ea5ba" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>texture</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a9e567666c41e6833e544d01d95a59fdd" prot="private" virt="non-virtual"><scope>openage::UnitTexture</scope><name>top_frame</name></member>
+      <member refid="classopenage_1_1_unit_texture_1a1ebf9eb4f473f2980165d1fc8205aa55" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>UnitTexture</name></member>
+      <member refid="classopenage_1_1_unit_texture_1af3784fba2f1d4f68b11815ec32533ead" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>UnitTexture</name></member>
+      <member refid="classopenage_1_1_unit_texture_1ad196a81adcf43745f04514e417bb93fa" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>use_deltas</name></member>
+      <member refid="classopenage_1_1_unit_texture_1af69c776830224e224867110f6b522cbd" prot="public" virt="non-virtual"><scope>openage::UnitTexture</scope><name>use_up_angles</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

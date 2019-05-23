@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::attack &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_shared_attribute_container" prot="public" virt="non-virtual">openage::SharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a49adea4cd2747cba4c32138bab6e7f11" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+        <definition>UnitType* openage::Attribute&lt; attr_type::attack &gt;::ptype</definition>
+        <argsstring></argsstring>
+        <name>ptype</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The projectile&apos;s unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="309" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a75a9acf9af2825a2e24e178004e87066" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::Attribute&lt; attr_type::attack &gt;::min_range</definition>
+        <argsstring></argsstring>
+        <name>min_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The min range of the attack TODO not used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="315" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a48b538131cad93a49810158b5433dd73" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::Attribute&lt; attr_type::attack &gt;::max_range</definition>
+        <argsstring></argsstring>
+        <name>max_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The max range of the attack </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="320" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1aed199958f9d00408dada7bec38a19529" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::Attribute&lt; attr_type::attack &gt;::init_height</definition>
+        <argsstring></argsstring>
+        <name>init_height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The height from which the projectile starts </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="325" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a883a54db2394710746e8263b913ea732" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a9b5c147a16053038d4317df642a4723a" kindref="member">typeamount_map</ref></type>
+        <definition>typeamount_map openage::Attribute&lt; attr_type::attack &gt;::damage</definition>
+        <argsstring></argsstring>
+        <name>damage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="327" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a4290748a1363b5517643b3d1791e2631" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::Attribute&lt; attr_type::attack &gt;::friendly_fire</definition>
+        <argsstring></argsstring>
+        <name>friendly_fire</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If the attack can damage allied (friendly) units. TODO not used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="333" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a3329c7fc3447ca0d6558742e01e9aa10" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::Attribute&lt; attr_type::attack &gt;::area_of_effect</definition>
+        <argsstring></argsstring>
+        <name>area_of_effect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The radius of the area of effect of the attack or 0 if there is no area_of_effect. TODO not used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="339" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1ac72a82402f58273d35c6365ae211afb7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::attack &gt;::Attribute</definition>
+        <argsstring>(UnitType *type, coord::phys_t r, coord::phys_t h, unsigned int d)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="285" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="285" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a5c9d56c5a0b9185df8439d68a69bde0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::attack &gt;::Attribute</definition>
+        <argsstring>(UnitType *type, coord::phys_t r, coord::phys_t h, typeamount_map d, coord::phys_t min_range=0, bool friendly_fire=false, coord::phys_t area_of_effect=0)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>h</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a9b5c147a16053038d4317df642a4723a" kindref="member">typeamount_map</ref></type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>min_range</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>friendly_fire</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>area_of_effect</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="289" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="289" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a7536c912ef7e06017e85379840715128" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::attack &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="302" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="302" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>TODO can a unit have multiple attacks such as villagers hunting map target classes onto attacks TODO remove the first constructor and the default values after (keep for now for compatibility) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="368">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="369" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="367">
+        <label>openage::Attribute&lt; attr_type::attack &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4"/>
+        <childnode refid="368" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="369">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="371">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="372" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="383">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+        <childnode refid="382" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="380">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="381" relation="public-inheritance">
+        </childnode>
+        <childnode refid="379" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="381">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="373">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="374" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="376" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="377" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="379" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="382">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="383" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="370">
+        <label>openage::Attribute&lt; attr_type::attack &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4"/>
+        <childnode refid="371" relation="public-inheritance">
+        </childnode>
+        <childnode refid="373" relation="usage">
+          <edgelabel>+ptype</edgelabel>
+        </childnode>
+        <childnode refid="386" relation="usage">
+          <edgelabel>+area_of_effect</edgelabel>
+          <edgelabel>+max_range</edgelabel>
+          <edgelabel>+init_height</edgelabel>
+          <edgelabel>+min_range</edgelabel>
+        </childnode>
+      </node>
+      <node id="385">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="376">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="379">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="380" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="382" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="378" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="384" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="385" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="374">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="375" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="378">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="384">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="372">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="377">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="378" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="386">
+        <label>openage::util::FixedPoint&lt; int64_t, phys_t_radix_pos &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+      <node id="375">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="281" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="281" bodyend="340"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a3329c7fc3447ca0d6558742e01e9aa10" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>area_of_effect</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1ac72a82402f58273d35c6365ae211afb7" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a5c9d56c5a0b9185df8439d68a69bde0a" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a7536c912ef7e06017e85379840715128" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a883a54db2394710746e8263b913ea732" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>damage</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a4290748a1363b5517643b3d1791e2631" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>friendly_fire</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1aed199958f9d00408dada7bec38a19529" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>init_height</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a48b538131cad93a49810158b5433dd73" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>max_range</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a75a9acf9af2825a2e24e178004e87066" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>min_range</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1attack_01_4_1a49adea4cd2747cba4c32138bab6e7f11" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>ptype</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a7fbb1dd2c3df6e5cd65cded8fac7c392" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a388e553da5021f1cbfe8cfd46af315fc" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>SharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::attack &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

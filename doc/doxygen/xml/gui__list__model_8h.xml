@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__list__model_8h" kind="file" language="C++">
+    <compoundname>gui_list_model.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">QAbstractListModel</includes>
+    <includes refid="gui__item_8h" local="yes">gui_item.h</includes>
+    <includedby refid="generator__link_8h" local="yes">libopenage/gui/generator_link.h</includedby>
+    <includedby refid="gui__item__list__model_8h" local="yes">libopenage/gui/guisys/link/gui_item_list_model.h</includedby>
+    <includedby refid="gui__list__model_8cpp" local="yes">libopenage/gui/guisys/link/gui_list_model.cpp</includedby>
+    <incdepgraph>
+      <node id="12790">
+        <label>functional</label>
+      </node>
+      <node id="12794">
+        <label>QObject</label>
+      </node>
+      <node id="12789">
+        <label>cassert</label>
+      </node>
+      <node id="12795">
+        <label>QMetaType</label>
+      </node>
+      <node id="12799">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12784" relation="include">
+        </childnode>
+        <childnode refid="12790" relation="include">
+        </childnode>
+      </node>
+      <node id="12787">
+        <label>gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12788" relation="include">
+        </childnode>
+        <childnode refid="12789" relation="include">
+        </childnode>
+        <childnode refid="12790" relation="include">
+        </childnode>
+        <childnode refid="12791" relation="include">
+        </childnode>
+        <childnode refid="12792" relation="include">
+        </childnode>
+        <childnode refid="12793" relation="include">
+        </childnode>
+        <childnode refid="12794" relation="include">
+        </childnode>
+        <childnode refid="12795" relation="include">
+        </childnode>
+        <childnode refid="12796" relation="include">
+        </childnode>
+        <childnode refid="12797" relation="include">
+        </childnode>
+        <childnode refid="12798" relation="include">
+        </childnode>
+        <childnode refid="12799" relation="include">
+        </childnode>
+        <childnode refid="12800" relation="include">
+        </childnode>
+        <childnode refid="12801" relation="include">
+        </childnode>
+      </node>
+      <node id="12801">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12791" relation="include">
+        </childnode>
+        <childnode refid="12800" relation="include">
+        </childnode>
+      </node>
+      <node id="12792">
+        <label>typeinfo</label>
+      </node>
+      <node id="12785">
+        <label>tuple</label>
+      </node>
+      <node id="12797">
+        <label>QDebug</label>
+      </node>
+      <node id="12784">
+        <label>vector</label>
+      </node>
+      <node id="12796">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12793">
+        <label>utility</label>
+      </node>
+      <node id="12800">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12789" relation="include">
+        </childnode>
+      </node>
+      <node id="12783">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12784" relation="include">
+        </childnode>
+        <childnode refid="12785" relation="include">
+        </childnode>
+        <childnode refid="12786" relation="include">
+        </childnode>
+        <childnode refid="12787" relation="include">
+        </childnode>
+      </node>
+      <node id="12786">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="12791">
+        <label>type_traits</label>
+      </node>
+      <node id="12798">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12790" relation="include">
+        </childnode>
+        <childnode refid="12794" relation="include">
+        </childnode>
+      </node>
+      <node id="12788">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12808">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+      </node>
+      <node id="12806">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="12804">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="12803">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12804" relation="include">
+        </childnode>
+        <childnode refid="12805" relation="include">
+        </childnode>
+        <childnode refid="12806" relation="include">
+        </childnode>
+      </node>
+      <node id="12807">
+        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12803" relation="include">
+        </childnode>
+      </node>
+      <node id="12802">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12803" relation="include">
+        </childnode>
+        <childnode refid="12807" relation="include">
+        </childnode>
+        <childnode refid="12808" relation="include">
+        </childnode>
+      </node>
+      <node id="12805">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_list_model" prot="public">qtsdl::GuiListModel</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QAbstractListModel&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__item_8h" kindref="compound">gui_item.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_list_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_list_model" kindref="compound">GuiListModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractListModel,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_list_model_1ad514c8599de32fc4fb249a7dac8b8c39" kindref="member">GuiListModel</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1abb32032b168269f94df6120f96a60e33" kindref="member">~GuiListModel</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" kindref="member">set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::tuple&lt;QByteArray,<sp/>QVariant&gt;&gt;<sp/>&amp;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1af824d1dbf7e1cf3b5575c7259269d609" kindref="member">on_property_changed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QByteArray<sp/>&amp;name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QVariant<sp/>&amp;value);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e" kindref="member">changed_from_gui</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QVariant<sp/>&amp;value);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1afec43184609ce9ce8975c9e9aa983cfe" kindref="member">rowCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex&amp;)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Qt::ItemFlags<sp/><ref refid="classqtsdl_1_1_gui_list_model_1af26ee16e1227eb9e9441fc91d2de811e" kindref="member">flags</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QVariant<sp/><ref refid="classqtsdl_1_1_gui_list_model_1ac1efa21889a4cc3539c2e02d7e605016" kindref="member">data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role=Qt::DisplayRole)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" kindref="member">setData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QVariant<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role=Qt::EditRole)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::tuple&lt;QByteArray,<sp/>QVariant&gt;&gt;<sp/><ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_list_model.h"/>
+  </compounddef>
+</doxygen>

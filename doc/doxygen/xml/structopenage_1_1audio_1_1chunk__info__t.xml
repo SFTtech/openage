@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1audio_1_1chunk__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>openage::audio::chunk_info_t</compoundname>
+    <includes refid="dynamic__resource_8h" local="no">dynamic_resource.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>state_t</name>
+        <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" prot="public">
+          <name>EMPTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>The chunk is currently empty and unused. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27af9f6955ebca09a484157c05f80acd65e" prot="public">
+          <name>LOADING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>The chunk is currently loading. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27a2baa69eafc7204f3bd8648eba580c489" prot="public">
+          <name>READY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>The chunk is loaded and ready to be used. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="28" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="28" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" kindref="member">state_t</ref> &gt;</type>
+        <definition>std::atomic&lt;state_t&gt; openage::audio::chunk_info_t::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The chunk&apos;s current state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="40" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::audio::chunk_info_t::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The chunk&apos;s actual size. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="43" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; int16_t[]&gt;</type>
+        <definition>std::unique_ptr&lt;int16_t[]&gt; openage::audio::chunk_info_t::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The chunk&apos;s buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="46" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::chunk_info_t::chunk_info_t</definition>
+        <argsstring>(chunk_info_t::state_t state, size_t buffer_size)</argsstring>
+        <name>chunk_info_t</name>
+        <param>
+          <type><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" kindref="member">chunk_info_t::state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="48" column="1" bodyfile="libopenage/audio/dynamic_resource.cpp" bodystart="14" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1audio_1_1chunk__info__t_1a2f0650c5224912a8e46d0067c6749b0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::chunk_info_t::~chunk_info_t</definition>
+        <argsstring>()=default</argsstring>
+        <name>~chunk_info_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/dynamic_resource.h" line="49" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>information storage about a piece of raw audio data. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="762">
+        <label>openage::audio::chunk_info_t</label>
+        <link refid="structopenage_1_1audio_1_1chunk__info__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/dynamic_resource.h" line="27" column="1" bodyfile="libopenage/audio/dynamic_resource.h" bodystart="27" bodyend="50"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>buffer</name></member>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>chunk_info_t</name></member>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>size</name></member>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>state</name></member>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>state_t</name></member>
+      <member refid="structopenage_1_1audio_1_1chunk__info__t_1a2f0650c5224912a8e46d0067c6749b0a" prot="public" virt="non-virtual"><scope>openage::audio::chunk_info_t</scope><name>~chunk_info_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

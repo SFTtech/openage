@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1alphamask__shader" kind="namespace" language="C++">
+    <compoundname>openage::alphamask_shader</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1a91d9794fbedeb8a2ca32f79e13c860e3" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1shader_1_1_program" kindref="compound">shader::Program</ref> *</type>
+        <definition>shader::Program * openage::alphamask_shader::program</definition>
+        <argsstring></argsstring>
+        <name>program</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="33" column="1" bodyfile="libopenage/texture.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1a39389a158565f7be3c74a786671bcbcc" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::alphamask_shader::base_texture</definition>
+        <argsstring></argsstring>
+        <name>base_texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="34" column="1" bodyfile="libopenage/texture.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1a64874bd7ffd0c4f356826976af477bb3" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::alphamask_shader::mask_texture</definition>
+        <argsstring></argsstring>
+        <name>mask_texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="34" column="1" bodyfile="libopenage/texture.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1a58775bda88577e4b2819a53e55ddd9be" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::alphamask_shader::base_coord</definition>
+        <argsstring></argsstring>
+        <name>base_coord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="34" column="1" bodyfile="libopenage/texture.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1aadcbcdb078318bc73e55755280dda70b" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::alphamask_shader::mask_coord</definition>
+        <argsstring></argsstring>
+        <name>mask_coord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="34" column="1" bodyfile="libopenage/texture.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1alphamask__shader_1a4413a93ea827ac75b828f77f6cc69e17" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::alphamask_shader::show_mask</definition>
+        <argsstring></argsstring>
+        <name>show_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="34" column="1" bodyfile="libopenage/texture.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/texture.cpp" line="32" column="1"/>
+  </compounddef>
+</doxygen>

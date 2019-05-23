@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1error_1_1_backtrace" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::error::Backtrace</compoundname>
+    <derivedcompoundref refid="classopenage_1_1error_1_1_stack_analyzer" prot="public" virt="non-virtual">openage::error::StackAnalyzer</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace" prot="public" virt="non-virtual">openage::pyinterface::PyExceptionBacktrace</derivedcompoundref>
+    <includes refid="backtrace_8h" local="no">backtrace.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::error::Backtrace::get_symbols</definition>
+        <argsstring>(std::function&lt; void(const backtrace_symbol *)&gt; cb, bool reversed=true) const =0</argsstring>
+        <name>get_symbols</name>
+        <reimplementedby refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976">get_symbols</reimplementedby>
+        <param>
+          <type>std::function&lt; void(const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> *)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge.</para>
+<para>The most recent call is returned last (alike Python).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is called for every symbol in the backtrace, starting with the top-most frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reversed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, the most recent call is given last. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/backtrace.h" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void openage::error::Backtrace::trim_to_current_stack_frame</definition>
+        <argsstring>()</argsstring>
+        <name>trim_to_current_stack_frame</name>
+        <reimplementedby refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348">trim_to_current_stack_frame</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes all the lower frames that are also present in the current stack.</para>
+<para>Designed to be used in catch clauses, to simulate stack trace collection from throw to catch, instead of from throw to the process entry point.</para>
+<para>Defaults to no-op. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/backtrace.h" line="80" column="1" bodyfile="libopenage/error/backtrace.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_backtrace_1abb0eb435370a245c3d5b73f083852d93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::error::Backtrace::~Backtrace</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Backtrace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/backtrace.h" line="82" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Abstract class for objects that provide backtrave information through <ref refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" kindref="member">get_symbols()</ref>. For a non-abstract implementation, see <ref refid="stackanalyzer_8h" kindref="compound">stackanalyzer.h</ref>.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref>: void get_symbols(Func1[void, backtrace_symbol *] callback, cppbool reversed) except + </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="552">
+        <label>openage::pyinterface::PyExceptionBacktrace</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace"/>
+        <childnode refid="550" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="550">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+      <node id="551">
+        <label>openage::error::StackAnalyzer</label>
+        <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
+        <childnode refid="550" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="553">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/error/backtrace.h" line="55" column="1" bodyfile="libopenage/error/backtrace.h" bodystart="55" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440" prot="public" virt="pure-virtual"><scope>openage::error::Backtrace</scope><name>get_symbols</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42" prot="public" virt="virtual"><scope>openage::error::Backtrace</scope><name>trim_to_current_stack_frame</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1abb0eb435370a245c3d5b73f083852d93" prot="public" virt="virtual"><scope>openage::error::Backtrace</scope><name>~Backtrace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

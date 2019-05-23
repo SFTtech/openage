@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gl__debug_8h" kind="file" language="C++">
+    <compoundname>gl_debug.h</compoundname>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="gl__debug_8cpp" local="yes">libopenage/error/gl_debug.cpp</includedby>
+    <incdepgraph>
+      <node id="6302">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="6301">
+        <label>libopenage/error/gl_debug.h</label>
+        <link refid="gl__debug_8h"/>
+        <childnode refid="6302" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6305">
+        <label>libopenage/error/gl_debug.cpp</label>
+        <link refid="gl__debug_8cpp"/>
+      </node>
+      <node id="6304">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="6303">
+        <label>libopenage/error/gl_debug.h</label>
+        <link refid="gl__debug_8h"/>
+        <childnode refid="6304" relation="include">
+        </childnode>
+        <childnode refid="6305" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">error<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">SDL_GLContext<sp/><ref refid="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" kindref="member">create_debug_context</ref>(SDL_Window<sp/>*window);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/error/gl_debug.h"/>
+  </compounddef>
+</doxygen>

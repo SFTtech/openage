@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1curve" kind="namespace" language="C++">
+    <compoundname>openage::curve</compoundname>
+    <innerclass refid="classopenage_1_1curve_1_1_continuous" prot="public">openage::curve::Continuous</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_curve_iterator" prot="public">openage::curve::CurveIterator</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_discrete" prot="public">openage::curve::Discrete</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_keyframe_container" prot="public">openage::curve::KeyframeContainer</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_map_filter_iterator" prot="public">openage::curve::MapFilterIterator</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_queue" prot="public">openage::curve::Queue</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_queue_filter_iterator" prot="public">openage::curve::QueueFilterIterator</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_unordered_map" prot="public">openage::curve::UnorderedMap</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_value_container" prot="public">openage::curve::ValueContainer</innerclass>
+    <innernamespace refid="namespaceopenage_1_1curve_1_1tests">openage::curve::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">util::FixedPoint</ref>&lt; int64_t, 16 &gt;</type>
+        <definition>using openage::curve::time_t = typedef util::FixedPoint&lt;int64_t, 16&gt;</definition>
+        <argsstring></argsstring>
+        <name>time_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the type that is used as time index. it has to implement all basic mathematically operations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/curve.h" line="16" column="1" bodyfile="libopenage/curve/curve.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/curve/continuous.cpp" line="5" column="1"/>
+  </compounddef>
+</doxygen>

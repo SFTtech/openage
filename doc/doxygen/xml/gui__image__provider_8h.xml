@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__image__provider_8h" kind="file" language="C++">
+    <compoundname>gui_image_provider.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">functional</includes>
+    <includedby refid="gui__game__spec__image__provider_8h" local="yes">libopenage/gui/integration/public/gui_game_spec_image_provider.h</includedby>
+    <includedby refid="gui__image__provider__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_image_provider_impl.cpp</includedby>
+    <includedby refid="gui__image__provider_8cpp" local="yes">libopenage/gui/guisys/public/gui_image_provider.cpp</includedby>
+    <incdepgraph>
+      <node id="13527">
+        <label>functional</label>
+      </node>
+      <node id="13525">
+        <label>libopenage/gui/guisys/public/gui_image_provider.h</label>
+        <link refid="gui__image__provider_8h"/>
+        <childnode refid="13526" relation="include">
+        </childnode>
+        <childnode refid="13527" relation="include">
+        </childnode>
+      </node>
+      <node id="13526">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13529">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <link refid="gui__game__spec__image__provider_8h"/>
+        <childnode refid="13530" relation="include">
+        </childnode>
+        <childnode refid="13533" relation="include">
+        </childnode>
+      </node>
+      <node id="13533">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <link refid="gui__game__spec__image__provider_8cpp"/>
+      </node>
+      <node id="13532">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="13531">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="13535">
+        <label>libopenage/gui/guisys/public/gui_image_provider.cpp</label>
+        <link refid="gui__image__provider_8cpp"/>
+      </node>
+      <node id="13534">
+        <label>libopenage/gui/guisys/private/gui_image_provider_impl.cpp</label>
+        <link refid="gui__image__provider__impl_8cpp"/>
+      </node>
+      <node id="13528">
+        <label>libopenage/gui/guisys/public/gui_image_provider.h</label>
+        <link refid="gui__image__provider_8h"/>
+        <childnode refid="13529" relation="include">
+        </childnode>
+        <childnode refid="13534" relation="include">
+        </childnode>
+        <childnode refid="13535" relation="include">
+        </childnode>
+      </node>
+      <node id="13530">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="13531" relation="include">
+        </childnode>
+        <childnode refid="13532" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_image_provider" prot="public">qtsdl::GuiImageProvider</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiImageProviderImpl;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classqtsdl_1_1_gui_image_provider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_image_provider_1a4e9879f5d4bec950192552f9161ee13f" kindref="member">GuiImageProvider</ref>(std::unique_ptr&lt;GuiImageProviderImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" kindref="member">impl</ref>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_image_provider_1a5d0006588b63fff9b74ea46c9de784be" kindref="member">~GuiImageProvider</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18" refid="classqtsdl_1_1_gui_image_provider_1a322ba95139d34df3f26b05be98a8292f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref>;</highlight></codeline>
+<codeline lineno="19" refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;<ref refid="classqtsdl_1_1_gui_image_provider_1a322ba95139d34df3f26b05be98a8292f" kindref="member">GuiImageProviderImpl</ref>,<sp/>std::function&lt;void(<ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref>*)&gt;&gt;<sp/><ref refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" kindref="member">impl</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_image_provider.h"/>
+  </compounddef>
+</doxygen>

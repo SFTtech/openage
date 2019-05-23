@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="util_2macro_2loop_8h" kind="file" language="C++">
+    <compoundname>loop.h</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="util_2macro_2loop_8h_1a917e3a57b54bef7b3e52111e136459f9" prot="public" static="no">
+        <name>LOOP_1</name>
+        <param><defname>MACRO</defname></param>
+        <param><defname>X</defname></param>
+        <initializer>MACRO(X)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/loop.h" line="5" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="util_2macro_2loop_8h_1a2810e2892d646be048d6c422fef8f1a7" prot="public" static="no">
+        <name>LOOP_2</name>
+        <param><defname>MACRO</defname></param>
+        <param><defname>X</defname></param>
+        <param><defname>Y</defname></param>
+        <initializer>MACRO(X), MACRO(Y)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/loop.h" line="6" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="util_2macro_2loop_8h_1a7ff2e357e349e76b6f4e1a32d7cddb03" prot="public" static="no">
+        <name>LOOP_3</name>
+        <param><defname>MACRO</defname></param>
+        <param><defname>X</defname></param>
+        <param><defname>Y</defname></param>
+        <param><defname>Z</defname></param>
+        <initializer>MACRO(X), MACRO(Y), MACRO(Z)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/loop.h" line="7" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="util_2macro_2loop_8h_1a0b21ea1a0fcab22ae20ba52f60f22b2c" prot="public" static="no">
+        <name>LOOP_N</name>
+        <param><defname>_1</defname></param>
+        <param><defname>_2</defname></param>
+        <param><defname>_3</defname></param>
+        <param><defname>NAME</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>NAME</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/loop.h" line="9" column="9" bodyfile="libopenage/util/macro/loop.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="util_2macro_2loop_8h_1aa1b0c3e1629761c3e1bf6e23306dda87" prot="public" static="no">
+        <name>LOOP</name>
+        <param><defname>MACRO</defname></param>
+        <param><defname>...</defname></param>
+        <initializer><ref refid="util_2macro_2loop_8h_1a0b21ea1a0fcab22ae20ba52f60f22b2c" kindref="member">LOOP_N</ref>(__VA_ARGS__, \
+	<ref refid="util_2macro_2loop_8h_1a7ff2e357e349e76b6f4e1a32d7cddb03" kindref="member">LOOP_3</ref>, <ref refid="util_2macro_2loop_8h_1a2810e2892d646be048d6c422fef8f1a7" kindref="member">LOOP_2</ref>, <ref refid="util_2macro_2loop_8h_1a917e3a57b54bef7b3e52111e136459f9" kindref="member">LOOP_1</ref> \
+	) (MACRO, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/loop.h" line="20" column="10" bodyfile="libopenage/util/macro/loop.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="util_2macro_2loop_8h_1a917e3a57b54bef7b3e52111e136459f9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_1(MACRO,<sp/>X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>MACRO(X)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="util_2macro_2loop_8h_1a2810e2892d646be048d6c422fef8f1a7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_2(MACRO,<sp/>X,<sp/>Y)<sp/><sp/><sp/><sp/>MACRO(X),<sp/>MACRO(Y)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="util_2macro_2loop_8h_1a7ff2e357e349e76b6f4e1a32d7cddb03" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_3(MACRO,<sp/>X,<sp/>Y,<sp/>Z)<sp/>MACRO(X),<sp/>MACRO(Y),<sp/>MACRO(Z)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="util_2macro_2loop_8h_1a0b21ea1a0fcab22ae20ba52f60f22b2c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_N(_1,<sp/>_2,<sp/>_3,<sp/>NAME,<sp/>...)<sp/>NAME</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_COUNT_ARGS_IMPL(args)<sp/>LOOP_N<sp/>args</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_COUNT_ARGS(...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOOP_COUNT_ARGS_IMPL((__VA_ARGS__,<sp/>3,<sp/>2,<sp/>1))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_HELPER2(count)<sp/>LOOP_##count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_HELPER1(count)<sp/>LOOP_HELPER2(count)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_HELPER(count)<sp/><sp/>LOOP_HELPER1(count)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP_GLUE(x,<sp/>y)<sp/>x<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP(MACRO,<sp/>...)<sp/>LOOP_GLUE(LOOP_HELPER(LOOP_COUNT_ARGS(__VA_ARGS__)),<sp/>(MACRO,<sp/>__VA_ARGS__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="util_2macro_2loop_8h_1aa1b0c3e1629761c3e1bf6e23306dda87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOOP(MACRO,<sp/>...)<sp/>LOOP_N(__VA_ARGS__,<sp/>\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>LOOP_3,<sp/>LOOP_2,<sp/>LOOP_1<sp/>\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>)<sp/>(MACRO,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/macro/loop.h"/>
+  </compounddef>
+</doxygen>

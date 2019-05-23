@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::population &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_shared_attribute_container" prot="public" virt="non-virtual">openage::SharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1a126d7d723a417346fc40f020f7e0e3f5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Attribute&lt; attr_type::population &gt;::demand</definition>
+        <argsstring></argsstring>
+        <name>demand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="238" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1a767cd16fbacc5483f2ac3b07c2c319dd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::Attribute&lt; attr_type::population &gt;::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="239" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1adff43492457a44e835fe220a0e00ee9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::population &gt;::Attribute</definition>
+        <argsstring>(int demand, int capacity)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type>int</type>
+          <declname>demand</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>capacity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="228" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="228" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1adec73cb79d383e4a0a61438419c065bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::population &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="234" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="234" bodyend="236"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The population capacity and the population demand. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="474">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="475" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="475">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="473">
+        <label>openage::Attribute&lt; attr_type::population &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="477">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="478" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="478">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+      <node id="476">
+        <label>openage::Attribute&lt; attr_type::population &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4"/>
+        <childnode refid="477" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="226" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="226" bodyend="240"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1adff43492457a44e835fe220a0e00ee9d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1a767cd16fbacc5483f2ac3b07c2c319dd" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>capacity</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1adec73cb79d383e4a0a61438419c065bb" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1population_01_4_1a126d7d723a417346fc40f020f7e0e3f5" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>demand</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a7fbb1dd2c3df6e5cd65cded8fac7c392" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a388e553da5021f1cbfe8cfd46af315fc" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>SharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::population &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

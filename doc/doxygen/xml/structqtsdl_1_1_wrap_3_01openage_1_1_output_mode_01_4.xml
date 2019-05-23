@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1_wrap_3_01openage_1_1_output_mode_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::Wrap&lt; openage::OutputMode &gt;</compoundname>
+    <includes refid="game__control__link_8h" local="no">game_control_link.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structqtsdl_1_1_wrap_3_01openage_1_1_output_mode_01_4_1a4b0a4c67268ef6167173a4279ebf88cd" prot="public" static="no">
+        <type><ref refid="classopenage_1_1gui_1_1_output_mode_link" kindref="compound">openage::gui::OutputModeLink</ref></type>
+        <definition>using qtsdl::Wrap&lt; openage::OutputMode &gt;::Type =  openage::gui::OutputModeLink</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="22" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4993">
+        <label>qtsdl::Wrap&lt; openage::OutputMode &gt;</label>
+        <link refid="structqtsdl_1_1_wrap_3_01openage_1_1_output_mode_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/game_control_link.h" line="21" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="21" bodyend="23"/>
+    <listofallmembers>
+      <member refid="structqtsdl_1_1_wrap_3_01openage_1_1_output_mode_01_4_1a4b0a4c67268ef6167173a4279ebf88cd" prot="public" virt="non-virtual"><scope>qtsdl::Wrap&lt; openage::OutputMode &gt;</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

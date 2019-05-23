@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="texture__data_8cpp" kind="file" language="C++">
+    <compoundname>texture_data.cpp</compoundname>
+    <includes refid="texture__data_8h" local="yes">texture_data.h</includes>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes local="no">SDL2/SDL_image.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="csv_8h" local="yes">../../util/csv.h</includes>
+    <incdepgraph>
+      <node id="23136">
+        <label>list</label>
+      </node>
+      <node id="23128">
+        <label>atomic</label>
+      </node>
+      <node id="23133">
+        <label>iomanip</label>
+      </node>
+      <node id="23114">
+        <label>functional</label>
+      </node>
+      <node id="23153">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="23114" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+      </node>
+      <node id="23110">
+        <label>cstdint</label>
+      </node>
+      <node id="23108">
+        <label>texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23110" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23112" relation="include">
+        </childnode>
+        <childnode refid="23147" relation="include">
+        </childnode>
+      </node>
+      <node id="23157">
+        <label>SDL2/SDL_image.h</label>
+      </node>
+      <node id="23131">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23132" relation="include">
+        </childnode>
+        <childnode refid="23114" relation="include">
+        </childnode>
+        <childnode refid="23133" relation="include">
+        </childnode>
+        <childnode refid="23118" relation="include">
+        </childnode>
+        <childnode refid="23134" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+      </node>
+      <node id="23152">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="23116" relation="include">
+        </childnode>
+      </node>
+      <node id="23119">
+        <label>stdexcept</label>
+      </node>
+      <node id="23151">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="23135">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23136" relation="include">
+        </childnode>
+        <childnode refid="23137" relation="include">
+        </childnode>
+        <childnode refid="23138" relation="include">
+        </childnode>
+      </node>
+      <node id="23132">
+        <label>cstdarg</label>
+      </node>
+      <node id="23111">
+        <label>string</label>
+      </node>
+      <node id="23123">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23110" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23124" relation="include">
+        </childnode>
+        <childnode refid="23125" relation="include">
+        </childnode>
+        <childnode refid="23127" relation="include">
+        </childnode>
+        <childnode refid="23135" relation="include">
+        </childnode>
+        <childnode refid="23138" relation="include">
+        </childnode>
+      </node>
+      <node id="23125">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23126" relation="include">
+        </childnode>
+      </node>
+      <node id="23127">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23128" relation="include">
+        </childnode>
+        <childnode refid="23118" relation="include">
+        </childnode>
+        <childnode refid="23129" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+        <childnode refid="23130" relation="include">
+        </childnode>
+        <childnode refid="23131" relation="include">
+        </childnode>
+      </node>
+      <node id="23144">
+        <label>fstream</label>
+      </node>
+      <node id="23148">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="23110" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23149" relation="include">
+        </childnode>
+        <childnode refid="23150" relation="include">
+        </childnode>
+      </node>
+      <node id="23116">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23117" relation="include">
+        </childnode>
+        <childnode refid="23118" relation="include">
+        </childnode>
+        <childnode refid="23119" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+        <childnode refid="23123" relation="include">
+        </childnode>
+      </node>
+      <node id="23142">
+        <label>../../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="23126" relation="include">
+        </childnode>
+        <childnode refid="23143" relation="include">
+        </childnode>
+        <childnode refid="23144" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23145" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23116" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+        <childnode refid="23146" relation="include">
+        </childnode>
+        <childnode refid="23147" relation="include">
+        </childnode>
+      </node>
+      <node id="23156">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="23113">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="23114" relation="include">
+        </childnode>
+        <childnode refid="23115" relation="include">
+        </childnode>
+        <childnode refid="23116" relation="include">
+        </childnode>
+      </node>
+      <node id="23140">
+        <label>typeinfo</label>
+      </node>
+      <node id="23109">
+        <label>vector</label>
+      </node>
+      <node id="23158">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23138" relation="include">
+        </childnode>
+        <childnode refid="23123" relation="include">
+        </childnode>
+      </node>
+      <node id="23121">
+        <label>ciso646</label>
+      </node>
+      <node id="23115">
+        <label>utility</label>
+      </node>
+      <node id="23134">
+        <label>sstream</label>
+      </node>
+      <node id="23120">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23121" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23122" relation="include">
+        </childnode>
+      </node>
+      <node id="23154">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="23118" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23155" relation="include">
+        </childnode>
+        <childnode refid="23148" relation="include">
+        </childnode>
+      </node>
+      <node id="23122">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23122" relation="include">
+        </childnode>
+      </node>
+      <node id="23130">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23117" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+      </node>
+      <node id="23138">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23139" relation="include">
+        </childnode>
+      </node>
+      <node id="23146">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="23155">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="23117" relation="include">
+        </childnode>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+      </node>
+      <node id="23126">
+        <label>cstdlib</label>
+      </node>
+      <node id="23117">
+        <label>iostream</label>
+      </node>
+      <node id="23145">
+        <label>unordered_map</label>
+      </node>
+      <node id="23150">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="23114" relation="include">
+        </childnode>
+        <childnode refid="23137" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+        <childnode refid="23151" relation="include">
+        </childnode>
+        <childnode refid="23152" relation="include">
+        </childnode>
+        <childnode refid="23153" relation="include">
+        </childnode>
+      </node>
+      <node id="23141">
+        <label>texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="23110" relation="include">
+        </childnode>
+        <childnode refid="23142" relation="include">
+        </childnode>
+      </node>
+      <node id="23137">
+        <label>mutex</label>
+      </node>
+      <node id="23107">
+        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <link refid="texture__data_8cpp"/>
+        <childnode refid="23108" relation="include">
+        </childnode>
+        <childnode refid="23156" relation="include">
+        </childnode>
+        <childnode refid="23157" relation="include">
+        </childnode>
+        <childnode refid="23158" relation="include">
+        </childnode>
+        <childnode refid="23116" relation="include">
+        </childnode>
+        <childnode refid="23142" relation="include">
+        </childnode>
+      </node>
+      <node id="23147">
+        <label>path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="23111" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23148" relation="include">
+        </childnode>
+        <childnode refid="23154" relation="include">
+        </childnode>
+        <childnode refid="23146" relation="include">
+        </childnode>
+      </node>
+      <node id="23112">
+        <label>texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="23110" relation="include">
+        </childnode>
+        <childnode refid="23109" relation="include">
+        </childnode>
+        <childnode refid="23113" relation="include">
+        </childnode>
+        <childnode refid="23141" relation="include">
+        </childnode>
+      </node>
+      <node id="23149">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="23129">
+        <label>type_traits</label>
+      </node>
+      <node id="23124">
+        <label>config.h</label>
+      </node>
+      <node id="23143">
+        <label>cstring</label>
+      </node>
+      <node id="23118">
+        <label>memory</label>
+      </node>
+      <node id="23139">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23117" relation="include">
+        </childnode>
+        <childnode refid="23140" relation="include">
+        </childnode>
+        <childnode refid="23120" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1resources">openage::renderer::resources</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="texture__data_8h" kindref="compound">texture_data.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL_image.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../util/csv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">resources<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" kindref="member">guess_row_alignment</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>width,<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref><sp/>fmt,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row_size)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>highest<sp/>possible<sp/>alignment<sp/>for<sp/>even-width<sp/>images.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(width<sp/>%<sp/>8<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>8;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(width<sp/>%<sp/>4<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(width<sp/>%<sp/>2<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>size<sp/>of<sp/>meaningful<sp/>data<sp/>in<sp/>each<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pix_bytes<sp/>=<sp/>width<sp/>*<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" kindref="member">pixel_size</ref>(fmt);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>size<sp/>of<sp/>padding.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>padding<sp/>=<sp/>row_size<sp/>-<sp/>pix_bytes;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(padding<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(padding<sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(padding<sp/>&lt;=<sp/>3)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(padding<sp/>&lt;=<sp/>7)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>8;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bail<sp/>with<sp/>a<sp/>sane<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" kindref="member">Texture2dData::Texture2dData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;path,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>use_metafile)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>native_path<sp/>=<sp/>path.<ref refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" kindref="member">resolve_native_path</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;SDL_Surface,<sp/>decltype(&amp;SDL_FreeSurface)&gt;<sp/>surface(</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IMG_Load(native_path.c_str()),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;SDL_FreeSurface</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!surface)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>load<sp/>texture<sp/>from<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>native_path</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>IMG_GetError());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Texture<sp/>has<sp/>been<sp/>loaded<sp/>from<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>native_path);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>surf_fmt<sp/>=<sp/>*surface-&gt;format;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref><sp/>pix_fmt;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(surf_fmt.format)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_PIXELFORMAT_RGB24:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pix_fmt<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a" kindref="member">pixel_format::rgb8</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_PIXELFORMAT_BGR24:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pix_fmt<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39" kindref="member">pixel_format::bgr8</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SDL_BYTEORDER<sp/>==<sp/>SDL_BIG_ENDIAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_PIXELFORMAT_RGBA8888:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_PIXELFORMAT_ABGR8888:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pix_fmt<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a" kindref="member">pixel_format::rgba8</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Texture<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>native_path<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>uses<sp/>an<sp/>unsupported<sp/>format.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>w<sp/>=<sp/>uint32_t(surface-&gt;w);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>h<sp/>=<sp/>uint32_t(surface-&gt;h);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_size<sp/>=<sp/>surf_fmt.BytesPerPixel<sp/>*<sp/>surface-&gt;w<sp/>*<sp/>surface-&gt;h;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>pixel<sp/>data<sp/>from<sp/>surface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref><sp/>=<sp/>std::vector&lt;uint8_t&gt;(data_size);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data(),<sp/>surface-&gt;pixels,<sp/>data_size);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Texture2dSubInfo&gt;<sp/>subtextures;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(use_metafile)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>meta<sp/>=<sp/>(path.<ref refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" kindref="member">get_parent</ref>()<sp/>/<sp/>path.<ref refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" kindref="member">get_stem</ref>()).with_suffix(</highlight><highlight class="stringliteral">&quot;.slp.docx&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loading<sp/>meta<sp/>file:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>meta);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>subtexture<sp/>information<sp/>by<sp/>meta<sp/>file<sp/>exported<sp/>by<sp/>script</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subtextures<sp/>=<sp/>util::read_csv_file&lt;Texture2dSubInfo&gt;(meta);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>don&apos;t<sp/>have<sp/>a<sp/>texture<sp/>description<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>the<sp/>whole<sp/>image<sp/>as<sp/>one<sp/>texture<sp/>then.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref><sp/>s{0,<sp/>0,<sp/>w,<sp/>h,<sp/>w/2,<sp/>h/2};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subtextures.push_back(s);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>align<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" kindref="member">guess_row_alignment</ref>(w,<sp/>pix_fmt,<sp/>surface-&gt;pitch);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref><sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref>(w,<sp/>h,<sp/>pix_fmt,<sp/>align,<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(subtextures));</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ac914d524baaf0ac61f42ca7fcd24a8bd" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" kindref="member">Texture2dData::Texture2dData</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>info,<sp/>std::vector&lt;uint8_t&gt;<sp/>&amp;&amp;data)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>info(info)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>data(<ref refid="namespacestd" kindref="compound">std</ref>::<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">move</ref>(data))<sp/>{}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">Texture2dData</ref><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a01acf205a4e2c76612af7d0e36123496" kindref="member">Texture2dData::flip_y</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row_size<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" kindref="member">get_size</ref>().second;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>new_data(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.size());</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0;<sp/>y<sp/>&lt;<sp/>height;<sp/>++y)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::copy(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data()<sp/>+<sp/>row_size<sp/>*<sp/>y,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data()<sp/>+<sp/>row_size<sp/>*<sp/>(y+1),<sp/>new_data.end()<sp/>-<sp/>row_size<sp/>*<sp/>(y+1));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref><sp/>=<sp/>new_data;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref><sp/>new_info(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a54659e7f41b37d889bba34111bb003d0" kindref="member">Texture2dData</ref>(<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(new_info),<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(new_data));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref>&amp;<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a4a3717b88a0cfe57351eb76866a8aed5" kindref="member">Texture2dData::get_info</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a04a2df204bf7d3f7029b2e74ee417fec" kindref="member">Texture2dData::get_data</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1a3dceab170bbee853bcafd6fd924be208" kindref="member">Texture2dData::store</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>&amp;<sp/>file)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>texture<sp/>data<sp/>to<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>file);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" kindref="member">get_format</ref>()<sp/>!=<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a" kindref="member">pixel_format::rgba8</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Storing<sp/>2D<sp/>textures<sp/>into<sp/>files<sp/>is<sp/>unimplemented.<sp/>PRs<sp/>welcome<sp/>:D&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" kindref="member">get_size</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>an<sp/>older<sp/>SDL2<sp/>is<sp/>used,<sp/>we<sp/>have<sp/>to<sp/>specify<sp/>the<sp/>format<sp/>manually.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SDL_PIXELFORMAT_RGBA32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>rmask,<sp/>gmask,<sp/>bmask,<sp/>amask;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SDL_BYTEORDER<sp/>==<sp/>SDL_BIG_ENDIAN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>rmask<sp/>=<sp/>0xff000000;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>gmask<sp/>=<sp/>0x00ff0000;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>bmask<sp/>=<sp/>0x0000ff00;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>amask<sp/>=<sp/>0x000000ff;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/>//<sp/>little<sp/>endian,<sp/>like<sp/>x86</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>rmask<sp/>=<sp/>0x000000ff;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>gmask<sp/>=<sp/>0x0000ff00;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>bmask<sp/>=<sp/>0x00ff0000;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>amask<sp/>=<sp/>0xff000000;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;SDL_Surface,<sp/>decltype(&amp;SDL_FreeSurface)&gt;<sp/>surf(</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_CreateRGBSurfaceFrom(</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>const_cast<sp/>is<sp/>okay,<sp/>because<sp/>the<sp/>surface<sp/>doesn&apos;t<sp/>modify<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const_cast&lt;void*&gt;(static_cast&lt;void<sp/>const*&gt;(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data())),</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size.first,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size.second,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size</ref>(),</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rmask,<sp/>gmask,<sp/>bmask,<sp/>amask</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;SDL_FreeSurface</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;SDL_Surface,<sp/>decltype(&amp;SDL_FreeSurface)&gt;<sp/>surf(</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_CreateRGBSurfaceWithFormatFrom(</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>const_cast<sp/>is<sp/>okay,<sp/>because<sp/>the<sp/>surface<sp/>doesn&apos;t<sp/>modify<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const_cast&lt;void*&gt;(static_cast&lt;void<sp/>const*&gt;(this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1aaee1fe41bf29e523195fff1eb571cf74" kindref="member">data</ref>.data())),</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size.first,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size.second,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data_1ad10f384dfea1586058f78af7feb90e3b" kindref="member">info</ref>.<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size</ref>(),</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_PIXELFORMAT_RGBA32</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;SDL_FreeSurface</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>sdl_image<sp/>for<sp/>saving<sp/>the<sp/>screenshot<sp/>to<sp/>PNG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>path<sp/>=<sp/>file.<ref refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" kindref="member">resolve_native_path_w</ref>();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>IMG_SavePNG(surf.get(),<sp/>path.c_str());</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}}}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/resources/texture_data.cpp"/>
+  </compounddef>
+</doxygen>

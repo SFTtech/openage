@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_gui_standalone_subtexture" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GuiStandaloneSubtexture</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QSGTexture</basecompoundref>
+    <includes refid="gui__standalone__subtexture_8h" local="no">gui_standalone_subtexture.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a3b12ffcf36a51aea0969dadc31b62ddf" prot="private" static="no" mutable="no">
+        <type>const GLuint</type>
+        <definition>const GLuint openage::gui::GuiStandaloneSubtexture::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="26" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" prot="private" static="no" mutable="no">
+        <type>const QSize</type>
+        <definition>const QSize openage::gui::GuiStandaloneSubtexture::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="27" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a91d3991a935c02c6c206c6158cb0d200" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiStandaloneSubtexture::GuiStandaloneSubtexture</definition>
+        <argsstring>(GLuint id, const QSize &amp;size)</argsstring>
+        <name>GuiStandaloneSubtexture</name>
+        <param>
+          <type>GLuint</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="8" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1afbefb94ab19ce97d8f67bc4f5ef1f53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GuiStandaloneSubtexture::~GuiStandaloneSubtexture</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiStandaloneSubtexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="16" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiStandaloneSubtexture::bind</definition>
+        <argsstring>() override</argsstring>
+        <name>bind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="19" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a20f2863cf5efecc0f0c39c02044af36f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GuiStandaloneSubtexture::hasAlphaChannel</definition>
+        <argsstring>() const override</argsstring>
+        <name>hasAlphaChannel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="20" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a4268bd7cbef14c5848fec65e998d2ca7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GuiStandaloneSubtexture::hasMipmaps</definition>
+        <argsstring>() const override</argsstring>
+        <name>hasMipmaps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="21" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1aed33169bb7552361fad461740fa10bc8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GuiStandaloneSubtexture::isAtlasTexture</definition>
+        <argsstring>() const override</argsstring>
+        <name>isAtlasTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::gui::GuiStandaloneSubtexture::textureId</definition>
+        <argsstring>() const override</argsstring>
+        <name>textureId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="23" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSize</type>
+        <definition>QSize openage::gui::GuiStandaloneSubtexture::textureSize</definition>
+        <argsstring>() const override</argsstring>
+        <name>textureSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2775">
+        <label>openage::gui::GuiStandaloneSubtexture</label>
+        <link refid="classopenage_1_1gui_1_1_gui_standalone_subtexture"/>
+        <childnode refid="2776" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2776">
+        <label>QSGTexture</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2777">
+        <label>openage::gui::GuiStandaloneSubtexture</label>
+        <link refid="classopenage_1_1gui_1_1_gui_standalone_subtexture"/>
+        <childnode refid="2778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2778">
+        <label>QSGTexture</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_standalone_subtexture.h" line="11" column="1" bodyfile="libopenage/gui/integration/private/gui_standalone_subtexture.h" bodystart="11" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a7d018d0db7e059176cc95bbf65ebe7d8" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>bind</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a91d3991a935c02c6c206c6158cb0d200" prot="public" virt="non-virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>GuiStandaloneSubtexture</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a20f2863cf5efecc0f0c39c02044af36f" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>hasAlphaChannel</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a4268bd7cbef14c5848fec65e998d2ca7" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>hasMipmaps</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a3b12ffcf36a51aea0969dadc31b62ddf" prot="private" virt="non-virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1aed33169bb7552361fad461740fa10bc8" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>isAtlasTexture</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ab303b819db70da5c3ac1487bf56e5409" prot="private" virt="non-virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>size</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1ad8e1a5542e0f5abdc8aa732773ebdfd1" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>textureId</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1a55258285b55170247443fbe606b58431" prot="private" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>textureSize</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_standalone_subtexture_1afbefb94ab19ce97d8f67bc4f5ef1f53c" prot="public" virt="virtual"><scope>openage::gui::GuiStandaloneSubtexture</scope><name>~GuiStandaloneSubtexture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

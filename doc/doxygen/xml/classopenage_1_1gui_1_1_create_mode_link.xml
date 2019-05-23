@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_create_mode_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::CreateModeLink</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_inherits" prot="public" virt="non-virtual">qtsdl::Inherits&lt; OutputModeLink, CreateModeLink &gt;</basecompoundref>
+    <includes refid="game__control__link_8h" local="no">game_control_link.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_create_mode_link_1a215ac637ec01d32608f4bfcdb76272b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::CreateModeLink::CreateModeLink</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>CreateModeLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="91" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_create_mode_link_1a77fab059b2de062d40bde74c07205372" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::CreateModeLink::~CreateModeLink</definition>
+        <argsstring>()</argsstring>
+        <name>~CreateModeLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="98" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1019">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="1020" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1017">
+        <label>openage::gui::CreateModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_create_mode_link"/>
+        <childnode refid="1018" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1022">
+        <label>qtsdl::GuiItemMethods&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="1021">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="1022" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1018">
+        <label>qtsdl::Inherits&lt; OutputModeLink, CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="1019" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1020">
+        <label>OutputModeLink</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1025">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="1026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1023">
+        <label>openage::gui::CreateModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_create_mode_link"/>
+        <childnode refid="1024" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1028">
+        <label>qtsdl::GuiItemMethods&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="1027">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="1028" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1024">
+        <label>qtsdl::Inherits&lt; OutputModeLink, CreateModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="1025" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1027" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1026">
+        <label>OutputModeLink</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/game_control_link.h" line="87" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="87" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_create_mode_link_1a215ac637ec01d32608f4bfcdb76272b5" prot="public" virt="non-virtual"><scope>openage::gui::CreateModeLink</scope><name>CreateModeLink</name></member>
+      <member refid="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; CreateModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; CreateModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>openage::gui::CreateModeLink</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; CreateModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_inherits_1a8e40f947d69f66a2e6231d7243e14b1e" prot="public" virt="non-virtual"><scope>openage::gui::CreateModeLink</scope><name>Inherits</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a6701a7a35ed1c41d1c0ae2927e4fbc39" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; CreateModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a77412ce3729150d91b32364e2addbb40" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; CreateModeLink &gt;::"><scope>openage::gui::CreateModeLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" prot="public" virt="non-virtual"><scope>openage::gui::CreateModeLink</scope><name>Shadow</name></member>
+      <member refid="classopenage_1_1gui_1_1_create_mode_link_1a77fab059b2de062d40bde74c07205372" prot="public" virt="virtual"><scope>openage::gui::CreateModeLink</scope><name>~CreateModeLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>openage::gui::CreateModeLink</scope><name>~GuiItemMethods</name></member>
+      <member refid="classqtsdl_1_1_inherits_1a9c8a480b69f22524c19ae46704b42f7f" prot="public" virt="virtual"><scope>openage::gui::CreateModeLink</scope><name>~Inherits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

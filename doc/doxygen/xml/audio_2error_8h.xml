@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="audio_2error_8h" kind="file" language="C++">
+    <compoundname>error.h</compoundname>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includedby refid="audio__manager_8cpp" local="yes">libopenage/audio/audio_manager.cpp</includedby>
+    <includedby refid="dynamic__loader_8cpp" local="yes">libopenage/audio/dynamic_loader.cpp</includedby>
+    <includedby refid="audio_2error_8cpp" local="yes">libopenage/audio/error.cpp</includedby>
+    <includedby refid="in__memory__loader_8cpp" local="yes">libopenage/audio/in_memory_loader.cpp</includedby>
+    <includedby refid="opus__dynamic__loader_8cpp" local="yes">libopenage/audio/opus_dynamic_loader.cpp</includedby>
+    <includedby refid="opus__in__memory__loader_8cpp" local="yes">libopenage/audio/opus_in_memory_loader.cpp</includedby>
+    <includedby refid="opus__loading_8cpp" local="yes">libopenage/audio/opus_loading.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
+    <incdepgraph>
+      <node id="755">
+        <label>list</label>
+      </node>
+      <node id="745">
+        <label>atomic</label>
+      </node>
+      <node id="751">
+        <label>iomanip</label>
+      </node>
+      <node id="750">
+        <label>functional</label>
+      </node>
+      <node id="740">
+        <label>cstdint</label>
+      </node>
+      <node id="748">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="749" relation="include">
+        </childnode>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="753" relation="include">
+        </childnode>
+      </node>
+      <node id="734">
+        <label>stdexcept</label>
+      </node>
+      <node id="754">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="755" relation="include">
+        </childnode>
+        <childnode refid="756" relation="include">
+        </childnode>
+        <childnode refid="757" relation="include">
+        </childnode>
+      </node>
+      <node id="749">
+        <label>cstdarg</label>
+      </node>
+      <node id="735">
+        <label>string</label>
+      </node>
+      <node id="739">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="740" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="741" relation="include">
+        </childnode>
+        <childnode refid="742" relation="include">
+        </childnode>
+        <childnode refid="744" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="757" relation="include">
+        </childnode>
+      </node>
+      <node id="742">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="743" relation="include">
+        </childnode>
+      </node>
+      <node id="744">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+        <childnode refid="736" relation="include">
+        </childnode>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+      </node>
+      <node id="731">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="732" relation="include">
+        </childnode>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="734" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="736" relation="include">
+        </childnode>
+        <childnode refid="739" relation="include">
+        </childnode>
+      </node>
+      <node id="759">
+        <label>typeinfo</label>
+      </node>
+      <node id="753">
+        <label>vector</label>
+      </node>
+      <node id="737">
+        <label>ciso646</label>
+      </node>
+      <node id="752">
+        <label>sstream</label>
+      </node>
+      <node id="736">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="737" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="738" relation="include">
+        </childnode>
+      </node>
+      <node id="738">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="738" relation="include">
+        </childnode>
+      </node>
+      <node id="747">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="732" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+      </node>
+      <node id="757">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="758" relation="include">
+        </childnode>
+      </node>
+      <node id="743">
+        <label>cstdlib</label>
+      </node>
+      <node id="732">
+        <label>iostream</label>
+      </node>
+      <node id="756">
+        <label>mutex</label>
+      </node>
+      <node id="730">
+        <label>libopenage/audio/error.h</label>
+        <link refid="audio_2error_8h"/>
+        <childnode refid="731" relation="include">
+        </childnode>
+      </node>
+      <node id="746">
+        <label>type_traits</label>
+      </node>
+      <node id="741">
+        <label>config.h</label>
+      </node>
+      <node id="733">
+        <label>memory</label>
+      </node>
+      <node id="758">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="732" relation="include">
+        </childnode>
+        <childnode refid="759" relation="include">
+        </childnode>
+        <childnode refid="736" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="764">
+        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <link refid="in__memory__loader_8cpp"/>
+      </node>
+      <node id="762">
+        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <link refid="dynamic__loader_8cpp"/>
+      </node>
+      <node id="766">
+        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <link refid="opus__in__memory__loader_8cpp"/>
+      </node>
+      <node id="768">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="767">
+        <label>libopenage/audio/opus_loading.cpp</label>
+        <link refid="opus__loading_8cpp"/>
+      </node>
+      <node id="761">
+        <label>libopenage/audio/audio_manager.cpp</label>
+        <link refid="audio__manager_8cpp"/>
+      </node>
+      <node id="765">
+        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <link refid="opus__dynamic__loader_8cpp"/>
+      </node>
+      <node id="760">
+        <label>libopenage/audio/error.h</label>
+        <link refid="audio_2error_8h"/>
+        <childnode refid="761" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+        <childnode refid="763" relation="include">
+        </childnode>
+        <childnode refid="764" relation="include">
+        </childnode>
+        <childnode refid="765" relation="include">
+        </childnode>
+        <childnode refid="766" relation="include">
+        </childnode>
+        <childnode refid="767" relation="include">
+        </childnode>
+        <childnode refid="768" relation="include">
+        </childnode>
+      </node>
+      <node id="763">
+        <label>libopenage/audio/error.cpp</label>
+        <link refid="audio_2error_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1audio_1_1_error" prot="public">openage::audio::Error</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classopenage_1_1audio_1_1_error" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_error" kindref="compound">Error</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">error::Error</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1error_1_1_error_1ae0f4bcb1755332c4a26a998a88810072" kindref="member">Error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref><sp/>&amp;<ref refid="classopenage_1_1error_1_1_error_1aa06c25a19f000f6ec51993e123b6681f" kindref="member">msg</ref>);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/error.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,652 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="screenshot_8cpp" kind="file" language="C++">
+    <compoundname>screenshot.cpp</compoundname>
+    <includes refid="screenshot_8h" local="yes">screenshot.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">ctime</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="math_8h" local="no">math.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">png.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="pixel_8h" local="yes">coord/pixel.h</includes>
+    <includes refid="job__manager_8h" local="yes">job/job_manager.h</includes>
+    <includes refid="log_8h" local="yes">log/log.h</includes>
+    <includes refid="strings_8h" local="yes">util/strings.h</includes>
+    <incdepgraph>
+      <node id="23937">
+        <label>list</label>
+      </node>
+      <node id="23930">
+        <label>atomic</label>
+      </node>
+      <node id="23907">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="23908" relation="include">
+        </childnode>
+        <childnode refid="23909" relation="include">
+        </childnode>
+        <childnode refid="23910" relation="include">
+        </childnode>
+        <childnode refid="23911" relation="include">
+        </childnode>
+        <childnode refid="23912" relation="include">
+        </childnode>
+        <childnode refid="23913" relation="include">
+        </childnode>
+        <childnode refid="23914" relation="include">
+        </childnode>
+        <childnode refid="23915" relation="include">
+        </childnode>
+      </node>
+      <node id="23934">
+        <label>functional</label>
+      </node>
+      <node id="23911">
+        <label>iomanip</label>
+      </node>
+      <node id="23949">
+        <label>queue</label>
+      </node>
+      <node id="23944">
+        <label>math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="23910" relation="include">
+        </childnode>
+      </node>
+      <node id="23912">
+        <label>limits</label>
+      </node>
+      <node id="23945">
+        <label>png.h</label>
+      </node>
+      <node id="23905">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="23906" relation="include">
+        </childnode>
+        <childnode refid="23907" relation="include">
+        </childnode>
+      </node>
+      <node id="23906">
+        <label>cstdint</label>
+      </node>
+      <node id="23946">
+        <label>stdlib.h</label>
+      </node>
+      <node id="23899">
+        <label>screenshot.h</label>
+        <link refid="screenshot_8h"/>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23901" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23903" relation="include">
+        </childnode>
+      </node>
+      <node id="23932">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23933" relation="include">
+        </childnode>
+        <childnode refid="23934" relation="include">
+        </childnode>
+        <childnode refid="23911" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23935" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23918" relation="include">
+        </childnode>
+      </node>
+      <node id="23953">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="23921" relation="include">
+        </childnode>
+      </node>
+      <node id="23952">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="23934" relation="include">
+        </childnode>
+        <childnode refid="23953" relation="include">
+        </childnode>
+        <childnode refid="23954" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+      </node>
+      <node id="23910">
+        <label>cmath</label>
+      </node>
+      <node id="23921">
+        <label>stdexcept</label>
+      </node>
+      <node id="23936">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23937" relation="include">
+        </childnode>
+        <childnode refid="23938" relation="include">
+        </childnode>
+        <childnode refid="23939" relation="include">
+        </childnode>
+      </node>
+      <node id="23933">
+        <label>cstdarg</label>
+      </node>
+      <node id="23900">
+        <label>string</label>
+      </node>
+      <node id="23925">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23906" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23926" relation="include">
+        </childnode>
+        <childnode refid="23927" relation="include">
+        </childnode>
+        <childnode refid="23929" relation="include">
+        </childnode>
+        <childnode refid="23936" relation="include">
+        </childnode>
+        <childnode refid="23939" relation="include">
+        </childnode>
+      </node>
+      <node id="23927">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23928" relation="include">
+        </childnode>
+      </node>
+      <node id="23929">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23930" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23914" relation="include">
+        </childnode>
+        <childnode refid="23922" relation="include">
+        </childnode>
+        <childnode refid="23931" relation="include">
+        </childnode>
+        <childnode refid="23932" relation="include">
+        </childnode>
+      </node>
+      <node id="23955">
+        <label>exception</label>
+      </node>
+      <node id="23957">
+        <label>stddef.h</label>
+      </node>
+      <node id="23913">
+        <label>ostream</label>
+      </node>
+      <node id="23947">
+        <label>job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="23930" relation="include">
+        </childnode>
+        <childnode refid="23948" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23938" relation="include">
+        </childnode>
+        <childnode refid="23949" relation="include">
+        </childnode>
+        <childnode refid="23950" relation="include">
+        </childnode>
+        <childnode refid="23951" relation="include">
+        </childnode>
+        <childnode refid="23952" relation="include">
+        </childnode>
+        <childnode refid="23960" relation="include">
+        </childnode>
+        <childnode refid="23961" relation="include">
+        </childnode>
+        <childnode refid="23962" relation="include">
+        </childnode>
+        <childnode refid="23958" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+      </node>
+      <node id="23916">
+        <label>limits.h</label>
+      </node>
+      <node id="23919">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23920" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23921" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23922" relation="include">
+        </childnode>
+        <childnode refid="23925" relation="include">
+        </childnode>
+      </node>
+      <node id="23915">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="23908" relation="include">
+        </childnode>
+        <childnode refid="23916" relation="include">
+        </childnode>
+        <childnode refid="23910" relation="include">
+        </childnode>
+        <childnode refid="23917" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23918" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23919" relation="include">
+        </childnode>
+        <childnode refid="23922" relation="include">
+        </childnode>
+      </node>
+      <node id="23963">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="23930" relation="include">
+        </childnode>
+        <childnode refid="23948" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23949" relation="include">
+        </childnode>
+        <childnode refid="23950" relation="include">
+        </childnode>
+        <childnode refid="23958" relation="include">
+        </childnode>
+      </node>
+      <node id="23948">
+        <label>condition_variable</label>
+      </node>
+      <node id="23941">
+        <label>typeinfo</label>
+      </node>
+      <node id="23942">
+        <label>cstdio</label>
+      </node>
+      <node id="23961">
+        <label>job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23919" relation="include">
+        </childnode>
+        <childnode refid="23952" relation="include">
+        </childnode>
+        <childnode refid="23960" relation="include">
+        </childnode>
+        <childnode refid="23962" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+        <childnode refid="23963" relation="include">
+        </childnode>
+      </node>
+      <node id="23904">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="23901">
+        <label>ctime</label>
+      </node>
+      <node id="23959">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="23934" relation="include">
+        </childnode>
+      </node>
+      <node id="23918">
+        <label>vector</label>
+      </node>
+      <node id="23964">
+        <label>log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23939" relation="include">
+        </childnode>
+        <childnode refid="23925" relation="include">
+        </childnode>
+      </node>
+      <node id="23923">
+        <label>ciso646</label>
+      </node>
+      <node id="23954">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="23930" relation="include">
+        </childnode>
+        <childnode refid="23955" relation="include">
+        </childnode>
+        <childnode refid="23934" relation="include">
+        </childnode>
+        <childnode refid="23956" relation="include">
+        </childnode>
+        <childnode refid="23919" relation="include">
+        </childnode>
+        <childnode refid="23953" relation="include">
+        </childnode>
+        <childnode refid="23958" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+      </node>
+      <node id="23935">
+        <label>sstream</label>
+      </node>
+      <node id="23922">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23923" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+        <childnode refid="23924" relation="include">
+        </childnode>
+      </node>
+      <node id="23924">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23924" relation="include">
+        </childnode>
+      </node>
+      <node id="23943">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="23931">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23920" relation="include">
+        </childnode>
+        <childnode refid="23900" relation="include">
+        </childnode>
+      </node>
+      <node id="23939">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23940" relation="include">
+        </childnode>
+      </node>
+      <node id="23903">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="23904" relation="include">
+        </childnode>
+        <childnode refid="23905" relation="include">
+        </childnode>
+      </node>
+      <node id="23898">
+        <label>libopenage/screenshot.cpp</label>
+        <link refid="screenshot_8cpp"/>
+        <childnode refid="23899" relation="include">
+        </childnode>
+        <childnode refid="23942" relation="include">
+        </childnode>
+        <childnode refid="23917" relation="include">
+        </childnode>
+        <childnode refid="23901" relation="include">
+        </childnode>
+        <childnode refid="23943" relation="include">
+        </childnode>
+        <childnode refid="23944" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23945" relation="include">
+        </childnode>
+        <childnode refid="23946" relation="include">
+        </childnode>
+        <childnode refid="23903" relation="include">
+        </childnode>
+        <childnode refid="23947" relation="include">
+        </childnode>
+        <childnode refid="23964" relation="include">
+        </childnode>
+        <childnode refid="23932" relation="include">
+        </childnode>
+      </node>
+      <node id="23928">
+        <label>cstdlib</label>
+      </node>
+      <node id="23920">
+        <label>iostream</label>
+      </node>
+      <node id="23960">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="23955" relation="include">
+        </childnode>
+        <childnode refid="23902" relation="include">
+        </childnode>
+        <childnode refid="23954" relation="include">
+        </childnode>
+      </node>
+      <node id="23951">
+        <label>unordered_map</label>
+      </node>
+      <node id="23962">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="23934" relation="include">
+        </childnode>
+        <childnode refid="23954" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+      </node>
+      <node id="23909">
+        <label>climits</label>
+      </node>
+      <node id="23938">
+        <label>mutex</label>
+      </node>
+      <node id="23956">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="23957" relation="include">
+        </childnode>
+      </node>
+      <node id="23950">
+        <label>thread</label>
+      </node>
+      <node id="23914">
+        <label>type_traits</label>
+      </node>
+      <node id="23926">
+        <label>config.h</label>
+      </node>
+      <node id="23908">
+        <label>algorithm</label>
+      </node>
+      <node id="23958">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="23934" relation="include">
+        </childnode>
+        <childnode refid="23959" relation="include">
+        </childnode>
+      </node>
+      <node id="23917">
+        <label>cstring</label>
+      </node>
+      <node id="23902">
+        <label>memory</label>
+      </node>
+      <node id="23940">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23920" relation="include">
+        </childnode>
+        <childnode refid="23941" relation="include">
+        </childnode>
+        <childnode refid="23922" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="screenshot_8h" kindref="compound">screenshot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="math_8h" kindref="compound">math.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;png.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pixel_8h" kindref="compound">coord/pixel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="job__manager_8h" kindref="compound">job/job_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">log/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="strings_8h" kindref="compound">util/strings.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1_screenshot_manager_1aa0ffb635153d732ccd9f550cec11f33a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_screenshot_manager_1aa0ffb635153d732ccd9f550cec11f33a" kindref="member">ScreenshotManager::ScreenshotManager</ref>(<ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref><sp/>*job_mgr)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>count{0},</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>job_manager{job_mgr}<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1_screenshot_manager_1ab95fb468a5a80196941863fee32ff2f2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_screenshot_manager_1ab95fb468a5a80196941863fee32ff2f2" kindref="member">ScreenshotManager::~ScreenshotManager</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" kindref="member">ScreenshotManager::gen_next_filename</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">std::time_t</ref><sp/>t<sp/>=<sp/>std::time(NULL);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(t<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" kindref="member">last_time</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" kindref="member">count</ref>++;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" kindref="member">count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" kindref="member">last_time</ref><sp/>=<sp/>t;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>these<sp/>two<sp/>values<sp/>(32)<sp/>*must*<sp/>be<sp/>the<sp/>same<sp/>for<sp/>safety<sp/>reasons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>timestamp[32];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::strftime(timestamp,<sp/>32,<sp/></highlight><highlight class="stringliteral">&quot;%Y-%m-%d_%H-%M-%S&quot;</highlight><highlight class="normal">,<sp/>std::localtime(&amp;t));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" kindref="member">util::sformat</ref>(</highlight><highlight class="stringliteral">&quot;/tmp/openage_%s_%02d.png&quot;</highlight><highlight class="normal">,<sp/>timestamp,<sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" kindref="member">count</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" kindref="member">ScreenshotManager::save_screenshot</ref>(<ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" kindref="member">coord::pixel_t</ref><sp/>width<sp/>=<sp/>size.x,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>height<sp/>=<sp/>size.y;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;uint8_t&gt;<sp/>pxdata(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>uint8_t[4*width*height],<sp/>std::default_delete&lt;uint8_t[]&gt;());</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>glReadPixels(0,<sp/>0,<sp/>width,<sp/>height,<sp/>GL_RGBA,<sp/>GL_UNSIGNED_BYTE,<sp/>pxdata.get());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>encode_function<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>pxdata,<sp/>size]<sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" kindref="member">encode_png</ref>(pxdata,<sp/>size);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1a24d9434b761a19c8dfe2d0e2a48416ca" kindref="member">job_manager</ref>-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab12ca59d9b54653a1106a405a23721b2" kindref="member">enqueue</ref>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;(encode_function);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" kindref="member">ScreenshotManager::encode_png</ref>(std::shared_ptr&lt;uint8_t&gt;<sp/>pxdata,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>std::FILE<sp/>*fout<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" kindref="member">coord::pixel_t</ref><sp/>width<sp/>=<sp/>size.x,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>height<sp/>=<sp/>size.y;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>warn_fn<sp/>=<sp/>[]<sp/>(png_structp<sp/></highlight><highlight class="comment">/*png_ptr*/</highlight><highlight class="normal">,<sp/>png_const_charp<sp/>message)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>err_fn<sp/>=<sp/>[]<sp/>(png_structp<sp/>png_ptr,<sp/>png_const_charp<sp/>message)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>screenshot<sp/>failed:<sp/>libpng<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>longjmp(png_jmpbuf(png_ptr),<sp/>1);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>png_structp<sp/>png_ptr<sp/>=<sp/>png_create_write_struct(PNG_LIBPNG_VER_STRING,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(png_voidp)<sp/>NULL,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_fn,<sp/>warn_fn);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!png_ptr)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>png_infop<sp/>info_ptr<sp/>=<sp/>png_create_info_struct(png_ptr);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!info_ptr)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>png_destroy_write_struct(&amp;png_ptr,<sp/>(png_infopp)<sp/>NULL);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(setjmp(png_jmpbuf(png_ptr)))<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::fclose(fout);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>png_destroy_write_struct(&amp;png_ptr,<sp/>&amp;info_ptr);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" kindref="member">gen_next_filename</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>fout<sp/>=<sp/>std::fopen(<ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>.c_str(),<sp/></highlight><highlight class="stringliteral">&quot;wb&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fout<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>png_destroy_write_struct(&amp;png_ptr,<sp/>&amp;info_ptr);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>open<sp/>&apos;&quot;</highlight><highlight class="normal">&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::string(strerror(errno)));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>png_init_io(png_ptr,<sp/>fout);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>png_set_IHDR(png_ptr,<sp/>info_ptr,<sp/>width,<sp/>height,<sp/>8,<sp/>PNG_COLOR_TYPE_RGB,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PNG_INTERLACE_NONE,<sp/>PNG_COMPRESSION_TYPE_DEFAULT,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PNG_FILTER_TYPE_DEFAULT);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>image<sp/>row<sp/>pointer<sp/>into<sp/>info_ptr<sp/>so<sp/>that<sp/>we<sp/>can<sp/>use<sp/>the<sp/>high-level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>write<sp/>interface.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;png_bytep&gt;<sp/>row_ptrs;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Invert<sp/>rows.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>row_ptrs.reserve(height);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;=<sp/>height;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>row_ptrs.push_back(pxdata.get()<sp/>+<sp/>(height<sp/>-<sp/>i)<sp/>*<sp/>4<sp/>*<sp/>width);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>png_set_rows(png_ptr,<sp/>info_ptr,<sp/>&amp;row_ptrs[0]);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO:<sp/>print<sp/>ingame<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Saving<sp/>screenshot<sp/>to<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>png_write_png(png_ptr,<sp/>info_ptr,<sp/>PNG_TRANSFORM_STRIP_FILLER_AFTER,<sp/>NULL);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>std::fclose(fout);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>png_destroy_write_struct(&amp;png_ptr,<sp/>&amp;info_ptr);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/screenshot.cpp"/>
+  </compounddef>
+</doxygen>

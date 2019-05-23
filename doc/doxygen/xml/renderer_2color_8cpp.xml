@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="renderer_2color_8cpp" kind="file" language="C++">
+    <compoundname>color.cpp</compoundname>
+    <includes refid="renderer_2color_8h" local="yes">color.h</includes>
+    <incdepgraph>
+      <node id="20414">
+        <label>color.h</label>
+        <link refid="renderer_2color_8h"/>
+        <childnode refid="20415" relation="include">
+        </childnode>
+      </node>
+      <node id="20415">
+        <label>cstdint</label>
+      </node>
+      <node id="20413">
+        <label>libopenage/renderer/color.cpp</label>
+        <link refid="renderer_2color_8cpp"/>
+        <childnode refid="20414" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="renderer_2color_8h" kindref="compound">color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" kindref="member">Color::Color</ref>()</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>r{0},</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>g{0},</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>b{0},</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>a{255}<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1renderer_1_1_color_1a70f81ed7c2563457d3b0b2bd65b5aaa5" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" kindref="member">Color::Color</ref>(uint8_t<sp/>r,<sp/>uint8_t<sp/>g,<sp/>uint8_t<sp/>b,<sp/>uint8_t<sp/>a)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>r{<ref refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" kindref="member">r</ref>},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>g{g},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>b{b},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>a{a}<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" kindref="member">Color::operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" kindref="member">r</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" kindref="member">r</ref><sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" kindref="member">g</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" kindref="member">g</ref><sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" kindref="member">b</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" kindref="member">b</ref><sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" kindref="member">a</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" kindref="member">a</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" kindref="member">Color::operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" kindref="member">operator==</ref>(other);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/color.cpp"/>
+  </compounddef>
+</doxygen>

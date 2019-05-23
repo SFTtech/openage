@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::renderer::font_description &gt;</compoundname>
+    <includes refid="font_8h" local="no">font.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; openage::renderer::font_description &gt;::operator()</definition>
+        <argsstring>(const openage::renderer::font_description &amp;fd) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">openage::renderer::font_description</ref> &amp;</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font.h" line="201" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="201" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2833">
+        <label>std::hash&lt; openage::renderer::font_description &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font.h" line="200" column="1" bodyfile="libopenage/renderer/font/font.h" bodystart="200" bodyend="207"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::renderer::font_description &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="map_8cpp" kind="file" language="C++">
+    <compoundname>map.cpp</compoundname>
+    <includes refid="map_8h" local="yes">map.h</includes>
+    <incdepgraph>
+      <node id="5016">
+        <label>list</label>
+      </node>
+      <node id="5009">
+        <label>atomic</label>
+      </node>
+      <node id="4984">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4985" relation="include">
+        </childnode>
+        <childnode refid="4986" relation="include">
+        </childnode>
+        <childnode refid="4987" relation="include">
+        </childnode>
+        <childnode refid="4988" relation="include">
+        </childnode>
+        <childnode refid="4989" relation="include">
+        </childnode>
+        <childnode refid="4990" relation="include">
+        </childnode>
+        <childnode refid="4991" relation="include">
+        </childnode>
+        <childnode refid="4992" relation="include">
+        </childnode>
+      </node>
+      <node id="5013">
+        <label>functional</label>
+      </node>
+      <node id="4988">
+        <label>iomanip</label>
+      </node>
+      <node id="4989">
+        <label>limits</label>
+      </node>
+      <node id="5023">
+        <label>iterator</label>
+      </node>
+      <node id="4983">
+        <label>cstdint</label>
+      </node>
+      <node id="5022">
+        <label>iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="4982" relation="include">
+        </childnode>
+      </node>
+      <node id="5011">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5012" relation="include">
+        </childnode>
+        <childnode refid="5013" relation="include">
+        </childnode>
+        <childnode refid="4988" relation="include">
+        </childnode>
+        <childnode refid="4997" relation="include">
+        </childnode>
+        <childnode refid="5014" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+        <childnode refid="4996" relation="include">
+        </childnode>
+      </node>
+      <node id="4981">
+        <label>map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="4982" relation="include">
+        </childnode>
+        <childnode refid="5021" relation="include">
+        </childnode>
+        <childnode refid="5024" relation="include">
+        </childnode>
+        <childnode refid="4999" relation="include">
+        </childnode>
+        <childnode refid="5025" relation="include">
+        </childnode>
+      </node>
+      <node id="4987">
+        <label>cmath</label>
+      </node>
+      <node id="5000">
+        <label>stdexcept</label>
+      </node>
+      <node id="4982">
+        <label>curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4983" relation="include">
+        </childnode>
+        <childnode refid="4984" relation="include">
+        </childnode>
+      </node>
+      <node id="5015">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5016" relation="include">
+        </childnode>
+        <childnode refid="5017" relation="include">
+        </childnode>
+        <childnode refid="5018" relation="include">
+        </childnode>
+      </node>
+      <node id="5012">
+        <label>cstdarg</label>
+      </node>
+      <node id="4995">
+        <label>string</label>
+      </node>
+      <node id="5004">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4983" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+        <childnode refid="5005" relation="include">
+        </childnode>
+        <childnode refid="5006" relation="include">
+        </childnode>
+        <childnode refid="5008" relation="include">
+        </childnode>
+        <childnode refid="5015" relation="include">
+        </childnode>
+        <childnode refid="5018" relation="include">
+        </childnode>
+      </node>
+      <node id="5006">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5007" relation="include">
+        </childnode>
+      </node>
+      <node id="5008">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5009" relation="include">
+        </childnode>
+        <childnode refid="4997" relation="include">
+        </childnode>
+        <childnode refid="4991" relation="include">
+        </childnode>
+        <childnode refid="5001" relation="include">
+        </childnode>
+        <childnode refid="5010" relation="include">
+        </childnode>
+        <childnode refid="5011" relation="include">
+        </childnode>
+      </node>
+      <node id="4980">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+        <childnode refid="4981" relation="include">
+        </childnode>
+      </node>
+      <node id="4990">
+        <label>ostream</label>
+      </node>
+      <node id="4993">
+        <label>limits.h</label>
+      </node>
+      <node id="4998">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4999" relation="include">
+        </childnode>
+        <childnode refid="4997" relation="include">
+        </childnode>
+        <childnode refid="5000" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+        <childnode refid="5001" relation="include">
+        </childnode>
+        <childnode refid="5004" relation="include">
+        </childnode>
+      </node>
+      <node id="4992">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4985" relation="include">
+        </childnode>
+        <childnode refid="4993" relation="include">
+        </childnode>
+        <childnode refid="4987" relation="include">
+        </childnode>
+        <childnode refid="4994" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+        <childnode refid="4996" relation="include">
+        </childnode>
+        <childnode refid="4997" relation="include">
+        </childnode>
+        <childnode refid="4998" relation="include">
+        </childnode>
+        <childnode refid="5001" relation="include">
+        </childnode>
+      </node>
+      <node id="5020">
+        <label>typeinfo</label>
+      </node>
+      <node id="5024">
+        <label>optional</label>
+      </node>
+      <node id="4996">
+        <label>vector</label>
+      </node>
+      <node id="5002">
+        <label>ciso646</label>
+      </node>
+      <node id="5014">
+        <label>sstream</label>
+      </node>
+      <node id="5001">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5002" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+        <childnode refid="5003" relation="include">
+        </childnode>
+      </node>
+      <node id="5003">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5003" relation="include">
+        </childnode>
+      </node>
+      <node id="5010">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4999" relation="include">
+        </childnode>
+        <childnode refid="4995" relation="include">
+        </childnode>
+      </node>
+      <node id="5018">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5019" relation="include">
+        </childnode>
+      </node>
+      <node id="5007">
+        <label>cstdlib</label>
+      </node>
+      <node id="4999">
+        <label>iostream</label>
+      </node>
+      <node id="5025">
+        <label>unordered_map</label>
+      </node>
+      <node id="4986">
+        <label>climits</label>
+      </node>
+      <node id="5017">
+        <label>mutex</label>
+      </node>
+      <node id="4991">
+        <label>type_traits</label>
+      </node>
+      <node id="5005">
+        <label>config.h</label>
+      </node>
+      <node id="4985">
+        <label>algorithm</label>
+      </node>
+      <node id="4994">
+        <label>cstring</label>
+      </node>
+      <node id="4997">
+        <label>memory</label>
+      </node>
+      <node id="5019">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4999" relation="include">
+        </childnode>
+        <childnode refid="5020" relation="include">
+        </childnode>
+        <childnode refid="5001" relation="include">
+        </childnode>
+      </node>
+      <node id="5021">
+        <label>map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="4982" relation="include">
+        </childnode>
+        <childnode refid="5022" relation="include">
+        </childnode>
+        <childnode refid="5023" relation="include">
+        </childnode>
+        <childnode refid="4989" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="map_8h" kindref="compound">map.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>is<sp/>intended<sp/>to<sp/>be<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/map.cpp"/>
+  </compounddef>
+</doxygen>

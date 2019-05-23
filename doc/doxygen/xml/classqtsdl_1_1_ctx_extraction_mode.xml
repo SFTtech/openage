@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_ctx_extraction_mode" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>qtsdl::CtxExtractionMode</compoundname>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_separate_rendering_context" prot="public" virt="non-virtual">qtsdl::GuiSeparateRenderingContext</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_unique_rendering_context" prot="public" virt="non-virtual">qtsdl::GuiUniqueRenderingContext</derivedcompoundref>
+    <includes refid="gui__ctx__setup_8h" local="no">gui_ctx_setup.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_ctx_extraction_mode_1aed1505f12fb50b3792b36213210a6c74" prot="protected" static="no" mutable="no">
+        <type>QOpenGLContext</type>
+        <definition>QOpenGLContext qtsdl::CtxExtractionMode::ctx</definition>
+        <argsstring></argsstring>
+        <name>ctx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="47" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1afa37879e71dd830f6b65ec951a3613b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual qtsdl::CtxExtractionMode::~CtxExtractionMode</definition>
+        <argsstring>()</argsstring>
+        <name>~CtxExtractionMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="28" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1ab032d2eb6589f543aa1ebce385ce2d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QOpenGLContext *</type>
+        <definition>QOpenGLContext * qtsdl::CtxExtractionMode::get_ctx</definition>
+        <argsstring>()</argsstring>
+        <name>get_ctx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>context that can be used by Qt </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="34" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1a5a078af4f1b11cf1091496bfc8559b0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::CtxExtractionMode::pre_render</definition>
+        <argsstring>()=0</argsstring>
+        <name>pre_render</name>
+        <reimplementedby refid="classqtsdl_1_1_gui_unique_rendering_context_1a613f69bdb73c8cdf25e1efa32a4f53ec">pre_render</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_gui_separate_rendering_context_1a47ae13e05fbce6703f7b3329512b5a5f">pre_render</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Function that must be called before rendering the GUI. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_ctx_extraction_mode_1a314f77f4b5e33b76316e4184b4c4f505" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::CtxExtractionMode::post_render</definition>
+        <argsstring>()=0</argsstring>
+        <name>post_render</name>
+        <reimplementedby refid="classqtsdl_1_1_gui_unique_rendering_context_1aeb11eab34c89a558f778848bd714530f">post_render</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_gui_separate_rendering_context_1ad60bc0dd243b8c3ab105f33cdd605dae">post_render</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Function that must be called after rendering the GUI. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="44" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Abstract base for the method of getting a Qt-usable context. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1038">
+        <label>qtsdl::GuiSeparateRenderingContext</label>
+        <link refid="classqtsdl_1_1_gui_separate_rendering_context"/>
+        <childnode refid="1037" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1037">
+        <label>qtsdl::CtxExtractionMode</label>
+        <link refid="classqtsdl_1_1_ctx_extraction_mode"/>
+      </node>
+      <node id="1039">
+        <label>qtsdl::GuiUniqueRenderingContext</label>
+        <link refid="classqtsdl_1_1_gui_unique_rendering_context"/>
+        <childnode refid="1037" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1040">
+        <label>qtsdl::CtxExtractionMode</label>
+        <link refid="classqtsdl_1_1_ctx_extraction_mode"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_ctx_setup.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_ctx_setup.h" bodystart="26" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_ctx_extraction_mode_1aed1505f12fb50b3792b36213210a6c74" prot="protected" virt="non-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>ctx</name></member>
+      <member refid="classqtsdl_1_1_ctx_extraction_mode_1ab032d2eb6589f543aa1ebce385ce2d17" prot="public" virt="non-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>get_ctx</name></member>
+      <member refid="classqtsdl_1_1_ctx_extraction_mode_1a314f77f4b5e33b76316e4184b4c4f505" prot="public" virt="pure-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>post_render</name></member>
+      <member refid="classqtsdl_1_1_ctx_extraction_mode_1a5a078af4f1b11cf1091496bfc8559b0c" prot="public" virt="pure-virtual"><scope>qtsdl::CtxExtractionMode</scope><name>pre_render</name></member>
+      <member refid="classqtsdl_1_1_ctx_extraction_mode_1afa37879e71dd830f6b65ec951a3613b0" prot="public" virt="virtual"><scope>qtsdl::CtxExtractionMode</scope><name>~CtxExtractionMode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

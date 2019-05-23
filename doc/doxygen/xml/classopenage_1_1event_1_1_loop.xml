@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_loop" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::Loop</compoundname>
+    <includes refid="event_2loop_8h" local="no">loop.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_loop_1ac56f6ba1b5422a37dd76082d1f12d588" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::shared_ptr&lt;EventClass&gt; &gt; openage::event::Loop::classstore</definition>
+        <argsstring></argsstring>
+        <name>classstore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Here we do the bookkeeping of registered event classes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="113" column="1" bodyfile="libopenage/event/loop.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_loop_1a2aa3c5ecf7ac25ee07ae50e0e206cf95" prot="private" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="classopenage_1_1event_1_1_event_filter" kindref="compound">EventFilter</ref> &gt;</type>
+        <definition>std::list&lt;EventFilter&gt; openage::event::Loop::filters</definition>
+        <argsstring></argsstring>
+        <name>filters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Here we store all running filters that shall be applied whenever a new obejct is added to our objectstore </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="119" column="1" bodyfile="libopenage/event/loop.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_loop_1aa3e92d18681ac0167d1b67e7ab147328" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_queue" kindref="compound">EventQueue</ref></type>
+        <definition>EventQueue openage::event::Loop::queue</definition>
+        <argsstring></argsstring>
+        <name>queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All events are enqueued here. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="124" column="1" bodyfile="libopenage/event/loop.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_loop_1a9f9201d7ad7a6dccf71e3a6502982963" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Event&gt; openage::event::Loop::active_event</definition>
+        <argsstring></argsstring>
+        <name>active_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The currently processed event. This is useful for event cancelations (so one can&apos;t cancel itself). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="130" column="1" bodyfile="libopenage/event/loop.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_loop_1a0c611cd54ec98d5f8e2b8486e6aa5d9e" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, std::weak_ptr&lt;EventTarget&gt; &gt; openage::event::Loop::curveindex</definition>
+        <argsstring></argsstring>
+        <name>curveindex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="132" column="1" bodyfile="libopenage/event/loop.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1event_1_1_loop_1a5951d4eb106c31663bdf480e12d382fb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend int</type>
+        <definition>int demo::curvepong</definition>
+        <argsstring>()</argsstring>
+        <name>demo::curvepong</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="35" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a1904c3c6896c276199d5fd604663c3a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Loop::add_event_class</definition>
+        <argsstring>(const std::shared_ptr&lt; EventClass &gt; &amp;cls)</argsstring>
+        <name>add_event_class</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+          <declname>cls</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a new event class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="39" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a345332e87684e73eeef16da46255882f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::weak_ptr&lt; Event &gt; openage::event::Loop::create_event</definition>
+        <argsstring>(const std::string &amp;name, const std::shared_ptr&lt; EventTarget &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;state, const curve::time_t &amp;reference_time, const EventClass::param_map &amp;params=EventClass::param_map({}))</argsstring>
+        <name>create_event</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>reference_time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+          <defval><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref>({})</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a new <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> to the queue. The event is from the given class (name) and is invoked for a target in a state.</para>
+<para>The <computeroutput>reference_time</computeroutput> is used to calculate the actual event time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="48" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="21" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1aea3bb40d2dfbca8a48c8389af357ebb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::weak_ptr&lt; Event &gt; openage::event::Loop::create_event</definition>
+        <argsstring>(const std::shared_ptr&lt; EventClass &gt; &amp;eventclass, const std::shared_ptr&lt; EventTarget &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;state, const curve::time_t &amp;reference_time, const EventClass::param_map &amp;params=EventClass::param_map({}))</argsstring>
+        <name>create_event</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+          <declname>eventclass</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>reference_time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+          <defval><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref>({})</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This will generate a new randomly named eventclass for this specific element</para>
+<para>The <computeroutput>reference_time</computeroutput> is used to determine the actual event trigger time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="59" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="36" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1aea43d31d3b22e6ae29087df21aa014a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Loop::onfilter</definition>
+        <argsstring>(const std::shared_ptr&lt; EventClass &gt; &amp;eventclass, const EventFilter &amp;)</argsstring>
+        <name>onfilter</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+          <declname>eventclass</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_filter" kindref="compound">EventFilter</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1ada595233343c378554941df3ff039c4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class evntclass_t</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::event::Loop::onfilter</definition>
+        <argsstring>(const EventFilter &amp;filter)</argsstring>
+        <name>onfilter</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_filter" kindref="compound">EventFilter</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="68" column="1" bodyfile="libopenage/event/loop.h" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a172ef3ff0f7d0586a06a6b356a7515f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Loop::register_object</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;)</argsstring>
+        <name>register_object</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Loop::reach_time</definition>
+        <argsstring>(const curve::time_t &amp;max_time, const std::shared_ptr&lt; State &gt; &amp;state)</argsstring>
+        <name>reach_time</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>max_time</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute all events that are registered until a certain point in time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="77" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="56" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1adde017808ad3b24a4a95c6cad4fcd2db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::event::Loop::create_change</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event, const curve::time_t &amp;changes_at, const T &amp;new_value)</argsstring>
+        <name>create_change</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>changes_at</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>new_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register that a given event must be reevaluated at a time, this usually happens because this event depended on an eventtarget that got changed at this time. This inserts the event into the changes queue so it will be evaluated in the next loop iteration. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="88" column="1" bodyfile="libopenage/event/loop.h" bodystart="137" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a2bd405975ded3f10fbf48eabd2a6cb49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_queue" kindref="compound">EventQueue</ref> &amp;</type>
+        <definition>const EventQueue&amp; openage::event::Loop::get_queue</definition>
+        <argsstring>() const</argsstring>
+        <name>get_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="92" column="1" bodyfile="libopenage/event/loop.h" bodystart="92" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::event::Loop::execute_events</definition>
+        <argsstring>(const curve::time_t &amp;max_time, const std::shared_ptr&lt; State &gt; &amp;state)</argsstring>
+        <name>execute_events</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>max_time</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute the events</para>
+<para><simplesect kind="return"><para>number of events processed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="102" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="90" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Loop::update_changes</definition>
+        <argsstring>(const std::shared_ptr&lt; State &gt; &amp;state)</argsstring>
+        <name>update_changes</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call all the time change functions. This is constant on the state! </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="108" column="1" bodyfile="libopenage/event/loop.cpp" bodystart="158" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The core class to manage event class and targets. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3148">
+        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+      <node id="3146">
+        <label>openage::event::EventStore</label>
+        <link refid="classopenage_1_1event_1_1_event_store"/>
+        <childnode refid="3147" relation="usage">
+          <edgelabel>+heap</edgelabel>
+        </childnode>
+      </node>
+      <node id="3145">
+        <label>openage::event::EventQueue</label>
+        <link refid="classopenage_1_1event_1_1_event_queue"/>
+        <childnode refid="3146" relation="usage">
+          <edgelabel>-event_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="3147">
+        <label>openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap"/>
+        <childnode refid="3148" relation="usage">
+          <edgelabel>#cmp</edgelabel>
+        </childnode>
+      </node>
+      <node id="3144">
+        <label>openage::event::Loop</label>
+        <link refid="classopenage_1_1event_1_1_loop"/>
+        <childnode refid="3145" relation="usage">
+          <edgelabel>-queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/loop.h" line="32" column="1" bodyfile="libopenage/event/loop.h" bodystart="32" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_loop_1a9f9201d7ad7a6dccf71e3a6502982963" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>active_event</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a1904c3c6896c276199d5fd604663c3a2" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>add_event_class</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1ac56f6ba1b5422a37dd76082d1f12d588" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>classstore</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1adde017808ad3b24a4a95c6cad4fcd2db" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>create_change</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a345332e87684e73eeef16da46255882f" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>create_event</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1aea3bb40d2dfbca8a48c8389af357ebb0" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>create_event</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a0c611cd54ec98d5f8e2b8486e6aa5d9e" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>curveindex</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a5951d4eb106c31663bdf480e12d382fb" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>demo::curvepong</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1aa73104f71472a83e1afff4f11e0c619f" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>execute_events</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a2aa3c5ecf7ac25ee07ae50e0e206cf95" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>filters</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a2bd405975ded3f10fbf48eabd2a6cb49" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>get_queue</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1aea43d31d3b22e6ae29087df21aa014a7" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>onfilter</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1ada595233343c378554941df3ff039c4b" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>onfilter</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1aa3e92d18681ac0167d1b67e7ab147328" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>queue</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1aeba9e515057a87d7fbfddb8585095de6" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>reach_time</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a172ef3ff0f7d0586a06a6b356a7515f1" prot="public" virt="non-virtual"><scope>openage::event::Loop</scope><name>register_object</name></member>
+      <member refid="classopenage_1_1event_1_1_loop_1a3cb0ae638435b575fe689c550b27a823" prot="private" virt="non-virtual"><scope>openage::event::Loop</scope><name>update_changes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

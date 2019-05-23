@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="windowvk_8cpp" kind="file" language="C++">
+    <compoundname>windowvk.cpp</compoundname>
+    <includes refid="windowvk_8h" local="yes">windowvk.h</includes>
+    <includes local="no">set</includes>
+    <includes local="no">SDL2/SDL_vulkan.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="sdl__global_8h" local="yes">../sdl_global.h</includes>
+    <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
+    <includes refid="util_8h" local="yes">util.h</includes>
+    <incdepgraph>
+      <node id="23773">
+        <label>list</label>
+      </node>
+      <node id="23765">
+        <label>atomic</label>
+      </node>
+      <node id="23770">
+        <label>iomanip</label>
+      </node>
+      <node id="23745">
+        <label>functional</label>
+      </node>
+      <node id="23760">
+        <label>cstdint</label>
+      </node>
+      <node id="23744">
+        <label>../window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="23745" relation="include">
+        </childnode>
+        <childnode refid="23746" relation="include">
+        </childnode>
+        <childnode refid="23747" relation="include">
+        </childnode>
+        <childnode refid="23748" relation="include">
+        </childnode>
+        <childnode refid="23749" relation="include">
+        </childnode>
+      </node>
+      <node id="23768">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23769" relation="include">
+        </childnode>
+        <childnode refid="23745" relation="include">
+        </childnode>
+        <childnode refid="23770" relation="include">
+        </childnode>
+        <childnode refid="23746" relation="include">
+        </childnode>
+        <childnode refid="23771" relation="include">
+        </childnode>
+        <childnode refid="23755" relation="include">
+        </childnode>
+        <childnode refid="23747" relation="include">
+        </childnode>
+      </node>
+      <node id="23754">
+        <label>stdexcept</label>
+      </node>
+      <node id="23772">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23773" relation="include">
+        </childnode>
+        <childnode refid="23774" relation="include">
+        </childnode>
+        <childnode refid="23775" relation="include">
+        </childnode>
+      </node>
+      <node id="23769">
+        <label>cstdarg</label>
+      </node>
+      <node id="23755">
+        <label>string</label>
+      </node>
+      <node id="23759">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23760" relation="include">
+        </childnode>
+        <childnode refid="23755" relation="include">
+        </childnode>
+        <childnode refid="23761" relation="include">
+        </childnode>
+        <childnode refid="23762" relation="include">
+        </childnode>
+        <childnode refid="23764" relation="include">
+        </childnode>
+        <childnode refid="23772" relation="include">
+        </childnode>
+        <childnode refid="23775" relation="include">
+        </childnode>
+      </node>
+      <node id="23762">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23763" relation="include">
+        </childnode>
+      </node>
+      <node id="23764">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23765" relation="include">
+        </childnode>
+        <childnode refid="23746" relation="include">
+        </childnode>
+        <childnode refid="23766" relation="include">
+        </childnode>
+        <childnode refid="23756" relation="include">
+        </childnode>
+        <childnode refid="23767" relation="include">
+        </childnode>
+        <childnode refid="23768" relation="include">
+        </childnode>
+      </node>
+      <node id="23780">
+        <label>graphics_device.h</label>
+        <link refid="graphics__device_8h"/>
+        <childnode refid="23742" relation="include">
+        </childnode>
+        <childnode refid="23747" relation="include">
+        </childnode>
+        <childnode refid="23743" relation="include">
+        </childnode>
+      </node>
+      <node id="23750">
+        <label>loader.h</label>
+        <link refid="loader_8h"/>
+        <childnode refid="23743" relation="include">
+        </childnode>
+      </node>
+      <node id="23752">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23753" relation="include">
+        </childnode>
+        <childnode refid="23746" relation="include">
+        </childnode>
+        <childnode refid="23754" relation="include">
+        </childnode>
+        <childnode refid="23755" relation="include">
+        </childnode>
+        <childnode refid="23756" relation="include">
+        </childnode>
+        <childnode refid="23759" relation="include">
+        </childnode>
+      </node>
+      <node id="23748">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="23777">
+        <label>typeinfo</label>
+      </node>
+      <node id="23742">
+        <label>optional</label>
+      </node>
+      <node id="23781">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="23743" relation="include">
+        </childnode>
+        <childnode refid="23752" relation="include">
+        </childnode>
+      </node>
+      <node id="23747">
+        <label>vector</label>
+      </node>
+      <node id="23778">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23775" relation="include">
+        </childnode>
+        <childnode refid="23759" relation="include">
+        </childnode>
+      </node>
+      <node id="23757">
+        <label>ciso646</label>
+      </node>
+      <node id="23779">
+        <label>../sdl_global.h</label>
+        <link refid="sdl__global_8h"/>
+      </node>
+      <node id="23743">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="23771">
+        <label>sstream</label>
+      </node>
+      <node id="23756">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23757" relation="include">
+        </childnode>
+        <childnode refid="23755" relation="include">
+        </childnode>
+        <childnode refid="23758" relation="include">
+        </childnode>
+      </node>
+      <node id="23758">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23758" relation="include">
+        </childnode>
+      </node>
+      <node id="23767">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23753" relation="include">
+        </childnode>
+        <childnode refid="23755" relation="include">
+        </childnode>
+      </node>
+      <node id="23775">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23776" relation="include">
+        </childnode>
+      </node>
+      <node id="23763">
+        <label>cstdlib</label>
+      </node>
+      <node id="23753">
+        <label>iostream</label>
+      </node>
+      <node id="23749">
+        <label>renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="23747" relation="include">
+        </childnode>
+        <childnode refid="23746" relation="include">
+        </childnode>
+      </node>
+      <node id="23774">
+        <label>mutex</label>
+      </node>
+      <node id="23738">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+        <childnode refid="23739" relation="include">
+        </childnode>
+        <childnode refid="23740" relation="include">
+        </childnode>
+        <childnode refid="23751" relation="include">
+        </childnode>
+        <childnode refid="23752" relation="include">
+        </childnode>
+        <childnode refid="23778" relation="include">
+        </childnode>
+        <childnode refid="23779" relation="include">
+        </childnode>
+        <childnode refid="23780" relation="include">
+        </childnode>
+        <childnode refid="23781" relation="include">
+        </childnode>
+      </node>
+      <node id="23766">
+        <label>type_traits</label>
+      </node>
+      <node id="23740">
+        <label>set</label>
+      </node>
+      <node id="23761">
+        <label>config.h</label>
+      </node>
+      <node id="23739">
+        <label>windowvk.h</label>
+        <link refid="windowvk_8h"/>
+        <childnode refid="23740" relation="include">
+        </childnode>
+        <childnode refid="23741" relation="include">
+        </childnode>
+        <childnode refid="23742" relation="include">
+        </childnode>
+        <childnode refid="23743" relation="include">
+        </childnode>
+        <childnode refid="23744" relation="include">
+        </childnode>
+        <childnode refid="23750" relation="include">
+        </childnode>
+      </node>
+      <node id="23741">
+        <label>cstring</label>
+      </node>
+      <node id="23746">
+        <label>memory</label>
+      </node>
+      <node id="23751">
+        <label>SDL2/SDL_vulkan.h</label>
+      </node>
+      <node id="23776">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23753" relation="include">
+        </childnode>
+        <childnode refid="23777" relation="include">
+        </childnode>
+        <childnode refid="23756" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="windowvk_8h" kindref="compound">windowvk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL_vulkan.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../sdl_global.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_8h" kindref="compound">util.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>VKAPI_ATTR<sp/>VkBool32<sp/>VKAPI_CALL<sp/><ref refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" kindref="member">vlk_debug_cb</ref>(</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDebugReportFlagsEXT<sp/></highlight><highlight class="comment">/*flags*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDebugReportObjectTypeEXT<sp/></highlight><highlight class="comment">/*objType*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/></highlight><highlight class="comment">/*obj*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*location*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/></highlight><highlight class="comment">/*code*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>layerPrefix,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/></highlight><highlight class="comment">/*userData*/</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/>layerPrefix<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" kindref="compound">vlk_capabilities</ref><sp/><ref refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" kindref="member">find_capabilities</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" kindref="compound">vlk_capabilities</ref><sp/>caps;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>which<sp/>layers<sp/>are<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>layers<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkEnumerateInstanceLayerProperties);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Available<sp/>Vulkan<sp/>layers:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>lr<sp/>:<sp/>layers)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caps.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" kindref="member">layers</ref>.insert(lr.layerName);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>lr.layerName);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>which<sp/>extensions<sp/>are<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>annoying,<sp/>since<sp/>an<sp/>enumeration<sp/>call<sp/>without<sp/>a<sp/>filter-by-layer<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>won&apos;t<sp/>return<sp/>all<sp/>extensions.<sp/>We<sp/>thus<sp/>have<sp/>to<sp/>enumerate<sp/>extensions<sp/>for<sp/>each<sp/>layer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>then<sp/>remove<sp/>duplicates.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>retrieve<sp/>non-layer<sp/>extensions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>props<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkEnumerateInstanceExtensionProperties,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>p<sp/>:<sp/>props)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caps.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" kindref="member">extensions</ref>.emplace(p.extensionName);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>retrieve<sp/>extensions<sp/>from<sp/>layers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>lr<sp/>:<sp/>layers)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lr_props<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkEnumerateInstanceExtensionProperties,<sp/>lr.layerName);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>p<sp/>:<sp/>lr_props)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caps.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" kindref="member">extensions</ref>.emplace(p.extensionName);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Available<sp/>Vulkan<sp/>extensions:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>ext<sp/>:<sp/>caps.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" kindref="member">extensions</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ext);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>caps;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a21953253160e4583181b0bbb21a56601" kindref="member">VlkWindow::VlkWindow</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>title)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1_window" kindref="compound">Window</ref>(800,<sp/>600)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>capabilities(<ref refid="namespaceopenage_1_1renderer_1_1vulkan_1ab2538fa764e64cb8a28639cb511058ae" kindref="member">find_capabilities</ref>())</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1a791eb93b7b9b7d62f339a9d3190d61b1" kindref="member">make_sdl_available</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" kindref="member">window</ref><sp/>=<sp/>SDL_CreateWindow(</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>title,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_WINDOWPOS_CENTERED,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_WINDOWPOS_CENTERED,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_window_1af5a66173372ae66504a59fd2b8448cdb" kindref="member">size</ref>.first,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;size.second,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_WINDOW_OPENGL<sp/>|<sp/>SDL_WINDOW_RESIZABLE<sp/>|<sp/>SDL_WINDOW_MAXIMIZED</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" kindref="member">window</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>SDL<sp/>window:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError()};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>which<sp/>extensions<sp/>the<sp/>SDL<sp/>window<sp/>requires.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>extension_names<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(SDL_Vulkan_GetInstanceExtensions,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" kindref="member">window</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/>if<sp/>(succ<sp/>!=<sp/>SDL_TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>Error(MSG(err)<sp/>&lt;&lt;<sp/>&quot;Failed<sp/>to<sp/>obtain<sp/>required<sp/>Vulkan<sp/>extension<sp/>names<sp/>from<sp/>SDL.&quot;);</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>extension_names.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>extension_names.push_back(VK_KHR_SURFACE_EXTENSION_NAME);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>all<sp/>extensions<sp/>are<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>:<sp/>extension_names)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a44df2534a2dc9d0826d6650cc54d6af2" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" kindref="member">extensions</ref>.count(ext)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Vulkan<sp/>driver<sp/>is<sp/>missing<sp/>required<sp/>extension:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ext);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>names<sp/>of<sp/>Vulkan<sp/>layers<sp/>which<sp/>we<sp/>need.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;const<sp/>char*&gt;<sp/>layer_names;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>layer_names.push_back(</highlight><highlight class="stringliteral">&quot;VK_LAYER_LUNARG_standard_validation&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>all<sp/>layers<sp/>are<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lr<sp/>:<sp/>layer_names)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a44df2534a2dc9d0826d6650cc54d6af2" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" kindref="member">layers</ref>.count(lr)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Vulkan<sp/>driver<sp/>is<sp/>missing<sp/>required<sp/>layer:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>lr);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setup<sp/>application<sp/>description.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>VkApplicationInfo<sp/>app_info<sp/><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>app_info.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_APPLICATION_INFO;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>app_info.pApplicationName<sp/>=<sp/>title;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>app_info.apiVersion<sp/>=<sp/>VK_MAKE_VERSION(1,<sp/>0,<sp/>57);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>VkInstanceCreateInfo<sp/>inst_info<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.pApplicationInfo<sp/>=<sp/>&amp;app_info;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.enabledExtensionCount<sp/>=<sp/>extension_names.size();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.ppEnabledExtensionNames<sp/>=<sp/>extension_names.data();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.enabledLayerCount<sp/>=<sp/>layer_names.size();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>inst_info.ppEnabledLayerNames<sp/>=<sp/>layer_names.data();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>Vulkan<sp/>instance<sp/>is<sp/>a<sp/>proxy<sp/>for<sp/>all<sp/>usage<sp/>of<sp/>Vulkan<sp/>from<sp/>our<sp/>application,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>kind<sp/>of<sp/>like<sp/>a<sp/>GL<sp/>context.<sp/>Initialize<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateInstance,<sp/>&amp;inst_info,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" kindref="member">loader</ref>.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" kindref="member">init</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDebugReportCallbackCreateInfoEXT<sp/>cb_info<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>cb_info.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>cb_info.flags<sp/>=</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>VK_DEBUG_REPORT_ERROR_BIT_EXT</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>|<sp/>VK_DEBUG_REPORT_WARNING_BIT_EXT</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>|<sp/>VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>|<sp/>VK_DEBUG_REPORT_INFORMATION_BIT_EXT</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>|<sp/>VK_DEBUG_REPORT_DEBUG_BIT_EXT;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>cb_info.pfnCallback<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1vulkan_1a4ab152b827337e3646e8fb43f4e7364d" kindref="member">vlk_debug_cb</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" kindref="member">loader</ref>.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" kindref="member">vkCreateDebugReportCallbackEXT</ref>,<sp/>this-&gt;instance,<sp/>&amp;cb_info,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;this-&gt;debug_callback);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Surface<sp/>is<sp/>an<sp/>object<sp/>that<sp/>we<sp/>draw<sp/>into,<sp/>corresponding<sp/>to<sp/>the<sp/>window<sp/>area.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>succ<sp/>=<sp/>SDL_Vulkan_CreateSurface(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1aaa0116239068200ddac4ce7c20dc6dce" kindref="member">window</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" kindref="member">surface</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(succ<sp/>!=<sp/>SDL_TRUE)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>Vulkan<sp/>surface<sp/>on<sp/>SDL<sp/>window.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a5b80c390551f775211503e3baeedf02a" kindref="member">VlkWindow::~VlkWindow</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a53537d7fdc90f40b03069c3425b73b21" kindref="member">loader</ref>.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" kindref="member">vkDestroyDebugReportCallbackEXT</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ad0733957d19a25d744d0085538ae2013" kindref="member">debug_callback</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>vkDestroySurfaceKHR(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" kindref="member">surface</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>vkDestroyInstance(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a1a95d6a87cc1e0667957e894045d4ab7" refkind="member"><highlight class="normal">VkInstance<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a1a95d6a87cc1e0667957e894045d4ab7" kindref="member">VlkWindow::get_instance</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab6343f9eab77ee8717beaa6a637fea7d" kindref="member">instance</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a23c9e0ab58c22aea956ff90b4fd8666f" refkind="member"><highlight class="normal">VkSurfaceKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1a23c9e0ab58c22aea956ff90b4fd8666f" kindref="member">VlkWindow::get_surface</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_window_1ab81090737841527274b10220811626ed" kindref="member">surface</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/windowvk.cpp"/>
+  </compounddef>
+</doxygen>

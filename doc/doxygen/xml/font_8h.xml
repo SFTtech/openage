@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="font_8h" kind="file" language="C++">
+    <compoundname>font.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">typeindex</includes>
+    <includes local="no">vector</includes>
+    <includes refid="hash_8h" local="yes">../../util/hash.h</includes>
+    <includes refid="font__manager_8h" local="yes">font_manager.h</includes>
+    <includedby refid="console_8h" local="yes">libopenage/console/console.h</includedby>
+    <includedby refid="glyph__atlas_8h" local="yes">libopenage/renderer/font/glyph_atlas.h</includedby>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="font_8cpp" local="yes">libopenage/renderer/font/font.cpp</includedby>
+    <includedby refid="font__manager_8cpp" local="yes">libopenage/renderer/font/font_manager.cpp</includedby>
+    <includedby refid="renderer_2font_2tests_8cpp" local="yes">libopenage/renderer/font/tests.cpp</includedby>
+    <includedby refid="text_8cpp" local="yes">libopenage/renderer/text.cpp</includedby>
+    <incdepgraph>
+      <node id="20513">
+        <label>list</label>
+      </node>
+      <node id="20504">
+        <label>atomic</label>
+      </node>
+      <node id="20510">
+        <label>iomanip</label>
+      </node>
+      <node id="20509">
+        <label>functional</label>
+      </node>
+      <node id="20482">
+        <label>libopenage/renderer/font/font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="20483" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20485" relation="include">
+        </childnode>
+        <childnode refid="20486" relation="include">
+        </childnode>
+        <childnode refid="20487" relation="include">
+        </childnode>
+        <childnode refid="20490" relation="include">
+        </childnode>
+      </node>
+      <node id="20500">
+        <label>cstdint</label>
+      </node>
+      <node id="20507">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20508" relation="include">
+        </childnode>
+        <childnode refid="20509" relation="include">
+        </childnode>
+        <childnode refid="20510" relation="include">
+        </childnode>
+        <childnode refid="20483" relation="include">
+        </childnode>
+        <childnode refid="20511" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20486" relation="include">
+        </childnode>
+      </node>
+      <node id="20487">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="20488" relation="include">
+        </childnode>
+        <childnode refid="20489" relation="include">
+        </childnode>
+      </node>
+      <node id="20495">
+        <label>stdexcept</label>
+      </node>
+      <node id="20512">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20513" relation="include">
+        </childnode>
+        <childnode refid="20514" relation="include">
+        </childnode>
+        <childnode refid="20515" relation="include">
+        </childnode>
+      </node>
+      <node id="20508">
+        <label>cstdarg</label>
+      </node>
+      <node id="20484">
+        <label>string</label>
+      </node>
+      <node id="20499">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20500" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20501" relation="include">
+        </childnode>
+        <childnode refid="20502" relation="include">
+        </childnode>
+        <childnode refid="20503" relation="include">
+        </childnode>
+        <childnode refid="20512" relation="include">
+        </childnode>
+        <childnode refid="20515" relation="include">
+        </childnode>
+      </node>
+      <node id="20502">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20488" relation="include">
+        </childnode>
+      </node>
+      <node id="20503">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20504" relation="include">
+        </childnode>
+        <childnode refid="20483" relation="include">
+        </childnode>
+        <childnode refid="20505" relation="include">
+        </childnode>
+        <childnode refid="20496" relation="include">
+        </childnode>
+        <childnode refid="20506" relation="include">
+        </childnode>
+        <childnode refid="20507" relation="include">
+        </childnode>
+      </node>
+      <node id="20493">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20494" relation="include">
+        </childnode>
+        <childnode refid="20483" relation="include">
+        </childnode>
+        <childnode refid="20495" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20496" relation="include">
+        </childnode>
+        <childnode refid="20499" relation="include">
+        </childnode>
+      </node>
+      <node id="20517">
+        <label>typeinfo</label>
+      </node>
+      <node id="20486">
+        <label>vector</label>
+      </node>
+      <node id="20497">
+        <label>ciso646</label>
+      </node>
+      <node id="20489">
+        <label>array</label>
+      </node>
+      <node id="20511">
+        <label>sstream</label>
+      </node>
+      <node id="20496">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20497" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20498" relation="include">
+        </childnode>
+      </node>
+      <node id="20491">
+        <label>ft2build.h</label>
+      </node>
+      <node id="20498">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20498" relation="include">
+        </childnode>
+      </node>
+      <node id="20506">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20494" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+      </node>
+      <node id="20515">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20516" relation="include">
+        </childnode>
+      </node>
+      <node id="20488">
+        <label>cstdlib</label>
+      </node>
+      <node id="20494">
+        <label>iostream</label>
+      </node>
+      <node id="20492">
+        <label>unordered_map</label>
+      </node>
+      <node id="20514">
+        <label>mutex</label>
+      </node>
+      <node id="20505">
+        <label>type_traits</label>
+      </node>
+      <node id="20501">
+        <label>config.h</label>
+      </node>
+      <node id="20490">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="20491" relation="include">
+        </childnode>
+        <childnode refid="20483" relation="include">
+        </childnode>
+        <childnode refid="20484" relation="include">
+        </childnode>
+        <childnode refid="20492" relation="include">
+        </childnode>
+        <childnode refid="20493" relation="include">
+        </childnode>
+      </node>
+      <node id="20483">
+        <label>memory</label>
+      </node>
+      <node id="20485">
+        <label>typeindex</label>
+      </node>
+      <node id="20516">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20494" relation="include">
+        </childnode>
+        <childnode refid="20517" relation="include">
+        </childnode>
+        <childnode refid="20496" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20518">
+        <label>libopenage/renderer/font/font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="20519" relation="include">
+        </childnode>
+        <childnode refid="20525" relation="include">
+        </childnode>
+        <childnode refid="20527" relation="include">
+        </childnode>
+        <childnode refid="20530" relation="include">
+        </childnode>
+        <childnode refid="20531" relation="include">
+        </childnode>
+        <childnode refid="20532" relation="include">
+        </childnode>
+        <childnode refid="20528" relation="include">
+        </childnode>
+      </node>
+      <node id="20532">
+        <label>libopenage/renderer/font/tests.cpp</label>
+        <link refid="renderer_2font_2tests_8cpp"/>
+      </node>
+      <node id="20519">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="20520" relation="include">
+        </childnode>
+        <childnode refid="20521" relation="include">
+        </childnode>
+        <childnode refid="20522" relation="include">
+        </childnode>
+        <childnode refid="20523" relation="include">
+        </childnode>
+        <childnode refid="20524" relation="include">
+        </childnode>
+      </node>
+      <node id="20523">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="20524">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="20526">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="20521" relation="include">
+        </childnode>
+        <childnode refid="20527" relation="include">
+        </childnode>
+        <childnode refid="20523" relation="include">
+        </childnode>
+        <childnode refid="20528" relation="include">
+        </childnode>
+      </node>
+      <node id="20520">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="20527">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="20529">
+        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <link refid="glyph__atlas_8cpp"/>
+      </node>
+      <node id="20530">
+        <label>libopenage/renderer/font/font.cpp</label>
+        <link refid="font_8cpp"/>
+      </node>
+      <node id="20528">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+      </node>
+      <node id="20521">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="20525">
+        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="20526" relation="include">
+        </childnode>
+        <childnode refid="20529" relation="include">
+        </childnode>
+      </node>
+      <node id="20531">
+        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <link refid="font__manager_8cpp"/>
+      </node>
+      <node id="20522">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_glyph" prot="public">openage::renderer::Glyph</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1font__description" prot="public">openage::renderer::font_description</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_font" prot="public">openage::renderer::Font</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4" prot="public">std::hash&lt; openage::renderer::font_description &gt;</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespacestd">std</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../util/hash.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="font__manager_8h" kindref="compound">font_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>Declarations<sp/>of<sp/>HarfBuzz<sp/>stuff!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hb_font_t;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="namespaceopenage_1_1renderer_1a05d13faf6efcd556555aadefa0b8c790" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1a05d13faf6efcd556555aadefa0b8c790" kindref="member">FREETYPE_UNIT</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>=<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1renderer_1_1_glyph" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1renderer_1_1_glyph_1a08ec5ceda600508d4a3ebb416f5dae98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1a08ec5ceda600508d4a3ebb416f5dae98" kindref="member">codepoint</ref>;<sp/></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" kindref="member">x_offset</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" kindref="member">y_offset</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" kindref="member">x_advance</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34" refid="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" kindref="member">y_advance</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" refkind="member"><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1" kindref="member">left_to_right</ref>,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a74ecbc5c277e2952aac1ac167699d74c" kindref="member">right_to_left</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202ad7ea855d3aeb1a739a24e932a7bce30f" kindref="member">top_to_bottom</ref>,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202ab0bbb8506521265f19fa24cf86c91b9d" kindref="member">bottom_to_top</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="structopenage_1_1renderer_1_1font__description" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>{</highlight></codeline>
+<codeline lineno="53" refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" kindref="member">font_file</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54" refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" kindref="member">size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55" refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" kindref="member">direction</ref>;<sp/></highlight></codeline>
+<codeline lineno="56" refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" kindref="member">language</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57" refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" kindref="member">script</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" kindref="member">font_description</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" kindref="member">font_file</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" kindref="member">size</ref>,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202" kindref="member">font_direction</ref><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a09a6661c0b7b0bd1c0c8fa8c9c9d0ce1" kindref="member">direction</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1ae65cf28802977d4b900ec5fcbac13202a1f8f6a66881ca551a945cf0ab4765dc1" kindref="member">font_direction::left_to_right</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="structopenage_1_1renderer_1_1font__description_1a2e0e4610fc9d995b7ba0aea428247a6f" kindref="member">language</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;en&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="structopenage_1_1renderer_1_1font__description_1a77b3101c8b1c2ae7e0578cebd13391b0" kindref="member">script</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Latn&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" kindref="member">font_description</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*family,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*style,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" kindref="member">size</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1aa5bc4ba15717db570942efdd1b9433ed" kindref="member">font_description</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;<ref refid="structopenage_1_1renderer_1_1font__description_1ae60ad102b125b9dac9243bfa8bf8fedd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1ac1798a1842c25ea8e7573d76af3cdac4" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description_1a45b83b3fdb4f1492dec92ab44847ae01" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classopenage_1_1renderer_1_1_font" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font_1adcb46a45ff92688549638433ffeb3492" kindref="member">Font</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;<ref refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" kindref="member">description</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font_1adcb46a45ff92688549638433ffeb3492" kindref="member">Font</ref>(<ref refid="classopenage_1_1renderer_1_1_font_manager" kindref="compound">FontManager</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" kindref="member">font_manager</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/>&amp;<ref refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" kindref="member">description</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1a10d4241cf8b85b4a53975aba715b917b" kindref="member">~Font</ref>();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1a20d9c92be7d85c08a3877b476f479440" kindref="member">get_ascender</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1af416cb7a1def85a46eadf5656b419044" kindref="member">get_descender</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1aa5cbff2acbc06b04b76fb6f7492b24fe" kindref="member">get_line_height</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1a34cbc0674513e4759c7778fe63e671c4" kindref="member">get_horizontal_kerning</ref>(<ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>left_glyph,<sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>right_glyph)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1a2fac4e6433df045834538de8e814fc13" kindref="member">get_advance_width</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;codepoint_t&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_font_1abe0cf25c28e35ade771dd1fda7ae1c5c" kindref="member">get_glyphs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;unsigned<sp/>char[]&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_font_1ae35d5b1032dd1a9d65890b093e09f249" kindref="member">load_glyph</ref>(<ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>codepoint,<sp/><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref><sp/>&amp;glyph)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_font_1aa653f95eddd135f2d3e7474d7c92df30" kindref="member">initialize</ref>(FT_Library<sp/>ft_library);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="184" refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">font_description</ref><sp/><ref refid="classopenage_1_1renderer_1_1_font_1acf1ce7dd2d34acd7a8a2bb1d133728af" kindref="member">description</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Font&apos;s<sp/>created<sp/>without<sp/>the<sp/>use<sp/>of<sp/>FontManager<sp/>are<sp/>standalone<sp/>and<sp/>have<sp/>their<sp/>own<sp/>FreeTypeLibrary<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classopenage_1_1renderer_1_1_font_1a22ea05097b42c67cedf2f660905b5469" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;FreeTypeLibrary&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_font_1a22ea05097b42c67cedf2f660905b5469" kindref="member">freetype_library</ref>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>HarfBuzz<sp/>font<sp/>instance<sp/>that<sp/>drives<sp/>the<sp/>operations<sp/>of<sp/>this<sp/>font</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="classopenage_1_1renderer_1_1_font_1ab2f8cb8f9ba1a8c20f7b02076af132cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>hb_font_t<sp/>*<ref refid="classopenage_1_1renderer_1_1_font_1ab2f8cb8f9ba1a8c20f7b02076af132cb" kindref="member">hb_font</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="200" refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>&lt;<ref refid="namespaceopenage" kindref="compound">openage</ref>::renderer::font_description&gt;<sp/>{</highlight></codeline>
+<codeline lineno="201" refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4_1a69356bbc9713e82eb3c678c45181c760" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">openage::renderer::font_description</ref><sp/>&amp;fd)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/>std::hash&lt;std::type_index&gt;()(std::type_index(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenage_1_1renderer_1_1font__description" kindref="compound">openage::renderer::font_description</ref>)));</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">openage::util::hash_combine</ref>(<ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>,<sp/>std::hash&lt;std::string&gt;()(fd.<ref refid="structopenage_1_1renderer_1_1font__description_1aa6931934792519df3f7801ce28db656b" kindref="member">font_file</ref>));</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">openage::util::hash_combine</ref>(<ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>,<sp/>std::hash&lt;unsigned<sp/>int&gt;()(fd.<ref refid="structopenage_1_1renderer_1_1font__description_1a910544d7e87745be14c966fe2814c2e1" kindref="member">size</ref>));</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/font/font.h"/>
+  </compounddef>
+</doxygen>

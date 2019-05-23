@@ -1,0 +1,517 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vector_8h" kind="file" language="C++">
+    <compoundname>vector.h</compoundname>
+    <includes local="no">array</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">type_traits</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includedby refid="gamestate_8h" local="yes">libopenage/event/demo/gamestate.h</includedby>
+    <includedby refid="matrix_8h" local="yes">libopenage/util/matrix.h</includedby>
+    <includedby refid="matrix__test_8cpp" local="yes">libopenage/util/matrix_test.cpp</includedby>
+    <includedby refid="quaternion_8h" local="yes">libopenage/util/quaternion.h</includedby>
+    <includedby refid="vector_8cpp" local="yes">libopenage/util/vector.cpp</includedby>
+    <includedby refid="vector__test_8cpp" local="yes">libopenage/util/vector_test.cpp</includedby>
+    <incdepgraph>
+      <node id="33210">
+        <label>list</label>
+      </node>
+      <node id="33201">
+        <label>atomic</label>
+      </node>
+      <node id="33206">
+        <label>iomanip</label>
+      </node>
+      <node id="33205">
+        <label>functional</label>
+      </node>
+      <node id="33196">
+        <label>cstdint</label>
+      </node>
+      <node id="33203">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="33204" relation="include">
+        </childnode>
+        <childnode refid="33205" relation="include">
+        </childnode>
+        <childnode refid="33206" relation="include">
+        </childnode>
+        <childnode refid="33189" relation="include">
+        </childnode>
+        <childnode refid="33207" relation="include">
+        </childnode>
+        <childnode refid="33191" relation="include">
+        </childnode>
+        <childnode refid="33208" relation="include">
+        </childnode>
+      </node>
+      <node id="33184">
+        <label>cmath</label>
+      </node>
+      <node id="33190">
+        <label>stdexcept</label>
+      </node>
+      <node id="33209">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="33210" relation="include">
+        </childnode>
+        <childnode refid="33211" relation="include">
+        </childnode>
+        <childnode refid="33212" relation="include">
+        </childnode>
+      </node>
+      <node id="33204">
+        <label>cstdarg</label>
+      </node>
+      <node id="33191">
+        <label>string</label>
+      </node>
+      <node id="33195">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="33196" relation="include">
+        </childnode>
+        <childnode refid="33191" relation="include">
+        </childnode>
+        <childnode refid="33197" relation="include">
+        </childnode>
+        <childnode refid="33198" relation="include">
+        </childnode>
+        <childnode refid="33200" relation="include">
+        </childnode>
+        <childnode refid="33209" relation="include">
+        </childnode>
+        <childnode refid="33212" relation="include">
+        </childnode>
+      </node>
+      <node id="33198">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="33199" relation="include">
+        </childnode>
+      </node>
+      <node id="33182">
+        <label>libopenage/util/vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="33183" relation="include">
+        </childnode>
+        <childnode refid="33184" relation="include">
+        </childnode>
+        <childnode refid="33185" relation="include">
+        </childnode>
+        <childnode refid="33186" relation="include">
+        </childnode>
+        <childnode refid="33187" relation="include">
+        </childnode>
+        <childnode refid="33188" relation="include">
+        </childnode>
+        <childnode refid="33215" relation="include">
+        </childnode>
+      </node>
+      <node id="33200">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="33201" relation="include">
+        </childnode>
+        <childnode refid="33189" relation="include">
+        </childnode>
+        <childnode refid="33187" relation="include">
+        </childnode>
+        <childnode refid="33192" relation="include">
+        </childnode>
+        <childnode refid="33202" relation="include">
+        </childnode>
+        <childnode refid="33203" relation="include">
+        </childnode>
+      </node>
+      <node id="33188">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="33186" relation="include">
+        </childnode>
+        <childnode refid="33189" relation="include">
+        </childnode>
+        <childnode refid="33190" relation="include">
+        </childnode>
+        <childnode refid="33191" relation="include">
+        </childnode>
+        <childnode refid="33192" relation="include">
+        </childnode>
+        <childnode refid="33195" relation="include">
+        </childnode>
+      </node>
+      <node id="33214">
+        <label>typeinfo</label>
+      </node>
+      <node id="33208">
+        <label>vector</label>
+      </node>
+      <node id="33215">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="33212" relation="include">
+        </childnode>
+        <childnode refid="33195" relation="include">
+        </childnode>
+      </node>
+      <node id="33193">
+        <label>ciso646</label>
+      </node>
+      <node id="33183">
+        <label>array</label>
+      </node>
+      <node id="33207">
+        <label>sstream</label>
+      </node>
+      <node id="33192">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="33193" relation="include">
+        </childnode>
+        <childnode refid="33191" relation="include">
+        </childnode>
+        <childnode refid="33194" relation="include">
+        </childnode>
+      </node>
+      <node id="33194">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="33194" relation="include">
+        </childnode>
+      </node>
+      <node id="33202">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="33186" relation="include">
+        </childnode>
+        <childnode refid="33191" relation="include">
+        </childnode>
+      </node>
+      <node id="33212">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="33213" relation="include">
+        </childnode>
+      </node>
+      <node id="33199">
+        <label>cstdlib</label>
+      </node>
+      <node id="33186">
+        <label>iostream</label>
+      </node>
+      <node id="33211">
+        <label>mutex</label>
+      </node>
+      <node id="33187">
+        <label>type_traits</label>
+      </node>
+      <node id="33197">
+        <label>config.h</label>
+      </node>
+      <node id="33185">
+        <label>cstring</label>
+      </node>
+      <node id="33189">
+        <label>memory</label>
+      </node>
+      <node id="33213">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="33186" relation="include">
+        </childnode>
+        <childnode refid="33214" relation="include">
+        </childnode>
+        <childnode refid="33192" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="33221">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="33224">
+        <label>libopenage/util/matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="33225" relation="include">
+        </childnode>
+        <childnode refid="33226" relation="include">
+        </childnode>
+        <childnode refid="33227" relation="include">
+        </childnode>
+      </node>
+      <node id="33230">
+        <label>libopenage/util/vector.cpp</label>
+        <link refid="vector_8cpp"/>
+      </node>
+      <node id="33223">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="33219">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="33227">
+        <label>libopenage/util/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="33228" relation="include">
+        </childnode>
+        <childnode refid="33229" relation="include">
+        </childnode>
+      </node>
+      <node id="33229">
+        <label>libopenage/util/quaternion_test.cpp</label>
+        <link refid="quaternion__test_8cpp"/>
+      </node>
+      <node id="33216">
+        <label>libopenage/util/vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="33217" relation="include">
+        </childnode>
+        <childnode refid="33224" relation="include">
+        </childnode>
+        <childnode refid="33226" relation="include">
+        </childnode>
+        <childnode refid="33227" relation="include">
+        </childnode>
+        <childnode refid="33230" relation="include">
+        </childnode>
+        <childnode refid="33231" relation="include">
+        </childnode>
+      </node>
+      <node id="33222">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="33220" relation="include">
+        </childnode>
+        <childnode refid="33223" relation="include">
+        </childnode>
+      </node>
+      <node id="33231">
+        <label>libopenage/util/vector_test.cpp</label>
+        <link refid="vector__test_8cpp"/>
+      </node>
+      <node id="33220">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="33228">
+        <label>libopenage/util/quaternion.cpp</label>
+        <link refid="quaternion_8cpp"/>
+      </node>
+      <node id="33225">
+        <label>libopenage/util/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+      </node>
+      <node id="33218">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="33219" relation="include">
+        </childnode>
+        <childnode refid="33220" relation="include">
+        </childnode>
+      </node>
+      <node id="33226">
+        <label>libopenage/util/matrix_test.cpp</label>
+        <link refid="matrix__test_8cpp"/>
+      </node>
+      <node id="33217">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="33218" relation="include">
+        </childnode>
+        <childnode refid="33221" relation="include">
+        </childnode>
+        <childnode refid="33220" relation="include">
+        </childnode>
+        <childnode refid="33222" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1_vector" prot="public">openage::util::Vector</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1util" kindref="compound">openage::util</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>N,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1util_1_1_vector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::array&lt;T,<sp/>N&gt;<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>static_assert(N<sp/>&gt;<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;0-dimensional<sp/>vector<sp/>not<sp/>allowed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;N, T&gt;</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>T<sp/><ref refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" kindref="member">default_eps</ref><sp/>=<sp/>1e-4;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1util_1_1_vector_1a0b8ac439682bcb1b54b2fbb1968e0850" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector_1a0b8ac439682bcb1b54b2fbb1968e0850" kindref="member">Vector</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this)[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector_1a70020e31b16b6c886cd7d5956c961141" kindref="member">~Vector</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>...<sp/>Ts&gt;</highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1util_1_1_vector_1aea1fe198f712888e82582be0bb73e450" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector_1aea1fe198f712888e82582be0bb73e450" kindref="member">Vector</ref>(Ts<sp/>...<sp/>args)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd" kindref="compound">std</ref>::array&lt;T,<sp/>N&gt;{static_cast&lt;T&gt;(args)...}<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(args)<sp/>==<sp/>N,<sp/></highlight><highlight class="stringliteral">&quot;not<sp/>all<sp/>values<sp/>supplied.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" kindref="member">equals</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other,<sp/>T<sp/>eps=<ref refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" kindref="member">default_eps</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>diff<sp/>=<sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[i]<sp/>-<sp/>other[i]);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diff<sp/>&gt;=<sp/>eps)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classopenage_1_1util_1_1_vector_1afbfaf8fb98199182caa50e1a45bab12c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1afbfaf8fb98199182caa50e1a45bab12c" kindref="member">operator +=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this)[i]<sp/>+=<sp/>other[i];</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classopenage_1_1util_1_1_vector_1a3f1ab0e66323a2d08bd8c320425af1a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_vector_1a3f1ab0e66323a2d08bd8c320425af1a8" kindref="member">operator +</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>res(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/>other;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classopenage_1_1util_1_1_vector_1af9fdfbcf69edc87d219f35b239d4e77c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1af9fdfbcf69edc87d219f35b239d4e77c" kindref="member">operator -=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this)[i]<sp/>-=<sp/>other[i];</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classopenage_1_1util_1_1_vector_1a0d7a217ad63a77da59f2ddcc7f7b87e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_vector_1a0d7a217ad63a77da59f2ddcc7f7b87e2" kindref="member">operator -</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>res(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>-=<sp/>other;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1util_1_1_vector_1a0b9910495f73ffb032e4b12be3b72d34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1a0b9910495f73ffb032e4b12be3b72d34" kindref="member">operator *=</ref>(T<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this)[i]<sp/>*=<sp/>a;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classopenage_1_1util_1_1_vector_1af730cbb108d9e8966f4524efab3f0fe3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_vector_1af730cbb108d9e8966f4524efab3f0fe3" kindref="member">operator *</ref>(T<sp/>a)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>res(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>*=<sp/>a;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classopenage_1_1util_1_1_vector_1a2d28e8ece216fef011431a1ababa4bfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1a2d28e8ece216fef011431a1ababa4bfc" kindref="member">operator /=</ref>(T<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this)[i]<sp/>/=<sp/>a;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classopenage_1_1util_1_1_vector_1af3c9dfb3fd444c92cd4af8384809241d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_vector_1af3c9dfb3fd444c92cd4af8384809241d" kindref="member">operator /</ref>(T<sp/>a)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>res(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>/=<sp/>a;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" kindref="member">dot</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>res<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>+=<sp/>(*this)[i]<sp/>*<sp/>other[i];</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" kindref="member">norm</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" kindref="member">std::sqrt</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" kindref="member">dot</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" kindref="member">normalize</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>/=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" kindref="member">norm</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>U=this_type&gt;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::enable_if&lt;N==3,<sp/>U&gt;::type</highlight></codeline>
+<codeline lineno="177" refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*Vector&lt;N&gt;*/</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" kindref="member">cross_product</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref>(</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[1]<sp/>*<sp/>other[2]<sp/>-<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[2]<sp/>*<sp/>other[1]),</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[2]<sp/>*<sp/>other[0]<sp/>-<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[0]<sp/>*<sp/>other[2]),</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[0]<sp/>*<sp/>other[1]<sp/>-<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)[1]<sp/>*<sp/>other[0])</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classopenage_1_1util_1_1_vector_1ac824b8d2ccb92af2a4fa2946349e9aee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/><ref refid="classopenage_1_1util_1_1_vector_1ac824b8d2ccb92af2a4fa2946349e9aee" kindref="member">operator *</ref>(T<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;v)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>v<sp/>*<sp/>a;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classopenage_1_1util_1_1_vector_1a04d7eeccc9f90a986e8297807959e864" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1_vector_1a04d7eeccc9f90a986e8297807959e864" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;o,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">this_type</ref><sp/>&amp;v)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>o<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N-1;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>o<sp/>&lt;&lt;<sp/>v[i]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>o<sp/>&lt;&lt;<sp/>v[N-1]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>o;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T=</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="207" refid="namespaceopenage_1_1util_1a3b7551617f7e81afd786778a18a6e115" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector2t</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;2, T&gt;</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T=</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="210" refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3t</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;3, T&gt;</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T=</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="213" refid="namespaceopenage_1_1util_1ab85260365ee607e213b044335a3c4ac2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector4t</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;4, T&gt;</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>N&gt;</highlight></codeline>
+<codeline lineno="216" refid="namespaceopenage_1_1util_1a412362dd7eb21295a62e2c22031ac77c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vectorf</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;N, float&gt;</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>N&gt;</highlight></codeline>
+<codeline lineno="219" refid="namespaceopenage_1_1util_1a333446966cecccc963bdaa41f5395339" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vectord</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;N, double&gt;</ref>;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="namespaceopenage_1_1util_1a285db29af032ad3b2a79f810faaf65d3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector2f</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;2, float&gt;</ref>;</highlight></codeline>
+<codeline lineno="222" refid="namespaceopenage_1_1util_1ab7bb49fe673b7a4d72fb6fb91aba44c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3f</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;3, float&gt;</ref>;</highlight></codeline>
+<codeline lineno="223" refid="namespaceopenage_1_1util_1af3c02e2c02d3b68c87d58b867e609bbf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector4f</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;4, float&gt;</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector2d</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;2, double&gt;</ref>;</highlight></codeline>
+<codeline lineno="226" refid="namespaceopenage_1_1util_1aaa92edd0399f568ff984de550f094c9d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector3d</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;3, double&gt;</ref>;</highlight></codeline>
+<codeline lineno="227" refid="namespaceopenage_1_1util_1af8c841be325b73ea41a31e63bc2013dd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector4d</ref><sp/>=<sp/><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector&lt;4, double&gt;</ref>;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/vector.h"/>
+  </compounddef>
+</doxygen>

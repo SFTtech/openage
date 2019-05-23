@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_g_u_i" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GUI</compoundname>
+    <basecompoundref refid="classopenage_1_1_input_handler" prot="public" virt="non-virtual">openage::InputHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1_resize_handler" prot="public" virt="non-virtual">openage::ResizeHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1_hud_handler" prot="public" virt="non-virtual">openage::HudHandler</basecompoundref>
+    <includes refid="gui_2gui_8h" local="no">gui.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a75920972ecfc5cb1e53960009c37e9d0" prot="private" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::gui::GUI::tex_loc</definition>
+        <argsstring></argsstring>
+        <name>tex_loc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="50" column="1" bodyfile="libopenage/gui/gui.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1ad673c3a2aeeef059292d5d00584972be" prot="private" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::gui::GUI::screen_quad_vbo</definition>
+        <argsstring></argsstring>
+        <name>screen_quad_vbo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="51" column="1" bodyfile="libopenage/gui/gui.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a7923e9a1a58548b7033fd6c7c9254976" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_application_with_logger" kindref="compound">GuiApplicationWithLogger</ref></type>
+        <definition>GuiApplicationWithLogger openage::gui::GUI::application</definition>
+        <argsstring></argsstring>
+        <name>application</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="53" column="1" bodyfile="libopenage/gui/gui.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a6429d665f885c79c6e4280626f13035d" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref></type>
+        <definition>qtsdl::GuiEventQueue openage::gui::GUI::render_updater</definition>
+        <argsstring></argsstring>
+        <name>render_updater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="54" column="1" bodyfile="libopenage/gui/gui.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a4522bc62960e209a5f81aaa79e23e640" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">qtsdl::GuiRenderer</ref></type>
+        <definition>qtsdl::GuiRenderer openage::gui::GUI::renderer</definition>
+        <argsstring></argsstring>
+        <name>renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="55" column="1" bodyfile="libopenage/gui/gui.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1aeca55f30a8929263df1804c78e50fc49" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref></type>
+        <definition>qtsdl::GuiEventQueue openage::gui::GUI::game_logic_updater</definition>
+        <argsstring></argsstring>
+        <name>game_logic_updater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="56" column="1" bodyfile="libopenage/gui/gui.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a6c10ea98ed9ae679f41e90f22815e29c" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref></type>
+        <definition>GuiGameSpecImageProvider openage::gui::GUI::image_provider_by_filename</definition>
+        <argsstring></argsstring>
+        <name>image_provider_by_filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="57" column="1" bodyfile="libopenage/gui/gui.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1afb03deb29373c86376233249c88f348e" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref></type>
+        <definition>GuiGameSpecImageProvider openage::gui::GUI::image_provider_by_graphic_id</definition>
+        <argsstring></argsstring>
+        <name>image_provider_by_graphic_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="58" column="1" bodyfile="libopenage/gui/gui.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1ab04227eeba600c818677a3fde1e728e5" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref></type>
+        <definition>GuiGameSpecImageProvider openage::gui::GUI::image_provider_by_terrain_id</definition>
+        <argsstring></argsstring>
+        <name>image_provider_by_terrain_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="59" column="1" bodyfile="libopenage/gui/gui.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a6aa61529cf73a7584b4a133d430a0e76" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_engine" kindref="compound">qtsdl::GuiEngine</ref></type>
+        <definition>qtsdl::GuiEngine openage::gui::GUI::engine</definition>
+        <argsstring></argsstring>
+        <name>engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="60" column="1" bodyfile="libopenage/gui/gui.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a0d146022a2e11c526c87e96361d0f291" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_subtree" kindref="compound">qtsdl::GuiSubtree</ref></type>
+        <definition>qtsdl::GuiSubtree openage::gui::GUI::subtree</definition>
+        <argsstring></argsstring>
+        <name>subtree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="61" column="1" bodyfile="libopenage/gui/gui.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1af41e48b5e92a34b6765028eebd1fd984" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_input" kindref="compound">qtsdl::GuiInput</ref></type>
+        <definition>qtsdl::GuiInput openage::gui::GUI::input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="62" column="1" bodyfile="libopenage/gui/gui.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_g_u_i_1a07e48889629f2311c0510cf641474955" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1shader_1_1_program" kindref="compound">shader::Program</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;shader::Program&gt; openage::gui::GUI::textured_screen_quad_shader</definition>
+        <argsstring></argsstring>
+        <name>textured_screen_quad_shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="67" column="1" bodyfile="libopenage/gui/gui.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GUI::GUI</definition>
+        <argsstring>(SDL_Window *window, const std::string &amp;source, const std::string &amp;rootdir, EngineQMLInfo *info=nullptr)</argsstring>
+        <name>GUI</name>
+        <param>
+          <type>SDL_Window *</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>rootdir</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref> *</type>
+          <declname>info</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="37" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="18" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1a82e8ee16b97b2616a2dccf4256d47fd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GUI::~GUI</definition>
+        <argsstring>()</argsstring>
+        <name>~GUI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="41" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1afa4d056d76395d3d4041a4ec0e1b3cb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GUI::process_events</definition>
+        <argsstring>()</argsstring>
+        <name>process_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="43" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="110" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1a10ef720725de7e19d860f66593944edc" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GUI::on_resize</definition>
+        <argsstring>(coord::viewport_delta new_size) override</argsstring>
+        <name>on_resize</name>
+        <reimplements refid="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d">on_resize</reimplements>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the resize handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="46" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1a957c6b92e9d51577da3e414f0307e455" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GUI::on_input</definition>
+        <argsstring>(SDL_Event *event) override</argsstring>
+        <name>on_input</name>
+        <reimplements refid="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5">on_input</reimplements>
+        <param>
+          <type>SDL_Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the input handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="47" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="120" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_g_u_i_1ac8c4bc112830f466957923bde0e65a6c" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::GUI::on_drawhud</definition>
+        <argsstring>() override</argsstring>
+        <name>on_drawhud</name>
+        <reimplements refid="classopenage_1_1_hud_handler_1a52d98b171b853a47609d924e1d1fca48">on_drawhud</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the drawing action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/gui.h" line="48" column="1" bodyfile="libopenage/gui/gui.cpp" bodystart="161" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Main entry point for the openage Qt-based user interface. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2469">
+        <label>openage::gui::GUI</label>
+        <link refid="classopenage_1_1gui_1_1_g_u_i"/>
+        <childnode refid="2470" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2471" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2472" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2472">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="2471">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="2470">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2482">
+        <label>qtsdl::GuiApplication</label>
+        <link refid="classqtsdl_1_1_gui_application"/>
+      </node>
+      <node id="2473">
+        <label>openage::gui::GUI</label>
+        <link refid="classopenage_1_1gui_1_1_g_u_i"/>
+        <childnode refid="2474" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2475" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2476" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2477" relation="usage">
+          <edgelabel>-image_provider_by_graphic_id</edgelabel>
+          <edgelabel>-image_provider_by_filename</edgelabel>
+          <edgelabel>-image_provider_by_terrain_id</edgelabel>
+        </childnode>
+        <childnode refid="2479" relation="usage">
+          <edgelabel>-renderer</edgelabel>
+        </childnode>
+        <childnode refid="2480" relation="usage">
+          <edgelabel>-subtree</edgelabel>
+        </childnode>
+        <childnode refid="2481" relation="usage">
+          <edgelabel>-application</edgelabel>
+        </childnode>
+        <childnode refid="2483" relation="usage">
+          <edgelabel>-render_updater</edgelabel>
+          <edgelabel>-game_logic_updater</edgelabel>
+        </childnode>
+        <childnode refid="2484" relation="usage">
+          <edgelabel>-input</edgelabel>
+        </childnode>
+        <childnode refid="2485" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="2476">
+        <label>openage::HudHandler</label>
+        <link refid="classopenage_1_1_hud_handler"/>
+      </node>
+      <node id="2478">
+        <label>qtsdl::GuiImageProvider</label>
+        <link refid="classqtsdl_1_1_gui_image_provider"/>
+      </node>
+      <node id="2475">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="2483">
+        <label>qtsdl::GuiEventQueue</label>
+        <link refid="classqtsdl_1_1_gui_event_queue"/>
+      </node>
+      <node id="2481">
+        <label>openage::gui::GuiApplicationWithLogger</label>
+        <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
+        <childnode refid="2482" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2477">
+        <label>openage::gui::GuiGameSpecImageProvider</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider"/>
+        <childnode refid="2478" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2479">
+        <label>qtsdl::GuiRenderer</label>
+        <link refid="classqtsdl_1_1_gui_renderer"/>
+      </node>
+      <node id="2474">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="2484">
+        <label>qtsdl::GuiInput</label>
+        <link refid="classqtsdl_1_1_gui_input"/>
+      </node>
+      <node id="2480">
+        <label>qtsdl::GuiSubtree</label>
+        <link refid="classqtsdl_1_1_gui_subtree"/>
+      </node>
+      <node id="2485">
+        <label>qtsdl::GuiEngine</label>
+        <link refid="classqtsdl_1_1_gui_engine"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/gui.h" line="35" column="1" bodyfile="libopenage/gui/gui.h" bodystart="35" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a7923e9a1a58548b7033fd6c7c9254976" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>application</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a6aa61529cf73a7584b4a133d430a0e76" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>engine</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1aeca55f30a8929263df1804c78e50fc49" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>game_logic_updater</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" prot="public" virt="non-virtual"><scope>openage::gui::GUI</scope><name>GUI</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a6c10ea98ed9ae679f41e90f22815e29c" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>image_provider_by_filename</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1afb03deb29373c86376233249c88f348e" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>image_provider_by_graphic_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1ab04227eeba600c818677a3fde1e728e5" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>image_provider_by_terrain_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1af41e48b5e92a34b6765028eebd1fd984" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>input</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1ac8c4bc112830f466957923bde0e65a6c" prot="private" virt="virtual"><scope>openage::gui::GUI</scope><name>on_drawhud</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a957c6b92e9d51577da3e414f0307e455" prot="private" virt="virtual"><scope>openage::gui::GUI</scope><name>on_input</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a10ef720725de7e19d860f66593944edc" prot="private" virt="virtual"><scope>openage::gui::GUI</scope><name>on_resize</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1afa4d056d76395d3d4041a4ec0e1b3cb8" prot="public" virt="non-virtual"><scope>openage::gui::GUI</scope><name>process_events</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a6429d665f885c79c6e4280626f13035d" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>render_updater</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a4522bc62960e209a5f81aaa79e23e640" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>renderer</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1ad673c3a2aeeef059292d5d00584972be" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>screen_quad_vbo</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a0d146022a2e11c526c87e96361d0f291" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>subtree</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a75920972ecfc5cb1e53960009c37e9d0" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>tex_loc</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a07e48889629f2311c0510cf641474955" prot="private" virt="non-virtual"><scope>openage::gui::GUI</scope><name>textured_screen_quad_shader</name></member>
+      <member refid="classopenage_1_1gui_1_1_g_u_i_1a82e8ee16b97b2616a2dccf4256d47fd0" prot="public" virt="virtual"><scope>openage::gui::GUI</scope><name>~GUI</name></member>
+      <member refid="classopenage_1_1_hud_handler_1a5b1435a782148709e7acf4a0dd94189f" prot="public" virt="virtual"><scope>openage::gui::GUI</scope><name>~HudHandler</name></member>
+      <member refid="classopenage_1_1_input_handler_1abdb25a0f6baffa8c6bd4d69671565fc6" prot="public" virt="virtual"><scope>openage::gui::GUI</scope><name>~InputHandler</name></member>
+      <member refid="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="public" virt="virtual"><scope>openage::gui::GUI</scope><name>~ResizeHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

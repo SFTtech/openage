@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="population__tracker_8cpp" kind="file" language="C++">
+    <compoundname>population_tracker.cpp</compoundname>
+    <includes refid="population__tracker_8h" local="yes">population_tracker.h</includes>
+    <incdepgraph>
+      <node id="10328">
+        <label>libopenage/gamestate/population_tracker.cpp</label>
+        <link refid="population__tracker_8cpp"/>
+        <childnode refid="10329" relation="include">
+        </childnode>
+      </node>
+      <node id="10329">
+        <label>population_tracker.h</label>
+        <link refid="population__tracker_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="population__tracker_8h" kindref="compound">population_tracker.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" kindref="member">PopulationTracker::PopulationTracker</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity_static,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>capacity_max)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" kindref="member">demand</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;capacity_static<sp/>=<sp/><ref refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" kindref="member">capacity_static</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" kindref="member">capacity_real</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;capacity_max<sp/>=<sp/><ref refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" kindref="member">capacity_max</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">update_capacity</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" kindref="member">PopulationTracker::demand_population</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" kindref="member">demand</ref><sp/>+=<sp/>i;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>triger<sp/>gui<sp/>update</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" kindref="member">PopulationTracker::free_population</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" kindref="member">demand</ref><sp/>-=<sp/>i;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>triger<sp/>gui<sp/>update</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" kindref="member">PopulationTracker::add_capacity_static</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" kindref="member">capacity_static</ref><sp/>+=<sp/>i;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">update_capacity</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" kindref="member">PopulationTracker::add_capacity</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" kindref="member">capacity_real</ref><sp/>+=<sp/>i;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">update_capacity</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" kindref="member">PopulationTracker::remove_capacity</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" kindref="member">capacity_real</ref><sp/>-=<sp/>i;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">update_capacity</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" kindref="member">PopulationTracker::add_capacity_max</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" kindref="member">capacity_max</ref><sp/>+=<sp/>i;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">update_capacity</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" kindref="member">PopulationTracker::update_capacity</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" kindref="member">capacity_total</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" kindref="member">capacity_static</ref><sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" kindref="member">capacity_real</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>the<sp/>capacity<sp/>limit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" kindref="member">capacity_total</ref><sp/>&gt;<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" kindref="member">capacity_max</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" kindref="member">capacity_max</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" kindref="member">capacity_total</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>triger<sp/>gui<sp/>update</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" kindref="member">PopulationTracker::get_demand</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" kindref="member">demand</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" kindref="member">PopulationTracker::get_capacity</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" kindref="member">PopulationTracker::get_space</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref><sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" kindref="member">demand</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" kindref="member">PopulationTracker::get_capacity_overflow</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" kindref="member">capacity_total</ref><sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" kindref="member">PopulationTracker::is_capacity_maxed</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" kindref="member">capacity</ref><sp/>&gt;=<sp/>this-&gt;<ref refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" kindref="member">capacity_max</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/population_tracker.cpp"/>
+  </compounddef>
+</doxygen>

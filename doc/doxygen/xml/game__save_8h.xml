@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__save_8h" kind="file" language="C++">
+    <compoundname>game_save.h</compoundname>
+    <includes local="no">string</includes>
+    <includedby refid="game__save_8cpp" local="yes">libopenage/gamestate/game_save.cpp</includedby>
+    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="game__saver_8cpp" local="yes">libopenage/gui/game_saver.cpp</includedby>
+    <incdepgraph>
+      <node id="9528">
+        <label>string</label>
+      </node>
+      <node id="9527">
+        <label>libopenage/gamestate/game_save.h</label>
+        <link refid="game__save_8h"/>
+        <childnode refid="9528" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9531">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="9530">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="9529">
+        <label>libopenage/gamestate/game_save.h</label>
+        <link refid="game__save_8h"/>
+        <childnode refid="9530" relation="include">
+        </childnode>
+        <childnode refid="9531" relation="include">
+        </childnode>
+        <childnode refid="9532" relation="include">
+        </childnode>
+      </node>
+      <node id="9532">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gameio">openage::gameio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GameMain;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Terrain;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gameio<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1gameio_1adf4c124763b55a6c31005b67d3f398a4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceopenage_1_1gameio_1adf4c124763b55a6c31005b67d3f398a4" kindref="member">save_label</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;openage-save-file&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1gameio_1a78ae26de66b1864190daaef67669bd98" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceopenage_1_1gameio_1a78ae26de66b1864190daaef67669bd98" kindref="member">save_version</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;v0.1&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" kindref="member">save</ref>(<ref refid="classopenage_1_1_game_main" kindref="compound">openage::GameMain</ref><sp/>*,<sp/>std::string<sp/>fname);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" kindref="member">load</ref>(<ref refid="classopenage_1_1_game_main" kindref="compound">openage::GameMain</ref><sp/>*,<sp/>std::string<sp/>fname);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::gameio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/game_save.h"/>
+  </compounddef>
+</doxygen>

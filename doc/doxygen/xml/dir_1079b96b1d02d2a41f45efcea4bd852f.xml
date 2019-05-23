@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_1079b96b1d02d2a41f45efcea4bd852f" kind="dir">
+    <compoundname>libopenage/pyinterface</compoundname>
+    <innerfile refid="defs_8cpp">defs.cpp</innerfile>
+    <innerfile refid="defs_8h">defs.h</innerfile>
+    <innerfile refid="exctranslate_8cpp">exctranslate.cpp</innerfile>
+    <innerfile refid="exctranslate_8h">exctranslate.h</innerfile>
+    <innerfile refid="exctranslate__tests_8cpp">exctranslate_tests.cpp</innerfile>
+    <innerfile refid="exctranslate__tests_8h">exctranslate_tests.h</innerfile>
+    <innerfile refid="functional_8cpp">functional.cpp</innerfile>
+    <innerfile refid="functional_8h">functional.h</innerfile>
+    <innerfile refid="hacks_8cpp">hacks.cpp</innerfile>
+    <innerfile refid="hacks_8h">hacks.h</innerfile>
+    <innerfile refid="pyexception_8cpp">pyexception.cpp</innerfile>
+    <innerfile refid="pyexception_8h">pyexception.h</innerfile>
+    <innerfile refid="pyobject_8cpp">pyobject.cpp</innerfile>
+    <innerfile refid="pyobject_8h">pyobject.h</innerfile>
+    <innerfile refid="pyobject__tests_8cpp">pyobject_tests.cpp</innerfile>
+    <innerfile refid="pyobject__tests_8h">pyobject_tests.h</innerfile>
+    <innerfile refid="setup_8cpp">setup.cpp</innerfile>
+    <innerfile refid="setup_8h">setup.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/pyinterface/"/>
+  </compounddef>
+</doxygen>

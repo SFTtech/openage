@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="subprocess_8h" kind="file" language="C++">
+    <compoundname>subprocess.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="externalprofiler_8cpp" local="yes">libopenage/util/externalprofiler.cpp</includedby>
+    <includedby refid="os_8cpp" local="yes">libopenage/util/os.cpp</includedby>
+    <includedby refid="subprocess_8cpp" local="yes">libopenage/util/subprocess.cpp</includedby>
+    <incdepgraph>
+      <node id="32863">
+        <label>libopenage/util/subprocess.h</label>
+        <link refid="subprocess_8h"/>
+        <childnode refid="32864" relation="include">
+        </childnode>
+        <childnode refid="32865" relation="include">
+        </childnode>
+      </node>
+      <node id="32864">
+        <label>string</label>
+      </node>
+      <node id="32865">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="32866">
+        <label>libopenage/util/subprocess.h</label>
+        <link refid="subprocess_8h"/>
+        <childnode refid="32867" relation="include">
+        </childnode>
+        <childnode refid="32868" relation="include">
+        </childnode>
+        <childnode refid="32869" relation="include">
+        </childnode>
+      </node>
+      <node id="32868">
+        <label>libopenage/util/os.cpp</label>
+        <link refid="os_8cpp"/>
+      </node>
+      <node id="32869">
+        <label>libopenage/util/subprocess.cpp</label>
+        <link refid="subprocess_8cpp"/>
+      </node>
+      <node id="32867">
+        <label>libopenage/util/externalprofiler.cpp</label>
+        <link refid="externalprofiler_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1subprocess">openage::subprocess</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">subprocess<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" kindref="member">is_executable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" kindref="member">which</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kindref="member">call</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;const<sp/>char<sp/>*&gt;<sp/>&amp;argv,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait=</highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*redirect_stdout_to=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>subprocess</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/subprocess.h"/>
+  </compounddef>
+</doxygen>

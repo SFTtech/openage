@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_category_contents_list_model" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::CategoryContentsListModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QAbstractListModel</basecompoundref>
+    <includes refid="category__contents__list__model_8h" local="no">category_contents_list_model.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QString</type>
+        <definition>QString openage::gui::CategoryContentsListModel::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <read>get_name</read>
+        <write>set_name</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">openage::gui::EditorModeLink</ref></type>
+        <definition>openage::gui::EditorModeLink openage::gui::CategoryContentsListModel::editorMode</definition>
+        <argsstring></argsstring>
+        <name>editorMode</name>
+        <read>get_editor_mode</read>
+        <write>set_editor_mode</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="13" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_category_contents_list_model_1a9f6a30d30825b9bbbeba2ae6f1b7ad7d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::tuple&lt; <ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref>, uint16_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::tuple&lt;index_t, uint16_t&gt; &gt; openage::gui::CategoryContentsListModel::type_and_texture</definition>
+        <argsstring></argsstring>
+        <name>type_and_texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="47" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref> *</type>
+        <definition>EditorModeLink* openage::gui::CategoryContentsListModel::editor_mode</definition>
+        <argsstring></argsstring>
+        <name>editor_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="50" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1ae17fe06e8f18750d104b8c3d4ddb2aeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::CategoryContentsListModel::CategoryContentsListModel</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>CategoryContentsListModel</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="29" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="16" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a7ec725fd660aa71e604cf245ecde7364" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::CategoryContentsListModel::~CategoryContentsListModel</definition>
+        <argsstring>()</argsstring>
+        <name>~CategoryContentsListModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="30" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="23" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString openage::gui::CategoryContentsListModel::get_name</definition>
+        <argsstring>() const</argsstring>
+        <name>get_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="32" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::CategoryContentsListModel::set_name</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>set_name</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="33" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="30" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref> *</type>
+        <definition>EditorModeLink * openage::gui::CategoryContentsListModel::get_editor_mode</definition>
+        <argsstring>() const</argsstring>
+        <name>get_editor_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="35" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::CategoryContentsListModel::set_editor_mode</definition>
+        <argsstring>(EditorModeLink *editor_mode)</argsstring>
+        <name>set_editor_mode</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_editor_mode_link" kindref="compound">EditorModeLink</ref> *</type>
+          <declname>editor_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="36" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="42" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_category_contents_list_model_1aa2e0aadf7e45f501bde15a55d21908bc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::CategoryContentsListModel::on_category_content_changed</definition>
+        <argsstring>(const std::string &amp;category_name, std::vector&lt; std::tuple&lt; index_t, uint16_t &gt;&gt; type_and_texture)</argsstring>
+        <name>on_category_content_changed</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>category_name</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::tuple&lt; <ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref>, uint16_t &gt;&gt;</type>
+          <declname>type_and_texture</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="39" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="60" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::CategoryContentsListModel::on_categories_content_changed</definition>
+        <argsstring>()</argsstring>
+        <name>on_categories_content_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="40" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a600d97ff08b660a49a73fb7760f6b6ea" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QHash&lt; int, QByteArray &gt;</type>
+        <definition>QHash&lt; int, QByteArray &gt; openage::gui::CategoryContentsListModel::roleNames</definition>
+        <argsstring>() const override</argsstring>
+        <name>roleNames</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="43" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1af71126666038271219acb2c58a33bdfa" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::gui::CategoryContentsListModel::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;) const override</argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="44" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_category_contents_list_model_1a513e643f243204b845e4e3b91fc93f4c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant openage::gui::CategoryContentsListModel::data</definition>
+        <argsstring>(const QModelIndex &amp;index, int role=Qt::DisplayRole) const override</argsstring>
+        <name>data</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::DisplayRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/category_contents_list_model.h" line="45" column="1" bodyfile="libopenage/gui/category_contents_list_model.cpp" bodystart="83" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Adaptor for the contents of a category of the <ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref>. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="735">
+        <label>openage::gui::CategoryContentsListModel</label>
+        <link refid="classopenage_1_1gui_1_1_category_contents_list_model"/>
+        <childnode refid="736" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="736">
+        <label>QAbstractListModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="741">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="742" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="743">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="744" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="740">
+        <label>qtsdl::Inherits&lt; OutputModeLink, EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="741" relation="public-inheritance">
+        </childnode>
+        <childnode refid="743" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="737">
+        <label>openage::gui::CategoryContentsListModel</label>
+        <link refid="classopenage_1_1gui_1_1_category_contents_list_model"/>
+        <childnode refid="738" relation="public-inheritance">
+        </childnode>
+        <childnode refid="739" relation="usage">
+          <edgelabel>-editor_mode</edgelabel>
+        </childnode>
+      </node>
+      <node id="739">
+        <label>openage::gui::EditorModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_editor_mode_link"/>
+        <childnode refid="740" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="744">
+        <label>qtsdl::GuiItemMethods&lt; EditorModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="738">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="742">
+        <label>OutputModeLink</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/category_contents_list_model.h" line="22" column="1" bodyfile="libopenage/gui/category_contents_list_model.h" bodystart="22" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae17fe06e8f18750d104b8c3d4ddb2aeb" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>CategoryContentsListModel</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a513e643f243204b845e4e3b91fc93f4c" prot="private" virt="virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>data</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1acce7d86b2aee60425718418646ee9cb7" prot="private" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>editor_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1adbf84754a7f50d7b6f44e99e97621e01" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>editorMode</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1adcdd529d648f05d280bf6c2510158e2f" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>get_editor_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a803a789106e7fe0a4fe639c4a550051e" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>get_name</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1aaa1bc0d0a61b614eeeff8c06b6870d84" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>name</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae2f8844ff265e3c40e61e9993b272127" prot="private" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>on_categories_content_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1aa2e0aadf7e45f501bde15a55d21908bc" prot="private" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>on_category_content_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a600d97ff08b660a49a73fb7760f6b6ea" prot="private" virt="virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>roleNames</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1af71126666038271219acb2c58a33bdfa" prot="private" virt="virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>rowCount</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a511ae5d702a47962954e76c2efd6ec9d" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>set_editor_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1ae3ab7019af952957db2f25592ef97544" prot="public" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>set_name</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a9f6a30d30825b9bbbeba2ae6f1b7ad7d" prot="private" virt="non-virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>type_and_texture</name></member>
+      <member refid="classopenage_1_1gui_1_1_category_contents_list_model_1a7ec725fd660aa71e604cf245ecde7364" prot="public" virt="virtual"><scope>openage::gui::CategoryContentsListModel</scope><name>~CategoryContentsListModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

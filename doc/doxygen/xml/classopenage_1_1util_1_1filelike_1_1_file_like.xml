@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1_file_like" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::util::filelike::FileLike</compoundname>
+    <derivedcompoundref refid="classopenage_1_1util_1_1filelike_1_1_native" prot="public" virt="non-virtual">openage::util::filelike::Native</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1util_1_1filelike_1_1_python" prot="public" virt="non-virtual">openage::util::filelike::Python</derivedcompoundref>
+    <includes refid="filelike_8h" local="no">filelike.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>seek_t</name>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" prot="public">
+          <name>SET</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>offset from file beginning </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aaf32924c53f864144ab34d1f7c12a0d4a" prot="public">
+          <name>CUR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>offset from current position </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aab1a326c06d88bf042f73d70f50197905" prot="public">
+          <name>END</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>offset from file end </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Seek reference point.</para>
+<para>Don&apos;t change the numbers, they&apos;re used from Cython. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="48" column="1" bodyfile="libopenage/util/filelike/filelike.h" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="enum" id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>mode_t</name>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" prot="public">
+          <name>R</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a61e9c06ea9a85a5088a499df6458d276" prot="public">
+          <name>W</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5c6dc3d436504b7a65191cafe28212ee" prot="public">
+          <name>RW</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a7fc56270e7a70fa81a5935b72eacbe29" prot="public">
+          <name>A</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1a5b61a1b298a0d06efa6933a97e68d763" prot="public">
+          <name>AR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> access mode.</para>
+<para>Sync the numbers with the fslike/cpp.pyx because Cython can&apos;t enum class yet. TODO: once cython can handle enum class, add pxd annotation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="61" column="1" bodyfile="libopenage/util/filelike/filelike.h" bodystart="61" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::filelike::FileLike::FileLike</definition>
+        <argsstring>()</argsstring>
+        <name>FileLike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="69" column="1" bodyfile="libopenage/util/filelike/filelike.cpp" bodystart="10" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a6a711a3f80350e7ed5ff2569e23b68ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::util::filelike::FileLike::~FileLike</definition>
+        <argsstring>()=default</argsstring>
+        <name>~FileLike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string openage::util::filelike::FileLike::read</definition>
+        <argsstring>(ssize_t max=-1)=0</argsstring>
+        <name>read</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff">read</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757">read</reimplementedby>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="73" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1acf58201709f476b22238a60928e5e349" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t openage::util::filelike::FileLike::read_to</definition>
+        <argsstring>(void *buf, ssize_t max=-1)=0</argsstring>
+        <name>read_to</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b">read_to</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32">read_to</reimplementedby>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::util::filelike::FileLike::readable</definition>
+        <argsstring>()=0</argsstring>
+        <name>readable</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc">readable</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1">readable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a24397c0d57a9b244b135ae3c72b92aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::util::filelike::FileLike::write</definition>
+        <argsstring>(const std::string &amp;data)=0</argsstring>
+        <name>write</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca">write</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7">write</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::util::filelike::FileLike::writable</definition>
+        <argsstring>()=0</argsstring>
+        <name>writable</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5">writable</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168">writable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::util::filelike::FileLike::seek</definition>
+        <argsstring>(ssize_t offset, seek_t how=seek_t::SET)=0</argsstring>
+        <name>seek</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06">seek</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9">seek</reimplementedby>
+        <param>
+          <type>ssize_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref></type>
+          <declname>how</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" kindref="member">seek_t::SET</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="82" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::util::filelike::FileLike::seekable</definition>
+        <argsstring>()=0</argsstring>
+        <name>seekable</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a">seekable</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9">seekable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t openage::util::filelike::FileLike::tell</definition>
+        <argsstring>()=0</argsstring>
+        <name>tell</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b">tell</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1">tell</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="84" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::util::filelike::FileLike::close</definition>
+        <argsstring>()=0</argsstring>
+        <name>close</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019">close</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d">close</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="85" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::util::filelike::FileLike::flush</definition>
+        <argsstring>()=0</argsstring>
+        <name>flush</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac">flush</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5">flush</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>ssize_t</type>
+        <definition>virtual ssize_t openage::util::filelike::FileLike::get_size</definition>
+        <argsstring>()=0</argsstring>
+        <name>get_size</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606">get_size</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd">get_size</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::FileLike::is_python_native</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>is_python_native</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc">is_python_native</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="89" column="1" bodyfile="libopenage/util/filelike/filelike.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_file_like_1aaba5c322eb2f3221a15471f2d546e761" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>virtual std::ostream&amp; openage::util::filelike::FileLike::repr</definition>
+        <argsstring>(std::ostream &amp;)=0</argsstring>
+        <name>repr</name>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb">repr</reimplementedby>
+        <reimplementedby refid="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca">repr</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>string representation of the filelike </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/filelike.h" line="92" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>File-like class that has the standard operations like read, seek, write etc.</para>
+<para>pxd: ctypedef enum seek_t &quot;openage::util::filelike::FileLike::seek_t&quot;: seek_t_SET &quot;::openage::util::filelike::FileLike::seek_t::SET&quot; = 0 seek_t_CUR &quot;::openage::util::filelike::FileLike::seek_t::CUR&quot; = 1 seek_t_END &quot;::openage::util::filelike::FileLike::seek_t::END&quot; = 2</para>
+<para>cppclass <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like" kindref="compound">FileLike</ref>: string <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb" kindref="member">read(ssize_t max)</ref> except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623" kindref="member">readable()</ref> except + void write(const string &amp;data) except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd" kindref="member">writable()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985" kindref="member">seek(ssize_t offset, seek_t how)</ref> except + bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d" kindref="member">seekable()</ref> except + size_t <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196" kindref="member">tell()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" kindref="member">close()</ref> except + void <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a" kindref="member">flush()</ref> except + ssize_t <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b" kindref="member">get_size()</ref> except +</para>
+<para>bool <ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" kindref="member">is_python_native()</ref> noexcept </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1485">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+      <node id="1487">
+        <label>openage::util::filelike::Python</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_python"/>
+        <childnode refid="1485" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1486">
+        <label>openage::util::filelike::Native</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_native"/>
+        <childnode refid="1485" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1488">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/filelike/filelike.h" line="41" column="1" bodyfile="libopenage/util/filelike/filelike.h" bodystart="41" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" virt="non-virtual"><scope>openage::util::filelike::FileLike</scope><name>FileLike</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" prot="public" virt="virtual"><scope>openage::util::filelike::FileLike</scope><name>is_python_native</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" prot="public" virt="non-virtual"><scope>openage::util::filelike::FileLike</scope><name>mode_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1acf58201709f476b22238a60928e5e349" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>read_to</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aaba5c322eb2f3221a15471f2d546e761" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>repr</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" prot="public" virt="non-virtual"><scope>openage::util::filelike::FileLike</scope><name>seek_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a24397c0d57a9b244b135ae3c72b92aef" prot="public" virt="pure-virtual"><scope>openage::util::filelike::FileLike</scope><name>write</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6a711a3f80350e7ed5ff2569e23b68ac" prot="public" virt="virtual"><scope>openage::util::filelike::FileLike</scope><name>~FileLike</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

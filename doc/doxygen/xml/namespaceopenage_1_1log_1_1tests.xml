@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1log_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::log::tests</compoundname>
+    <innerclass refid="classopenage_1_1log_1_1tests_1_1_test_log_sink" prot="public">openage::log::tests::TestLogSink</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1tests_1_1_test_log_source" prot="public">openage::log::tests::TestLogSource</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1log_1_1tests_1a10013d742153bb6a37a94e50e5249f7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::log::tests::demo</definition>
+        <argsstring>()</argsstring>
+        <name>demo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/test.cpp" line="41" column="1" bodyfile="libopenage/log/test.cpp" bodystart="41" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/log/test.cpp" line="16" column="1"/>
+  </compounddef>
+</doxygen>

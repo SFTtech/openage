@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespacestd" kind="namespace" language="C++">
+    <compoundname>std</compoundname>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1ability__type_01_4" prot="public">std::hash&lt; openage::ability_type &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1command__flag_01_4" prot="public">std::hash&lt; openage::command_flag &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1coord_1_1phys3_01_4" prot="public">std::hash&lt; openage::coord::phys3 &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1coord_1_1tile_01_4" prot="public">std::hash&lt; openage::coord::tile &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4" prot="public">std::hash&lt; openage::datastructure::tests::heap_elem &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1game__resource_01_4" prot="public">std::hash&lt; openage::game_resource &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1gamedata_1_1unit__classes_01_4" prot="public">std::hash&lt; openage::gamedata::unit_classes &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1path_1_1_node_01_6_01_4" prot="public">std::hash&lt; openage::path::Node &amp; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1renderer_1_1font__description_01_4" prot="public">std::hash&lt; openage::renderer::font_description &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1score__category_01_4" prot="public">std::hash&lt; openage::score_category &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4" prot="public">std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01_q_string_01_4" prot="public">std::hash&lt; QString &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01std_1_1tuple_3_1_1openage_1_1audio_1_1category__t_00_01int_01_4_01_4" prot="public">std::hash&lt; std::tuple&lt;::openage::audio::category_t, int &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_1_1openage_1_1audio_1_1category__t_01_4" prot="public">std::hash&lt;::openage::audio::category_t &gt;</innerclass>
+    <innerclass refid="structstd_1_1numeric__limits_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4" prot="public">std::numeric_limits&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>std::string std::to_string</definition>
+        <argsstring>(const openage::game_resource &amp;res)</argsstring>
+        <name>to_string</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">openage::game_resource</ref> &amp;</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.cpp" line="193" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="193" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1aa72527aa78526c376d473b0e9a4e66a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>std::string std::to_string</definition>
+        <argsstring>(const openage::score_category &amp;cat)</argsstring>
+        <name>to_string</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830" kindref="member">openage::score_category</ref> &amp;</type>
+          <declname>cat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/score.cpp" line="94" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="94" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1ac276d688c378e08da8419f69f5008657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>std::string std::to_string</definition>
+        <argsstring>(const openage::ability_type &amp;at)</argsstring>
+        <name>to_string</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">openage::ability_type</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.cpp" line="415" column="1" bodyfile="libopenage/unit/ability.cpp" bodystart="415" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr double</type>
+        <definition>constexpr double std::sqrt</definition>
+        <argsstring>(openage::util::FixedPoint&lt; I, F &gt; n)</argsstring>
+        <name>sqrt</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="470" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="470" bodyend="472"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr openage::util::FixedPoint&lt;I, F&gt; std::min</definition>
+        <argsstring>(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</argsstring>
+        <name>min</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="475" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="475" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr openage::util::FixedPoint&lt;I, F&gt; std::max</definition>
+        <argsstring>(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</argsstring>
+        <name>max</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="483" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="483" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1a6af851cc1249a970adde4dc422ff824a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr openage::util::FixedPoint&lt;I, F&gt; std::abs</definition>
+        <argsstring>(openage::util::FixedPoint&lt; I, F &gt; n)</argsstring>
+        <name>abs</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="491" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="491" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr double</type>
+        <definition>constexpr double std::hypot</definition>
+        <argsstring>(openage::util::FixedPoint&lt; I, F &gt; x, openage::util::FixedPoint&lt; I, F &gt; y)</argsstring>
+        <name>hypot</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="498" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="498" bodyend="500"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/audio/hash_functions.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>

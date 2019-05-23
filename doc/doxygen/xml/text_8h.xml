@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="text_8h" kind="file" language="C++">
+    <compoundname>text.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="pixel_8h" local="yes">../coord/pixel.h</includes>
+    <includes refid="program_8h" local="yes">../shader/program.h</includes>
+    <includes refid="renderer_2color_8h" local="yes">color.h</includes>
+    <includes refid="glyph__atlas_8h" local="yes">font/glyph_atlas.h</includes>
+    <includedby refid="draw_8cpp" local="yes">libopenage/console/draw.cpp</includedby>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
+    <includedby refid="text_8cpp" local="yes">libopenage/renderer/text.cpp</includedby>
+    <incdepgraph>
+      <node id="23595">
+        <label>list</label>
+      </node>
+      <node id="23588">
+        <label>atomic</label>
+      </node>
+      <node id="23565">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="23566" relation="include">
+        </childnode>
+        <childnode refid="23567" relation="include">
+        </childnode>
+        <childnode refid="23568" relation="include">
+        </childnode>
+        <childnode refid="23569" relation="include">
+        </childnode>
+        <childnode refid="23570" relation="include">
+        </childnode>
+        <childnode refid="23571" relation="include">
+        </childnode>
+        <childnode refid="23572" relation="include">
+        </childnode>
+        <childnode refid="23573" relation="include">
+        </childnode>
+      </node>
+      <node id="23592">
+        <label>functional</label>
+      </node>
+      <node id="23569">
+        <label>iomanip</label>
+      </node>
+      <node id="23604">
+        <label>font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23605" relation="include">
+        </childnode>
+        <childnode refid="23558" relation="include">
+        </childnode>
+        <childnode refid="23606" relation="include">
+        </childnode>
+        <childnode refid="23608" relation="include">
+        </childnode>
+      </node>
+      <node id="23570">
+        <label>limits</label>
+      </node>
+      <node id="23563">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="23564" relation="include">
+        </childnode>
+        <childnode refid="23565" relation="include">
+        </childnode>
+      </node>
+      <node id="23601">
+        <label>color.h</label>
+        <link refid="renderer_2color_8h"/>
+        <childnode refid="23564" relation="include">
+        </childnode>
+      </node>
+      <node id="23564">
+        <label>cstdint</label>
+      </node>
+      <node id="23590">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23591" relation="include">
+        </childnode>
+        <childnode refid="23592" relation="include">
+        </childnode>
+        <childnode refid="23569" relation="include">
+        </childnode>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23593" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23558" relation="include">
+        </childnode>
+      </node>
+      <node id="23606">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="23586" relation="include">
+        </childnode>
+        <childnode refid="23607" relation="include">
+        </childnode>
+      </node>
+      <node id="23568">
+        <label>cmath</label>
+      </node>
+      <node id="23579">
+        <label>stdexcept</label>
+      </node>
+      <node id="23594">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23595" relation="include">
+        </childnode>
+        <childnode refid="23596" relation="include">
+        </childnode>
+        <childnode refid="23597" relation="include">
+        </childnode>
+      </node>
+      <node id="23591">
+        <label>cstdarg</label>
+      </node>
+      <node id="23559">
+        <label>string</label>
+      </node>
+      <node id="23583">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23564" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23584" relation="include">
+        </childnode>
+        <childnode refid="23585" relation="include">
+        </childnode>
+        <childnode refid="23587" relation="include">
+        </childnode>
+        <childnode refid="23594" relation="include">
+        </childnode>
+        <childnode refid="23597" relation="include">
+        </childnode>
+      </node>
+      <node id="23585">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23586" relation="include">
+        </childnode>
+      </node>
+      <node id="23587">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23588" relation="include">
+        </childnode>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23572" relation="include">
+        </childnode>
+        <childnode refid="23580" relation="include">
+        </childnode>
+        <childnode refid="23589" relation="include">
+        </childnode>
+        <childnode refid="23590" relation="include">
+        </childnode>
+      </node>
+      <node id="23571">
+        <label>ostream</label>
+      </node>
+      <node id="23574">
+        <label>limits.h</label>
+      </node>
+      <node id="23577">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23578" relation="include">
+        </childnode>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23579" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23580" relation="include">
+        </childnode>
+        <childnode refid="23583" relation="include">
+        </childnode>
+      </node>
+      <node id="23573">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="23566" relation="include">
+        </childnode>
+        <childnode refid="23574" relation="include">
+        </childnode>
+        <childnode refid="23568" relation="include">
+        </childnode>
+        <childnode refid="23575" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23558" relation="include">
+        </childnode>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23577" relation="include">
+        </childnode>
+        <childnode refid="23580" relation="include">
+        </childnode>
+      </node>
+      <node id="23557">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="23558" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23560" relation="include">
+        </childnode>
+        <childnode refid="23561" relation="include">
+        </childnode>
+        <childnode refid="23600" relation="include">
+        </childnode>
+        <childnode refid="23601" relation="include">
+        </childnode>
+        <childnode refid="23602" relation="include">
+        </childnode>
+      </node>
+      <node id="23599">
+        <label>typeinfo</label>
+      </node>
+      <node id="23562">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="23558">
+        <label>vector</label>
+      </node>
+      <node id="23581">
+        <label>ciso646</label>
+      </node>
+      <node id="23607">
+        <label>array</label>
+      </node>
+      <node id="23600">
+        <label>../shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="23560" relation="include">
+        </childnode>
+      </node>
+      <node id="23593">
+        <label>sstream</label>
+      </node>
+      <node id="23580">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23581" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23582" relation="include">
+        </childnode>
+      </node>
+      <node id="23609">
+        <label>ft2build.h</label>
+      </node>
+      <node id="23582">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23582" relation="include">
+        </childnode>
+      </node>
+      <node id="23560">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="23589">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23578" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+      </node>
+      <node id="23597">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23598" relation="include">
+        </childnode>
+      </node>
+      <node id="23561">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="23562" relation="include">
+        </childnode>
+        <childnode refid="23563" relation="include">
+        </childnode>
+      </node>
+      <node id="23586">
+        <label>cstdlib</label>
+      </node>
+      <node id="23578">
+        <label>iostream</label>
+      </node>
+      <node id="23603">
+        <label>unordered_map</label>
+      </node>
+      <node id="23567">
+        <label>climits</label>
+      </node>
+      <node id="23596">
+        <label>mutex</label>
+      </node>
+      <node id="23572">
+        <label>type_traits</label>
+      </node>
+      <node id="23584">
+        <label>config.h</label>
+      </node>
+      <node id="23602">
+        <label>font/glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23603" relation="include">
+        </childnode>
+        <childnode refid="23558" relation="include">
+        </childnode>
+        <childnode refid="23604" relation="include">
+        </childnode>
+      </node>
+      <node id="23608">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="23609" relation="include">
+        </childnode>
+        <childnode refid="23576" relation="include">
+        </childnode>
+        <childnode refid="23559" relation="include">
+        </childnode>
+        <childnode refid="23603" relation="include">
+        </childnode>
+        <childnode refid="23577" relation="include">
+        </childnode>
+      </node>
+      <node id="23566">
+        <label>algorithm</label>
+      </node>
+      <node id="23575">
+        <label>cstring</label>
+      </node>
+      <node id="23576">
+        <label>memory</label>
+      </node>
+      <node id="23605">
+        <label>typeindex</label>
+      </node>
+      <node id="23598">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23578" relation="include">
+        </childnode>
+        <childnode refid="23599" relation="include">
+        </childnode>
+        <childnode refid="23580" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="23613">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="23610">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="23611" relation="include">
+        </childnode>
+        <childnode refid="23612" relation="include">
+        </childnode>
+        <childnode refid="23613" relation="include">
+        </childnode>
+        <childnode refid="23614" relation="include">
+        </childnode>
+      </node>
+      <node id="23612">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="23614">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+      </node>
+      <node id="23611">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_text_renderer" prot="public">openage::renderer::TextRenderer</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" prot="private">openage::renderer::TextRenderer::text_render_batch_pass</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" prot="private">openage::renderer::TextRenderer::text_render_batch</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1texturefont__shader">openage::texturefont_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/pixel.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../shader/program.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="renderer_2color_8h" kindref="compound">color.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glyph__atlas_8h" kindref="compound">font/glyph_atlas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">texturefont_shader<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>shader::Program<sp/>*<ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>GLint<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref>,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" kindref="member">tex_coord</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::texturefont_shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1renderer_1_1_text_renderer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_text_renderer" kindref="compound">TextRenderer</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1abce6be4c1b901fb91a52e29829260eab" kindref="member">TextRenderer</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" kindref="member">~TextRenderer</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" kindref="member">set_font</ref>(<ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" kindref="member">set_color</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;<ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">draw</ref>(<ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format,<sp/>...);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">draw</ref>(<ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">draw</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" kindref="member">render</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" kindref="compound">text_render_batch_pass</ref><sp/>{</highlight></codeline>
+<codeline lineno="82" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="83" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="84" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" kindref="member">text</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a5adab64f8da8ad160c50492fde6a3711" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a5adab64f8da8ad160c50492fde6a3711" kindref="member">text_render_batch_pass</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" kindref="member">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" kindref="member">y</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" kindref="member">text</ref>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" kindref="member">x</ref>{<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" kindref="member">x</ref>},</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" kindref="member">y</ref>{<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" kindref="member">y</ref>},</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" kindref="member">text</ref>{<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" kindref="member">text</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kindref="compound">text_render_batch</ref><sp/>{</highlight></codeline>
+<codeline lineno="98" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref>;</highlight></codeline>
+<codeline lineno="99" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" kindref="member">color</ref>;</highlight></codeline>
+<codeline lineno="100" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1ae04333b7d526b473b0fe99ff8984a376" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;text_render_batch_pass&gt;<sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1ae04333b7d526b473b0fe99ff8984a376" kindref="member">passes</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a6ca7d6db329efa777b4ca0c50d3540cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a6ca7d6db329efa777b4ca0c50d3540cd" kindref="member">text_render_batch</ref>(<ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" kindref="member">color</ref>)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref>{<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref>},</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" kindref="member">color</ref>{<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" kindref="member">color</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" kindref="member">current_font</ref>;</highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" kindref="member">current_color</ref>;</highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" kindref="member">is_dirty</ref>;</highlight></codeline>
+<codeline lineno="112" refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;text_render_batch&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas" kindref="compound">GlyphAtlas</ref><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" kindref="member">glyph_atlas</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" kindref="member">vbo</ref>;</highlight></codeline>
+<codeline lineno="117" refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" kindref="member">ibo</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/text.h"/>
+  </compounddef>
+</doxygen>

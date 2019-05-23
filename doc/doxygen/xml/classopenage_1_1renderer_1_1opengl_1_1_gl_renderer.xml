@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlRenderer</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_renderer" prot="public" virt="non-virtual">openage::renderer::Renderer</basecompoundref>
+    <includes refid="opengl_2renderer_8h" local="no">renderer.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a9910aaa76c6170c4c28652f50a8f4cf7" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref> *</type>
+        <definition>GlContext* openage::renderer::opengl::GlRenderer::gl_context</definition>
+        <argsstring></argsstring>
+        <name>gl_context</name>
+        <briefdescription>
+<para>The GL context. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="41" column="1" bodyfile="libopenage/renderer/opengl/renderer.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a8b516165a60ce9e88b851b7a5654ea4f" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target" kindref="compound">GlRenderTarget</ref></type>
+        <definition>GlRenderTarget openage::renderer::opengl::GlRenderer::display</definition>
+        <argsstring></argsstring>
+        <name>display</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="43" column="1" bodyfile="libopenage/renderer/opengl/renderer.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlRenderer::GlRenderer</definition>
+        <argsstring>(GlContext *)</argsstring>
+        <name>GlRenderer</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref> *</type>
+          <defname>ctx</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="22" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; Texture2d &gt; openage::renderer::opengl::GlRenderer::add_texture</definition>
+        <argsstring>(resources::Texture2dData const &amp;) override</argsstring>
+        <name>add_texture</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a07fe03ec7257b6dfa803988be4607740">add_texture</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Uploads the given texture data (usually loaded from disk) to graphics hardware and makes it available as a <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> object that can be used for various operations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad1f48c54d3dd40436e868607fb7283f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; Texture2d &gt; openage::renderer::opengl::GlRenderer::add_texture</definition>
+        <argsstring>(resources::Texture2dInfo const &amp;) override</argsstring>
+        <name>add_texture</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1ae35bdd48e24b2942a4ef5b55271f46c7">add_texture</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+<para>Creates a new empty texture with the given parameters on the graphics hardware. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="25" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a5b9cd6e0294a1f4ea8e309badff46167" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_shader_program" kindref="compound">ShaderProgram</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; ShaderProgram &gt; openage::renderer::opengl::GlRenderer::add_shader</definition>
+        <argsstring>(std::vector&lt; resources::ShaderSource &gt; const &amp;) override</argsstring>
+        <name>add_shader</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a9371f6d9b258db3b287e5fcab73a4996">add_shader</reimplements>
+        <param>
+          <type>std::vector&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref> &gt; const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compiles the given shader source code into a shader program. A shader program is the main tool used for graphics rendering. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="27" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1aa20ca113dfbb6d0087451ba6a2bca1e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; Geometry &gt; openage::renderer::opengl::GlRenderer::add_mesh_geometry</definition>
+        <argsstring>(resources::MeshData const &amp;) override</argsstring>
+        <name>add_mesh_geometry</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1ac7faabd63826f110062b7fbf5202c7c9">add_mesh_geometry</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kindref="compound">resources::MeshData</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object from the given mesh data, uploading it to the GPU by creating appropriate buffer. The vertex attributes will be passed to the shader as described in the mesh data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="29" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a9bfa7ca074b1a40804f2e20bcdaa833e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; Geometry &gt; openage::renderer::opengl::GlRenderer::add_bufferless_quad</definition>
+        <argsstring>() override</argsstring>
+        <name>add_bufferless_quad</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a67a77e7702c68b2fa880f9c26f877eed">add_bufferless_quad</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a <ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref> object that passes a simple 4-vertex drawing command with no vertex attributes to the shader. Useful for generating positions in the vertex shader. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ae3af3b346279a744ca6330701543f71d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; RenderTarget &gt; openage::renderer::opengl::GlRenderer::create_texture_target</definition>
+        <argsstring>(std::vector&lt; Texture2d * &gt;) override</argsstring>
+        <name>create_texture_target</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1aaf1729acc8160a03eca5b91cf6e7dc3a">create_texture_target</reimplements>
+        <param>
+          <type>std::vector&lt; <ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> * &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a render target from the given textures. All subsequent drawing operations pointed at this target will write to these textures. Textures are attached to the target in the order in which they appear within the vector. Depth textures are attached as depth components. Textures of every other type are attached as color components. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="32" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="43" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1af731ce3a5d618782d7fcd6ffffd5a659" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> const  *</type>
+        <definition>RenderTarget const  * openage::renderer::opengl::GlRenderer::get_display_target</definition>
+        <argsstring>() override</argsstring>
+        <name>get_display_target</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a2a55ee0bda543175600d17b62d24dbf1">get_display_target</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the built-in display target that represents the window. Passes pointed at this target will have their output visible on the screen. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="33" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad5d4ec5b1523d89a23170beea4bf6525" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref></type>
+        <definition>resources::Texture2dData openage::renderer::opengl::GlRenderer::display_into_data</definition>
+        <argsstring>() override</argsstring>
+        <name>display_into_data</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1a9e2749c186084a43f41a77fb8c999647">display_into_data</reimplements>
+        <briefdescription>
+<para>Stores the display framebuffer into a CPU-accessible data object. Essentially, this takes a screenshot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="35" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="57" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a40532b403c401c2626362e147095cfe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlRenderer::render</definition>
+        <argsstring>(RenderPass const &amp;) override</argsstring>
+        <name>render</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_renderer_1aa6810194c364c0708a7af3407a8c3447">render</reimplements>
+        <param>
+          <type><ref refid="structopenage_1_1renderer_1_1_render_pass" kindref="compound">RenderPass</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+<para>Executes a render pass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/renderer.h" line="37" column="1" bodyfile="libopenage/renderer/opengl/renderer.cpp" bodystart="75" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The OpenGL specialization of the rendering interface. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2399">
+        <label>openage::renderer::Renderer</label>
+        <link refid="classopenage_1_1renderer_1_1_renderer"/>
+      </node>
+      <node id="2398">
+        <label>openage::renderer::opengl::GlRenderer</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer"/>
+        <childnode refid="2399" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2401">
+        <label>openage::renderer::Renderer</label>
+        <link refid="classopenage_1_1renderer_1_1_renderer"/>
+      </node>
+      <node id="2400">
+        <label>openage::renderer::opengl::GlRenderer</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer"/>
+        <childnode refid="2401" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2402" relation="usage">
+          <edgelabel>-gl_context</edgelabel>
+        </childnode>
+        <childnode refid="2404" relation="usage">
+          <edgelabel>-display</edgelabel>
+        </childnode>
+      </node>
+      <node id="2403">
+        <label>openage::renderer::opengl::gl_context_capabilities</label>
+        <link refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities"/>
+      </node>
+      <node id="2402">
+        <label>openage::renderer::opengl::GlContext</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context"/>
+        <childnode refid="2403" relation="usage">
+          <edgelabel>-capabilities</edgelabel>
+        </childnode>
+      </node>
+      <node id="2405">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="2404">
+        <label>openage::renderer::opengl::GlRenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target"/>
+        <childnode refid="2405" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/renderer.h" line="20" column="1" bodyfile="libopenage/renderer/opengl/renderer.h" bodystart="20" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a9bfa7ca074b1a40804f2e20bcdaa833e" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>add_bufferless_quad</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1aa20ca113dfbb6d0087451ba6a2bca1e9" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>add_mesh_geometry</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a5b9cd6e0294a1f4ea8e309badff46167" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>add_shader</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1adb92e5d60d03ef91964ee7dc3871872b" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>add_texture</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad1f48c54d3dd40436e868607fb7283f7" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>add_texture</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ae3af3b346279a744ca6330701543f71d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>create_texture_target</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a8b516165a60ce9e88b851b7a5654ea4f" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>display</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1ad5d4ec5b1523d89a23170beea4bf6525" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>display_into_data</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1af731ce3a5d618782d7fcd6ffffd5a659" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>get_display_target</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a9910aaa76c6170c4c28652f50a8f4cf7" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>gl_context</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a15f5acc6e4ee9c47809d7e73cb1aee42" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>GlRenderer</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer_1a40532b403c401c2626362e147095cfe5" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>render</name></member>
+      <member refid="classopenage_1_1renderer_1_1_renderer_1a861d171e80f126375b4c20287dd85436" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlRenderer</scope><name>~Renderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

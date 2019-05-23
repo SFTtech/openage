@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1datastructure_1_1_const_map_entry" kind="class" language="C++" prot="public">
+    <compoundname>openage::datastructure::ConstMapEntry</compoundname>
+    <includes refid="constexpr__map_8h" local="no">constexpr_map.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>K</declname>
+        <defname>K</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>V</declname>
+        <defname>V</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" prot="public" static="no" mutable="no">
+        <type>const K</type>
+        <definition>const K openage::datastructure::ConstMapEntry&lt; K, V &gt;::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Map entry key. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="38" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" prot="public" static="no" mutable="no">
+        <type>const V</type>
+        <definition>const V openage::datastructure::ConstMapEntry&lt; K, V &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Map entry value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="43" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::datastructure::ConstMapEntry&lt; K, V &gt;::ConstMapEntry</definition>
+        <argsstring>(const K &amp;key, const V &amp;value)</argsstring>
+        <name>ConstMapEntry</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const V &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="20" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::datastructure::ConstMapEntry&lt; K, V &gt;::ConstMapEntry</definition>
+        <argsstring>(const std::pair&lt; K, V &gt; &amp;pair)</argsstring>
+        <name>ConstMapEntry</name>
+        <param>
+          <type>const std::pair&lt; K, V &gt; &amp;</type>
+          <declname>pair</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="25" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1datastructure_1_1_const_map_entry_1a6161ce62836b2cde51618070c6eca08c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::datastructure::ConstMapEntry&lt; K, V &gt;::ConstMapEntry</definition>
+        <argsstring>(std::pair&lt; K, V &gt; &amp;&amp;pair)</argsstring>
+        <name>ConstMapEntry</name>
+        <param>
+          <type>std::pair&lt; K, V &gt; &amp;&amp;</type>
+          <declname>pair</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/constexpr_map.h" line="30" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>One entry in the lookup map. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="877">
+        <label>openage::datastructure::ConstMapEntry&lt; K, V &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_const_map_entry"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/constexpr_map.h" line="18" column="1" bodyfile="libopenage/datastructure/constexpr_map.h" bodystart="18" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>ConstMapEntry</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>ConstMapEntry</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1a6161ce62836b2cde51618070c6eca08c" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>ConstMapEntry</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>key</name></member>
+      <member refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" prot="public" virt="non-virtual"><scope>openage::datastructure::ConstMapEntry</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

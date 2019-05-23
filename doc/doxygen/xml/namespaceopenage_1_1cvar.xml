@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1cvar" kind="namespace" language="C++">
+    <compoundname>openage::cvar</compoundname>
+    <innerclass refid="classopenage_1_1cvar_1_1_c_var_manager" prot="public">openage::cvar::CVarManager</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1cvar_1aebb2850e226c43da630c2dc95802f4ee" prot="public" static="no">
+        <type>std::function&lt; std::string()&gt;</type>
+        <definition>using openage::cvar::get_func = typedef std::function&lt;std::string()&gt;</definition>
+        <argsstring></argsstring>
+        <name>get_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>function type used to get a configuration value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="22" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1cvar_1a9da0b79349923d4b334b76da9ea8828f" prot="public" static="no">
+        <type>std::function&lt; void(std::string)&gt;</type>
+        <definition>using openage::cvar::set_func = typedef std::function&lt;void(std::string)&gt;</definition>
+        <argsstring></argsstring>
+        <name>set_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>function type to set the value of a config entry </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="25" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1cvar_1a8f14b711d03e0856c0753a9b330ff5cb" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">CVarManager</ref> *, const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp; &gt;</type>
+        <definition>OAAPI pyinterface::PyIfFunc&lt; void, CVarManager *, const util::Path &amp; &gt; openage::cvar::pyx_load_config_file</definition>
+        <argsstring></argsstring>
+        <name>pyx_load_config_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Python function to load a configuration file. The config manager is passed into it.</para>
+<para>pxd: ctypedef <ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">CVarManager</ref> * CVarManagerPtr PyIfFunc2[void, CVarManagerPtr, const Path&amp;] pyx_load_config_file </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.cpp" line="54" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/cvar/cvar.cpp" line="9" column="1"/>
+  </compounddef>
+</doxygen>

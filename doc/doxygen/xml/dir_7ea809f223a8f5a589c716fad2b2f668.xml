@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_7ea809f223a8f5a589c716fad2b2f668" kind="dir">
+    <compoundname>libopenage/datastructure</compoundname>
+    <innerfile refid="concurrent__queue_8h">concurrent_queue.h</innerfile>
+    <innerfile refid="constexpr__map_8h">constexpr_map.h</innerfile>
+    <innerfile refid="pairing__heap_8h">pairing_heap.h</innerfile>
+    <innerfile refid="datastructure_2tests_8cpp">tests.cpp</innerfile>
+    <innerfile refid="datastructure_2tests_8h">tests.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/datastructure/"/>
+  </compounddef>
+</doxygen>

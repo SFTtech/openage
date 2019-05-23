@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1pyinterface_1_1_py_if_func" kind="class" language="C++" prot="public">
+    <compoundname>openage::pyinterface::PyIfFunc</compoundname>
+    <basecompoundref refid="classopenage_1_1pyinterface_1_1_func" prot="public" virt="non-virtual">openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</basecompoundref>
+    <includes refid="functional_8h" local="no">functional.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>ReturnType</declname>
+        <defname>ReturnType</defname>
+      </param>
+      <param>
+        <type>typename ...</type>
+        <declname>ArgTypes</declname>
+        <defname>ArgTypes</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a151c2faee8d91169645204f1eb3a6a22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::PyIfFunc</definition>
+        <argsstring>()</argsstring>
+        <name>PyIfFunc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="409" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="409" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a1ac0419304a48f6c323317604c117388" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::~PyIfFunc</definition>
+        <argsstring>()</argsstring>
+        <name>~PyIfFunc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="420" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="420" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a5472b3b618607a4c2cde42ad9bfb77a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::PyIfFunc</definition>
+        <argsstring>(const PyIfFunc&lt; ReturnType, ArgTypes ... &gt; &amp;other)=delete</argsstring>
+        <name>PyIfFunc</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="420" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1ae503c2b858422169e2a0ad54b7b44d05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::PyIfFunc</definition>
+        <argsstring>(PyIfFunc&lt; ReturnType, ArgTypes ... &gt; &amp;&amp;other)=delete</argsstring>
+        <name>PyIfFunc</name>
+        <param>
+          <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="420" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1aa6f654b601f7c6beabcd05796c2b87ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>PyIfFunc&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(const PyIfFunc&lt; ReturnType, ArgTypes ... &gt; &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="427" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a584459e86ceee74a5a56619f0d19a0e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;</type>
+        <definition>PyIfFunc&lt;ReturnType, ArgTypes ...&gt;&amp; openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::operator=</definition>
+        <argsstring>(PyIfFunc&lt; ReturnType, ArgTypes ... &gt; &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; ReturnType, ArgTypes ... &gt; &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="428" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_if_func_1a411242c89ae252742b481bba3d94a4fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;::operator Func&lt; ReturnType, ArgTypes ... &gt; &amp;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator Func&lt; ReturnType, ArgTypes ... &gt; &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="431" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="431" bodyend="433"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>For usage by &quot;Py Interface Functions&quot;, i.e. empty global function pointers in libopenage that get filled by Cython at initialization time.</para>
+<para>Use only for global objects that have associated symbol names (this is enforced).</para>
+<para>The interface for <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> is identical to that of <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>, so we&apos;ll simply typedef them to avoid the redundant pxd lines from above.</para>
+<para>pxd:</para>
+<para>ctypedef Func0 PyIfFunc0 ctypedef Func1 PyIfFunc1 ctypedef Func2 PyIfFunc2 ctypedef Func3 PyIfFunc3 ctypedef Func4 PyIfFunc4 ctypedef Func5 PyIfFunc5 </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3796">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+      </node>
+      <node id="3795">
+        <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
+        <childnode refid="3796" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3798">
+        <label>openage::pyinterface::Func&lt; ReturnType, ArgTypes ... &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_func"/>
+      </node>
+      <node id="3797">
+        <label>openage::pyinterface::PyIfFunc&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_if_func"/>
+        <childnode refid="3798" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pyinterface/functional.h" line="407" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="407" bodyend="434"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa519971fccd473cdb5de2f8c39a377a1" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a5e41d36722ffdb915f78dd3db9019489" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind0</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ad1eef53a086eafc1ced966d45e549e58" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind1</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ac1830958fb682c3036ea8a6d6add24f3" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind2</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ace88962df6215e31b2961581e5fae4c3" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind3</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a543c66d2cfec84be7ea1cc38b413e74b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind_noexcept</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1ad9131b2925896e28440f173fd5e7e3c1" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind_noexcept0</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a2b05c1be5593865d85e1c2a50dcbe14e" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind_noexcept1</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a76b8e4db1b1c8b9077f251f9c2cb1c40" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind_noexcept2</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a995b506379e9550f1ca6c39fb7bb4f5e" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>bind_noexcept3</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a6f751ca999eabb5bd65e5bc73acc50b1" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>call</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a83b9691db46167c2637c86f5a71cb40f" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>check_fptr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a9aafa14c1e14d75e4c65258650e2281b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a411404c88e1c3a1e94d5491aadcf444b" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa7c97b27e57c92dd099c84d52d19697d" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a81cf56998f2138465da539c140b15443" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa841aafdf6e5a35761599c6e57188541" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>Func</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a523f9e78c668fd6192a81cab5e6c72cb" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>get</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aaed99bb0f4d5ec8a33f23db333df3fce" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>operator const std::function&lt; ReturnType</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1a411242c89ae252742b481bba3d94a4fa" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>operator Func&lt; ReturnType, ArgTypes ... &gt; &amp;</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1aa6f654b601f7c6beabcd05796c2b87ee" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1a584459e86ceee74a5a56619f0d19a0e9" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a29df3bfe5f42965d194fd061e8c38d92" prot="public" virt="non-virtual" ambiguityscope="Func&lt; ReturnType, ArgTypes ... &gt;::"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a79f4926a369a8e3cf54214abe80257a6" prot="public" virt="non-virtual" ambiguityscope="Func&lt; ReturnType, ArgTypes ... &gt;::"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1aa4c47359a02ab210750ba35bf012ff37" prot="public" virt="non-virtual" ambiguityscope="Func&lt; ReturnType, ArgTypes ... &gt;::"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_func_1a0193d5a98fe674619cd1d9b8d00d6b55" prot="public" virt="non-virtual" ambiguityscope="Func&lt; ReturnType, ArgTypes ... &gt;::"><scope>openage::pyinterface::PyIfFunc</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1a151c2faee8d91169645204f1eb3a6a22" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>PyIfFunc</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1a5472b3b618607a4c2cde42ad9bfb77a0" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>PyIfFunc</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1ae503c2b858422169e2a0ad54b7b44d05" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>PyIfFunc</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_if_func_1a1ac0419304a48f6c323317604c117388" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyIfFunc</scope><name>~PyIfFunc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

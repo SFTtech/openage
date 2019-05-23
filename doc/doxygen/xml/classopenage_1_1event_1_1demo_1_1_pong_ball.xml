@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1demo_1_1_pong_ball" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::demo::PongBall</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_event_target" prot="public" virt="non-virtual">openage::event::EventTarget</basecompoundref>
+    <includes refid="gamestate_8h" local="no">gamestate.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a2da4a82f8eaa316849f88eba1aee60b5" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1curve_1_1_discrete" kindref="compound">curve::Discrete</ref>&lt; <ref refid="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" kindref="member">util::Vector2d</ref> &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;curve::Discrete&lt;util::Vector2d&gt; &gt; openage::event::demo::PongBall::speed</definition>
+        <argsstring></argsstring>
+        <name>speed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="102" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a71260cd555f2733745edd4a4242f858f" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1curve_1_1_continuous" kindref="compound">curve::Continuous</ref>&lt; <ref refid="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" kindref="member">util::Vector2d</ref> &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;curve::Continuous&lt;util::Vector2d&gt; &gt; openage::event::demo::PongBall::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="103" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a79dfeb3d8e9d0cf7d2c63635b39e6e83" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::event::demo::PongBall::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="112" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1adffa859ebb9d6b200c3852d9aec76cfe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::demo::PongBall::PongBall</definition>
+        <argsstring>(const std::shared_ptr&lt; Loop &gt; &amp;mgr, size_t id)</argsstring>
+        <name>PongBall</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &gt; &amp;</type>
+          <declname>mgr</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="89" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="89" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a4b64806bc9ce546cfe1573d1f3ecb551" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::event::demo::PongBall::id</definition>
+        <argsstring>() const override</argsstring>
+        <name>id</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_target_1ac33e23507125a3a248eb8d031e8f39ed">id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Give a unique event system identifier for the entity </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="105" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="105" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_pong_ball_1a0b94d49da0d7c82cc56be793228045d2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::PongBall::child_changes</definition>
+        <argsstring>(const curve::time_t &amp;time)</argsstring>
+        <name>child_changes</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/gamestate.h" line="109" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="109" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3687">
+        <label>openage::event::demo::PongBall</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_pong_ball"/>
+        <childnode refid="3688" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3688">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3689">
+        <label>openage::event::demo::PongBall</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_pong_ball"/>
+        <childnode refid="3690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3690">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/demo/gamestate.h" line="87" column="1" bodyfile="libopenage/event/demo/gamestate.h" bodystart="87" bodyend="113"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a79dfeb3d8e9d0cf7d2c63635b39e6e83" prot="private" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>_id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>add_dependent</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>changes</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a0b94d49da0d7c82cc56be793228045d2" prot="private" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>child_changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1abe6736c7ec9aeba96a045c9e517bdf66" prot="protected" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>EventTarget</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a4b64806bc9ce546cfe1573d1f3ecb551" prot="public" virt="virtual"><scope>openage::event::demo::PongBall</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1adffa859ebb9d6b200c3852d9aec76cfe" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>PongBall</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a71260cd555f2733745edd4a4242f858f" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>position</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>show_dependents</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a10a6498be4aac6daa9c254fbb59cd5cb" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>single_change_notifier</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_pong_ball_1a2da4a82f8eaa316849f88eba1aee60b5" prot="public" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>speed</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" prot="protected" virt="non-virtual"><scope>openage::event::demo::PongBall</scope><name>trigger</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1af2ea4d43df8ac5dad62ce41a5a300dca" prot="public" virt="virtual"><scope>openage::event::demo::PongBall</scope><name>~EventTarget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

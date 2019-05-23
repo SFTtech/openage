@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_deferred_initial_constant_property_values" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::DeferredInitialConstantPropertyValues</compoundname>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_base" prot="public" virt="non-virtual">qtsdl::GuiItemBase</derivedcompoundref>
+    <includes refid="deferred__initial__constant__property__values_8h" local="no">deferred_initial_constant_property_values.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::DeferredInitialConstantPropertyValues::init_over</definition>
+        <argsstring></argsstring>
+        <name>init_over</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::function&lt; void()&gt; &gt;</type>
+        <definition>std::vector&lt;std::function&lt;void()&gt; &gt; qtsdl::DeferredInitialConstantPropertyValues::static_properties_assignments</definition>
+        <argsstring></argsstring>
+        <name>static_properties_assignments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="36" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::DeferredInitialConstantPropertyValues::DeferredInitialConstantPropertyValues</definition>
+        <argsstring>()</argsstring>
+        <name>DeferredInitialConstantPropertyValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="15" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp" bodystart="7" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::DeferredInitialConstantPropertyValues::~DeferredInitialConstantPropertyValues</definition>
+        <argsstring>()</argsstring>
+        <name>~DeferredInitialConstantPropertyValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Is virtual to be able to catch the error when non-persistent item uses liveReloadTag. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp" bodystart="12" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::DeferredInitialConstantPropertyValues::apply_static_properties</definition>
+        <argsstring>()</argsstring>
+        <name>apply_static_properties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute saved static properties assignments (for newly created cores). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="25" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp" bodystart="15" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::DeferredInitialConstantPropertyValues::clear_static_properties</definition>
+        <argsstring>()</argsstring>
+        <name>clear_static_properties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clear saved static properties assignments (for cores that existed before the GUI reload). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool qtsdl::DeferredInitialConstantPropertyValues::is_init_over</definition>
+        <argsstring>() const</argsstring>
+        <name>is_init_over</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="32" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores static properties during initialization to be able to assign them after all &apos;liveReloadTag&apos; properties are set. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1095">
+        <label>openage::gui::GameSpecLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_spec_link"/>
+        <childnode refid="1091" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1093">
+        <label>openage::gui::GameControlLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_control_link"/>
+        <childnode refid="1091" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1092">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="1091" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1096">
+        <label>openage::gui::OutputModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_output_mode_link"/>
+        <childnode refid="1091" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1089">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="1091">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="1090" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1090">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="1089" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1097">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="1090" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1094">
+        <label>openage::gui::GameMainLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_main_link"/>
+        <childnode refid="1091" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1098">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="1097" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1099">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" line="13" column="1" bodyfile="libopenage/gui/guisys/private/livereload/deferred_initial_constant_property_values.h" bodystart="13" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>apply_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>clear_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>init_over</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>is_init_over</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" virt="non-virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>static_properties_assignments</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" virt="virtual"><scope>qtsdl::DeferredInitialConstantPropertyValues</scope><name>~DeferredInitialConstantPropertyValues</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

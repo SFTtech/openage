@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="resource__def_8cpp" kind="file" language="C++">
+    <compoundname>resource_def.cpp</compoundname>
+    <includes refid="resource__def_8h" local="yes">resource_def.h</includes>
+    <incdepgraph>
+      <node id="2094">
+        <label>list</label>
+      </node>
+      <node id="2061">
+        <label>libopenage/audio/resource_def.cpp</label>
+        <link refid="resource__def_8cpp"/>
+        <childnode refid="2062" relation="include">
+        </childnode>
+      </node>
+      <node id="2086">
+        <label>atomic</label>
+      </node>
+      <node id="2091">
+        <label>iomanip</label>
+      </node>
+      <node id="2071">
+        <label>functional</label>
+      </node>
+      <node id="2098">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="2071" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+      </node>
+      <node id="2068">
+        <label>cstdint</label>
+      </node>
+      <node id="2089">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="2090" relation="include">
+        </childnode>
+        <childnode refid="2071" relation="include">
+        </childnode>
+        <childnode refid="2091" relation="include">
+        </childnode>
+        <childnode refid="2063" relation="include">
+        </childnode>
+        <childnode refid="2092" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+      </node>
+      <node id="2077">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="2078" relation="include">
+        </childnode>
+      </node>
+      <node id="2102">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="2079" relation="include">
+        </childnode>
+      </node>
+      <node id="2080">
+        <label>stdexcept</label>
+      </node>
+      <node id="2076">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="2093">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="2094" relation="include">
+        </childnode>
+        <childnode refid="2072" relation="include">
+        </childnode>
+        <childnode refid="2095" relation="include">
+        </childnode>
+      </node>
+      <node id="2090">
+        <label>cstdarg</label>
+      </node>
+      <node id="2064">
+        <label>string</label>
+      </node>
+      <node id="2081">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="2068" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2082" relation="include">
+        </childnode>
+        <childnode refid="2083" relation="include">
+        </childnode>
+        <childnode refid="2085" relation="include">
+        </childnode>
+        <childnode refid="2093" relation="include">
+        </childnode>
+        <childnode refid="2095" relation="include">
+        </childnode>
+      </node>
+      <node id="2083">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="2084" relation="include">
+        </childnode>
+      </node>
+      <node id="2085">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="2086" relation="include">
+        </childnode>
+        <childnode refid="2063" relation="include">
+        </childnode>
+        <childnode refid="2087" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2089" relation="include">
+        </childnode>
+      </node>
+      <node id="2104">
+        <label>ostream</label>
+      </node>
+      <node id="2067">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="2068" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2069" relation="include">
+        </childnode>
+        <childnode refid="2070" relation="include">
+        </childnode>
+      </node>
+      <node id="2062">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="2063" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2065" relation="include">
+        </childnode>
+        <childnode refid="2102" relation="include">
+        </childnode>
+        <childnode refid="2103" relation="include">
+        </childnode>
+        <childnode refid="2105" relation="include">
+        </childnode>
+      </node>
+      <node id="2078">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="2079" relation="include">
+        </childnode>
+        <childnode refid="2063" relation="include">
+        </childnode>
+        <childnode refid="2080" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2081" relation="include">
+        </childnode>
+      </node>
+      <node id="2097">
+        <label>typeinfo</label>
+      </node>
+      <node id="2103">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="2104" relation="include">
+        </childnode>
+      </node>
+      <node id="2066">
+        <label>vector</label>
+      </node>
+      <node id="2074">
+        <label>ciso646</label>
+      </node>
+      <node id="2092">
+        <label>sstream</label>
+      </node>
+      <node id="2073">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="2074" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2075" relation="include">
+        </childnode>
+      </node>
+      <node id="2099">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="2063" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2100" relation="include">
+        </childnode>
+        <childnode refid="2067" relation="include">
+        </childnode>
+      </node>
+      <node id="2075">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="2075" relation="include">
+        </childnode>
+      </node>
+      <node id="2088">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="2079" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+      </node>
+      <node id="2095">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="2096" relation="include">
+        </childnode>
+      </node>
+      <node id="2101">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="2100">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="2079" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+      </node>
+      <node id="2084">
+        <label>cstdlib</label>
+      </node>
+      <node id="2079">
+        <label>iostream</label>
+      </node>
+      <node id="2070">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="2071" relation="include">
+        </childnode>
+        <childnode refid="2072" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2076" relation="include">
+        </childnode>
+        <childnode refid="2077" relation="include">
+        </childnode>
+        <childnode refid="2098" relation="include">
+        </childnode>
+      </node>
+      <node id="2072">
+        <label>mutex</label>
+      </node>
+      <node id="2065">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="2064" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2067" relation="include">
+        </childnode>
+        <childnode refid="2099" relation="include">
+        </childnode>
+        <childnode refid="2101" relation="include">
+        </childnode>
+      </node>
+      <node id="2069">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="2087">
+        <label>type_traits</label>
+      </node>
+      <node id="2082">
+        <label>config.h</label>
+      </node>
+      <node id="2105">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="2104" relation="include">
+        </childnode>
+      </node>
+      <node id="2063">
+        <label>memory</label>
+      </node>
+      <node id="2096">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="2079" relation="include">
+        </childnode>
+        <childnode refid="2097" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="resource__def_8h" kindref="compound">resource_def.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/resource_def.cpp"/>
+  </compounddef>
+</doxygen>

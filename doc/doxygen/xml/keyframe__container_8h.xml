@@ -1,0 +1,707 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="keyframe__container_8h" kind="file" language="C++">
+    <compoundname>keyframe_container.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">list</includes>
+    <includes refid="curve_8h" local="yes">curve.h</includes>
+    <includes refid="event_2loop_8h" local="yes">../event/loop.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includedby refid="value__container_8h" local="yes">libopenage/curve/value_container.h</includedby>
+    <includedby refid="keyframe__container_8cpp" local="yes">libopenage/curve/keyframe_container.cpp</includedby>
+    <includedby refid="curve__types_8cpp" local="yes">libopenage/curve/tests/curve_types.cpp</includedby>
+    <incdepgraph>
+      <node id="4914">
+        <label>list</label>
+      </node>
+      <node id="4955">
+        <label>eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="4915" relation="include">
+        </childnode>
+        <childnode refid="4956" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4952" relation="include">
+        </childnode>
+      </node>
+      <node id="4940">
+        <label>atomic</label>
+      </node>
+      <node id="4917">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4918" relation="include">
+        </childnode>
+        <childnode refid="4919" relation="include">
+        </childnode>
+        <childnode refid="4920" relation="include">
+        </childnode>
+        <childnode refid="4921" relation="include">
+        </childnode>
+        <childnode refid="4913" relation="include">
+        </childnode>
+        <childnode refid="4922" relation="include">
+        </childnode>
+        <childnode refid="4923" relation="include">
+        </childnode>
+        <childnode refid="4924" relation="include">
+        </childnode>
+      </node>
+      <node id="4944">
+        <label>functional</label>
+      </node>
+      <node id="4921">
+        <label>iomanip</label>
+      </node>
+      <node id="4913">
+        <label>limits</label>
+      </node>
+      <node id="4953">
+        <label>eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4954" relation="include">
+        </childnode>
+        <childnode refid="4955" relation="include">
+        </childnode>
+        <childnode refid="4957" relation="include">
+        </childnode>
+        <childnode refid="4915" relation="include">
+        </childnode>
+      </node>
+      <node id="4951">
+        <label>../event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="4944" relation="include">
+        </childnode>
+        <childnode refid="4914" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4952" relation="include">
+        </childnode>
+        <childnode refid="4915" relation="include">
+        </childnode>
+        <childnode refid="4953" relation="include">
+        </childnode>
+        <childnode refid="4959" relation="include">
+        </childnode>
+        <childnode refid="4961" relation="include">
+        </childnode>
+        <childnode refid="4962" relation="include">
+        </childnode>
+      </node>
+      <node id="4916">
+        <label>cstdint</label>
+      </node>
+      <node id="4942">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="4943" relation="include">
+        </childnode>
+        <childnode refid="4944" relation="include">
+        </childnode>
+        <childnode refid="4921" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4945" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4928" relation="include">
+        </childnode>
+      </node>
+      <node id="4920">
+        <label>cmath</label>
+      </node>
+      <node id="4959">
+        <label>eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4944" relation="include">
+        </childnode>
+        <childnode refid="4960" relation="include">
+        </childnode>
+      </node>
+      <node id="4931">
+        <label>stdexcept</label>
+      </node>
+      <node id="4915">
+        <label>curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4916" relation="include">
+        </childnode>
+        <childnode refid="4917" relation="include">
+        </childnode>
+      </node>
+      <node id="4946">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="4914" relation="include">
+        </childnode>
+        <childnode refid="4947" relation="include">
+        </childnode>
+        <childnode refid="4948" relation="include">
+        </childnode>
+      </node>
+      <node id="4943">
+        <label>cstdarg</label>
+      </node>
+      <node id="4927">
+        <label>string</label>
+      </node>
+      <node id="4935">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4916" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4936" relation="include">
+        </childnode>
+        <childnode refid="4937" relation="include">
+        </childnode>
+        <childnode refid="4939" relation="include">
+        </childnode>
+        <childnode refid="4946" relation="include">
+        </childnode>
+        <childnode refid="4948" relation="include">
+        </childnode>
+      </node>
+      <node id="4937">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="4938" relation="include">
+        </childnode>
+      </node>
+      <node id="4939">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="4940" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4923" relation="include">
+        </childnode>
+        <childnode refid="4932" relation="include">
+        </childnode>
+        <childnode refid="4941" relation="include">
+        </childnode>
+        <childnode refid="4942" relation="include">
+        </childnode>
+      </node>
+      <node id="4954">
+        <label>unordered_set</label>
+      </node>
+      <node id="4922">
+        <label>ostream</label>
+      </node>
+      <node id="4925">
+        <label>limits.h</label>
+      </node>
+      <node id="4930">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4912" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4931" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4932" relation="include">
+        </childnode>
+        <childnode refid="4935" relation="include">
+        </childnode>
+      </node>
+      <node id="4924">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4918" relation="include">
+        </childnode>
+        <childnode refid="4925" relation="include">
+        </childnode>
+        <childnode refid="4920" relation="include">
+        </childnode>
+        <childnode refid="4926" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4928" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4930" relation="include">
+        </childnode>
+        <childnode refid="4932" relation="include">
+        </childnode>
+      </node>
+      <node id="4956">
+        <label>any</label>
+      </node>
+      <node id="4950">
+        <label>typeinfo</label>
+      </node>
+      <node id="4957">
+        <label>eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="4958" relation="include">
+        </childnode>
+        <childnode refid="4924" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4952" relation="include">
+        </childnode>
+      </node>
+      <node id="4911">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="4912" relation="include">
+        </childnode>
+        <childnode refid="4913" relation="include">
+        </childnode>
+        <childnode refid="4914" relation="include">
+        </childnode>
+        <childnode refid="4915" relation="include">
+        </childnode>
+        <childnode refid="4951" relation="include">
+        </childnode>
+        <childnode refid="4930" relation="include">
+        </childnode>
+      </node>
+      <node id="4960">
+        <label>eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="4915" relation="include">
+        </childnode>
+        <childnode refid="4944" relation="include">
+        </childnode>
+        <childnode refid="4914" relation="include">
+        </childnode>
+        <childnode refid="4929" relation="include">
+        </childnode>
+      </node>
+      <node id="4928">
+        <label>vector</label>
+      </node>
+      <node id="4962">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="4948" relation="include">
+        </childnode>
+        <childnode refid="4935" relation="include">
+        </childnode>
+      </node>
+      <node id="4933">
+        <label>ciso646</label>
+      </node>
+      <node id="4945">
+        <label>sstream</label>
+      </node>
+      <node id="4932">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="4933" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+        <childnode refid="4934" relation="include">
+        </childnode>
+      </node>
+      <node id="4934">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="4934" relation="include">
+        </childnode>
+      </node>
+      <node id="4941">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4912" relation="include">
+        </childnode>
+        <childnode refid="4927" relation="include">
+        </childnode>
+      </node>
+      <node id="4948">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="4949" relation="include">
+        </childnode>
+      </node>
+      <node id="4938">
+        <label>cstdlib</label>
+      </node>
+      <node id="4961">
+        <label>event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4955" relation="include">
+        </childnode>
+        <childnode refid="4915" relation="include">
+        </childnode>
+      </node>
+      <node id="4912">
+        <label>iostream</label>
+      </node>
+      <node id="4958">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="4929" relation="include">
+        </childnode>
+        <childnode refid="4944" relation="include">
+        </childnode>
+        <childnode refid="4923" relation="include">
+        </childnode>
+        <childnode refid="4954" relation="include">
+        </childnode>
+        <childnode refid="4932" relation="include">
+        </childnode>
+        <childnode refid="4930" relation="include">
+        </childnode>
+      </node>
+      <node id="4952">
+        <label>unordered_map</label>
+      </node>
+      <node id="4919">
+        <label>climits</label>
+      </node>
+      <node id="4947">
+        <label>mutex</label>
+      </node>
+      <node id="4923">
+        <label>type_traits</label>
+      </node>
+      <node id="4936">
+        <label>config.h</label>
+      </node>
+      <node id="4918">
+        <label>algorithm</label>
+      </node>
+      <node id="4926">
+        <label>cstring</label>
+      </node>
+      <node id="4929">
+        <label>memory</label>
+      </node>
+      <node id="4949">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4912" relation="include">
+        </childnode>
+        <childnode refid="4950" relation="include">
+        </childnode>
+        <childnode refid="4932" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4973">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="4968">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="4975">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="4971">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="4977">
+        <label>libopenage/curve/discrete.cpp</label>
+        <link refid="discrete_8cpp"/>
+      </node>
+      <node id="4964">
+        <label>libopenage/curve/value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="4965" relation="include">
+        </childnode>
+        <childnode refid="4976" relation="include">
+        </childnode>
+        <childnode refid="4978" relation="include">
+        </childnode>
+      </node>
+      <node id="4974">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="4972" relation="include">
+        </childnode>
+        <childnode refid="4975" relation="include">
+        </childnode>
+      </node>
+      <node id="4979">
+        <label>libopenage/curve/keyframe_container.cpp</label>
+        <link refid="keyframe__container_8cpp"/>
+      </node>
+      <node id="4965">
+        <label>libopenage/curve/continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="4966" relation="include">
+        </childnode>
+        <childnode refid="4967" relation="include">
+        </childnode>
+        <childnode refid="4968" relation="include">
+        </childnode>
+        <childnode refid="4969" relation="include">
+        </childnode>
+      </node>
+      <node id="4972">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="4963">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="4964" relation="include">
+        </childnode>
+        <childnode refid="4979" relation="include">
+        </childnode>
+        <childnode refid="4968" relation="include">
+        </childnode>
+      </node>
+      <node id="4970">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="4971" relation="include">
+        </childnode>
+        <childnode refid="4972" relation="include">
+        </childnode>
+      </node>
+      <node id="4976">
+        <label>libopenage/curve/discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="4977" relation="include">
+        </childnode>
+        <childnode refid="4967" relation="include">
+        </childnode>
+        <childnode refid="4968" relation="include">
+        </childnode>
+        <childnode refid="4969" relation="include">
+        </childnode>
+      </node>
+      <node id="4978">
+        <label>libopenage/curve/value_container.cpp</label>
+        <link refid="value__container_8cpp"/>
+      </node>
+      <node id="4969">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="4970" relation="include">
+        </childnode>
+        <childnode refid="4973" relation="include">
+        </childnode>
+        <childnode refid="4972" relation="include">
+        </childnode>
+        <childnode refid="4974" relation="include">
+        </childnode>
+      </node>
+      <node id="4967">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="4966">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1curve_1_1_keyframe_container" prot="public">openage::curve::KeyframeContainer</innerclass>
+    <innerclass refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" prot="public">openage::curve::KeyframeContainer::Keyframe</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="curve_8h" kindref="compound">curve.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../event/loop.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1curve_1_1_keyframe_container" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container" kindref="compound">KeyframeContainer</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a6ce5238d9611a9cc62550fc3370b94aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a6ce5238d9611a9cc62550fc3370b94aa" kindref="member">Keyframe</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a9d1a29a6f4882f9375add63cd87d6782" kindref="member">Keyframe</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>)<sp/>:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>{<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a74c0349627125515d82d91a082e4aa1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a74c0349627125515d82d91a082e4aa1b" kindref="member">Keyframe</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" kindref="member">value</ref>)<sp/>:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>{<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>},</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" kindref="member">value</ref>{<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" kindref="member">value</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref><sp/>=<sp/><ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::numeric_limits&lt;time_t&gt;::min</ref>();</highlight></codeline>
+<codeline lineno="52" refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1a4bf6d2baf086d5e29b37284e5055c245" kindref="member">value</ref><sp/>=<sp/>T();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" kindref="member">curvecontainer</ref><sp/>=<sp/>std::list&lt;Keyframe&gt;;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>curvecontainer::const_iterator;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" kindref="member">KeyframeContainer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;event::Loop&gt;<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1ae8344fbebc5e645cbc46426ec937a370" kindref="member">loop</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1ae67e4a25f4212a1c5c526d9ad62d2508" kindref="member">~KeyframeContainer</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" kindref="member">last</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>&amp;<sp/>hint)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classopenage_1_1curve_1_1_keyframe_container_1a9fe5fdab43afd4c928337654c72171b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a9fe5fdab43afd4c928337654c72171b3" kindref="member">last</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" kindref="member">last</ref>(time,<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>add<sp/>something<sp/>like<sp/>`previous`<sp/>that<sp/>returns<sp/>element<sp/>with<sp/>e-&gt;time<sp/>&lt;<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>probably<sp/>just<sp/>calls<sp/>`last`<sp/>and<sp/>walks<sp/>back<sp/>one<sp/>element</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>that<sp/>is<sp/>not<sp/>at<sp/>begin()<sp/>already</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref><sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(value,<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Keyframe<sp/>&amp;value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>&amp;hint);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classopenage_1_1curve_1_1_keyframe_container_1a2b7e8c72aad9a88a990aea0c90dc65e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2b7e8c72aad9a88a990aea0c90dc65e3" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref>(time,<sp/>value),<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classopenage_1_1curve_1_1_keyframe_container_1a287aea01a22da706b70a85aed754ff95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a287aea01a22da706b70a85aed754ff95" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>&amp;hint)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">insert</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref>(time,<sp/>value),<sp/>hint);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" kindref="member">erase_after</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>last_valid);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" kindref="member">erase</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>it);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4469b92a601c321c3353c663853d9851" kindref="member">begin</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.begin();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classopenage_1_1curve_1_1_keyframe_container_1a0fc2356241a3c9880a95b1f2672bc7f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a0fc2356241a3c9880a95b1f2672bc7f5" kindref="member">end</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.end();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classopenage_1_1curve_1_1_keyframe_container_1ad503e55c30411387171677294858ff6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1ad503e55c30411387171677294858ff6b" kindref="member">dump</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>e<sp/>:<sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Element:<sp/>time:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>e.time<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>v:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>e.value<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="165" refid="classopenage_1_1curve_1_1_keyframe_container_1ae8344fbebc5e645cbc46426ec937a370" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;event::Loop&gt;<sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1ae8344fbebc5e645cbc46426ec937a370" kindref="member">loop</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a65bbcff9238925060f46b09bb4ad1648" kindref="member">curvecontainer</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="172" refid="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a5721f82c417b564e2adac32f2ef34492" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeContainer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;event::Loop&gt;<sp/>&amp;loop)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>loop(loop)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>default<sp/>element<sp/>at<sp/>-Inf,<sp/>that<sp/>can<sp/>always<sp/>be<sp/>dereferenced<sp/>-<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>there<sp/>will<sp/>by<sp/>definition<sp/>never<sp/>be<sp/>a<sp/>element<sp/>that<sp/>cannot<sp/>be<sp/>dereferenced</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_keyframe_container_1af93ccadcbd22b2a7850c7013e63faddb" kindref="member">container</ref>.push_back(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">Keyframe</ref>(<ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::numeric_limits&lt;time_t&gt;::min</ref>(),<sp/>T()));</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="182" refid="classopenage_1_1curve_1_1_keyframe_container_1ae67e4a25f4212a1c5c526d9ad62d2508" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1ae67e4a25f4212a1c5c526d9ad62d2508" kindref="member">KeyframeContainer&lt;T&gt;::~KeyframeContainer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>rely<sp/>on<sp/>std::list<sp/>to<sp/>destroy<sp/>all<sp/>elements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="194" refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a675d4e01acc9d9d063cfd38b2b557752" kindref="member">KeyframeContainer&lt;T&gt;::last</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;time,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>&amp;hint)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeIterator</ref><sp/>e<sp/>=<sp/>(hint<sp/>==<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.end())<sp/>?<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.begin()<sp/>:<sp/>hint;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.front().time<sp/>&gt;<sp/>time)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>will<sp/>never<sp/>happen<sp/>due<sp/>to<sp/>the<sp/>container.front-&gt;time<sp/>==<sp/>-Inf<sp/>magic!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;rupture<sp/>in<sp/>spacetime<sp/>detected,<sp/>curve<sp/>container<sp/>is<sp/>broken&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Search<sp/>in<sp/>the<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(time<sp/>&gt;<sp/>e-&gt;time)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>the<sp/>searched<sp/>element<sp/>is<sp/>supposed<sp/>to<sp/>be<sp/>AFTER<sp/>the<sp/>hint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>perform<sp/>the<sp/>search<sp/>via<sp/>-&gt;next</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.end()<sp/>&amp;&amp;<sp/>time<sp/>&gt;=<sp/>e-&gt;time)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e++;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e--;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>e<sp/>is<sp/>now<sp/>one<sp/>of<sp/>two<sp/>options:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1.<sp/>e<sp/>==<sp/>end:<sp/>The<sp/>last<sp/>element<sp/>of<sp/>the<sp/>queue<sp/>was<sp/>smaller<sp/>than<sp/>`time`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>e<sp/>!=<sp/>end:<sp/>There<sp/>was<sp/>a<sp/>element<sp/>with<sp/>`e-&gt;time`<sp/>&gt;<sp/>`time`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(time<sp/>&lt;<sp/>e-&gt;time)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>searched<sp/>element<sp/>is<sp/>supposed<sp/>to<sp/>be<sp/>BEFORE<sp/>the<sp/>hint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>perform<sp/>the<sp/>search<sp/>via<sp/>-&gt;prev</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.begin()<sp/>&amp;&amp;<sp/>time<sp/>&lt;<sp/>e-&gt;time)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e--;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>e<sp/>is<sp/>now<sp/>one<sp/>of<sp/>two<sp/>options:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1.<sp/>e<sp/>==<sp/>begin:<sp/>The<sp/>time<sp/>was<sp/>before<sp/>every<sp/>element<sp/>in<sp/>the<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>e<sp/>!=<sp/>begin:<sp/>There<sp/>was<sp/>an<sp/>element<sp/>with<sp/>`e-&gt;time`<sp/>&gt;<sp/>`time`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>perform<sp/>&lt;=<sp/>search<sp/>-<sp/>and<sp/>return<sp/>e,<sp/>whose<sp/>time<sp/>is<sp/>==<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>e;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a3ffa6f71c0489532547ba12a56fd97bc" kindref="member">KeyframeContainer&lt;T&gt;::insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe" kindref="compound">KeyframeContainer&lt;T&gt;::Keyframe</ref><sp/>&amp;e,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref><sp/>&amp;hint)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>KeyframeIterator<sp/>at<sp/>=<sp/>this-&gt;last(e.<ref refid="classopenage_1_1curve_1_1_keyframe_container_1_1_keyframe_1ad78c184537ddb2314e5c6663f2aaacab" kindref="member">time</ref>,<sp/>hint);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>++at;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.insert(at,<sp/>e);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref></highlight></codeline>
+<codeline lineno="248" refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1aae7b3fad452aa1f223edc93e5b38a518" kindref="member">KeyframeContainer&lt;T&gt;::erase_after</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref><sp/>last_valid)<sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exclude<sp/>the<sp/>last_valid<sp/>element<sp/>from<sp/>deletion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_valid<sp/>!=<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++last_valid;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>everything<sp/>to<sp/>the<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(last_valid<sp/>!=<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_valid<sp/>=<sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.erase(last_valid);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>last_valid;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref></highlight></codeline>
+<codeline lineno="267" refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_keyframe_container_1a4a18e067efb8d2a6aa4f738cb8b391b5" kindref="member">KeyframeContainer&lt;T&gt;::erase</ref>(<ref refid="classopenage_1_1curve_1_1_keyframe_container_1a2ac421c1a774c53ab8034a344e423b68" kindref="member">KeyframeContainer&lt;T&gt;::KeyframeIterator</ref><sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="namespaceopenage_1_1curve_1_1tests_1afc4e799a037edab37e1e35a74da593b7" kindref="member">container</ref>.erase(e);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/keyframe_container.h"/>
+  </compounddef>
+</doxygen>

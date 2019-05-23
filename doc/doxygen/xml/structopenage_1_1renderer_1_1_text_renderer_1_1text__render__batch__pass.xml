@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" kind="struct" language="C++" prot="private">
+    <compoundname>openage::renderer::TextRenderer::text_render_batch_pass</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::TextRenderer::text_render_batch_pass::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="82" column="1" bodyfile="libopenage/renderer/text.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::TextRenderer::text_render_batch_pass::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="83" column="1" bodyfile="libopenage/renderer/text.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::TextRenderer::text_render_batch_pass::text</definition>
+        <argsstring></argsstring>
+        <name>text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="84" column="1" bodyfile="libopenage/renderer/text.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a5adab64f8da8ad160c50492fde6a3711" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::TextRenderer::text_render_batch_pass::text_render_batch_pass</definition>
+        <argsstring>(int x, int y, const std::string &amp;text)</argsstring>
+        <name>text_render_batch_pass</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="86" column="1" bodyfile="libopenage/renderer/text.h" bodystart="86" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A single text draw request containing the text and position. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4443">
+        <label>openage::renderer::TextRenderer::text_render_batch_pass</label>
+        <link refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/text.h" line="81" column="1" bodyfile="libopenage/renderer/text.h" bodystart="81" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a1341bf78734541bd95fec6aea90fff7f" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch_pass</scope><name>text</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a5adab64f8da8ad160c50492fde6a3711" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch_pass</scope><name>text_render_batch_pass</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1a2552bb8c9932df1b44daf11dbdfc6a36" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch_pass</scope><name>x</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass_1afdda46230b262e49f5e6b1ad2d081be5" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch_pass</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

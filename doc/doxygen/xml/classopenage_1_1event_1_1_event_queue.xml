@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_queue" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::event::EventQueue</compoundname>
+    <includes refid="eventqueue_8h" local="no">eventqueue.h</includes>
+    <innerclass refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element" prot="public">openage::event::EventQueue::OnChangeElement</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" prot="public" static="no">
+        <type>std::unordered_set&lt; <ref refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element" kindref="compound">OnChangeElement</ref>, <ref refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher" kindref="compound">OnChangeElement::Hasher</ref>, <ref refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_equal" kindref="compound">OnChangeElement::Equal</ref> &gt;</type>
+        <definition>using openage::event::EventQueue::change_set =  std::unordered_set&lt;OnChangeElement, OnChangeElement::Hasher, OnChangeElement::Equal&gt;</definition>
+        <argsstring></argsstring>
+        <name>change_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type for the set to store changes to track. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="51" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref> *</type>
+        <definition>change_set* openage::event::EventQueue::changes</definition>
+        <argsstring></argsstring>
+        <name>changes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="128" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a92c22f62ef3fc1e3ce03051fc2c6c964" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref> *</type>
+        <definition>change_set* openage::event::EventQueue::future_changes</definition>
+        <argsstring></argsstring>
+        <name>future_changes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="129" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a14b1f5a54b6a3c3898bf534b50fee7f9" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref></type>
+        <definition>change_set openage::event::EventQueue::changeset_A</definition>
+        <argsstring></argsstring>
+        <name>changeset_A</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="132" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1ae4954774fca16c32b81530415a3b5d76" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref></type>
+        <definition>change_set openage::event::EventQueue::changeset_B</definition>
+        <argsstring></argsstring>
+        <name>changeset_B</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="133" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a59e482122fd26c9e261f4eaff00ebcc8" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>std::unordered_set&lt;std::shared_ptr&lt;Event&gt; &gt; openage::event::EventQueue::dependency_events</definition>
+        <argsstring></argsstring>
+        <name>dependency_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores events that sleep until their dependency changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="138" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1accc0e126e8a8b9560d229fabdd23f17d" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>std::unordered_set&lt;std::shared_ptr&lt;Event&gt; &gt; openage::event::EventQueue::dependency_immediately_events</definition>
+        <argsstring></argsstring>
+        <name>dependency_immediately_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores events that sleep until their dependency changes, but they trigger instantly when their dependency changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="144" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a2453f2e8a018a7b4bdbbc95618bc85f9" prot="private" static="no" mutable="no">
+        <type>std::unordered_set&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>std::unordered_set&lt;std::shared_ptr&lt;Event&gt; &gt; openage::event::EventQueue::trigger_events</definition>
+        <argsstring></argsstring>
+        <name>trigger_events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Events that fire only when triggered. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="149" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref></type>
+        <definition>EventStore openage::event::EventQueue::event_queue</definition>
+        <argsstring></argsstring>
+        <name>event_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The universe timeline processes through this queue. Type::ONCE is only inserted into the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="155" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a1b424b6e8cc92b0e597bd335d1b01967" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventQueue::EventQueue</definition>
+        <argsstring>()</argsstring>
+        <name>EventQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="56" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Event &gt; openage::event::EventQueue::create_event</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;eventtarget, const std::shared_ptr&lt; EventClass &gt; &amp;eventclass, const std::shared_ptr&lt; State &gt; &amp;state, const curve::time_t &amp;reference_time, const EventClass::param_map &amp;params)</argsstring>
+        <name>create_event</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>eventtarget</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+          <declname>eventclass</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>reference_time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add an event for a specified target</para>
+<para>A target is every single unit in the game world - so best add these events in the constructor of the game objects.</para>
+<para>The <computeroutput>insertion_time</computeroutput> is the time used to calculate when the actual event time will happen! </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="67" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="16" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::remove</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;evnt)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>evnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the given event from the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="76" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="129" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::enqueue_change</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event)</argsstring>
+        <name>enqueue_change</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An update to existing events has to be applied. The execution time of this event may have changed or it is newly created. This updates/inserts the given event in the main queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="84" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="137" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::reenqueue</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event)</argsstring>
+        <name>reenqueue</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The event was just removed, add it again. This is used for REPEAT events so that they are repeated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="90" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::add_change</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event, const curve::time_t &amp;changed_at)</argsstring>
+        <name>add_change</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>changed_at</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An event target has changed, and the event shall be retriggered </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="95" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="82" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_store" kindref="compound">EventStore</ref> &amp;</type>
+        <definition>const EventStore &amp; openage::event::EventQueue::get_event_queue</definition>
+        <argsstring>() const</argsstring>
+        <name>get_event_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get an accessor to the running queue for state output purpose. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="101" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Event &gt; openage::event::EventQueue::take_event</definition>
+        <argsstring>(const curve::time_t &amp;max_time)</argsstring>
+        <name>take_event</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>max_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain the next event from the <computeroutput>event_queue</computeroutput> that happens before <computeroutput>&lt;= max_time</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="106" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="157" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" kindref="member">change_set</ref> &amp;</type>
+        <definition>const EventQueue::change_set &amp; openage::event::EventQueue::get_changes</definition>
+        <argsstring>() const</argsstring>
+        <name>get_changes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the change_set to process changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="111" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="178" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::clear_changes</definition>
+        <argsstring>()</argsstring>
+        <name>clear_changes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All changes (fetched with <computeroutput>get_changes</computeroutput>) have been processed, so we can clear the change_set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="117" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::EventQueue::swap_changesets</definition>
+        <argsstring>()</argsstring>
+        <name>swap_changesets</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Swap the <computeroutput>changes</computeroutput> and <computeroutput>future_changes</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="122" column="1" bodyfile="libopenage/event/eventqueue.cpp" bodystart="188" bodyend="190"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The core event class for execution and execution dependencies. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1452">
+        <label>openage::util::SharedPtrLess&lt; Event &gt;</label>
+        <link refid="structopenage_1_1util_1_1_shared_ptr_less"/>
+      </node>
+      <node id="1450">
+        <label>openage::event::EventStore</label>
+        <link refid="classopenage_1_1event_1_1_event_store"/>
+        <childnode refid="1451" relation="usage">
+          <edgelabel>+heap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1449">
+        <label>openage::event::EventQueue</label>
+        <link refid="classopenage_1_1event_1_1_event_queue"/>
+        <childnode refid="1450" relation="usage">
+          <edgelabel>-event_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="1451">
+        <label>openage::datastructure::PairingHeap&lt; std::shared_ptr&lt; Event &gt;, util::SharedPtrLess&lt; Event &gt; &gt;</label>
+        <link refid="classopenage_1_1datastructure_1_1_pairing_heap"/>
+        <childnode refid="1452" relation="usage">
+          <edgelabel>#cmp</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventqueue.h" line="22" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="22" bodyend="156"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a7115692628b99b277fead8b39603c885" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>add_change</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1aaabd21eb088af6bb687e1bd6c71076db" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>change_set</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a07cfe681660473cfc3ec607490c7c42d" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a14b1f5a54b6a3c3898bf534b50fee7f9" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>changeset_A</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1ae4954774fca16c32b81530415a3b5d76" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>changeset_B</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a2f04cadaa84a8629b94020cb26b999ad" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>clear_changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1ac5abd71bf0167e4b7d36f19a29f4a611" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>create_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a59e482122fd26c9e261f4eaff00ebcc8" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>dependency_events</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1accc0e126e8a8b9560d229fabdd23f17d" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>dependency_immediately_events</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a8f45163ce661267cf80d811a776c8733" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>enqueue_change</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a790ceca6fa0cfa9eec28581350727756" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>event_queue</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a1b424b6e8cc92b0e597bd335d1b01967" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>EventQueue</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a92c22f62ef3fc1e3ce03051fc2c6c964" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>future_changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a501fe0a6571ddf1a97bf6d7a6328d924" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>get_changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a7da54eb03b82d893e26af2af2749dd62" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>get_event_queue</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1ac4990fe7904f09c54158de776c6cb805" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>reenqueue</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a42433f50adffb7e0a20c43889292e54c" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>remove</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a11ac5f64f4344db4281924887f8bda1d" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>swap_changesets</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1aec381e61d472643475de6fa50ae7b5d8" prot="public" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>take_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_queue_1a2453f2e8a018a7b4bdbbc95618bc85f9" prot="private" virt="non-virtual"><scope>openage::event::EventQueue</scope><name>trigger_events</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

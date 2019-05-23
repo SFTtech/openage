@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_resize_handler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::ResizeHandler</compoundname>
+    <derivedcompoundref refid="classopenage_1_1console_1_1_console" prot="private" virt="non-virtual">openage::console::Console</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_engine" prot="public" virt="non-virtual">openage::Engine</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_g_u_i" prot="public" virt="non-virtual">openage::gui::GUI</derivedcompoundref>
+    <includes refid="handlers_8h" local="no">handlers.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::ResizeHandler::~ResizeHandler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ResizeHandler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::ResizeHandler::on_resize</definition>
+        <argsstring>(coord::viewport_delta new_size)=0</argsstring>
+        <name>on_resize</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_g_u_i_1a10ef720725de7e19d860f66593944edc">on_resize</reimplementedby>
+        <reimplementedby refid="classopenage_1_1console_1_1_console_1a9e8a7d06ccbf4e5bf402e87cf4726ffb">on_resize</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c">on_resize</reimplementedby>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the resize handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="76" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>superclass for handling a window resize event. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4088">
+        <label>openage::gui::GUI</label>
+        <link refid="classopenage_1_1gui_1_1_g_u_i"/>
+        <childnode refid="4085" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4086">
+        <label>openage::console::Console</label>
+        <link refid="classopenage_1_1console_1_1_console"/>
+        <childnode refid="4085" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="4087">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="4085" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4085">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4089">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/handlers.h" line="69" column="1" bodyfile="libopenage/handlers.h" bodystart="69" bodyend="77"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d" prot="public" virt="pure-virtual"><scope>openage::ResizeHandler</scope><name>on_resize</name></member>
+      <member refid="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="public" virt="virtual"><scope>openage::ResizeHandler</scope><name>~ResizeHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

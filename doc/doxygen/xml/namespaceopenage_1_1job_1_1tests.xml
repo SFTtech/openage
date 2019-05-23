@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1job_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::job::tests</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1job_1_1tests_1abca5d5e032e3cdbbe7176fde710f7abd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::tests::test_simple_job</definition>
+        <argsstring>()</argsstring>
+        <name>test_simple_job</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/tests.cpp" line="15" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="15" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1job_1_1tests_1a9e15fa28b3f67065f69fb17a569e4ecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::tests::test_simple_job_with_exception</definition>
+        <argsstring>()</argsstring>
+        <name>test_simple_job_with_exception</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/tests.cpp" line="49" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="49" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1job_1_1tests_1af342bd56aa228b49c1a6867982aca505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::job::tests::test_job_manager</definition>
+        <argsstring>()</argsstring>
+        <name>test_job_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/tests.cpp" line="93" column="1" bodyfile="libopenage/job/tests.cpp" bodystart="93" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/job/tests.cpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

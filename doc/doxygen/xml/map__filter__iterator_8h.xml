@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="map__filter__iterator_8h" kind="file" language="C++">
+    <compoundname>map_filter_iterator.h</compoundname>
+    <includes refid="curve_8h" local="yes">curve.h</includes>
+    <includes refid="iterator_8h" local="yes">iterator.h</includes>
+    <includes local="no">iterator</includes>
+    <includes local="no">limits</includes>
+    <includedby refid="map_8h" local="yes">libopenage/curve/map.h</includedby>
+    <includedby refid="map__filter__iterator_8cpp" local="yes">libopenage/curve/map_filter_iterator.cpp</includedby>
+    <incdepgraph>
+      <node id="5154">
+        <label>list</label>
+      </node>
+      <node id="5147">
+        <label>atomic</label>
+      </node>
+      <node id="5122">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="5123" relation="include">
+        </childnode>
+        <childnode refid="5124" relation="include">
+        </childnode>
+        <childnode refid="5125" relation="include">
+        </childnode>
+        <childnode refid="5126" relation="include">
+        </childnode>
+        <childnode refid="5127" relation="include">
+        </childnode>
+        <childnode refid="5128" relation="include">
+        </childnode>
+        <childnode refid="5129" relation="include">
+        </childnode>
+        <childnode refid="5130" relation="include">
+        </childnode>
+      </node>
+      <node id="5151">
+        <label>functional</label>
+      </node>
+      <node id="5126">
+        <label>iomanip</label>
+      </node>
+      <node id="5127">
+        <label>limits</label>
+      </node>
+      <node id="5160">
+        <label>iterator</label>
+      </node>
+      <node id="5121">
+        <label>cstdint</label>
+      </node>
+      <node id="5159">
+        <label>iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="5120" relation="include">
+        </childnode>
+      </node>
+      <node id="5149">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5150" relation="include">
+        </childnode>
+        <childnode refid="5151" relation="include">
+        </childnode>
+        <childnode refid="5126" relation="include">
+        </childnode>
+        <childnode refid="5135" relation="include">
+        </childnode>
+        <childnode refid="5152" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+        <childnode refid="5134" relation="include">
+        </childnode>
+      </node>
+      <node id="5125">
+        <label>cmath</label>
+      </node>
+      <node id="5138">
+        <label>stdexcept</label>
+      </node>
+      <node id="5120">
+        <label>curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="5121" relation="include">
+        </childnode>
+        <childnode refid="5122" relation="include">
+        </childnode>
+      </node>
+      <node id="5153">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5154" relation="include">
+        </childnode>
+        <childnode refid="5155" relation="include">
+        </childnode>
+        <childnode refid="5156" relation="include">
+        </childnode>
+      </node>
+      <node id="5150">
+        <label>cstdarg</label>
+      </node>
+      <node id="5133">
+        <label>string</label>
+      </node>
+      <node id="5142">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5121" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+        <childnode refid="5143" relation="include">
+        </childnode>
+        <childnode refid="5144" relation="include">
+        </childnode>
+        <childnode refid="5146" relation="include">
+        </childnode>
+        <childnode refid="5153" relation="include">
+        </childnode>
+        <childnode refid="5156" relation="include">
+        </childnode>
+      </node>
+      <node id="5144">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5145" relation="include">
+        </childnode>
+      </node>
+      <node id="5146">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5147" relation="include">
+        </childnode>
+        <childnode refid="5135" relation="include">
+        </childnode>
+        <childnode refid="5129" relation="include">
+        </childnode>
+        <childnode refid="5139" relation="include">
+        </childnode>
+        <childnode refid="5148" relation="include">
+        </childnode>
+        <childnode refid="5149" relation="include">
+        </childnode>
+      </node>
+      <node id="5128">
+        <label>ostream</label>
+      </node>
+      <node id="5131">
+        <label>limits.h</label>
+      </node>
+      <node id="5136">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5137" relation="include">
+        </childnode>
+        <childnode refid="5135" relation="include">
+        </childnode>
+        <childnode refid="5138" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+        <childnode refid="5139" relation="include">
+        </childnode>
+        <childnode refid="5142" relation="include">
+        </childnode>
+      </node>
+      <node id="5130">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="5123" relation="include">
+        </childnode>
+        <childnode refid="5131" relation="include">
+        </childnode>
+        <childnode refid="5125" relation="include">
+        </childnode>
+        <childnode refid="5132" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+        <childnode refid="5134" relation="include">
+        </childnode>
+        <childnode refid="5135" relation="include">
+        </childnode>
+        <childnode refid="5136" relation="include">
+        </childnode>
+        <childnode refid="5139" relation="include">
+        </childnode>
+      </node>
+      <node id="5158">
+        <label>typeinfo</label>
+      </node>
+      <node id="5134">
+        <label>vector</label>
+      </node>
+      <node id="5140">
+        <label>ciso646</label>
+      </node>
+      <node id="5152">
+        <label>sstream</label>
+      </node>
+      <node id="5139">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5140" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+        <childnode refid="5141" relation="include">
+        </childnode>
+      </node>
+      <node id="5141">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5141" relation="include">
+        </childnode>
+      </node>
+      <node id="5148">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5137" relation="include">
+        </childnode>
+        <childnode refid="5133" relation="include">
+        </childnode>
+      </node>
+      <node id="5156">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5157" relation="include">
+        </childnode>
+      </node>
+      <node id="5145">
+        <label>cstdlib</label>
+      </node>
+      <node id="5137">
+        <label>iostream</label>
+      </node>
+      <node id="5124">
+        <label>climits</label>
+      </node>
+      <node id="5155">
+        <label>mutex</label>
+      </node>
+      <node id="5129">
+        <label>type_traits</label>
+      </node>
+      <node id="5143">
+        <label>config.h</label>
+      </node>
+      <node id="5123">
+        <label>algorithm</label>
+      </node>
+      <node id="5132">
+        <label>cstring</label>
+      </node>
+      <node id="5135">
+        <label>memory</label>
+      </node>
+      <node id="5157">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5137" relation="include">
+        </childnode>
+        <childnode refid="5158" relation="include">
+        </childnode>
+        <childnode refid="5139" relation="include">
+        </childnode>
+      </node>
+      <node id="5119">
+        <label>libopenage/curve/map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="5120" relation="include">
+        </childnode>
+        <childnode refid="5159" relation="include">
+        </childnode>
+        <childnode refid="5160" relation="include">
+        </childnode>
+        <childnode refid="5127" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5165">
+        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <link refid="map__filter__iterator_8cpp"/>
+      </node>
+      <node id="5162">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="5163" relation="include">
+        </childnode>
+        <childnode refid="5164" relation="include">
+        </childnode>
+      </node>
+      <node id="5163">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+      </node>
+      <node id="5164">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="5161">
+        <label>libopenage/curve/map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="5162" relation="include">
+        </childnode>
+        <childnode refid="5165" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1curve_1_1_map_filter_iterator" prot="public">openage::curve::MapFilterIterator</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="curve_8h" kindref="compound">curve.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iterator_8h" kindref="compound">iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iterator&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>key_t,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>container_t&gt;</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1curve_1_1_map_filter_iterator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt;val_t,<sp/>container_t&gt;<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" kindref="member">iterator_t</ref><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>container_t::const_iterator;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1curve_1_1_map_filter_iterator_1af15da05ad36fe2ea75e76c319a2b2243" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1af15da05ad36fe2ea75e76c319a2b2243" kindref="member">MapFilterIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1a30698006f8d5677e6dbc5df655c30603" kindref="member">iterator_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>container_t<sp/>*<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt;val_t,<sp/>container_t&gt;(<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>,<sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>,<sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>,<sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1af15da05ad36fe2ea75e76c319a2b2243" kindref="member">MapFilterIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator" kindref="compound">MapFilterIterator</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator&lt;val_t, container_t&gt;::operator</ref>=;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1curve_1_1_map_filter_iterator_1a9d13c293e4046e4bb4d36bae91d278a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1a9d13c293e4046e4bb4d36bae91d278a1" kindref="member">valid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" kindref="member">get_base</ref>()-&gt;second.alive<sp/>&gt;=<sp/>this-&gt;from</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>this-&gt;get_base()-&gt;second.dead<sp/>&lt;<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>val_t<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1adf7f78fc26c05413c06d4b6833b9c29e" kindref="member">value</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" kindref="member">get_base</ref>()-&gt;second.value;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classopenage_1_1curve_1_1_map_filter_iterator_1a8dc6713b4d238eedc2d6cbc300c9e6dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>key_t<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_map_filter_iterator_1a8dc6713b4d238eedc2d6cbc300c9e6dc" kindref="member">key</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" kindref="member">get_base</ref>()-&gt;first;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/map_filter_iterator.h"/>
+  </compounddef>
+</doxygen>

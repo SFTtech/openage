@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_7a1433c2fe60c22d0d75c56b51397e23" kind="dir">
+    <compoundname>libopenage</compoundname>
+    <innerdir refid="dir_731ac1015346d96b185da00f7857606e">libopenage/audio</innerdir>
+    <innerdir refid="dir_a7cece960099fe4958b3f040f3f89471">libopenage/console</innerdir>
+    <innerdir refid="dir_7f22ae691c2f00df38feb17398996147">libopenage/coord</innerdir>
+    <innerdir refid="dir_ccad08bb708da2762bd629c3fb99a53c">libopenage/curve</innerdir>
+    <innerdir refid="dir_c480090556e9956acf0dbd3dc438eb6f">libopenage/cvar</innerdir>
+    <innerdir refid="dir_7ea809f223a8f5a589c716fad2b2f668">libopenage/datastructure</innerdir>
+    <innerdir refid="dir_3c7a1d16eeb7847b36e40c66a45c0cab">libopenage/error</innerdir>
+    <innerdir refid="dir_906fd80251564c07ab43a732fc1e9e78">libopenage/event</innerdir>
+    <innerdir refid="dir_712401372000c18ae60227658ea59d70">libopenage/gamestate</innerdir>
+    <innerdir refid="dir_d037ee21b1d08cda7e27f2ce4ee48ec3">libopenage/gui</innerdir>
+    <innerdir refid="dir_b257ac1eb047fdaa3ba231cb3d9ec411">libopenage/input</innerdir>
+    <innerdir refid="dir_26d84fcac5b38ff9c2db6912af76a48c">libopenage/job</innerdir>
+    <innerdir refid="dir_d4038e006ae681f38d9f19ed63c3b2e6">libopenage/log</innerdir>
+    <innerdir refid="dir_53fc77cdc2c4a643e9780698bc16c36c">libopenage/pathfinding</innerdir>
+    <innerdir refid="dir_1079b96b1d02d2a41f45efcea4bd852f">libopenage/pyinterface</innerdir>
+    <innerdir refid="dir_4a01dee474130c13b802372087a79ed7">libopenage/renderer</innerdir>
+    <innerdir refid="dir_f3789cadf99dfd908eb4a711d92a558b">libopenage/rng</innerdir>
+    <innerdir refid="dir_b8357664411f749eff500667caa9fc6b">libopenage/shader</innerdir>
+    <innerdir refid="dir_c6d7fa0c813753c0f98eb2e8312d518f">libopenage/simulation</innerdir>
+    <innerdir refid="dir_5ffefd0c1f0e77d7f24c1701d3d706c9">libopenage/terrain</innerdir>
+    <innerdir refid="dir_453470d189f22e6c466bdeb48be1c767">libopenage/testing</innerdir>
+    <innerdir refid="dir_2da62acedc39afa28df93c1a9cf67524">libopenage/unit</innerdir>
+    <innerdir refid="dir_a25237b91464ed624c167f154229e196">libopenage/util</innerdir>
+    <innerfile refid="assetmanager_8cpp">assetmanager.cpp</innerfile>
+    <innerfile refid="assetmanager_8h">assetmanager.h</innerfile>
+    <innerfile refid="engine_8cpp">engine.cpp</innerfile>
+    <innerfile refid="engine_8h">engine.h</innerfile>
+    <innerfile refid="game__control_8cpp">game_control.cpp</innerfile>
+    <innerfile refid="game__control_8h">game_control.h</innerfile>
+    <innerfile refid="game__renderer_8cpp">game_renderer.cpp</innerfile>
+    <innerfile refid="game__renderer_8h">game_renderer.h</innerfile>
+    <innerfile refid="handlers_8cpp">handlers.cpp</innerfile>
+    <innerfile refid="handlers_8h">handlers.h</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <innerfile refid="main_8h">main.h</innerfile>
+    <innerfile refid="options_8cpp">options.cpp</innerfile>
+    <innerfile refid="options_8h">options.h</innerfile>
+    <innerfile refid="screenshot_8cpp">screenshot.cpp</innerfile>
+    <innerfile refid="screenshot_8h">screenshot.h</innerfile>
+    <innerfile refid="texture_8cpp">texture.cpp</innerfile>
+    <innerfile refid="texture_8h">texture.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/"/>
+  </compounddef>
+</doxygen>

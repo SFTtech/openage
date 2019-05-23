@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="team_8h" kind="file" language="C++">
+    <compoundname>team.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includes refid="score_8h" local="yes">score.h</includes>
+    <includedby refid="game__main_8h" local="yes">libopenage/gamestate/game_main.h</includedby>
+    <includedby refid="player_8cpp" local="yes">libopenage/gamestate/player.cpp</includedby>
+    <includedby refid="score_8cpp" local="yes">libopenage/gamestate/score.cpp</includedby>
+    <includedby refid="team_8cpp" local="yes">libopenage/gamestate/team.cpp</includedby>
+    <incdepgraph>
+      <node id="10594">
+        <label>functional</label>
+      </node>
+      <node id="10590">
+        <label>string</label>
+      </node>
+      <node id="10593">
+        <label>score.h</label>
+        <link refid="score_8h"/>
+        <childnode refid="10594" relation="include">
+        </childnode>
+        <childnode refid="10595" relation="include">
+        </childnode>
+      </node>
+      <node id="10592">
+        <label>vector</label>
+      </node>
+      <node id="10595">
+        <label>resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="10594" relation="include">
+        </childnode>
+        <childnode refid="10590" relation="include">
+        </childnode>
+      </node>
+      <node id="10591">
+        <label>unordered_map</label>
+      </node>
+      <node id="10589">
+        <label>libopenage/gamestate/team.h</label>
+        <link refid="team_8h"/>
+        <childnode refid="10590" relation="include">
+        </childnode>
+        <childnode refid="10591" relation="include">
+        </childnode>
+        <childnode refid="10592" relation="include">
+        </childnode>
+        <childnode refid="10593" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10601">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="10602" relation="include">
+        </childnode>
+        <childnode refid="10603" relation="include">
+        </childnode>
+        <childnode refid="10604" relation="include">
+        </childnode>
+        <childnode refid="10605" relation="include">
+        </childnode>
+        <childnode refid="10606" relation="include">
+        </childnode>
+      </node>
+      <node id="10602">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="10603" relation="include">
+        </childnode>
+      </node>
+      <node id="10608">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="10616">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="10607">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="10604">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="10603">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="10599">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="10600" relation="include">
+        </childnode>
+        <childnode refid="10601" relation="include">
+        </childnode>
+        <childnode refid="10606" relation="include">
+        </childnode>
+        <childnode refid="10607" relation="include">
+        </childnode>
+      </node>
+      <node id="10613">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="10617">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="10612">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="10605" relation="include">
+        </childnode>
+        <childnode refid="10613" relation="include">
+        </childnode>
+        <childnode refid="10614" relation="include">
+        </childnode>
+        <childnode refid="10615" relation="include">
+        </childnode>
+      </node>
+      <node id="10598">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="10597">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="10598" relation="include">
+        </childnode>
+        <childnode refid="10599" relation="include">
+        </childnode>
+        <childnode refid="10608" relation="include">
+        </childnode>
+        <childnode refid="10609" relation="include">
+        </childnode>
+        <childnode refid="10610" relation="include">
+        </childnode>
+        <childnode refid="10611" relation="include">
+        </childnode>
+        <childnode refid="10612" relation="include">
+        </childnode>
+        <childnode refid="10613" relation="include">
+        </childnode>
+        <childnode refid="10615" relation="include">
+        </childnode>
+      </node>
+      <node id="10611">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="10610">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="10605">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="10609">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="10618">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="10596">
+        <label>libopenage/gamestate/team.h</label>
+        <link refid="team_8h"/>
+        <childnode refid="10597" relation="include">
+        </childnode>
+        <childnode refid="10616" relation="include">
+        </childnode>
+        <childnode refid="10617" relation="include">
+        </childnode>
+        <childnode refid="10618" relation="include">
+        </childnode>
+      </node>
+      <node id="10614">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="10600">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="10615">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="10606">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1_team" prot="public">openage::Team</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="score_8h" kindref="compound">score.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Player;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" refkind="member"><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0ac444858e0aaeb727da73d2eae62321ad" kindref="member">leader</ref>,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0aaa08769cdcb26674c6706093503ff0a3" kindref="member">member</ref>,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0ac5a5adb4becbec9d63074dcb70a2fa03" kindref="member">recruit</ref>,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0a334c4a4c42fdb79d7ebc3e73b517e6f8" kindref="member">none</ref><sp/></highlight><highlight class="comment">//<sp/>pseudo<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1_team" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_team" kindref="compound">Team</ref><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_team_1a95315c61259b04bf05b041839389cb7c" kindref="member">Team</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_team_1a95315c61259b04bf05b041839389cb7c" kindref="member">Team</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>std::string<sp/><ref refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_team_1a95315c61259b04bf05b041839389cb7c" kindref="member">Team</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>std::string<sp/><ref refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" kindref="member">name</ref>,<sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>*<ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0ac444858e0aaeb727da73d2eae62321ad" kindref="member">leader</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1_team_1af76dcbf241d204080d8611b47a8abdfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1af76dcbf241d204080d8611b47a8abdfa" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1ae7260e58a9de11c652b7ac45af4398e5" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team" kindref="compound">Team</ref><sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1a8a3ccfc2cfbf00c6328163d17754aa35" kindref="member">add_member</ref>(<ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1a8841ac7c0200c6b7ac9c731b562aa709" kindref="member">change_member_type</ref>(<ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1a28f7fcd17ef88d23eb7bc0cb11b57591" kindref="member">is_member</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_team_1a229182c2ce03ddfb87dd88411c2fa571" kindref="member">remove_member</ref>(<ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref><sp/><ref refid="classopenage_1_1_team_1ad138154240e5b09d93d6beaf7ae6af82" kindref="member">get_member_type</ref>(<ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;player);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;const<sp/>Player*&gt;<sp/><ref refid="classopenage_1_1_team_1aa066bf2eeff40da381503faa00507657" kindref="member">get_players</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1_team_1ac579ae1a33f33dfe6e53b738a9cfe160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_team_score" kindref="compound">TeamScore</ref><sp/><ref refid="classopenage_1_1_team_1ac579ae1a33f33dfe6e53b738a9cfe160" kindref="member">score</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1_team_1a90db0a9e2f47e7c2e71491a4f4d514f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;const<sp/>Player*,<sp/>member_type&gt;<sp/><ref refid="classopenage_1_1_team_1a90db0a9e2f47e7c2e71491a4f4d514f7" kindref="member">members</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/team.h"/>
+  </compounddef>
+</doxygen>

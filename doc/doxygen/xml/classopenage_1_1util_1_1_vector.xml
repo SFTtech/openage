@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_vector" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Vector</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::array&lt; T, N &gt;</basecompoundref>
+    <includes refid="vector_8h" local="no">vector.h</includes>
+    <templateparamlist>
+      <param>
+        <type>size_t</type>
+        <declname>N</declname>
+        <defname>N</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; N, T &gt;</type>
+        <definition>using openage::util::Vector&lt; N, T &gt;::this_type =  Vector&lt;N, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="28" column="1" bodyfile="libopenage/util/vector.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" prot="public" static="yes" mutable="no">
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::Vector&lt; N, T &gt;::default_eps</definition>
+        <argsstring></argsstring>
+        <name>default_eps</name>
+        <initializer>= 1e-4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default comparison epsilon. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="33" column="1" bodyfile="libopenage/util/vector.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a0b8ac439682bcb1b54b2fbb1968e0850" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Vector&lt; N, T &gt;::Vector</definition>
+        <argsstring>()</argsstring>
+        <name>Vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default, random-value constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="38" column="1" bodyfile="libopenage/util/vector.h" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a70020e31b16b6c886cd7d5956c961141" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Vector&lt; N, T &gt;::~Vector</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1aea1fe198f712888e82582be0bb73e450" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::util::Vector&lt; N, T &gt;::Vector</definition>
+        <argsstring>(Ts ... args)</argsstring>
+        <name>Vector</name>
+        <param>
+          <type>Ts ...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor for initialisation with N T values </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="50" column="1" bodyfile="libopenage/util/vector.h" bodystart="50" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Vector&lt; N, T &gt;::equals</definition>
+        <argsstring>(const this_type &amp;other, T eps=default_eps)</argsstring>
+        <name>equals</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>eps</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" kindref="member">default_eps</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Equality test with given precision. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="60" column="1" bodyfile="libopenage/util/vector.h" bodystart="60" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1afbfaf8fb98199182caa50e1a45bab12c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+        <definition>this_type&amp; openage::util::Vector&lt; N, T &gt;::operator+=</definition>
+        <argsstring>(const this_type &amp;other)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition with assignment </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="73" column="1" bodyfile="libopenage/util/vector.h" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a3f1ab0e66323a2d08bd8c320425af1a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Vector&lt; N, T &gt;::operator+</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> addition </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="83" column="1" bodyfile="libopenage/util/vector.h" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af9fdfbcf69edc87d219f35b239d4e77c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+        <definition>this_type&amp; openage::util::Vector&lt; N, T &gt;::operator -=</definition>
+        <argsstring>(const this_type &amp;other)</argsstring>
+        <name>operator -=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction with assignment </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="92" column="1" bodyfile="libopenage/util/vector.h" bodystart="92" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a0d7a217ad63a77da59f2ddcc7f7b87e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Vector&lt; N, T &gt;::operator -</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator -</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> subtraction </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="102" column="1" bodyfile="libopenage/util/vector.h" bodystart="102" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a0b9910495f73ffb032e4b12be3b72d34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+        <definition>this_type&amp; openage::util::Vector&lt; N, T &gt;::operator *=</definition>
+        <argsstring>(T a)</argsstring>
+        <name>operator *=</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar multiplication with assignment </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="111" column="1" bodyfile="libopenage/util/vector.h" bodystart="111" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af730cbb108d9e8966f4524efab3f0fe3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Vector&lt; N, T &gt;::operator *</definition>
+        <argsstring>(T a) const</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar multiplication </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="121" column="1" bodyfile="libopenage/util/vector.h" bodystart="121" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a2d28e8ece216fef011431a1ababa4bfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+        <definition>this_type&amp; openage::util::Vector&lt; N, T &gt;::operator/=</definition>
+        <argsstring>(T a)</argsstring>
+        <name>operator/=</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar division with assignment </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="130" column="1" bodyfile="libopenage/util/vector.h" bodystart="130" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1af3c9dfb3fd444c92cd4af8384809241d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Vector&lt; N, T &gt;::operator/</definition>
+        <argsstring>(T a) const</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar division </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="140" column="1" bodyfile="libopenage/util/vector.h" bodystart="140" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::util::Vector&lt; N, T &gt;::dot</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>dot</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Dot product of two Vectors </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="149" column="1" bodyfile="libopenage/util/vector.h" bodystart="149" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::util::Vector&lt; N, T &gt;::norm</definition>
+        <argsstring>() const</argsstring>
+        <name>norm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Euclidian norm aka length </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="160" column="1" bodyfile="libopenage/util/vector.h" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+        <definition>this_type&amp; openage::util::Vector&lt; N, T &gt;::normalize</definition>
+        <argsstring>()</argsstring>
+        <name>normalize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scales the <ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> so that its norm is 1 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="167" column="1" bodyfile="libopenage/util/vector.h" bodystart="167" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename U</type>
+            <defval><ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></defval>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; N==3, U &gt;::type</type>
+        <definition>std::enable_if&lt;N==3, U&gt;::type openage::util::Vector&lt; N, T &gt;::cross_product</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>cross_product</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cross-product of two 3-dimensional vectors </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="177" column="1" bodyfile="libopenage/util/vector.h" bodystart="177" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_vector_1ac824b8d2ccb92af2a4fa2946349e9aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref></type>
+        <definition>this_type operator *</definition>
+        <argsstring>(T a, const this_type &amp;v)</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar multiplication with swapped arguments </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="188" column="1" bodyfile="libopenage/util/vector.h" bodystart="188" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_vector_1a04d7eeccc9f90a986e8297807959e864" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;o, const this_type &amp;v)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" kindref="member">this_type</ref> &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Print to output stream using &apos;&lt;&lt;&apos; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="195" column="1" bodyfile="libopenage/util/vector.h" bodystart="195" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref> class with arithmetic.</para>
+<para>N = dimensions T = underlying single value type (double, float, ...) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4929">
+        <label>openage::util::Vector&lt; N, T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_vector"/>
+        <childnode refid="4930" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4930">
+        <label>std::array&lt; T, N &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4931">
+        <label>openage::util::Vector&lt; N, T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_vector"/>
+        <childnode refid="4932" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4932">
+        <label>std::array&lt; T, N &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/vector.h" line="24" column="1" bodyfile="libopenage/util/vector.h" bodystart="24" bodyend="203"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_vector_1ab33cee057269a707f1f8a5f58944a5a4" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>cross_product</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1ab843994301eeadb19467f7cbb131fc0b" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>default_eps</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1ab534732ef33d7e047d612bdf8bc98322" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>dot</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1adb9d43a588f0d7044f201a2dff2db844" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>equals</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a5b3b46a13e28d59eaefacf1549269f9b" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>norm</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1aae6e40b885d6cdf296bd2568bd2b5e49" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>normalize</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1af730cbb108d9e8966f4524efab3f0fe3" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1ac824b8d2ccb92af2a4fa2946349e9aee" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a0b9910495f73ffb032e4b12be3b72d34" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator *=</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a0d7a217ad63a77da59f2ddcc7f7b87e2" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator -</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1af9fdfbcf69edc87d219f35b239d4e77c" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator -=</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a3f1ab0e66323a2d08bd8c320425af1a8" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator+</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1afbfaf8fb98199182caa50e1a45bab12c" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator+=</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1af3c9dfb3fd444c92cd4af8384809241d" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator/</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a2d28e8ece216fef011431a1ababa4bfc" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator/=</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a04d7eeccc9f90a986e8297807959e864" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a894800d1b4e24bd90d5b763862706e02" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>this_type</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a0b8ac439682bcb1b54b2fbb1968e0850" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>Vector</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1aea1fe198f712888e82582be0bb73e450" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>Vector</name></member>
+      <member refid="classopenage_1_1util_1_1_vector_1a70020e31b16b6c886cd7d5956c961141" prot="public" virt="non-virtual"><scope>openage::util::Vector</scope><name>~Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

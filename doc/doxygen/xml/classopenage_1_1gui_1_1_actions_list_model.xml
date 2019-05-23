@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_actions_list_model" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::ActionsListModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QAbstractListModel</basecompoundref>
+    <includes refid="actions__list__model_8h" local="no">actions_list_model.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ActionsRoles</name>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a3591143a2e41630676ea59ebd87fb4eb" prot="public">
+          <name>IconRole</name>
+          <initializer>= Qt::UserRole + 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aa0b694a5e7a4cd02a259f98e288f76d9" prot="public">
+          <name>IconCheckedRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40a9045638ba88b0858225c1bb7a62ffcb8" prot="public">
+          <name>GroupIDRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40aebc5ac2a302d88834d27e146f5ca8b70" prot="public">
+          <name>NameRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="42" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="enum" id="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2e" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>GroupIDs</name>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea991677ff968f6239554a8755f1080f8f" prot="public">
+          <name>NoGroup</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2ea1376f00ab284ba3f8a30bf11b9c56ebd" prot="public">
+          <name>StanceGroup</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="49" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="49" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref></type>
+        <definition>ActionButtonsType openage::gui::ActionsListModel::active_buttons</definition>
+        <argsstring></argsstring>
+        <name>active_buttons</name>
+        <read>get_active_buttons</read>
+        <write>set_active_buttons</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="14" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref></type>
+        <definition>ActionModeLink openage::gui::ActionsListModel::action_mode</definition>
+        <argsstring></argsstring>
+        <name>action_mode</name>
+        <read>get_action_mode</read>
+        <write>set_action_mode</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="14" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QUrl</type>
+        <definition>QUrl openage::gui::ActionsListModel::iconsSource</definition>
+        <argsstring></argsstring>
+        <name>iconsSource</name>
+        <read>get_icons_source</read>
+        <write>set_icons_source</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="14" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_actions_list_model_1a4e49941f5a6b5a51951670af5bb82dd1" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+        <definition>ActionModeLink* openage::gui::ActionsListModel::action_mode</definition>
+        <argsstring></argsstring>
+        <name>action_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="82" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_actions_list_model_1a95241b68edbb6d1d1b01ba6b997abdcd" prot="private" static="no" mutable="no">
+        <type>QUrl</type>
+        <definition>QUrl openage::gui::ActionsListModel::icons_source</definition>
+        <argsstring></argsstring>
+        <name>icons_source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="83" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; QMap&lt; int, QVariant &gt; &gt;</type>
+        <definition>std::vector&lt;QMap&lt;int, QVariant&gt; &gt; openage::gui::ActionsListModel::buttons</definition>
+        <argsstring></argsstring>
+        <name>buttons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="84" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a4e2ab2adfedb68967cc280723b62f8b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::ActionsListModel::ActionsListModel</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>ActionsListModel</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="28" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a00aa41507a6622252f5bc4f587219b79" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::ActionsListModel::~ActionsListModel</definition>
+        <argsstring>()</argsstring>
+        <name>~ActionsListModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="29" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="24" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref></type>
+        <definition>ActionButtonsType openage::gui::ActionsListModel::get_active_buttons</definition>
+        <argsstring>() const</argsstring>
+        <name>get_active_buttons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="31" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::set_active_buttons</definition>
+        <argsstring>(const ActionButtonsType &amp;active_buttons)</argsstring>
+        <name>set_active_buttons</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref> &amp;</type>
+          <declname>active_buttons</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="32" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="31" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+        <definition>ActionModeLink * openage::gui::ActionsListModel::get_action_mode</definition>
+        <argsstring>() const</argsstring>
+        <name>get_action_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="34" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="120" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::set_action_mode</definition>
+        <argsstring>(ActionModeLink *action_mode)</argsstring>
+        <name>set_action_mode</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref> *</type>
+          <declname>action_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="35" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="124" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QUrl</type>
+        <definition>QUrl openage::gui::ActionsListModel::get_icons_source</definition>
+        <argsstring>() const</argsstring>
+        <name>get_icons_source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="37" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::set_icons_source</definition>
+        <argsstring>(const QUrl icons_source)</argsstring>
+        <name>set_icons_source</name>
+        <param>
+          <type>const QUrl</type>
+          <declname>icons_source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="38" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1af519bfab0685982fed954d1dbf0b7e7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Q_INVOKABLE void</type>
+        <definition>Q_INVOKABLE void openage::gui::ActionsListModel::set_initial_buttons</definition>
+        <argsstring>()</argsstring>
+        <name>set_initial_buttons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="40" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_actions_list_model_1ad84503f513414c76726db8b3def08205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::icons_source_changed</definition>
+        <argsstring>(const QUrl icons_source)</argsstring>
+        <name>icons_source_changed</name>
+        <param>
+          <type>const QUrl</type>
+          <declname>icons_source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="55" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::on_buttons_type_changed</definition>
+        <argsstring>(const ActionButtonsType buttons_type)</argsstring>
+        <name>on_buttons_type_changed</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref></type>
+          <declname>buttons_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="58" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="159" bodyend="161"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1accbf440c48226aa616da460e44818f15" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QHash&lt; int, QByteArray &gt;</type>
+        <definition>QHash&lt; int, QByteArray &gt; openage::gui::ActionsListModel::roleNames</definition>
+        <argsstring>() const override</argsstring>
+        <name>roleNames</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="61" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="163" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a332b87490307ece97012281af7eb1eee" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::gui::ActionsListModel::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;) const override</argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="62" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a9a3ff303db71cfe50824e0b60b89a7f4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant openage::gui::ActionsListModel::data</definition>
+        <argsstring>(const QModelIndex &amp;index, int role=Qt::DisplayRole) const override</argsstring>
+        <name>data</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::DisplayRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="63" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="176" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1afe9f1288a1072b465fcab14cbbbe054a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QMap&lt; int, QVariant &gt;</type>
+        <definition>QMap&lt; int, QVariant &gt; openage::gui::ActionsListModel::itemData</definition>
+        <argsstring>(const QModelIndex &amp;index) const override</argsstring>
+        <name>itemData</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="64" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="180" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a9ee0f271abba58e0488bfa698aeff161" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::set_icons_source</definition>
+        <argsstring>(const std::string icons_source)</argsstring>
+        <name>set_icons_source</name>
+        <param>
+          <type>const std::string</type>
+          <declname>icons_source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Utility function to create a QUrl from a string and set it as iconsSource </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="69" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::clear_buttons</definition>
+        <argsstring>()</argsstring>
+        <name>clear_buttons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all buttons </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="74" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionsListModel::add_button</definition>
+        <argsstring>(int ico, int ico_chk, int grp_id, const char *name)</argsstring>
+        <name>add_button</name>
+        <param>
+          <type>int</type>
+          <declname>ico</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ico_chk</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>grp_id</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shortcut to creating a QMap for a button </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/actions_list_model.h" line="79" column="1" bodyfile="libopenage/gui/actions_list_model.cpp" bodystart="190" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Model used for the Action Buttons to render (e.g. for civilian units, military units, buildings etc.) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="178">
+        <label>openage::gui::ActionsListModel</label>
+        <link refid="classopenage_1_1gui_1_1_actions_list_model"/>
+        <childnode refid="179" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="179">
+        <label>QAbstractListModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="184">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="185" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="180">
+        <label>openage::gui::ActionsListModel</label>
+        <link refid="classopenage_1_1gui_1_1_actions_list_model"/>
+        <childnode refid="181" relation="public-inheritance">
+        </childnode>
+        <childnode refid="182" relation="usage">
+          <edgelabel>-action_mode</edgelabel>
+        </childnode>
+      </node>
+      <node id="182">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="183" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="186">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="183">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="184" relation="public-inheritance">
+        </childnode>
+        <childnode refid="186" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>OutputModeLink</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/actions_list_model.h" line="20" column="1" bodyfile="libopenage/gui/actions_list_model.h" bodystart="20" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1ace2b86d17d942d050571b3501a49cd8c" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a4e49941f5a6b5a51951670af5bb82dd1" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a4e2ab2adfedb68967cc280723b62f8b9" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>ActionsListModel</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1acfbf05bd3ffe1cfd512b3cc7e0868e40" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>ActionsRoles</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a3c8dcae05fa3d0f7e989bc30425a92fc" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>active_buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1afb65037ff7b6122307177e96d27637ab" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>add_button</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a22cbf622419369966708ff3dfc189339" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a6b430f1462ad2aeb117adca82132267a" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>clear_buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a9a3ff303db71cfe50824e0b60b89a7f4" prot="private" virt="virtual"><scope>openage::gui::ActionsListModel</scope><name>data</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a3b7209891c5df56e893e10d8c876ef7f" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>get_action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a6a67cabefa1537ae741cac41a107e4dc" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>get_active_buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1ad106531614a267d1f38d94873fc3311a" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>get_icons_source</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a42d71414cd9318116fed7bed86062d2e" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>GroupIDs</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a95241b68edbb6d1d1b01ba6b997abdcd" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>icons_source</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1ad84503f513414c76726db8b3def08205" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>icons_source_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a7e641d671aeac98b23d2ec95a11676b2" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>iconsSource</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1afe9f1288a1072b465fcab14cbbbe054a" prot="private" virt="virtual"><scope>openage::gui::ActionsListModel</scope><name>itemData</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1abd55b596dfde20d00900d9d7ed7d2e87" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>on_buttons_type_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1accbf440c48226aa616da460e44818f15" prot="private" virt="virtual"><scope>openage::gui::ActionsListModel</scope><name>roleNames</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a332b87490307ece97012281af7eb1eee" prot="private" virt="virtual"><scope>openage::gui::ActionsListModel</scope><name>rowCount</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a94429f228732ddf86c34e76edbc8ab8c" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>set_action_mode</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a916eb7b63f0daf57e3d90eedf0690200" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>set_active_buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a2cc5ee006c91a7441dad5b1cabd7dea0" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>set_icons_source</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a9ee0f271abba58e0488bfa698aeff161" prot="private" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>set_icons_source</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1af519bfab0685982fed954d1dbf0b7e7c" prot="public" virt="non-virtual"><scope>openage::gui::ActionsListModel</scope><name>set_initial_buttons</name></member>
+      <member refid="classopenage_1_1gui_1_1_actions_list_model_1a00aa41507a6622252f5bc4f587219b79" prot="public" virt="virtual"><scope>openage::gui::ActionsListModel</scope><name>~ActionsListModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

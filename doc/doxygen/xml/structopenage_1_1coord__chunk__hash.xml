@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord__chunk__hash" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord_chunk_hash</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1coord__chunk__hash_1a51c6912a92de83b5f8b924beef16cc95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::coord_chunk_hash::operator()</definition>
+        <argsstring>(const coord::chunk &amp;input) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="40" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="40" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>hashing for chunk coordinates.</para>
+<para>this allows storage of chunk coords as keys in an unordered map. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="954">
+        <label>openage::coord_chunk_hash</label>
+        <link refid="structopenage_1_1coord__chunk__hash"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="39" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="39" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1coord__chunk__hash_1a51c6912a92de83b5f8b924beef16cc95" prot="public" virt="non-virtual"><scope>openage::coord_chunk_hash</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

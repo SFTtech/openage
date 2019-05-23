@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1terrain__meta" kind="struct" language="C++" prot="public">
+    <compoundname>openage::terrain_meta</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1adac0256f3bb43b543864aba0079d84a8" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::terrain_meta::terrain_id_count</definition>
+        <argsstring></argsstring>
+        <name>terrain_id_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="157" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1ac0a032b35502a554d168d791213ad74c" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::terrain_meta::blendmode_count</definition>
+        <argsstring></argsstring>
+        <name>blendmode_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="158" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1a4b4c97d4834037b1ff79270d5c4876f7" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> * &gt;</type>
+        <definition>std::vector&lt;Texture *&gt; openage::terrain_meta::textures</definition>
+        <argsstring></argsstring>
+        <name>textures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="160" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1a2fdf2bb79faa0aa896e6f8cec3ffad72" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> * &gt;</type>
+        <definition>std::vector&lt;Texture *&gt; openage::terrain_meta::blending_masks</definition>
+        <argsstring></argsstring>
+        <name>blending_masks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="161" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1a42422b3e85c83467828991b119ca216c" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; int[]&gt;</type>
+        <definition>std::unique_ptr&lt;int[]&gt; openage::terrain_meta::terrain_id_priority_map</definition>
+        <argsstring></argsstring>
+        <name>terrain_id_priority_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="163" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1ad4721fb504831e4c6797380603f3c734" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; int[]&gt;</type>
+        <definition>std::unique_ptr&lt;int[]&gt; openage::terrain_meta::terrain_id_blendmode_map</definition>
+        <argsstring></argsstring>
+        <name>terrain_id_blendmode_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="164" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1terrain__meta_1a80c4c8312262c03a979437c70a3eb4eb" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="structopenage_1_1influence" kindref="compound">influence</ref>[]&gt;</type>
+        <definition>std::unique_ptr&lt;influence[]&gt; openage::terrain_meta::influences_buf</definition>
+        <argsstring></argsstring>
+        <name>influences_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="166" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>specification for all available tile types and blending data </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4343">
+        <label>openage::terrain_meta</label>
+        <link refid="structopenage_1_1terrain__meta"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="156" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="156" bodyend="167"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1terrain__meta_1a2fdf2bb79faa0aa896e6f8cec3ffad72" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>blending_masks</name></member>
+      <member refid="structopenage_1_1terrain__meta_1ac0a032b35502a554d168d791213ad74c" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>blendmode_count</name></member>
+      <member refid="structopenage_1_1terrain__meta_1a80c4c8312262c03a979437c70a3eb4eb" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>influences_buf</name></member>
+      <member refid="structopenage_1_1terrain__meta_1ad4721fb504831e4c6797380603f3c734" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>terrain_id_blendmode_map</name></member>
+      <member refid="structopenage_1_1terrain__meta_1adac0256f3bb43b543864aba0079d84a8" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>terrain_id_count</name></member>
+      <member refid="structopenage_1_1terrain__meta_1a42422b3e85c83467828991b119ca216c" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>terrain_id_priority_map</name></member>
+      <member refid="structopenage_1_1terrain__meta_1a4b4c97d4834037b1ff79270d5c4876f7" prot="public" virt="non-virtual"><scope>openage::terrain_meta</scope><name>textures</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

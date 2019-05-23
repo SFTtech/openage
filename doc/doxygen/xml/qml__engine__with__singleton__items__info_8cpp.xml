@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="qml__engine__with__singleton__items__info_8cpp" kind="file" language="C++">
+    <compoundname>qml_engine_with_singleton_items_info.cpp</compoundname>
+    <includes refid="qml__engine__with__singleton__items__info_8h" local="yes">qml_engine_with_singleton_items_info.h</includes>
+    <includes local="no">algorithm</includes>
+    <incdepgraph>
+      <node id="12849">
+        <label>qml_engine_with_singleton_items_info.h</label>
+        <link refid="qml__engine__with__singleton__items__info_8h"/>
+        <childnode refid="12850" relation="include">
+        </childnode>
+        <childnode refid="12851" relation="include">
+        </childnode>
+        <childnode refid="12852" relation="include">
+        </childnode>
+      </node>
+      <node id="12851">
+        <label>QQmlEngine</label>
+      </node>
+      <node id="12852">
+        <label>../private/gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="12850" relation="include">
+        </childnode>
+        <childnode refid="12853" relation="include">
+        </childnode>
+        <childnode refid="12854" relation="include">
+        </childnode>
+      </node>
+      <node id="12853">
+        <label>vector</label>
+      </node>
+      <node id="12854">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="12848">
+        <label>libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp</label>
+        <link refid="qml__engine__with__singleton__items__info_8cpp"/>
+        <childnode refid="12849" relation="include">
+        </childnode>
+        <childnode refid="12855" relation="include">
+        </childnode>
+      </node>
+      <node id="12855">
+        <label>algorithm</label>
+      </node>
+      <node id="12850">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qml__engine__with__singleton__items__info_8h" kindref="compound">qml_engine_with_singleton_items_info.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" kindref="member">QmlEngineWithSingletonItemsInfo::QmlEngineWithSingletonItemsInfo</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::unique_ptr&lt;GuiImageProviderImpl&gt;&gt;<sp/>&amp;&amp;image_providers,<sp/><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref><sp/>*singleton_items_info)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info" kindref="compound">QmlEngineWithSingletonItemsInfo</ref>{<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" kindref="member">image_providers</ref>,<sp/><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" kindref="member">singleton_items_info</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1acfc796de1ec7a3ddc546a31718edc8a2" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" kindref="member">QmlEngineWithSingletonItemsInfo::QmlEngineWithSingletonItemsInfo</ref>(<ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::unique_ptr&lt;GuiImageProviderImpl&gt;&gt;<sp/>&amp;image_providers,<sp/><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref><sp/>*singleton_items_info)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>QQmlEngine{},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>image_providers(image_providers.size()),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>singleton_items_info{singleton_items_info}<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::transform(std::begin(image_providers),<sp/>std::end(image_providers),<sp/>std::begin(this-&gt;image_providers),<sp/>[]<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;GuiImageProviderImpl&gt;<sp/>&amp;image_provider)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>image_provider.get();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" kindref="member">std::for_each</ref>(std::begin(image_providers),<sp/>std::end(image_providers),<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>(std::unique_ptr&lt;GuiImageProviderImpl&gt;<sp/>&amp;image_provider)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>image_provider-&gt;get_id();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;addImageProvider(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>image_provider.release());</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" kindref="member">QmlEngineWithSingletonItemsInfo::~QmlEngineWithSingletonItemsInfo</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" kindref="member">std::for_each</ref>(std::begin(this-&gt;<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" kindref="member">image_providers</ref>),<sp/>std::end(this-&gt;<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" kindref="member">image_providers</ref>),<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>(<ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref><sp/>*image_provider)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>image_provider-&gt;<ref refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99" kindref="member">give_up</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;removeImageProvider(image_provider-&gt;<ref refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" kindref="member">get_id</ref>());</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref>*<sp/><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" kindref="member">QmlEngineWithSingletonItemsInfo::get_singleton_items_info</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" kindref="member">singleton_items_info</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" refkind="member"><highlight class="normal">std::vector&lt;GuiImageProviderImpl*&gt;<sp/><ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" kindref="member">QmlEngineWithSingletonItemsInfo::get_image_providers</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" kindref="member">image_providers</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp"/>
+  </compounddef>
+</doxygen>

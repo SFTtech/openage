@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1audio" kind="namespace" language="C++">
+    <compoundname>openage::audio</compoundname>
+    <innerclass refid="structopenage_1_1audio_1_1audio__chunk__t" prot="public">openage::audio::audio_chunk_t</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_audio_manager" prot="public">openage::audio::AudioManager</innerclass>
+    <innerclass refid="structopenage_1_1audio_1_1chunk__info__t" prot="public">openage::audio::chunk_info_t</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_dynamic_loader" prot="public">openage::audio::DynamicLoader</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_dynamic_resource" prot="public">openage::audio::DynamicResource</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_error" prot="public">openage::audio::Error</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_in_memory_loader" prot="public">openage::audio::InMemoryLoader</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_in_memory_resource" prot="public">openage::audio::InMemoryResource</innerclass>
+    <innerclass refid="structopenage_1_1audio_1_1opus__file__t" prot="public">openage::audio::opus_file_t</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_opus_dynamic_loader" prot="public">openage::audio::OpusDynamicLoader</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_opus_in_memory_loader" prot="public">openage::audio::OpusInMemoryLoader</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_resource" prot="public">openage::audio::Resource</innerclass>
+    <innerclass refid="structopenage_1_1audio_1_1resource__def" prot="public">openage::audio::resource_def</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_s_d_l_device_lock" prot="public">openage::audio::SDLDeviceLock</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_sound" prot="public">openage::audio::Sound</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_sound_impl" prot="public">openage::audio::SoundImpl</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>category_t</name>
+        <enumvalue id="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060a4504e1ed59cd9732b8a844e5424e6f13" prot="public">
+          <name>GAME</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060a596acbde60b98295256f8e4073a8e341" prot="public">
+          <name>INTERFACE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060ad74c735013cdd2b883e25ccca502a2e9" prot="public">
+          <name>MUSIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060ae221efa5e7bfc56d59f71cb211533def" prot="public">
+          <name>TAUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/category.h" line="11" column="1" bodyfile="libopenage/audio/category.h" bodystart="11" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>format_t</name>
+        <enumvalue id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9" prot="public">
+          <name>OPUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba76bae86742a2ec93bb56ae064ce7bd54" prot="public">
+          <name>WAV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba27bcd310c52f6445cf4b93b90f52f5ef" prot="public">
+          <name>MP3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dbaa417ad68c0d44a64cc77fcbba552fd6e" prot="public">
+          <name>FLAC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/format.h" line="11" column="1" bodyfile="libopenage/audio/format.h" bodystart="11" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>loader_policy_t</name>
+        <enumvalue id="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a722a256b864f768da20a4b31fdc6dfec" prot="public">
+          <name>IN_MEMORY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a0fcc90da4811c877ba9f9c12f7d60bc9" prot="public">
+          <name>DYNAMIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/loader_policy.h" line="12" column="1" bodyfile="libopenage/audio/loader_policy.h" bodystart="12" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1audio_1abecf0cfa190370ef1cf7d58608928409" prot="public" static="no">
+        <type>std::vector&lt; int16_t &gt;</type>
+        <definition>using openage::audio::pcm_data_t = typedef std::vector&lt;int16_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>pcm_data_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pcm_data_t is a vector consisting of signed 16 bit integer samples. It is used to represent one complete audio resource&apos;s buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/types.h" line="29" column="1" bodyfile="libopenage/audio/types.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1audio_1ad72fe21475d7ce551d709dde4c0f25b2" prot="public" static="no">
+        <type>std::vector&lt; int16_t &gt;</type>
+        <definition>using openage::audio::pcm_chunk_t = typedef std::vector&lt;int16_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>pcm_chunk_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pcm_chunk_t is a vector consisting of signed 16 bit integer samples. It is used to represent a chunk of a audio resource&apos;s buffer with a fixed size. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/types.h" line="35" column="1" bodyfile="libopenage/audio/types.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1audio_1a16038cc5c4922bb30824b731b58215ce" prot="public" static="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto openage::audio::opus_deleter</definition>
+        <argsstring></argsstring>
+        <name>opus_deleter</name>
+        <initializer>= [](OggOpusFile *op_file) {
+	if (op_file != nullptr) {
+		op_free(op_file);
+	}
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="13" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1audio_1abc71c7bb569b2f8285a952869a27bbdc" prot="public" static="yes" mutable="no">
+        <type>op_read_func</type>
+        <definition>op_read_func openage::audio::opus_reader</definition>
+        <argsstring></argsstring>
+        <name>opus_reader</name>
+        <initializer>= [](void *stream,
+                                     unsigned char *buf,
+                                     int count) -&gt; int {
+
+	<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *file = reinterpret_cast&lt;<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *&gt;(stream);
+	return file-&gt;read_to(buf, count);
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="20" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1audio_1aab7fb6278a7b011a6c16393f1565539f" prot="public" static="yes" mutable="no">
+        <type>op_seek_func</type>
+        <definition>op_seek_func openage::audio::opus_seeker</definition>
+        <argsstring></argsstring>
+        <name>opus_seeker</name>
+        <initializer>= [](void *stream,
+                                     opus_int64 offset,
+                                     int whence) -&gt; int {
+
+	<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *file = reinterpret_cast&lt;<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *&gt;(stream);
+	if (<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(not file-&gt;seekable())) {
+		return -1;
+	}
+
+	file-&gt;seek(offset, static_cast&lt;<ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">util::File::seek_t</ref>&gt;(whence));
+	return 0;
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="29" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1audio_1ade8247a60ce2857dac8eff8f84e924a0" prot="public" static="yes" mutable="no">
+        <type>op_tell_func</type>
+        <definition>op_tell_func openage::audio::opus_teller</definition>
+        <argsstring></argsstring>
+        <name>opus_teller</name>
+        <initializer>= [](void *stream) -&gt; opus_int64 {
+	<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *file = reinterpret_cast&lt;<ref refid="classopenage_1_1util_1_1_file" kindref="compound">util::File</ref> *&gt;(stream);
+	return file-&gt;tell();
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="43" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1audio_1ab561da007292cf943f198ac54454aa19" prot="public" static="yes" mutable="no">
+        <type>OpusFileCallbacks</type>
+        <definition>OpusFileCallbacks openage::audio::opus_access_funcs</definition>
+        <argsstring></argsstring>
+        <name>opus_access_funcs</name>
+        <initializer>{
+	<ref refid="namespaceopenage_1_1audio_1abc71c7bb569b2f8285a952869a27bbdc" kindref="member">opus_reader</ref>,
+	<ref refid="namespaceopenage_1_1audio_1aab7fb6278a7b011a6c16393f1565539f" kindref="member">opus_seeker</ref>,
+	<ref refid="namespaceopenage_1_1audio_1ade8247a60ce2857dac8eff8f84e924a0" kindref="member">opus_teller</ref>,
+	nullptr        
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="49" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1a654fb5fc6eaf35a9cd040d670f0fa8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * openage::audio::category_t_to_str</definition>
+        <argsstring>(category_t val)</argsstring>
+        <name>category_t_to_str</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/category.cpp" line="13" column="1" bodyfile="libopenage/audio/category.cpp" bodystart="13" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1a3db10b8f65422a7a97adbcdb9d97b398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::audio::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const category_t val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/category.cpp" line="24" column="1" bodyfile="libopenage/audio/category.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1ac238d5cf0dbb7b5166bbabbe3a1d9e1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * openage::audio::format_t_to_str</definition>
+        <argsstring>(format_t val)</argsstring>
+        <name>format_t_to_str</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/format.cpp" line="11" column="1" bodyfile="libopenage/audio/format.cpp" bodystart="11" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1a6d666589a0841fdfe50d91061e10a574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::audio::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const format_t val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/format.cpp" line="22" column="1" bodyfile="libopenage/audio/format.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * openage::audio::loader_policy_t_to_str</definition>
+        <argsstring>(loader_policy_t val)</argsstring>
+        <name>loader_policy_t_to_str</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" kindref="member">loader_policy_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/loader_policy.cpp" line="11" column="1" bodyfile="libopenage/audio/loader_policy.cpp" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1ad2b75e7dbf6cd2f85e5d71b587a5e447" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::audio::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const loader_policy_t val)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" kindref="member">loader_policy_t</ref></type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/loader_policy.cpp" line="20" column="1" bodyfile="libopenage/audio/loader_policy.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1audio_1a2b9ae1ef31b0fe76e8f6d90fa1fc9db7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1audio_1_1opus__file__t" kindref="compound">opus_file_t</ref></type>
+        <definition>opus_file_t openage::audio::open_opus_file</definition>
+        <argsstring>(const util::Path &amp;path)</argsstring>
+        <name>open_opus_file</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Opens a opus file. Its location is specified by the path stored in the <ref refid="classopenage_1_1audio_1_1_dynamic_loader" kindref="compound">DynamicLoader</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_loading.cpp" line="57" column="1" bodyfile="libopenage/audio/opus_loading.cpp" bodystart="57" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/audio/audio_manager.cpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>

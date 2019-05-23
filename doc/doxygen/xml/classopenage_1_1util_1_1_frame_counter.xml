@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_frame_counter" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::FrameCounter</compoundname>
+    <includes refid="fps_8h" local="no">fps.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::FrameCounter::fps</definition>
+        <argsstring></argsstring>
+        <name>fps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>auto-updated to always contain the current FPS value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="19" column="1" bodyfile="libopenage/util/fps.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::FrameCounter::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>contains the number of completed frames </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="22" column="1" bodyfile="libopenage/util/fps.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::util::FrameCounter::nsec_lastframe</definition>
+        <argsstring></argsstring>
+        <name>nsec_lastframe</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>nanoseconds used for the last frame </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="25" column="1" bodyfile="libopenage/util/fps.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::FrameCounter::frame_count_weighted</definition>
+        <argsstring></argsstring>
+        <name>frame_count_weighted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="28" column="1" bodyfile="libopenage/util/fps.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::FrameCounter::frame_length_sum_weighted</definition>
+        <argsstring></argsstring>
+        <name>frame_length_sum_weighted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="29" column="1" bodyfile="libopenage/util/fps.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_timer" kindref="compound">Timer</ref></type>
+        <definition>Timer openage::util::FrameCounter::frame_timer</definition>
+        <argsstring></argsstring>
+        <name>frame_timer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="31" column="1" bodyfile="libopenage/util/fps.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_frame_counter_1a332195a939c0cec7b42048c9304cb3e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FrameCounter::FrameCounter</definition>
+        <argsstring>()</argsstring>
+        <name>FrameCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="12" column="1" bodyfile="libopenage/util/fps.cpp" bodystart="12" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_frame_counter_1a1fe36cffea5d8120ac1606d1a2cf380b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FrameCounter::~FrameCounter</definition>
+        <argsstring>()=default</argsstring>
+        <name>~FrameCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="13" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::FrameCounter::frame</definition>
+        <argsstring>()</argsstring>
+        <name>frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>to be called each time a frame has been completed </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fps.h" line="16" column="1" bodyfile="libopenage/util/fps.cpp" bodystart="23" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1540">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="1541" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="1541">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fps.h" line="10" column="1" bodyfile="libopenage/util/fps.h" bodystart="10" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>count</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>fps</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>frame</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" prot="private" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>frame_count_weighted</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" prot="private" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>frame_length_sum_weighted</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" prot="private" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>frame_timer</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a332195a939c0cec7b42048c9304cb3e9" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>FrameCounter</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>nsec_lastframe</name></member>
+      <member refid="classopenage_1_1util_1_1_frame_counter_1a1fe36cffea5d8120ac1606d1a2cf380b" prot="public" virt="non-virtual"><scope>openage::util::FrameCounter</scope><name>~FrameCounter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

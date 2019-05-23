@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1audio_1_1_opus_in_memory_loader" kind="class" language="C++" prot="public">
+    <compoundname>openage::audio::OpusInMemoryLoader</compoundname>
+    <basecompoundref refid="classopenage_1_1audio_1_1_in_memory_loader" prot="public" virt="non-virtual">openage::audio::InMemoryLoader</basecompoundref>
+    <includes refid="opus__in__memory__loader_8h" local="no">opus_in_memory_loader.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_opus_in_memory_loader_1a817f086fbf21c6e348c88678a6322ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::audio::OpusInMemoryLoader::OpusInMemoryLoader</definition>
+        <argsstring>(const util::Path &amp;path)</argsstring>
+        <name>OpusInMemoryLoader</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the resource&apos;s location in the filesystem </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_in_memory_loader.h" line="25" column="1" bodyfile="libopenage/audio/opus_in_memory_loader.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_opus_in_memory_loader_1a5d1198a1a6cef597d39db8be278ac1ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::audio::OpusInMemoryLoader::~OpusInMemoryLoader</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OpusInMemoryLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_in_memory_loader.h" line="26" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1audio_1_1_opus_in_memory_loader_1afd535fc99780b2823cdd38c8dfc03f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1audio_1abecf0cfa190370ef1cf7d58608928409" kindref="member">pcm_data_t</ref></type>
+        <definition>pcm_data_t openage::audio::OpusInMemoryLoader::get_resource</definition>
+        <argsstring>() override</argsstring>
+        <name>get_resource</name>
+        <reimplements refid="classopenage_1_1audio_1_1_in_memory_loader_1a3e774f8c61f668dc217e5deb465a0cf5">get_resource</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the resource as pcm data buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/opus_in_memory_loader.h" line="28" column="1" bodyfile="libopenage/audio/opus_in_memory_loader.cpp" bodystart="21" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classopenage_1_1audio_1_1_opus_in_memory_loader" kindref="compound">OpusInMemoryLoader</ref> load&apos;s opus encoded data from opus files. A opus file is loaded completely at once and the loaded data will be kept in memory. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3494">
+        <label>openage::audio::InMemoryLoader</label>
+        <link refid="classopenage_1_1audio_1_1_in_memory_loader"/>
+      </node>
+      <node id="3493">
+        <label>openage::audio::OpusInMemoryLoader</label>
+        <link refid="classopenage_1_1audio_1_1_opus_in_memory_loader"/>
+        <childnode refid="3494" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3497">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="3496">
+        <label>openage::audio::InMemoryLoader</label>
+        <link refid="classopenage_1_1audio_1_1_in_memory_loader"/>
+        <childnode refid="3497" relation="usage">
+          <edgelabel>#path</edgelabel>
+        </childnode>
+      </node>
+      <node id="3495">
+        <label>openage::audio::OpusInMemoryLoader</label>
+        <link refid="classopenage_1_1audio_1_1_opus_in_memory_loader"/>
+        <childnode refid="3496" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/opus_in_memory_loader.h" line="19" column="1" bodyfile="libopenage/audio/opus_in_memory_loader.h" bodystart="19" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1audio_1_1_in_memory_loader_1a19344fe6babb4d670c042430ccae8d02" prot="public" virt="non-virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>create</name></member>
+      <member refid="classopenage_1_1audio_1_1_opus_in_memory_loader_1afd535fc99780b2823cdd38c8dfc03f5d" prot="public" virt="virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>get_resource</name></member>
+      <member refid="classopenage_1_1audio_1_1_in_memory_loader_1a3536ee6d4dca2592db0c32a11dc7abb6" prot="public" virt="non-virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>InMemoryLoader</name></member>
+      <member refid="classopenage_1_1audio_1_1_opus_in_memory_loader_1a817f086fbf21c6e348c88678a6322ec9" prot="public" virt="non-virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>OpusInMemoryLoader</name></member>
+      <member refid="classopenage_1_1audio_1_1_in_memory_loader_1a241525f491fad633191358da938c9472" prot="protected" virt="non-virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>path</name></member>
+      <member refid="classopenage_1_1audio_1_1_in_memory_loader_1a5cbd6811e3cda841534d6c5c11b95885" prot="public" virt="virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>~InMemoryLoader</name></member>
+      <member refid="classopenage_1_1audio_1_1_opus_in_memory_loader_1a5d1198a1a6cef597d39db8be278ac1ad" prot="public" virt="virtual"><scope>openage::audio::OpusInMemoryLoader</scope><name>~OpusInMemoryLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

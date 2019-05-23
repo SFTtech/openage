@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fixed__point__test_8cpp" kind="file" language="C++">
+    <compoundname>fixed_point_test.cpp</compoundname>
+    <includes refid="fixed__point_8h" local="yes">fixed_point.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <includes refid="stringformatter_8h" local="yes">stringformatter.h</includes>
+    <incdepgraph>
+      <node id="30293">
+        <label>list</label>
+      </node>
+      <node id="30286">
+        <label>atomic</label>
+      </node>
+      <node id="30260">
+        <label>fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="30261" relation="include">
+        </childnode>
+        <childnode refid="30262" relation="include">
+        </childnode>
+        <childnode refid="30263" relation="include">
+        </childnode>
+        <childnode refid="30264" relation="include">
+        </childnode>
+        <childnode refid="30265" relation="include">
+        </childnode>
+        <childnode refid="30266" relation="include">
+        </childnode>
+        <childnode refid="30267" relation="include">
+        </childnode>
+        <childnode refid="30268" relation="include">
+        </childnode>
+      </node>
+      <node id="30290">
+        <label>functional</label>
+      </node>
+      <node id="30264">
+        <label>iomanip</label>
+      </node>
+      <node id="30265">
+        <label>limits</label>
+      </node>
+      <node id="30281">
+        <label>cstdint</label>
+      </node>
+      <node id="30288">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30289" relation="include">
+        </childnode>
+        <childnode refid="30290" relation="include">
+        </childnode>
+        <childnode refid="30264" relation="include">
+        </childnode>
+        <childnode refid="30273" relation="include">
+        </childnode>
+        <childnode refid="30291" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+        <childnode refid="30272" relation="include">
+        </childnode>
+      </node>
+      <node id="30263">
+        <label>cmath</label>
+      </node>
+      <node id="30276">
+        <label>stdexcept</label>
+      </node>
+      <node id="30292">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30293" relation="include">
+        </childnode>
+        <childnode refid="30294" relation="include">
+        </childnode>
+        <childnode refid="30295" relation="include">
+        </childnode>
+      </node>
+      <node id="30289">
+        <label>cstdarg</label>
+      </node>
+      <node id="30271">
+        <label>string</label>
+      </node>
+      <node id="30280">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30281" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+        <childnode refid="30282" relation="include">
+        </childnode>
+        <childnode refid="30283" relation="include">
+        </childnode>
+        <childnode refid="30285" relation="include">
+        </childnode>
+        <childnode refid="30292" relation="include">
+        </childnode>
+        <childnode refid="30295" relation="include">
+        </childnode>
+      </node>
+      <node id="30283">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30284" relation="include">
+        </childnode>
+      </node>
+      <node id="30285">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30286" relation="include">
+        </childnode>
+        <childnode refid="30273" relation="include">
+        </childnode>
+        <childnode refid="30267" relation="include">
+        </childnode>
+        <childnode refid="30277" relation="include">
+        </childnode>
+        <childnode refid="30287" relation="include">
+        </childnode>
+        <childnode refid="30288" relation="include">
+        </childnode>
+      </node>
+      <node id="30266">
+        <label>ostream</label>
+      </node>
+      <node id="30269">
+        <label>limits.h</label>
+      </node>
+      <node id="30274">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30275" relation="include">
+        </childnode>
+        <childnode refid="30273" relation="include">
+        </childnode>
+        <childnode refid="30276" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+        <childnode refid="30277" relation="include">
+        </childnode>
+        <childnode refid="30280" relation="include">
+        </childnode>
+      </node>
+      <node id="30268">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="30261" relation="include">
+        </childnode>
+        <childnode refid="30269" relation="include">
+        </childnode>
+        <childnode refid="30263" relation="include">
+        </childnode>
+        <childnode refid="30270" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+        <childnode refid="30272" relation="include">
+        </childnode>
+        <childnode refid="30273" relation="include">
+        </childnode>
+        <childnode refid="30274" relation="include">
+        </childnode>
+        <childnode refid="30277" relation="include">
+        </childnode>
+      </node>
+      <node id="30259">
+        <label>libopenage/util/fixed_point_test.cpp</label>
+        <link refid="fixed__point__test_8cpp"/>
+        <childnode refid="30260" relation="include">
+        </childnode>
+        <childnode refid="30281" relation="include">
+        </childnode>
+        <childnode refid="30298" relation="include">
+        </childnode>
+        <childnode refid="30285" relation="include">
+        </childnode>
+      </node>
+      <node id="30297">
+        <label>typeinfo</label>
+      </node>
+      <node id="30272">
+        <label>vector</label>
+      </node>
+      <node id="30278">
+        <label>ciso646</label>
+      </node>
+      <node id="30291">
+        <label>sstream</label>
+      </node>
+      <node id="30277">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30278" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+        <childnode refid="30279" relation="include">
+        </childnode>
+      </node>
+      <node id="30279">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30279" relation="include">
+        </childnode>
+      </node>
+      <node id="30287">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30275" relation="include">
+        </childnode>
+        <childnode refid="30271" relation="include">
+        </childnode>
+      </node>
+      <node id="30295">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30296" relation="include">
+        </childnode>
+      </node>
+      <node id="30284">
+        <label>cstdlib</label>
+      </node>
+      <node id="30275">
+        <label>iostream</label>
+      </node>
+      <node id="30262">
+        <label>climits</label>
+      </node>
+      <node id="30298">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="30274" relation="include">
+        </childnode>
+      </node>
+      <node id="30294">
+        <label>mutex</label>
+      </node>
+      <node id="30267">
+        <label>type_traits</label>
+      </node>
+      <node id="30282">
+        <label>config.h</label>
+      </node>
+      <node id="30261">
+        <label>algorithm</label>
+      </node>
+      <node id="30270">
+        <label>cstring</label>
+      </node>
+      <node id="30273">
+        <label>memory</label>
+      </node>
+      <node id="30296">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30275" relation="include">
+        </childnode>
+        <childnode refid="30297" relation="include">
+        </childnode>
+        <childnode refid="30277" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fixed__point_8h" kindref="compound">fixed_point.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stringformatter_8h" kindref="compound">stringformatter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" kindref="member">fixed_point</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>construction<sp/>and<sp/>assignments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint&lt;int8_t, 4&gt;</ref><sp/>a(4.3);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1a12dc86de2b985fdaff044ed9ab38e453" kindref="member">to_int</ref>(),<sp/>4);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" kindref="member">to_float</ref>(),<sp/>4.25);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" kindref="member">to_double</ref>(),<sp/>4.25);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" kindref="member">get_raw_value</ref>(),<sp/>68);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" kindref="member">get_fractional_part</ref>().to_float(),<sp/>0.25);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint&lt;int8_t, 4&gt;</ref><sp/>b(a);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(b.<ref refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" kindref="member">get_raw_value</ref>(),<sp/>68);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>c<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint&lt;uint16_t, 8&gt;::from_fixedpoint&lt;int8_t, 4&gt;</ref>(a);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.get_raw_value(),<sp/>1088);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.to_int(),<sp/>4);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(c.to_double(),<sp/>4.25);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" kindref="member">FixedPoint&lt;int8_t, 4&gt;::from_int</ref>(1);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" kindref="member">get_raw_value</ref>(),<sp/>16);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" kindref="member">FixedPoint&lt;int8_t, 4&gt;::from_float</ref>(1.3);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.get_raw_value(),<sp/>20);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" kindref="member">FixedPoint&lt;int8_t, 4&gt;::from_double</ref>(1.4);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.get_raw_value(),<sp/>22);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>d<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" kindref="member">FixedPoint&lt;uint64_t, 48&gt;::from_double</ref>(2016);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>raw<sp/>value<sp/>was<sp/>calculated<sp/>in<sp/>python:<sp/>2016<sp/>*<sp/>2**48</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(d.get_raw_value(),<sp/>567453553048682496UL);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>arithmetics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>TestType<sp/>=<sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint&lt;int64_t, 32&gt;</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>TestType<sp/>e(120.7);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>TestType<sp/>f(-12.4);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>e<sp/>+=<sp/>f;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(e.to_double(),<sp/>108.3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((-e).to_double(),<sp/>-108.3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((+e).to_double(),<sp/>108.3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((e<sp/>-<sp/>f).to_double(),<sp/>120.7,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((e<sp/>+<sp/>f).to_double(),<sp/>95.9,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((e<sp/>*<sp/>1.02).to_double(),<sp/>108.3<sp/>*<sp/>1.02,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((e<sp/>*<sp/>10).to_double(),<sp/>108.3<sp/>*<sp/>10,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>((e<sp/>/<sp/>10).to_double(),<sp/>108.3<sp/>/<sp/>10,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(<ref refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" kindref="member">std::sqrt</ref>(e),<sp/><ref refid="namespacestd_1a0fc492a11cf74e80f976b24bea2a2eb2" kindref="member">sqrt</ref>(108.3),<sp/>1e-7);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(<ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">std::abs</ref>(-e).to_double(),<sp/>108.3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(<ref refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" kindref="member">std::hypot</ref>(e,<sp/>f),<sp/><ref refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" kindref="member">hypot</ref>(108.3,<sp/>-12.4),<sp/>1e-7);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(<ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::min</ref>(e,<sp/>f),<sp/>-12.4,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(<ref refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" kindref="member">std::max</ref>(e,<sp/>f),<sp/>108.3,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(TestType::min_value().to_double(),<sp/>-2147483648.0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(TestType::max_value().to_double(),<sp/>2147483648.0,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>e<sp/>-=<sp/>f;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(e.to_double(),<sp/>120.7,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>==<sp/>f,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>!=<sp/>f,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>==<sp/>e,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&lt;=<sp/>e,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&gt;=<sp/>e,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&gt;=<sp/>f,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&lt;=<sp/>f,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&lt;<sp/>e,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&gt;<sp/>e,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&lt;<sp/>f,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(e<sp/>&gt;<sp/>f,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>the<sp/>string<sp/>I/O<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref><sp/>s;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>a;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(std::string(s),<sp/></highlight><highlight class="stringliteral">&quot;1.38&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>c;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(std::string(s),<sp/></highlight><highlight class="stringliteral">&quot;4.250&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>s.<ref refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/>d;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(std::string(s),<sp/></highlight><highlight class="stringliteral">&quot;2016.000000000000000&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>sstr(</highlight><highlight class="stringliteral">&quot;1234.5678&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>sstr<sp/>&gt;&gt;<sp/>e;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" kindref="member">TESTEQUALS_FLOAT</ref>(e.to_double(),<sp/>1234.5678,<sp/>1e-7);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fixed_point_test.cpp"/>
+  </compounddef>
+</doxygen>

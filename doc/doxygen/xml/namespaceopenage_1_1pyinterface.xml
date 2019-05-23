@@ -1,0 +1,924 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1pyinterface" kind="namespace" language="C++">
+    <compoundname>openage::pyinterface</compoundname>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_func" prot="public">openage::pyinterface::Func</innerclass>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_py_exception" prot="public">openage::pyinterface::PyException</innerclass>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_py_exception_backtrace" prot="public">openage::pyinterface::PyExceptionBacktrace</innerclass>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_py_if_func" prot="public">openage::pyinterface::PyIfFunc</innerclass>
+    <innerclass refid="classopenage_1_1pyinterface_1_1_py_object_ref" prot="public">openage::pyinterface::PyObjectRef</innerclass>
+    <innernamespace refid="namespaceopenage_1_1pyinterface_1_1tests">openage::pyinterface::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1ac5982090c06dd898f6ae31eb91d0eb03" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT &gt;</type>
+        <definition>using openage::pyinterface::Func0 = typedef Func&lt;RT&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="275" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1af2af31f0399e7a2975248aa5d1b90770" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+          <param>
+            <type>typename AT0</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT, AT0 &gt;</type>
+        <definition>using openage::pyinterface::Func1 = typedef Func&lt;RT, AT0&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="296" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1aa8a4b7d9f80e0eb01b608e76e63f0200" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+          <param>
+            <type>typename AT0</type>
+          </param>
+          <param>
+            <type>typename AT1</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT, AT0, AT1 &gt;</type>
+        <definition>using openage::pyinterface::Func2 = typedef Func&lt;RT, AT0, AT1&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="318" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1aa3e403feb31c12f6da74581bdd27e7d7" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+          <param>
+            <type>typename AT0</type>
+          </param>
+          <param>
+            <type>typename AT1</type>
+          </param>
+          <param>
+            <type>typename AT2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT, AT0, AT1, AT2 &gt;</type>
+        <definition>using openage::pyinterface::Func3 = typedef Func&lt;RT, AT0, AT1, AT2&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="340" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1a5cac3c9ec570cd62730cd4b0c8861f54" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+          <param>
+            <type>typename AT0</type>
+          </param>
+          <param>
+            <type>typename AT1</type>
+          </param>
+          <param>
+            <type>typename AT2</type>
+          </param>
+          <param>
+            <type>typename AT3</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT, AT0, AT1, AT2, AT3 &gt;</type>
+        <definition>using openage::pyinterface::Func4 = typedef Func&lt;RT, AT0, AT1, AT2, AT3&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="362" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="362" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1ad60b5c16d79c409477eefd3791832f41" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename RT</type>
+          </param>
+          <param>
+            <type>typename AT0</type>
+          </param>
+          <param>
+            <type>typename AT1</type>
+          </param>
+          <param>
+            <type>typename AT2</type>
+          </param>
+          <param>
+            <type>typename AT3</type>
+          </param>
+          <param>
+            <type>typename AT4</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; RT, AT0, AT1, AT2, AT3, AT4 &gt;</type>
+        <definition>using openage::pyinterface::Func5 = typedef Func&lt;RT, AT0, AT1, AT2, AT3, AT4&gt;</definition>
+        <argsstring></argsstring>
+        <name>Func5</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/functional.h" line="385" column="1" bodyfile="libopenage/pyinterface/functional.h" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1pyinterface_1a5a9c21964d61589af1bc3d35eeaf5a6c" prot="public" static="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>using openage::pyinterface::PyObj = typedef PyObjectRef</definition>
+        <argsstring></argsstring>
+        <name>PyObj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convenience alias </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="282" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a53f43e6841f4160dfdaea8592cb0db3d" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* openage::pyinterface::raise_cpp_error) (Error *)</definition>
+        <argsstring>)(Error *)</argsstring>
+        <name>raise_cpp_error</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="24" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a1ed950b8158655d0bcb54fbb36404873" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* openage::pyinterface::raise_cpp_pyexception) (PyException *)</definition>
+        <argsstring>)(PyException *)</argsstring>
+        <name>raise_cpp_pyexception</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="25" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a29e783fc0db24c266caed883f5781e96" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* openage::pyinterface::describe_py_exception) (PyException *)</definition>
+        <argsstring>)(PyException *)</argsstring>
+        <name>describe_py_exception</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="27" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1aa215bdc802dfaf2c82acb6b3acf3d6e6" prot="public" static="no" mutable="no">
+        <type>bool(*</type>
+        <definition>bool(* openage::pyinterface::check_for_py_exception) ()</definition>
+        <argsstring>)()</argsstring>
+        <name>check_for_py_exception</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="28" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1abd497e13d9c1d349faac93274a50dece" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; void, const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">error::backtrace_symbol</ref> * &gt; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, Func&lt; void, const error::backtrace_symbol * &gt; &gt; openage::pyinterface::pyexception_bt_get_symbols</definition>
+        <argsstring></argsstring>
+        <name>pyexception_bt_get_symbols</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyexception.cpp" line="46" column="1" bodyfile="libopenage/pyinterface/pyexception.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a7866f2cf6f90156274ac6b83776e73d9" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject * &gt; openage::pyinterface::py_xincref</definition>
+        <argsstring></argsstring>
+        <name>py_xincref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="272" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1ab5131b0e0209f78e76c5556cd7371dd7" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject * &gt; openage::pyinterface::py_xdecref</definition>
+        <argsstring></argsstring>
+        <name>py_xdecref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="273" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1aee648d1c95091e0207f3bf9d4f69dd01" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; std::string, PyObject * &gt; openage::pyinterface::py_str</definition>
+        <argsstring></argsstring>
+        <name>py_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="275" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1afc5196e488904c84cd675b55494f3695" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; std::string, PyObject * &gt; openage::pyinterface::py_repr</definition>
+        <argsstring></argsstring>
+        <name>py_repr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="276" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a1da67fe4551652e4267a218123e27309" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; std::string, PyObject * &gt; openage::pyinterface::py_bytes</definition>
+        <argsstring></argsstring>
+        <name>py_bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="277" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1ad0be0c0750d33fff88a405db89a1dbe7" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; int, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; int, PyObject * &gt; openage::pyinterface::py_len</definition>
+        <argsstring></argsstring>
+        <name>py_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="278" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a2ff686c130c1870c58243e9f9530685a" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject * &gt; openage::pyinterface::py_callable</definition>
+        <argsstring></argsstring>
+        <name>py_callable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="279" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a63957aa9bf0c9835493a16ff6b543418" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, PyObject * &gt; openage::pyinterface::py_call0</definition>
+        <argsstring></argsstring>
+        <name>py_call0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="280" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a8aa560a3c62f746b36bb98e84bf1934c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, std::vector&lt; <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt; &amp; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, PyObject *, std::vector&lt; PyObject * &gt; &amp; &gt; openage::pyinterface::py_calln</definition>
+        <argsstring></argsstring>
+        <name>py_calln</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="281" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a72f6244131021857b5da82ec1a2b60b4" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, std::string &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject *, std::string &gt; openage::pyinterface::py_hasattr</definition>
+        <argsstring></argsstring>
+        <name>py_hasattr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="282" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a3cf5d417d7e8b932bd437163d1aa86d5" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, std::string &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, PyObject *, std::string &gt; openage::pyinterface::py_getattr</definition>
+        <argsstring></argsstring>
+        <name>py_getattr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="283" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a3316eef7fb6fbfced2f80c600bad8908" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, std::string, PyObject * &gt; openage::pyinterface::py_setattr</definition>
+        <argsstring></argsstring>
+        <name>py_setattr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="284" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1afea8e32a161fe2e4644bda2196185215" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject *, PyObject * &gt; openage::pyinterface::py_isinstance</definition>
+        <argsstring></argsstring>
+        <name>py_isinstance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="285" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1ad6ddd0e21b23d1b521586e0694a80a04" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject * &gt; openage::pyinterface::py_to_bool</definition>
+        <argsstring></argsstring>
+        <name>py_to_bool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="286" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a4c514ea8f04bb945cd0d0086c89e8aa3" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; int64_t, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; int64_t, PyObject * &gt; openage::pyinterface::py_to_int</definition>
+        <argsstring></argsstring>
+        <name>py_to_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="287" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a7dd7680eb550d5db3c7f902316a748c1" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; void, std::string &gt; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, Func&lt; void, std::string &gt; &gt; openage::pyinterface::py_dir</definition>
+        <argsstring></argsstring>
+        <name>py_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="288" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1acf53a5711df9e4c084c8db8a0da7c742" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject *, PyObject * &gt; openage::pyinterface::py_equals</definition>
+        <argsstring></argsstring>
+        <name>py_equals</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="289" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a22d3d2911cba5872786856d0cd41bf53" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, std::string &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, std::string &gt; openage::pyinterface::py_exec</definition>
+        <argsstring></argsstring>
+        <name>py_exec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="290" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a63919a2347c856579a992996c9c26d8a" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, std::string &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, PyObjectRef *, std::string &gt; openage::pyinterface::py_eval</definition>
+        <argsstring></argsstring>
+        <name>py_eval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="291" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a26ef6836021b3dc7fe2215b7fab97e9d" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, PyObjectRef *, PyObject * &gt; openage::pyinterface::py_get</definition>
+        <argsstring></argsstring>
+        <name>py_get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="292" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a963c22d15551b5aa2e567e9603ef79e1" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; bool, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; bool, PyObject *, PyObject * &gt; openage::pyinterface::py_in</definition>
+        <argsstring></argsstring>
+        <name>py_in</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="293" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1ad33eb5ce8235933127b3d7ed2f519ce7" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObject *, PyObjectRef * &gt; openage::pyinterface::py_type</definition>
+        <argsstring></argsstring>
+        <name>py_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="294" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1aec589471ebd2cf0deea9cb901fa5b120" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; std::string, PyObject * &gt; openage::pyinterface::py_modulename</definition>
+        <argsstring></argsstring>
+        <name>py_modulename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="295" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a4912d8bb9e44d51c84e6363694941f42" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; std::string, <ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; std::string, PyObject * &gt; openage::pyinterface::py_classname</definition>
+        <argsstring></argsstring>
+        <name>py_classname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="296" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a5e10f968ee5f44d64489eff5791a2b93" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, const std::string &amp; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, const std::string &amp; &gt; openage::pyinterface::py_builtin</definition>
+        <argsstring></argsstring>
+        <name>py_builtin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="298" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a019072ec9dc9b26854864b8d639545f6" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, const std::string &amp; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, const std::string &amp; &gt; openage::pyinterface::py_import</definition>
+        <argsstring></argsstring>
+        <name>py_import</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="299" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1acf94e2be78e15a835eef9c8346c16f14" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, const std::string &amp; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, const std::string &amp; &gt; openage::pyinterface::py_createstr</definition>
+        <argsstring></argsstring>
+        <name>py_createstr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="300" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1abc65c10c883e9b61d86316e6e0d71318" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, const std::string &amp; &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, const std::string &amp; &gt; openage::pyinterface::py_createbytes</definition>
+        <argsstring></argsstring>
+        <name>py_createbytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="301" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1afdb5d7025dc1ed4583dfdf6d14ecbb2c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *, int &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef *, int &gt; openage::pyinterface::py_createint</definition>
+        <argsstring></argsstring>
+        <name>py_createint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="302" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1afd53890300da035a2fa6cf0366f3f755" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef * &gt; openage::pyinterface::py_createdict</definition>
+        <argsstring></argsstring>
+        <name>py_createdict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="303" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a3b908fa94eb8b9a2209772fb111795a9" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref>&lt; void, <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> * &gt;</type>
+        <definition>OAAPI PyIfFunc&lt; void, PyObjectRef * &gt; openage::pyinterface::py_createlist</definition>
+        <argsstring></argsstring>
+        <name>py_createlist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="304" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a71a44ad87b997a932215fa57c7643a19" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>OAAPI PyObjectRef openage::pyinterface::None</definition>
+        <argsstring></argsstring>
+        <name>None</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="306" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>OAAPI PyObjectRef openage::pyinterface::True</definition>
+        <argsstring></argsstring>
+        <name>True</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="307" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>OAAPI PyObjectRef openage::pyinterface::False</definition>
+        <argsstring></argsstring>
+        <name>False</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="308" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1ad8166ad0c6228bd8ad488cb2648ef2f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::pyinterface::set_exc_translation_funcs</definition>
+        <argsstring>(void(*raise_cpp_error_impl)(Error *), void(*raise_cpp_pyexception_impl)(PyException *), bool(*check_for_py_exception_impl)(), void(*describe_py_exception_impl)(PyException *))</argsstring>
+        <name>set_exc_translation_funcs</name>
+        <param>
+          <type>void(*)(<ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref> *)</type>
+          <declname>raise_cpp_error</declname>
+        </param>
+        <param>
+          <type>void(*)(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> *)</type>
+          <declname>raise_cpp_pyexception</declname>
+        </param>
+        <param>
+          <type>bool(*)()</type>
+          <declname>check_for_py_exception</declname>
+        </param>
+        <param>
+          <type>void(*)(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> *)</type>
+          <declname>describe_py_exception</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Installs the basic interface functions that are used for exception translation.</para>
+<para>No <ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">PyIfFunc</ref> wrappers can be used here, because those internally rely on exception translation themselves, which would lead to</para>
+<para><itemizedlist>
+<listitem><para>infinite loops</para>
+</listitem><listitem><para>immediate back-conversion of raised Python CPPException objects</para>
+</listitem></itemizedlist>
+</para>
+<para>Thus, we instead offer this setter function, to be called during openage.cppinterface.exctranslate.setup().</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>raise_cpp_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raises the given C++ Exception object as a Python exception. called by translate_exc_cpp_to_py.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raise_cpp_pyexception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raises the given C++ <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> object as a Python exception. called by translate_exc_cpp_to_py.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+The <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> still contains a reference to the original Python object that was translated by describe_py_exception - we just use that.</para>
+<para>Invoked by openage::pyinterface::cpp_to_py.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>check_for_py_exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used by translate_exc_cpp_to_py to check whether there is a currently-active Python exception.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>describe_py_exception</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Used by translate_exc_cpp_to_py to gather information about the current Python exception.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Calls PyErr_Fetch and stores all sorts of information in the <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref>. The current Python exception is cleared in the process.</para>
+<para>If the current Python exception had a cause, that cause is set as the new active exception. Call check_exception() afterwards to test whether that has happend.</para>
+<para>If there&apos;s no currently-active Python Exception, the behavior is undefined; make sure to call check_exception() before.</para>
+<para>Afterwards, the <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> is ready for throwing.</para>
+<para>pxd:</para>
+<para>void set_exc_translation_funcs( void (*)(Error *) except * with gil, void (*)(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> *) except * with gil, cppbool (*)() with gil, void (*)(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> *) except * with gil ) noexcept </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="31" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="31" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a17ffe36150248f6802ac372166798637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::pyinterface::translate_exc_cpp_to_py</definition>
+        <argsstring>()</argsstring>
+        <name>translate_exc_cpp_to_py</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Analyzes the current C++ exception, and creates and raises an analogous Python CPPException object.</para>
+<para>If there&apos;s no current C++ exception, this terminates the program non-gracefully (std::terminate).</para>
+<para>Designed to be called by auto-generated Cython code; Do not use in any other way. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="47" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="47" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a89529648faa2ef530fefcc90f1c1ab70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::pyinterface::translate_exc_py_to_cpp</definition>
+        <argsstring>()</argsstring>
+        <name>translate_exc_py_to_cpp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Analyzes the current Python exception, and creates and throws an analogous C++ <ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref> object.</para>
+<para>Works, and is designed to be used in, situations where there is no current Python exception (it&apos;s a no-op then). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="110" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="110" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a942ae5fea51139bab5bdc29ac244125d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::pyinterface::init_exc_message</definition>
+        <argsstring>(log::message *msg, const std::string &amp;filename, unsigned int lineno, const std::string &amp;functionname) noexcept</argsstring>
+        <name>init_exc_message</name>
+        <param>
+          <type><ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref> *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>lineno</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>functionname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>For use by Python, to initialize a message&apos;s meta data.</para>
+<para>Initializes all values.</para>
+<para>pxd: void init_exc_message(message *msg, string filename, unsigned int lineno, string functionname) noexcept </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/exctranslate.cpp" line="137" column="1" bodyfile="libopenage/pyinterface/exctranslate.cpp" bodystart="137" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a75f2b534b1258ff5d4578f171c3f1caa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::pyinterface::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const PyObjectRef &amp;ref)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stream operator for printing PyObjects </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="261" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="261" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a591d9bd55fa1f9904547f3f2dcb3796d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::add_py_if_component</definition>
+        <argsstring>(void *thisptr, std::function&lt; bool()&gt; checker)</argsstring>
+        <name>add_py_if_component</name>
+        <param>
+          <type>void *</type>
+          <declname>thisptr</declname>
+        </param>
+        <param>
+          <type>std::function&lt; bool()&gt;</type>
+          <declname>checker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a Python interface component. Usually, you&apos;d call this from a component&apos;s constructor.</para>
+<para>thisptr is a pointer to the component object.</para>
+<para>checker is a function that must have defined behavior until destroy_py_if_component has been called for thisptr. It shall return true if the object has been properly initialized, and shall not throw any exceptions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="44" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="44" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a3eda9726ffb3eeec9b423f300ec70c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::destroy_py_if_component</definition>
+        <argsstring>(void *thisptr)</argsstring>
+        <name>destroy_py_if_component</name>
+        <param>
+          <type>void *</type>
+          <declname>thisptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signals that an interface component that has been previously registered via add_py_if_component is no longer valid, e.g. because its destructor has been invoked. Usually, you&apos;d call this from a component&apos;s destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="63" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="63" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::pyinterface::check</definition>
+        <argsstring>()</argsstring>
+        <name>check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks whether all objects that have been registered via add_py_if_component have been properly initialized.</para>
+<para>If not, or if components have been destroyed already, raises an exception that contains the component names.</para>
+<para>May be called only once.</para>
+<para>pxd: void <ref refid="namespaceopenage_1_1pyinterface_1a7c3f96bce0d4711ba04a941b5c460b17" kindref="member">check()</ref> except + </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/setup.cpp" line="73" column="1" bodyfile="libopenage/pyinterface/setup.cpp" bodystart="73" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/error/error.h" line="24" column="1"/>
+  </compounddef>
+</doxygen>

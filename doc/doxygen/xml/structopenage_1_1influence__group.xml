@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1influence__group" kind="struct" language="C++" prot="public">
+    <compoundname>openage::influence_group</compoundname>
+    <includes refid="terrain_8h" local="no">terrain.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1influence__group_1a45caedf1c1dd3ff9b8a74d0284e6e45e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::influence_group::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="104" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1influence__group_1a207f831f9570564df1e122906e289c92" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a0078c87a2baae2c33889beb8379a8270" kindref="member">terrain_t</ref></type>
+        <definition>terrain_t openage::influence_group::terrain_ids[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>terrain_ids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="105" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structopenage_1_1influence" kindref="compound">influence</ref></type>
+        <definition>struct influence openage::influence_group::data[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain.h" line="105" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>influences for one tile. as a tile has 8 adjacent and diagonal neighbors, the maximum number of influences is 8. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2955">
+        <label>openage::influence_group</label>
+        <link refid="structopenage_1_1influence__group"/>
+        <childnode refid="2956" relation="usage">
+          <edgelabel>+data</edgelabel>
+        </childnode>
+      </node>
+      <node id="2956">
+        <label>openage::influence</label>
+        <link refid="structopenage_1_1influence"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain.h" line="103" column="1" bodyfile="libopenage/terrain/terrain.h" bodystart="103" bodyend="107"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1influence__group_1a45caedf1c1dd3ff9b8a74d0284e6e45e" prot="public" virt="non-virtual"><scope>openage::influence_group</scope><name>count</name></member>
+      <member refid="structopenage_1_1influence__group_1ab8bb2e9f0051921099959bbf40ce7e45" prot="public" virt="non-virtual"><scope>openage::influence_group</scope><name>data</name></member>
+      <member refid="structopenage_1_1influence__group_1a207f831f9570564df1e122906e289c92" prot="public" virt="non-virtual"><scope>openage::influence_group</scope><name>terrain_ids</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

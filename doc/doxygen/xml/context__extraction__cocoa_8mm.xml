@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="context__extraction__cocoa_8mm" kind="file" language="C++">
+    <compoundname>context_extraction_cocoa.mm</compoundname>
+    <includes local="no">cassert</includes>
+    <includes refid="context__extraction_8h" local="yes">context_extraction.h</includes>
+    <includes local="no">QtPlatformHeaders/QCocoaNativeContext</includes>
+    <includes local="yes">SDL_syswm.h</includes>
+    <includes local="no">AppKit/AppKit.h</includes>
+    <incdepgraph>
+      <node id="13430">
+        <label>context_extraction.h</label>
+        <link refid="context__extraction_8h"/>
+        <childnode refid="13431" relation="include">
+        </childnode>
+        <childnode refid="13432" relation="include">
+        </childnode>
+        <childnode refid="13433" relation="include">
+        </childnode>
+        <childnode refid="13434" relation="include">
+        </childnode>
+      </node>
+      <node id="13432">
+        <label>functional</label>
+      </node>
+      <node id="13429">
+        <label>cassert</label>
+      </node>
+      <node id="13437">
+        <label>AppKit/AppKit.h</label>
+      </node>
+      <node id="13431">
+        <label>tuple</label>
+      </node>
+      <node id="13436">
+        <label>SDL_syswm.h</label>
+      </node>
+      <node id="13433">
+        <label>QWindow</label>
+      </node>
+      <node id="13434">
+        <label>QVariant</label>
+      </node>
+      <node id="13428">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
+        <link refid="context__extraction__cocoa_8mm"/>
+        <childnode refid="13429" relation="include">
+        </childnode>
+        <childnode refid="13430" relation="include">
+        </childnode>
+        <childnode refid="13435" relation="include">
+        </childnode>
+        <childnode refid="13436" relation="include">
+        </childnode>
+        <childnode refid="13437" relation="include">
+        </childnode>
+      </node>
+      <node id="13435">
+        <label>QtPlatformHeaders/QCocoaNativeContext</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="context__extraction_8h" kindref="compound">context_extraction.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtPlatformHeaders/QCocoaNativeContext&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;SDL_syswm.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;AppKit/AppKit.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceqtsdl_1afe4ced3b28358a42a4c178c3e85d64ac" refkind="member"><highlight class="normal">std::tuple&lt;QVariant,<sp/>WId&gt;<sp/><ref refid="namespaceqtsdl_1afe4ced3b28358a42a4c178c3e85d64ac" kindref="member">extract_native_context</ref>(SDL_Window<sp/>*window)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(window);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>NSOpenGLContext<sp/>*current_context<sp/>=<sp/>[NSOpenGLContext<sp/>currentContext];</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(current_context);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>NSView<sp/>*view<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_SysWMinfo<sp/>wm_info;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_VERSION(&amp;wm_info.version);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_GetWindowWMInfo(window,<sp/>&amp;wm_info))<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSWindow<sp/>*ns_window<sp/>=<sp/>wm_info.info.cocoa.window;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>view<sp/>=<sp/>[ns_window<sp/>contentView];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(view);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_tuple(QVariant::fromValue&lt;QCocoaNativeContext&gt;(QCocoaNativeContext(current_context)),<sp/>reinterpret_cast&lt;WId&gt;(view));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="namespaceqtsdl_1a4932b95840fb2a53ea19d235b68dc6c8" refkind="member"><highlight class="normal">std::tuple&lt;QVariant,<sp/>std::function&lt;void()&gt;&gt;<sp/><ref refid="namespaceqtsdl_1a4932b95840fb2a53ea19d235b68dc6c8" kindref="member">extract_native_context_and_switchback_func</ref>(SDL_Window<sp/>*window)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(window);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>NSOpenGLContext<sp/>*current_context<sp/>=<sp/>[NSOpenGLContext<sp/>currentContext];</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(current_context);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>NSView<sp/>*view<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_SysWMinfo<sp/>wm_info;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_VERSION(&amp;wm_info.version);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_GetWindowWMInfo(window,<sp/>&amp;wm_info))<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSWindow<sp/>*ns_window<sp/>=<sp/>wm_info.info.cocoa.window;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>view<sp/>=<sp/>[ns_window<sp/>contentView];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(view);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_tuple(QVariant::fromValue&lt;QCocoaNativeContext&gt;(QCocoaNativeContext(current_context)),<sp/>[current_context]<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[current_context<sp/>makeCurrentContext];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::tuple&lt;QVariant,<sp/>std::function&lt;void()&gt;&gt;{};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm"/>
+  </compounddef>
+</doxygen>

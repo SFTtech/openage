@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1_native" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::filelike::Native</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1_file_like" prot="public" virt="non-virtual">openage::util::filelike::FileLike</basecompoundref>
+    <includes refid="filelike_2native_8h" local="no">native.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::filelike::Native::path</definition>
+        <argsstring></argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="44" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">mode_t</ref></type>
+        <definition>mode_t openage::util::filelike::Native::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="46" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" prot="protected" static="no" mutable="no">
+        <type>std::fstream</type>
+        <definition>std::fstream openage::util::filelike::Native::file</definition>
+        <argsstring></argsstring>
+        <name>file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="48" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a0ec601f49efb22ab663fa3f9b0179636" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::filelike::Native::Native</definition>
+        <argsstring>(const std::string &amp;path, mode_t mode=mode_t::R)</argsstring>
+        <name>Native</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" kindref="member">mode_t</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1ae1e1d3d40573127e9ee0480caf1283d6" kindref="member">mode_t::R</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="22" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="14" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a26abd11b4f1a66317a2c4797d7216dbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::util::filelike::Native::~Native</definition>
+        <argsstring>()</argsstring>
+        <name>~Native</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="23" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::filelike::Native::read</definition>
+        <argsstring>(ssize_t max) override</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb">read</reimplements>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="25" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="55" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::filelike::Native::read_to</definition>
+        <argsstring>(void *buf, ssize_t max) override</argsstring>
+        <name>read_to</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1acf58201709f476b22238a60928e5e349">read_to</reimplements>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="26" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Native::readable</definition>
+        <argsstring>() override</argsstring>
+        <name>readable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623">readable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="28" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Native::write</definition>
+        <argsstring>(const std::string &amp;data) override</argsstring>
+        <name>write</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a24397c0d57a9b244b135ae3c72b92aef">write</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="30" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Native::writable</definition>
+        <argsstring>() override</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd">writable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="32" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Native::seek</definition>
+        <argsstring>(ssize_t offset, seek_t how=seek_t::SET) override</argsstring>
+        <name>seek</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985">seek</reimplements>
+        <param>
+          <type>ssize_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref></type>
+          <declname>how</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" kindref="member">seek_t::SET</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="34" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="108" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Native::seekable</definition>
+        <argsstring>() override</argsstring>
+        <name>seekable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d">seekable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="35" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="129" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::filelike::Native::tell</definition>
+        <argsstring>() override</argsstring>
+        <name>tell</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196">tell</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="36" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Native::close</definition>
+        <argsstring>() override</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23">close</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="37" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="139" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Native::flush</definition>
+        <argsstring>() override</argsstring>
+        <name>flush</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a">flush</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="38" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="144" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>ssize_t</type>
+        <definition>ssize_t openage::util::filelike::Native::get_size</definition>
+        <argsstring>() override</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b">get_size</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="39" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="149" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::util::filelike::Native::repr</definition>
+        <argsstring>(std::ostream &amp;) override</argsstring>
+        <name>repr</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aaba5c322eb2f3221a15471f2d546e761">repr</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>string representation of the filelike </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/native.h" line="41" column="1" bodyfile="libopenage/util/filelike/native.cpp" bodystart="164" bodyend="167"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>File-like class that uses native stdlib functions to access data. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3351">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+      <node id="3350">
+        <label>openage::util::filelike::Native</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_native"/>
+        <childnode refid="3351" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3353">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+      <node id="3352">
+        <label>openage::util::filelike::Native</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_native"/>
+        <childnode refid="3353" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/filelike/native.h" line="20" column="1" bodyfile="libopenage/util/filelike/native.h" bodystart="20" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a46b22ff5117cbd09b2b1dc4fdf754019" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a1a987682b0b68294625bd39f99cb0a96" prot="protected" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>file</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>FileLike</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a6d3991802ac16e0efa3c388339ac14ac" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1ac4dd2bd1f87b66cc3de59abd1672d606" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>is_python_native</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1aecc967312ebcae6fa153d5c0dad86081" prot="protected" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>mode</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" prot="public" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>mode_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a0ec601f49efb22ab663fa3f9b0179636" prot="public" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>Native</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a5c59a8686c8a3374ae5f0cf38bbdf7d2" prot="protected" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>path</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1ac28c03a633723a2854f16687ad14a2ff" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1aac6d06213d8e7b5d44c03648e0aecd2b" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>read_to</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a60038c925870245c8f5c4b89c5b724dc" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a4ae909d0614e929614647290e9418afb" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>repr</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a96794c069ad9a502d7d4004386756c06" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" prot="public" virt="non-virtual"><scope>openage::util::filelike::Native</scope><name>seek_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a68bf0cc4e2995ed6b68968cf3eb1675a" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a3cd357c014b8193cfdaaf48eec32ec1b" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a89f9146e2c004283baa9e7493568e7e5" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a749d3be51a78f58fe8e206d9d591f9ca" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>write</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6a711a3f80350e7ed5ff2569e23b68ac" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>~FileLike</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_native_1a26abd11b4f1a66317a2c4797d7216dbb" prot="public" virt="virtual"><scope>openage::util::filelike::Native</scope><name>~Native</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

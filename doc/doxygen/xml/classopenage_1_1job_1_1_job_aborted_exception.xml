@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1job_1_1_job_aborted_exception" kind="class" language="C++" prot="public">
+    <compoundname>openage::job::JobAbortedException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">exception</basecompoundref>
+    <includes refid="job__aborted__exception_8h" local="no">job_aborted_exception.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_aborted_exception_1afe588cb066e3be89212bf04cf9b98177" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* openage::job::JobAbortedException::what</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>what</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job_aborted_exception.h" line="13" column="1" bodyfile="libopenage/job/job_aborted_exception.h" bodystart="13" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An exception that is thrown when a job wants to abort itself. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3022">
+        <label>std::exception</label>
+      </node>
+      <node id="3021">
+        <label>openage::job::JobAbortedException</label>
+        <link refid="classopenage_1_1job_1_1_job_aborted_exception"/>
+        <childnode refid="3022" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3024">
+        <label>std::exception</label>
+      </node>
+      <node id="3023">
+        <label>openage::job::JobAbortedException</label>
+        <link refid="classopenage_1_1job_1_1_job_aborted_exception"/>
+        <childnode refid="3024" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/job/job_aborted_exception.h" line="11" column="1" bodyfile="libopenage/job/job_aborted_exception.h" bodystart="11" bodyend="16"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1job_1_1_job_aborted_exception_1afe588cb066e3be89212bf04cf9b98177" prot="public" virt="non-virtual"><scope>openage::job::JobAbortedException</scope><name>what</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

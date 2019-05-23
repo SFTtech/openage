@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__input__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_input_impl.cpp</compoundname>
+    <includes refid="gui__input__impl_8h" local="yes">gui_input_impl.h</includes>
+    <includes local="no">QMouseEvent</includes>
+    <includes local="no">QThread</includes>
+    <includes local="no">QCoreApplication</includes>
+    <includes local="no">SDL2/SDL_mouse.h</includes>
+    <includes refid="gui__event__queue_8h" local="yes">../public/gui_event_queue.h</includes>
+    <includes refid="gui__renderer_8h" local="yes">../public/gui_renderer.h</includes>
+    <includes refid="gui__event__queue__impl_8h" local="yes">gui_event_queue_impl.h</includes>
+    <includes refid="gui__renderer__impl_8h" local="yes">gui_renderer_impl.h</includes>
+    <incdepgraph>
+      <node id="13131">
+        <label>atomic</label>
+      </node>
+      <node id="13137">
+        <label>SDL2/SDL_mouse.h</label>
+      </node>
+      <node id="13132">
+        <label>QObject</label>
+      </node>
+      <node id="13150">
+        <label>QOffscreenSurface</label>
+      </node>
+      <node id="13135">
+        <label>QThread</label>
+      </node>
+      <node id="13149">
+        <label>QQuickRenderControl</label>
+      </node>
+      <node id="13143">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13144">
+        <label>QEventLoop</label>
+      </node>
+      <node id="13145">
+        <label>gui_renderer_impl.h</label>
+        <link refid="gui__renderer__impl_8h"/>
+        <childnode refid="13139" relation="include">
+        </childnode>
+        <childnode refid="13131" relation="include">
+        </childnode>
+        <childnode refid="13146" relation="include">
+        </childnode>
+        <childnode refid="13147" relation="include">
+        </childnode>
+        <childnode refid="13143" relation="include">
+        </childnode>
+        <childnode refid="13132" relation="include">
+        </childnode>
+        <childnode refid="13148" relation="include">
+        </childnode>
+        <childnode refid="13149" relation="include">
+        </childnode>
+        <childnode refid="13150" relation="include">
+        </childnode>
+        <childnode refid="13151" relation="include">
+        </childnode>
+      </node>
+      <node id="13134">
+        <label>QMouseEvent</label>
+      </node>
+      <node id="13147">
+        <label>condition_variable</label>
+      </node>
+      <node id="13142">
+        <label>gui_event_queue_impl.h</label>
+        <link refid="gui__event__queue__impl_8h"/>
+        <childnode refid="13143" relation="include">
+        </childnode>
+        <childnode refid="13144" relation="include">
+        </childnode>
+      </node>
+      <node id="13148">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="13129">
+        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <link refid="gui__input__impl_8cpp"/>
+        <childnode refid="13130" relation="include">
+        </childnode>
+        <childnode refid="13134" relation="include">
+        </childnode>
+        <childnode refid="13135" relation="include">
+        </childnode>
+        <childnode refid="13136" relation="include">
+        </childnode>
+        <childnode refid="13137" relation="include">
+        </childnode>
+        <childnode refid="13138" relation="include">
+        </childnode>
+        <childnode refid="13140" relation="include">
+        </childnode>
+        <childnode refid="13142" relation="include">
+        </childnode>
+        <childnode refid="13145" relation="include">
+        </childnode>
+      </node>
+      <node id="13133">
+        <label>SDL2/SDL_events.h</label>
+      </node>
+      <node id="13130">
+        <label>gui_input_impl.h</label>
+        <link refid="gui__input__impl_8h"/>
+        <childnode refid="13131" relation="include">
+        </childnode>
+        <childnode refid="13132" relation="include">
+        </childnode>
+        <childnode refid="13133" relation="include">
+        </childnode>
+      </node>
+      <node id="13146">
+        <label>mutex</label>
+      </node>
+      <node id="13140">
+        <label>../public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="13139" relation="include">
+        </childnode>
+        <childnode refid="13141" relation="include">
+        </childnode>
+      </node>
+      <node id="13138">
+        <label>../public/gui_event_queue.h</label>
+        <link refid="gui__event__queue_8h"/>
+        <childnode refid="13139" relation="include">
+        </childnode>
+      </node>
+      <node id="13141">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="13139">
+        <label>memory</label>
+      </node>
+      <node id="13151">
+        <label>gui_rendering_setup_routines.h</label>
+        <link refid="gui__rendering__setup__routines_8h"/>
+        <childnode refid="13139" relation="include">
+        </childnode>
+        <childnode refid="13143" relation="include">
+        </childnode>
+      </node>
+      <node id="13136">
+        <label>QCoreApplication</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__input__impl_8h" kindref="compound">gui_input_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMouseEvent&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QThread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QCoreApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL_mouse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_event_queue.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__event__queue__impl_8h" kindref="compound">gui_event_queue_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__renderer__impl_8h" kindref="compound">gui_renderer_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classqtsdl_1_1_gui_input_impl_1a40ba828cc19b6baf7a75f581670b7bf9" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_input_impl_1a40ba828cc19b6baf7a75f581670b7bf9" kindref="member">GuiInputImpl::GuiInputImpl</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer,<sp/><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">GuiEventQueue</ref><sp/>*game_logic_updater)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>mouse_buttons_state{},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>game_logic_updater{<ref refid="classqtsdl_1_1_gui_event_queue_impl_1aa210a90acba7405dbf013ca75b60778e" kindref="member">GuiEventQueueImpl::impl</ref>(game_logic_updater)}<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>logic_diff_input<sp/>=<sp/>this-&gt;game_logic_updater-&gt;<ref refid="classqtsdl_1_1_gui_event_queue_impl_1ad445b8604c39eddf25837572c4dda508" kindref="member">get_thread</ref>()<sp/>!=<sp/>QThread::currentThread();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gui_diff_input<sp/>=<sp/>QCoreApplication::instance()-&gt;thread()<sp/>!=<sp/>QThread::currentThread();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Qt::ConnectionType<sp/>input_to_gui<sp/>=<sp/>gui_diff_input<sp/>?<sp/>logic_diff_input<sp/>?<sp/>Qt::BlockingQueuedConnection<sp/>:<sp/>Qt::QueuedConnection<sp/>:<sp/>Qt::DirectConnection;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_gui_input_impl_1a5ddcd3b5d19319607a7ada08ef8ec455" kindref="member">GuiInputImpl::input_event</ref>,<sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" kindref="member">GuiRendererImpl::impl</ref>(renderer)-&gt;get_window(),<sp/>&amp;<ref refid="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" kindref="member">EventHandlingQuickWindow::on_input_event</ref>,<sp/>input_to_gui);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classqtsdl_1_1_gui_input_impl_1a682935da07e0aed440a5a155c9841d71" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_input_impl_1a682935da07e0aed440a5a155c9841d71" kindref="member">GuiInputImpl::~GuiInputImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">static_assert(!(Qt::LeftButton<sp/>&amp;<sp/>(Qt::LeftButton<sp/>-<sp/>1)),<sp/></highlight><highlight class="stringliteral">&quot;Qt<sp/>non-one-bit<sp/>mask.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">static_assert(!(Qt::RightButton<sp/>&amp;<sp/>(Qt::RightButton<sp/>-<sp/>1)),<sp/></highlight><highlight class="stringliteral">&quot;Qt<sp/>non-one-bit<sp/>mask.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">static_assert(!(Qt::MiddleButton<sp/>&amp;<sp/>(Qt::MiddleButton<sp/>-<sp/>1)),<sp/></highlight><highlight class="stringliteral">&quot;Qt<sp/>non-one-bit<sp/>mask.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">static_assert(!(Qt::XButton1<sp/>&amp;<sp/>(Qt::XButton1<sp/>-<sp/>1)),<sp/></highlight><highlight class="stringliteral">&quot;Qt<sp/>non-one-bit<sp/>mask.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">static_assert(!(Qt::XButton2<sp/>&amp;<sp/>(Qt::XButton2<sp/>-<sp/>1)),<sp/></highlight><highlight class="stringliteral">&quot;Qt<sp/>non-one-bit<sp/>mask.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">static_assert(SDL_BUTTON_LMASK<sp/>==<sp/>Qt::LeftButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">static_assert(1<sp/>&lt;&lt;<sp/>(SDL_BUTTON_LEFT<sp/>-<sp/>1)<sp/>==<sp/>Qt::LeftButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Right<sp/>and<sp/>middle<sp/>are<sp/>swapped.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">static_assert(SDL_BUTTON_RMASK<sp/>==<sp/>Qt::MiddleButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">static_assert(1<sp/>&lt;&lt;<sp/>(SDL_BUTTON_RIGHT<sp/>-<sp/>1)<sp/>==<sp/>Qt::MiddleButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">static_assert(SDL_BUTTON_MMASK<sp/>==<sp/>Qt::RightButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">static_assert(1<sp/>&lt;&lt;<sp/>(SDL_BUTTON_MIDDLE<sp/>-<sp/>1)<sp/>==<sp/>Qt::RightButton,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">static_assert(SDL_BUTTON_X1MASK<sp/>==<sp/>Qt::XButton1,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">static_assert(1<sp/>&lt;&lt;<sp/>(SDL_BUTTON_X1<sp/>-<sp/>1)<sp/>==<sp/>Qt::XButton1,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">static_assert(SDL_BUTTON_X2MASK<sp/>==<sp/>Qt::XButton2,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">static_assert(1<sp/>&lt;&lt;<sp/>(SDL_BUTTON_X2<sp/>-<sp/>1)<sp/>==<sp/>Qt::XButton2,<sp/></highlight><highlight class="stringliteral">&quot;SDL/Qt<sp/>mouse<sp/>button<sp/>mask<sp/>incompatibility.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">static_assert(Qt::MiddleButton<sp/>&gt;&gt;<sp/>1<sp/>==<sp/>Qt::RightButton,<sp/></highlight><highlight class="stringliteral">&quot;Qt::RightButton<sp/>or<sp/>Qt::MiddleButton<sp/>has<sp/>moved.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sdl_mouse_mask_to_qt(Uint32<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(state<sp/>&amp;<sp/>(Qt::LeftButton<sp/>|<sp/>Qt::XButton1<sp/>|<sp/>Qt::XButton2))<sp/>|<sp/>((state<sp/>&amp;<sp/>Qt::RightButton)<sp/>&lt;&lt;<sp/>1)<sp/>|<sp/>((state<sp/>&amp;<sp/>Qt::MiddleButton)<sp/>&gt;&gt;<sp/>1);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">Qt::MouseButtons<sp/>sdl_mouse_state_to_qt(Uint32<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;Qt::MouseButtons&gt;(sdl_mouse_mask_to_qt(state));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">Qt::MouseButton<sp/>sdl_mouse_btn_to_qt(Uint8<sp/>button)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;Qt::MouseButton&gt;(sdl_mouse_mask_to_qt(1<sp/>&lt;&lt;<sp/>(button<sp/>-<sp/>1)));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sdl_key_to_qt(SDL_Keycode<sp/>sym)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sym)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDLK_BACKSPACE:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Qt::Key_Backspace;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDLK_DELETE:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Qt::Key_Delete;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classqtsdl_1_1_gui_input_impl_1a508aec17e818531552c2aafa49ed1352" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1a508aec17e818531552c2aafa49ed1352" kindref="member">GuiInputImpl::process</ref>(SDL_Event<sp/>*e)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(e-&gt;type)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEMOTION:<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMouseEvent<sp/>ev{QEvent::MouseMove,<sp/>QPoint{e-&gt;motion.x,<sp/>e-&gt;motion.y},<sp/>Qt::MouseButton::NoButton,<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" kindref="member">mouse_buttons_state</ref><sp/>=<sp/>sdl_mouse_state_to_qt(e-&gt;motion.state),<sp/>Qt::KeyboardModifier::NoModifier};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>dragging<sp/>stuff<sp/>under<sp/>the<sp/>gui<sp/>overlay.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev,<sp/>e-&gt;motion.state<sp/>&amp;<sp/>(SDL_BUTTON_LMASK<sp/>|<sp/>SDL_BUTTON_MMASK<sp/>|<sp/>SDL_BUTTON_RMASK));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEBUTTONDOWN:<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>button<sp/>=<sp/>sdl_mouse_btn_to_qt(e-&gt;button.button);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMouseEvent<sp/>ev{QEvent::MouseButtonPress,<sp/>QPoint{e-&gt;button.x,<sp/>e-&gt;button.y},<sp/>button,<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" kindref="member">mouse_buttons_state</ref><sp/>|=<sp/>button,<sp/>Qt::KeyboardModifier::NoModifier};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>accepted<sp/>=<sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;button.clicks<sp/>==<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMouseEvent<sp/>ev_dbl{QEvent::MouseButtonDblClick,<sp/>QPoint{e-&gt;button.x,<sp/>e-&gt;button.y},<sp/>button,<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" kindref="member">mouse_buttons_state</ref>,<sp/>Qt::KeyboardModifier::NoModifier};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev_dbl.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>accepted<sp/>=<sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev_dbl)<sp/>||<sp/>accepted;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>accepted;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEBUTTONUP:<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>button<sp/>=<sp/>sdl_mouse_btn_to_qt(e-&gt;button.button);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMouseEvent<sp/>ev{QEvent::MouseButtonRelease,<sp/>QPoint{e-&gt;button.x,<sp/>e-&gt;button.y},<sp/>button,<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" kindref="member">mouse_buttons_state</ref><sp/>&amp;=<sp/>~button,<sp/>Qt::KeyboardModifier::NoModifier};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>dragging<sp/>stuff<sp/>under<sp/>the<sp/>gui<sp/>overlay:<sp/>when<sp/>no<sp/>item<sp/>is<sp/>grabbed,<sp/>it<sp/>probably<sp/>means<sp/>that<sp/>initial<sp/>MousButtonPress<sp/>was<sp/>outside<sp/>gui.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEWHEEL:<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QPoint<sp/>pos;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GetMouseState(&amp;pos.rx(),<sp/>&amp;pos.ry());</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QWheelEvent<sp/>ev{pos,<sp/>pos,<sp/>QPoint{},<sp/>QPoint{e-&gt;wheel.x,<sp/>e-&gt;wheel.y},<sp/>0,<sp/>Qt::Orientation{},<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a43f96d650c8992f83bdc89e18bd621ce" kindref="member">mouse_buttons_state</ref>,<sp/>Qt::KeyboardModifier::NoModifier};</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_KEYDOWN:<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QKeyEvent<sp/>ev{QEvent::KeyPress,<sp/>sdl_key_to_qt(e-&gt;key.keysym.sym),<sp/>Qt::NoModifier,<sp/>QChar((</highlight><highlight class="keywordtype">short</highlight><highlight class="normal">)<sp/>e-&gt;key.keysym.sym)};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_KEYUP:<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QKeyEvent<sp/>ev{QEvent::KeyRelease,<sp/>sdl_key_to_qt(e-&gt;key.keysym.sym),<sp/>Qt::NoModifier,<sp/>QChar((</highlight><highlight class="keywordtype">short</highlight><highlight class="normal">)<sp/>e-&gt;key.keysym.sym)};</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.setAccepted(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">relay_input_event</ref>(&amp;ev);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_impl_1abd1c5fe1c24e2b0bdd09d5b63229be13" kindref="member">GuiInputImpl::relay_input_event</ref>(QEvent<sp/>*ev,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_if_grabbed)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>logic_diff_input<sp/>=<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a9344b2a9d0e8556b73dc8533ea476890" kindref="member">game_logic_updater</ref>-&gt;<ref refid="classqtsdl_1_1_gui_event_queue_impl_1ad445b8604c39eddf25837572c4dda508" kindref="member">get_thread</ref>()<sp/>!=<sp/>QThread::currentThread();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/>processed{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a5ddcd3b5d19319607a7ada08ef8ec455" kindref="member">input_event</ref>(&amp;processed,<sp/>ev,<sp/>only_if_grabbed);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>have<sp/>sent<sp/>an<sp/>event<sp/>to<sp/>the<sp/>gui<sp/>thread<sp/>and<sp/>want<sp/>a<sp/>response<sp/>about<sp/>collision.<sp/>But<sp/>the<sp/>gui<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>executing<sp/>a<sp/>getter<sp/>that<sp/>blocks<sp/>the<sp/>gui<sp/>thread<sp/>while<sp/>doing<sp/>something<sp/>in<sp/>the<sp/>logic<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>So,<sp/>if<sp/>the<sp/>logic<sp/>thread<sp/>is<sp/>the<sp/>same<sp/>as<sp/>the<sp/>input<sp/>thread,<sp/>it<sp/>should<sp/>be<sp/>running<sp/>somehow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>if/when<sp/>the<sp/>logic<sp/>thread<sp/>or<sp/>input<sp/>thread<sp/>of<sp/>the<sp/>main<sp/>game<sp/>is<sp/>made<sp/>separate,<sp/>give<sp/>mutex<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>queue<sp/>to<sp/>the<sp/>gui<sp/>in<sp/>order<sp/>to<sp/>replace<sp/>this<sp/>busy<sp/>wait.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!logic_diff_input)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!processed)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_impl_1a9344b2a9d0e8556b73dc8533ea476890" kindref="member">game_logic_updater</ref>-&gt;<ref refid="classqtsdl_1_1_gui_event_queue_impl_1a44943ac7ab0b6cbefb4390201020ddd6" kindref="member">process_callbacks</ref>();</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QThread::usleep(1);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ev-&gt;isAccepted();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_input_impl.cpp"/>
+  </compounddef>
+</doxygen>

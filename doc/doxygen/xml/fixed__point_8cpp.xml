@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fixed__point_8cpp" kind="file" language="C++">
+    <compoundname>fixed_point.cpp</compoundname>
+    <includes refid="fixed__point_8h" local="yes">fixed_point.h</includes>
+    <incdepgraph>
+      <node id="30042">
+        <label>list</label>
+      </node>
+      <node id="30035">
+        <label>atomic</label>
+      </node>
+      <node id="30009">
+        <label>fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="30010" relation="include">
+        </childnode>
+        <childnode refid="30011" relation="include">
+        </childnode>
+        <childnode refid="30012" relation="include">
+        </childnode>
+        <childnode refid="30013" relation="include">
+        </childnode>
+        <childnode refid="30014" relation="include">
+        </childnode>
+        <childnode refid="30015" relation="include">
+        </childnode>
+        <childnode refid="30016" relation="include">
+        </childnode>
+        <childnode refid="30017" relation="include">
+        </childnode>
+      </node>
+      <node id="30039">
+        <label>functional</label>
+      </node>
+      <node id="30013">
+        <label>iomanip</label>
+      </node>
+      <node id="30014">
+        <label>limits</label>
+      </node>
+      <node id="30030">
+        <label>cstdint</label>
+      </node>
+      <node id="30037">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30038" relation="include">
+        </childnode>
+        <childnode refid="30039" relation="include">
+        </childnode>
+        <childnode refid="30013" relation="include">
+        </childnode>
+        <childnode refid="30022" relation="include">
+        </childnode>
+        <childnode refid="30040" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+        <childnode refid="30021" relation="include">
+        </childnode>
+      </node>
+      <node id="30012">
+        <label>cmath</label>
+      </node>
+      <node id="30025">
+        <label>stdexcept</label>
+      </node>
+      <node id="30041">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30042" relation="include">
+        </childnode>
+        <childnode refid="30043" relation="include">
+        </childnode>
+        <childnode refid="30044" relation="include">
+        </childnode>
+      </node>
+      <node id="30038">
+        <label>cstdarg</label>
+      </node>
+      <node id="30020">
+        <label>string</label>
+      </node>
+      <node id="30029">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30030" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+        <childnode refid="30031" relation="include">
+        </childnode>
+        <childnode refid="30032" relation="include">
+        </childnode>
+        <childnode refid="30034" relation="include">
+        </childnode>
+        <childnode refid="30041" relation="include">
+        </childnode>
+        <childnode refid="30044" relation="include">
+        </childnode>
+      </node>
+      <node id="30032">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30033" relation="include">
+        </childnode>
+      </node>
+      <node id="30034">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30035" relation="include">
+        </childnode>
+        <childnode refid="30022" relation="include">
+        </childnode>
+        <childnode refid="30016" relation="include">
+        </childnode>
+        <childnode refid="30026" relation="include">
+        </childnode>
+        <childnode refid="30036" relation="include">
+        </childnode>
+        <childnode refid="30037" relation="include">
+        </childnode>
+      </node>
+      <node id="30015">
+        <label>ostream</label>
+      </node>
+      <node id="30018">
+        <label>limits.h</label>
+      </node>
+      <node id="30023">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30024" relation="include">
+        </childnode>
+        <childnode refid="30022" relation="include">
+        </childnode>
+        <childnode refid="30025" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+        <childnode refid="30026" relation="include">
+        </childnode>
+        <childnode refid="30029" relation="include">
+        </childnode>
+      </node>
+      <node id="30017">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="30010" relation="include">
+        </childnode>
+        <childnode refid="30018" relation="include">
+        </childnode>
+        <childnode refid="30012" relation="include">
+        </childnode>
+        <childnode refid="30019" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+        <childnode refid="30021" relation="include">
+        </childnode>
+        <childnode refid="30022" relation="include">
+        </childnode>
+        <childnode refid="30023" relation="include">
+        </childnode>
+        <childnode refid="30026" relation="include">
+        </childnode>
+      </node>
+      <node id="30046">
+        <label>typeinfo</label>
+      </node>
+      <node id="30021">
+        <label>vector</label>
+      </node>
+      <node id="30027">
+        <label>ciso646</label>
+      </node>
+      <node id="30040">
+        <label>sstream</label>
+      </node>
+      <node id="30026">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30027" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+        <childnode refid="30028" relation="include">
+        </childnode>
+      </node>
+      <node id="30028">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30028" relation="include">
+        </childnode>
+      </node>
+      <node id="30036">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30024" relation="include">
+        </childnode>
+        <childnode refid="30020" relation="include">
+        </childnode>
+      </node>
+      <node id="30044">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30045" relation="include">
+        </childnode>
+      </node>
+      <node id="30033">
+        <label>cstdlib</label>
+      </node>
+      <node id="30024">
+        <label>iostream</label>
+      </node>
+      <node id="30011">
+        <label>climits</label>
+      </node>
+      <node id="30043">
+        <label>mutex</label>
+      </node>
+      <node id="30016">
+        <label>type_traits</label>
+      </node>
+      <node id="30008">
+        <label>libopenage/util/fixed_point.cpp</label>
+        <link refid="fixed__point_8cpp"/>
+        <childnode refid="30009" relation="include">
+        </childnode>
+      </node>
+      <node id="30031">
+        <label>config.h</label>
+      </node>
+      <node id="30010">
+        <label>algorithm</label>
+      </node>
+      <node id="30019">
+        <label>cstring</label>
+      </node>
+      <node id="30022">
+        <label>memory</label>
+      </node>
+      <node id="30045">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30024" relation="include">
+        </childnode>
+        <childnode refid="30046" relation="include">
+        </childnode>
+        <childnode refid="30026" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fixed__point_8h" kindref="compound">fixed_point.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>FixedPoint<sp/>is<sp/>all<sp/>templated,<sp/>so<sp/>there&apos;s<sp/>nothing<sp/>to<sp/>implement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fixed_point.cpp"/>
+  </compounddef>
+</doxygen>

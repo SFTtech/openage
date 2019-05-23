@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_siphash" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Siphash</compoundname>
+    <includes refid="hash_8h" local="no">hash.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::Siphash::key[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The key to use for hashing. As two 64-bit little-endian words. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.h" line="65" column="1" bodyfile="libopenage/util/hash.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Siphash::Siphash</definition>
+        <argsstring>(std::array&lt; uint8_t, 16 &gt; key)</argsstring>
+        <name>Siphash</name>
+        <param>
+          <type>std::array&lt; uint8_t, 16 &gt;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a hash generator. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to use with this hasher. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.h" line="29" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> &amp;</type>
+        <definition>Siphash &amp; openage::util::Siphash::set_key</definition>
+        <argsstring>(std::array&lt; uint8_t, 16 &gt; key)</argsstring>
+        <name>set_key</name>
+        <param>
+          <type>std::array&lt; uint8_t, 16 &gt;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the key for subsequent hashes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to use with this hasher. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to itself, for method chaining. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.h" line="37" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::Siphash::digest</definition>
+        <argsstring>(const uint8_t *data, size_t len_data)</argsstring>
+        <name>digest</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hashes the input data as uint8_t array and returns the result. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start of the input data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Hash. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.h" line="46" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::Siphash::digest</definition>
+        <argsstring>(const uint64_t)</argsstring>
+        <name>digest</name>
+        <param>
+          <type>const</type>
+          <declname>uint64_t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hashes a single uint64_t number and returns the result.</para>
+<para>The 64-bit word is interpreted as big-endian. e.g. 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef}</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uint64_t to hash. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Hash. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.h" line="58" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="112" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains a <ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementration.</para>
+<para><ulink url="https://131002.net/siphash/">https://131002.net/siphash/</ulink> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4176">
+        <label>openage::util::Siphash</label>
+        <link refid="classopenage_1_1util_1_1_siphash"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/hash.h" line="23" column="1" bodyfile="libopenage/util/hash.h" bodystart="23" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>digest</name></member>
+      <member refid="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>digest</name></member>
+      <member refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" prot="private" virt="non-virtual"><scope>openage::util::Siphash</scope><name>key</name></member>
+      <member refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>set_key</name></member>
+      <member refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" prot="public" virt="non-virtual"><scope>openage::util::Siphash</scope><name>Siphash</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

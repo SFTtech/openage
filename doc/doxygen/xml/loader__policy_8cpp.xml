@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="loader__policy_8cpp" kind="file" language="C++">
+    <compoundname>loader_policy.cpp</compoundname>
+    <includes refid="loader__policy_8h" local="yes">loader_policy.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <incdepgraph>
+      <node id="1476">
+        <label>list</label>
+      </node>
+      <node id="1466">
+        <label>atomic</label>
+      </node>
+      <node id="1472">
+        <label>iomanip</label>
+      </node>
+      <node id="1471">
+        <label>functional</label>
+      </node>
+      <node id="1461">
+        <label>cstdint</label>
+      </node>
+      <node id="1469">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="1470" relation="include">
+        </childnode>
+        <childnode refid="1471" relation="include">
+        </childnode>
+        <childnode refid="1472" relation="include">
+        </childnode>
+        <childnode refid="1454" relation="include">
+        </childnode>
+        <childnode refid="1473" relation="include">
+        </childnode>
+        <childnode refid="1456" relation="include">
+        </childnode>
+        <childnode refid="1474" relation="include">
+        </childnode>
+      </node>
+      <node id="1455">
+        <label>stdexcept</label>
+      </node>
+      <node id="1475">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="1476" relation="include">
+        </childnode>
+        <childnode refid="1477" relation="include">
+        </childnode>
+        <childnode refid="1478" relation="include">
+        </childnode>
+      </node>
+      <node id="1470">
+        <label>cstdarg</label>
+      </node>
+      <node id="1456">
+        <label>string</label>
+      </node>
+      <node id="1460">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="1461" relation="include">
+        </childnode>
+        <childnode refid="1456" relation="include">
+        </childnode>
+        <childnode refid="1462" relation="include">
+        </childnode>
+        <childnode refid="1463" relation="include">
+        </childnode>
+        <childnode refid="1465" relation="include">
+        </childnode>
+        <childnode refid="1475" relation="include">
+        </childnode>
+        <childnode refid="1478" relation="include">
+        </childnode>
+      </node>
+      <node id="1463">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="1464" relation="include">
+        </childnode>
+      </node>
+      <node id="1465">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="1466" relation="include">
+        </childnode>
+        <childnode refid="1454" relation="include">
+        </childnode>
+        <childnode refid="1467" relation="include">
+        </childnode>
+        <childnode refid="1457" relation="include">
+        </childnode>
+        <childnode refid="1468" relation="include">
+        </childnode>
+        <childnode refid="1469" relation="include">
+        </childnode>
+      </node>
+      <node id="1451">
+        <label>ostream</label>
+      </node>
+      <node id="1452">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="1453" relation="include">
+        </childnode>
+        <childnode refid="1454" relation="include">
+        </childnode>
+        <childnode refid="1455" relation="include">
+        </childnode>
+        <childnode refid="1456" relation="include">
+        </childnode>
+        <childnode refid="1457" relation="include">
+        </childnode>
+        <childnode refid="1460" relation="include">
+        </childnode>
+      </node>
+      <node id="1480">
+        <label>typeinfo</label>
+      </node>
+      <node id="1474">
+        <label>vector</label>
+      </node>
+      <node id="1458">
+        <label>ciso646</label>
+      </node>
+      <node id="1473">
+        <label>sstream</label>
+      </node>
+      <node id="1457">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="1458" relation="include">
+        </childnode>
+        <childnode refid="1456" relation="include">
+        </childnode>
+        <childnode refid="1459" relation="include">
+        </childnode>
+      </node>
+      <node id="1459">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="1459" relation="include">
+        </childnode>
+      </node>
+      <node id="1468">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="1453" relation="include">
+        </childnode>
+        <childnode refid="1456" relation="include">
+        </childnode>
+      </node>
+      <node id="1478">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="1479" relation="include">
+        </childnode>
+      </node>
+      <node id="1464">
+        <label>cstdlib</label>
+      </node>
+      <node id="1453">
+        <label>iostream</label>
+      </node>
+      <node id="1477">
+        <label>mutex</label>
+      </node>
+      <node id="1467">
+        <label>type_traits</label>
+      </node>
+      <node id="1462">
+        <label>config.h</label>
+      </node>
+      <node id="1449">
+        <label>libopenage/audio/loader_policy.cpp</label>
+        <link refid="loader__policy_8cpp"/>
+        <childnode refid="1450" relation="include">
+        </childnode>
+        <childnode refid="1452" relation="include">
+        </childnode>
+      </node>
+      <node id="1450">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="1451" relation="include">
+        </childnode>
+      </node>
+      <node id="1454">
+        <label>memory</label>
+      </node>
+      <node id="1479">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="1453" relation="include">
+        </childnode>
+        <childnode refid="1480" relation="include">
+        </childnode>
+        <childnode refid="1457" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="loader__policy_8h" kindref="compound">loader_policy.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" kindref="member">loader_policy_t_to_str</ref>(<ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" kindref="member">loader_policy_t</ref><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a722a256b864f768da20a4b31fdc6dfec" kindref="member">loader_policy_t::IN_MEMORY</ref>:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;IN_MEMORY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299a0fcc90da4811c877ba9f9c12f7d60bc9" kindref="member">loader_policy_t::DYNAMIC</ref>:<sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DYNAMIC&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unknown&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1audio_1ad2b75e7dbf6cd2f85e5d71b587a5e447" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1audio_1a3db10b8f65422a7a97adbcdb9d97b398" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" kindref="member">loader_policy_t</ref><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>os<sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1audio_1acd95cd9986e9497c0291304450c5b49a" kindref="member">loader_policy_t_to_str</ref>(<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::audio</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/loader_policy.cpp"/>
+  </compounddef>
+</doxygen>

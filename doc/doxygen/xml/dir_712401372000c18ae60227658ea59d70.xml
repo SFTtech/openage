@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_712401372000c18ae60227658ea59d70" kind="dir">
+    <compoundname>libopenage/gamestate</compoundname>
+    <innerfile refid="civilisation_8cpp">civilisation.cpp</innerfile>
+    <innerfile refid="civilisation_8h">civilisation.h</innerfile>
+    <innerfile refid="cost_8cpp">cost.cpp</innerfile>
+    <innerfile refid="cost_8h">cost.h</innerfile>
+    <innerfile refid="game__main_8cpp">game_main.cpp</innerfile>
+    <innerfile refid="game__main_8h">game_main.h</innerfile>
+    <innerfile refid="game__save_8cpp">game_save.cpp</innerfile>
+    <innerfile refid="game__save_8h">game_save.h</innerfile>
+    <innerfile refid="game__spec_8cpp">game_spec.cpp</innerfile>
+    <innerfile refid="game__spec_8h">game_spec.h</innerfile>
+    <innerfile refid="generator_8cpp">generator.cpp</innerfile>
+    <innerfile refid="generator_8h">generator.h</innerfile>
+    <innerfile refid="market_8cpp">market.cpp</innerfile>
+    <innerfile refid="market_8h">market.h</innerfile>
+    <innerfile refid="player_8cpp">player.cpp</innerfile>
+    <innerfile refid="player_8h">player.h</innerfile>
+    <innerfile refid="population__tracker_8cpp">population_tracker.cpp</innerfile>
+    <innerfile refid="population__tracker_8h">population_tracker.h</innerfile>
+    <innerfile refid="gamestate_2resource_8cpp">resource.cpp</innerfile>
+    <innerfile refid="gamestate_2resource_8h">resource.h</innerfile>
+    <innerfile refid="score_8cpp">score.cpp</innerfile>
+    <innerfile refid="score_8h">score.h</innerfile>
+    <innerfile refid="team_8cpp">team.cpp</innerfile>
+    <innerfile refid="team_8h">team.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gamestate/"/>
+  </compounddef>
+</doxygen>

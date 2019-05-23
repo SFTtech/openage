@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_d037ee21b1d08cda7e27f2ce4ee48ec3" kind="dir">
+    <compoundname>libopenage/gui</compoundname>
+    <innerdir refid="dir_acb330e0bd97d2656bfb843bf4718018">libopenage/gui/guisys</innerdir>
+    <innerdir refid="dir_cbf204bd148c4f3791294990ca88307d">libopenage/gui/integration</innerdir>
+    <innerfile refid="actions__list__model_8cpp">actions_list_model.cpp</innerfile>
+    <innerfile refid="actions__list__model_8h">actions_list_model.h</innerfile>
+    <innerfile refid="assetmanager__link_8cpp">assetmanager_link.cpp</innerfile>
+    <innerfile refid="assetmanager__link_8h">assetmanager_link.h</innerfile>
+    <innerfile refid="category__contents__list__model_8cpp">category_contents_list_model.cpp</innerfile>
+    <innerfile refid="category__contents__list__model_8h">category_contents_list_model.h</innerfile>
+    <innerfile refid="engine__info_8cpp">engine_info.cpp</innerfile>
+    <innerfile refid="engine__info_8h">engine_info.h</innerfile>
+    <innerfile refid="engine__link_8cpp">engine_link.cpp</innerfile>
+    <innerfile refid="engine__link_8h">engine_link.h</innerfile>
+    <innerfile refid="game__control__link_8cpp">game_control_link.cpp</innerfile>
+    <innerfile refid="game__control__link_8h">game_control_link.h</innerfile>
+    <innerfile refid="game__creator_8cpp">game_creator.cpp</innerfile>
+    <innerfile refid="game__creator_8h">game_creator.h</innerfile>
+    <innerfile refid="game__main__link_8cpp">game_main_link.cpp</innerfile>
+    <innerfile refid="game__main__link_8h">game_main_link.h</innerfile>
+    <innerfile refid="game__saver_8cpp">game_saver.cpp</innerfile>
+    <innerfile refid="game__saver_8h">game_saver.h</innerfile>
+    <innerfile refid="game__spec__link_8cpp">game_spec_link.cpp</innerfile>
+    <innerfile refid="game__spec__link_8h">game_spec_link.h</innerfile>
+    <innerfile refid="generator__link_8cpp">generator_link.cpp</innerfile>
+    <innerfile refid="generator__link_8h">generator_link.h</innerfile>
+    <innerfile refid="gui_2gui_8cpp">gui.cpp</innerfile>
+    <innerfile refid="gui_2gui_8h">gui.h</innerfile>
+    <innerfile refid="main__args__link_8cpp">main_args_link.cpp</innerfile>
+    <innerfile refid="main__args__link_8h">main_args_link.h</innerfile>
+    <innerfile refid="registrations_8cpp">registrations.cpp</innerfile>
+    <innerfile refid="registrations_8h">registrations.h</innerfile>
+    <innerfile refid="resources__list__model_8cpp">resources_list_model.cpp</innerfile>
+    <innerfile refid="resources__list__model_8h">resources_list_model.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gui/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__application__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_application_impl.cpp</compoundname>
+    <includes refid="gui__application__impl_8h" local="yes">gui_application_impl.h</includes>
+    <includes local="no">locale</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">QtGlobal</includes>
+    <includes local="no">QtDebug</includes>
+    <incdepgraph>
+      <node id="12947">
+        <label>locale</label>
+      </node>
+      <node id="12950">
+        <label>QtDebug</label>
+      </node>
+      <node id="12948">
+        <label>cassert</label>
+      </node>
+      <node id="12949">
+        <label>QtGlobal</label>
+      </node>
+      <node id="12943">
+        <label>gui_application_impl.h</label>
+        <link refid="gui__application__impl_8h"/>
+        <childnode refid="12944" relation="include">
+        </childnode>
+        <childnode refid="12945" relation="include">
+        </childnode>
+        <childnode refid="12946" relation="include">
+        </childnode>
+      </node>
+      <node id="12946">
+        <label>QGuiApplication</label>
+      </node>
+      <node id="12944">
+        <label>thread</label>
+      </node>
+      <node id="12942">
+        <label>libopenage/gui/guisys/private/gui_application_impl.cpp</label>
+        <link refid="gui__application__impl_8cpp"/>
+        <childnode refid="12943" relation="include">
+        </childnode>
+        <childnode refid="12947" relation="include">
+        </childnode>
+        <childnode refid="12948" relation="include">
+        </childnode>
+        <childnode refid="12949" relation="include">
+        </childnode>
+        <childnode refid="12950" relation="include">
+        </childnode>
+      </node>
+      <node id="12945">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__application__impl_8h" kindref="compound">gui_application_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;locale&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtGlobal&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">std::weak_ptr&lt;GuiApplicationImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1afb84a8b56b3a22baeb32c9fe9dc43399" kindref="member">GuiApplicationImpl::instance</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" refkind="member"><highlight class="normal">std::shared_ptr&lt;GuiApplicationImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" kindref="member">GuiApplicationImpl::get</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GuiApplicationImpl&gt;<sp/>candidate<sp/>=<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1afb84a8b56b3a22baeb32c9fe9dc43399" kindref="member">GuiApplicationImpl::instance</ref>.lock();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(!candidate<sp/>||<sp/>std::this_thread::get_id()<sp/>==<sp/>candidate-&gt;owner);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>candidate<sp/>?<sp/>candidate<sp/>:<sp/>std::shared_ptr&lt;GuiApplicationImpl&gt;{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref>};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_gui_application_impl_1ae5819aa9c2ba2243cd33c6f46ea3ad8a" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_impl_1ae5819aa9c2ba2243cd33c6f46ea3ad8a" kindref="member">GuiApplicationImpl::~GuiApplicationImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(std::this_thread::get_id()<sp/>==<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_application_impl_1ab858e2888aff37770b7db320875a82d2" kindref="member">owner</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classqtsdl_1_1_gui_application_impl_1a66c8c6711067ef52365fffbd8ccdfa1e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a66c8c6711067ef52365fffbd8ccdfa1e" kindref="member">GuiApplicationImpl::processEvents</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(std::this_thread::get_id()<sp/>==<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_application_impl_1ab858e2888aff37770b7db320875a82d2" kindref="member">owner</ref>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__APPLE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_application_impl_1a6662b2733e6b860893730bb4b4d6f7eb" kindref="member">app</ref>.processEvents();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>arg[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;qtsdl&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv<sp/>=<sp/>&amp;arg[0];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classqtsdl_1_1_gui_application_impl_1a8cdd1cbf6bdbdd693481dc9b92a8cac5" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_impl_1a8cdd1cbf6bdbdd693481dc9b92a8cac5" kindref="member">GuiApplicationImpl::GuiApplicationImpl</ref>()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">#ifndef<sp/>NDEBUG</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>owner{std::this_thread::get_id()},</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>app{argc,<sp/>&amp;argv}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>locale<sp/>back<sp/>to<sp/>POSIX<sp/>for<sp/>the<sp/>decimal<sp/>point<sp/>parsing<sp/>(see<sp/>qcoreapplication.html#locale-settings).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale::global(std::locale().combine&lt;std::numpunct&lt;char&gt;&gt;(std::locale::classic()));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>qInfo()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Compiled<sp/>with<sp/>Qt&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>QT_VERSION_STR<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;and<sp/>run<sp/>with<sp/>Qt&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>qVersion();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_application_impl.cpp"/>
+  </compounddef>
+</doxygen>

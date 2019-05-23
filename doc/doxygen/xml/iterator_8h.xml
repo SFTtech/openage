@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="iterator_8h" kind="file" language="C++">
+    <compoundname>iterator.h</compoundname>
+    <includes refid="curve_8h" local="yes">curve.h</includes>
+    <includedby refid="iterator_8cpp" local="yes">libopenage/curve/iterator.cpp</includedby>
+    <includedby refid="map__filter__iterator_8h" local="yes">libopenage/curve/map_filter_iterator.h</includedby>
+    <includedby refid="queue__filter__iterator_8h" local="yes">libopenage/curve/queue_filter_iterator.h</includedby>
+    <incdepgraph>
+      <node id="4841">
+        <label>list</label>
+      </node>
+      <node id="4834">
+        <label>atomic</label>
+      </node>
+      <node id="4809">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4810" relation="include">
+        </childnode>
+        <childnode refid="4811" relation="include">
+        </childnode>
+        <childnode refid="4812" relation="include">
+        </childnode>
+        <childnode refid="4813" relation="include">
+        </childnode>
+        <childnode refid="4814" relation="include">
+        </childnode>
+        <childnode refid="4815" relation="include">
+        </childnode>
+        <childnode refid="4816" relation="include">
+        </childnode>
+        <childnode refid="4817" relation="include">
+        </childnode>
+      </node>
+      <node id="4838">
+        <label>functional</label>
+      </node>
+      <node id="4813">
+        <label>iomanip</label>
+      </node>
+      <node id="4814">
+        <label>limits</label>
+      </node>
+      <node id="4808">
+        <label>cstdint</label>
+      </node>
+      <node id="4806">
+        <label>libopenage/curve/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="4807" relation="include">
+        </childnode>
+      </node>
+      <node id="4836">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="4837" relation="include">
+        </childnode>
+        <childnode refid="4838" relation="include">
+        </childnode>
+        <childnode refid="4813" relation="include">
+        </childnode>
+        <childnode refid="4822" relation="include">
+        </childnode>
+        <childnode refid="4839" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+        <childnode refid="4821" relation="include">
+        </childnode>
+      </node>
+      <node id="4812">
+        <label>cmath</label>
+      </node>
+      <node id="4825">
+        <label>stdexcept</label>
+      </node>
+      <node id="4807">
+        <label>curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4808" relation="include">
+        </childnode>
+        <childnode refid="4809" relation="include">
+        </childnode>
+      </node>
+      <node id="4840">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="4841" relation="include">
+        </childnode>
+        <childnode refid="4842" relation="include">
+        </childnode>
+        <childnode refid="4843" relation="include">
+        </childnode>
+      </node>
+      <node id="4837">
+        <label>cstdarg</label>
+      </node>
+      <node id="4820">
+        <label>string</label>
+      </node>
+      <node id="4829">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4808" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+        <childnode refid="4830" relation="include">
+        </childnode>
+        <childnode refid="4831" relation="include">
+        </childnode>
+        <childnode refid="4833" relation="include">
+        </childnode>
+        <childnode refid="4840" relation="include">
+        </childnode>
+        <childnode refid="4843" relation="include">
+        </childnode>
+      </node>
+      <node id="4831">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="4832" relation="include">
+        </childnode>
+      </node>
+      <node id="4833">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="4834" relation="include">
+        </childnode>
+        <childnode refid="4822" relation="include">
+        </childnode>
+        <childnode refid="4816" relation="include">
+        </childnode>
+        <childnode refid="4826" relation="include">
+        </childnode>
+        <childnode refid="4835" relation="include">
+        </childnode>
+        <childnode refid="4836" relation="include">
+        </childnode>
+      </node>
+      <node id="4815">
+        <label>ostream</label>
+      </node>
+      <node id="4818">
+        <label>limits.h</label>
+      </node>
+      <node id="4823">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4824" relation="include">
+        </childnode>
+        <childnode refid="4822" relation="include">
+        </childnode>
+        <childnode refid="4825" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+        <childnode refid="4826" relation="include">
+        </childnode>
+        <childnode refid="4829" relation="include">
+        </childnode>
+      </node>
+      <node id="4817">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4810" relation="include">
+        </childnode>
+        <childnode refid="4818" relation="include">
+        </childnode>
+        <childnode refid="4812" relation="include">
+        </childnode>
+        <childnode refid="4819" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+        <childnode refid="4821" relation="include">
+        </childnode>
+        <childnode refid="4822" relation="include">
+        </childnode>
+        <childnode refid="4823" relation="include">
+        </childnode>
+        <childnode refid="4826" relation="include">
+        </childnode>
+      </node>
+      <node id="4845">
+        <label>typeinfo</label>
+      </node>
+      <node id="4821">
+        <label>vector</label>
+      </node>
+      <node id="4827">
+        <label>ciso646</label>
+      </node>
+      <node id="4839">
+        <label>sstream</label>
+      </node>
+      <node id="4826">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="4827" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+        <childnode refid="4828" relation="include">
+        </childnode>
+      </node>
+      <node id="4828">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="4828" relation="include">
+        </childnode>
+      </node>
+      <node id="4835">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4824" relation="include">
+        </childnode>
+        <childnode refid="4820" relation="include">
+        </childnode>
+      </node>
+      <node id="4843">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="4844" relation="include">
+        </childnode>
+      </node>
+      <node id="4832">
+        <label>cstdlib</label>
+      </node>
+      <node id="4824">
+        <label>iostream</label>
+      </node>
+      <node id="4811">
+        <label>climits</label>
+      </node>
+      <node id="4842">
+        <label>mutex</label>
+      </node>
+      <node id="4816">
+        <label>type_traits</label>
+      </node>
+      <node id="4830">
+        <label>config.h</label>
+      </node>
+      <node id="4810">
+        <label>algorithm</label>
+      </node>
+      <node id="4819">
+        <label>cstring</label>
+      </node>
+      <node id="4822">
+        <label>memory</label>
+      </node>
+      <node id="4844">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4824" relation="include">
+        </childnode>
+        <childnode refid="4845" relation="include">
+        </childnode>
+        <childnode refid="4826" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4847">
+        <label>libopenage/curve/iterator.cpp</label>
+        <link refid="iterator_8cpp"/>
+      </node>
+      <node id="4846">
+        <label>libopenage/curve/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="4847" relation="include">
+        </childnode>
+        <childnode refid="4848" relation="include">
+        </childnode>
+        <childnode refid="4853" relation="include">
+        </childnode>
+      </node>
+      <node id="4854">
+        <label>libopenage/curve/queue.h</label>
+        <link refid="queue_8h"/>
+        <childnode refid="4855" relation="include">
+        </childnode>
+        <childnode refid="4851" relation="include">
+        </childnode>
+      </node>
+      <node id="4852">
+        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <link refid="map__filter__iterator_8cpp"/>
+      </node>
+      <node id="4849">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="4850" relation="include">
+        </childnode>
+        <childnode refid="4851" relation="include">
+        </childnode>
+      </node>
+      <node id="4853">
+        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <link refid="queue__filter__iterator_8h"/>
+        <childnode refid="4854" relation="include">
+        </childnode>
+        <childnode refid="4856" relation="include">
+        </childnode>
+      </node>
+      <node id="4855">
+        <label>libopenage/curve/queue.cpp</label>
+        <link refid="queue_8cpp"/>
+      </node>
+      <node id="4850">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+      </node>
+      <node id="4856">
+        <label>libopenage/curve/queue_filter_iterator.cpp</label>
+        <link refid="queue__filter__iterator_8cpp"/>
+      </node>
+      <node id="4851">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="4848">
+        <label>libopenage/curve/map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="4849" relation="include">
+        </childnode>
+        <childnode refid="4852" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1curve_1_1_curve_iterator" prot="public">openage::curve::CurveIterator</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="curve_8h" kindref="compound">curve.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>val_t,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>container_t,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>iterator_t=</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>container_t::const_iterator&gt;</highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1curve_1_1_curve_iterator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420" kindref="member">value</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026" kindref="member">valid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" kindref="member">CurveIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>container_t<sp/>*c)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>{},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>{c},</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>{-<ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>()},</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>{+<ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;time_t&gt;::max</ref>()}<sp/>{}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1curve_1_1_curve_iterator_1a45e14ddb2e3759afe9b36d4b01d55cd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a45e14ddb2e3759afe9b36d4b01d55cd0" kindref="member">CurveIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>iterator_t<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>container_t<sp/>*<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>{<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>{<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>},</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>{<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>},</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>{<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" kindref="member">CurveIterator</ref><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" kindref="member">CurveIterator</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a46f039556f6f516d51e05a608319aba2" kindref="member">~CurveIterator</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>CurveIterator&lt;val_t,<sp/>container_t,<sp/>iterator_t&gt;<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a984fc87d7f98bcf2ad157b46b8859719" kindref="member">operator= </ref>(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CurveIterator&lt;val_t,<sp/>container_t,<sp/>iterator_t&gt;<sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" kindref="member">operator *</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>val_t<sp/>*<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" kindref="member">operator -&gt;</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator&lt;val_t, container_t&gt;</ref><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref><sp/>==<sp/>rhs.<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" kindref="member">operator !=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator&lt;val_t, container_t&gt;</ref><sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref><sp/>!=<sp/>rhs.<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator&lt;val_t, container_t&gt;</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" kindref="member">operator ++</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>-&gt;end().base<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref><sp/>and<sp/>not<sp/>this-&gt;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026" kindref="member">valid</ref>());</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>iterator_t<sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" kindref="member">get_base</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" kindref="member">get_from</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/>&amp;<ref refid="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" kindref="member">get_to</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>iterator_t<sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" kindref="member">base</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>container_t<sp/>*<ref refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" kindref="member">container</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" kindref="member">from</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">time_t</ref><sp/><ref refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" kindref="member">to</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/iterator.h"/>
+  </compounddef>
+</doxygen>

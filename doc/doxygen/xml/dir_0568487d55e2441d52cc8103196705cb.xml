@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_0568487d55e2441d52cc8103196705cb" kind="dir">
+    <compoundname>libopenage/renderer/resources</compoundname>
+    <innerfile refid="mesh__data_8cpp">mesh_data.cpp</innerfile>
+    <innerfile refid="mesh__data_8h">mesh_data.h</innerfile>
+    <innerfile refid="shader__source_8cpp">shader_source.cpp</innerfile>
+    <innerfile refid="shader__source_8h">shader_source.h</innerfile>
+    <innerfile refid="texture__data_8cpp">texture_data.cpp</innerfile>
+    <innerfile refid="texture__data_8h">texture_data.h</innerfile>
+    <innerfile refid="texture__info_8cpp">texture_info.cpp</innerfile>
+    <innerfile refid="texture__info_8h">texture_info.h</innerfile>
+    <innerfile refid="texture__subinfo_8cpp">texture_subinfo.cpp</innerfile>
+    <innerfile refid="texture__subinfo_8h">texture_subinfo.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/resources/"/>
+  </compounddef>
+</doxygen>

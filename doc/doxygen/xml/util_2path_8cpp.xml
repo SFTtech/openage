@@ -1,0 +1,795 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="util_2path_8cpp" kind="file" language="C++">
+    <compoundname>path.cpp</compoundname>
+    <includes refid="util_2path_8h" local="yes">path.h</includes>
+    <includes refid="compiler_8h" local="yes">compiler.h</includes>
+    <includes refid="directory_8h" local="yes">fslike/directory.h</includes>
+    <includes refid="fslike_2native_8h" local="yes">fslike/native.h</includes>
+    <includes refid="fslike_2python_8h" local="yes">fslike/python.h</includes>
+    <includes refid="misc_8h" local="yes">misc.h</includes>
+    <includes refid="strings_8h" local="yes">strings.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <incdepgraph>
+      <node id="18751">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="18742">
+        <label>list</label>
+      </node>
+      <node id="18734">
+        <label>atomic</label>
+      </node>
+      <node id="18739">
+        <label>iomanip</label>
+      </node>
+      <node id="18718">
+        <label>functional</label>
+      </node>
+      <node id="18746">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="18718" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+      </node>
+      <node id="18715">
+        <label>cstdint</label>
+      </node>
+      <node id="18737">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="18738" relation="include">
+        </childnode>
+        <childnode refid="18718" relation="include">
+        </childnode>
+        <childnode refid="18739" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18740" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+      </node>
+      <node id="18724">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="18725" relation="include">
+        </childnode>
+      </node>
+      <node id="18759">
+        <label>cmath</label>
+      </node>
+      <node id="18710">
+        <label>libopenage/util/path.cpp</label>
+        <link refid="util_2path_8cpp"/>
+        <childnode refid="18711" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+        <childnode refid="18750" relation="include">
+        </childnode>
+        <childnode refid="18749" relation="include">
+        </childnode>
+        <childnode refid="18755" relation="include">
+        </childnode>
+        <childnode refid="18756" relation="include">
+        </childnode>
+        <childnode refid="18737" relation="include">
+        </childnode>
+        <childnode refid="18725" relation="include">
+        </childnode>
+      </node>
+      <node id="18728">
+        <label>stdexcept</label>
+      </node>
+      <node id="18723">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="18741">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="18742" relation="include">
+        </childnode>
+        <childnode refid="18719" relation="include">
+        </childnode>
+        <childnode refid="18743" relation="include">
+        </childnode>
+      </node>
+      <node id="18738">
+        <label>cstdarg</label>
+      </node>
+      <node id="18712">
+        <label>string</label>
+      </node>
+      <node id="18750">
+        <label>fslike/directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18751" relation="include">
+        </childnode>
+        <childnode refid="18752" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18753" relation="include">
+        </childnode>
+      </node>
+      <node id="18729">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="18715" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18730" relation="include">
+        </childnode>
+        <childnode refid="18731" relation="include">
+        </childnode>
+        <childnode refid="18733" relation="include">
+        </childnode>
+        <childnode refid="18741" relation="include">
+        </childnode>
+        <childnode refid="18743" relation="include">
+        </childnode>
+      </node>
+      <node id="18731">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="18732" relation="include">
+        </childnode>
+      </node>
+      <node id="18733">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="18734" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18735" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+        <childnode refid="18736" relation="include">
+        </childnode>
+        <childnode refid="18737" relation="include">
+        </childnode>
+      </node>
+      <node id="18753">
+        <label>fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="18715" relation="include">
+        </childnode>
+        <childnode refid="18726" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18754" relation="include">
+        </childnode>
+        <childnode refid="18711" relation="include">
+        </childnode>
+        <childnode refid="18747" relation="include">
+        </childnode>
+      </node>
+      <node id="18714">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="18715" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18716" relation="include">
+        </childnode>
+        <childnode refid="18717" relation="include">
+        </childnode>
+      </node>
+      <node id="18758">
+        <label>limits.h</label>
+      </node>
+      <node id="18725">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="18726" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18728" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+        <childnode refid="18729" relation="include">
+        </childnode>
+      </node>
+      <node id="18756">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="18757" relation="include">
+        </childnode>
+        <childnode refid="18758" relation="include">
+        </childnode>
+        <childnode refid="18759" relation="include">
+        </childnode>
+        <childnode refid="18760" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18725" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+      </node>
+      <node id="18745">
+        <label>typeinfo</label>
+      </node>
+      <node id="18752">
+        <label>tuple</label>
+      </node>
+      <node id="18713">
+        <label>vector</label>
+      </node>
+      <node id="18721">
+        <label>ciso646</label>
+      </node>
+      <node id="18754">
+        <label>utility</label>
+      </node>
+      <node id="18740">
+        <label>sstream</label>
+      </node>
+      <node id="18720">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="18721" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18722" relation="include">
+        </childnode>
+      </node>
+      <node id="18747">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18748" relation="include">
+        </childnode>
+        <childnode refid="18714" relation="include">
+        </childnode>
+      </node>
+      <node id="18722">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="18722" relation="include">
+        </childnode>
+      </node>
+      <node id="18736">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="18726" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+      </node>
+      <node id="18743">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="18744" relation="include">
+        </childnode>
+      </node>
+      <node id="18749">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="18748">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="18726" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+      </node>
+      <node id="18732">
+        <label>cstdlib</label>
+      </node>
+      <node id="18755">
+        <label>fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="18715" relation="include">
+        </childnode>
+        <childnode refid="18727" relation="include">
+        </childnode>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18717" relation="include">
+        </childnode>
+        <childnode refid="18714" relation="include">
+        </childnode>
+        <childnode refid="18753" relation="include">
+        </childnode>
+        <childnode refid="18711" relation="include">
+        </childnode>
+        <childnode refid="18747" relation="include">
+        </childnode>
+      </node>
+      <node id="18726">
+        <label>iostream</label>
+      </node>
+      <node id="18717">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="18718" relation="include">
+        </childnode>
+        <childnode refid="18719" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+        <childnode refid="18723" relation="include">
+        </childnode>
+        <childnode refid="18724" relation="include">
+        </childnode>
+        <childnode refid="18746" relation="include">
+        </childnode>
+      </node>
+      <node id="18719">
+        <label>mutex</label>
+      </node>
+      <node id="18711">
+        <label>path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="18712" relation="include">
+        </childnode>
+        <childnode refid="18713" relation="include">
+        </childnode>
+        <childnode refid="18714" relation="include">
+        </childnode>
+        <childnode refid="18747" relation="include">
+        </childnode>
+        <childnode refid="18749" relation="include">
+        </childnode>
+      </node>
+      <node id="18716">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="18735">
+        <label>type_traits</label>
+      </node>
+      <node id="18730">
+        <label>config.h</label>
+      </node>
+      <node id="18757">
+        <label>algorithm</label>
+      </node>
+      <node id="18760">
+        <label>cstring</label>
+      </node>
+      <node id="18727">
+        <label>memory</label>
+      </node>
+      <node id="18744">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="18726" relation="include">
+        </childnode>
+        <childnode refid="18745" relation="include">
+        </childnode>
+        <childnode refid="18720" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_2path_8h" kindref="compound">path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="compiler_8h" kindref="compound">compiler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="directory_8h" kindref="compound">fslike/directory.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fslike_2native_8h" kindref="compound">fslike/native.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fslike_2python_8h" kindref="compound">fslike/python.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="misc_8h" kindref="compound">misc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="strings_8h" kindref="compound">strings.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" kindref="member">path_normalizer</ref>(<ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;output,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;input)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>output.reserve(input.size());</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>normalize<sp/>the<sp/>path<sp/>parts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;part<sp/>:<sp/>input)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(part<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>or<sp/>part<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(part<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;..&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" kindref="member">likely</ref>(output.size()<sp/>&gt;<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output.pop_back();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output.push_back(part);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path::Path</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path::Path</ref>(<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>fsobj_in,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" kindref="member">path_normalizer</ref>(this-&gt;parts,<sp/><ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>optimization:<sp/>the<sp/>fsobj<sp/>from<sp/>python<sp/>may<sp/>be<sp/>convertible<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>native<sp/>c++<sp/>implementation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>then<sp/>calls<sp/>don&apos;t<sp/>need<sp/>to<sp/>be<sp/>relayed<sp/>any<sp/>more.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>if<sp/>fsobj<sp/>is<sp/>fslike.Directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1util_1_1fslike_1ad9a10d50910ce2850da6335c0b37ffd8" kindref="member">fslike::pyx_fs_is_fslike_directory</ref>.<ref refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kindref="member">call</ref>(fsobj_in.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">get_ref</ref>()))<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref><sp/>=<sp/>std::make_shared&lt;fslike::Directory&gt;(</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fsobj_in.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" kindref="member">getattr</ref>(</highlight><highlight class="stringliteral">&quot;path&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" kindref="member">bytes</ref>()</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>can&apos;t<sp/>create<sp/>a<sp/>c++-variant<sp/>of<sp/>the<sp/>path,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>just<sp/>wrap<sp/>the<sp/>python<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref><sp/>=<sp/>std::make_shared&lt;fslike::Python&gt;(fsobj_in);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1util_1_1_path_1a94d1c79106d647738cc12de1dfedf4b5" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path::Path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;fslike::FSLike&gt;<sp/>&amp;fsobj,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/>&amp;parts)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>fsobj{<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" kindref="member">path_normalizer</ref>(this-&gt;parts,<sp/>parts);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" kindref="member">Path::exists</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" kindref="member">is_file</ref>()<sp/>or<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" kindref="member">is_dir</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" kindref="member">Path::is_file</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;is_file(this-&gt;parts);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" kindref="member">Path::is_dir</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;is_dir(this-&gt;parts);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" kindref="member">Path::writable</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;writable(this-&gt;parts);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" refkind="member"><highlight class="normal">std::vector&lt;Path::part_t&gt;<sp/><ref refid="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" kindref="member">Path::list</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;list(this-&gt;parts);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" refkind="member"><highlight class="normal">std::vector&lt;Path&gt;<sp/><ref refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" kindref="member">Path::iterdir</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Path&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>a<sp/>new<sp/>path<sp/>object<sp/>for<sp/>each<sp/>element<sp/>in<sp/>that<sp/>directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;entry<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;list(this-&gt;parts))<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.push_back(this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(entry));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" kindref="member">Path::mkdirs</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;mkdirs(this-&gt;parts);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" kindref="member">Path::open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;mode)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" kindref="member">open_r</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" kindref="member">open_w</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;rw&quot;</highlight><highlight class="normal"><sp/>or<sp/>mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;r+&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" kindref="member">open_w</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" kindref="member">open_a</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;a+&quot;</highlight><highlight class="normal"><sp/>or<sp/>mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;ar&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" kindref="member">open_ar</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;unsupported<sp/>open<sp/>mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mode};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" kindref="member">Path::open_r</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;open_r(this-&gt;parts);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" kindref="member">Path::open_w</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;open_w(this-&gt;parts);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" kindref="member">Path::open_rw</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;open_rw(this-&gt;parts);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" kindref="member">Path::open_a</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;open_a(this-&gt;parts);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" kindref="member">Path::open_ar</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;open_ar(this-&gt;parts);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" kindref="member">Path::get_native_path</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;get_native_path(this-&gt;parts);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" kindref="member">Path::resolve_native_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;mode)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" kindref="member">resolve_native_path_r</ref>();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" kindref="member">resolve_native_path_w</ref>();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;unsupported<sp/>resolve<sp/>mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mode};</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" kindref="member">Path::resolve_native_path_r</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resolved_path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;resolve_r(this-&gt;parts);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resolved_path.first)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resolved_path.second.get_native_path();</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>locate<sp/>readable<sp/>path:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" kindref="member">Path::resolve_native_path_w</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resolved_path<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;resolve_w(this-&gt;parts);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resolved_path.first)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resolved_path.second.get_native_path();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{<ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>locate<sp/>writable<sp/>path:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" kindref="member">Path::rename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;target_path)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>both<sp/>fsobj<sp/>pointers<sp/>are<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>maybe<sp/>a<sp/>real<sp/>equality<sp/>check<sp/>is<sp/>better?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref><sp/>!=<sp/>target_path.<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;can&apos;t<sp/>rename<sp/>across<sp/>two<sp/>different<sp/>filesystem<sp/>like<sp/>objects&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;rename(this-&gt;parts,<sp/>target_path.<ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" kindref="member">Path::rmdir</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;rmdir(this-&gt;parts);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" kindref="member">Path::touch</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;touch(this-&gt;parts);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" kindref="member">Path::unlink</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;unlink(this-&gt;parts);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" kindref="member">Path::removerecursive</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" kindref="member">is_dir</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;path<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" kindref="member">iterdir</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>path.removerecursive();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" kindref="member">rmdir</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" kindref="member">unlink</ref>();</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" kindref="member">Path::get_mtime</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;get_mtime(this-&gt;parts);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" kindref="member">Path::get_filesize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;get_filesize(this-&gt;parts);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="comment">//<sp/>int<sp/>Path::watch();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="comment">//<sp/>void<sp/>Path::poll_fs_watches();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" kindref="member">Path::get_parent</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(</highlight><highlight class="stringliteral">&quot;..&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" kindref="member">Path::get_name</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;parts.size()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;parts.back();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a5f6ab09d105c3dfecc8de7dfd7be7ca2" kindref="member">util::empty_string</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" kindref="member">Path::get_suffix</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;name<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" kindref="member">get_name</ref>();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>name.rfind(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pos<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name.substr(pos);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271" refid="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" kindref="member">Path::get_suffixes</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>name<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" kindref="member">get_name</ref>();</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(name.size()<sp/>&gt;<sp/>0<sp/>and<sp/>name[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name<sp/>=<sp/>name.substr(1);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ret<sp/>=<sp/>[&apos;.&apos;<sp/>+<sp/>suffix<sp/>for<sp/>suffix<sp/>in<sp/>name.split(&apos;.&apos;)[1:]]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" kindref="member">Path::get_stem</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" kindref="member">get_name</ref>();</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>name.rfind(</highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pos<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name.substr(0,<sp/>pos);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">Path::joinpath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/>&amp;subpaths)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/>new_parts<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;part<sp/>:<sp/>subpaths)<sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" kindref="member">likely</ref>(part.size()<sp/>&gt;<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>new_parts.push_back(part);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>{this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>,<sp/>new_parts};</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">Path::joinpath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref><sp/>&amp;subpath)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(<ref refid="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" kindref="member">util::split</ref>(subpath,<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" kindref="member">Path::operator []</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref><sp/>&amp;subpaths)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(subpaths);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="classopenage_1_1util_1_1_path_1af8e0c0f255b7df0bfd44cd19df8a6325" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" kindref="member">Path::operator []</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref><sp/>&amp;subpath)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(subpath);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" kindref="member">Path::operator /</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref><sp/>&amp;subpath)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(subpath);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" kindref="member">Path::with_name</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref><sp/>&amp;name)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" kindref="member">get_parent</ref>().<ref refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" kindref="member">joinpath</ref>(name);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/><ref refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" kindref="member">Path::with_suffix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref><sp/>&amp;suffix)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" kindref="member">with_name</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" kindref="member">get_stem</ref>()<sp/>+<sp/>suffix);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327" refid="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" kindref="member">Path::operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref><sp/>and</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;parts<sp/>==<sp/>other.<ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="classopenage_1_1util_1_1_path_1a72180e179456cb7a19935e969c9753e2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a72180e179456cb7a19935e969c9753e2" kindref="member">Path::operator !=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>not<sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>other);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">fslike::FSLike</ref><sp/>*<ref refid="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" kindref="member">Path::get_fsobj</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>.get();</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344" refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" kindref="member">Path::get_parts</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349" refid="namespaceopenage_1_1util_1aae7cd67becf8e8e8e0be8e54a12624d3" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;path)<sp/>{</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Path(&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>path.<ref refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" kindref="member">fsobj</ref>-&gt;repr(stream);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;part<sp/>:<sp/>path.<ref refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" kindref="member">parts</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>part;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364" refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" refkind="member"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" kindref="member">filename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath)<sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>rsep_pos<sp/>=<sp/>fullpath.rfind(<ref refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" kindref="member">fslike::PATHSEP</ref>);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rsep_pos<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fullpath.substr(rsep_pos<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374" refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" refkind="member"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" kindref="member">dirname</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fullpath)<sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>rsep_pos<sp/>=<sp/>fullpath.rfind(<ref refid="namespaceopenage_1_1util_1_1fslike_1a670007c84e8b0cf3c4f0dfd74e0f6399" kindref="member">fslike::PATHSEP</ref>);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rsep_pos<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fullpath.substr(0,<sp/>rsep_pos);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/path.cpp"/>
+  </compounddef>
+</doxygen>

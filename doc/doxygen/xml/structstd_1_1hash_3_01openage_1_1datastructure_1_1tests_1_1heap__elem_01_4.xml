@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::datastructure::tests::heap_elem &gt;</compoundname>
+    <includes refid="datastructure_2tests_8h" local="no">tests.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4_1a6166232a00a466d29e290c1806c61ab4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; openage::datastructure::tests::heap_elem &gt;::operator()</definition>
+        <argsstring>(const openage::datastructure::tests::heap_elem &amp;elem) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1datastructure_1_1tests_1_1heap__elem" kindref="compound">openage::datastructure::tests::heap_elem</ref> &amp;</type>
+          <declname>elem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/datastructure/tests.h" line="38" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="38" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>hash function for the simple heap_elem </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2825">
+        <label>std::hash&lt; openage::datastructure::tests::heap_elem &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/datastructure/tests.h" line="37" column="1" bodyfile="libopenage/datastructure/tests.h" bodystart="37" bodyend="41"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1datastructure_1_1tests_1_1heap__elem_01_4_1a6166232a00a466d29e290c1806c61ab4" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::datastructure::tests::heap_elem &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

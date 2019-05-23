@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__renderer__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_renderer_impl.cpp</compoundname>
+    <includes refid="gui__renderer__impl_8h" local="yes">gui_renderer_impl.h</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">QOpenGLContext</includes>
+    <includes local="no">QOpenGLFramebufferObject</includes>
+    <includes local="no">QQuickRenderControl</includes>
+    <includes local="no">QQuickItem</includes>
+    <includes local="no">QCoreApplication</includes>
+    <includes local="no">QThread</includes>
+    <includes refid="gui__renderer_8h" local="yes">../public/gui_renderer.h</includes>
+    <incdepgraph>
+      <node id="13163">
+        <label>atomic</label>
+      </node>
+      <node id="13167">
+        <label>QObject</label>
+      </node>
+      <node id="13170">
+        <label>QOffscreenSurface</label>
+      </node>
+      <node id="13177">
+        <label>QThread</label>
+      </node>
+      <node id="13172">
+        <label>cassert</label>
+      </node>
+      <node id="13169">
+        <label>QQuickRenderControl</label>
+      </node>
+      <node id="13166">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13160">
+        <label>libopenage/gui/guisys/private/gui_renderer_impl.cpp</label>
+        <link refid="gui__renderer__impl_8cpp"/>
+        <childnode refid="13161" relation="include">
+        </childnode>
+        <childnode refid="13172" relation="include">
+        </childnode>
+        <childnode refid="13173" relation="include">
+        </childnode>
+        <childnode refid="13174" relation="include">
+        </childnode>
+        <childnode refid="13169" relation="include">
+        </childnode>
+        <childnode refid="13175" relation="include">
+        </childnode>
+        <childnode refid="13176" relation="include">
+        </childnode>
+        <childnode refid="13177" relation="include">
+        </childnode>
+        <childnode refid="13178" relation="include">
+        </childnode>
+      </node>
+      <node id="13161">
+        <label>gui_renderer_impl.h</label>
+        <link refid="gui__renderer__impl_8h"/>
+        <childnode refid="13162" relation="include">
+        </childnode>
+        <childnode refid="13163" relation="include">
+        </childnode>
+        <childnode refid="13164" relation="include">
+        </childnode>
+        <childnode refid="13165" relation="include">
+        </childnode>
+        <childnode refid="13166" relation="include">
+        </childnode>
+        <childnode refid="13167" relation="include">
+        </childnode>
+        <childnode refid="13168" relation="include">
+        </childnode>
+        <childnode refid="13169" relation="include">
+        </childnode>
+        <childnode refid="13170" relation="include">
+        </childnode>
+        <childnode refid="13171" relation="include">
+        </childnode>
+      </node>
+      <node id="13165">
+        <label>condition_variable</label>
+      </node>
+      <node id="13168">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="13174">
+        <label>QOpenGLFramebufferObject</label>
+      </node>
+      <node id="13164">
+        <label>mutex</label>
+      </node>
+      <node id="13178">
+        <label>../public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="13162" relation="include">
+        </childnode>
+        <childnode refid="13179" relation="include">
+        </childnode>
+      </node>
+      <node id="13173">
+        <label>QOpenGLContext</label>
+      </node>
+      <node id="13175">
+        <label>QQuickItem</label>
+      </node>
+      <node id="13179">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="13162">
+        <label>memory</label>
+      </node>
+      <node id="13171">
+        <label>gui_rendering_setup_routines.h</label>
+        <link refid="gui__rendering__setup__routines_8h"/>
+        <childnode refid="13162" relation="include">
+        </childnode>
+        <childnode refid="13166" relation="include">
+        </childnode>
+      </node>
+      <node id="13176">
+        <label>QCoreApplication</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__renderer__impl_8h" kindref="compound">gui_renderer_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QOpenGLContext&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QOpenGLFramebufferObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQuickRenderControl&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQuickItem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QCoreApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QThread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qRegisterMetaType&lt;std::atomic&lt;bool&gt;*&gt;(</highlight><highlight class="stringliteral">&quot;atomic_bool_ptr&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_event_handling_quick_window_1ab85f41f16d79f1a3198a36a7d07e44fe" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_event_handling_quick_window_1ab85f41f16d79f1a3198a36a7d07e44fe" kindref="member">EventHandlingQuickWindow::EventHandlingQuickWindow</ref>(QQuickRenderControl<sp/>*render_control)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>QQuickWindow{render_control},</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>focused_item{}<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classqtsdl_1_1_event_handling_quick_window_1a783308ed32fda3f8dd6bd0a6f1a6283e" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_event_handling_quick_window_1a783308ed32fda3f8dd6bd0a6f1a6283e" kindref="member">EventHandlingQuickWindow::~EventHandlingQuickWindow</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" kindref="member">EventHandlingQuickWindow::on_input_event</ref>(std::atomic&lt;bool&gt;<sp/>*processed,<sp/>QEvent<sp/>*event,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_if_grabbed)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!only_if_grabbed<sp/>||<sp/>this-&gt;mouseGrabberItem())<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref><sp/>&amp;&amp;<sp/>(event-&gt;type()<sp/>==<sp/>QEvent::KeyPress<sp/>||<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;type()<sp/>==<sp/>QEvent::KeyRelease))<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;sendEvent(this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref>,<sp/>event);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;sendEvent(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>event);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>change_focus<sp/>=<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>(QQuickItem<sp/>*item)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref><sp/>!=<sp/>item)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QFocusEvent<sp/>focus_out{QEvent::FocusOut,<sp/>Qt::ActiveWindowFocusReason};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;sendEvent(this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref>,<sp/>&amp;focus_out);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QFocusEvent<sp/>focus_in{QEvent::FocusIn,<sp/>Qt::ActiveWindowFocusReason};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;sendEvent(item,<sp/>&amp;focus_in);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" kindref="member">focused_item</ref><sp/>=<sp/>item;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Loose<sp/>keyboard<sp/>focus<sp/>when<sp/>clicked<sp/>outside<sp/>of<sp/>gui.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;type()<sp/>==<sp/>QEvent::MouseButtonPress<sp/>&amp;&amp;<sp/>!</highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;isAccepted())</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>change_focus(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Normally,<sp/>the<sp/>QQuickWindow<sp/>would<sp/>handle<sp/>keyboard<sp/>focus<sp/>automatically,<sp/>but<sp/>it<sp/>can&apos;t<sp/>because<sp/>neither<sp/>QQuickWindow<sp/>nor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>its<sp/>target<sp/>QWindow<sp/>respond<sp/>to<sp/>requestActivate().<sp/>Which<sp/>means<sp/>no<sp/>focus<sp/>event<sp/>propagation<sp/>when<sp/>injecting<sp/>mouse<sp/>clicks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>So,<sp/>the<sp/>workaround<sp/>is<sp/>to<sp/>look<sp/>specifically<sp/>for<sp/>TextFields<sp/>and<sp/>give<sp/>them<sp/>focus<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>to<sp/>remove<sp/>when<sp/>the<sp/>proper<sp/>focus<sp/>for<sp/>the<sp/>foreign<sp/>(that<sp/>obtained<sp/>from<sp/>QWindow::fromWinId())<sp/>windows<sp/>is<sp/>implemented<sp/>(Qt<sp/>5.6).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;mouseGrabberItem()<sp/>&amp;&amp;<sp/>this-&gt;mouseGrabberItem()-&gt;metaObject()-&gt;superClass()<sp/>&amp;&amp;<sp/>this-&gt;mouseGrabberItem()-&gt;metaObject()-&gt;superClass()-&gt;className()<sp/>==<sp/>QString(</highlight><highlight class="stringliteral">&quot;QQuickTextInput&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>(</highlight><highlight class="keyword">event</highlight><highlight class="normal">-&gt;type()<sp/>==<sp/>QEvent::MouseButtonPress))</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>change_focus(this-&gt;mouseGrabberItem());</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>*processed<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" kindref="member">EventHandlingQuickWindow::on_resized</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;size)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;resize(size);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classqtsdl_1_1_gui_renderer_impl_1aff444c99b88cb4f669597ad3f74ccfe7" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_impl_1aff444c99b88cb4f669597ad3f74ccfe7" kindref="member">GuiRendererImpl::GuiRendererImpl</ref>(SDL_Window<sp/>*window)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{},</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>gui_rendering_setup_routines{window},</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>need_fbo_resize{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>need_sync{},</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>need_render{},</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>gui_locked{},</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>renderer_waiting_on_cond{}<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;moveToThread(QCoreApplication::instance()-&gt;thread());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;this-&gt;render_control,<sp/>&amp;QQuickRenderControl::renderRequested,<sp/>[&amp;]<sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;need_render<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;this-&gt;render_control,<sp/>&amp;QQuickRenderControl::sceneChanged,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" kindref="member">GuiRendererImpl::on_scene_changed</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;window<sp/>=<sp/>std::make_unique&lt;EventHandlingQuickWindow&gt;(&amp;this-&gt;render_control);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;window-&gt;moveToThread(QCoreApplication::instance()-&gt;thread());</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aaabcf6524660f031e1406ef57bb3278e" kindref="member">GuiRendererImpl::resized</ref>,<sp/>this-&gt;window.get(),<sp/>&amp;<ref refid="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" kindref="member">EventHandlingQuickWindow::on_resized</ref>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;window-&gt;setClearBeforeRendering(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;window-&gt;setColor(QColor{0,<sp/>0,<sp/>0,<sp/>0});</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;*this-&gt;window,<sp/>&amp;QQuickWindow::sceneGraphInitialized,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::tie(this-&gt;new_fbo_width,<sp/>this-&gt;new_fbo_height)<sp/>=<sp/>std::make_tuple(this-&gt;window-&gt;width(),<sp/>this-&gt;window-&gt;height());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;need_fbo_resize<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;*this-&gt;window,<sp/>&amp;QQuickWindow::widthChanged,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{<sp/>this-&gt;new_fbo_width<sp/>=<sp/>this-&gt;window-&gt;width();<sp/>this-&gt;need_fbo_resize<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>});</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(&amp;*this-&gt;window,<sp/>&amp;QQuickWindow::heightChanged,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{<sp/>this-&gt;new_fbo_height<sp/>=<sp/>this-&gt;window-&gt;height();<sp/>this-&gt;need_fbo_resize<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>});</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>GuiRenderingCtxActivator<sp/>activate_render(this-&gt;gui_rendering_setup_routines);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;render_control.initialize(this-&gt;gui_rendering_setup_routines.get_ctx());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" kindref="member">GuiRendererImpl::on_scene_changed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a5f7264da514815fd33c84ca24e4e6632" kindref="member">need_render</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.polishItems();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" kindref="member">GuiRendererImpl::reinit_fbo_if_needed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(QThread::currentThread()<sp/>==<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" kindref="member">gui_rendering_setup_routines</ref>.<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" kindref="member">get_ctx</ref>()-&gt;thread());</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" kindref="member">need_fbo_resize</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" kindref="member">fbo</ref><sp/>=<sp/>std::make_unique&lt;QOpenGLFramebufferObject&gt;(QSize(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a5847e3637b5a63f60874fac9a573b8f3" kindref="member">new_fbo_width</ref>,<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a87ad2c335957f9eb5a89f8edf24a2e11" kindref="member">new_fbo_height</ref>),<sp/>QOpenGLFramebufferObject::CombinedDepthStencil);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" kindref="member">window</ref>-&gt;setRenderTarget(&amp;*this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" kindref="member">fbo</ref>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" kindref="member">need_fbo_resize</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" kindref="member">fbo</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classqtsdl_1_1_gui_renderer_impl_1a26bbabfbcf03198fc22b8b86af60e2c5" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_impl_1a26bbabfbcf03198fc22b8b86af60e2c5" kindref="member">GuiRendererImpl::~GuiRendererImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>MAYBE:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>this-&gt;ctx<sp/>member<sp/>frees<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>gl<sp/>context<sp/>even<sp/>though<sp/>that&apos;s<sp/>SDL&apos;s<sp/>job.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>qt<sp/>doc<sp/>says<sp/>that<sp/>a<sp/>native<sp/>context<sp/>isn&apos;t<sp/>destroyed!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>somehow<sp/>it<sp/>is<sp/>lost<sp/>or<sp/>destroyed!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>https://doc.qt.io/qt-5/qopenglcontext.html#setNativeHandle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref>*<sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" kindref="member">GuiRendererImpl::impl</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>renderer-&gt;<ref refid="classqtsdl_1_1_gui_renderer_1a277acb034f6ffaa02ee6a18fd11c4110" kindref="member">impl</ref>.get();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" refkind="member"><highlight class="normal">GLuint<sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" kindref="member">GuiRendererImpl::render</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref><sp/>activate_render(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" kindref="member">gui_rendering_setup_routines</ref>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" kindref="member">reinit_fbo_if_needed</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>QQuickRenderControl::sync()<sp/>must<sp/>be<sp/>called<sp/>from<sp/>the<sp/>render<sp/>thread<sp/>while<sp/>the<sp/>gui<sp/>thread<sp/>is<sp/>stopped.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(QCoreApplication::instance()-&gt;thread()<sp/>!=<sp/>QThread::currentThread())<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lck{this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" kindref="member">gui_guard</ref>};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;postEvent(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QEvent{QEvent::User},<sp/>INT_MAX);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" kindref="member">renderer_waiting_on_cond</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" kindref="member">gui_locked_cond</ref>.wait(lck,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" kindref="member">gui_locked</ref>;});</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" kindref="member">renderer_waiting_on_cond</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.sync();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" kindref="member">gui_locked</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lck.unlock();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" kindref="member">gui_locked_cond</ref>.notify_one();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.sync();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.render();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" kindref="member">window</ref>-&gt;resetOpenGLState();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" kindref="member">fbo</ref>-&gt;texture();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" kindref="member">GuiRendererImpl::make_sure_render_thread_unlocked</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(QThread::currentThread()<sp/>==<sp/>QCoreApplication::instance()-&gt;thread());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>&amp;&amp;<sp/>QThread::currentThread()<sp/>!=<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.thread())<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lck{this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" kindref="member">gui_guard</ref>};</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" kindref="member">renderer_waiting_on_cond</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" kindref="member">process_freeze</ref>(std::move(lck));</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;removePostedEvents(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>QEvent::User);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" kindref="member">GuiRendererImpl::make_sure_render_thread_wont_sync</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(QThread::currentThread()<sp/>==<sp/>QCoreApplication::instance()-&gt;thread());</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>&amp;&amp;<sp/>QThread::currentThread()<sp/>!=<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" kindref="member">render_control</ref>.thread())<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lck{this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" kindref="member">gui_guard</ref>};</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" kindref="member">renderer_waiting_on_cond</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" kindref="member">process_freeze</ref>(std::move(lck));</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QCoreApplication::instance()-&gt;removePostedEvents(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>QEvent::User);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(!this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" kindref="member">GuiRendererImpl::demand_sync</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(QThread::currentThread()<sp/>==<sp/>QCoreApplication::instance()-&gt;thread());</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">need_sync</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" kindref="member">GuiRendererImpl::event</ref>(QEvent<sp/>*e)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;type()<sp/>==<sp/>QEvent::User)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lck{this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" kindref="member">gui_guard</ref>};</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" kindref="member">process_freeze</ref>(std::move(lck));</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;QObject::event(e);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" kindref="member">GuiRendererImpl::process_freeze</ref>(std::unique_lock&lt;std::mutex&gt;<sp/>lck)<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" kindref="member">gui_locked</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>lck.unlock();</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" kindref="member">gui_locked_cond</ref>.notify_one();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>lck.lock();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" kindref="member">gui_locked_cond</ref>.wait(lck,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" kindref="member">gui_locked</ref>;});</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_event_handling_quick_window" kindref="compound">EventHandlingQuickWindow</ref>*<sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" kindref="member">GuiRendererImpl::get_window</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;*this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" kindref="member">window</ref>;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" kindref="member">GuiRendererImpl::resize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QSize<sp/>&amp;size)<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_renderer_impl_1aaabcf6524660f031e1406ef57bb3278e" kindref="member">resized</ref>(size);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a1c09bf6d7d98cdd77fe4b555f4936cd4" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a1c09bf6d7d98cdd77fe4b555f4936cd4" kindref="member">TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync</ref>(<ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref><sp/>&amp;renderer)</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>renderer{<ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" kindref="member">renderer</ref>},</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>need_sync{renderer.<ref refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" kindref="member">make_sure_render_thread_wont_sync</ref>()}<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" kindref="member">TemporaryDisableGuiRendererSync::~TemporaryDisableGuiRendererSync</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" kindref="member">need_sync</ref>)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" kindref="member">renderer</ref>.<ref refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" kindref="member">demand_sync</ref>();</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_renderer_impl.cpp"/>
+  </compounddef>
+</doxygen>

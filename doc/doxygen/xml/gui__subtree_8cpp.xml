@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__subtree_8cpp" kind="file" language="C++">
+    <compoundname>gui_subtree.cpp</compoundname>
+    <includes refid="gui__subtree_8h" local="yes">gui_subtree.h</includes>
+    <includes refid="gui__subtree__impl_8h" local="yes">../private/gui_subtree_impl.h</includes>
+    <incdepgraph>
+      <node id="13644">
+        <label>functional</label>
+      </node>
+      <node id="13646">
+        <label>livereload/gui_live_reloader.h</label>
+        <link refid="gui__live__reloader_8h"/>
+        <childnode refid="13647" relation="include">
+        </childnode>
+        <childnode refid="13648" relation="include">
+        </childnode>
+        <childnode refid="13637" relation="include">
+        </childnode>
+        <childnode refid="13649" relation="include">
+        </childnode>
+        <childnode refid="13650" relation="include">
+        </childnode>
+        <childnode refid="13651" relation="include">
+        </childnode>
+        <childnode refid="13652" relation="include">
+        </childnode>
+      </node>
+      <node id="13641">
+        <label>QObject</label>
+      </node>
+      <node id="13651">
+        <label>QList</label>
+      </node>
+      <node id="13642">
+        <label>QQmlComponent</label>
+      </node>
+      <node id="13645">
+        <label>QMetaType</label>
+      </node>
+      <node id="13638">
+        <label>string</label>
+      </node>
+      <node id="13652">
+        <label>QtQml</label>
+      </node>
+      <node id="13635">
+        <label>libopenage/gui/guisys/public/gui_subtree.cpp</label>
+        <link refid="gui__subtree_8cpp"/>
+        <childnode refid="13636" relation="include">
+        </childnode>
+        <childnode refid="13639" relation="include">
+        </childnode>
+      </node>
+      <node id="13639">
+        <label>../private/gui_subtree_impl.h</label>
+        <link refid="gui__subtree__impl_8h"/>
+        <childnode refid="13637" relation="include">
+        </childnode>
+        <childnode refid="13640" relation="include">
+        </childnode>
+        <childnode refid="13638" relation="include">
+        </childnode>
+        <childnode refid="13641" relation="include">
+        </childnode>
+        <childnode refid="13642" relation="include">
+        </childnode>
+        <childnode refid="13643" relation="include">
+        </childnode>
+        <childnode refid="13646" relation="include">
+        </childnode>
+      </node>
+      <node id="13643">
+        <label>gui_callback.h</label>
+        <link refid="gui__callback_8h"/>
+        <childnode refid="13644" relation="include">
+        </childnode>
+        <childnode refid="13641" relation="include">
+        </childnode>
+        <childnode refid="13645" relation="include">
+        </childnode>
+      </node>
+      <node id="13648">
+        <label>tuple</label>
+      </node>
+      <node id="13640">
+        <label>vector</label>
+      </node>
+      <node id="13636">
+        <label>gui_subtree.h</label>
+        <link refid="gui__subtree_8h"/>
+        <childnode refid="13637" relation="include">
+        </childnode>
+        <childnode refid="13638" relation="include">
+        </childnode>
+      </node>
+      <node id="13647">
+        <label>unordered_map</label>
+      </node>
+      <node id="13650">
+        <label>QHash</label>
+      </node>
+      <node id="13649">
+        <label>QStringList</label>
+      </node>
+      <node id="13637">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__subtree_8h" kindref="compound">gui_subtree.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_subtree_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_gui_subtree_1ab0d693dd7240b137af4ba6c47cb6362e" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_subtree_1ab0d693dd7240b137af4ba6c47cb6362e" kindref="member">GuiSubtree::GuiSubtree</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">GuiEventQueue</ref><sp/>*game_logic_updater,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_engine" kindref="compound">GuiEngine</ref><sp/>*engine,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;source,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;rootdir)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>impl{std::make_unique&lt;GuiSubtreeImpl&gt;(</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>renderer,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>game_logic_updater,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>engine,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::fromStdString(source),</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::fromStdString(rootdir)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>)}<sp/>{}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_gui_subtree_1ab20b5401839af2c1c476b3c857556bc9" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_subtree_1ab20b5401839af2c1c476b3c857556bc9" kindref="member">GuiSubtree::~GuiSubtree</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_subtree.cpp"/>
+  </compounddef>
+</doxygen>

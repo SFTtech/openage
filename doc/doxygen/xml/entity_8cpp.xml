@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="entity_8cpp" kind="file" language="C++">
+    <compoundname>entity.cpp</compoundname>
+    <includes refid="entity_8h" local="yes">entity.h</includes>
+    <includes local="no">nyan/nyan.h</includes>
+    <incdepgraph>
+      <node id="24153">
+        <label>libopenage/simulation/entity.cpp</label>
+        <link refid="entity_8cpp"/>
+        <childnode refid="24154" relation="include">
+        </childnode>
+        <childnode refid="24155" relation="include">
+        </childnode>
+      </node>
+      <node id="24155">
+        <label>nyan/nyan.h</label>
+      </node>
+      <node id="24154">
+        <label>entity.h</label>
+        <link refid="entity_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1simulation">openage::simulation</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8h" kindref="compound">entity.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nyan/nyan.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9" refid="namespaceopenage_1_1simulation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">simulation<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="namespaceopenage_1_1simulation_1a6c30b569c566378a7e076ccc8cef9046" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1simulation_1a6c30b569c566378a7e076ccc8cef9046" kindref="member">test</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>nyan::Database<sp/><ref refid="namespaceopenage_1_1simulation_1a6c30b569c566378a7e076ccc8cef9046" kindref="member">test</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::simulation</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/simulation/entity.cpp"/>
+  </compounddef>
+</doxygen>

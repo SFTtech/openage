@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="concat_8h" kind="file" language="C++">
+    <compoundname>concat.h</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="concat_8h_1a134ebe33f9a9897fb572fe807768384b" prot="public" static="no">
+        <name>CONCAT_1</name>
+        <param><defname>OP</defname></param>
+        <param><defname>X</defname></param>
+        <initializer>(X)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/concat.h" line="5" column="9" bodyfile="libopenage/util/macro/concat.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="concat_8h_1a78631b9f7e3e6bddad31d5c267043bf4" prot="public" static="no">
+        <name>CONCAT_2</name>
+        <param><defname>OP</defname></param>
+        <param><defname>X</defname></param>
+        <param><defname>Y</defname></param>
+        <initializer>(X) OP (Y)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/concat.h" line="6" column="9" bodyfile="libopenage/util/macro/concat.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="concat_8h_1ac62762e9d9f690c9289ea2093ff29ec0" prot="public" static="no">
+        <name>CONCAT_3</name>
+        <param><defname>OP</defname></param>
+        <param><defname>X</defname></param>
+        <param><defname>Y</defname></param>
+        <param><defname>Z</defname></param>
+        <initializer>(X) OP (Y) OP (Z)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/concat.h" line="7" column="9" bodyfile="libopenage/util/macro/concat.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="concat_8h_1a9ed9db5ff2873dafd409c00d49cd2c9a" prot="public" static="no">
+        <name>CONCAT_N</name>
+        <param><defname>_1</defname></param>
+        <param><defname>_2</defname></param>
+        <param><defname>_3</defname></param>
+        <param><defname>NAME</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>NAME</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/concat.h" line="9" column="9" bodyfile="libopenage/util/macro/concat.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="concat_8h_1ac87ddad6c0d2895178babb7186ac9f2f" prot="public" static="no">
+        <name>CONCAT</name>
+        <param><defname>OP</defname></param>
+        <param><defname>...</defname></param>
+        <initializer><ref refid="concat_8h_1a9ed9db5ff2873dafd409c00d49cd2c9a" kindref="member">CONCAT_N</ref>(__VA_ARGS__, \
+	<ref refid="concat_8h_1ac62762e9d9f690c9289ea2093ff29ec0" kindref="member">CONCAT_3</ref>, <ref refid="concat_8h_1a78631b9f7e3e6bddad31d5c267043bf4" kindref="member">CONCAT_2</ref>, <ref refid="concat_8h_1a134ebe33f9a9897fb572fe807768384b" kindref="member">CONCAT_1</ref> \
+	) (OP, __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/macro/concat.h" line="20" column="10" bodyfile="libopenage/util/macro/concat.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="concat_8h_1a134ebe33f9a9897fb572fe807768384b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_1(OP,<sp/>X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(X)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="concat_8h_1a78631b9f7e3e6bddad31d5c267043bf4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_2(OP,<sp/>X,<sp/>Y)<sp/><sp/><sp/><sp/>(X)<sp/>OP<sp/>(Y)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="concat_8h_1ac62762e9d9f690c9289ea2093ff29ec0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_3(OP,<sp/>X,<sp/>Y,<sp/>Z)<sp/>(X)<sp/>OP<sp/>(Y)<sp/>OP<sp/>(Z)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="concat_8h_1a9ed9db5ff2873dafd409c00d49cd2c9a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_N(_1,<sp/>_2,<sp/>_3,<sp/>NAME,<sp/>...)<sp/>NAME</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_COUNT_ARGS_IMPL(args)<sp/>CONCAT_N<sp/>args</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_COUNT_ARGS(...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>CONCAT_COUNT_ARGS_IMPL((__VA_ARGS__,<sp/>3,<sp/>2,<sp/>1))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_HELPER2(count)<sp/>CONCAT_##count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_HELPER1(count)<sp/>CONCAT_HELPER2(count)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_HELPER(count)<sp/><sp/>CONCAT_HELPER1(count)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT_GLUE(x,<sp/>y)<sp/>x<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT(OP,<sp/>...)<sp/>CONCAT_GLUE(CONCAT_HELPER(CONCAT_COUNT_ARGS(__VA_ARGS__)),<sp/>(OP,<sp/>__VA_ARGS__))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="concat_8h_1ac87ddad6c0d2895178babb7186ac9f2f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONCAT(OP,<sp/>...)<sp/>CONCAT_N(__VA_ARGS__,<sp/>\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>CONCAT_3,<sp/>CONCAT_2,<sp/>CONCAT_1<sp/>\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>)<sp/>(OP,<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/macro/concat.h"/>
+  </compounddef>
+</doxygen>

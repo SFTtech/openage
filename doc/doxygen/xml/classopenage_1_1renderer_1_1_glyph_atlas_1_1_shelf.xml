@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf" kind="class" language="C++" prot="private">
+    <compoundname>openage::renderer::GlyphAtlas::Shelf</compoundname>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab6cd5bc9cb2e16e50da98b4f4aeda5a4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GlyphAtlas</definition>
+        <argsstring></argsstring>
+        <name>GlyphAtlas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="92" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::Shelf::y_position</definition>
+        <argsstring></argsstring>
+        <name>y_position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="94" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab5df8c46bb90b4586a92b0e4e7286280" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::Shelf::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="95" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::Shelf::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="96" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a66c2047e5f0bdea3327e6a7b4a3766a8" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::Shelf::remaining_width</definition>
+        <argsstring></argsstring>
+        <name>remaining_width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="97" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3877fca5afd9bb460330220bdc9d7623" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::GlyphAtlas::Shelf::Shelf</definition>
+        <argsstring>(int position, int width, int height)</argsstring>
+        <name>Shelf</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="85" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::GlyphAtlas::Shelf::check_fits</definition>
+        <argsstring>(int required_width, int required_height)</argsstring>
+        <name>check_fits</name>
+        <param>
+          <type>int</type>
+          <declname>required_width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>required_height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="87" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="26" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1abe91f123bbdf8af590b6f6ebe266d6fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::Shelf::reserve</definition>
+        <argsstring>(int required_width, int required_height)</argsstring>
+        <name>reserve</name>
+        <param>
+          <type>int</type>
+          <declname>required_width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>required_height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="89" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4174">
+        <label>openage::renderer::GlyphAtlas::Shelf</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/glyph_atlas.h" line="83" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="83" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>check_fits</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab6cd5bc9cb2e16e50da98b4f4aeda5a4" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>GlyphAtlas</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>height</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a66c2047e5f0bdea3327e6a7b4a3766a8" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>remaining_width</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1abe91f123bbdf8af590b6f6ebe266d6fc" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>reserve</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3877fca5afd9bb460330220bdc9d7623" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>Shelf</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1ab5df8c46bb90b4586a92b0e4e7286280" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>width</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas::Shelf</scope><name>y_position</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

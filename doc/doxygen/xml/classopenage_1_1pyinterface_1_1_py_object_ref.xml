@@ -1,0 +1,789 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1pyinterface_1_1_py_object_ref" kind="class" language="C++" prot="public">
+    <compoundname>openage::pyinterface::PyObjectRef</compoundname>
+    <includes refid="pyobject_8h" local="no">pyobject.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" prot="private" static="no" mutable="no">
+        <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+        <definition>PyObject* openage::pyinterface::PyObjectRef::ref</definition>
+        <argsstring></argsstring>
+        <name>ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal PyObject * for obj. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="239" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a780793e26a1e574fda456f688e8d2f11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PyObjectRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes reference with nullptr. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="54" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(PyObject *ref)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps a raw PyObject * pointer (calls Py_INCREF). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="59" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="18" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2a19b9d28f9745e7225678d18d905733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(const PyObjectRef &amp;other)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clones a <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_INCREF). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="64" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="26" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a5f19d6f1fda831508e171d79373c2903" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(PyObjectRef &amp;&amp;other) noexcept</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move-constructs from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="69" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+        <definition>PyObjectRef &amp; openage::pyinterface::PyObjectRef::operator=</definition>
+        <argsstring>(const PyObjectRef &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assigns from an other <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> (calls Py_XDECREF on the old value, and Py_XINCREF on the new one). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="75" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="43" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab39e1ac132d7e685d0f818039db849c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+        <definition>PyObjectRef &amp; openage::pyinterface::PyObjectRef::operator=</definition>
+        <argsstring>(PyObjectRef &amp;&amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move-assigns from an other PyObject (calls Py_XDECREF on the old value). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="81" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="55" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ad9e8f1a9f289eb345ec3565f888ae23a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::~PyObjectRef</definition>
+        <argsstring>()</argsstring>
+        <name>~PyObjectRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroys the object, calls Py_XDECREF. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="86" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="96" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyObjectRef::str</definition>
+        <argsstring>() const</argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>str(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="94" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="122" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyObjectRef::repr</definition>
+        <argsstring>() const</argsstring>
+        <name>repr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>repr(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="99" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyObjectRef::bytes</definition>
+        <argsstring>() const</argsstring>
+        <name>bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bytes(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="104" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a09ea43fdc78d2458748887fa72ae1a9d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::pyinterface::PyObjectRef::len</definition>
+        <argsstring>() const</argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>len(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="109" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="137" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::callable</definition>
+        <argsstring>() const</argsstring>
+        <name>callable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>callable(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="114" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::call</definition>
+        <argsstring>(Args... args) const</argsstring>
+        <name>call</name>
+        <param>
+          <type>Args...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj(args...) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="120" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="120" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::getattr</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>getattr</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>getattr(obj, name) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="146" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="166" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::hasattr</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>hasattr</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>hasattr(obj, name) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="151" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::setattr</definition>
+        <argsstring>(const std::string &amp;name, const PyObjectRef &amp;attr) const</argsstring>
+        <name>setattr</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>setattr(obj, name) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="156" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::isinstance</definition>
+        <argsstring>(const PyObjectRef &amp;type) const</argsstring>
+        <name>isinstance</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>isinstance(obj, type) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="161" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="188" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::to_bool</definition>
+        <argsstring>() const</argsstring>
+        <name>to_bool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>bool(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="166" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="178" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab33e45c3e5b581e5c1dbc74282f6f168" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int64_t</type>
+        <definition>int64_t openage::pyinterface::PyObjectRef::to_int</definition>
+        <argsstring>() const</argsstring>
+        <name>to_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>int(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="171" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a9a0172d320ad1f5f696dfe04d35570d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::dir</definition>
+        <argsstring>(const Func&lt; void, std::string &gt; &amp;callback) const</argsstring>
+        <name>dir</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_func" kindref="compound">Func</ref>&lt; void, std::string &gt; &amp;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for elem in dir(obj): callback(elem) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="177" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="193" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::is</definition>
+        <argsstring>(const PyObjectRef &amp;other) const</argsstring>
+        <name>is</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj is other </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="182" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="198" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::equals</definition>
+        <argsstring>(const PyObjectRef &amp;other) const</argsstring>
+        <name>equals</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj == other </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="187" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::eval</definition>
+        <argsstring>(const std::string &amp;expression) const</argsstring>
+        <name>eval</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>expression</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>eval(expression, obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="192" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="208" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::exec</definition>
+        <argsstring>(const std::string &amp;statement) const</argsstring>
+        <name>exec</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>statement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>exec(statement, obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="197" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::get</definition>
+        <argsstring>(const PyObjectRef &amp;key) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj[key] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="202" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="220" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aaff2674b9d1b7ffcf0a67f8ecba9f1b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::get</definition>
+        <argsstring>(const std::string &amp;key) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj[key] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="207" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="227" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a6ff52951c29472ef3fd427f8c627f33c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::get</definition>
+        <argsstring>(int key) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj[key] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="212" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="233" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aae0a4f1161486c40b41b7f47e5b9fb96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::pyinterface::PyObjectRef::in</definition>
+        <argsstring>(const PyObjectRef &amp;container) const</argsstring>
+        <name>in</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &amp;</type>
+          <declname>container</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj in container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="217" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="239" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>type(obj) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="222" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="244" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyObjectRef::modulename</definition>
+        <argsstring>() const</argsstring>
+        <name>modulename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>type(obj).__module__ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="227" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="251" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::pyinterface::PyObjectRef::classname</definition>
+        <argsstring>() const</argsstring>
+        <name>classname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>type(obj).__name__ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="232" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="256" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+        <definition>PyObject* openage::pyinterface::PyObjectRef::get_ref</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get_ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Provide the internal PyObject *. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="246" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="246" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1ab037499ba421c3232ae2a09a1d7282ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+        <definition>PyObject* openage::pyinterface::PyObjectRef::operator()</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator()</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implicit conversion to PyObject *. Mainly for convenience to avoid all the <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" kindref="member">get_ref()</ref> calls. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="254" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="254" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a0e0024ba18b74f15b0aa56986a911d95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::set_ref</definition>
+        <argsstring>(PyObject *ref)</argsstring>
+        <name>set_ref</name>
+        <param>
+          <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Like <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" kindref="member">operator =(const PyObjectRef &amp;other)</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="261" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="103" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a626ecb36c29963065f287ac3529641dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::set_ref_without_incrementing</definition>
+        <argsstring>(PyObject *ref)</argsstring>
+        <name>set_ref_without_incrementing</name>
+        <param>
+          <type><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref> *</type>
+          <declname>ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Like set_ref, but does <emphasis>NOT</emphasis> call PY_XINCREF. Only use in special cases, if you know exactly what you&apos;re doing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="267" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="113" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a6266a9e1764626579712f42d3074a609" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::pyinterface::PyObjectRef::clear_ref_without_decrementing</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>clear_ref_without_decrementing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears the internal reference, but does <emphasis>NOT</emphasis> call PY_XDECREF. Only use in special cases, if you know exactly what you&apos;re doing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="273" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="273" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aa9fbbec1a69f4d747749d1c664aec737" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(int number)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type>int</type>
+          <declname>number</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Integer conversion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="73" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a4bb8cbf285476e6ef7cd7a4bf5961a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(const char *data)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type>const char *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bytes conversion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="82" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a1dc37921549165a63be1eecf48c31859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(const std::string &amp;txt)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>txt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>String conversion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.cpp" line="91" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref></type>
+        <definition>PyObjectRef openage::pyinterface::PyObjectRef::call_impl</definition>
+        <argsstring>(std::vector&lt; PyObjectRef &gt; &amp;args) const</argsstring>
+        <name>call_impl</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> &gt; &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>obj(args) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="133" column="1" bodyfile="libopenage/pyinterface/pyobject.cpp" bodystart="147" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1pyinterface_1_1_py_object_ref_1a46f47ca8a955e16a3f20abb0c6a20950" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::pyinterface::PyObjectRef::PyObjectRef</definition>
+        <argsstring>(T arg)</argsstring>
+        <name>PyObjectRef</name>
+        <param>
+          <type>T</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Primary template for <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> conversions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pyinterface/pyobject.h" line="139" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds a Python object, as a PyObject * pointer.</para>
+<para>Reference counting (Py_INCREF and Py_DECREF) is correctly performed in the various copy/move constructors/operators.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref>: <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a780793e26a1e574fda456f688e8d2f11" kindref="member">PyObjectRef()</ref> noexcept <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" kindref="member">PyObjectRef(PyObject *ref)</ref> except +</para>
+<para>PyObject *get_ref() noexcept void <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0e0024ba18b74f15b0aa56986a911d95" kindref="member">set_ref(PyObject *ref)</ref> except + void <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a626ecb36c29963065f287ac3529641dc" kindref="member">set_ref_without_incrementing(PyObject *ref)</ref> except + void <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a6266a9e1764626579712f42d3074a609" kindref="member">clear_ref_without_decrementing()</ref> noexcept</para>
+<para>ctypedef <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> PyObj</para>
+<para>ctypedef <ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">PyObjectRef</ref> *PyObjectRefPtr ctypedef PyObject *PyObjectPtr </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3800">
+        <label>openage::pyinterface::PyObjectRef</label>
+        <link refid="classopenage_1_1pyinterface_1_1_py_object_ref"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/pyinterface/pyobject.h" line="49" column="1" bodyfile="libopenage/pyinterface/pyobject.h" bodystart="49" bodyend="276"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>bytes</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>call</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaacc1330b0393004944477d15e9d82b0" prot="private" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>call_impl</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>callable</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>classname</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a6266a9e1764626579712f42d3074a609" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>clear_ref_without_decrementing</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9a0172d320ad1f5f696dfe04d35570d5" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>dir</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>equals</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>eval</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>exec</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>get</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aaff2674b9d1b7ffcf0a67f8ecba9f1b6" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>get</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a6ff52951c29472ef3fd427f8c627f33c" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>get</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ac75d8f60c25c4a7570dcdf83b601d639" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>get_ref</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>getattr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>hasattr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aae0a4f1161486c40b41b7f47e5b9fb96" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>in</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>is</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>isinstance</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a09ea43fdc78d2458748887fa72ae1a9d" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>len</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>modulename</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab037499ba421c3232ae2a09a1d7282ab" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>operator()</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1c1b91b6056f0e370402678645129d8a" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab39e1ac132d7e685d0f818039db849c0" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a780793e26a1e574fda456f688e8d2f11" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0c2f2bd7dfd4f04b439793b220e02db9" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2a19b9d28f9745e7225678d18d905733" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a5f19d6f1fda831508e171d79373c2903" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a46f47ca8a955e16a3f20abb0c6a20950" prot="private" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aa9fbbec1a69f4d747749d1c664aec737" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a4bb8cbf285476e6ef7cd7a4bf5961a65" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a1dc37921549165a63be1eecf48c31859" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>PyObjectRef</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a71d239927cc521d7d6cd2ff3f0e724ba" prot="private" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>ref</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>repr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0e0024ba18b74f15b0aa56986a911d95" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>set_ref</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a626ecb36c29963065f287ac3529641dc" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>set_ref_without_incrementing</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>setattr</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>str</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>to_bool</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab33e45c3e5b581e5c1dbc74282f6f168" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>to_int</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>type</name></member>
+      <member refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad9e8f1a9f289eb345ec3565f888ae23a" prot="public" virt="non-virtual"><scope>openage::pyinterface::PyObjectRef</scope><name>~PyObjectRef</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

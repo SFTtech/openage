@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1can__call" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::can_call</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">decltypecan_call_test::f&lt; F, Args... &gt;</basecompoundref>
+    <includes refid="gui__item__link_8h" local="no">gui_item_link.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename F</type>
+      </param>
+      <param>
+        <type>typename ...</type>
+        <declname>Args</declname>
+        <defname>Args</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Evaluates to true if callable can be called with given argument types.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>F</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>callable </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>arguments to test against the callable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="729">
+        <label>qtsdl::can_call&lt; F, Args &gt;</label>
+        <link refid="structqtsdl_1_1can__call"/>
+        <childnode refid="730" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="730">
+        <label>decltypecan_call_test::f&lt; F, Args... &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="731">
+        <label>qtsdl::can_call&lt; F, Args &gt;</label>
+        <link refid="structqtsdl_1_1can__call"/>
+        <childnode refid="732" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="732">
+        <label>decltypecan_call_test::f&lt; F, Args... &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item_link.h" line="104" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="104" bodyend="105"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

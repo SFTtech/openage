@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1csv__subdata" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::csv_subdata</compoundname>
+    <includes refid="csv_8h" local="no">csv.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class lineformat</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1csv__subdata_1a207c59f7f68302aa49789fca60fb6e93" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::csv_subdata&lt; lineformat &gt;::filename</definition>
+        <argsstring></argsstring>
+        <name>filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> where to read subdata from. This name is relative to the file that defined the subdata! </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="146" column="1" bodyfile="libopenage/util/csv.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1csv__subdata_1a4a1a85e2b3d2479aba87d487943cd63a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; lineformat &gt;</type>
+        <definition>std::vector&lt;lineformat&gt; openage::util::csv_subdata&lt; lineformat &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data that was read from the file with this-&gt;filename. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="151" column="1" bodyfile="libopenage/util/csv.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1util_1_1csv__subdata_1a24b1327a670ab69e55c089234bdcbfec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::csv_subdata&lt; lineformat &gt;::read</definition>
+        <argsstring>(const CSVCollection &amp;collection, const std::string &amp;basedir)</argsstring>
+        <name>read</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_c_s_v_collection" kindref="compound">CSVCollection</ref> &amp;</type>
+          <declname>collection</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>basedir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read the data of the lineformat from the collection. Can descend recursively into dependencies. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="157" column="1" bodyfile="libopenage/util/csv.h" bodystart="157" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1util_1_1csv__subdata_1aedfc025e17cf7639d321aadf22c7866b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const lineformat &amp;</type>
+        <definition>const lineformat&amp; openage::util::csv_subdata&lt; lineformat &gt;::operator []</definition>
+        <argsstring>(size_t idx) const</argsstring>
+        <name>operator []</name>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience operator to access data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="171" column="1" bodyfile="libopenage/util/csv.h" bodystart="171" bodyend="173"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Referenced file tree structure.</para>
+<para>Used for storing information for subtype members that need to be recursed. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1030">
+        <label>openage::util::csv_subdata&lt; lineformat &gt;</label>
+        <link refid="structopenage_1_1util_1_1csv__subdata"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/csv.h" line="141" column="1" bodyfile="libopenage/util/csv.h" bodystart="141" bodyend="174"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1csv__subdata_1a4a1a85e2b3d2479aba87d487943cd63a" prot="public" virt="non-virtual"><scope>openage::util::csv_subdata</scope><name>data</name></member>
+      <member refid="structopenage_1_1util_1_1csv__subdata_1a207c59f7f68302aa49789fca60fb6e93" prot="public" virt="non-virtual"><scope>openage::util::csv_subdata</scope><name>filename</name></member>
+      <member refid="structopenage_1_1util_1_1csv__subdata_1aedfc025e17cf7639d321aadf22c7866b" prot="public" virt="non-virtual"><scope>openage::util::csv_subdata</scope><name>operator []</name></member>
+      <member refid="structopenage_1_1util_1_1csv__subdata_1a24b1327a670ab69e55c089234bdcbfec" prot="public" virt="non-virtual"><scope>openage::util::csv_subdata</scope><name>read</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

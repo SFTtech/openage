@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::tests::TestState::TestObject</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_event_target" prot="public" virt="non-virtual">openage::event::EventTarget</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab15e85629de1bfa3aa13eb3efa962c56" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int openage::event::tests::TestState::TestObject::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="21" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a02fdf8df0c2dfef1f518a478af18da41" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::event::tests::TestState::TestObject::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="42" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab4d98e65c5b822c595aecc46618ebd55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::tests::TestState::TestObject::TestObject</definition>
+        <argsstring>(const std::shared_ptr&lt; Loop &gt; &amp;loop, int id)</argsstring>
+        <name>TestObject</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &gt; &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="23" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1aa34202033ff483893bb1f253acea5cb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::tests::TestState::TestObject::set_number</definition>
+        <argsstring>(int number, const curve::time_t &amp;time)</argsstring>
+        <name>set_number</name>
+        <param>
+          <type>int</type>
+          <declname>number</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="29" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a6cd1784f8b74787701fa9813a4068e1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::event::tests::TestState::TestObject::id</definition>
+        <argsstring>() const override</argsstring>
+        <name>id</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_target_1ac33e23507125a3a248eb8d031e8f39ed">id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Give a unique event system identifier for the entity </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="34" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a84664c0a3a47e8029ce2c705229e385b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::tests::TestState::TestObject::test_trigger</definition>
+        <argsstring>(const curve::time_t &amp;time)</argsstring>
+        <name>test_trigger</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="38" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4429">
+        <label>openage::event::tests::TestState::TestObject</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object"/>
+        <childnode refid="4430" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4430">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4431">
+        <label>openage::event::tests::TestState::TestObject</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object"/>
+        <childnode refid="4432" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4432">
+        <label>openage::event::EventTarget</label>
+        <link refid="classopenage_1_1event_1_1_event_target"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/tests.cpp" line="20" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="20" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab15e85629de1bfa3aa13eb3efa962c56" prot="private" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>_id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a5d41d437a0e486181d290127de5cd9d7" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>add_dependent</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a6da66e1f05d92d87ce931d06204b6d9b" prot="protected" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>changes</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1abe6736c7ec9aeba96a045c9e517bdf66" prot="protected" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>EventTarget</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a6cd1784f8b74787701fa9813a4068e1c" prot="public" virt="virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a02fdf8df0c2dfef1f518a478af18da41" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>number</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1aa34202033ff483893bb1f253acea5cb5" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>set_number</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a0d2724ee9749bd54f75bfe5fa05a6512" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>show_dependents</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a10a6498be4aac6daa9c254fbb59cd5cb" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>single_change_notifier</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1a84664c0a3a47e8029ce2c705229e385b" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>test_trigger</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object_1ab4d98e65c5b822c595aecc46618ebd55" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>TestObject</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1a69453fddcf70ac72c863f61e25bfb786" prot="protected" virt="non-virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>trigger</name></member>
+      <member refid="classopenage_1_1event_1_1_event_target_1af2ea4d43df8ac5dad62ce41a5a300dca" prot="public" virt="virtual"><scope>openage::event::tests::TestState::TestObject</scope><name>~EventTarget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

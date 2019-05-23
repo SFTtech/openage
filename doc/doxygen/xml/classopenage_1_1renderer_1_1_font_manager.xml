@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_font_manager" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::FontManager</compoundname>
+    <includes refid="font__manager_8h" local="no">font_manager.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_manager_1a9f0694d6e8513ffa6cacfca03bf39344" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_free_type_library" kindref="compound">FreeTypeLibrary</ref></type>
+        <definition>FreeTypeLibrary openage::renderer::FontManager::library</definition>
+        <argsstring></argsstring>
+        <name>library</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="87" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_font_manager_1ae632f6de94d4ebc7ffcf4acc80f90261" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; size_t, std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;size_t, std::unique_ptr&lt;Font&gt; &gt; openage::renderer::FontManager::fonts</definition>
+        <argsstring></argsstring>
+        <name>fonts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="90" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1a18b41a56c570436c58435866c0a42faa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::FontManager::get_font_filename</definition>
+        <argsstring>(const char *family, const char *style)</argsstring>
+        <name>get_font_filename</name>
+        <param>
+          <type>const char *</type>
+          <declname>family</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the filepath of a particular font family and style.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>family</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font family. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font style. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The path to font&apos;s file. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="54" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="14" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1adece42697c9e7c17114f1a244467e296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FontManager::FontManager</definition>
+        <argsstring>()</argsstring>
+        <name>FontManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="57" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1a66a311fb4bf5851ec5a44209ea1b6ce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::FontManager::~FontManager</definition>
+        <argsstring>()</argsstring>
+        <name>~FontManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="59" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1aad7b3064f24f643334e008bbe681af7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FT_Library</type>
+        <definition>FT_Library openage::renderer::FontManager::get_ft_library</definition>
+        <argsstring>()</argsstring>
+        <name>get_ft_library</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the freetype library instance. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="64" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1a099c7a53ec483208d26f1d33c52dcbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+        <definition>Font * openage::renderer::FontManager::get_font</definition>
+        <argsstring>(const char *family, const char *style, unsigned int size)</argsstring>
+        <name>get_font</name>
+        <param>
+          <type>const char *</type>
+          <declname>family</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>style</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a font.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>family</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font family. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font style. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the font in points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointer to font instance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="74" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_font_manager_1ae84aeac58608733bb241bd015bed3dc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+        <definition>Font * openage::renderer::FontManager::get_font</definition>
+        <argsstring>(const char *font_file, unsigned int size)</argsstring>
+        <name>get_font</name>
+        <param>
+          <type>const char *</type>
+          <declname>font_file</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a font.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to font&apos;s file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the font in points. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The pointer to font instance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/font_manager.h" line="83" column="1" bodyfile="libopenage/renderer/font/font_manager.cpp" bodystart="66" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1509">
+        <label>openage::renderer::FreeTypeLibrary</label>
+        <link refid="classopenage_1_1renderer_1_1_free_type_library"/>
+      </node>
+      <node id="1508">
+        <label>openage::renderer::FontManager</label>
+        <link refid="classopenage_1_1renderer_1_1_font_manager"/>
+        <childnode refid="1509" relation="usage">
+          <edgelabel>-library</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/font_manager.h" line="44" column="1" bodyfile="libopenage/renderer/font/font_manager.h" bodystart="44" bodyend="92"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1adece42697c9e7c17114f1a244467e296" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>FontManager</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1ae632f6de94d4ebc7ffcf4acc80f90261" prot="private" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>fonts</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1a099c7a53ec483208d26f1d33c52dcbef" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>get_font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1ae84aeac58608733bb241bd015bed3dc3" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>get_font</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1a18b41a56c570436c58435866c0a42faa" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>get_font_filename</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1aad7b3064f24f643334e008bbe681af7b" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>get_ft_library</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1a9f0694d6e8513ffa6cacfca03bf39344" prot="private" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>library</name></member>
+      <member refid="classopenage_1_1renderer_1_1_font_manager_1a66a311fb4bf5851ec5a44209ea1b6ce2" prot="public" virt="non-virtual"><scope>openage::renderer::FontManager</scope><name>~FontManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

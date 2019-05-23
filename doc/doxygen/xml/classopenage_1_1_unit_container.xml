@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_unit_container" kind="class" language="C++" prot="public">
+    <compoundname>openage::UnitContainer</compoundname>
+    <includes refid="unit__container_8h" local="no">unit_container.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_container_1ae05873e8701230f38caf495397a27b44" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+        <definition>id_t openage::UnitContainer::next_new_id</definition>
+        <argsstring></argsstring>
+        <name>next_new_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="135" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_container_1a124e91ee902b8ad8c4f59a239e0eacb2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref>, std::unique_ptr&lt; <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;id_t, std::unique_ptr&lt;Unit&gt; &gt; openage::UnitContainer::live_units</definition>
+        <argsstring></argsstring>
+        <name>live_units</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>mapping unit ids to unit objects </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="140" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_container_1a4f34b1ff549d7f0302c184a8e54a2407" prot="private" static="no" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        <definition>std::weak_ptr&lt;Terrain&gt; openage::UnitContainer::terrain</definition>
+        <argsstring></argsstring>
+        <name>terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> for initialising new units </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="145" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1ae36981b18950e016161037fbc61c6c46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitContainer::UnitContainer</definition>
+        <argsstring>()</argsstring>
+        <name>UnitContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="77" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a4cfc8ea8fc06819a1942e03e3bd15ce7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitContainer::~UnitContainer</definition>
+        <argsstring>()</argsstring>
+        <name>~UnitContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="78" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1ae475b34e7deb9bd70b01db1abc698779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitContainer::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="80" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a92cc414be8c128d27d1cd27326d05c7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitContainer::set_terrain</definition>
+        <argsstring>(std::shared_ptr&lt; Terrain &gt; &amp;t)</argsstring>
+        <name>set_terrain</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets terrain to initialise units on </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="85" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="62" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1ad2ac232d0592daa1ecb4749081f33582" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Terrain &gt; openage::UnitContainer::get_terrain</definition>
+        <argsstring>() const</argsstring>
+        <name>get_terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the terrain which units are placed on </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="90" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="66" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a0878ffc113dac158174963680f368e5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitContainer::valid_id</definition>
+        <argsstring>(id_t id) const</argsstring>
+        <name>valid_id</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>checks the id is valid </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="95" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a8a26773c4b616cfde844ab945e1e613d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::UnitContainer::get_unit</definition>
+        <argsstring>(id_t id)</argsstring>
+        <name>get_unit</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a reference to a unit </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="100" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="79" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::UnitContainer::new_unit</definition>
+        <argsstring>()</argsstring>
+        <name>new_unit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>creates a new unit without initialising </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="105" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="88" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a9ef13f975890f222c360b8a5e3242939" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::UnitContainer::new_unit</definition>
+        <argsstring>(UnitType &amp;type, Player &amp;owner, coord::phys3 position)</argsstring>
+        <name>new_unit</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>adds a new unit to the container and initialises using a unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="110" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="96" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a0730d85fce9d5bec6b2bc76450b7dfa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref></type>
+        <definition>UnitReference openage::UnitContainer::new_unit</definition>
+        <argsstring>(UnitType &amp;type, Player &amp;owner, TerrainObject *other)</argsstring>
+        <name>new_unit</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>adds a new unit to the container and initialises using a unit type places outside an existing object using the player of that object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="116" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="118" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a3a559eff18dd1ed3e1e147601382c72c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitContainer::dispatch_command</definition>
+        <argsstring>(id_t to_id, const Command &amp;cmd)</argsstring>
+        <name>dispatch_command</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+          <declname>to_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_command" kindref="compound">Command</ref> &amp;</type>
+          <declname>cmd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>give a command to a unit <ndash/> unit creation and deletion should be done as commands </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="121" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a1db074862697abdf24998bdf978ce7d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitContainer::update_all</definition>
+        <argsstring>(time_nsec_t lastframe_duration)</argsstring>
+        <name>update_all</name>
+        <param>
+          <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+          <declname>lastframe_duration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>update dispatched by the game engine on each physics tick. this will update all game objects. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="127" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="143" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_container_1a38b39ded603419425f1b5a38f188cc17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_unit" kindref="compound">openage::Unit</ref> * &gt;</type>
+        <definition>std::vector&lt; Unit * &gt; openage::UnitContainer::all_units</definition>
+        <argsstring>()</argsstring>
+        <name>all_units</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets a list of all units in the container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="132" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="164" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>the list of units that are currently in use will also give a view of the current game state for networking in later milestones </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4756">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/unit_container.h" line="75" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="75" bodyend="146"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_container_1a38b39ded603419425f1b5a38f188cc17" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>all_units</name></member>
+      <member refid="classopenage_1_1_unit_container_1a3a559eff18dd1ed3e1e147601382c72c" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>dispatch_command</name></member>
+      <member refid="classopenage_1_1_unit_container_1ad2ac232d0592daa1ecb4749081f33582" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>get_terrain</name></member>
+      <member refid="classopenage_1_1_unit_container_1a8a26773c4b616cfde844ab945e1e613d" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>get_unit</name></member>
+      <member refid="classopenage_1_1_unit_container_1a124e91ee902b8ad8c4f59a239e0eacb2" prot="private" virt="non-virtual"><scope>openage::UnitContainer</scope><name>live_units</name></member>
+      <member refid="classopenage_1_1_unit_container_1a39947500d16e9d67eb72458f3df7c796" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>new_unit</name></member>
+      <member refid="classopenage_1_1_unit_container_1a9ef13f975890f222c360b8a5e3242939" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>new_unit</name></member>
+      <member refid="classopenage_1_1_unit_container_1a0730d85fce9d5bec6b2bc76450b7dfa9" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>new_unit</name></member>
+      <member refid="classopenage_1_1_unit_container_1ae05873e8701230f38caf495397a27b44" prot="private" virt="non-virtual"><scope>openage::UnitContainer</scope><name>next_new_id</name></member>
+      <member refid="classopenage_1_1_unit_container_1ae475b34e7deb9bd70b01db1abc698779" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>reset</name></member>
+      <member refid="classopenage_1_1_unit_container_1a92cc414be8c128d27d1cd27326d05c7e" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>set_terrain</name></member>
+      <member refid="classopenage_1_1_unit_container_1a4f34b1ff549d7f0302c184a8e54a2407" prot="private" virt="non-virtual"><scope>openage::UnitContainer</scope><name>terrain</name></member>
+      <member refid="classopenage_1_1_unit_container_1ae36981b18950e016161037fbc61c6c46" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>UnitContainer</name></member>
+      <member refid="classopenage_1_1_unit_container_1a1db074862697abdf24998bdf978ce7d3" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>update_all</name></member>
+      <member refid="classopenage_1_1_unit_container_1a0878ffc113dac158174963680f368e5c" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>valid_id</name></member>
+      <member refid="classopenage_1_1_unit_container_1a4cfc8ea8fc06819a1942e03e3bd15ce7" prot="public" virt="non-virtual"><scope>openage::UnitContainer</scope><name>~UnitContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

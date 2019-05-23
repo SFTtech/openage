@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__event__queue_8h" kind="file" language="C++">
+    <compoundname>gui_event_queue.h</compoundname>
+    <includes local="no">memory</includes>
+    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__event__queue__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_event_queue_impl.cpp</includedby>
+    <includedby refid="gui__input__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_input_impl.cpp</includedby>
+    <includedby refid="gui__event__queue_8cpp" local="yes">libopenage/gui/guisys/public/gui_event_queue.cpp</includedby>
+    <incdepgraph>
+      <node id="13508">
+        <label>libopenage/gui/guisys/public/gui_event_queue.h</label>
+        <link refid="gui__event__queue_8h"/>
+        <childnode refid="13509" relation="include">
+        </childnode>
+      </node>
+      <node id="13509">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13514">
+        <label>libopenage/gui/guisys/private/gui_event_queue_impl.cpp</label>
+        <link refid="gui__event__queue__impl_8cpp"/>
+      </node>
+      <node id="13513">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="13515">
+        <label>libopenage/gui/guisys/private/gui_input_impl.cpp</label>
+        <link refid="gui__input__impl_8cpp"/>
+      </node>
+      <node id="13512">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="13516">
+        <label>libopenage/gui/guisys/public/gui_event_queue.cpp</label>
+        <link refid="gui__event__queue_8cpp"/>
+      </node>
+      <node id="13511">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="13512" relation="include">
+        </childnode>
+        <childnode refid="13513" relation="include">
+        </childnode>
+      </node>
+      <node id="13510">
+        <label>libopenage/gui/guisys/public/gui_event_queue.h</label>
+        <link refid="gui__event__queue_8h"/>
+        <childnode refid="13511" relation="include">
+        </childnode>
+        <childnode refid="13514" relation="include">
+        </childnode>
+        <childnode refid="13515" relation="include">
+        </childnode>
+        <childnode refid="13516" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_event_queue" prot="public">qtsdl::GuiEventQueue</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiEventQueueImpl;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_event_queue" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">GuiEventQueue</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_1a64f25a5d14abca7bd1898b32ed98f99e" kindref="member">GuiEventQueue</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_event_queue_1a04b5b8332243b9820f6f3bd12553786b" kindref="member">~GuiEventQueue</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_event_queue_1a9dfaf95d4590839c4ed7a40ab61ed69e" kindref="member">process_callbacks</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22" refid="classqtsdl_1_1_gui_event_queue_1ae42bcdfa445720590a44468e20d505d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_event_queue_impl" kindref="compound">GuiEventQueueImpl</ref>;</highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_gui_event_queue_1adcd28a57420b8fbd566b719f5d3f68f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;GuiEventQueueImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_event_queue_1adcd28a57420b8fbd566b719f5d3f68f2" kindref="member">impl</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_event_queue.h"/>
+  </compounddef>
+</doxygen>

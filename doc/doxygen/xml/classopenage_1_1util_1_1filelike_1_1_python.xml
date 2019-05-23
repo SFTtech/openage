@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1filelike_1_1_python" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::filelike::Python</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1filelike_1_1_file_like" prot="public" virt="non-virtual">openage::util::filelike::FileLike</basecompoundref>
+    <includes refid="filelike_2python_8h" local="no">python.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;py::Obj&gt; openage::util::filelike::Python::fileobj</definition>
+        <argsstring></argsstring>
+        <name>fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="57" column="1" bodyfile="libopenage/util/filelike/python.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1ad969c124846fa875d04b292129a30e35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::filelike::Python::Python</definition>
+        <argsstring>(py::Obj fileobj)</argsstring>
+        <name>Python</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref></type>
+          <declname>fileobj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="33" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::filelike::Python::read</definition>
+        <argsstring>(ssize_t max) override</argsstring>
+        <name>read</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1adad657901714de4743f7d5a5ad8defdb">read</reimplements>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="35" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::filelike::Python::read_to</definition>
+        <argsstring>(void *buf, ssize_t max) override</argsstring>
+        <name>read_to</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1acf58201709f476b22238a60928e5e349">read_to</reimplements>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>ssize_t</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="36" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Python::readable</definition>
+        <argsstring>() override</argsstring>
+        <name>readable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab19a9a6b411c3d8c6b454dea5156d623">readable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="38" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Python::write</definition>
+        <argsstring>(const std::string &amp;data) override</argsstring>
+        <name>write</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a24397c0d57a9b244b135ae3c72b92aef">write</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="40" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Python::writable</definition>
+        <argsstring>() override</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6e4789631c0c095dea467c5ea5a06ccd">writable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="42" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Python::seek</definition>
+        <argsstring>(ssize_t offset, seek_t how=seek_t::SET) override</argsstring>
+        <name>seek</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ad8d4e18577a61f840ec2bc4288578985">seek</reimplements>
+        <param>
+          <type>ssize_t</type>
+          <declname>offset</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref></type>
+          <declname>how</declname>
+          <defval><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016aa8c52684db8f49511e9b44471716bf164" kindref="member">seek_t::SET</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="44" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Python::seekable</definition>
+        <argsstring>() override</argsstring>
+        <name>seekable</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a3299251289e5621fdf1da016a96ea78d">seekable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="45" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::filelike::Python::tell</definition>
+        <argsstring>() override</argsstring>
+        <name>tell</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a30eeb9b647177a0aaf06ca241e347196">tell</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="46" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Python::close</definition>
+        <argsstring>() override</argsstring>
+        <name>close</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a7ad98df2b552e013bce31d81a5e36d23">close</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="47" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::util::filelike::Python::flush</definition>
+        <argsstring>() override</argsstring>
+        <name>flush</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a8ab61e519a946d3426334e19307eb35a">flush</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="48" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>ssize_t</type>
+        <definition>ssize_t openage::util::filelike::Python::get_size</definition>
+        <argsstring>() override</argsstring>
+        <name>get_size</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a212820ce88cf538a4099f14f622e569b">get_size</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="49" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::filelike::Python::is_python_native</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>is_python_native</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a022ae3fc69734c3c81cf5de6cfba35e7">is_python_native</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="51" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref> <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref> &amp;</type>
+        <definition>py::Obj &amp; openage::util::filelike::Python::get_py_fileobj</definition>
+        <argsstring>() const</argsstring>
+        <name>get_py_fileobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="52" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::util::filelike::Python::repr</definition>
+        <argsstring>(std::ostream &amp;) override</argsstring>
+        <name>repr</name>
+        <reimplements refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aaba5c322eb2f3221a15471f2d546e761">repr</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>string representation of the filelike </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/filelike/python.h" line="54" column="1" bodyfile="libopenage/util/filelike/python.cpp" bodystart="85" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>File-like class that wraps a python open() file-like object.</para>
+<para>pxd: cppclass <ref refid="classopenage_1_1util_1_1filelike_1_1_python" kindref="compound">Python</ref>: PyObj &amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" kindref="member">get_py_fileobj()</ref> except + </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3802">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+      <node id="3801">
+        <label>openage::util::filelike::Python</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_python"/>
+        <childnode refid="3802" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3804">
+        <label>openage::util::filelike::FileLike</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_file_like"/>
+      </node>
+      <node id="3803">
+        <label>openage::util::filelike::Python</label>
+        <link refid="classopenage_1_1util_1_1filelike_1_1_python"/>
+        <childnode refid="3804" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/filelike/python.h" line="31" column="1" bodyfile="libopenage/util/filelike/python.h" bodystart="31" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>close</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a81bef68967e2624ae644118719303934" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>FileLike</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" prot="protected" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>fileobj</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>flush</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>get_py_fileobj</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>is_python_native</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1ab68557b264011908164b43b32a9f00b1" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>mode_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1ad969c124846fa875d04b292129a30e35" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>Python</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>read</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>read_to</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>readable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>repr</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>seek</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" prot="public" virt="non-virtual"><scope>openage::util::filelike::Python</scope><name>seek_t</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>seekable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>tell</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>write</name></member>
+      <member refid="classopenage_1_1util_1_1filelike_1_1_file_like_1a6a711a3f80350e7ed5ff2569e23b68ac" prot="public" virt="virtual"><scope>openage::util::filelike::Python</scope><name>~FileLike</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

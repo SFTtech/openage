@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1_float_fixed" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::FloatFixed</compoundname>
+    <includes refid="strings_8h" local="no">strings.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned</type>
+        <declname>decimals</declname>
+        <defname>decimals</defname>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>w</declname>
+        <defname>w</defname>
+        <defval>0</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1_float_fixed_1a866af455be6117ec8d254e36a6c40c36" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::FloatFixed&lt; decimals, w &gt;::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.h" line="29" column="1" bodyfile="libopenage/util/strings.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Quick-formatter for floats when working with string streams. Usage: cout &lt;&lt; FormatFloat{1.0, 10}; </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1501">
+        <label>openage::util::FloatFixed&lt; decimals, w &gt;</label>
+        <link refid="structopenage_1_1util_1_1_float_fixed"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/strings.h" line="28" column="1" bodyfile="libopenage/util/strings.h" bodystart="28" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1_float_fixed_1a866af455be6117ec8d254e36a6c40c36" prot="public" virt="non-virtual"><scope>openage::util::FloatFixed</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

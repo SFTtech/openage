@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__application__with__logger_8cpp" kind="file" language="C++">
+    <compoundname>gui_application_with_logger.cpp</compoundname>
+    <includes refid="gui__application__with__logger_8h" local="yes">gui_application_with_logger.h</includes>
+    <includes refid="gui__application__impl_8h" local="yes">../../guisys/private/gui_application_impl.h</includes>
+    <includes refid="gui__log_8h" local="yes">../private/gui_log.h</includes>
+    <incdepgraph>
+      <node id="14746">
+        <label>QtGlobal</label>
+      </node>
+      <node id="14738">
+        <label>libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
+        <link refid="gui__application__with__logger_8cpp"/>
+        <childnode refid="14739" relation="include">
+        </childnode>
+        <childnode refid="14742" relation="include">
+        </childnode>
+        <childnode refid="14745" relation="include">
+        </childnode>
+      </node>
+      <node id="14740">
+        <label>../../guisys/public/gui_application.h</label>
+        <link refid="gui__application_8h"/>
+        <childnode refid="14741" relation="include">
+        </childnode>
+      </node>
+      <node id="14742">
+        <label>../../guisys/private/gui_application_impl.h</label>
+        <link refid="gui__application__impl_8h"/>
+        <childnode refid="14743" relation="include">
+        </childnode>
+        <childnode refid="14741" relation="include">
+        </childnode>
+        <childnode refid="14744" relation="include">
+        </childnode>
+      </node>
+      <node id="14745">
+        <label>../private/gui_log.h</label>
+        <link refid="gui__log_8h"/>
+        <childnode refid="14746" relation="include">
+        </childnode>
+      </node>
+      <node id="14744">
+        <label>QGuiApplication</label>
+      </node>
+      <node id="14743">
+        <label>thread</label>
+      </node>
+      <node id="14739">
+        <label>gui_application_with_logger.h</label>
+        <link refid="gui__application__with__logger_8h"/>
+        <childnode refid="14740" relation="include">
+        </childnode>
+      </node>
+      <node id="14741">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__application__with__logger_8h" kindref="compound">gui_application_with_logger.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../guisys/private/gui_application_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">std::shared_ptr&lt;qtsdl::GuiApplicationImpl&gt;<sp/>create()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>qInstallMessageHandler(<ref refid="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" kindref="member">gui_log</ref>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" kindref="member">qtsdl::GuiApplicationImpl::get</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a3c8f7676a2b7884da82e571cb6d17047" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a3c8f7676a2b7884da82e571cb6d17047" kindref="member">GuiApplicationWithLogger::GuiApplicationWithLogger</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>GuiApplication{create()}<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a798636737357a5a22d4f06752978102d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a798636737357a5a22d4f06752978102d" kindref="member">GuiApplicationWithLogger::~GuiApplicationWithLogger</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/public/gui_application_with_logger.cpp"/>
+  </compounddef>
+</doxygen>

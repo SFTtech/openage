@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_2da62acedc39afa28df93c1a9cf67524" kind="dir">
+    <compoundname>libopenage/unit</compoundname>
+    <innerfile refid="ability_8cpp">ability.cpp</innerfile>
+    <innerfile refid="ability_8h">ability.h</innerfile>
+    <innerfile refid="unit_2action_8cpp">action.cpp</innerfile>
+    <innerfile refid="unit_2action_8h">action.h</innerfile>
+    <innerfile refid="attribute_8cpp">attribute.cpp</innerfile>
+    <innerfile refid="attribute_8h">attribute.h</innerfile>
+    <innerfile refid="attributes_8cpp">attributes.cpp</innerfile>
+    <innerfile refid="attributes_8h">attributes.h</innerfile>
+    <innerfile refid="command_8cpp">command.cpp</innerfile>
+    <innerfile refid="command_8h">command.h</innerfile>
+    <innerfile refid="producer_8cpp">producer.cpp</innerfile>
+    <innerfile refid="producer_8h">producer.h</innerfile>
+    <innerfile refid="research_8cpp">research.cpp</innerfile>
+    <innerfile refid="research_8h">research.h</innerfile>
+    <innerfile refid="selection_8cpp">selection.cpp</innerfile>
+    <innerfile refid="selection_8h">selection.h</innerfile>
+    <innerfile refid="type__pair_8cpp">type_pair.cpp</innerfile>
+    <innerfile refid="type__pair_8h">type_pair.h</innerfile>
+    <innerfile refid="unit_8cpp">unit.cpp</innerfile>
+    <innerfile refid="unit_8h">unit.h</innerfile>
+    <innerfile refid="unit__container_8cpp">unit_container.cpp</innerfile>
+    <innerfile refid="unit__container_8h">unit_container.h</innerfile>
+    <innerfile refid="unit__texture_8cpp">unit_texture.cpp</innerfile>
+    <innerfile refid="unit__texture_8h">unit_texture.h</innerfile>
+    <innerfile refid="unit__type_8cpp">unit_type.cpp</innerfile>
+    <innerfile refid="unit__type_8h">unit_type.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/unit/"/>
+  </compounddef>
+</doxygen>

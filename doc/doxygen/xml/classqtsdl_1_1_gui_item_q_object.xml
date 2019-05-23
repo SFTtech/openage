@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item_q_object" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItemQObject</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_base" prot="public" virt="non-virtual">qtsdl::GuiItemBase</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_link" prot="public" virt="non-virtual">qtsdl::GuiItemLink</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_asset_manager_link" prot="public" virt="non-virtual">openage::gui::AssetManagerLink</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_game_control_link" prot="public" virt="non-virtual">openage::gui::GameControlLink</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_game_main_link" prot="public" virt="non-virtual">openage::gui::GameMainLink</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_game_spec_link" prot="public" virt="non-virtual">openage::gui::GameSpecLink</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_output_mode_link" prot="public" virt="non-virtual">openage::gui::OutputModeLink</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiItemQObject::GuiItemQObject</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>GuiItemQObject</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="235" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.cpp" bodystart="14" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2711">
+        <label>openage::gui::GameSpecLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_spec_link"/>
+        <childnode refid="2703" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2709">
+        <label>openage::gui::GameControlLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_control_link"/>
+        <childnode refid="2703" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2708">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="2703" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2707">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2704">
+        <label>QObject</label>
+      </node>
+      <node id="2712">
+        <label>openage::gui::OutputModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_output_mode_link"/>
+        <childnode refid="2703" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2706">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2703">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="2704" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2705" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2707" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2705">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2706" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2710">
+        <label>openage::gui::GameMainLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_main_link"/>
+        <childnode refid="2703" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2718">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2714">
+        <label>QObject</label>
+      </node>
+      <node id="2716">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2713">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="2714" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2715" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2718" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2715">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2716" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2717" relation="usage">
+          <edgelabel>#game_logic_caller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2717">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="2714" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="231" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="231" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>apply_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>clear_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>do_adopt_core_func</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>game_logic_caller</name></member>
+      <member refid="classqtsdl_1_1_gui_item_q_object_1a9381292e5dbb61f284d6a90d39e29912" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>GuiItemQObject</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>instantiate_core_func</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>is_init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>on_core_adopted_func</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemQObject</scope><name>static_properties_assignments</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" virt="virtual"><scope>qtsdl::GuiItemQObject</scope><name>~DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" prot="public" virt="virtual"><scope>qtsdl::GuiItemQObject</scope><name>~GuiItemBase</name></member>
+      <member refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" prot="public" virt="virtual"><scope>qtsdl::GuiItemQObject</scope><name>~GuiItemLink</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

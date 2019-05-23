@@ -1,0 +1,999 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_fixed_point" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::FixedPoint</compoundname>
+    <includes refid="fixed__point_8h" local="no">fixed_point.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>int_type</declname>
+        <defname>int_type</defname>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>fractional_bits</declname>
+        <defname>fractional_bits</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1ab22d295eb3c55c51a00f584aa783bf7e" prot="public" static="no">
+        <type>int_type</type>
+        <definition>using openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::raw_type =  int_type</definition>
+        <argsstring></argsstring>
+        <name>raw_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="88" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1a428d93899638a0471ea60c5d9850292c" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; int_type, fractional_bits &gt;</type>
+        <definition>using openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::this_type =  FixedPoint&lt;int_type, fractional_bits&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="89" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" prot="public" static="no">
+        <type>typename std::make_unsigned&lt; int_type &gt;::type</type>
+        <definition>using openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::unsigned_int_type =  typename std::make_unsigned&lt;int_type&gt;::type</definition>
+        <argsstring></argsstring>
+        <name>unsigned_int_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="90" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_fixed_point_1a42da6bbdfdd34c65db112929c3f94e71" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; typename <ref refid="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" kindref="member">FixedPoint::unsigned_int_type</ref>, fractional_bits &gt;</type>
+        <definition>using openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::same_type_but_unsigned =  FixedPoint&lt;typename FixedPoint::unsigned_int_type, fractional_bits&gt;</definition>
+        <argsstring></argsstring>
+        <name>same_type_but_unsigned</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="91" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a3bf715e5d34cd92f0d595d414888f69b" prot="private" static="no" mutable="no">
+        <type>int_type</type>
+        <definition>int_type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::raw_value</definition>
+        <argsstring></argsstring>
+        <name>raw_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Storage of the fixed point data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="107" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a970aefe3504ce8bdcb0ad2f8a21e4e57" prot="private" static="yes" mutable="no">
+        <type>constexpr const double</type>
+        <definition>constexpr const double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_double_factor</definition>
+        <argsstring></argsstring>
+        <name>from_double_factor</name>
+        <initializer>= <ref refid="classopenage_1_1util_1_1_fixed_point_1adbd7a81351040e264df9f0b82bc8e494" kindref="member">power_of_two</ref>(fractional_bits)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="109" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a91787091503691b05e2bd1c0df99a326" prot="private" static="yes" mutable="no">
+        <type>constexpr const double</type>
+        <definition>constexpr const double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double_factor</definition>
+        <argsstring></argsstring>
+        <name>to_double_factor</name>
+        <initializer>= 1 / <ref refid="classopenage_1_1util_1_1_fixed_point_1a970aefe3504ce8bdcb0ad2f8a21e4e57" kindref="member">from_double_factor</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="110" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a887393057ecf8e0b2505086842768776" prot="private" static="yes" mutable="no">
+        <type>constexpr const float</type>
+        <definition>constexpr const float openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_float_factor</definition>
+        <argsstring></argsstring>
+        <name>from_float_factor</name>
+        <initializer>= <ref refid="classopenage_1_1util_1_1_fixed_point_1a970aefe3504ce8bdcb0ad2f8a21e4e57" kindref="member">from_double_factor</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="111" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1a10ad20f2db009ff3b153a1a5812038a6" prot="private" static="yes" mutable="no">
+        <type>constexpr const float</type>
+        <definition>constexpr const float openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_float_factor</definition>
+        <argsstring></argsstring>
+        <name>to_float_factor</name>
+        <initializer>= <ref refid="classopenage_1_1util_1_1_fixed_point_1a91787091503691b05e2bd1c0df99a326" kindref="member">to_double_factor</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="112" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_fixed_point_1aa5d7fef738e76cec9c68bc6412acaa5e" prot="private" static="yes" mutable="no">
+        <type>constexpr const unsigned int</type>
+        <definition>constexpr const unsigned int openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::approx_decimal_places</definition>
+        <argsstring></argsstring>
+        <name>approx_decimal_places</name>
+        <initializer>= static_cast&lt;unsigned int&gt;(
+		static_cast&lt;double&gt;(fractional_bits) * 0.30103 + 1
+	)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="114" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1adbd7a81351040e264df9f0b82bc8e494" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr double</type>
+        <definition>static constexpr double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::power_of_two</definition>
+        <argsstring>(unsigned int power)</argsstring>
+        <name>power_of_two</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>power</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="96" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="96" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a2858e0798bf7e033c56f6ec653180588" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" kindref="member">FixedPoint::unsigned_int_type</ref></type>
+        <definition>static constexpr FixedPoint::unsigned_int_type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::fractional_part_bitmask</definition>
+        <argsstring>()</argsstring>
+        <name>fractional_part_bitmask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="119" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="119" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a5f225133013eccb8bbdd9a4628308a59" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int_type</type>
+        <definition>static constexpr int_type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::raw_value_from_double</definition>
+        <argsstring>(double n)</argsstring>
+        <name>raw_value_from_double</name>
+        <param>
+          <type>double</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="130" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="130" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a50908a8761e19864f030d822856c3227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::FixedPoint</definition>
+        <argsstring>(const FixedPoint &amp;other)</argsstring>
+        <name>FixedPoint</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="136" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ac0e556f78cde2795b26c10709032f3e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::FixedPoint</definition>
+        <argsstring>(FixedPoint &amp;&amp;other) noexcept</argsstring>
+        <name>FixedPoint</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="140" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="140" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a4e39dbaf3295e64070ba80f9972e3513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+        <definition>constexpr FixedPoint&amp; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator=</definition>
+        <argsstring>(const FixedPoint &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="144" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a65edb5b4e90d9e34dbe44d32890759b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+        <definition>constexpr FixedPoint&amp; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator=</definition>
+        <argsstring>(FixedPoint &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="149" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0a2d3297574a2e5996aefd540a7b0dfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::FixedPoint</definition>
+        <argsstring>()</argsstring>
+        <name>FixedPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Empty constructor. Initializes the number to 0. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="157" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="157" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a52f8593a8358172f788ee3597c4b5981" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::FixedPoint</definition>
+        <argsstring>(double n)</argsstring>
+        <name>FixedPoint</name>
+        <param>
+          <type>double</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>floating-point constructor. Initializes the number from a double. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="166" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="166" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int_type</type>
+        <definition>constexpr int_type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_raw_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_raw_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converter to retrieve the raw value of the fixed-point number. Don&apos;t use this. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="234" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="234" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a12dc86de2b985fdaff044ed9ab38e453" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr int_type</type>
+        <definition>constexpr int_type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_int</definition>
+        <argsstring>() const</argsstring>
+        <name>to_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converter to retrieve the int (pre-decimal) part of the number. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="241" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="241" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a8adbb099a4f7a0db820f923e8ffc1a02" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator int</definition>
+        <argsstring>() const</argsstring>
+        <name>operator int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="245" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="245" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr float</type>
+        <definition>constexpr float openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_float</definition>
+        <argsstring>() const</argsstring>
+        <name>to_float</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converter to retrieve the number as float. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="252" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="252" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a132f65f53a2a87b36f880fc567ec857f" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator float</definition>
+        <argsstring>() const</argsstring>
+        <name>operator float</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="256" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="256" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::to_double</definition>
+        <argsstring>() const</argsstring>
+        <name>to_double</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converter to retrieve the number as double. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="263" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="263" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0c4cacca4318bbc4f50a568b1fc1789c" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator double</definition>
+        <argsstring>() const</argsstring>
+        <name>operator double</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="267" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aff707b86b379bbb8491212631d1df769" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::str</definition>
+        <argsstring>() const</argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show a string representation. Useful for debugging in gdb. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="274" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="274" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point_1a42da6bbdfdd34c65db112929c3f94e71" kindref="member">FixedPoint::same_type_but_unsigned</ref></type>
+        <definition>constexpr FixedPoint::same_type_but_unsigned openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::get_fractional_part</definition>
+        <argsstring>() const</argsstring>
+        <name>get_fractional_part</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Converter to retrieve the fractional (post-decimal) part of the number. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="286" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="286" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1abc8d2dddcdda2d24df395759a4a3f1ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator==</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="299" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="299" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ad6bf5d9ab688b4f8b56a0f1e5a68f572" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator !=</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator !=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="303" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="303" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a5caaef66c0cf9920f83bfb20524bb2ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator&lt;</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="307" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="307" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1780e721d3db4c21864c9172a63198c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator &gt;</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator &gt;</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="311" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="311" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a211506fc52a7e2a73b6eba2cf6d2f66a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator&lt;=</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="315" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="315" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a97237e56fbe59abeec8469929c0f56b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator &gt;=</definition>
+        <argsstring>(const FixedPoint &amp;o) const</argsstring>
+        <name>operator &gt;=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="319" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="319" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a78cd3057f1c6d052604a7ea7b3f97b8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator+</definition>
+        <argsstring>() const</argsstring>
+        <name>operator+</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="324" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="324" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aec3105441d3a31509744116f782fe3e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename inner_int_type</type>
+            <defval>int_type</defval>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt; std::is_signed&lt; inner_int_type &gt;::value, typename <ref refid="classopenage_1_1util_1_1_fixed_point_1a428d93899638a0471ea60c5d9850292c" kindref="member">FixedPoint::this_type</ref> &gt;::type</type>
+        <definition>constexpr std::enable_if&lt;std::is_signed&lt;inner_int_type&gt;::value, typename FixedPoint::this_type&gt;::type openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator -</definition>
+        <argsstring>() const</argsstring>
+        <name>operator -</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="332" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="332" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr double</type>
+        <definition>constexpr double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::hypot</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; rhs)</argsstring>
+        <name>hypot</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="338" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="338" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a36dd5c06bff45023368c192f65f38182" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::hypotfp</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; rhs)</argsstring>
+        <name>hypotfp</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="343" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="343" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1066c5bc35ea84af4566a7950541a7ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+        <definition>constexpr FixedPoint&amp; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator+=</definition>
+        <argsstring>(const FixedPoint &amp;n)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="348" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="348" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a0fc27c9ffb04dc23906380db8f228e53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+        <definition>constexpr FixedPoint&amp; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator -=</definition>
+        <argsstring>(const FixedPoint &amp;n)</argsstring>
+        <name>operator -=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="353" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="353" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1acf610f0ece81e2c4cbf0a405aba9c7c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename N</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_arithmetic&lt; N &gt;::value, <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp; &gt;::type constexpr</type>
+        <definition>std::enable_if&lt;std::is_arithmetic&lt;N&gt;::value, FixedPoint &amp;&gt;::type constexpr openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator *=</definition>
+        <argsstring>(const N &amp;rhs)</argsstring>
+        <name>operator *=</name>
+        <param>
+          <type>const N &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> *= N, where N is not a <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="363" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="363" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a8a479bc1182f83c94eecc577eb493d7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename N</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+        <definition>constexpr FixedPoint&amp; openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::operator/=</definition>
+        <argsstring>(const N &amp;rhs)</argsstring>
+        <name>operator/=</name>
+        <param>
+          <type>const N &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> /= N </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="372" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="372" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a2836456e5e71b3c8ddb7815c7040599b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::swap</definition>
+        <argsstring>(FixedPoint &amp;rhs)</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="377" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="377" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::sqrt</definition>
+        <argsstring>()</argsstring>
+        <name>sqrt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="394" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="394" bodyend="396"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1ac15c9eac48a2d30284089c642f7176b5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::zero</definition>
+        <argsstring>()</argsstring>
+        <name>zero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> value that is preinitialized to zero. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="171" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="171" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_int</definition>
+        <argsstring>(int_type n)</argsstring>
+        <name>from_int</name>
+        <param>
+          <type>int_type</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function to get a fixed-point number from an integer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="178" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="178" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_float</definition>
+        <argsstring>(float n)</argsstring>
+        <name>from_float</name>
+        <param>
+          <type>float</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function to get a fixed-point number from a float. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="185" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="185" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_double</definition>
+        <argsstring>(double n)</argsstring>
+        <name>from_double</name>
+        <param>
+          <type>double</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function to get a fixed-point number from a double. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="192" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="192" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a6602fc6e0cf22db46a7a2c4d65bbf866" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename other_int_type</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>other_fractional_bits</declname>
+            <defname>other_fractional_bits</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_fixedpoint</definition>
+        <argsstring>(const FixedPoint&lt; other_int_type, other_fractional_bits &gt; &amp;other)</argsstring>
+        <name>from_fixedpoint</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; other_int_type, other_fractional_bits &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function to get a fixed-point number from a fixed-point number of different type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="200" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="200" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr const FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::min_value</definition>
+        <argsstring>()</argsstring>
+        <name>min_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The minimum possible value of this type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="209" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr const FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::max_value</definition>
+        <argsstring>()</argsstring>
+        <name>max_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The maximum possible value of this type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="216" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="216" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref></type>
+        <definition>static constexpr FixedPoint openage::util::FixedPoint&lt; int_type, fractional_bits &gt;::from_raw_value</definition>
+        <argsstring>(int_type raw_value)</argsstring>
+        <name>from_raw_value</name>
+        <param>
+          <type>int_type</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function to construct a fixed-point number with a given raw value. Don&apos;t use this. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="224" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="224" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_fixed_point_1a251133bb4a6195067bf32e242bba0d88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const FixedPoint &amp;n)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="382" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="382" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_fixed_point_1a37518ac1b10368036cfce134555d5512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend std::istream &amp;</type>
+        <definition>std::istream&amp; operator &gt;&gt;</definition>
+        <argsstring>(std::istream &amp;is, FixedPoint &amp;n)</argsstring>
+        <name>operator &gt;&gt;</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>is</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="387" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="387" bodyend="392"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Fixed-point integer class;</para>
+<para>this is designed to be used instead of floats in places where guaranteed precision is required.</para>
+<para>For example, FixedPoint&lt;int64_t, 32&gt; can store values from -2**32 to +2**32 with a constant precision of 2**-32. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1499">
+        <label>int_type</label>
+      </node>
+      <node id="1498">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="1499" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fixed_point.h" line="86" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="86" bodyend="397"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1aa5d7fef738e76cec9c68bc6412acaa5e" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>approx_decimal_places</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a50908a8761e19864f030d822856c3227" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>FixedPoint</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ac0e556f78cde2795b26c10709032f3e7" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>FixedPoint</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a0a2d3297574a2e5996aefd540a7b0dfb" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>FixedPoint</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a52f8593a8358172f788ee3597c4b5981" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>FixedPoint</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a2858e0798bf7e033c56f6ec653180588" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>fractional_part_bitmask</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a483c36345c5b597c1626162bc96dc52c" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_double</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a970aefe3504ce8bdcb0ad2f8a21e4e57" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_double_factor</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a6602fc6e0cf22db46a7a2c4d65bbf866" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_fixedpoint</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a7cc8c2bd1dad2337630abf6f6e42aef3" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_float</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a887393057ecf8e0b2505086842768776" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_float_factor</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a703b41f0cb3fb93f1b5dcd20e6c968b4" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_int</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1aa01c403263c2142c0ce9ce40cde89066" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>from_raw_value</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a41ce8a71883f18088e7876aa8e2600e4" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>get_fractional_part</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1affe7a3ec44c6f7ac96312875af742f87" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>get_raw_value</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1aa0eb736578910b123ea19652c670daab" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>hypot</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a36dd5c06bff45023368c192f65f38182" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>hypotfp</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a30783d598a6f1a133ba94b3e0bf319a0" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>max_value</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a1432784032d62a4b43961b88de32ae86" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>min_value</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ad6bf5d9ab688b4f8b56a0f1e5a68f572" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1acf610f0ece81e2c4cbf0a405aba9c7c8" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator *=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1aec3105441d3a31509744116f782fe3e7" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator -</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a0fc27c9ffb04dc23906380db8f228e53" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator -=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a1780e721d3db4c21864c9172a63198c6" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator &gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a97237e56fbe59abeec8469929c0f56b7" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator &gt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a37518ac1b10368036cfce134555d5512" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator &gt;&gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a0c4cacca4318bbc4f50a568b1fc1789c" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator double</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a132f65f53a2a87b36f880fc567ec857f" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator float</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a8adbb099a4f7a0db820f923e8ffc1a02" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator int</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a78cd3057f1c6d052604a7ea7b3f97b8b" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator+</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a1066c5bc35ea84af4566a7950541a7ab" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator+=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a8a479bc1182f83c94eecc577eb493d7f" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator/=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a5caaef66c0cf9920f83bfb20524bb2ef" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a251133bb4a6195067bf32e242bba0d88" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a211506fc52a7e2a73b6eba2cf6d2f66a" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator&lt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a4e39dbaf3295e64070ba80f9972e3513" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a65edb5b4e90d9e34dbe44d32890759b9" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1abc8d2dddcdda2d24df395759a4a3f1ab" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1adbd7a81351040e264df9f0b82bc8e494" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>power_of_two</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ab22d295eb3c55c51a00f584aa783bf7e" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>raw_type</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a3bf715e5d34cd92f0d595d414888f69b" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>raw_value</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a5f225133013eccb8bbdd9a4628308a59" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>raw_value_from_double</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a42da6bbdfdd34c65db112929c3f94e71" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>same_type_but_unsigned</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ae963a0d669b00ec8a65da1bf0041172a" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>sqrt</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1aff707b86b379bbb8491212631d1df769" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>str</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a2836456e5e71b3c8ddb7815c7040599b" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>swap</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a428d93899638a0471ea60c5d9850292c" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>this_type</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a3d55d1b8ecdb0fd4ff8e7e3da2598554" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>to_double</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a91787091503691b05e2bd1c0df99a326" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>to_double_factor</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>to_float</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a10ad20f2db009ff3b153a1a5812038a6" prot="private" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>to_float_factor</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1a12dc86de2b985fdaff044ed9ab38e453" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>to_int</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ac2879fa6f6c8a01ca162ec4f1fdaca57" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>unsigned_int_type</name></member>
+      <member refid="classopenage_1_1util_1_1_fixed_point_1ac15c9eac48a2d30284089c642f7176b5" prot="public" virt="non-virtual"><scope>openage::util::FixedPoint</scope><name>zero</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

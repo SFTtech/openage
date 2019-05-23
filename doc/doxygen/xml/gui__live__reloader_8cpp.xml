@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__live__reloader_8cpp" kind="file" language="C++">
+    <compoundname>gui_live_reloader.cpp</compoundname>
+    <includes refid="gui__live__reloader_8h" local="yes">gui_live_reloader.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">unordered_set</includes>
+    <includes refid="gui__item_8h" local="yes">../../link/gui_item.h</includes>
+    <includes refid="deferred__initial__constant__property__values_8h" local="yes">deferred_initial_constant_property_values.h</includes>
+    <incdepgraph>
+      <node id="13340">
+        <label>functional</label>
+      </node>
+      <node id="13328">
+        <label>gui_live_reloader.h</label>
+        <link refid="gui__live__reloader_8h"/>
+        <childnode refid="13329" relation="include">
+        </childnode>
+        <childnode refid="13330" relation="include">
+        </childnode>
+        <childnode refid="13331" relation="include">
+        </childnode>
+        <childnode refid="13332" relation="include">
+        </childnode>
+        <childnode refid="13333" relation="include">
+        </childnode>
+        <childnode refid="13334" relation="include">
+        </childnode>
+        <childnode refid="13335" relation="include">
+        </childnode>
+      </node>
+      <node id="13344">
+        <label>QObject</label>
+      </node>
+      <node id="13327">
+        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <link refid="gui__live__reloader_8cpp"/>
+        <childnode refid="13328" relation="include">
+        </childnode>
+        <childnode refid="13336" relation="include">
+        </childnode>
+        <childnode refid="13337" relation="include">
+        </childnode>
+        <childnode refid="13338" relation="include">
+        </childnode>
+        <childnode refid="13349" relation="include">
+        </childnode>
+      </node>
+      <node id="13334">
+        <label>QList</label>
+      </node>
+      <node id="13339">
+        <label>cassert</label>
+      </node>
+      <node id="13345">
+        <label>QMetaType</label>
+      </node>
+      <node id="13349">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="13350" relation="include">
+        </childnode>
+        <childnode refid="13340" relation="include">
+        </childnode>
+      </node>
+      <node id="13338">
+        <label>../../link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="13331" relation="include">
+        </childnode>
+        <childnode refid="13339" relation="include">
+        </childnode>
+        <childnode refid="13340" relation="include">
+        </childnode>
+        <childnode refid="13341" relation="include">
+        </childnode>
+        <childnode refid="13342" relation="include">
+        </childnode>
+        <childnode refid="13343" relation="include">
+        </childnode>
+        <childnode refid="13344" relation="include">
+        </childnode>
+        <childnode refid="13345" relation="include">
+        </childnode>
+        <childnode refid="13346" relation="include">
+        </childnode>
+        <childnode refid="13347" relation="include">
+        </childnode>
+        <childnode refid="13348" relation="include">
+        </childnode>
+        <childnode refid="13349" relation="include">
+        </childnode>
+        <childnode refid="13351" relation="include">
+        </childnode>
+        <childnode refid="13352" relation="include">
+        </childnode>
+      </node>
+      <node id="13337">
+        <label>unordered_set</label>
+      </node>
+      <node id="13335">
+        <label>QtQml</label>
+      </node>
+      <node id="13352">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="13341" relation="include">
+        </childnode>
+        <childnode refid="13351" relation="include">
+        </childnode>
+      </node>
+      <node id="13342">
+        <label>typeinfo</label>
+      </node>
+      <node id="13330">
+        <label>tuple</label>
+      </node>
+      <node id="13347">
+        <label>QDebug</label>
+      </node>
+      <node id="13350">
+        <label>vector</label>
+      </node>
+      <node id="13346">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="13343">
+        <label>utility</label>
+      </node>
+      <node id="13351">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="13339" relation="include">
+        </childnode>
+      </node>
+      <node id="13329">
+        <label>unordered_map</label>
+      </node>
+      <node id="13333">
+        <label>QHash</label>
+      </node>
+      <node id="13341">
+        <label>type_traits</label>
+      </node>
+      <node id="13336">
+        <label>algorithm</label>
+      </node>
+      <node id="13332">
+        <label>QStringList</label>
+      </node>
+      <node id="13348">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="13340" relation="include">
+        </childnode>
+        <childnode refid="13344" relation="include">
+        </childnode>
+      </node>
+      <node id="13331">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__live__reloader_8h" kindref="compound">gui_live_reloader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../link/gui_item.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="deferred__initial__constant__property__values_8h" kindref="compound">deferred_initial_constant_property_values.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qmlRegisterUncreatableType&lt;GuiLiveReloaderAttachedPropertyProvider&gt;(</highlight><highlight class="stringliteral">&quot;yay.sfttech.livereload&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;LR&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;LR<sp/>is<sp/>non-instantiable.<sp/>It<sp/>provides<sp/>the<sp/>&apos;LR.tag&apos;<sp/>attached<sp/>property.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration_property<sp/>=<sp/>qmlRegisterType&lt;GuiLiveReloaderAttachedProperty&gt;();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1abc11e1448e1f8b503378927100243d6b" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1abc11e1448e1f8b503378927100243d6b" kindref="member">GuiLiveReloaderAttachedProperty::GuiLiveReloaderAttachedProperty</ref>(QObject<sp/>*</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration_property);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dynamic_cast&lt;GuiItemBase*&gt;(this-&gt;parent()))</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qFatal(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>tried<sp/>to<sp/>set<sp/>the<sp/>&apos;LR.tag&apos;<sp/>to<sp/>item<sp/>with<sp/>non-persistent<sp/>type<sp/>&apos;%s&apos;.&quot;</highlight><highlight class="normal">,<sp/>object-&gt;metaObject()-&gt;className());</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a1e2ea1273c82c7769b0c4a56628112fa" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref>*<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a1e2ea1273c82c7769b0c4a56628112fa" kindref="member">GuiLiveReloaderAttachedProperty::get_attachee</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>attachee<sp/>=<sp/>dynamic_cast&lt;GuiItemBase*&gt;(this-&gt;parent());</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(attachee);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>attachee;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a90b3968cec094c41169c0bd8c7e8b5d4" refkind="member"><highlight class="normal">QString<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a90b3968cec094c41169c0bd8c7e8b5d4" kindref="member">GuiLiveReloaderAttachedProperty::get_tag</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>qWarning(</highlight><highlight class="stringliteral">&quot;Some<sp/>QML<sp/>code<sp/>is<sp/>enquiring<sp/>about<sp/>the<sp/>&apos;%s&apos;<sp/>&apos;LR.tag&apos;.<sp/>You<sp/>must<sp/>not<sp/>rely<sp/>on<sp/>the<sp/>tag<sp/>value.&quot;</highlight><highlight class="normal">,<sp/>qUtf8Printable(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref>));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1aeaec5994b2a4581b52efe79e5cfbd3df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1aeaec5994b2a4581b52efe79e5cfbd3df" kindref="member">GuiLiveReloaderAttachedProperty::set_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;tag)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a1e2ea1273c82c7769b0c4a56628112fa" kindref="member">get_attachee</ref>()-&gt;is_init_over())</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qCritical(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>tried<sp/>to<sp/>change<sp/>the<sp/>&apos;%s&apos;<sp/>&apos;LR.tag&apos;<sp/>to<sp/>&apos;%s&apos;.&quot;</highlight><highlight class="normal">,<sp/>qUtf8Printable(this-&gt;tag),<sp/>qUtf8Printable(<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref>));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;tag<sp/>=<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a7922cec4b9208d5708a822a2b8768fbb" refkind="member"><highlight class="normal">QString<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a7922cec4b9208d5708a822a2b8768fbb" kindref="member">GuiLiveReloaderAttachedProperty::get_tag_for_init</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_1a3ad9c67ebf76c1d6ee4662ae1c5813da" kindref="member">tag</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider_1ad0644731e7183f440c023eb4390c84e8" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property" kindref="compound">GuiLiveReloaderAttachedProperty</ref>*<sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property_provider_1ad0644731e7183f440c023eb4390c84e8" kindref="member">GuiLiveReloaderAttachedPropertyProvider::qmlAttachedProperties</ref>(QObject<sp/>*attachee)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_live_reloader_attached_property" kindref="compound">GuiLiveReloaderAttachedProperty</ref>(attachee);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classqtsdl_1_1_gui_live_reloader_1adf7dd5c498505ea59b89d72ff67db8fb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_live_reloader_1adf7dd5c498505ea59b89d72ff67db8fb" kindref="member">GuiLiveReloader::init_persistent_items</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QList&lt;GuiLiveReloaderAttachedProperty*&gt;<sp/>&amp;items)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_set&lt;QString&gt;<sp/>stored_tags;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>std::transform(std::begin(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" kindref="member">preservable</ref>),<sp/>std::end(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" kindref="member">preservable</ref>),<sp/>std::inserter(stored_tags,<sp/>std::end(stored_tags)),<sp/>[]<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TagToPreservableMap::value_type<sp/>&amp;pair)<sp/>{</highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pair.first;});</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ap<sp/>:<sp/>items)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obj<sp/>=<sp/>ap-&gt;get_attachee();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tag<sp/>=<sp/>ap-&gt;get_tag_for_init();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tag.isEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qFatal(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>an<sp/>item<sp/>with<sp/>underlying<sp/>type<sp/>of<sp/>&apos;%s&apos;<sp/>has<sp/>no<sp/>&apos;LR.tag&apos;<sp/>property.&quot;</highlight><highlight class="normal">,<sp/>dynamic_cast&lt;QObject*&gt;(obj)-&gt;metaObject()-&gt;className());</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>found_it<sp/>=<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" kindref="member">preservable</ref>.find(tag);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(found_it<sp/>!=<sp/>std::end(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" kindref="member">preservable</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;adopt_core(found_it-&gt;second.get(),<sp/>tag);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;clear_static_properties();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>wrapped_core<sp/>=<sp/>obj-&gt;instantiate_core())<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj-&gt;adopt_core(this-&gt;<ref refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" kindref="member">preservable</ref>.insert(found_it,<sp/>std::make_pair(tag,<sp/>std::move(wrapped_core)))-&gt;second.get(),<sp/>tag);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qCritical(</highlight><highlight class="stringliteral">&quot;Error<sp/>in<sp/>QML<sp/>code:<sp/>trying<sp/>to<sp/>add<sp/>an<sp/>object<sp/>to<sp/>the<sp/>GuiLiveReloader<sp/>multiple<sp/>times.<sp/>Second<sp/>time<sp/>was<sp/>with<sp/>tag<sp/>&apos;%s&apos;.&quot;</highlight><highlight class="normal">,<sp/>qUtf8Printable(tag));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stored_tags.erase(tag);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ap<sp/>:<sp/>items)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ap-&gt;get_attachee()-&gt;apply_static_properties();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" kindref="member">std::for_each</ref>(std::begin(stored_tags),<sp/>std::end(stored_tags),<sp/>[]<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;dangling)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qWarning(</highlight><highlight class="stringliteral">&quot;The<sp/>&apos;%s&apos;<sp/>&apos;LR.tag&apos;<sp/>hasn&apos;t<sp/>found<sp/>any<sp/>recipients<sp/>after<sp/>GUI<sp/>reload.&quot;</highlight><highlight class="normal">,<sp/>qUtf8Printable(dangling));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="renderer_8h" kind="file" language="C++">
+    <compoundname>renderer.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="opengl_2render__target_8h" local="yes">libopenage/renderer/opengl/render_target.h</includedby>
+    <includedby refid="opengl_2renderer_8h" local="yes">libopenage/renderer/opengl/renderer.h</includedby>
+    <includedby refid="opengl_2shader__program_8h" local="yes">libopenage/renderer/opengl/shader_program.h</includedby>
+    <includedby refid="uniform__input_8h" local="yes">libopenage/renderer/opengl/uniform_input.h</includedby>
+    <includedby refid="window_8h" local="yes">libopenage/renderer/window.h</includedby>
+    <includedby refid="vulkan_2render__target_8h" local="yes">libopenage/renderer/vulkan/render_target.h</includedby>
+    <includedby refid="vulkan_2renderer_8h" local="yes">libopenage/renderer/vulkan/renderer.h</includedby>
+    <incdepgraph>
+      <node id="21458">
+        <label>vector</label>
+      </node>
+      <node id="21457">
+        <label>libopenage/renderer/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="21458" relation="include">
+        </childnode>
+        <childnode refid="21459" relation="include">
+        </childnode>
+      </node>
+      <node id="21459">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21461">
+        <label>libopenage/renderer/opengl/render_target.h</label>
+        <link refid="opengl_2render__target_8h"/>
+        <childnode refid="21462" relation="include">
+        </childnode>
+        <childnode refid="21463" relation="include">
+        </childnode>
+        <childnode refid="21466" relation="include">
+        </childnode>
+        <childnode refid="21467" relation="include">
+        </childnode>
+      </node>
+      <node id="21473">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="21468">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="21463" relation="include">
+        </childnode>
+        <childnode refid="21464" relation="include">
+        </childnode>
+        <childnode refid="21469" relation="include">
+        </childnode>
+      </node>
+      <node id="21471">
+        <label>libopenage/renderer/window.h</label>
+        <link refid="window_8h"/>
+        <childnode refid="21472" relation="include">
+        </childnode>
+        <childnode refid="21474" relation="include">
+        </childnode>
+        <childnode refid="21476" relation="include">
+        </childnode>
+      </node>
+      <node id="21464">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="21465">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="21462">
+        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="21476">
+        <label>libopenage/renderer/window.cpp</label>
+        <link refid="window_8cpp"/>
+      </node>
+      <node id="21470">
+        <label>libopenage/renderer/opengl/uniform_input.h</label>
+        <link refid="uniform__input_8h"/>
+        <childnode refid="21468" relation="include">
+        </childnode>
+        <childnode refid="21464" relation="include">
+        </childnode>
+      </node>
+      <node id="21479">
+        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="21478" relation="include">
+        </childnode>
+      </node>
+      <node id="21469">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="21478">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="21460">
+        <label>libopenage/renderer/renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="21461" relation="include">
+        </childnode>
+        <childnode refid="21463" relation="include">
+        </childnode>
+        <childnode refid="21468" relation="include">
+        </childnode>
+        <childnode refid="21470" relation="include">
+        </childnode>
+        <childnode refid="21471" relation="include">
+        </childnode>
+        <childnode refid="21477" relation="include">
+        </childnode>
+        <childnode refid="21479" relation="include">
+        </childnode>
+      </node>
+      <node id="21475">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+      </node>
+      <node id="21472">
+        <label>libopenage/renderer/opengl/window.h</label>
+        <link refid="opengl_2window_8h"/>
+        <childnode refid="21465" relation="include">
+        </childnode>
+        <childnode refid="21473" relation="include">
+        </childnode>
+      </node>
+      <node id="21467">
+        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <link refid="opengl_2texture__array_8cpp"/>
+      </node>
+      <node id="21474">
+        <label>libopenage/renderer/vulkan/windowvk.h</label>
+        <link refid="windowvk_8h"/>
+        <childnode refid="21475" relation="include">
+        </childnode>
+      </node>
+      <node id="21477">
+        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <link refid="vulkan_2render__target_8h"/>
+        <childnode refid="21478" relation="include">
+        </childnode>
+      </node>
+      <node id="21463">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="21464" relation="include">
+        </childnode>
+        <childnode refid="21465" relation="include">
+        </childnode>
+      </node>
+      <node id="21466">
+        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <link refid="renderer_2opengl_2texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_uniform_input" prot="public">openage::renderer::UniformInput</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_render_target" prot="public">openage::renderer::RenderTarget</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_renderable" prot="public">openage::renderer::Renderable</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1_render_pass" prot="public">openage::renderer::RenderPass</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_renderer" prot="public">openage::renderer::Renderer</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1resources">openage::renderer::resources</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1renderer_1_1resources" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">resources<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">Texture2dData</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">ShaderSource</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kindref="compound">MeshData</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_shader_program" kindref="compound">ShaderProgram</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1renderer_1_1_uniform_input" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_uniform_input_1a3c7e477dbf6cd9b9b9fbab45b74b2c09" kindref="member">UniformInput</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_uniform_input_1a1bdfe9c4ec49986945d723af728c1b7f" kindref="member">~UniformInput</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classopenage_1_1renderer_1_1_render_target" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_render_target_1a82f0a811d5ef9ed22a3b946eaf523968" kindref="member">RenderTarget</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_render_target_1a0c525e5ad964ff0e763c2a45299ecebd" kindref="member">~RenderTarget</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="structopenage_1_1renderer_1_1_renderable" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1_renderable" kindref="compound">Renderable</ref><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="structopenage_1_1renderer_1_1_renderable_1a775e71a74952beb4e208fe5fb4b46668" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*<ref refid="structopenage_1_1renderer_1_1_renderable_1a775e71a74952beb4e208fe5fb4b46668" kindref="member">unif_in</ref>;</highlight></codeline>
+<codeline lineno="55" refid="structopenage_1_1renderer_1_1_renderable_1a3bf2064282bcd7c446d32832d4b4bee7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*<ref refid="structopenage_1_1renderer_1_1_renderable_1a3bf2064282bcd7c446d32832d4b4bee7" kindref="member">geometry</ref>;</highlight></codeline>
+<codeline lineno="57" refid="structopenage_1_1renderer_1_1_renderable_1a2f7cb774035e9d9445e5ec3aff4791e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_renderable_1a2f7cb774035e9d9445e5ec3aff4791e4" kindref="member">alpha_blending</ref>;</highlight></codeline>
+<codeline lineno="59" refid="structopenage_1_1renderer_1_1_renderable_1a2876a554a04f54f329230e7239e4f0a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_renderable_1a2876a554a04f54f329230e7239e4f0a8" kindref="member">depth_test</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="structopenage_1_1renderer_1_1_render_pass" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1_render_pass" kindref="compound">RenderPass</ref><sp/>{</highlight></codeline>
+<codeline lineno="65" refid="structopenage_1_1renderer_1_1_render_pass_1ae6f66a81cdf870cf3d1724f4c9ecda3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Renderable&gt;<sp/><ref refid="structopenage_1_1renderer_1_1_render_pass_1ae6f66a81cdf870cf3d1724f4c9ecda3e" kindref="member">renderables</ref>;</highlight></codeline>
+<codeline lineno="67" refid="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*<ref refid="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" kindref="member">target</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1renderer_1_1_renderer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_renderer" kindref="compound">Renderer</ref><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a861d171e80f126375b4c20287dd85436" kindref="member">~Renderer</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Texture2d&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a07fe03ec7257b6dfa803988be4607740" kindref="member">add_texture</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Texture2d&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a07fe03ec7257b6dfa803988be4607740" kindref="member">add_texture</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ShaderProgram&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a9371f6d9b258db3b287e5fcab73a4996" kindref="member">add_shader</ref>(std::vector&lt;resources::ShaderSource&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Geometry&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1ac7faabd63826f110062b7fbf5202c7c9" kindref="member">add_mesh_geometry</ref>(<ref refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" kindref="compound">resources::MeshData</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Geometry&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a67a77e7702c68b2fa880f9c26f877eed" kindref="member">add_bufferless_quad</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;RenderTarget&gt;<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1aaf1729acc8160a03eca5b91cf6e7dc3a" kindref="member">create_texture_target</ref>(std::vector&lt;Texture2d*&gt;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a2a55ee0bda543175600d17b62d24dbf1" kindref="member">get_display_target</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref><sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1a9e2749c186084a43f41a77fb8c999647" kindref="member">display_into_data</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_renderer_1aa6810194c364c0708a7af3407a8c3447" kindref="member">render</ref>(<ref refid="structopenage_1_1renderer_1_1_render_pass" kindref="compound">RenderPass</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/renderer.h"/>
+  </compounddef>
+</doxygen>

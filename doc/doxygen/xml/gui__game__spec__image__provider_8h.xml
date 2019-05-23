@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__game__spec__image__provider_8h" kind="file" language="C++">
+    <compoundname>gui_game_spec_image_provider.h</compoundname>
+    <includes refid="gui__image__provider_8h" local="yes">../../guisys/public/gui_image_provider.h</includes>
+    <includedby refid="gui_2gui_8h" local="yes">libopenage/gui/gui.h</includedby>
+    <includedby refid="gui__game__spec__image__provider_8cpp" local="yes">libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</includedby>
+    <incdepgraph>
+      <node id="14808">
+        <label>functional</label>
+      </node>
+      <node id="14805">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <link refid="gui__game__spec__image__provider_8h"/>
+        <childnode refid="14806" relation="include">
+        </childnode>
+      </node>
+      <node id="14806">
+        <label>../../guisys/public/gui_image_provider.h</label>
+        <link refid="gui__image__provider_8h"/>
+        <childnode refid="14807" relation="include">
+        </childnode>
+        <childnode refid="14808" relation="include">
+        </childnode>
+      </node>
+      <node id="14807">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="14809">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.h</label>
+        <link refid="gui__game__spec__image__provider_8h"/>
+        <childnode refid="14810" relation="include">
+        </childnode>
+        <childnode refid="14813" relation="include">
+        </childnode>
+      </node>
+      <node id="14813">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <link refid="gui__game__spec__image__provider_8cpp"/>
+      </node>
+      <node id="14812">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="14811">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="14810">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="14811" relation="include">
+        </childnode>
+        <childnode refid="14812" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" prot="public">openage::gui::GuiGameSpecImageProvider</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../guisys/public/gui_image_provider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiEventQueue;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">qtsdl::GuiImageProvider</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934e" kindref="member">Type</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934ea5590bd874d7736941fb679a0652e6c82" kindref="member">ByFilename</ref>,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934eaca0498197aef64d3e0d08e96588d5fcf" kindref="member">ByGraphicId</ref>,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934eae2d8bace90592e66272a6adc4aa19a93" kindref="member">ByTerrainId</ref>,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a159ccb15139effe0fd30ab8882a347a5" kindref="member">GuiGameSpecImageProvider</ref>(<ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref><sp/>*render_updater,<sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a4a86c6b1bcf08a9f52d31955f7eb934e" kindref="member">Type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_1a86bfc628d71c5f47c9b86293b25f3417" kindref="member">~GuiGameSpecImageProvider</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/integration/public/gui_game_spec_image_provider.h"/>
+  </compounddef>
+</doxygen>

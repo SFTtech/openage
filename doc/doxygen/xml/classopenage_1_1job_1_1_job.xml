@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1job_1_1_job" kind="class" language="C++" prot="public">
+    <compoundname>openage::job::Job</compoundname>
+    <includes refid="job_8h" local="no">job.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_typed_job_state_base" kindref="compound">TypedJobStateBase</ref>&lt; T &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;TypedJobStateBase&lt;T&gt; &gt; openage::job::Job&lt; T &gt;::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A shared pointer to the job&apos;s shared state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="31" column="1" bodyfile="libopenage/job/job.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1job_1_1_job_1a809a08e92b20b20ec93b9aef661b6931" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class JobGroup</definition>
+        <argsstring></argsstring>
+        <name>JobGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="80" column="1" bodyfile="libopenage/job/job.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classopenage_1_1job_1_1_job_1a22d5e96819bc7c0bff8d135a21e67b42" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class JobManager</definition>
+        <argsstring></argsstring>
+        <name>JobManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="81" column="1" bodyfile="libopenage/job/job.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_1af7910b0b4f4390767944a3f30ba6cc0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::Job&lt; T &gt;::Job</definition>
+        <argsstring>()=default</argsstring>
+        <name>Job</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an empty job object that is not bound to any state. Should only be used as dummy object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::job::Job&lt; T &gt;::is_finished</definition>
+        <argsstring>() const</argsstring>
+        <name>is_finished</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns whether this job has finished. If this job wrapper has no assigned background job, true will be returned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="44" column="1" bodyfile="libopenage/job/job.h" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::job::Job&lt; T &gt;::get_result</definition>
+        <argsstring>()</argsstring>
+        <name>get_result</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns this job&apos;s result if the background execution was successful. If an exception has happened, it will be rethrown. This method must not be called, if the job&apos;s execution has not yet finished. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="56" column="1" bodyfile="libopenage/job/job.h" bodystart="56" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1job_1_1_job_1a625402a18d1d29e348ff2c9a1fc757fb" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::job::Job&lt; T &gt;::Job</definition>
+        <argsstring>(std::shared_ptr&lt; TypedJobStateBase&lt; T &gt;&gt; state)</argsstring>
+        <name>Job</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1job_1_1_typed_job_state_base" kindref="compound">TypedJobStateBase</ref>&lt; T &gt;&gt;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a job with the given shared state. This method may only be called by the job manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/job.h" line="71" column="1" bodyfile="libopenage/job/job.h" bodystart="71" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A job is a wrapper around a shared job state object and is returned by the job manager. It can be used to retrieve the current state of the job and its result. A job is a lightweight object which only contains a pointer to its internal shared state. Thus it can be copied around without worrying about performance. Further it is not necessary to create or pass pointers to job objects.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the job&apos;s result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3020">
+        <label>openage::job::Job&lt; T &gt;</label>
+        <link refid="classopenage_1_1job_1_1_job"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/job/job.h" line="28" column="1" bodyfile="libopenage/job/job.h" bodystart="28" bodyend="82"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1job_1_1_job_1ac41518839741ad0ef16c7e69cb2b4bbf" prot="public" virt="non-virtual"><scope>openage::job::Job</scope><name>get_result</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1a924f2e282168a5f742f3decdf68e5e0a" prot="public" virt="non-virtual"><scope>openage::job::Job</scope><name>is_finished</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1af7910b0b4f4390767944a3f30ba6cc0c" prot="public" virt="non-virtual"><scope>openage::job::Job</scope><name>Job</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1a625402a18d1d29e348ff2c9a1fc757fb" prot="private" virt="non-virtual"><scope>openage::job::Job</scope><name>Job</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1a809a08e92b20b20ec93b9aef661b6931" prot="private" virt="non-virtual"><scope>openage::job::Job</scope><name>JobGroup</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1a22d5e96819bc7c0bff8d135a21e67b42" prot="private" virt="non-virtual"><scope>openage::job::Job</scope><name>JobManager</name></member>
+      <member refid="classopenage_1_1job_1_1_job_1a4b96e587e819347412f944b10d0fa38a" prot="private" virt="non-virtual"><scope>openage::job::Job</scope><name>state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

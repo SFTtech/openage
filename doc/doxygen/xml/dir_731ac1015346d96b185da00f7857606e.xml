@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_731ac1015346d96b185da00f7857606e" kind="dir">
+    <compoundname>libopenage/audio</compoundname>
+    <innerfile refid="audio__manager_8cpp">audio_manager.cpp</innerfile>
+    <innerfile refid="audio__manager_8h">audio_manager.h</innerfile>
+    <innerfile refid="category_8cpp">category.cpp</innerfile>
+    <innerfile refid="category_8h">category.h</innerfile>
+    <innerfile refid="dynamic__loader_8cpp">dynamic_loader.cpp</innerfile>
+    <innerfile refid="dynamic__loader_8h">dynamic_loader.h</innerfile>
+    <innerfile refid="dynamic__resource_8cpp">dynamic_resource.cpp</innerfile>
+    <innerfile refid="dynamic__resource_8h">dynamic_resource.h</innerfile>
+    <innerfile refid="audio_2error_8cpp">error.cpp</innerfile>
+    <innerfile refid="audio_2error_8h">error.h</innerfile>
+    <innerfile refid="format_8cpp">format.cpp</innerfile>
+    <innerfile refid="format_8h">format.h</innerfile>
+    <innerfile refid="hash__functions_8h">hash_functions.h</innerfile>
+    <innerfile refid="in__memory__loader_8cpp">in_memory_loader.cpp</innerfile>
+    <innerfile refid="in__memory__loader_8h">in_memory_loader.h</innerfile>
+    <innerfile refid="in__memory__resource_8cpp">in_memory_resource.cpp</innerfile>
+    <innerfile refid="in__memory__resource_8h">in_memory_resource.h</innerfile>
+    <innerfile refid="loader__policy_8cpp">loader_policy.cpp</innerfile>
+    <innerfile refid="loader__policy_8h">loader_policy.h</innerfile>
+    <innerfile refid="opus__dynamic__loader_8cpp">opus_dynamic_loader.cpp</innerfile>
+    <innerfile refid="opus__dynamic__loader_8h">opus_dynamic_loader.h</innerfile>
+    <innerfile refid="opus__in__memory__loader_8cpp">opus_in_memory_loader.cpp</innerfile>
+    <innerfile refid="opus__in__memory__loader_8h">opus_in_memory_loader.h</innerfile>
+    <innerfile refid="opus__loading_8cpp">opus_loading.cpp</innerfile>
+    <innerfile refid="opus__loading_8h">opus_loading.h</innerfile>
+    <innerfile refid="audio_2resource_8cpp">resource.cpp</innerfile>
+    <innerfile refid="audio_2resource_8h">resource.h</innerfile>
+    <innerfile refid="resource__def_8cpp">resource_def.cpp</innerfile>
+    <innerfile refid="resource__def_8h">resource_def.h</innerfile>
+    <innerfile refid="sound_8cpp">sound.cpp</innerfile>
+    <innerfile refid="sound_8h">sound.h</innerfile>
+    <innerfile refid="audio_2types_8h">types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/audio/"/>
+  </compounddef>
+</doxygen>

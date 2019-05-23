@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1ability__type_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::ability_type &gt;</compoundname>
+    <includes refid="ability_8h" local="no">ability.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="structstd_1_1hash_3_01openage_1_1ability__type_01_4_1a7b6ffd43bfd5500a917e54d77fa5e20f" prot="public" static="no">
+        <type><ref refid="structstd_1_1hash_3_01openage_1_1ability__type_01_4_1a7b6ffd43bfd5500a917e54d77fa5e20f" kindref="member">underlying_type</ref>&lt; <ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">openage::ability_type</ref> &gt;::type</type>
+        <definition>typedef underlying_type&lt;openage::ability_type&gt;::type std::hash&lt; openage::ability_type &gt;::underlying_type</definition>
+        <argsstring></argsstring>
+        <name>underlying_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="375" column="1" bodyfile="libopenage/unit/ability.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1ability__type_01_4_1aa03a6d39a2e526552c5c035869db8209" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; openage::ability_type &gt;::operator()</definition>
+        <argsstring>(const openage::ability_type &amp;arg) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828" kindref="member">openage::ability_type</ref> &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/ability.h" line="377" column="1" bodyfile="libopenage/unit/ability.h" bodystart="377" bodyend="380"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>hasher for ability type enum </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2817">
+        <label>std::hash&lt; openage::ability_type &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1ability__type_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/ability.h" line="374" column="1" bodyfile="libopenage/unit/ability.h" bodystart="374" bodyend="381"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1ability__type_01_4_1aa03a6d39a2e526552c5c035869db8209" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::ability_type &gt;</scope><name>operator()</name></member>
+      <member refid="structstd_1_1hash_3_01openage_1_1ability__type_01_4_1a7b6ffd43bfd5500a917e54d77fa5e20f" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::ability_type &gt;</scope><name>underlying_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

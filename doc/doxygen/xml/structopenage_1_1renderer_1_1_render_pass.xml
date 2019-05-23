@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1_render_pass" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::RenderPass</compoundname>
+    <includes refid="renderer_8h" local="no">renderer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_render_pass_1ae6f66a81cdf870cf3d1724f4c9ecda3e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1_renderable" kindref="compound">Renderable</ref> &gt;</type>
+        <definition>std::vector&lt;Renderable&gt; openage::renderer::RenderPass::renderables</definition>
+        <argsstring></argsstring>
+        <name>renderables</name>
+        <briefdescription>
+<para>The renderables to parse and possibly execute. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/renderer.h" line="65" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref> const  *</type>
+        <definition>RenderTarget const* openage::renderer::RenderPass::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+<para>The render target to write into. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/renderer.h" line="67" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A render pass is a series of draw calls represented by renderables that output into the given render target. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3910">
+        <label>openage::renderer::RenderTarget</label>
+        <link refid="classopenage_1_1renderer_1_1_render_target"/>
+      </node>
+      <node id="3909">
+        <label>openage::renderer::RenderPass</label>
+        <link refid="structopenage_1_1renderer_1_1_render_pass"/>
+        <childnode refid="3910" relation="usage">
+          <edgelabel>+target</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/renderer.h" line="63" column="1" bodyfile="libopenage/renderer/renderer.h" bodystart="63" bodyend="68"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1_render_pass_1ae6f66a81cdf870cf3d1724f4c9ecda3e" prot="public" virt="non-virtual"><scope>openage::renderer::RenderPass</scope><name>renderables</name></member>
+      <member refid="structopenage_1_1renderer_1_1_render_pass_1adc6b912793e95d33c202fac5e7754f69" prot="public" virt="non-virtual"><scope>openage::renderer::RenderPass</scope><name>target</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

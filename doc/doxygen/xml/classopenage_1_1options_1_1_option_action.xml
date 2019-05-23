@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1options_1_1_option_action" kind="class" language="C++" prot="public">
+    <compoundname>openage::options::OptionAction</compoundname>
+    <includes refid="options_8h" local="no">options.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::options::OptionAction::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>name of this action </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="150" column="1" bodyfile="libopenage/options.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_action_1aaaa39ca37ed1412cd4ef03c06a5530be" prot="private" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" kindref="member">opt_func_t</ref></type>
+        <definition>const opt_func_t openage::options::OptionAction::function</definition>
+        <argsstring></argsstring>
+        <name>function</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="153" column="1" bodyfile="libopenage/options.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_action_1a8543517939fade7350330c12c7f09e17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionAction::OptionAction</definition>
+        <argsstring>(const std::string &amp;name, const opt_func_t f)</argsstring>
+        <name>OptionAction</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" kindref="member">opt_func_t</ref></type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="140" column="1" bodyfile="libopenage/options.cpp" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref></type>
+        <definition>OptionValue openage::options::OptionAction::do_action</definition>
+        <argsstring>()</argsstring>
+        <name>do_action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pass mouse position </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="145" column="1" bodyfile="libopenage/options.cpp" bodystart="226" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3474">
+        <label>openage::options::OptionAction</label>
+        <link refid="classopenage_1_1options_1_1_option_action"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/options.h" line="138" column="1" bodyfile="libopenage/options.h" bodystart="138" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" prot="public" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>do_action</name></member>
+      <member refid="classopenage_1_1options_1_1_option_action_1aaaa39ca37ed1412cd4ef03c06a5530be" prot="private" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>function</name></member>
+      <member refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" prot="public" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>name</name></member>
+      <member refid="classopenage_1_1options_1_1_option_action_1a8543517939fade7350330c12c7f09e17" prot="public" virt="non-virtual"><scope>openage::options::OptionAction</scope><name>OptionAction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

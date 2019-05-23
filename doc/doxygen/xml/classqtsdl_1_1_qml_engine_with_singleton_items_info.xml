@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_qml_engine_with_singleton_items_info" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::QmlEngineWithSingletonItemsInfo</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QQmlEngine</basecompoundref>
+    <includes refid="qml__engine__with__singleton__items__info_8h" local="no">qml_engine_with_singleton_items_info.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> * &gt;</type>
+        <definition>std::vector&lt;GuiImageProviderImpl*&gt; qtsdl::QmlEngineWithSingletonItemsInfo::image_providers</definition>
+        <argsstring></argsstring>
+        <name>image_providers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="37" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
+        <definition>GuiSingletonItemsInfo* qtsdl::QmlEngineWithSingletonItemsInfo::singleton_items_info</definition>
+        <argsstring></argsstring>
+        <name>singleton_items_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="38" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::QmlEngineWithSingletonItemsInfo::QmlEngineWithSingletonItemsInfo</definition>
+        <argsstring>(std::vector&lt; std::unique_ptr&lt; GuiImageProviderImpl &gt;&gt; &amp;&amp;image_providers, GuiSingletonItemsInfo *singleton_items_info=nullptr)</argsstring>
+        <name>QmlEngineWithSingletonItemsInfo</name>
+        <param>
+          <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt;&gt; &amp;&amp;</type>
+          <declname>image_providers</declname>
+        </param>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
+          <declname>singleton_items_info</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="29" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1acfc796de1ec7a3ddc546a31718edc8a2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::QmlEngineWithSingletonItemsInfo::QmlEngineWithSingletonItemsInfo</definition>
+        <argsstring>(std::vector&lt; std::unique_ptr&lt; GuiImageProviderImpl &gt;&gt; &amp;image_providers, GuiSingletonItemsInfo *singleton_items_info=nullptr)</argsstring>
+        <name>QmlEngineWithSingletonItemsInfo</name>
+        <param>
+          <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt;&gt; &amp;</type>
+          <declname>image_providers</declname>
+        </param>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
+          <declname>singleton_items_info</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="30" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="14" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::QmlEngineWithSingletonItemsInfo::~QmlEngineWithSingletonItemsInfo</definition>
+        <argsstring>()</argsstring>
+        <name>~QmlEngineWithSingletonItemsInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="31" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="30" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
+        <definition>GuiSingletonItemsInfo * qtsdl::QmlEngineWithSingletonItemsInfo::get_singleton_items_info</definition>
+        <argsstring>() const</argsstring>
+        <name>get_singleton_items_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="33" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> * &gt;</type>
+        <definition>std::vector&lt; GuiImageProviderImpl * &gt; qtsdl::QmlEngineWithSingletonItemsInfo::get_image_providers</definition>
+        <argsstring>() const</argsstring>
+        <name>get_image_providers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="34" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The Qml Engine used by openage.</para>
+<para>It&apos;s extended to contain the &quot;singleton items info&quot; and a list of image providers. The singleton item info is just a struct that allows to carry some variables in the qml-engine, namely the openage-engine.</para>
+<para>That way, the openage-engine and the qml-engine have a 1:1 relation and qml can access the main engine directly. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3812">
+        <label>QQmlEngine</label>
+      </node>
+      <node id="3811">
+        <label>qtsdl::QmlEngineWithSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_qml_engine_with_singleton_items_info"/>
+        <childnode refid="3812" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3814">
+        <label>QQmlEngine</label>
+      </node>
+      <node id="3815">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="3813">
+        <label>qtsdl::QmlEngineWithSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_qml_engine_with_singleton_items_info"/>
+        <childnode refid="3814" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3815" relation="usage">
+          <edgelabel>-singleton_items_info</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" line="25" column="1" bodyfile="libopenage/gui/guisys/link/qml_engine_with_singleton_items_info.h" bodystart="25" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a02494fab112e3dda7c9fdd12c66541b9" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>get_image_providers</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a75bfac02a613200f587f4f2e5d17ecb1" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>get_singleton_items_info</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1ae6f386194ecace3b1d7239046c143e00" prot="private" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>image_providers</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a441f558f4111e2fea484a660ffbc4375" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>QmlEngineWithSingletonItemsInfo</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1acfc796de1ec7a3ddc546a31718edc8a2" prot="public" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>QmlEngineWithSingletonItemsInfo</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3548116d9d1ddb11a3df17ef4d3db4dc" prot="private" virt="non-virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>singleton_items_info</name></member>
+      <member refid="classqtsdl_1_1_qml_engine_with_singleton_items_info_1a3ed9ffd383a3ff97dd595ce3c555a1c5" prot="public" virt="virtual"><scope>qtsdl::QmlEngineWithSingletonItemsInfo</scope><name>~QmlEngineWithSingletonItemsInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

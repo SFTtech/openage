@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1console_1_1_new_buf" kind="class" language="C++" prot="public">
+    <compoundname>openage::console::NewBuf</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a0ded18ccacc09666f7655056895d40e1" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">term</ref></type>
+        <definition>term openage::console::NewBuf::dims</definition>
+        <argsstring></argsstring>
+        <name>dims</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="79" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1ab8eb5292d645ad54167865354c717a9f" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">term_t</ref></type>
+        <definition>term_t openage::console::NewBuf::scrollback_lines</definition>
+        <argsstring></argsstring>
+        <name>scrollback_lines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="80" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a1bd33214fe7aa595ecfde4382160da30" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::NewBuf::linedata</definition>
+        <argsstring></argsstring>
+        <name>linedata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="82" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a06544d221e2d5b22e1ac1e1bd7b97f0b" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::NewBuf::linedata_size</definition>
+        <argsstring></argsstring>
+        <name>linedata_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="83" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a3610b447a2a2b9878f4b80e489469884" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::NewBuf::linedata_end</definition>
+        <argsstring></argsstring>
+        <name>linedata_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="84" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1afb345851f86946d17c15290721a42d03" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::NewBuf::linedata_ptr</definition>
+        <argsstring></argsstring>
+        <name>linedata_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="85" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a59d37cf131907749b3a4e8c6b0b8e218" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::NewBuf::chrdata</definition>
+        <argsstring></argsstring>
+        <name>chrdata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="87" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a6075734eef3393452b085c6813994f64" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::NewBuf::chrdata_size</definition>
+        <argsstring></argsstring>
+        <name>chrdata_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="88" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a4f9942c6480f325f3ced084631b19bc8" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::NewBuf::chrdata_end</definition>
+        <argsstring></argsstring>
+        <name>chrdata_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="89" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a0e467c262c3f901bf58dd689d07cf7f7" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::NewBuf::chrdata_ptr</definition>
+        <argsstring></argsstring>
+        <name>chrdata_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="90" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a9b84bdb525b517d4aa52fc504ad66b88" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">term_t</ref></type>
+        <definition>term_t openage::console::NewBuf::screen_buf_start</definition>
+        <argsstring></argsstring>
+        <name>screen_buf_start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="92" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a384919511c85ec8c6cf47e36c3203c94" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::NewBuf::screen_buf_size</definition>
+        <argsstring></argsstring>
+        <name>screen_buf_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="93" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a5ffb4c65d51452ecacf49c328eb633f6" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">term_t</ref></type>
+        <definition>term_t openage::console::NewBuf::scrollback_buf_start</definition>
+        <argsstring></argsstring>
+        <name>scrollback_buf_start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="94" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a55c9f19e05417ed22f052de5ca0ded38" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::NewBuf::scrollback_buf_size</definition>
+        <argsstring></argsstring>
+        <name>scrollback_buf_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="95" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a290a6edb08f2820f9aa9a9f33475e366" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::NewBuf::current_line_is_screen_buf</definition>
+        <argsstring></argsstring>
+        <name>current_line_is_screen_buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="97" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1a8c08eb80427729ed8ce5413436676134" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">term</ref></type>
+        <definition>term openage::console::NewBuf::current_pos</definition>
+        <argsstring></argsstring>
+        <name>current_pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="98" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_new_buf_1aaf6dd2c1ed3177e4aee12c66f09ba1f6" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+        <definition>const buf_char openage::console::NewBuf::default_char_fmt</definition>
+        <argsstring></argsstring>
+        <name>default_char_fmt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="100" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1ae994348316fb0b88fa09dcec09c9ff6d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::NewBuf::NewBuf</definition>
+        <argsstring>(term dims, term_t scrollback_lines, buf_char default_char_fmt)</argsstring>
+        <name>NewBuf</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">term</ref></type>
+          <declname>dims</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">term_t</ref></type>
+          <declname>scrollback_lines</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+          <declname>default_char_fmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="102" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="102" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1a200a5ac80f54942482b48155d62bda28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::NewBuf::~NewBuf</definition>
+        <argsstring>()</argsstring>
+        <name>~NewBuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="128" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1ab00cc1e9661d52eb6ae50c708a17a520" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::NewBuf::apply_to_buf</definition>
+        <argsstring>(Buf *b)</argsstring>
+        <name>apply_to_buf</name>
+        <param>
+          <type><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="133" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="133" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1a5b5b1d0951916fee7948751eaf03228c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::NewBuf::move_ptrs_to_next_line</definition>
+        <argsstring>()</argsstring>
+        <name>move_ptrs_to_next_line</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="156" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="156" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1aeed148908cd1279e29c1400ff53f33ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::NewBuf::new_line</definition>
+        <argsstring>(bool part_of_screen_buf)</argsstring>
+        <name>new_line</name>
+        <param>
+          <type>bool</type>
+          <declname>part_of_screen_buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>starts a new line (as by newline character) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="177" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="177" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::NewBuf::new_chr</definition>
+        <argsstring>(buf_char c)</argsstring>
+        <name>new_chr</name>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>writes a char </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.cpp" line="191" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="191" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3361">
+        <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
+      </node>
+      <node id="3358">
+        <label>openage::console::buf_char</label>
+        <link refid="structopenage_1_1console_1_1buf__char"/>
+      </node>
+      <node id="3357">
+        <label>openage::console::NewBuf</label>
+        <link refid="classopenage_1_1console_1_1_new_buf"/>
+        <childnode refid="3358" relation="usage">
+          <edgelabel>+chrdata_end</edgelabel>
+          <edgelabel>+chrdata_ptr</edgelabel>
+          <edgelabel>+chrdata</edgelabel>
+          <edgelabel>+default_char_fmt</edgelabel>
+        </childnode>
+        <childnode refid="3359" relation="usage">
+          <edgelabel>+linedata</edgelabel>
+          <edgelabel>+linedata_ptr</edgelabel>
+          <edgelabel>+linedata_end</edgelabel>
+        </childnode>
+        <childnode refid="3360" relation="usage">
+          <edgelabel>+dims</edgelabel>
+          <edgelabel>+current_pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="3360">
+        <label>openage::coord::term</label>
+        <link refid="structopenage_1_1coord_1_1term"/>
+        <childnode refid="3361" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3359">
+        <label>openage::console::buf_line</label>
+        <link refid="structopenage_1_1console_1_1buf__line"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/console/buf.cpp" line="77" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="77" bodyend="211"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1console_1_1_new_buf_1ab00cc1e9661d52eb6ae50c708a17a520" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>apply_to_buf</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a59d37cf131907749b3a4e8c6b0b8e218" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>chrdata</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a4f9942c6480f325f3ced084631b19bc8" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>chrdata_end</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a0e467c262c3f901bf58dd689d07cf7f7" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>chrdata_ptr</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a6075734eef3393452b085c6813994f64" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>chrdata_size</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a290a6edb08f2820f9aa9a9f33475e366" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>current_line_is_screen_buf</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a8c08eb80427729ed8ce5413436676134" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>current_pos</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1aaf6dd2c1ed3177e4aee12c66f09ba1f6" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>default_char_fmt</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a0ded18ccacc09666f7655056895d40e1" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>dims</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a1bd33214fe7aa595ecfde4382160da30" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>linedata</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a3610b447a2a2b9878f4b80e489469884" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>linedata_end</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1afb345851f86946d17c15290721a42d03" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>linedata_ptr</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a06544d221e2d5b22e1ac1e1bd7b97f0b" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>linedata_size</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a5b5b1d0951916fee7948751eaf03228c" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>move_ptrs_to_next_line</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a32d81f342f14bc3a65a65f075aeb5eb1" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>new_chr</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1aeed148908cd1279e29c1400ff53f33ce" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>new_line</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1ae994348316fb0b88fa09dcec09c9ff6d" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>NewBuf</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a384919511c85ec8c6cf47e36c3203c94" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>screen_buf_size</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a9b84bdb525b517d4aa52fc504ad66b88" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>screen_buf_start</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a55c9f19e05417ed22f052de5ca0ded38" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>scrollback_buf_size</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a5ffb4c65d51452ecacf49c328eb633f6" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>scrollback_buf_start</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1ab8eb5292d645ad54167865354c717a9f" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>scrollback_lines</name></member>
+      <member refid="classopenage_1_1console_1_1_new_buf_1a200a5ac80f54942482b48155d62bda28" prot="public" virt="non-virtual"><scope>openage::console::NewBuf</scope><name>~NewBuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

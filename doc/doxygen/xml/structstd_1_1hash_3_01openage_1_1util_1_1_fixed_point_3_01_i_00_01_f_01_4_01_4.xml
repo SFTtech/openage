@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</compoundname>
+    <includes refid="fixed__point_8h" local="no">fixed_point.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename I</type>
+      </param>
+      <param>
+        <type>unsigned</type>
+        <declname>F</declname>
+        <defname>F</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a4decb3a80285baa0de819035ddbfe50b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;::operator()</definition>
+        <argsstring>(const openage::util::FixedPoint&lt; I, F &gt; &amp;n) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">openage::util::FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="504" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="504" bodyend="506"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2837">
+        <label>std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</label>
+        <link refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fixed_point.h" line="503" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="503" bodyend="507"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01openage_1_1util_1_1_fixed_point_3_01_i_00_01_f_01_4_01_4_1a4decb3a80285baa0de819035ddbfe50b" prot="public" virt="non-virtual"><scope>std::hash&lt; openage::util::FixedPoint&lt; I, F &gt; &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

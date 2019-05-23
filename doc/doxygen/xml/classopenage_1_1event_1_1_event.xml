@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::Event</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Event &gt;</basecompoundref>
+    <includes refid="event_2event_8h" local="no">event.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1acc9e0c2f1eed5dc7507c778977de01f0" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::Event::last_triggered</definition>
+        <argsstring></argsstring>
+        <name>last_triggered</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="68" column="1" bodyfile="libopenage/event/event.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1a802c75b565c12865ca9432293e0e8ec0" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref></type>
+        <definition>EventClass::param_map openage::event::Event::params</definition>
+        <argsstring></argsstring>
+        <name>params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parameters for the event (determined by its <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="74" column="1" bodyfile="libopenage/event/event.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1a4b1a7f88956bfac6d1c51808c06149d3" prot="private" static="no" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt;</type>
+        <definition>std::weak_ptr&lt;EventTarget&gt; openage::event::Event::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The actor that has the event </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="77" column="1" bodyfile="libopenage/event/event.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1a01668dfe2bad926f4e43fa24de2693b5" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EventClass&gt; openage::event::Event::eventclass</definition>
+        <argsstring></argsstring>
+        <name>eventclass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of this event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="80" column="1" bodyfile="libopenage/event/event.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1abf0b83492dd0fb9d0ee5ed9d2535d538" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::Event::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Time this event occurs/occured </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="83" column="1" bodyfile="libopenage/event/event.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_1ad020a0d29b42fdfb8575938ca3b8078a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::event::Event::myhash</definition>
+        <argsstring></argsstring>
+        <name>myhash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Precalculated std::hash for the event </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="86" column="1" bodyfile="libopenage/event/event.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a15f20cdeaf9c0d8cfc041751983be12b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::Event::Event</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;trgt, const std::shared_ptr&lt; EventClass &gt; &amp;eventclass, const EventClass::param_map &amp;params)</argsstring>
+        <name>Event</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>trgt</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+          <declname>eventclass</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="21" column="1" bodyfile="libopenage/event/event.cpp" bodystart="13" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a8803fcd92b88e0f29867ba3a28ee9b88" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::weak_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+        <definition>const std::weak_ptr&lt;EventTarget&gt;&amp; openage::event::Event::get_target</definition>
+        <argsstring>() const</argsstring>
+        <name>get_target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="25" column="1" bodyfile="libopenage/event/event.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a807c931102c8a12c02f1bca33a8f7818" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref> &gt; &amp;</type>
+        <definition>const std::shared_ptr&lt;EventClass&gt;&amp; openage::event::Event::get_eventclass</definition>
+        <argsstring>() const</argsstring>
+        <name>get_eventclass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="29" column="1" bodyfile="libopenage/event/event.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a1eb9c12684c2ec1bd8537413cd3f9cde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Event::reschedule</definition>
+        <argsstring>(const curve::time_t reference_time)</argsstring>
+        <name>reschedule</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+          <declname>reference_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reschedule will call the predict_invoke_time method to initiate a reschedule for the event it uses the reference_time as base for its calculation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1accbec5661ae3526aec6ac7cd3b375dc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::event::Event::hash</definition>
+        <argsstring>() const</argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="39" column="1" bodyfile="libopenage/event/event.h" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1aa2482173d55fd926b1a27f2191ad8067" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+        <definition>const curve::time_t&amp; openage::event::Event::get_time</definition>
+        <argsstring>() const</argsstring>
+        <name>get_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="43" column="1" bodyfile="libopenage/event/event.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1ad58b57e09387a1a2c762150cd25fafb0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Event::set_time</definition>
+        <argsstring>(const curve::time_t &amp;t)</argsstring>
+        <name>set_time</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="47" column="1" bodyfile="libopenage/event/event.h" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1ae4a4010f604e22efc1f3b800d2a62703" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+        <definition>const EventClass::param_map&amp; openage::event::Event::get_params</definition>
+        <argsstring>() const</argsstring>
+        <name>get_params</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="51" column="1" bodyfile="libopenage/event/event.h" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a8a965360b4fcaa417ffebc7e10c9d8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::Event::depend_on</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;dependency)</argsstring>
+        <name>depend_on</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>dependency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Let this event depend on another an event target. When this target is changes, the event is reevaluated.</para>
+<para>To be called in the EventClass::setup function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="61" column="1" bodyfile="libopenage/event/event.cpp" bodystart="26" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_1a1ff5a77ea3d6a07aa9632d94da7bc7b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::event::Event::operator&lt;</definition>
+        <argsstring>(const Event &amp;other) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>For sorting events by their trigger time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/event.h" line="66" column="1" bodyfile="libopenage/event/event.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The actual one event that may be called - it is used to manage the event itself. It does not need to be stored. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1420">
+        <label>std::enable_shared_from_this&lt; Event &gt;</label>
+      </node>
+      <node id="1419">
+        <label>openage::event::Event</label>
+        <link refid="classopenage_1_1event_1_1_event"/>
+        <childnode refid="1420" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1423">
+        <label>openage::event::EventClass::param_map</label>
+        <link refid="classopenage_1_1event_1_1_event_class_1_1param__map"/>
+      </node>
+      <node id="1422">
+        <label>std::enable_shared_from_this&lt; Event &gt;</label>
+      </node>
+      <node id="1424">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+      <node id="1421">
+        <label>openage::event::Event</label>
+        <link refid="classopenage_1_1event_1_1_event"/>
+        <childnode refid="1422" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1423" relation="usage">
+          <edgelabel>-params</edgelabel>
+        </childnode>
+        <childnode refid="1424" relation="usage">
+          <edgelabel>+last_triggered</edgelabel>
+          <edgelabel>-time</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/event.h" line="19" column="1" bodyfile="libopenage/event/event.h" bodystart="19" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_1a8a965360b4fcaa417ffebc7e10c9d8d1" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>depend_on</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a15f20cdeaf9c0d8cfc041751983be12b" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>Event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a01668dfe2bad926f4e43fa24de2693b5" prot="private" virt="non-virtual"><scope>openage::event::Event</scope><name>eventclass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a807c931102c8a12c02f1bca33a8f7818" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>get_eventclass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1ae4a4010f604e22efc1f3b800d2a62703" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>get_params</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a8803fcd92b88e0f29867ba3a28ee9b88" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>get_target</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1aa2482173d55fd926b1a27f2191ad8067" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>get_time</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1accbec5661ae3526aec6ac7cd3b375dc8" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>hash</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1acc9e0c2f1eed5dc7507c778977de01f0" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>last_triggered</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1ad020a0d29b42fdfb8575938ca3b8078a" prot="private" virt="non-virtual"><scope>openage::event::Event</scope><name>myhash</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a1ff5a77ea3d6a07aa9632d94da7bc7b0" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a802c75b565c12865ca9432293e0e8ec0" prot="private" virt="non-virtual"><scope>openage::event::Event</scope><name>params</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a1eb9c12684c2ec1bd8537413cd3f9cde" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>reschedule</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1ad58b57e09387a1a2c762150cd25fafb0" prot="public" virt="non-virtual"><scope>openage::event::Event</scope><name>set_time</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1a4b1a7f88956bfac6d1c51808c06149d3" prot="private" virt="non-virtual"><scope>openage::event::Event</scope><name>target</name></member>
+      <member refid="classopenage_1_1event_1_1_event_1abf0b83492dd0fb9d0ee5ed9d2535d538" prot="private" virt="non-virtual"><scope>openage::event::Event</scope><name>time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

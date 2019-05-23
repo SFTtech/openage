@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_generator" kind="class" language="C++" prot="public">
+    <compoundname>openage::Generator</compoundname>
+    <basecompoundref refid="structqtsdl_1_1_gui_property_map" prot="public" virt="non-virtual">qtsdl::GuiPropertyMap</basecompoundref>
+    <includes refid="generator_8h" local="no">generator.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GameSpec&gt; openage::Generator::spec</definition>
+        <argsstring></argsstring>
+        <name>spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>data version used to create a game </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="168" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_region" kindref="compound">Region</ref> &gt;</type>
+        <definition>std::vector&lt;Region&gt; openage::Generator::regions</definition>
+        <argsstring></argsstring>
+        <name>regions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the generated data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="173" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_generator_1a6e4a27bed5a78acb4c27c817b2ff92a1" prot="public" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">qtsdl::GuiItemLink</ref> *</type>
+        <definition>qtsdl::GuiItemLink* openage::Generator::gui_link</definition>
+        <argsstring></argsstring>
+        <name>gui_link</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="176" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_generator_1a59c5142b05948f3a9e146229d2b11648" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Generator::Generator</definition>
+        <argsstring>(qtsdl::GuiItemLink *gui_link)</argsstring>
+        <name>Generator</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">qtsdl::GuiItemLink</ref> *</type>
+          <declname>gui_link</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="135" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="126" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_generator_1aa50cc4505ac7fe56706a47495bd5bedc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; GameSpec &gt; openage::Generator::get_spec</definition>
+        <argsstring>() const</argsstring>
+        <name>get_spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>game spec used by this generator </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="140" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="140" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::Generator::player_names</definition>
+        <argsstring>() const</argsstring>
+        <name>player_names</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the list of player names </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="145" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="144" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; Terrain &gt; openage::Generator::terrain</definition>
+        <argsstring>() const</argsstring>
+        <name>terrain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the generated terrain </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="150" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="237" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Generator::add_units</definition>
+        <argsstring>(GameMain &amp;m) const</argsstring>
+        <name>add_units</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &amp;</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>places all initial objects </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="155" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="252" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; GameMain &gt; openage::Generator::create</definition>
+        <argsstring>(std::shared_ptr&lt; GameSpec &gt; spec)</argsstring>
+        <name>create</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+          <declname>spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a game from a specification. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="160" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="303" bodyend="320"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Generator::create_regions</definition>
+        <argsstring>()</argsstring>
+        <name>create_regions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/generator.h" line="163" column="1" bodyfile="libopenage/gamestate/generator.cpp" bodystart="153" bodyend="234"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Manages creation and setup of new games</para>
+<para>required values used to construct a game this includes game spec and players</para>
+<para>this will be identical for each networked player in a game </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2336">
+        <label>openage::Generator</label>
+        <link refid="classopenage_1_1_generator"/>
+        <childnode refid="2337" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2337">
+        <label>qtsdl::GuiPropertyMap</label>
+        <link refid="structqtsdl_1_1_gui_property_map"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2338">
+        <label>openage::Generator</label>
+        <link refid="classopenage_1_1_generator"/>
+        <childnode refid="2339" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2340" relation="usage">
+          <edgelabel>+gui_link</edgelabel>
+        </childnode>
+      </node>
+      <node id="2340">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2339">
+        <label>qtsdl::GuiPropertyMap</label>
+        <link refid="structqtsdl_1_1_gui_property_map"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/generator.h" line="133" column="1" bodyfile="libopenage/gamestate/generator.h" bodystart="133" bodyend="177"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_generator_1a5ba29f137cba8325e0dfff1b753f2d23" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>add_units</name></member>
+      <member refid="classopenage_1_1_generator_1ab7579f771b73612867f7d07482e0a540" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>create</name></member>
+      <member refid="classopenage_1_1_generator_1ae221973cf4125fbf62af6f9626609b4a" prot="private" virt="non-virtual"><scope>openage::Generator</scope><name>create_regions</name></member>
+      <member refid="classopenage_1_1_generator_1a59c5142b05948f3a9e146229d2b11648" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>Generator</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a88e34211690a34ab7dda78ffa4f760f0" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>get_csv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ab528563d970fd1bacac54adf3ef5f0c5" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>get_csv</name></member>
+      <member refid="classopenage_1_1_generator_1aa50cc4505ac7fe56706a47495bd5bedc" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>get_spec</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a1b0d6475eeb16f602dda8d52021bd18b" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ab117e66375a65845d4790759709ab7cc" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1afe5912a4774325783f28700059c847d4" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1af70627c91bf7e819ef88568e2da3ff2a" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aff1500e141081b75cf2edf3c772dd6c6" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a79d1ccb1fc54a7617c52dc26420d6d4d" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a730e24fb5fd9e8f16e4abb45cda91850" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1afe5912a4774325783f28700059c847d4" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1af70627c91bf7e819ef88568e2da3ff2a" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aff1500e141081b75cf2edf3c772dd6c6" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a59fa1bf673dd5eae8a3b19efa0b4a8f2" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a3bc07398563fc94455f9e291b89f867e" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>getv</name></member>
+      <member refid="classopenage_1_1_generator_1a6e4a27bed5a78acb4c27c817b2ff92a1" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>gui_link</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a5dfb8cb2970ab03b364100ddd8f1d247" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>GuiPropertyMap</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a1caaf9a1524216e93fec552ef264ce14" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>impl</name></member>
+      <member refid="classopenage_1_1_generator_1af11850ef5723aa275de62da0964e8da7" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>player_names</name></member>
+      <member refid="classopenage_1_1_generator_1aaf04e63cb2d8426871af63193dd1f7bf" prot="private" virt="non-virtual"><scope>openage::Generator</scope><name>regions</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a133caf3ee8c0a9651d59f90fbb2cf768" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>set_csv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a85748402c4cc40988b05b23b347cbdff" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>set_csv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a16716bc541a6e80adf7e8affbf59e87c" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a3c5f3a173c22de32aef041bb89788d06" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a6b9660f0f33781318bf8eb6803107bea" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a5fe0988d911e91d0eb23d0127fd9b83e" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ad1466272e9af23bb8ddd70b5180db0c9" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a725f2e91546176c55cdc9c5be5e1ba36" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1af3dd772c4e60a4b360f14adfc77b9d1d" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ad409cf3fd5f878f81276c0a2ce1c8705" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aaa9fb270455b45b18394555a9d341888" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aeadcdae825c4ea0d3380995aeec60b7f" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ad7b30ba8333d5694b1dbf0374c57c6cc" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a9468581d39ce00181dc0fb86284593ea" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1af3dd772c4e60a4b360f14adfc77b9d1d" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ad409cf3fd5f878f81276c0a2ce1c8705" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aaa9fb270455b45b18394555a9d341888" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1ad2f7ca777feb21f0ad4b17a8c85b4bdb" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1aeadcdae825c4ea0d3380995aeec60b7f" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1a68bfdc10e974b33fe0bc2ba0fd04481b" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>setv</name></member>
+      <member refid="classopenage_1_1_generator_1ab9df64698f3ac44a5cb501eb518b4e09" prot="private" virt="non-virtual"><scope>openage::Generator</scope><name>spec</name></member>
+      <member refid="classopenage_1_1_generator_1a8ca4db5b0a66eb2397d2b8d8e8364640" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>terrain</name></member>
+      <member refid="structqtsdl_1_1_gui_property_map_1afe5e149fb6fd163b454de8d6b27b74e3" prot="public" virt="non-virtual"><scope>openage::Generator</scope><name>~GuiPropertyMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

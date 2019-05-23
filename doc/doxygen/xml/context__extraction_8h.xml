@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="context__extraction_8h" kind="file" language="C++">
+    <compoundname>context_extraction.h</compoundname>
+    <includes local="no">tuple</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">QWindow</includes>
+    <includes local="no">QVariant</includes>
+    <includedby refid="gui__ctx__setup_8cpp" local="yes">libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
+    <includedby refid="context__extraction__cocoa_8mm" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</includedby>
+    <includedby refid="context__extraction__win32_8cpp" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</includedby>
+    <includedby refid="context__extraction__x11_8cpp" local="yes">libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</includedby>
+    <incdepgraph>
+      <node id="13418">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction.h</label>
+        <link refid="context__extraction_8h"/>
+        <childnode refid="13419" relation="include">
+        </childnode>
+        <childnode refid="13420" relation="include">
+        </childnode>
+        <childnode refid="13421" relation="include">
+        </childnode>
+        <childnode refid="13422" relation="include">
+        </childnode>
+      </node>
+      <node id="13420">
+        <label>functional</label>
+      </node>
+      <node id="13419">
+        <label>tuple</label>
+      </node>
+      <node id="13421">
+        <label>QWindow</label>
+      </node>
+      <node id="13422">
+        <label>QVariant</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13423">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction.h</label>
+        <link refid="context__extraction_8h"/>
+        <childnode refid="13424" relation="include">
+        </childnode>
+        <childnode refid="13425" relation="include">
+        </childnode>
+        <childnode refid="13426" relation="include">
+        </childnode>
+        <childnode refid="13427" relation="include">
+        </childnode>
+      </node>
+      <node id="13427">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction_x11.cpp</label>
+        <link refid="context__extraction__x11_8cpp"/>
+      </node>
+      <node id="13426">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction_win32.cpp</label>
+        <link refid="context__extraction__win32_8cpp"/>
+      </node>
+      <node id="13424">
+        <label>libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
+        <link refid="gui__ctx__setup_8cpp"/>
+      </node>
+      <node id="13425">
+        <label>libopenage/gui/guisys/private/platforms/context_extraction_cocoa.mm</label>
+        <link refid="context__extraction__cocoa_8mm"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QWindow&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QVariant&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">SDL_Window;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">std::tuple&lt;QVariant,<sp/>WId&gt;<sp/><ref refid="namespaceqtsdl_1afe4ced3b28358a42a4c178c3e85d64ac" kindref="member">extract_native_context</ref>(SDL_Window<sp/>*window);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">std::tuple&lt;QVariant,<sp/>std::function&lt;void()&gt;&gt;<sp/><ref refid="namespaceqtsdl_1a4932b95840fb2a53ea19d235b68dc6c8" kindref="member">extract_native_context_and_switchback_func</ref>(SDL_Window<sp/>*window);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/platforms/context_extraction.h"/>
+  </compounddef>
+</doxygen>

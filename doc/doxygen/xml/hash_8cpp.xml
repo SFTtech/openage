@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="hash_8cpp" kind="file" language="C++">
+    <compoundname>hash.cpp</compoundname>
+    <includes local="no">array</includes>
+    <includes local="no">limits.h</includes>
+    <includes refid="hash_8h" local="yes">hash.h</includes>
+    <includes refid="misc_8h" local="yes">misc.h</includes>
+    <incdepgraph>
+      <node id="30567">
+        <label>list</label>
+      </node>
+      <node id="30558">
+        <label>atomic</label>
+      </node>
+      <node id="30564">
+        <label>iomanip</label>
+      </node>
+      <node id="30563">
+        <label>functional</label>
+      </node>
+      <node id="30554">
+        <label>cstdint</label>
+      </node>
+      <node id="30561">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30562" relation="include">
+        </childnode>
+        <childnode refid="30563" relation="include">
+        </childnode>
+        <childnode refid="30564" relation="include">
+        </childnode>
+        <childnode refid="30546" relation="include">
+        </childnode>
+        <childnode refid="30565" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+        <childnode refid="30545" relation="include">
+        </childnode>
+      </node>
+      <node id="30538">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30539" relation="include">
+        </childnode>
+        <childnode refid="30536" relation="include">
+        </childnode>
+      </node>
+      <node id="30542">
+        <label>cmath</label>
+      </node>
+      <node id="30549">
+        <label>stdexcept</label>
+      </node>
+      <node id="30566">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30567" relation="include">
+        </childnode>
+        <childnode refid="30568" relation="include">
+        </childnode>
+        <childnode refid="30569" relation="include">
+        </childnode>
+      </node>
+      <node id="30562">
+        <label>cstdarg</label>
+      </node>
+      <node id="30544">
+        <label>string</label>
+      </node>
+      <node id="30553">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30557" relation="include">
+        </childnode>
+        <childnode refid="30566" relation="include">
+        </childnode>
+        <childnode refid="30569" relation="include">
+        </childnode>
+      </node>
+      <node id="30556">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30539" relation="include">
+        </childnode>
+      </node>
+      <node id="30557">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30558" relation="include">
+        </childnode>
+        <childnode refid="30546" relation="include">
+        </childnode>
+        <childnode refid="30559" relation="include">
+        </childnode>
+        <childnode refid="30550" relation="include">
+        </childnode>
+        <childnode refid="30560" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+      </node>
+      <node id="30537">
+        <label>limits.h</label>
+      </node>
+      <node id="30547">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30548" relation="include">
+        </childnode>
+        <childnode refid="30546" relation="include">
+        </childnode>
+        <childnode refid="30549" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+        <childnode refid="30550" relation="include">
+        </childnode>
+        <childnode refid="30553" relation="include">
+        </childnode>
+      </node>
+      <node id="30540">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="30541" relation="include">
+        </childnode>
+        <childnode refid="30537" relation="include">
+        </childnode>
+        <childnode refid="30542" relation="include">
+        </childnode>
+        <childnode refid="30543" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+        <childnode refid="30545" relation="include">
+        </childnode>
+        <childnode refid="30546" relation="include">
+        </childnode>
+        <childnode refid="30547" relation="include">
+        </childnode>
+        <childnode refid="30550" relation="include">
+        </childnode>
+      </node>
+      <node id="30571">
+        <label>typeinfo</label>
+      </node>
+      <node id="30545">
+        <label>vector</label>
+      </node>
+      <node id="30551">
+        <label>ciso646</label>
+      </node>
+      <node id="30536">
+        <label>array</label>
+      </node>
+      <node id="30565">
+        <label>sstream</label>
+      </node>
+      <node id="30550">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30551" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+        <childnode refid="30552" relation="include">
+        </childnode>
+      </node>
+      <node id="30552">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30552" relation="include">
+        </childnode>
+      </node>
+      <node id="30535">
+        <label>libopenage/util/hash.cpp</label>
+        <link refid="hash_8cpp"/>
+        <childnode refid="30536" relation="include">
+        </childnode>
+        <childnode refid="30537" relation="include">
+        </childnode>
+        <childnode refid="30538" relation="include">
+        </childnode>
+        <childnode refid="30540" relation="include">
+        </childnode>
+      </node>
+      <node id="30560">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30548" relation="include">
+        </childnode>
+        <childnode refid="30544" relation="include">
+        </childnode>
+      </node>
+      <node id="30569">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30570" relation="include">
+        </childnode>
+      </node>
+      <node id="30539">
+        <label>cstdlib</label>
+      </node>
+      <node id="30548">
+        <label>iostream</label>
+      </node>
+      <node id="30568">
+        <label>mutex</label>
+      </node>
+      <node id="30559">
+        <label>type_traits</label>
+      </node>
+      <node id="30555">
+        <label>config.h</label>
+      </node>
+      <node id="30541">
+        <label>algorithm</label>
+      </node>
+      <node id="30543">
+        <label>cstring</label>
+      </node>
+      <node id="30546">
+        <label>memory</label>
+      </node>
+      <node id="30570">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30548" relation="include">
+        </childnode>
+        <childnode refid="30571" relation="include">
+        </childnode>
+        <childnode refid="30550" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hash_8h" kindref="compound">hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="misc_8h" kindref="compound">misc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">hash_combine</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hash1,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hash2)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Taken<sp/>from<sp/>http://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hash1<sp/>^<sp/>(hash2<sp/>+<sp/>0x9e3779b9<sp/>+<sp/>((hash1<sp/>&lt;&lt;<sp/>6)<sp/>+<sp/>(hash1<sp/>&gt;&gt;<sp/>2)));</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_siphash_1a0d9e67468bcba15f9f14f6affc3b9711" kindref="member">Siphash::Siphash</ref>(std::array&lt;uint8_t,<sp/>16&gt;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" kindref="member">set_key</ref>(<ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref>&amp;<sp/><ref refid="classopenage_1_1util_1_1_siphash_1af7425175b423437032001ccf3901a54b" kindref="member">Siphash::set_key</ref>(std::array&lt;uint8_t,<sp/>16&gt;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;key[0]<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" kindref="member">array8_to_uint64</ref>(<ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>.data(),<sp/>8,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;key[1]<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" kindref="member">array8_to_uint64</ref>(<ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>.data()<sp/>+<sp/>8,<sp/>8,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/>key[2],<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len_data)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sipround<sp/>=<sp/>[](uint64_t<sp/>*v)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>+=<sp/>v[1];</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>=<sp/>rol&lt;uint64_t,<sp/>13&gt;(v[1]);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>^=<sp/>v[0];</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>=<sp/>rol&lt;uint64_t,<sp/>32&gt;(v[0]);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[2]<sp/>+=<sp/>v[3];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[3]<sp/>=<sp/>rol&lt;uint64_t,<sp/>16&gt;(v[3]);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[3]<sp/>^=<sp/>v[2];</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>+=<sp/>v[3];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[3]<sp/>=<sp/>rol&lt;uint64_t,<sp/>21&gt;(v[3]);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[3]<sp/>^=<sp/>v[0];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[2]<sp/>+=<sp/>v[1];</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>=<sp/>rol&lt;uint64_t,<sp/>17&gt;(v[1]);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[1]<sp/>^=<sp/>v[2];</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[2]<sp/>=<sp/>rol&lt;uint64_t,<sp/>32&gt;(v[2]);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(len_data<sp/>mod<sp/>256)<sp/>ending<sp/>to<sp/>append<sp/>later<sp/>at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>ending<sp/>=<sp/>static_cast&lt;uint64_t&gt;(len_data<sp/>&amp;<sp/>0xff)<sp/>&lt;&lt;<sp/>56;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>v[4];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>values<sp/>were<sp/>taken<sp/>from<sp/>the<sp/>paper:<sp/>https://131002.net/siphash/siphash.pdf</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>v[0]<sp/>=<sp/>key[0]<sp/>^<sp/>0x736f6d6570736575ull;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>v[1]<sp/>=<sp/>key[1]<sp/>^<sp/>0x646f72616e646f6dull;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>v[2]<sp/>=<sp/>key[0]<sp/>^<sp/>0x6c7967656e657261ull;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>v[3]<sp/>=<sp/>key[1]<sp/>^<sp/>0x7465646279746573ull;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>rem_bytes{len_data};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*idx{data};<sp/></highlight><highlight class="comment">//<sp/>Points<sp/>to<sp/>the<sp/>start<sp/>of<sp/>the<sp/>current<sp/>block<sp/>being<sp/>copied</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>block;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>finished{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rem_bytes<sp/>&lt;<sp/>8)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" kindref="member">array8_to_uint64</ref>(idx,<sp/>rem_bytes,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>|=<sp/>ending;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>finished<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" kindref="member">array8_to_uint64</ref>(idx,<sp/>8,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[3]<sp/>^=<sp/>block;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[0]<sp/>^=<sp/>block;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rem_bytes<sp/>-=<sp/>8;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idx<sp/>+=<sp/>8;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!finished);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Finalization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>v[2]<sp/>^=<sp/>0xff;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>sipround(v);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>v[0]<sp/>^<sp/>v[1]<sp/>^<sp/>v[2]<sp/>^<sp/>v[3];</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" kindref="member">Siphash::digest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>count)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>(<ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>,<sp/>data,<sp/>count);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classopenage_1_1util_1_1_siphash_1a0cb5db9ffca1f96885bc53e2f5c0c65d" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="classopenage_1_1util_1_1_siphash_1a59bdccc7e794fe057e4777031a177650" kindref="member">Siphash::digest</ref>(uint64_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>data<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" kindref="member">uint64_to_array8</ref>(value,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>(<ref refid="classopenage_1_1util_1_1_siphash_1a35cc6948b9a2b8bed1cb3d100b85c5d9" kindref="member">key</ref>,<sp/>data.data(),<sp/>8);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/hash.cpp"/>
+  </compounddef>
+</doxygen>

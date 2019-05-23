@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_33953da122726b9905cb02c38c71bd0c" kind="dir">
+    <compoundname>libopenage/gui/guisys/link</compoundname>
+    <innerfile refid="gui__item_8cpp">gui_item.cpp</innerfile>
+    <innerfile refid="gui__item_8h">gui_item.h</innerfile>
+    <innerfile refid="gui__item__link_8h">gui_item_link.h</innerfile>
+    <innerfile refid="gui__item__list__model_8h">gui_item_list_model.h</innerfile>
+    <innerfile refid="gui__list__model_8cpp">gui_list_model.cpp</innerfile>
+    <innerfile refid="gui__list__model_8h">gui_list_model.h</innerfile>
+    <innerfile refid="gui__property__map__impl_8cpp">gui_property_map_impl.cpp</innerfile>
+    <innerfile refid="gui__property__map__impl_8h">gui_property_map_impl.h</innerfile>
+    <innerfile refid="gui__singleton__item_8cpp">gui_singleton_item.cpp</innerfile>
+    <innerfile refid="gui__singleton__item_8h">gui_singleton_item.h</innerfile>
+    <innerfile refid="qml__engine__with__singleton__items__info_8cpp">qml_engine_with_singleton_items_info.cpp</innerfile>
+    <innerfile refid="qml__engine__with__singleton__items__info_8h">qml_engine_with_singleton_items_info.h</innerfile>
+    <innerfile refid="qtsdl__checked__static__cast_8h">qtsdl_checked_static_cast.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gui/guisys/link/"/>
+  </compounddef>
+</doxygen>

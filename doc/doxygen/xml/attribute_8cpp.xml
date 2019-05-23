@@ -1,0 +1,536 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="attribute_8cpp" kind="file" language="C++">
+    <compoundname>attribute.cpp</compoundname>
+    <includes refid="attribute_8h" local="yes">attribute.h</includes>
+    <includes refid="unit_8h" local="yes">unit.h</includes>
+    <includes refid="unit__type_8h" local="yes">unit_type.h</includes>
+    <incdepgraph>
+      <node id="25421">
+        <label>list</label>
+      </node>
+      <node id="25415">
+        <label>atomic</label>
+      </node>
+      <node id="25391">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="25387" relation="include">
+        </childnode>
+        <childnode refid="25392" relation="include">
+        </childnode>
+        <childnode refid="25393" relation="include">
+        </childnode>
+        <childnode refid="25394" relation="include">
+        </childnode>
+        <childnode refid="25395" relation="include">
+        </childnode>
+        <childnode refid="25396" relation="include">
+        </childnode>
+        <childnode refid="25397" relation="include">
+        </childnode>
+        <childnode refid="25398" relation="include">
+        </childnode>
+      </node>
+      <node id="25394">
+        <label>iomanip</label>
+      </node>
+      <node id="25385">
+        <label>functional</label>
+      </node>
+      <node id="25441">
+        <label>queue</label>
+      </node>
+      <node id="25395">
+        <label>limits</label>
+      </node>
+      <node id="25389">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="25390" relation="include">
+        </childnode>
+        <childnode refid="25391" relation="include">
+        </childnode>
+      </node>
+      <node id="25390">
+        <label>cstdint</label>
+      </node>
+      <node id="25442">
+        <label>../log/logsource.h</label>
+        <link refid="logsource_8h"/>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25410" relation="include">
+        </childnode>
+      </node>
+      <node id="25426">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="25417">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="25418" relation="include">
+        </childnode>
+        <childnode refid="25385" relation="include">
+        </childnode>
+        <childnode refid="25394" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25419" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+      </node>
+      <node id="25393">
+        <label>cmath</label>
+      </node>
+      <node id="25406">
+        <label>stdexcept</label>
+      </node>
+      <node id="25439">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="25390" relation="include">
+        </childnode>
+      </node>
+      <node id="25445">
+        <label>attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="25386" relation="include">
+        </childnode>
+        <childnode refid="25384" relation="include">
+        </childnode>
+      </node>
+      <node id="25443">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="25444" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25397" relation="include">
+        </childnode>
+        <childnode refid="25434" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+        <childnode refid="25431" relation="include">
+        </childnode>
+        <childnode refid="25432" relation="include">
+        </childnode>
+      </node>
+      <node id="25420">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="25421" relation="include">
+        </childnode>
+        <childnode refid="25422" relation="include">
+        </childnode>
+        <childnode refid="25423" relation="include">
+        </childnode>
+      </node>
+      <node id="25418">
+        <label>cstdarg</label>
+      </node>
+      <node id="25401">
+        <label>string</label>
+      </node>
+      <node id="25410">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="25390" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25411" relation="include">
+        </childnode>
+        <childnode refid="25412" relation="include">
+        </childnode>
+        <childnode refid="25414" relation="include">
+        </childnode>
+        <childnode refid="25420" relation="include">
+        </childnode>
+        <childnode refid="25423" relation="include">
+        </childnode>
+      </node>
+      <node id="25412">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="25413" relation="include">
+        </childnode>
+      </node>
+      <node id="25414">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="25415" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25397" relation="include">
+        </childnode>
+        <childnode refid="25407" relation="include">
+        </childnode>
+        <childnode refid="25416" relation="include">
+        </childnode>
+        <childnode refid="25417" relation="include">
+        </childnode>
+      </node>
+      <node id="25386">
+        <label>map</label>
+      </node>
+      <node id="25383">
+        <label>libopenage/unit/attribute.cpp</label>
+        <link refid="attribute_8cpp"/>
+        <childnode refid="25384" relation="include">
+        </childnode>
+        <childnode refid="25440" relation="include">
+        </childnode>
+        <childnode refid="25448" relation="include">
+        </childnode>
+      </node>
+      <node id="25447">
+        <label>unordered_set</label>
+      </node>
+      <node id="25428">
+        <label>../gamedata/unit.gen.h</label>
+      </node>
+      <node id="25435">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="25436" relation="include">
+        </childnode>
+        <childnode refid="25437" relation="include">
+        </childnode>
+      </node>
+      <node id="25430">
+        <label>stddef.h</label>
+      </node>
+      <node id="25396">
+        <label>ostream</label>
+      </node>
+      <node id="25429">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25430" relation="include">
+        </childnode>
+        <childnode refid="25388" relation="include">
+        </childnode>
+        <childnode refid="25431" relation="include">
+        </childnode>
+      </node>
+      <node id="25399">
+        <label>limits.h</label>
+      </node>
+      <node id="25404">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="25405" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25406" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25407" relation="include">
+        </childnode>
+        <childnode refid="25410" relation="include">
+        </childnode>
+      </node>
+      <node id="25398">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="25387" relation="include">
+        </childnode>
+        <childnode refid="25399" relation="include">
+        </childnode>
+        <childnode refid="25393" relation="include">
+        </childnode>
+        <childnode refid="25400" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25404" relation="include">
+        </childnode>
+        <childnode refid="25407" relation="include">
+        </childnode>
+      </node>
+      <node id="25427">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="25436">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="25446">
+        <label>command.h</label>
+        <link refid="command_8h"/>
+        <childnode refid="25447" relation="include">
+        </childnode>
+        <childnode refid="25431" relation="include">
+        </childnode>
+        <childnode refid="25443" relation="include">
+        </childnode>
+      </node>
+      <node id="25425">
+        <label>typeinfo</label>
+      </node>
+      <node id="25444">
+        <label>bitset</label>
+      </node>
+      <node id="25438">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="25433">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25434" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+        <childnode refid="25388" relation="include">
+        </childnode>
+        <childnode refid="25435" relation="include">
+        </childnode>
+        <childnode refid="25439" relation="include">
+        </childnode>
+      </node>
+      <node id="25402">
+        <label>vector</label>
+      </node>
+      <node id="25408">
+        <label>ciso646</label>
+      </node>
+      <node id="25419">
+        <label>sstream</label>
+      </node>
+      <node id="25407">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="25408" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+        <childnode refid="25409" relation="include">
+        </childnode>
+      </node>
+      <node id="25409">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="25409" relation="include">
+        </childnode>
+      </node>
+      <node id="25432">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="25385" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+      </node>
+      <node id="25416">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="25405" relation="include">
+        </childnode>
+        <childnode refid="25401" relation="include">
+        </childnode>
+      </node>
+      <node id="25423">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="25424" relation="include">
+        </childnode>
+      </node>
+      <node id="25437">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="25438" relation="include">
+        </childnode>
+        <childnode refid="25389" relation="include">
+        </childnode>
+      </node>
+      <node id="25413">
+        <label>cstdlib</label>
+      </node>
+      <node id="25405">
+        <label>iostream</label>
+      </node>
+      <node id="25434">
+        <label>unordered_map</label>
+      </node>
+      <node id="25440">
+        <label>unit.h</label>
+        <link refid="unit_8h"/>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25422" relation="include">
+        </childnode>
+        <childnode refid="25434" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+        <childnode refid="25441" relation="include">
+        </childnode>
+        <childnode refid="25431" relation="include">
+        </childnode>
+        <childnode refid="25435" relation="include">
+        </childnode>
+        <childnode refid="25442" relation="include">
+        </childnode>
+        <childnode refid="25429" relation="include">
+        </childnode>
+        <childnode refid="25439" relation="include">
+        </childnode>
+        <childnode refid="25443" relation="include">
+        </childnode>
+        <childnode refid="25384" relation="include">
+        </childnode>
+        <childnode refid="25445" relation="include">
+        </childnode>
+        <childnode refid="25446" relation="include">
+        </childnode>
+        <childnode refid="25433" relation="include">
+        </childnode>
+      </node>
+      <node id="25392">
+        <label>climits</label>
+      </node>
+      <node id="25384">
+        <label>attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="25385" relation="include">
+        </childnode>
+        <childnode refid="25386" relation="include">
+        </childnode>
+        <childnode refid="25387" relation="include">
+        </childnode>
+        <childnode refid="25388" relation="include">
+        </childnode>
+        <childnode refid="25428" relation="include">
+        </childnode>
+        <childnode refid="25429" relation="include">
+        </childnode>
+        <childnode refid="25432" relation="include">
+        </childnode>
+        <childnode refid="25433" relation="include">
+        </childnode>
+      </node>
+      <node id="25422">
+        <label>mutex</label>
+      </node>
+      <node id="25448">
+        <label>unit_type.h</label>
+        <link refid="unit__type_8h"/>
+        <childnode refid="25385" relation="include">
+        </childnode>
+        <childnode refid="25403" relation="include">
+        </childnode>
+        <childnode refid="25434" relation="include">
+        </childnode>
+        <childnode refid="25402" relation="include">
+        </childnode>
+        <childnode refid="25431" relation="include">
+        </childnode>
+        <childnode refid="25449" relation="include">
+        </childnode>
+        <childnode refid="25445" relation="include">
+        </childnode>
+      </node>
+      <node id="25388">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="25389" relation="include">
+        </childnode>
+        <childnode refid="25426" relation="include">
+        </childnode>
+        <childnode refid="25427" relation="include">
+        </childnode>
+        <childnode refid="25398" relation="include">
+        </childnode>
+      </node>
+      <node id="25397">
+        <label>type_traits</label>
+      </node>
+      <node id="25411">
+        <label>config.h</label>
+      </node>
+      <node id="25387">
+        <label>algorithm</label>
+      </node>
+      <node id="25431">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="25398" relation="include">
+        </childnode>
+        <childnode refid="25389" relation="include">
+        </childnode>
+        <childnode refid="25426" relation="include">
+        </childnode>
+        <childnode refid="25427" relation="include">
+        </childnode>
+      </node>
+      <node id="25449">
+        <label>../gamestate/cost.h</label>
+        <link refid="cost_8h"/>
+        <childnode refid="25432" relation="include">
+        </childnode>
+      </node>
+      <node id="25400">
+        <label>cstring</label>
+      </node>
+      <node id="25403">
+        <label>memory</label>
+      </node>
+      <node id="25424">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="25405" relation="include">
+        </childnode>
+        <childnode refid="25425" relation="include">
+        </childnode>
+        <childnode refid="25407" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="attribute_8h" kindref="compound">attribute.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="unit_8h" kindref="compound">unit.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="unit__type_8h" kindref="compound">unit_type.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1af3258763ccb44c7136525e19b8519f1c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_attribute" kindref="compound">Attribute&lt;attr_type::dropsite&gt;::accepting_resource</ref>(<ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>res)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::find(resource_types.begin(),<sp/>resource_types.end(),<sp/>res)<sp/>!=<sp/>resource_types.end();</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classopenage_1_1_attribute_3_01attr__type_1_1multitype_01_4_1a2ed05e9728905f717d307fac12226cdd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_attribute" kindref="compound">Attribute&lt;attr_type::multitype&gt;::switchType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::unit_classes<sp/>cls,<sp/><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*unit)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>search<sp/>=<sp/>this-&gt;types.find(cls);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search<sp/>!=<sp/>this-&gt;types.end())<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;player<sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">attr_type::owner</ref>&gt;();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>search-&gt;second-&gt;reinitialise(unit,<sp/>player.player);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/unit/attribute.cpp"/>
+  </compounddef>
+</doxygen>

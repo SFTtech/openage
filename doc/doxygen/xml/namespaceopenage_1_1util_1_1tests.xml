@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::util::tests</compoundname>
+    <innerclass refid="structopenage_1_1util_1_1tests_1_1testenum" prot="public">openage::util::tests::testenum</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1tests_1_1testenum__value" prot="public">openage::util::tests::testenum_value</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1tests_1a6f54051ead3baf22b21d6142f78cbbc3" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref></type>
+        <definition>constexpr testenum_value openage::util::tests::undefined</definition>
+        <argsstring></argsstring>
+        <name>undefined</name>
+        <initializer>{{&quot;UNDEFINED&quot;, 0}, &quot;undefined test string&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum_test.cpp" line="12" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1_1tests_1aa8dbdc64850f25163145820ba7b5844f" prot="public" static="yes" mutable="no">
+        <type>const std::array&lt; uint8_t, 16 &gt;</type>
+        <definition>const std::array&lt;uint8_t, 16&gt; openage::util::tests::test_key</definition>
+        <argsstring></argsstring>
+        <name>test_key</name>
+        <initializer>{{
+	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash_test.cpp" line="15" column="1" bodyfile="libopenage/util/hash_test.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a3359212608be8fda4cff896436a66165" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::constinit_vector</definition>
+        <argsstring>()</argsstring>
+        <name>constinit_vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/constinit_vector.cpp" line="55" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="55" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::enum_</definition>
+        <argsstring>()</argsstring>
+        <name>enum_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum_test.cpp" line="15" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="15" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a66cf54ea365e3f8f1357577ddaa1adfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::fixed_point</definition>
+        <argsstring>()</argsstring>
+        <name>fixed_point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point_test.cpp" line="15" column="1" bodyfile="libopenage/util/fixed_point_test.cpp" bodystart="15" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1aec3c7190e428e8fd67bce6f0dd4d582f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::siphash</definition>
+        <argsstring>()</argsstring>
+        <name>siphash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash_test.cpp" line="21" column="1" bodyfile="libopenage/util/hash_test.cpp" bodystart="21" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1ab1596e1f3cfa6d6c8554e6a539731687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.cpp" line="20" column="1" bodyfile="libopenage/util/init.cpp" bodystart="20" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a50e35d7087beb2351f2d2f591ba8c4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::matrix</definition>
+        <argsstring>()</argsstring>
+        <name>matrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix_test.cpp" line="12" column="1" bodyfile="libopenage/util/matrix_test.cpp" bodystart="12" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a48fcf768166ffb9362daf1fdf19acf45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::array_conversion</definition>
+        <argsstring>()</argsstring>
+        <name>array_conversion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc_test.cpp" line="13" column="1" bodyfile="libopenage/util/misc_test.cpp" bodystart="13" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1ab3f1d081c603b383598beeee8e4429df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::quaternion</definition>
+        <argsstring>()</argsstring>
+        <name>quaternion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion_test.cpp" line="16" column="1" bodyfile="libopenage/util/quaternion_test.cpp" bodystart="16" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::tests::vector</definition>
+        <argsstring>()</argsstring>
+        <name>vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector_test.cpp" line="11" column="1" bodyfile="libopenage/util/vector_test.cpp" bodystart="11" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/constinit_vector.cpp" line="9" column="1"/>
+  </compounddef>
+</doxygen>

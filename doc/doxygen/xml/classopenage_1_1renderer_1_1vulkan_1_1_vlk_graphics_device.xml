@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::VlkGraphicsDevice</compoundname>
+    <includes refid="graphics__device_8h" local="no">graphics_device.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" prot="private" static="no" mutable="no">
+        <type>VkPhysicalDevice</type>
+        <definition>VkPhysicalDevice openage::renderer::vulkan::VlkGraphicsDevice::phys_device</definition>
+        <argsstring></argsstring>
+        <name>phys_device</name>
+        <briefdescription>
+<para>The underlying physical device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="44" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" prot="private" static="no" mutable="no">
+        <type>VkDevice</type>
+        <definition>VkDevice openage::renderer::vulkan::VlkGraphicsDevice::device</definition>
+        <argsstring></argsstring>
+        <name>device</name>
+        <briefdescription>
+<para>Logical device, owned by this object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="47" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1aabfea62d48c4b0dd2845fab343c17bc7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; VkQueue &gt;</type>
+        <definition>std::vector&lt;VkQueue&gt; openage::renderer::vulkan::VlkGraphicsDevice::queues</definition>
+        <argsstring></argsstring>
+        <name>queues</name>
+        <briefdescription>
+<para>The queues instantiated for this device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="50" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" kindref="compound">SurfaceSupportDetails</ref> &gt;</type>
+        <definition>std::optional&lt; SurfaceSupportDetails &gt; openage::renderer::vulkan::VlkGraphicsDevice::find_device_surface_support</definition>
+        <argsstring>(VkPhysicalDevice, VkSurfaceKHR)</argsstring>
+        <name>find_device_surface_support</name>
+        <param>
+          <type>VkPhysicalDevice</type>
+          <defname>dev</defname>
+        </param>
+        <param>
+          <type>VkSurfaceKHR</type>
+          <defname>surf</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given a physical device and a surface, checks whether the device is capable of presenting to the surface. If it is, returns information about its presentation capabilities, otherwise returns an empty optional. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="55" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="17" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkGraphicsDevice::VlkGraphicsDevice</definition>
+        <argsstring>(VkPhysicalDevice dev, std::vector&lt; uint32_t &gt; const &amp;q_fams)</argsstring>
+        <name>VlkGraphicsDevice</name>
+        <param>
+          <type>VkPhysicalDevice</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint32_t &gt; const &amp;</type>
+          <declname>q_fams</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Given a physical device and a list of queue family indices in that device, instantiates a logical device with a queue per each of the families. The device has to support the swapchain extension. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="60" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="93" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a556f0778edd592a69b5d7091966099f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>VkPhysicalDevice</type>
+        <definition>VkPhysicalDevice openage::renderer::vulkan::VlkGraphicsDevice::get_physical_device</definition>
+        <argsstring>() const</argsstring>
+        <name>get_physical_device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="62" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>VkDevice</type>
+        <definition>VkDevice openage::renderer::vulkan::VlkGraphicsDevice::get_device</definition>
+        <argsstring>() const</argsstring>
+        <name>get_device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="63" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>VkQueue</type>
+        <definition>VkQueue openage::renderer::vulkan::VlkGraphicsDevice::get_queue</definition>
+        <argsstring>(size_t idx) const</argsstring>
+        <name>get_queue</name>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="64" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="162" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a8b09aa54c6f71565308faabdacc12f6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkGraphicsDevice::~VlkGraphicsDevice</definition>
+        <argsstring>()</argsstring>
+        <name>~VlkGraphicsDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="68" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.cpp" bodystart="166" bodyend="168"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Owns a device capable of graphics operations and surface presentation using WSI. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4952">
+        <label>openage::renderer::vulkan::VlkGraphicsDevice</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/graphics_device.h" line="42" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="42" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>device</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>find_device_surface_support</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>get_device</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a556f0778edd592a69b5d7091966099f5" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>get_physical_device</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>get_queue</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>phys_device</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1aabfea62d48c4b0dd2845fab343c17bc7" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>queues</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>VlkGraphicsDevice</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a8b09aa54c6f71565308faabdacc12f6c" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkGraphicsDevice</scope><name>~VlkGraphicsDevice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

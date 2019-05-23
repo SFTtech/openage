@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="heuristics_8h" kind="file" language="C++">
+    <compoundname>heuristics.h</compoundname>
+    <includes refid="pathfinding_2path_8h" local="yes">path.h</includes>
+    <includedby refid="a__star_8h" local="yes">libopenage/pathfinding/a_star.h</includedby>
+    <includedby refid="a__star_8cpp" local="yes">libopenage/pathfinding/a_star.cpp</includedby>
+    <includedby refid="heuristics_8cpp" local="yes">libopenage/pathfinding/heuristics.cpp</includedby>
+    <includedby refid="pathfinding_2tests_8cpp" local="yes">libopenage/pathfinding/tests.cpp</includedby>
+    <includedby refid="unit_2action_8cpp" local="yes">libopenage/unit/action.cpp</includedby>
+    <incdepgraph>
+      <node id="18617">
+        <label>list</label>
+      </node>
+      <node id="18609">
+        <label>atomic</label>
+      </node>
+      <node id="18623">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="18592" relation="include">
+        </childnode>
+        <childnode refid="18624" relation="include">
+        </childnode>
+        <childnode refid="18594" relation="include">
+        </childnode>
+        <childnode refid="18614" relation="include">
+        </childnode>
+        <childnode refid="18625" relation="include">
+        </childnode>
+        <childnode refid="18626" relation="include">
+        </childnode>
+        <childnode refid="18610" relation="include">
+        </childnode>
+        <childnode refid="18591" relation="include">
+        </childnode>
+      </node>
+      <node id="18614">
+        <label>iomanip</label>
+      </node>
+      <node id="18586">
+        <label>functional</label>
+      </node>
+      <node id="18625">
+        <label>limits</label>
+      </node>
+      <node id="18585">
+        <label>path.h</label>
+        <link refid="pathfinding_2path_8h"/>
+        <childnode refid="18586" relation="include">
+        </childnode>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18588" relation="include">
+        </childnode>
+        <childnode refid="18589" relation="include">
+        </childnode>
+        <childnode refid="18590" relation="include">
+        </childnode>
+        <childnode refid="18629" relation="include">
+        </childnode>
+        <childnode refid="18630" relation="include">
+        </childnode>
+        <childnode refid="18591" relation="include">
+        </childnode>
+      </node>
+      <node id="18622">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="18604" relation="include">
+        </childnode>
+        <childnode refid="18623" relation="include">
+        </childnode>
+      </node>
+      <node id="18604">
+        <label>cstdint</label>
+      </node>
+      <node id="18627">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="18612">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="18613" relation="include">
+        </childnode>
+        <childnode refid="18586" relation="include">
+        </childnode>
+        <childnode refid="18614" relation="include">
+        </childnode>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18615" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+        <childnode refid="18589" relation="include">
+        </childnode>
+      </node>
+      <node id="18594">
+        <label>cmath</label>
+      </node>
+      <node id="18599">
+        <label>stdexcept</label>
+      </node>
+      <node id="18616">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="18617" relation="include">
+        </childnode>
+        <childnode refid="18618" relation="include">
+        </childnode>
+        <childnode refid="18619" relation="include">
+        </childnode>
+      </node>
+      <node id="18613">
+        <label>cstdarg</label>
+      </node>
+      <node id="18596">
+        <label>string</label>
+      </node>
+      <node id="18603">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="18604" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+        <childnode refid="18605" relation="include">
+        </childnode>
+        <childnode refid="18606" relation="include">
+        </childnode>
+        <childnode refid="18608" relation="include">
+        </childnode>
+        <childnode refid="18616" relation="include">
+        </childnode>
+        <childnode refid="18619" relation="include">
+        </childnode>
+      </node>
+      <node id="18606">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="18607" relation="include">
+        </childnode>
+      </node>
+      <node id="18608">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="18609" relation="include">
+        </childnode>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18610" relation="include">
+        </childnode>
+        <childnode refid="18600" relation="include">
+        </childnode>
+        <childnode refid="18611" relation="include">
+        </childnode>
+        <childnode refid="18612" relation="include">
+        </childnode>
+      </node>
+      <node id="18631">
+        <label>unordered_set</label>
+      </node>
+      <node id="18626">
+        <label>ostream</label>
+      </node>
+      <node id="18593">
+        <label>limits.h</label>
+      </node>
+      <node id="18597">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="18598" relation="include">
+        </childnode>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18599" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+        <childnode refid="18600" relation="include">
+        </childnode>
+        <childnode refid="18603" relation="include">
+        </childnode>
+      </node>
+      <node id="18591">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="18592" relation="include">
+        </childnode>
+        <childnode refid="18593" relation="include">
+        </childnode>
+        <childnode refid="18594" relation="include">
+        </childnode>
+        <childnode refid="18595" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+        <childnode refid="18589" relation="include">
+        </childnode>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18597" relation="include">
+        </childnode>
+        <childnode refid="18600" relation="include">
+        </childnode>
+      </node>
+      <node id="18628">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="18621">
+        <label>typeinfo</label>
+      </node>
+      <node id="18589">
+        <label>vector</label>
+      </node>
+      <node id="18601">
+        <label>ciso646</label>
+      </node>
+      <node id="18615">
+        <label>sstream</label>
+      </node>
+      <node id="18600">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="18601" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+        <childnode refid="18602" relation="include">
+        </childnode>
+      </node>
+      <node id="18602">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="18602" relation="include">
+        </childnode>
+      </node>
+      <node id="18611">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="18598" relation="include">
+        </childnode>
+        <childnode refid="18596" relation="include">
+        </childnode>
+      </node>
+      <node id="18619">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="18620" relation="include">
+        </childnode>
+      </node>
+      <node id="18607">
+        <label>cstdlib</label>
+      </node>
+      <node id="18598">
+        <label>iostream</label>
+      </node>
+      <node id="18630">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="18587" relation="include">
+        </childnode>
+        <childnode refid="18586" relation="include">
+        </childnode>
+        <childnode refid="18610" relation="include">
+        </childnode>
+        <childnode refid="18631" relation="include">
+        </childnode>
+        <childnode refid="18600" relation="include">
+        </childnode>
+        <childnode refid="18597" relation="include">
+        </childnode>
+      </node>
+      <node id="18588">
+        <label>unordered_map</label>
+      </node>
+      <node id="18624">
+        <label>climits</label>
+      </node>
+      <node id="18618">
+        <label>mutex</label>
+      </node>
+      <node id="18629">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="18622" relation="include">
+        </childnode>
+        <childnode refid="18627" relation="include">
+        </childnode>
+        <childnode refid="18628" relation="include">
+        </childnode>
+        <childnode refid="18591" relation="include">
+        </childnode>
+      </node>
+      <node id="18610">
+        <label>type_traits</label>
+      </node>
+      <node id="18605">
+        <label>config.h</label>
+      </node>
+      <node id="18584">
+        <label>libopenage/pathfinding/heuristics.h</label>
+        <link refid="heuristics_8h"/>
+        <childnode refid="18585" relation="include">
+        </childnode>
+      </node>
+      <node id="18592">
+        <label>algorithm</label>
+      </node>
+      <node id="18590">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="18591" relation="include">
+        </childnode>
+        <childnode refid="18622" relation="include">
+        </childnode>
+        <childnode refid="18627" relation="include">
+        </childnode>
+        <childnode refid="18628" relation="include">
+        </childnode>
+      </node>
+      <node id="18595">
+        <label>cstring</label>
+      </node>
+      <node id="18587">
+        <label>memory</label>
+      </node>
+      <node id="18620">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="18598" relation="include">
+        </childnode>
+        <childnode refid="18621" relation="include">
+        </childnode>
+        <childnode refid="18600" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18636">
+        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <link refid="heuristics_8cpp"/>
+      </node>
+      <node id="18634">
+        <label>libopenage/pathfinding/a_star.cpp</label>
+        <link refid="a__star_8cpp"/>
+      </node>
+      <node id="18635">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="18633">
+        <label>libopenage/pathfinding/a_star.h</label>
+        <link refid="a__star_8h"/>
+        <childnode refid="18634" relation="include">
+        </childnode>
+        <childnode refid="18635" relation="include">
+        </childnode>
+      </node>
+      <node id="18637">
+        <label>libopenage/pathfinding/tests.cpp</label>
+        <link refid="pathfinding_2tests_8cpp"/>
+      </node>
+      <node id="18632">
+        <label>libopenage/pathfinding/heuristics.h</label>
+        <link refid="heuristics_8h"/>
+        <childnode refid="18633" relation="include">
+        </childnode>
+        <childnode refid="18634" relation="include">
+        </childnode>
+        <childnode refid="18636" relation="include">
+        </childnode>
+        <childnode refid="18637" relation="include">
+        </childnode>
+        <childnode refid="18635" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1path">openage::path</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pathfinding_2path_8h" kindref="compound">path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">path<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="namespaceopenage_1_1path_1a42b919491ef91151284bc4c1cb3223a0" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1a42b919491ef91151284bc4c1cb3223a0" kindref="member">heuristic_t</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>(*)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;end);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/><ref refid="namespaceopenage_1_1path_1a825dde52e9d0fd7fe6fa6970a1ec58e0" kindref="member">manhattan_cost</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;end);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/><ref refid="namespaceopenage_1_1path_1a7d47462a02dd8b972acca24d5e05f179" kindref="member">chebyshev_cost</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;end);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/><ref refid="namespaceopenage_1_1path_1a18aa96b43da6809c7796eaa4214a3420" kindref="member">euclidean_cost</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;end);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/><ref refid="namespaceopenage_1_1path_1a64affc7c4a103a4ffabfd72c454962cf" kindref="member">euclidean_squared_cost</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;start,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;end);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/><ref refid="namespaceopenage_1_1path_1a4dca43db0e959d455ac0d5c7c8cb26fb" kindref="member">euclidean_squared_to_euclidean_cost</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>euclidean_squared_value);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pathfinding/heuristics.h"/>
+  </compounddef>
+</doxygen>

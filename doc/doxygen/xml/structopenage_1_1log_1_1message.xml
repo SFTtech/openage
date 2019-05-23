@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1log_1_1message" kind="struct" language="C++" prot="public">
+    <compoundname>openage::log::message</compoundname>
+    <includes refid="message_8h" local="no">message.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::log::message::text</definition>
+        <argsstring></argsstring>
+        <name>text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="58" column="1" bodyfile="libopenage/log/message.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* openage::log::message::filename</definition>
+        <argsstring></argsstring>
+        <name>filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The filename where the message has been constructed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="63" column="1" bodyfile="libopenage/log/message.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::log::message::lineno</definition>
+        <argsstring></argsstring>
+        <name>lineno</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The line number where the message has been constructed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="68" column="1" bodyfile="libopenage/log/message.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* openage::log::message::functionname</definition>
+        <argsstring></argsstring>
+        <name>functionname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The (pretty) function name where the message has been constructed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="73" column="1" bodyfile="libopenage/log/message.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
+        <definition>level openage::log::message::lvl</definition>
+        <argsstring></argsstring>
+        <name>lvl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The log level. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="78" column="1" bodyfile="libopenage/log/message.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::log::message::thread_id</definition>
+        <argsstring></argsstring>
+        <name>thread_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A unique id for the thread where the message has been constructed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="83" column="1" bodyfile="libopenage/log/message.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1log_1_1message_1ad4a1ced68cb228cfb824b5d185be726d" prot="public" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t openage::log::message::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A (nanosecond-resolution) timestamp of the message construction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="88" column="1" bodyfile="libopenage/log/message.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::log::message::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets all members except for filename, lineno, functionname and level. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="93" column="1" bodyfile="libopenage/log/message.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::log::message::init_with_metadata_copy</definition>
+        <argsstring>(const std::string &amp;filename, const std::string &amp;functionname)</argsstring>
+        <name>init_with_metadata_copy</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>functionname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets all members except for lineno and level.</para>
+<para>filename and functionname are copied to an internal cache.</para>
+<para>Designed to be used when filename and functionname are temporary objects (e.g. from Python). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="103" column="1" bodyfile="libopenage/log/message.cpp" bodystart="23" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A complete log/exception message, containing a text message and metadata.</para>
+<para>The preferred way of creating a <computeroutput>message</computeroutput> object is to use <ref refid="classopenage_1_1log_1_1_message_builder" kindref="compound">MessageBuilder</ref> via the MSG macro. <ref refid="classopenage_1_1log_1_1_message_builder" kindref="compound">MessageBuilder</ref> is auto-converted to message when needed.</para>
+<para>pxd:</para>
+<para>cppclass message: string text char *filename unsigned lineno const char *functionname level lvl size_t thread_id int64_t timestamp</para>
+<para>void <ref refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" kindref="member">init()</ref> except + void init_with_metadata_copy(string filename, string functionname) except + </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3193">
+        <label>openage::log::message</label>
+        <link refid="structopenage_1_1log_1_1message"/>
+        <childnode refid="3194" relation="usage">
+          <edgelabel>+lvl</edgelabel>
+        </childnode>
+      </node>
+      <node id="3197">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="3195">
+        <label>openage::util::Enum&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="3196" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3194">
+        <label>openage::log::level</label>
+        <link refid="structopenage_1_1log_1_1level"/>
+        <childnode refid="3195" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3196" relation="usage">
+          <edgelabel>+NOOPTIMIZE</edgelabel>
+        </childnode>
+      </node>
+      <node id="3196">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="3197" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/message.h" line="57" column="1" bodyfile="libopenage/log/message.h" bodystart="57" bodyend="104"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1log_1_1message_1ac3ad82d38502272df446a781982b4fc0" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>filename</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a45eb775bf38f7423cd7fb27895d17e06" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>functionname</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a45dd1bfdd4fc1c55af0c093dac14b624" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>init</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a9f25c53eaa48cd37d1d5753e53db9549" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>init_with_metadata_copy</name></member>
+      <member refid="structopenage_1_1log_1_1message_1ae21f5b04f1658aa09f0cf00eaf3b482e" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>lineno</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a6bfced2ea9be3c5943d269dcb2094b96" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>lvl</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a8c610dd442b678978bf3414c61a69695" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>text</name></member>
+      <member refid="structopenage_1_1log_1_1message_1a5042e9fbcd8e802dcd75346ce1fc03c7" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>thread_id</name></member>
+      <member refid="structopenage_1_1log_1_1message_1ad4a1ced68cb228cfb824b5d185be726d" prot="public" virt="non-virtual"><scope>openage::log::message</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

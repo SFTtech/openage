@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_glyph_atlas" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::GlyphAtlas</compoundname>
+    <includes refid="glyph__atlas_8h" local="no">glyph_atlas.h</includes>
+    <innerclass refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect" prot="private">openage::renderer::GlyphAtlas::dirty_rect</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" prot="public">openage::renderer::GlyphAtlas::Entry</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf" prot="private">openage::renderer::GlyphAtlas::Shelf</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="108" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::GlyphAtlas::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="111" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a649e1861549010c4ac1edc2a03e83c68" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::renderer::GlyphAtlas::is_dirty</definition>
+        <argsstring></argsstring>
+        <name>is_dirty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="114" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect" kindref="compound">dirty_rect</ref></type>
+        <definition>dirty_rect openage::renderer::GlyphAtlas::dirty_area</definition>
+        <argsstring></argsstring>
+        <name>dirty_area</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="118" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a52a1a6002fd59ee150bc95717b874333" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; unsigned char &gt;</type>
+        <definition>std::unique_ptr&lt;unsigned char&gt; openage::renderer::GlyphAtlas::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="121" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a4c3d2bbedd6b707afe09cf99478c9fab" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::renderer::GlyphAtlas::texture_id</definition>
+        <argsstring></argsstring>
+        <name>texture_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="124" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1ab8215c1c1fa6ae54b17311cbaf5fe82b" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; size_t, <ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref> &gt;</type>
+        <definition>std::unordered_map&lt;size_t, GlyphAtlas::Entry&gt; openage::renderer::GlyphAtlas::glyphs</definition>
+        <argsstring></argsstring>
+        <name>glyphs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="128" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_glyph_atlas_1a1e6b92f493cd85c845a3f7c58e73fa1b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf" kindref="compound">GlyphAtlas::Shelf</ref> &gt;</type>
+        <definition>std::vector&lt;GlyphAtlas::Shelf&gt; openage::renderer::GlyphAtlas::shelves</definition>
+        <argsstring></argsstring>
+        <name>shelves</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="131" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1a5ead730efc92a30d19f57760e7b962ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::GlyphAtlas::GlyphAtlas</definition>
+        <argsstring>(int width=1024, int height=1024)</argsstring>
+        <name>GlyphAtlas</name>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+          <defval>1024</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+          <defval>1024</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a glyph atlas with the specified width and height.</para>
+<para>Also, creates a OpenGL texture of the same width and height. The contents of this glyph atlas is automatically synchronized to the texture (when you bind the texture).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The width of glyph atlas </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The height of glyph atlas </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="51" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="39" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1afe4401951e1bd4d55e0e89b93396e6f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::renderer::GlyphAtlas::~GlyphAtlas</definition>
+        <argsstring>()</argsstring>
+        <name>~GlyphAtlas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="53" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::GlyphAtlas::bind</definition>
+        <argsstring>(int unit=0)</argsstring>
+        <name>bind</name>
+        <param>
+          <type>int</type>
+          <declname>unit</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Binds the OpenGL texture of this glyph atlas at the specified unit.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the texture unit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="60" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="66" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref></type>
+        <definition>GlyphAtlas::Entry openage::renderer::GlyphAtlas::get</definition>
+        <argsstring>(Font *font, codepoint_t codepoint)</argsstring>
+        <name>get</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+          <declname>font</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+          <declname>codepoint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the atlas entry for a specified font and glyph.</para>
+<para>If the particular entry does not exist in the atlas, the glyph atlas requests the font to provide the glyph info. The provided info along with the glyph&apos;s bitmap data is used to create a new cached entry. This entry is then returned.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The font </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>codepoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The glyph whose atlas entry must be retrieved </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The atlas entry. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="73" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="81" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::GlyphAtlas::get_cache_key</definition>
+        <argsstring>(Font *font, codepoint_t codepoint) const</argsstring>
+        <name>get_cache_key</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+          <declname>font</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref></type>
+          <declname>codepoint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="76" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="93" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref></type>
+        <definition>GlyphAtlas::Entry openage::renderer::GlyphAtlas::set</definition>
+        <argsstring>(size_t key, const Glyph &amp;glyph, const unsigned char *image)</argsstring>
+        <name>set</name>
+        <param>
+          <type>size_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref> &amp;</type>
+          <declname>glyph</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="78" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="100" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::GlyphAtlas::update_dirty_area</definition>
+        <argsstring>(int x, int y, int width, int height)</argsstring>
+        <name>update_dirty_area</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/glyph_atlas.h" line="80" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.cpp" bodystart="147" bodyend="154"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A glyph atlas is used to pack and manage several font glyphs in to a single OpenGL texture.</para>
+<para>A single glyph atlas can be used to stored glyphs from multiple fonts.</para>
+<para>Currently, the glyph atlas uses a naive &quot;Shelf First-Fit&quot; algorithm based on the article &quot;A Thousand Ways to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin Packing&quot; by Jukka Jylänki. The article can be found at <ulink url="http://clb.demon.fi/files/RectangleBinPack.pdf">http://clb.demon.fi/files/RectangleBinPack.pdf</ulink></para>
+<para>This is a very basic algorithm. If there is a need for a more complex packing requirement, the glyph atlas can be easily modified. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2468">
+        <label>openage::renderer::GlyphAtlas::dirty_rect</label>
+        <link refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect"/>
+      </node>
+      <node id="2467">
+        <label>openage::renderer::GlyphAtlas</label>
+        <link refid="classopenage_1_1renderer_1_1_glyph_atlas"/>
+        <childnode refid="2468" relation="usage">
+          <edgelabel>-dirty_area</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/font/glyph_atlas.h" line="26" column="1" bodyfile="libopenage/renderer/font/glyph_atlas.h" bodystart="26" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>bind</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a52a1a6002fd59ee150bc95717b874333" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>buffer</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>dirty_area</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>get</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>get_cache_key</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a5ead730efc92a30d19f57760e7b962ba" prot="public" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>GlyphAtlas</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1ab8215c1c1fa6ae54b17311cbaf5fe82b" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>glyphs</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>height</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a649e1861549010c4ac1edc2a03e83c68" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>is_dirty</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>set</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a1e6b92f493cd85c845a3f7c58e73fa1b" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>shelves</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1a4c3d2bbedd6b707afe09cf99478c9fab" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>texture_id</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>update_dirty_area</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" prot="private" virt="non-virtual"><scope>openage::renderer::GlyphAtlas</scope><name>width</name></member>
+      <member refid="classopenage_1_1renderer_1_1_glyph_atlas_1afe4401951e1bd4d55e0e89b93396e6f9" prot="public" virt="virtual"><scope>openage::renderer::GlyphAtlas</scope><name>~GlyphAtlas</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

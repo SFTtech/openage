@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_radial_object" kind="class" language="C++" prot="public">
+    <compoundname>openage::RadialObject</compoundname>
+    <basecompoundref refid="classopenage_1_1_terrain_object" prot="public" virt="non-virtual">openage::TerrainObject</basecompoundref>
+    <includes refid="terrain__object_8h" local="no">terrain_object.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>const coord::phys_t openage::RadialObject::phys_radius</definition>
+        <argsstring></argsstring>
+        <name>phys_radius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>radius of this cirular space </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="332" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1_radial_object_1aff862d77a5be85b24b43f30f8b788ed4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TerrainObject</definition>
+        <argsstring></argsstring>
+        <name>TerrainObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="349" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classopenage_1_1_radial_object_1a7d9e2c6a94a6a3bc107607aa0318e804" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Unit</definition>
+        <argsstring></argsstring>
+        <name>Unit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="350" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a612cfab3fd84a8ad72818d923d999169" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::RadialObject::~RadialObject</definition>
+        <argsstring>()</argsstring>
+        <name>~RadialObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="327" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="396" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="structopenage_1_1tile__range" kindref="compound">tile_range</ref></type>
+        <definition>tile_range openage::RadialObject::get_range</definition>
+        <argsstring>(const coord::phys3 &amp;pos, const Terrain &amp;terrain) const override</argsstring>
+        <name>get_range</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1a1fc44d40095260aca43dd9582c61de97">get_range</reimplements>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;</type>
+          <declname>terrain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>finds the range covered if the object was in a position </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="337" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="398" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::RadialObject::from_edge</definition>
+        <argsstring>(const coord::phys3 &amp;point) const override</argsstring>
+        <name>from_edge</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1a6ef3514689565c74e503570d0ba7adbb">from_edge</reimplements>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how far is a point from the edge of this object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="339" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="415" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+        <definition>coord::phys3 openage::RadialObject::on_edge</definition>
+        <argsstring>(const coord::phys3 &amp;angle, coord::phys_t extra=0) const override</argsstring>
+        <name>on_edge</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1ade190d4acbf4d36337f1dd9d53143ca3">on_edge</reimplements>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+          <declname>extra</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get a position on the edge of this object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="340" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="422" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::RadialObject::contains</definition>
+        <argsstring>(const coord::phys3 &amp;other) const override</argsstring>
+        <name>contains</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1ae44111fd2a36e27a9edc0c885b5c2565">contains</reimplements>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>does this space contain a given point </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="341" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="426" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::RadialObject::intersects</definition>
+        <argsstring>(const TerrainObject &amp;other, const coord::phys3 &amp;position) const override</argsstring>
+        <name>intersects</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1ac5837451def43e3c3774e1ea1ba64d02">intersects</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>would this intersect with another object if it were positioned at the given point </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="342" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="430" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a3d04f4576d79ec1386283a37c357c3e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">coord::phys_t</ref></type>
+        <definition>coord::phys_t openage::RadialObject::min_axis</definition>
+        <argsstring>() const override</argsstring>
+        <name>min_axis</name>
+        <reimplements refid="classopenage_1_1_terrain_object_1a6b82e5577be0620a320954e13d0f5f08">min_axis</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the shortest line that can be placed across the objects center </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="343" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="440" bodyend="442"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a077a90bfb9efb02c129235d3ab2c12bd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::RadialObject::RadialObject</definition>
+        <argsstring>(Unit &amp;u, float rad)</argsstring>
+        <name>RadialObject</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rad</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="346" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="384" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_radial_object_1a9eb807b0c54b975287c956eec1150941" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::RadialObject::RadialObject</definition>
+        <argsstring>(Unit &amp;u, float rad, std::shared_ptr&lt; Texture &gt; out_tex)</argsstring>
+        <name>RadialObject</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rad</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> &gt;</type>
+          <declname>out_tex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="347" column="1" bodyfile="libopenage/terrain/terrain_object.cpp" bodystart="389" bodyend="394"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents circular shaped objects (movable game units) can only be constructed by unit-&gt;make_location&lt;RadialObject&gt;(...) </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3831">
+        <label>openage::TerrainObject</label>
+        <link refid="classopenage_1_1_terrain_object"/>
+        <childnode refid="3832" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3830">
+        <label>openage::RadialObject</label>
+        <link refid="classopenage_1_1_radial_object"/>
+        <childnode refid="3831" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3832">
+        <label>std::enable_shared_from_this&lt; TerrainObject &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3838">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="3834">
+        <label>openage::TerrainObject</label>
+        <link refid="classopenage_1_1_terrain_object"/>
+        <childnode refid="3835" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3836" relation="usage">
+          <edgelabel>+pos</edgelabel>
+        </childnode>
+        <childnode refid="3841" relation="usage">
+          <edgelabel>+unit</edgelabel>
+        </childnode>
+        <childnode refid="3857" relation="usage">
+          <edgelabel>#occupied_chunk</edgelabel>
+        </childnode>
+        <childnode refid="3834" relation="usage">
+          <edgelabel>#parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="3837">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="3838" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3853">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="3851" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3852" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="3850">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="3851" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3849" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="3851">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="3843">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="3844" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="3846" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="3847" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="3849" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="3852">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="3853" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="3857">
+        <label>openage::TerrainChunk</label>
+        <link refid="classopenage_1_1_terrain_chunk"/>
+        <childnode refid="3858" relation="usage">
+          <edgelabel>+data</edgelabel>
+        </childnode>
+        <childnode refid="3859" relation="usage">
+          <edgelabel>+terrain</edgelabel>
+        </childnode>
+        <childnode refid="3861" relation="usage">
+          <edgelabel>+neighbors</edgelabel>
+        </childnode>
+      </node>
+      <node id="3863">
+        <label>int_type</label>
+      </node>
+      <node id="3841">
+        <label>openage::Unit</label>
+        <link refid="classopenage_1_1_unit"/>
+        <childnode refid="3842" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3843" relation="usage">
+          <edgelabel>+unit_type</edgelabel>
+        </childnode>
+        <childnode refid="3856" relation="usage">
+          <edgelabel>-container</edgelabel>
+        </childnode>
+        <childnode refid="3846" relation="usage">
+          <edgelabel>+attributes</edgelabel>
+        </childnode>
+      </node>
+      <node id="3840">
+        <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="3862">
+        <label>openage::util::FixedPoint&lt; int_type, fractional_bits &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+        <childnode refid="3863" relation="usage">
+          <edgelabel>-raw_value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3855">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="3833">
+        <label>openage::RadialObject</label>
+        <link refid="classopenage_1_1_radial_object"/>
+        <childnode refid="3834" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3862" relation="usage">
+          <edgelabel>+phys_radius</edgelabel>
+        </childnode>
+      </node>
+      <node id="3846">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="3839">
+        <label>openage::coord::tile</label>
+        <link refid="structopenage_1_1coord_1_1tile"/>
+        <childnode refid="3840" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3849">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="3850" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="3852" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="3848" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="3854" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="3855" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="3842">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+      <node id="3844">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="3845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3848">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="3860">
+        <label>openage::terrain_meta</label>
+        <link refid="structopenage_1_1terrain__meta"/>
+      </node>
+      <node id="3854">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="3861">
+        <label>openage::chunk_neighbors</label>
+        <link refid="structopenage_1_1chunk__neighbors"/>
+        <childnode refid="3857" relation="usage">
+          <edgelabel>+neighbor</edgelabel>
+        </childnode>
+      </node>
+      <node id="3836">
+        <label>openage::tile_range</label>
+        <link refid="structopenage_1_1tile__range"/>
+        <childnode refid="3837" relation="usage">
+          <edgelabel>+draw</edgelabel>
+        </childnode>
+        <childnode refid="3839" relation="usage">
+          <edgelabel>+start</edgelabel>
+          <edgelabel>+end</edgelabel>
+        </childnode>
+      </node>
+      <node id="3835">
+        <label>std::enable_shared_from_this&lt; TerrainObject &gt;</label>
+      </node>
+      <node id="3847">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="3848" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="3859">
+        <label>openage::Terrain</label>
+        <link refid="classopenage_1_1_terrain"/>
+        <childnode refid="3860" relation="usage">
+          <edgelabel>-meta</edgelabel>
+        </childnode>
+      </node>
+      <node id="3856">
+        <label>openage::UnitContainer</label>
+        <link refid="classopenage_1_1_unit_container"/>
+      </node>
+      <node id="3845">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="3858">
+        <label>openage::TileContent</label>
+        <link refid="classopenage_1_1_tile_content"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain_object.h" line="325" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="325" bodyend="351"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_terrain_object_1a9ca18bc39c074f2172f12b4903ba0bb0" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>check_collisions</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a4ba763b25501e128abe64acdb073151d" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>children</name></member>
+      <member refid="classopenage_1_1_radial_object_1a8df3ce8c1bc15cc827e7de59f2a39f5a" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>contains</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a8eb5bfc64508b790cc77cf2907c51dd6" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>draw</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a95d5633a7448be10a5e6274351aac959" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>draw_outline</name></member>
+      <member refid="classopenage_1_1_radial_object_1af59b8ff3a8aa105883ac3b1ed61ef68a" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>from_edge</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a601a0aaa58d28c66540b8463662fab85" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>get_children</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a1e5c4905f3a581bb96600eef9ca09a0a" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>get_parent</name></member>
+      <member refid="classopenage_1_1_radial_object_1a92c40d889a2877bc6b8aba7523ab7dfe" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>get_range</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a170289794bdd31d673ffb3aca873bb1d" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>get_terrain</name></member>
+      <member refid="classopenage_1_1_radial_object_1adef472de61d9336b562db89eb8ac28a7" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>intersects</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a770b494c1e3982a678f48a53efb0cf02" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>is_floating</name></member>
+      <member refid="classopenage_1_1_terrain_object_1ad4fa56a3ee5387e217fa8d9297acda7b" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>is_placed</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a30448656c1797b35f24ab877778653a5" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>make_annex</name></member>
+      <member refid="classopenage_1_1_radial_object_1a3d04f4576d79ec1386283a37c357c3e3" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>min_axis</name></member>
+      <member refid="classopenage_1_1_terrain_object_1aed04f7dfb2a4836107796fd3598accc3" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>move</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a156accfa21be059dc19f5ff98e7c3d1d" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>occupied_chunk</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a70b1e1d14a4aec1bb2be65f37c4456df" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>occupied_chunk_count</name></member>
+      <member refid="classopenage_1_1_radial_object_1a49bdbb9c2e34b7fac95d8498adef1bc4" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>on_edge</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a70a6bf42cb9c63065a615cc91d05bc0f" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a48b30f255fce4952271b5fd633daa488" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>outline_texture</name></member>
+      <member refid="classopenage_1_1_terrain_object_1ac33cda2d90c5809f676d11538b119ffe" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>parent</name></member>
+      <member refid="classopenage_1_1_terrain_object_1af86e4e2bf2ac48fc1b37cc436a50c5a1" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>passable</name></member>
+      <member refid="classopenage_1_1_radial_object_1a1add8d71baff4386b468adb1c8f49323" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>phys_radius</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a227f50f827d1ae7791f06e323c581bbd" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>place</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a90235fcc91847da15129ce77ffcb53a8" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>place</name></member>
+      <member refid="classopenage_1_1_terrain_object_1af781d73de8772dfe4454e75eb96d104c" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>place_unchecked</name></member>
+      <member refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>pos</name></member>
+      <member refid="classopenage_1_1_radial_object_1a077a90bfb9efb02c129235d3ab2c12bd" prot="private" virt="non-virtual"><scope>openage::RadialObject</scope><name>RadialObject</name></member>
+      <member refid="classopenage_1_1_radial_object_1a9eb807b0c54b975287c956eec1150941" prot="private" virt="non-virtual"><scope>openage::RadialObject</scope><name>RadialObject</name></member>
+      <member refid="classopenage_1_1_terrain_object_1af24e842fc429a5dbb73c12abcb9c3378" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>remove</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a2ad9a9df0f058487a4ec66b68ee390ed" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>set_ground</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a443027580e98741afa29075d944c821e" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>state</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a8c5e009bd234e32fdcf21b51dde4061e" prot="protected" virt="non-virtual"><scope>openage::RadialObject</scope><name>terrain</name></member>
+      <member refid="classopenage_1_1_radial_object_1aff862d77a5be85b24b43f30f8b788ed4" prot="private" virt="non-virtual"><scope>openage::RadialObject</scope><name>TerrainObject</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a77c47ac9d0f7e115f2f5c38a830d0133" prot="public" virt="non-virtual" ambiguityscope="openage::TerrainObject::"><scope>openage::RadialObject</scope><name>TerrainObject</name></member>
+      <member refid="classopenage_1_1_terrain_object_1ac13bbe648d38b4b8dad02a329e3b29f1" prot="public" virt="non-virtual" ambiguityscope="openage::TerrainObject::"><scope>openage::RadialObject</scope><name>TerrainObject</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a62433a29728bacd45f10f71cd508e7e0" prot="public" virt="non-virtual" ambiguityscope="openage::TerrainObject::"><scope>openage::RadialObject</scope><name>TerrainObject</name></member>
+      <member refid="classopenage_1_1_radial_object_1a7d9e2c6a94a6a3bc107607aa0318e804" prot="private" virt="non-virtual"><scope>openage::RadialObject</scope><name>Unit</name></member>
+      <member refid="classopenage_1_1_terrain_object_1a0ced8b7c83c658eb9c3545d2c5fd92f7" prot="public" virt="non-virtual"><scope>openage::RadialObject</scope><name>unit</name></member>
+      <member refid="classopenage_1_1_radial_object_1a612cfab3fd84a8ad72818d923d999169" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>~RadialObject</name></member>
+      <member refid="classopenage_1_1_terrain_object_1accf1000738bfedfae052b9257509ef97" prot="public" virt="virtual"><scope>openage::RadialObject</scope><name>~TerrainObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

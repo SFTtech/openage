@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1col" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::col</compoundname>
+    <includes refid="util_2color_8h" local="no">color.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::col::r</definition>
+        <argsstring></argsstring>
+        <name>r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::col::g</definition>
+        <argsstring></argsstring>
+        <name>g</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::col::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::col::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="14" column="1" bodyfile="libopenage/util/color.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1util_1_1col_1a2fca970d692cd3647b570bed29a0b399" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::col::col</definition>
+        <argsstring>(unsigned r, unsigned g, unsigned b, unsigned a)</argsstring>
+        <name>col</name>
+        <param>
+          <type>unsigned</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="11" column="1" bodyfile="libopenage/util/color.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::col::col</definition>
+        <argsstring>(gamedata::palette_color c)</argsstring>
+        <name>col</name>
+        <param>
+          <type>gamedata::palette_color</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="12" column="1" bodyfile="libopenage/util/color.cpp" bodystart="10" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::col::use</definition>
+        <argsstring>()</argsstring>
+        <name>use</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="16" column="1" bodyfile="libopenage/util/color.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1util_1_1col_1abba60fa4a399e16091f092991402561f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::col::use</definition>
+        <argsstring>(float alpha)</argsstring>
+        <name>use</name>
+        <param>
+          <type>float</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/color.h" line="17" column="1" bodyfile="libopenage/util/color.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="782">
+        <label>openage::util::col</label>
+        <link refid="structopenage_1_1util_1_1col"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/color.h" line="10" column="1" bodyfile="libopenage/util/color.h" bodystart="10" bodyend="18"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>a</name></member>
+      <member refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>b</name></member>
+      <member refid="structopenage_1_1util_1_1col_1a2fca970d692cd3647b570bed29a0b399" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>col</name></member>
+      <member refid="structopenage_1_1util_1_1col_1ad4a0526c0a0c1779da15e1531946f303" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>col</name></member>
+      <member refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>g</name></member>
+      <member refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>r</name></member>
+      <member refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>use</name></member>
+      <member refid="structopenage_1_1util_1_1col_1abba60fa4a399e16091f092991402561f" prot="public" virt="non-virtual"><scope>openage::util::col</scope><name>use</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

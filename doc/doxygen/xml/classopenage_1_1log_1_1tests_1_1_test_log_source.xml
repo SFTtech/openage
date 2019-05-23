@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1log_1_1tests_1_1_test_log_source" kind="class" language="C++" prot="public">
+    <compoundname>openage::log::tests::TestLogSource</compoundname>
+    <basecompoundref refid="classopenage_1_1log_1_1_log_source" prot="public" virt="non-virtual">openage::log::LogSource</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1tests_1_1_test_log_source_1a74b3c29f8bed1594ed3d5c5990204cf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::log::tests::TestLogSource::logsource_name</definition>
+        <argsstring>() override</argsstring>
+        <name>logsource_name</name>
+        <reimplements refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc">logsource_name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/test.cpp" line="21" column="1" bodyfile="libopenage/log/test.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4425">
+        <label>openage::log::tests::TestLogSource</label>
+        <link refid="classopenage_1_1log_1_1tests_1_1_test_log_source"/>
+        <childnode refid="4426" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4426">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4427">
+        <label>openage::log::tests::TestLogSource</label>
+        <link refid="classopenage_1_1log_1_1tests_1_1_test_log_source"/>
+        <childnode refid="4428" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4428">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/test.cpp" line="19" column="1" bodyfile="libopenage/log/test.cpp" bodystart="19" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSource</scope><name>log</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1ae75ede4764f389add2e8a870584807bb" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSource</scope><name>logger_id</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1aa2ff50c079c20b6ff1dfa08f45080b0a" prot="public" virt="non-virtual"><scope>openage::log::tests::TestLogSource</scope><name>LogSource</name></member>
+      <member refid="classopenage_1_1log_1_1tests_1_1_test_log_source_1a74b3c29f8bed1594ed3d5c5990204cf7" prot="public" virt="virtual"><scope>openage::log::tests::TestLogSource</scope><name>logsource_name</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1aa74e829150dd523fea5173cd5d864285" prot="public" virt="virtual"><scope>openage::log::tests::TestLogSource</scope><name>~LogSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

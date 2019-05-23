@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="cvar_8cpp" kind="file" language="C++">
+    <compoundname>cvar.cpp</compoundname>
+    <includes refid="cvar_8h" local="yes">cvar.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <incdepgraph>
+      <node id="5633">
+        <label>list</label>
+      </node>
+      <node id="5624">
+        <label>atomic</label>
+      </node>
+      <node id="5629">
+        <label>iomanip</label>
+      </node>
+      <node id="5602">
+        <label>functional</label>
+      </node>
+      <node id="5637">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="5602" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+      </node>
+      <node id="5619">
+        <label>cstdint</label>
+      </node>
+      <node id="5603">
+        <label>stdlib.h</label>
+      </node>
+      <node id="5627">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5628" relation="include">
+        </childnode>
+        <childnode refid="5602" relation="include">
+        </childnode>
+        <childnode refid="5629" relation="include">
+        </childnode>
+        <childnode refid="5616" relation="include">
+        </childnode>
+        <childnode refid="5630" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5631" relation="include">
+        </childnode>
+      </node>
+      <node id="5613">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="5614" relation="include">
+        </childnode>
+      </node>
+      <node id="5617">
+        <label>stdexcept</label>
+      </node>
+      <node id="5612">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="5632">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5633" relation="include">
+        </childnode>
+        <childnode refid="5608" relation="include">
+        </childnode>
+        <childnode refid="5634" relation="include">
+        </childnode>
+      </node>
+      <node id="5628">
+        <label>cstdarg</label>
+      </node>
+      <node id="5604">
+        <label>string</label>
+      </node>
+      <node id="5618">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5619" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5620" relation="include">
+        </childnode>
+        <childnode refid="5621" relation="include">
+        </childnode>
+        <childnode refid="5623" relation="include">
+        </childnode>
+        <childnode refid="5632" relation="include">
+        </childnode>
+        <childnode refid="5634" relation="include">
+        </childnode>
+      </node>
+      <node id="5621">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5622" relation="include">
+        </childnode>
+      </node>
+      <node id="5623">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5624" relation="include">
+        </childnode>
+        <childnode refid="5616" relation="include">
+        </childnode>
+        <childnode refid="5625" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+        <childnode refid="5626" relation="include">
+        </childnode>
+        <childnode refid="5627" relation="include">
+        </childnode>
+      </node>
+      <node id="5601">
+        <label>cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="5602" relation="include">
+        </childnode>
+        <childnode refid="5603" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5605" relation="include">
+        </childnode>
+        <childnode refid="5606" relation="include">
+        </childnode>
+        <childnode refid="5607" relation="include">
+        </childnode>
+        <childnode refid="5638" relation="include">
+        </childnode>
+      </node>
+      <node id="5639">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="5619" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5631" relation="include">
+        </childnode>
+        <childnode refid="5640" relation="include">
+        </childnode>
+        <childnode refid="5607" relation="include">
+        </childnode>
+      </node>
+      <node id="5614">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5615" relation="include">
+        </childnode>
+        <childnode refid="5616" relation="include">
+        </childnode>
+        <childnode refid="5617" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+        <childnode refid="5618" relation="include">
+        </childnode>
+      </node>
+      <node id="5636">
+        <label>typeinfo</label>
+      </node>
+      <node id="5631">
+        <label>vector</label>
+      </node>
+      <node id="5644">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="5634" relation="include">
+        </childnode>
+        <childnode refid="5618" relation="include">
+        </childnode>
+      </node>
+      <node id="5610">
+        <label>ciso646</label>
+      </node>
+      <node id="5600">
+        <label>libopenage/cvar/cvar.cpp</label>
+        <link refid="cvar_8cpp"/>
+        <childnode refid="5601" relation="include">
+        </childnode>
+        <childnode refid="5644" relation="include">
+        </childnode>
+      </node>
+      <node id="5606">
+        <label>utility</label>
+      </node>
+      <node id="5630">
+        <label>sstream</label>
+      </node>
+      <node id="5609">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5610" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5611" relation="include">
+        </childnode>
+      </node>
+      <node id="5641">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="5616" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5631" relation="include">
+        </childnode>
+        <childnode refid="5642" relation="include">
+        </childnode>
+        <childnode refid="5639" relation="include">
+        </childnode>
+      </node>
+      <node id="5611">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5611" relation="include">
+        </childnode>
+      </node>
+      <node id="5626">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5615" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+      </node>
+      <node id="5634">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5635" relation="include">
+        </childnode>
+      </node>
+      <node id="5643">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="5642">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="5615" relation="include">
+        </childnode>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+      </node>
+      <node id="5622">
+        <label>cstdlib</label>
+      </node>
+      <node id="5615">
+        <label>iostream</label>
+      </node>
+      <node id="5605">
+        <label>unordered_map</label>
+      </node>
+      <node id="5607">
+        <label>../pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="5602" relation="include">
+        </childnode>
+        <childnode refid="5608" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+        <childnode refid="5612" relation="include">
+        </childnode>
+        <childnode refid="5613" relation="include">
+        </childnode>
+        <childnode refid="5637" relation="include">
+        </childnode>
+      </node>
+      <node id="5608">
+        <label>mutex</label>
+      </node>
+      <node id="5638">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="5604" relation="include">
+        </childnode>
+        <childnode refid="5631" relation="include">
+        </childnode>
+        <childnode refid="5639" relation="include">
+        </childnode>
+        <childnode refid="5641" relation="include">
+        </childnode>
+        <childnode refid="5643" relation="include">
+        </childnode>
+      </node>
+      <node id="5640">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="5625">
+        <label>type_traits</label>
+      </node>
+      <node id="5620">
+        <label>config.h</label>
+      </node>
+      <node id="5616">
+        <label>memory</label>
+      </node>
+      <node id="5635">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5615" relation="include">
+        </childnode>
+        <childnode refid="5636" relation="include">
+        </childnode>
+        <childnode refid="5609" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1cvar">openage::cvar</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cvar_8h" kindref="compound">cvar.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9" refid="namespaceopenage_1_1cvar" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">cvar<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classopenage_1_1cvar_1_1_c_var_manager_1ae47e10a45c7b6d8376d153937651ce34" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1ae47e10a45c7b6d8376d153937651ce34" kindref="member">CVarManager::CVarManager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;path)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>path{<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" kindref="member">path</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1cvar_1_1_c_var_manager_1a093074d20bdce055fac654ba01733f36" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a093074d20bdce055fac654ba01733f36" kindref="member">CVarManager::create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::pair&lt;get_func,<sp/>set_func&gt;<sp/>&amp;accessors)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.find(name);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>[name]<sp/>=<sp/>accessors;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1cvar_1_1_c_var_manager_1abf47769212763bbf43146a97443779da" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1abf47769212763bbf43146a97443779da" kindref="member">CVarManager::get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.find(name);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second.first();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1cvar_1_1_c_var_manager_1a972739b7927c488b0761a10319653e8a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a972739b7927c488b0761a10319653e8a" kindref="member">CVarManager::set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.find(name);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" kindref="member">store</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second.second(value);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" kindref="member">CVarManager::load_config</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;path)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1cvar_1a8f14b711d03e0856c0753a9b330ff5cb" kindref="member">pyx_load_config_file</ref>.call(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" kindref="member">path</ref>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classopenage_1_1cvar_1_1_c_var_manager_1a8fcaa20636cab773dc70db2c74a4308e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a8fcaa20636cab773dc70db2c74a4308e" kindref="member">CVarManager::load_all</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" kindref="member">INFO</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;loading<sp/>configuration<sp/>files...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" kindref="member">load_config</ref>(this-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" kindref="member">path</ref>[</highlight><highlight class="stringliteral">&quot;keybinds.oac&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="namespaceopenage_1_1cvar_1a8f14b711d03e0856c0753a9b330ff5cb" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;void, CVarManager *, const util::Path &amp;&gt;</ref><sp/><ref refid="namespaceopenage_1_1cvar_1a8f14b711d03e0856c0753a9b330ff5cb" kindref="member">pyx_load_config_file</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::cvar</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/cvar/cvar.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_interval_timer" kind="class" language="C++" prot="public">
+    <compoundname>openage::IntervalTimer</compoundname>
+    <includes refid="unit_2action_8h" local="no">action.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::IntervalTimer::interval</definition>
+        <argsstring></argsstring>
+        <name>interval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="71" column="1" bodyfile="libopenage/unit/action.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_interval_timer_1aa6bc2e84f7dd42a603beac62f2bcb26d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::IntervalTimer::max_triggers</definition>
+        <argsstring></argsstring>
+        <name>max_triggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="73" column="1" bodyfile="libopenage/unit/action.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::IntervalTimer::time_left</definition>
+        <argsstring></argsstring>
+        <name>time_left</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="75" column="1" bodyfile="libopenage/unit/action.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::IntervalTimer::triggers</definition>
+        <argsstring></argsstring>
+        <name>triggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="77" column="1" bodyfile="libopenage/unit/action.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a7dca00ce42fb959b4301bf181e52cce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::IntervalTimer::IntervalTimer</definition>
+        <argsstring>(unsigned int interval)</argsstring>
+        <name>IntervalTimer</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>interval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a timer with a given interval </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="31" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a90b5060c84e4c8f25a389ec67b8470b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::IntervalTimer::IntervalTimer</definition>
+        <argsstring>(unsigned int interval, int max_triggers)</argsstring>
+        <name>IntervalTimer</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>interval</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>max_triggers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a timer with a given interval which will stop after a given number of triggers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="37" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a0b8e2a356a40d6fcb2f3b2e0410a675b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::IntervalTimer::skip_to_trigger</definition>
+        <argsstring>()</argsstring>
+        <name>skip_to_trigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="39" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::IntervalTimer::update</definition>
+        <argsstring>(unsigned int time)</argsstring>
+        <name>update</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="41" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="36" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a14bce56d6b2492831cd28e6f327a641e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::IntervalTimer::get_time_left</definition>
+        <argsstring>() const</argsstring>
+        <name>get_time_left</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the time until the next trigger </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="46" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1adf00dc6610faafd2bd5ce329fcb71868" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float openage::IntervalTimer::get_progress</definition>
+        <argsstring>() const</argsstring>
+        <name>get_progress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="48" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a4612f17977fc6e73da3f46c478568da8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::IntervalTimer::has_triggers</definition>
+        <argsstring>() const</argsstring>
+        <name>has_triggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if at least one interval has passed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="53" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::IntervalTimer::finished</definition>
+        <argsstring>() const</argsstring>
+        <name>finished</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the interval passed have reached the max. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="58" column="1" bodyfile="libopenage/unit/action.cpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1ae1578e17277895943be475c83027af81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::IntervalTimer::get_triggers</definition>
+        <argsstring>() const</argsstring>
+        <name>get_triggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of intervals passed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="63" column="1" bodyfile="libopenage/unit/action.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1a3b8556bdc5e8f4c6e00a1d614f6b949b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::IntervalTimer::get_interval</definition>
+        <argsstring>() const</argsstring>
+        <name>get_interval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="65" column="1" bodyfile="libopenage/unit/action.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_interval_timer_1abaf69917928c58c16504879c285ee792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::IntervalTimer::set_interval</definition>
+        <argsstring>(unsigned int interval)</argsstring>
+        <name>set_interval</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>interval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/action.h" line="67" column="1" bodyfile="libopenage/unit/action.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A interval triggering timer used in actions. TODO find a better name for triggers </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3018">
+        <label>openage::IntervalTimer</label>
+        <link refid="classopenage_1_1_interval_timer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/action.h" line="25" column="1" bodyfile="libopenage/unit/action.h" bodystart="25" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_interval_timer_1a8604ecb1237e6f9be407fe6f9e63c6d6" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>finished</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a3b8556bdc5e8f4c6e00a1d614f6b949b" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>get_interval</name></member>
+      <member refid="classopenage_1_1_interval_timer_1adf00dc6610faafd2bd5ce329fcb71868" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>get_progress</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a14bce56d6b2492831cd28e6f327a641e" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>get_time_left</name></member>
+      <member refid="classopenage_1_1_interval_timer_1ae1578e17277895943be475c83027af81" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>get_triggers</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a4612f17977fc6e73da3f46c478568da8" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>has_triggers</name></member>
+      <member refid="classopenage_1_1_interval_timer_1aa2ad12ec2a0c44e57254eba6f8ddd7e6" prot="private" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>interval</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a7dca00ce42fb959b4301bf181e52cce1" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>IntervalTimer</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a90b5060c84e4c8f25a389ec67b8470b0" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>IntervalTimer</name></member>
+      <member refid="classopenage_1_1_interval_timer_1aa6bc2e84f7dd42a603beac62f2bcb26d" prot="private" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>max_triggers</name></member>
+      <member refid="classopenage_1_1_interval_timer_1abaf69917928c58c16504879c285ee792" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>set_interval</name></member>
+      <member refid="classopenage_1_1_interval_timer_1a0b8e2a356a40d6fcb2f3b2e0410a675b" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>skip_to_trigger</name></member>
+      <member refid="classopenage_1_1_interval_timer_1ab19d3fc4826dd8d13862832056c97df8" prot="private" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>time_left</name></member>
+      <member refid="classopenage_1_1_interval_timer_1ad1685289e75cbd0bcc9669981b6de95f" prot="private" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>triggers</name></member>
+      <member refid="classopenage_1_1_interval_timer_1acb51f379d7d73ad7fff1197f9fa2335b" prot="public" virt="non-virtual"><scope>openage::IntervalTimer</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_event_handling_quick_window" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::EventHandlingQuickWindow</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QQuickWindow</basecompoundref>
+    <includes refid="gui__renderer__impl_8h" local="no">gui_renderer_impl.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" prot="private" static="no" mutable="no">
+        <type>QQuickItem *</type>
+        <definition>QQuickItem* qtsdl::EventHandlingQuickWindow::focused_item</definition>
+        <argsstring></argsstring>
+        <name>focused_item</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="39" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_event_handling_quick_window_1ab85f41f16d79f1a3198a36a7d07e44fe" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::EventHandlingQuickWindow::EventHandlingQuickWindow</definition>
+        <argsstring>(QQuickRenderControl *render_control)</argsstring>
+        <name>EventHandlingQuickWindow</name>
+        <param>
+          <type>QQuickRenderControl *</type>
+          <declname>render_control</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_event_handling_quick_window_1a783308ed32fda3f8dd6bd0a6f1a6283e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::EventHandlingQuickWindow::~EventHandlingQuickWindow</definition>
+        <argsstring>()</argsstring>
+        <name>~EventHandlingQuickWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="30" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::EventHandlingQuickWindow::on_input_event</definition>
+        <argsstring>(std::atomic&lt; bool &gt; *processed, QEvent *event, bool only_if_grabbed)</argsstring>
+        <name>on_input_event</name>
+        <param>
+          <type>std::atomic&lt; bool &gt; *</type>
+          <declname>processed</declname>
+        </param>
+        <param>
+          <type>QEvent *</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>only_if_grabbed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="34" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="33" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="slot" id="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::EventHandlingQuickWindow::on_resized</definition>
+        <argsstring>(const QSize &amp;size)</argsstring>
+        <name>on_resized</name>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="35" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1445">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="1444">
+        <label>qtsdl::EventHandlingQuickWindow</label>
+        <link refid="classqtsdl_1_1_event_handling_quick_window"/>
+        <childnode refid="1445" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1447">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="1446">
+        <label>qtsdl::EventHandlingQuickWindow</label>
+        <link refid="classqtsdl_1_1_event_handling_quick_window"/>
+        <childnode refid="1447" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="26" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_event_handling_quick_window_1ab85f41f16d79f1a3198a36a7d07e44fe" prot="public" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>EventHandlingQuickWindow</name></member>
+      <member refid="classqtsdl_1_1_event_handling_quick_window_1a1deacf77b4ff198c1e69922b9ed94439" prot="private" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>focused_item</name></member>
+      <member refid="classqtsdl_1_1_event_handling_quick_window_1aecbe0b9577709d069a097c87eba313ab" prot="public" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>on_input_event</name></member>
+      <member refid="classqtsdl_1_1_event_handling_quick_window_1a7d392ef80d0d1b74370d6188799e94d7" prot="public" virt="non-virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>on_resized</name></member>
+      <member refid="classqtsdl_1_1_event_handling_quick_window_1a783308ed32fda3f8dd6bd0a6f1a6283e" prot="public" virt="virtual"><scope>qtsdl::EventHandlingQuickWindow</scope><name>~EventHandlingQuickWindow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

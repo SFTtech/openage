@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="init_8h" kind="file" language="C++">
+    <compoundname>init.h</compoundname>
+    <includes local="no">functional</includes>
+    <includedby refid="error_2handlers_8cpp" local="yes">libopenage/error/handlers.cpp</includedby>
+    <includedby refid="stackanalyzer_8cpp" local="yes">libopenage/error/stackanalyzer.cpp</includedby>
+    <includedby refid="init_8cpp" local="yes">libopenage/util/init.cpp</includedby>
+    <incdepgraph>
+      <node id="30669">
+        <label>functional</label>
+      </node>
+      <node id="30668">
+        <label>libopenage/util/init.h</label>
+        <link refid="init_8h"/>
+        <childnode refid="30669" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30673">
+        <label>libopenage/util/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="30672">
+        <label>libopenage/error/stackanalyzer.cpp</label>
+        <link refid="stackanalyzer_8cpp"/>
+      </node>
+      <node id="30671">
+        <label>libopenage/error/handlers.cpp</label>
+        <link refid="error_2handlers_8cpp"/>
+      </node>
+      <node id="30670">
+        <label>libopenage/util/init.h</label>
+        <link refid="init_8h"/>
+        <childnode refid="30671" relation="include">
+        </childnode>
+        <childnode refid="30672" relation="include">
+        </childnode>
+        <childnode refid="30673" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1_on_init" prot="public">openage::util::OnInit</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_on_de_init" prot="public">openage::util::OnDeInit</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1util_1_1_on_init" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" kindref="member">OnInit</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>()&gt;<sp/>code)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>code();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_init_1aee68c717a9836e70bb40f74329ee376e" kindref="member">~OnInit</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nope.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" kindref="member">OnInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" kindref="member">OnInit</ref>(<ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_on_init_1aa8ed10ec7ad3387c11ab20f38dae1076" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_on_init_1aa8ed10ec7ad3387c11ab20f38dae1076" kindref="member">operator =</ref>(<ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classopenage_1_1util_1_1_on_de_init" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" kindref="member">OnDeInit</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>()&gt;<sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code</ref>)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code</ref>{<ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1util_1_1_on_de_init_1a3dd4aa892cc3763f73e856b880f34093" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1a3dd4aa892cc3763f73e856b880f34093" kindref="member">~OnDeInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void<sp/>()&gt;<sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1ab313946960ca19ebc83b971f584349cd" kindref="member">code</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nope.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" kindref="member">OnDeInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init_1a4d63aca1af91b10ed40e0f2b05df40d9" kindref="member">OnDeInit</ref>(<ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_on_de_init_1a2d9aaee47a936d8376373d746dcc630c" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1_on_de_init_1a2d9aaee47a936d8376373d746dcc630c" kindref="member">operator =</ref>(<ref refid="classopenage_1_1util_1_1_on_de_init" kindref="compound">OnDeInit</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/init.h"/>
+  </compounddef>
+</doxygen>

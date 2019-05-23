@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="util_2color_8h" kind="file" language="C++">
+    <compoundname>color.h</compoundname>
+    <includes local="yes">../gamedata/color.gen.h</includes>
+    <includedby refid="console_8h" local="yes">libopenage/console/console.h</includedby>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="util_2color_8cpp" local="yes">libopenage/util/color.cpp</includedby>
+    <incdepgraph>
+      <node id="20432">
+        <label>../gamedata/color.gen.h</label>
+      </node>
+      <node id="20431">
+        <label>libopenage/util/color.h</label>
+        <link refid="util_2color_8h"/>
+        <childnode refid="20432" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20433">
+        <label>libopenage/util/color.h</label>
+        <link refid="util_2color_8h"/>
+        <childnode refid="20434" relation="include">
+        </childnode>
+        <childnode refid="20440" relation="include">
+        </childnode>
+        <childnode refid="20441" relation="include">
+        </childnode>
+      </node>
+      <node id="20434">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="20435" relation="include">
+        </childnode>
+        <childnode refid="20436" relation="include">
+        </childnode>
+        <childnode refid="20437" relation="include">
+        </childnode>
+        <childnode refid="20438" relation="include">
+        </childnode>
+        <childnode refid="20439" relation="include">
+        </childnode>
+      </node>
+      <node id="20438">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="20439">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="20435">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="20440">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="20441">
+        <label>libopenage/util/color.cpp</label>
+        <link refid="util_2color_8cpp"/>
+      </node>
+      <node id="20436">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="20437">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1util_1_1col" prot="public">openage::util::col</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamedata/color.gen.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structopenage_1_1util_1_1col" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1util_1_1col" kindref="compound">col</ref><sp/>{</highlight></codeline>
+<codeline lineno="11" refid="structopenage_1_1util_1_1col_1a2fca970d692cd3647b570bed29a0b399" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1col_1a2fca970d692cd3647b570bed29a0b399" kindref="member">col</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" kindref="member">r</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" kindref="member">g</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" kindref="member">b</ref>,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" kindref="member">a</ref>)<sp/>:<sp/><ref refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" kindref="member">r</ref>{<ref refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" kindref="member">r</ref>},<sp/><ref refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" kindref="member">g</ref>{<ref refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" kindref="member">g</ref>},<sp/><ref refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" kindref="member">b</ref>{<ref refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" kindref="member">b</ref>},<sp/><ref refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" kindref="member">a</ref>{<ref refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" kindref="member">a</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1col_1a2fca970d692cd3647b570bed29a0b399" kindref="member">col</ref>(gamedata::palette_color<sp/>c);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a85dc864386b4b97287a3e9d25286f58c" kindref="member">r</ref>,<sp/><ref refid="structopenage_1_1util_1_1col_1a1bea530bf5fac588396f76d88608c720" kindref="member">g</ref>,<sp/><ref refid="structopenage_1_1util_1_1col_1a723b8072624eaa46b6e372f32ba656f8" kindref="member">b</ref>,<sp/><ref refid="structopenage_1_1util_1_1col_1aab550bf07efafb504f02767c6c95f3ae" kindref="member">a</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" kindref="member">use</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1util_1_1col_1a3d3e73a34b4617c7cb0bf240ce73ce9d" kindref="member">use</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>alpha);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/color.h"/>
+  </compounddef>
+</doxygen>

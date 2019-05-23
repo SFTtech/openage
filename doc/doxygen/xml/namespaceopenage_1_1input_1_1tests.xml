@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1input_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::input::tests</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1input_1_1tests_1a0291195ab14d6ffb5dcb8e894ec20972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::input::tests::parse_event_string</definition>
+        <argsstring>()</argsstring>
+        <name>parse_event_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/text_to_event.cpp" line="112" column="1" bodyfile="libopenage/input/text_to_event.cpp" bodystart="112" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/input/text_to_event.cpp" line="111" column="1"/>
+  </compounddef>
+</doxygen>

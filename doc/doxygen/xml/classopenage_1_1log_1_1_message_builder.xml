@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1log_1_1_message_builder" kind="class" language="C++" prot="public">
+    <compoundname>openage::log::MessageBuilder</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_string_formatter" prot="public" virt="non-virtual">openage::util::StringFormatter&lt; MessageBuilder &gt;</basecompoundref>
+    <includes refid="message_8h" local="no">message.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1log_1_1_message_builder_1aa6216bbeb4c6ed53a01fbb386273c3eb" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref></type>
+        <definition>message openage::log::MessageBuilder::msg</definition>
+        <argsstring></argsstring>
+        <name>msg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="146" column="1" bodyfile="libopenage/log/message.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1log_1_1_message_builder_1afb522d396b526efcd87fb4f5df3dbde2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class LogSource</definition>
+        <argsstring></argsstring>
+        <name>LogSource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="149" column="1" bodyfile="libopenage/log/message.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1adf059a277faadaa1bc391ca60edc0d91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::log::MessageBuilder::MessageBuilder</definition>
+        <argsstring>(const char *filename, unsigned lineno, const char *functionname, level lvl=level::info)</argsstring>
+        <name>MessageBuilder</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>lineno</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>functionname</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
+          <declname>lvl</declname>
+          <defval>level::info</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Don&apos;t use this constructor directly; instead use the MSG macro.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+<parametername>lineno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source file name and line number (<bold>FILE</bold>, <bold>LINE</bold>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>functionname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(fully qualified) function name (OPENAGE_FUNC_NAME). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lvl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>loglevel of the message. Also required for exception messages. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="128" column="1" bodyfile="libopenage/log/message.cpp" bodystart="35" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1aea1080aca07eb94d1485f355643ed5c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::log::MessageBuilder::operator const message &amp;</definition>
+        <argsstring>() const</argsstring>
+        <name>operator const message &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="132" column="1" bodyfile="libopenage/log/message.h" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1a75c42547786e0c297af961c981051125" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::log::MessageBuilder::operator message &amp;</definition>
+        <argsstring>()</argsstring>
+        <name>operator message &amp;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="136" column="1" bodyfile="libopenage/log/message.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_message_builder_1a79661ed4ee53415c549c95a765c7b4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::log::MessageBuilder::should_format</definition>
+        <argsstring>() const override</argsstring>
+        <name>should_format</name>
+        <reimplements refid="classopenage_1_1util_1_1_string_formatter_1a9f4f8b039a336f8368ba3ab9f7464a60">should_format</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns if formatting should actually occur. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.h" line="140" column="1" bodyfile="libopenage/log/message.h" bodystart="140" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Wrapper around a log message that allows appending to the message with operator &lt;&lt;.</para>
+<para>Auto-converts to message; via the MSG macro, this is the preferred way of creating log and exc messages. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3198">
+        <label>openage::log::MessageBuilder</label>
+        <link refid="classopenage_1_1log_1_1_message_builder"/>
+        <childnode refid="3199" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3199">
+        <label>openage::util::StringFormatter&lt; MessageBuilder &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3200">
+        <label>openage::log::MessageBuilder</label>
+        <link refid="classopenage_1_1log_1_1_message_builder"/>
+        <childnode refid="3201" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3207" relation="usage">
+          <edgelabel>-msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="3202">
+        <label>openage::util::CachableOSStream</label>
+        <link refid="classopenage_1_1util_1_1_cachable_o_s_stream"/>
+        <childnode refid="3203" relation="usage">
+          <edgelabel>+stream</edgelabel>
+        </childnode>
+      </node>
+      <node id="3207">
+        <label>openage::log::message</label>
+        <link refid="structopenage_1_1log_1_1message"/>
+        <childnode refid="3208" relation="usage">
+          <edgelabel>+lvl</edgelabel>
+        </childnode>
+      </node>
+      <node id="3203">
+        <label>openage::util::ExternalOStringStream</label>
+        <link refid="classopenage_1_1util_1_1_external_o_string_stream"/>
+        <childnode refid="3204" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3205" relation="usage">
+          <edgelabel>-buf</edgelabel>
+        </childnode>
+      </node>
+      <node id="3211">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="3206">
+        <label>std::streambuf</label>
+      </node>
+      <node id="3209">
+        <label>openage::util::Enum&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="3210" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="3204">
+        <label>std::ostream</label>
+      </node>
+      <node id="3201">
+        <label>openage::util::StringFormatter&lt; MessageBuilder &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="3202" relation="usage">
+          <edgelabel>-stream_ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="3208">
+        <label>openage::log::level</label>
+        <link refid="structopenage_1_1log_1_1level"/>
+        <childnode refid="3209" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3210" relation="usage">
+          <edgelabel>+NOOPTIMIZE</edgelabel>
+        </childnode>
+      </node>
+      <node id="3205">
+        <label>openage::util::ExternalStringBuf</label>
+        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
+        <childnode refid="3206" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3210">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="3211" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/message.h" line="118" column="1" bodyfile="libopenage/log/message.h" bodystart="118" bodyend="150"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1adee46a55b6f42172045bc199ef0469f0" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>child_type_ref</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a6d06a46c42c75fe91a1736559b914ab3" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>fmt</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1afb522d396b526efcd87fb4f5df3dbde2" prot="private" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>LogSource</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1adf059a277faadaa1bc391ca60edc0d91" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>MessageBuilder</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1aa6216bbeb4c6ed53a01fbb386273c3eb" prot="private" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>msg</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1aea1080aca07eb94d1485f355643ed5c0" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator const message &amp;</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1a75c42547786e0c297af961c981051125" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator message &amp;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad4ebd58a5fcd96c87d116a2090a9b334" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1afbfb9d33b20ea4ae22a8261bc82d0e1a" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a89d3cf2f11edaa7885c3ab0e6bfe3536" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a638f9190413d043007430971011ece57" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a34cd9ca325f900c88254381412c953c6" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a5219fb7cba6db3e5c7603a57c94c0326" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a21573badd1afe0cf9dc9b2c6311d34b3" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a42ffb5b1e764e003ac8c59facc580722" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad3a8b063f359dd603acf5b5de75307bf" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a3007d4045a594b7b18d9936908732cb1" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>reset_flags</name></member>
+      <member refid="classopenage_1_1log_1_1_message_builder_1a79661ed4ee53415c549c95a765c7b4bf" prot="public" virt="virtual"><scope>openage::log::MessageBuilder</scope><name>should_format</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1abc8c5d3dda80dadf6bbefa12c075bdab" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a14f06db924cc9c7f7a8cb71ac5849577" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a2471b33c928800acb26d0660c5d647ef" prot="public" virt="non-virtual"><scope>openage::log::MessageBuilder</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1aa55bdace86e9b1eda7b225b694c5a165" prot="public" virt="virtual"><scope>openage::log::MessageBuilder</scope><name>~StringFormatter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

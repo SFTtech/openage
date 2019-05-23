@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_live_reloader" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiLiveReloader</compoundname>
+    <includes refid="gui__live__reloader_8h" local="no">gui_live_reloader.h</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classqtsdl_1_1_gui_live_reloader_1ad48ca2ba66365851c854b1af12bd7e27" prot="private" static="no">
+        <type>std::unordered_map&lt; QString, std::unique_ptr&lt; <ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> &gt; &gt;</type>
+        <definition>using qtsdl::GuiLiveReloader::TagToPreservableMap =  std::unordered_map&lt;QString, std::unique_ptr&lt;PersistentCoreHolderBase&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>TagToPreservableMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="73" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_live_reloader_1ad48ca2ba66365851c854b1af12bd7e27" kindref="member">TagToPreservableMap</ref></type>
+        <definition>TagToPreservableMap qtsdl::GuiLiveReloader::preservable</definition>
+        <argsstring></argsstring>
+        <name>preservable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="74" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_live_reloader_1adf7dd5c498505ea59b89d72ff67db8fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiLiveReloader::init_persistent_items</definition>
+        <argsstring>(const QList&lt; GuiLiveReloaderAttachedProperty * &gt; &amp;items)</argsstring>
+        <name>init_persistent_items</name>
+        <param>
+          <type>const QList&lt; <ref refid="classqtsdl_1_1_gui_live_reloader_attached_property" kindref="compound">GuiLiveReloaderAttachedProperty</ref> * &gt; &amp;</type>
+          <declname>items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="70" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp" bodystart="55" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores objects that need to be kept alive across GUI reloads. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2733">
+        <label>qtsdl::GuiLiveReloader</label>
+        <link refid="classqtsdl_1_1_gui_live_reloader"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="67" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="67" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_live_reloader_1adf7dd5c498505ea59b89d72ff67db8fb" prot="public" virt="non-virtual"><scope>qtsdl::GuiLiveReloader</scope><name>init_persistent_items</name></member>
+      <member refid="classqtsdl_1_1_gui_live_reloader_1a566a243dba0472237902fdc5a2e526d7" prot="private" virt="non-virtual"><scope>qtsdl::GuiLiveReloader</scope><name>preservable</name></member>
+      <member refid="classqtsdl_1_1_gui_live_reloader_1ad48ca2ba66365851c854b1af12bd7e27" prot="private" virt="non-virtual"><scope>qtsdl::GuiLiveReloader</scope><name>TagToPreservableMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

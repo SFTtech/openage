@@ -1,0 +1,864 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_quaternion" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Quaternion</compoundname>
+    <includes refid="quaternion_8h" local="no">quaternion.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref>&lt; T &gt;</type>
+        <definition>using openage::util::Quaternion&lt; T &gt;::this_type =  Quaternion&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>this_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="33" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_quaternion_1abf0a818d7e5e3a592f6e25bb56a18a15" prot="public" static="no">
+        <type>T</type>
+        <definition>using openage::util::Quaternion&lt; T &gt;::type =  T</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="34" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" prot="public" static="yes" mutable="no">
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::Quaternion&lt; T &gt;::default_eps</definition>
+        <argsstring></argsstring>
+        <name>default_eps</name>
+        <initializer>= 1e-4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="36" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stored quaternion number components. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="432" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ad7ffd5d2422d78537a4b4a530d280354" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Quaternion&lt; T &gt;::Quaternion</definition>
+        <argsstring>(T w, T x, T y, T z)</argsstring>
+        <name>Quaternion</name>
+        <param>
+          <type>T</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="38" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af9cc9992551fb7749bf9023ac1f00c56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Quaternion&lt; T &gt;::Quaternion</definition>
+        <argsstring>()</argsstring>
+        <name>Quaternion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a identity quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="45" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+            <defval>4</defval>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openage::util::Quaternion&lt; T &gt;::Quaternion</definition>
+        <argsstring>(const Matrix&lt; N, N, T &gt; &amp;mat)</argsstring>
+        <name>Quaternion</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; N, N, T &gt; &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs a quaternion from a rotation matrix. mat is assumed to be a left-matrix: vec_transformed = mat * vec_orig.</para>
+<para>mat can be 3x3 or 4x4.</para>
+<para>This tries to avoid float-fuckups in near-zero divides by using larger components first: w, then x, y, or z.</para>
+<para>trace(mat) &gt;= 0 =&gt; |w| &gt; 1/2 =&gt; as small as a largest component can be. else: max diagonal entry &lt;=&gt; max (|x|, |y|, |z|) which is larger than |w| and &gt;= 1/2 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="66" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="66" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a70decb0640b721a21f798ae5ca4ece79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Quaternion&lt; T &gt;::Quaternion</definition>
+        <argsstring>(const this_type &amp;other)=default</argsstring>
+        <name>Quaternion</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="135" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae6b1c9f9107c13dfe7e86172a1cb1d97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Quaternion&lt; T &gt;::Quaternion</definition>
+        <argsstring>(this_type &amp;&amp;other)=default</argsstring>
+        <name>Quaternion</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="136" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a92a28f0852715a3b4b640586d4cc59bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> &amp;</type>
+        <definition>Quaternion&amp; openage::util::Quaternion&lt; T &gt;::operator=</definition>
+        <argsstring>(const this_type &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a734d68558d547c8963b614ce85caefa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> &amp;</type>
+        <definition>Quaternion&amp; openage::util::Quaternion&lt; T &gt;::operator=</definition>
+        <argsstring>(this_type &amp;&amp;other)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1acdd9fea910d2d4570f8f50fdb8dd809b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::util::Quaternion&lt; T &gt;::~Quaternion</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Quaternion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="140" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::dot</definition>
+        <argsstring>(const this_type &amp;o) const</argsstring>
+        <name>dot</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Perform a dot product with another quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="166" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="166" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::norm</definition>
+        <argsstring>() const</argsstring>
+        <name>norm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the length of the quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="173" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a1ea971d2f39920e062b0b91971296b65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T openage::util::Quaternion&lt; T &gt;::normalize</definition>
+        <argsstring>()</argsstring>
+        <name>normalize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ensure that the quaternion&apos;s length equals 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="180" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="180" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::normalized</definition>
+        <argsstring>() const</argsstring>
+        <name>normalized</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the normalized version of this quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="189" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="189" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Quaternion&lt; T &gt;::inverse</definition>
+        <argsstring>()</argsstring>
+        <name>inverse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Inverted the quaternion: Flip the rotation axes and scale by inverse sum of all components squared.</para>
+<para>inv(q)= conj(q)/(w*w + x*x + y*y + z*z) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="202" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="202" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::inversed</definition>
+        <argsstring>() const</argsstring>
+        <name>inversed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the inverted quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="215" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="215" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Quaternion&lt; T &gt;::conjugate</definition>
+        <argsstring>()</argsstring>
+        <name>conjugate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Conjugate the quaternion by additive inverting the x, y and z components. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="225" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="225" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::conjugated</definition>
+        <argsstring>() const</argsstring>
+        <name>conjugated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the conjugated quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="234" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="234" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::equals</definition>
+        <argsstring>(const this_type &amp;other, T eps=default_eps) const</argsstring>
+        <name>equals</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>eps</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test if the rotation of both quaternions is the same. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="243" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="243" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::equals_number</definition>
+        <argsstring>(const this_type &amp;other, T eps=default_eps) const</argsstring>
+        <name>equals_number</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>eps</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test if both quaternion store the same numbers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="251" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="251" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::equals_rad</definition>
+        <argsstring>(const this_type &amp;other, T rad_eps=default_eps) const</argsstring>
+        <name>equals_rad</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>rad_eps</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test rotation equality with another quaternion with given precision in radians. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="264" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="264" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::equals_deg</definition>
+        <argsstring>(const this_type &amp;other, T deg_eps=default_eps) const</argsstring>
+        <name>equals_deg</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>deg_eps</declname>
+          <defval><ref refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" kindref="member">default_eps</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test rotation equality with another quaternion with given precision in degree. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="275" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="275" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1util_1a748106aeb16275c1ebf6f0f9276381cd" kindref="member">Matrix3t</ref>&lt; T &gt;</type>
+        <definition>Matrix3t&lt;T&gt; openage::util::Quaternion&lt; T &gt;::to_matrix</definition>
+        <argsstring>() const</argsstring>
+        <name>to_matrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate the corresponding rotation matrix. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="282" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="282" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" kindref="member">Vector3t</ref>&lt; T &gt;</type>
+        <definition>Vector3t&lt;T&gt; openage::util::Quaternion&lt; T &gt;::operator *</definition>
+        <argsstring>(const Vector3t&lt; T &gt; &amp;vec) const</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" kindref="member">Vector3t</ref>&lt; T &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transforms a vector by this quaternion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="311" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="311" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+        <definition>const this_type&amp; openage::util::Quaternion&lt; T &gt;::operator+=</definition>
+        <argsstring>(const this_type &amp;other)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="323" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="323" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ac2ba30736d9087f243278b22dbb23521" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::operator+</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="332" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="332" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+        <definition>const this_type&amp; openage::util::Quaternion&lt; T &gt;::operator -=</definition>
+        <argsstring>(const this_type &amp;other)</argsstring>
+        <name>operator -=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="338" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="338" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a0b3df71d51ed01ed70243897660f4f61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::operator -</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator -</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="347" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="347" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+        <definition>const this_type&amp; openage::util::Quaternion&lt; T &gt;::operator *=</definition>
+        <argsstring>(const T &amp;fac)</argsstring>
+        <name>operator *=</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>fac</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="353" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="353" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a898cb94a06b06ef685cb20646ac5b910" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::operator *</definition>
+        <argsstring>(const T &amp;fac) const</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>fac</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="362" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="362" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a26bf15925240d4accfce99c6cf88d940" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+        <definition>const this_type&amp; openage::util::Quaternion&lt; T &gt;::operator *=</definition>
+        <argsstring>(const this_type &amp;other)</argsstring>
+        <name>operator *=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="368" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="368" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a8e51a16d5804b8ecf45c212bbd99b756" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::operator *</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="386" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="386" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+        <definition>const this_type&amp; openage::util::Quaternion&lt; T &gt;::operator/=</definition>
+        <argsstring>(const T &amp;fac)</argsstring>
+        <name>operator/=</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>fac</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="392" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="392" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a36bc98ccdf1b9a5a264f10d77211fcad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>this_type openage::util::Quaternion&lt; T &gt;::operator/</definition>
+        <argsstring>(const T &amp;fac) const</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>fac</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="401" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="401" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>const this_type openage::util::Quaternion&lt; T &gt;::operator -</definition>
+        <argsstring>() const</argsstring>
+        <name>operator -</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="407" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="407" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::operator==</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="411" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="411" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a8bae69e2874d87ae47e4b8ef4ffd121a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Quaternion&lt; T &gt;::operator !=</definition>
+        <argsstring>(const this_type &amp;other) const</argsstring>
+        <name>operator !=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="418" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="418" bodyend="420"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>static this_type openage::util::Quaternion&lt; T &gt;::from_rad</definition>
+        <argsstring>(T rad, Vector3t&lt; T &gt; axis)</argsstring>
+        <name>from_rad</name>
+        <param>
+          <type>T</type>
+          <declname>rad</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" kindref="member">Vector3t</ref>&lt; T &gt;</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a quaternion from a rotation in radians around a given axis. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="145" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="145" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref></type>
+        <definition>static this_type openage::util::Quaternion&lt; T &gt;::from_deg</definition>
+        <argsstring>(T deg, Vector3t&lt; T &gt; axis)</argsstring>
+        <name>from_deg</name>
+        <param>
+          <type>T</type>
+          <declname>deg</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" kindref="member">Vector3t</ref>&lt; T &gt;</type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a quaternion from a rotation in degree around a given axis. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="159" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="159" bodyend="161"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_quaternion_1a487847c4918811fcad47c3bbc96b89c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;o, const this_type &amp;q)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>o</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" kindref="member">this_type</ref> &amp;</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="422" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="422" bodyend="426"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Implements Quaternions to represent 3d rotations.</para>
+<para>The 4 components stores 3 components as rotation axis, and one component as the rotation amount.</para>
+<para>This is mainly Ken Shoemake stuff from: <ulink url="http://www.cs.ucr.edu/~vbz/resources/quatut.pdf">http://www.cs.ucr.edu/~vbz/resources/quatut.pdf</ulink></para>
+<para>Also: From <ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref> to <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref> and Back J.M.P. van Waveren, id Software, 2005 </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3818">
+        <label>T</label>
+      </node>
+      <node id="3817">
+        <label>openage::util::Quaternion&lt; T &gt;</label>
+        <link refid="classopenage_1_1util_1_1_quaternion"/>
+        <childnode refid="3818" relation="usage">
+          <edgelabel>#x</edgelabel>
+          <edgelabel>#y</edgelabel>
+          <edgelabel>#z</edgelabel>
+          <edgelabel>#w</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/quaternion.h" line="31" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="31" bodyend="433"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ae341b5335f94b2390fb75e2833e2e8bf" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>conjugate</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ae0ee465942e8ffecbeb0ab2761b35a14" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>conjugated</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a0a3eb10c0bf0169d0d92dc2908f3011a" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>default_eps</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a57799e61cbbfbb15b122f77ba76940a8" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>dot</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1aa3f586260959ed4c65c62a3ec93f6a6e" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>equals</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a2e1d1f1785181562048952f28858bea9" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>equals_deg</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1af617e004ee9533089187b29fc8a34c1f" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>equals_number</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1aae617726f6df2524bd7402fdefb3cc0f" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>equals_rad</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1aeee334db9faebbbb15c5abd9bedcc03b" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>from_deg</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a49239acad85282d401d7d56f3c96959d" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>from_rad</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a61731d4de80ddb267346159ea173511b" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>inverse</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ab7cebbaf133b69d0122980f73416ddf6" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>inversed</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a82f95e1d240ee7f39982060a17fe37ec" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>norm</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a1ea971d2f39920e062b0b91971296b65" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>normalize</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1adaf56c826ceec78d0f4980148ce498fa" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>normalized</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a8bae69e2874d87ae47e4b8ef4ffd121a" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a818054a138224a38a8d36cea3454f24b" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a898cb94a06b06ef685cb20646ac5b910" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a8e51a16d5804b8ecf45c212bbd99b756" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a5df47cdd203122f6998249f4da02211f" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator *=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a26bf15925240d4accfce99c6cf88d940" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator *=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a0b3df71d51ed01ed70243897660f4f61" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator -</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a559e4953eddb80be34df5808f6ac33d6" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator -</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1af29a6e2753537a48dc0362acdc55e34e" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator -=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ac2ba30736d9087f243278b22dbb23521" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator+</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a12c7d3927a3471f9dc082185f8786a08" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator+=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a36bc98ccdf1b9a5a264f10d77211fcad" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator/</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ac49940aaef812a3761c78c77a56f2d75" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator/=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a487847c4918811fcad47c3bbc96b89c2" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a92a28f0852715a3b4b640586d4cc59bf" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a734d68558d547c8963b614ce85caefa3" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a4a2fe4d3df8c71bc2436169e6cf38eb6" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ad7ffd5d2422d78537a4b4a530d280354" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>Quaternion</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1af9cc9992551fb7749bf9023ac1f00c56" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>Quaternion</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1aa16fe3c08c498d69f102951ae67fc4ca" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>Quaternion</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a70decb0640b721a21f798ae5ca4ece79" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>Quaternion</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ae6b1c9f9107c13dfe7e86172a1cb1d97" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>Quaternion</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a3fa4ff8568fe9d2c35aecdaba16c0fff" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>this_type</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a105a409ceb15b11835cddff1d7bcf134" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>to_matrix</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1abf0a818d7e5e3a592f6e25bb56a18a15" prot="public" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>type</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a4faf4d1e88bdc005b99b0eb512410c78" prot="protected" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>w</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a39196c02c060fba65e5a5ebea0507e8e" prot="protected" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>x</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1a9bfbb8c5f6c152b9f6570865d8baf3d7" prot="protected" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>y</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1ac704f29cc201a1920063a39f4e578a56" prot="protected" virt="non-virtual"><scope>openage::util::Quaternion</scope><name>z</name></member>
+      <member refid="classopenage_1_1util_1_1_quaternion_1acdd9fea910d2d4570f8f50fdb8dd809b" prot="public" virt="virtual"><scope>openage::util::Quaternion</scope><name>~Quaternion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_rendering_ctx_activator" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiRenderingCtxActivator</compoundname>
+    <includes refid="gui__rendering__setup__routines_8h" local="no">gui_rendering_setup_routines.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_rendering_setup_routines" kindref="compound">GuiRenderingSetupRoutines</ref> *</type>
+        <definition>GuiRenderingSetupRoutines* qtsdl::GuiRenderingCtxActivator::rendering_setup_routines</definition>
+        <argsstring></argsstring>
+        <name>rendering_setup_routines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="54" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1aa35cec488317da1f7a2d420071732aac" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingCtxActivator::GuiRenderingCtxActivator</definition>
+        <argsstring>(GuiRenderingSetupRoutines &amp;rendering_setup_routines)</argsstring>
+        <name>GuiRenderingCtxActivator</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_rendering_setup_routines" kindref="compound">GuiRenderingSetupRoutines</ref> &amp;</type>
+          <declname>rendering_setup_routines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="44" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="43" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1a7f43aa071cbea190624038b51a108beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingCtxActivator::~GuiRenderingCtxActivator</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiRenderingCtxActivator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="45" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1a9a630441e906c2d1d8d556a2d44458c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingCtxActivator::GuiRenderingCtxActivator</definition>
+        <argsstring>(GuiRenderingCtxActivator &amp;&amp;o)</argsstring>
+        <name>GuiRenderingCtxActivator</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;&amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="47" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1aa0430aa5fc865190596ff5d729f42abb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;</type>
+        <definition>GuiRenderingCtxActivator &amp; qtsdl::GuiRenderingCtxActivator::operator=</definition>
+        <argsstring>(GuiRenderingCtxActivator &amp;&amp;o)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;&amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="48" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp" bodystart="62" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1a53790c1b6f2e8ce74719f1197ee81f19" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRenderingCtxActivator::GuiRenderingCtxActivator</definition>
+        <argsstring>(const GuiRenderingCtxActivator &amp;)=delete</argsstring>
+        <name>GuiRenderingCtxActivator</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_rendering_ctx_activator_1aad5602e5d47e85293cd2fc6b7d59eef0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;</type>
+        <definition>GuiRenderingCtxActivator&amp; qtsdl::GuiRenderingCtxActivator::operator=</definition>
+        <argsstring>(const GuiRenderingCtxActivator &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="52" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Prepares the context for rendering the GUI for one frame. Activator must be destroyed as soon as the GUI has executed its frame render call. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2758">
+        <label>qtsdl::GuiRenderingSetupRoutines</label>
+        <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
+      </node>
+      <node id="2757">
+        <label>qtsdl::GuiRenderingCtxActivator</label>
+        <link refid="classqtsdl_1_1_gui_rendering_ctx_activator"/>
+        <childnode refid="2758" relation="usage">
+          <edgelabel>-rendering_setup_routines</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" line="42" column="1" bodyfile="libopenage/gui/guisys/private/gui_rendering_setup_routines.h" bodystart="42" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa35cec488317da1f7a2d420071732aac" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>GuiRenderingCtxActivator</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a9a630441e906c2d1d8d556a2d44458c2" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>GuiRenderingCtxActivator</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a53790c1b6f2e8ce74719f1197ee81f19" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>GuiRenderingCtxActivator</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa0430aa5fc865190596ff5d729f42abb" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>operator=</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aad5602e5d47e85293cd2fc6b7d59eef0" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>operator=</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" prot="private" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>rendering_setup_routines</name></member>
+      <member refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a7f43aa071cbea190624038b51a108beb" prot="public" virt="non-virtual"><scope>qtsdl::GuiRenderingCtxActivator</scope><name>~GuiRenderingCtxActivator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

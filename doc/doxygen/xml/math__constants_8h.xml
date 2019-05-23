@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="math__constants_8h" kind="file" language="C++">
+    <compoundname>math_constants.h</compoundname>
+    <includes local="no">limits</includes>
+    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="player_8cpp" local="yes">libopenage/gamestate/player.cpp</includedby>
+    <includedby refid="unit__texture_8cpp" local="yes">libopenage/unit/unit_texture.cpp</includedby>
+    <includedby refid="unit__type_8cpp" local="yes">libopenage/unit/unit_type.cpp</includedby>
+    <includedby refid="quaternion_8h" local="yes">libopenage/util/quaternion.h</includedby>
+    <incdepgraph>
+      <node id="30864">
+        <label>limits</label>
+      </node>
+      <node id="30863">
+        <label>libopenage/util/math_constants.h</label>
+        <link refid="math__constants_8h"/>
+        <childnode refid="30864" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30870">
+        <label>libopenage/util/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="30871" relation="include">
+        </childnode>
+        <childnode refid="30872" relation="include">
+        </childnode>
+      </node>
+      <node id="30872">
+        <label>libopenage/util/quaternion_test.cpp</label>
+        <link refid="quaternion__test_8cpp"/>
+      </node>
+      <node id="30867">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="30869">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="30868">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="30871">
+        <label>libopenage/util/quaternion.cpp</label>
+        <link refid="quaternion_8cpp"/>
+      </node>
+      <node id="30866">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="30865">
+        <label>libopenage/util/math_constants.h</label>
+        <link refid="math__constants_8h"/>
+        <childnode refid="30866" relation="include">
+        </childnode>
+        <childnode refid="30867" relation="include">
+        </childnode>
+        <childnode refid="30868" relation="include">
+        </childnode>
+        <childnode refid="30869" relation="include">
+        </childnode>
+        <childnode refid="30870" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1math">openage::math</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">math<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="namespaceopenage_1_1math_1a399148f49999888978ed1c2636bca57b" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a399148f49999888978ed1c2636bca57b" kindref="member">E</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2.71828182845904523536;<sp/><sp/></highlight></codeline>
+<codeline lineno="11" refid="namespaceopenage_1_1math_1ac7fae94a4debc0d647e37a511e4fc493" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1ac7fae94a4debc0d647e37a511e4fc493" kindref="member">LOG2E</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1.44269504088896340736;<sp/><sp/></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1math_1ab2a6b606dad173018bc2840898eae49e" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1ab2a6b606dad173018bc2840898eae49e" kindref="member">LOG10E</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.434294481903251827651;<sp/></highlight></codeline>
+<codeline lineno="13" refid="namespaceopenage_1_1math_1a1b139be1e6ba2be12c77002298c35e7f" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a1b139be1e6ba2be12c77002298c35e7f" kindref="member">LN2</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.693147180559945309417;<sp/></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1math_1a97e56c32ae54799f19b45cd98934209f" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a97e56c32ae54799f19b45cd98934209f" kindref="member">LN10</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2.30258509299404568402;<sp/><sp/></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" kindref="member">PI</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3.14159265358979323846;<sp/><sp/></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1math_1a2109930a3334729232d166cdd372c3af" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a2109930a3334729232d166cdd372c3af" kindref="member">PI_2</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1.57079632679489661923;<sp/><sp/></highlight></codeline>
+<codeline lineno="17" refid="namespaceopenage_1_1math_1a9ed0886c6314bc7ea7d850d0c52cbc47" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a9ed0886c6314bc7ea7d850d0c52cbc47" kindref="member">PI_4</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.785398163397448309616;<sp/></highlight></codeline>
+<codeline lineno="18" refid="namespaceopenage_1_1math_1a3cf46ecc6a97a0260c993da19c30db86" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a3cf46ecc6a97a0260c993da19c30db86" kindref="member">INV_PI</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.318309886183790671538;<sp/></highlight></codeline>
+<codeline lineno="19" refid="namespaceopenage_1_1math_1a1d21a4f60c5de2ddc1f06d624c7718fd" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a1d21a4f60c5de2ddc1f06d624c7718fd" kindref="member">INV2_PI</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0.636619772367581343076;<sp/></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1math_1a21fca9f6f3db982f2e36ad184971142e" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a21fca9f6f3db982f2e36ad184971142e" kindref="member">INV2_SQRT_PI</ref><sp/>=<sp/>1.12837916709551257390;<sp/><sp/></highlight></codeline>
+<codeline lineno="21" refid="namespaceopenage_1_1math_1a2ed907ecfe2bd347184b6100e767ae8d" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a2ed907ecfe2bd347184b6100e767ae8d" kindref="member">TAU</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>6.28318530717958647693;<sp/><sp/></highlight></codeline>
+<codeline lineno="22" refid="namespaceopenage_1_1math_1a0df5751ac53fb97b63d8639da08b2639" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a0df5751ac53fb97b63d8639da08b2639" kindref="member">DEGSPERRAD</ref><sp/><sp/><sp/>=<sp/>0.017453292519943295769;<sp/></highlight></codeline>
+<codeline lineno="23" refid="namespaceopenage_1_1math_1a053cbd823bc5508663aa2f4b3e47e1ef" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a053cbd823bc5508663aa2f4b3e47e1ef" kindref="member">RADSPERDEG</ref><sp/><sp/><sp/>=<sp/>57.29577951308232087679;<sp/></highlight></codeline>
+<codeline lineno="24" refid="namespaceopenage_1_1math_1abecc765205f02e10a37559da609bd428" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1abecc765205f02e10a37559da609bd428" kindref="member">SQRT_2</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1.41421356237309504880;<sp/><sp/></highlight></codeline>
+<codeline lineno="25" refid="namespaceopenage_1_1math_1ae4eb5e824c70f742bad48bceda489c6f" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1ae4eb5e824c70f742bad48bceda489c6f" kindref="member">INV_SQRT_2</ref><sp/><sp/><sp/>=<sp/>0.707106781186547524401;<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="namespaceopenage_1_1math_1ad47e40900e132034d0e626563de66a85" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1ad47e40900e132034d0e626563de66a85" kindref="member">UINT_INF</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;unsigned int&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="28" refid="namespaceopenage_1_1math_1a76c5523b3fe8aa5f19ea61ba9f0d3043" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1a76c5523b3fe8aa5f19ea61ba9f0d3043" kindref="member">INT_INF</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;int&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1math_1ad9eeb53dc7ad24b525923f7eeca9f37a" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1math_1ad9eeb53dc7ad24b525923f7eeca9f37a" kindref="member">DOUBLE_INF</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;double&gt;::max</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::math</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/math_constants.h"/>
+  </compounddef>
+</doxygen>

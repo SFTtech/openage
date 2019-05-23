@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1audio_1_1resource__def" kind="struct" language="C++" prot="public">
+    <compoundname>openage::audio::resource_def</compoundname>
+    <includes refid="resource__def_8h" local="no">resource_def.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1resource__def_1a253e50cfe98199360536666d8b7018fb" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref></type>
+        <definition>category_t openage::audio::resource_def::category</definition>
+        <argsstring></argsstring>
+        <name>category</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource_def.h" line="22" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1resource__def_1a97ed11aa01687333bed2be5db9f92e5b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::audio::resource_def::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource_def.h" line="23" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::audio::resource_def::location</definition>
+        <argsstring></argsstring>
+        <name>location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource_def.h" line="24" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1resource__def_1ac318fa69d3ea2d0b90658e98d22ec983" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref></type>
+        <definition>format_t openage::audio::resource_def::format</definition>
+        <argsstring></argsstring>
+        <name>format</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource_def.h" line="25" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1audio_1_1resource__def_1a4032e08e996f19bf32d35ddca7e27cfe" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1audio_1a98fe517883b58083d26b038b34093299" kindref="member">loader_policy_t</ref></type>
+        <definition>loader_policy_t openage::audio::resource_def::loader_policy</definition>
+        <argsstring></argsstring>
+        <name>loader_policy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/audio/resource_def.h" line="26" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Definition of a single sound resource file to load. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4101">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4100">
+        <label>openage::audio::resource_def</label>
+        <link refid="structopenage_1_1audio_1_1resource__def"/>
+        <childnode refid="4101" relation="usage">
+          <edgelabel>+location</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/audio/resource_def.h" line="21" column="1" bodyfile="libopenage/audio/resource_def.h" bodystart="21" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1audio_1_1resource__def_1a253e50cfe98199360536666d8b7018fb" prot="public" virt="non-virtual"><scope>openage::audio::resource_def</scope><name>category</name></member>
+      <member refid="structopenage_1_1audio_1_1resource__def_1ac318fa69d3ea2d0b90658e98d22ec983" prot="public" virt="non-virtual"><scope>openage::audio::resource_def</scope><name>format</name></member>
+      <member refid="structopenage_1_1audio_1_1resource__def_1a97ed11aa01687333bed2be5db9f92e5b" prot="public" virt="non-virtual"><scope>openage::audio::resource_def</scope><name>id</name></member>
+      <member refid="structopenage_1_1audio_1_1resource__def_1a4032e08e996f19bf32d35ddca7e27cfe" prot="public" virt="non-virtual"><scope>openage::audio::resource_def</scope><name>loader_policy</name></member>
+      <member refid="structopenage_1_1audio_1_1resource__def_1a1d30b94671a2ea2b07c389eb23e3b182" prot="public" virt="non-virtual"><scope>openage::audio::resource_def</scope><name>location</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

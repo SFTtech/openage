@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_recursive_directory_watcher" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::RecursiveDirectoryWatcher</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="recursive__directory__watcher_8h" local="no">recursive_directory_watcher.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_recursive_directory_watcher_1aa0079513a72c29ae057b0432f7b1bb13" prot="private" static="no" mutable="no">
+        <type>std::future&lt; void &gt;</type>
+        <definition>std::future&lt;void&gt; qtsdl::RecursiveDirectoryWatcher::worker</definition>
+        <argsstring></argsstring>
+        <name>worker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_recursive_directory_watcher_1a783cc986da8f9ed63ac735b00f119404" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::RecursiveDirectoryWatcher::RecursiveDirectoryWatcher</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>RecursiveDirectoryWatcher</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="12" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::RecursiveDirectoryWatcher::~RecursiveDirectoryWatcher</definition>
+        <argsstring>()</argsstring>
+        <name>~RecursiveDirectoryWatcher</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.cpp" bodystart="34" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classqtsdl_1_1_recursive_directory_watcher_1a8023f71a72a9b22765d88d33cd71b237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::RecursiveDirectoryWatcher::changeDetected</definition>
+        <argsstring>()</argsstring>
+        <name>changeDetected</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classqtsdl_1_1_recursive_directory_watcher_1aabc2911d48c9af1d435ccb894e216b0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::RecursiveDirectoryWatcher::rootDirsPathsChanged</definition>
+        <argsstring>(const QStringList &amp;)</argsstring>
+        <name>rootDirsPathsChanged</name>
+        <param>
+          <type>const QStringList &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="24" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::RecursiveDirectoryWatcher::quit</definition>
+        <argsstring>()</argsstring>
+        <name>quit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="25" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Emits a signal when anything changes in the directories. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3865">
+        <label>QObject</label>
+      </node>
+      <node id="3864">
+        <label>qtsdl::RecursiveDirectoryWatcher</label>
+        <link refid="classqtsdl_1_1_recursive_directory_watcher"/>
+        <childnode refid="3865" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3867">
+        <label>QObject</label>
+      </node>
+      <node id="3866">
+        <label>qtsdl::RecursiveDirectoryWatcher</label>
+        <link refid="classqtsdl_1_1_recursive_directory_watcher"/>
+        <childnode refid="3867" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" line="15" column="1" bodyfile="libopenage/gui/guisys/private/livereload/recursive_directory_watcher.h" bodystart="15" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1a8023f71a72a9b22765d88d33cd71b237" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>changeDetected</name></member>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1ab8e9f0e39005cb7fa48ab637ccd75fe7" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>quit</name></member>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1a783cc986da8f9ed63ac735b00f119404" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>RecursiveDirectoryWatcher</name></member>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1aabc2911d48c9af1d435ccb894e216b0e" prot="public" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>rootDirsPathsChanged</name></member>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1aa0079513a72c29ae057b0432f7b1bb13" prot="private" virt="non-virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>worker</name></member>
+      <member refid="classqtsdl_1_1_recursive_directory_watcher_1a55f944413ce602b477396680e6be429c" prot="public" virt="virtual"><scope>qtsdl::RecursiveDirectoryWatcher</scope><name>~RecursiveDirectoryWatcher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

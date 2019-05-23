@@ -1,0 +1,1450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_engine" kind="class" language="C++" prot="public">
+    <compoundname>openage::Engine</compoundname>
+    <basecompoundref refid="classopenage_1_1_resize_handler" prot="public" virt="non-virtual">openage::ResizeHandler</basecompoundref>
+    <basecompoundref refid="classopenage_1_1options_1_1_option_node" prot="public" virt="non-virtual">openage::options::OptionNode</basecompoundref>
+    <includes refid="engine_8h" local="no">engine.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1_engine_1a7df4a480dc3d7da6a5d9bc595f416cd5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GameMain</definition>
+        <argsstring></argsstring>
+        <name>GameMain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="89" column="1" bodyfile="libopenage/engine.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ae327c10821e16fcde04a0f8332fd013b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::Engine::running</definition>
+        <argsstring></argsstring>
+        <name>running</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>current engine state variable. to be set to false to stop the engine loop. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="274" column="1" bodyfile="libopenage/engine.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1acaf343ec070a13eb8ba0a8a6ebd491e2" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
+        <definition>options::Var&lt;bool&gt; openage::Engine::drawing_debug_overlay</definition>
+        <argsstring></argsstring>
+        <name>drawing_debug_overlay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>FPS and game version are drawn when this is true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="279" column="1" bodyfile="libopenage/engine.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a013d979bb40340a91030282446285ce5" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
+        <definition>options::Var&lt;bool&gt; openage::Engine::drawing_huds</definition>
+        <argsstring></argsstring>
+        <name>drawing_huds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this allows to disable drawing of every registered hud. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="284" column="1" bodyfile="libopenage/engine.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1afb29bb815dbf7880a10e86554e54df1c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_external_profiler" kindref="compound">util::ExternalProfiler</ref></type>
+        <definition>util::ExternalProfiler openage::Engine::external_profiler</definition>
+        <argsstring></argsstring>
+        <name>external_profiler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>profiler used by the engine </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="289" column="1" bodyfile="libopenage/engine.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref></type>
+        <definition>coord::CoordManager openage::Engine::coord</definition>
+        <argsstring></argsstring>
+        <name>coord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>this engine&apos;s coordinate manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="294" column="1" bodyfile="libopenage/engine.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a92b6d5f088aa6e52525d3f0c62ce0b99" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_engine_signals" kindref="compound">EngineSignals</ref></type>
+        <definition>EngineSignals openage::Engine::gui_signals</definition>
+        <argsstring></argsstring>
+        <name>gui_signals</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal emitting capability for the engine. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="451" column="1" bodyfile="libopenage/engine.h" bodystart="451" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a63de744f13a4a799defab0346abc51cf" prot="public" static="no" mutable="no">
+        <type>gui::GuiItemLink *</type>
+        <definition>gui::GuiItemLink* openage::Engine::gui_link</definition>
+        <argsstring></argsstring>
+        <name>gui_link</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Link to the Qt GUI. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="456" column="1" bodyfile="libopenage/engine.h" bodystart="456" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a8edfd53ab986b9aa55fcdac286fcedf3" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::Engine::root_dir</definition>
+        <argsstring></argsstring>
+        <name>root_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The engine root directory. Uses the openage fslike path abstraction that can mount paths into one.</para>
+<para>This means that this path does simulataneously lead to global assets, home-folder-assets, settings, and basically the whole filesystem access. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="313" column="1" bodyfile="libopenage/engine.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a29cd3713a4e3cf61b20dd640f17f6e6c" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::Engine::ns_per_frame</definition>
+        <argsstring></argsstring>
+        <name>ns_per_frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how many nanoseconds are in a frame (1e9 / fps_limit). 0 if there is no fps limit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="319" column="1" bodyfile="libopenage/engine.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a4d7ffa1833327c7bb76b7d79b75ae13f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;InputHandler *&gt; openage::Engine::on_input_event</definition>
+        <argsstring></argsstring>
+        <name>on_input_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>input event processor objects. called for each captured sdl input event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="325" column="1" bodyfile="libopenage/engine.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1abc559d76b47fb9cb37d99736bb5ac8e6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_tick_handler" kindref="compound">TickHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;TickHandler *&gt; openage::Engine::on_engine_tick</definition>
+        <argsstring></argsstring>
+        <name>on_engine_tick</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>run on every engine tick, after input handling, before rendering </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="330" column="1" bodyfile="libopenage/engine.h" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ae125d1790d2b600e870907083ac2a5c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_draw_handler" kindref="compound">DrawHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;DrawHandler *&gt; openage::Engine::on_drawgame</definition>
+        <argsstring></argsstring>
+        <name>on_drawgame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>run every time the game is being drawn, with the renderer set to the camgame system </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="336" column="1" bodyfile="libopenage/engine.h" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1aa8d4eb6fa73d837178b7873a527b83e3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_hud_handler" kindref="compound">HudHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;HudHandler *&gt; openage::Engine::on_drawhud</definition>
+        <argsstring></argsstring>
+        <name>on_drawhud</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>run every time the hud is being drawn, with the renderer set to the camhud system </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="342" column="1" bodyfile="libopenage/engine.h" bodystart="342" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1aa8d8b0acb6f9e7895d16a3e936dd9866" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_resize_handler" kindref="compound">ResizeHandler</ref> * &gt;</type>
+        <definition>std::vector&lt;ResizeHandler *&gt; openage::Engine::on_resize_handler</definition>
+        <argsstring></argsstring>
+        <name>on_resize_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>list of handlers that are executed upon a resize event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="347" column="1" bodyfile="libopenage/engine.h" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;GameMain&gt; openage::Engine::game</definition>
+        <argsstring></argsstring>
+        <name>game</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the currently running game </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="352" column="1" bodyfile="libopenage/engine.h" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref></type>
+        <definition>job::JobManager openage::Engine::job_manager</definition>
+        <argsstring></argsstring>
+        <name>job_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s job manager, for asynchronous background task queuing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="357" column="1" bodyfile="libopenage/engine.h" bodystart="357" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1aa4133c54d4a25e56795e8635466a2949" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">gui::EngineQMLInfo</ref></type>
+        <definition>gui::EngineQMLInfo openage::Engine::qml_info</definition>
+        <argsstring></argsstring>
+        <name>qml_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This stores information to be accessible from the QML engine.</para>
+<para>Information in there (such as a pointer to the this engine) is then usable from within qml files, after some additional magic. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="365" column="1" bodyfile="libopenage/engine.h" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_frame_counter" kindref="compound">util::FrameCounter</ref></type>
+        <definition>util::FrameCounter openage::Engine::fps_counter</definition>
+        <argsstring></argsstring>
+        <name>fps_counter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the frame counter measuring fps. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="370" column="1" bodyfile="libopenage/engine.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a57745886589dafd40bb527f09f97b566" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_screenshot_manager" kindref="compound">ScreenshotManager</ref></type>
+        <definition>ScreenshotManager openage::Engine::screenshot_manager</definition>
+        <argsstring></argsstring>
+        <name>screenshot_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s screenshot manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="375" column="1" bodyfile="libopenage/engine.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1adc434fd28c47f5f35b3fd5494263346a" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">cvar::CVarManager</ref></type>
+        <definition>cvar::CVarManager openage::Engine::cvar_manager</definition>
+        <argsstring></argsstring>
+        <name>cvar_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s cvar manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="380" column="1" bodyfile="libopenage/engine.h" bodystart="380" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ac42c03e7695e4b1204abd0dd5f49c5fc" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">input::ActionManager</ref></type>
+        <definition>input::ActionManager openage::Engine::action_manager</definition>
+        <argsstring></argsstring>
+        <name>action_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s action manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="385" column="1" bodyfile="libopenage/engine.h" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a8d07f7c047d94e7406e58de892842ebc" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">audio::AudioManager</ref></type>
+        <definition>audio::AudioManager openage::Engine::audio_manager</definition>
+        <argsstring></argsstring>
+        <name>audio_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s audio manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="390" column="1" bodyfile="libopenage/engine.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1aaaf873634221216d4af0488731f64657" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">input::InputManager</ref></type>
+        <definition>input::InputManager openage::Engine::input_manager</definition>
+        <argsstring></argsstring>
+        <name>input_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s keybind manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="395" column="1" bodyfile="libopenage/engine.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1ac2fea2a2baf08cdd24f725bd2931eaa2" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_unit_selection" kindref="compound">UnitSelection</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;UnitSelection&gt; openage::Engine::unit_selection</definition>
+        <argsstring></argsstring>
+        <name>unit_selection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engine&apos;s unit selection. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="400" column="1" bodyfile="libopenage/engine.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a5945fa6e3ca0ee33148a5b8c45dcb0c8" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, <ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">renderer::Font</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;int, renderer::Font *&gt; openage::Engine::fonts</definition>
+        <argsstring></argsstring>
+        <name>fonts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the text fonts to be used for (can you believe it?) texts. maps fontsize -&gt; font </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="406" column="1" bodyfile="libopenage/engine.h" bodystart="406" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a9576c29b225fb2904d496e02dd500448" prot="private" static="no" mutable="no">
+        <type>SDL_Window *</type>
+        <definition>SDL_Window* openage::Engine::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SDL window where everything is displayed within. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="411" column="1" bodyfile="libopenage/engine.h" bodystart="411" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a881b3b503527175508666ec060cd5b75" prot="private" static="no" mutable="no">
+        <type>SDL_GLContext</type>
+        <definition>SDL_GLContext openage::Engine::glcontext</definition>
+        <argsstring></argsstring>
+        <name>glcontext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SDL OpenGL context, we&apos;ll only have one, but it would allow having multiple ones.</para>
+<para>This is actually a void * but sdl2 thought it was a good idea to name it like a differently. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="420" column="1" bodyfile="libopenage/engine.h" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a84cb7d3e3b37231b4391774f53c1afc7" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1gui_1_1_g_u_i" kindref="compound">gui::GUI</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;gui::GUI&gt; openage::Engine::gui</definition>
+        <argsstring></argsstring>
+        <name>gui</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the gui binding </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="425" column="1" bodyfile="libopenage/engine.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_profiler" kindref="compound">util::Profiler</ref></type>
+        <definition>util::Profiler openage::Engine::profiler</definition>
+        <argsstring></argsstring>
+        <name>profiler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the engines profiler </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="430" column="1" bodyfile="libopenage/engine.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1acc6d5809d1a5248bb9998afa117ed9e2" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_font_manager" kindref="compound">renderer::FontManager</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;renderer::FontManager&gt; openage::Engine::font_manager</definition>
+        <argsstring></argsstring>
+        <name>font_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ttf font loading manager </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="435" column="1" bodyfile="libopenage/engine.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_text_renderer" kindref="compound">renderer::TextRenderer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;renderer::TextRenderer&gt; openage::Engine::text_renderer</definition>
+        <argsstring></argsstring>
+        <name>text_renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>2d text renderer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="440" column="1" bodyfile="libopenage/engine.h" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_engine_1a5c189b01b1f03e17977f8cd17f6e2d13" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1log_1_1_file_sink" kindref="compound">log::FileSink</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;log::FileSink&gt; openage::Engine::logsink_file</definition>
+        <argsstring></argsstring>
+        <name>logsink_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Logsink to store messages to the filesystem. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="445" column="1" bodyfile="libopenage/engine.h" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_engine_1a201016f062279be18da34be570e9971c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Engine::Engine</definition>
+        <argsstring>(const util::Path &amp;root_dir, int32_t fps_limit, bool gl_debug, const char *windowtitle)</argsstring>
+        <name>Engine</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>root_dir</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>fps_limit</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>gl_debug</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>windowtitle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine initialization method. opens a window and initializes the OpenGL context. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="96" column="1" bodyfile="libopenage/engine.cpp" bodystart="39" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ae3da7b3e2452952347eb9aabf86004e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Engine::Engine</definition>
+        <argsstring>(const Engine &amp;copy)=delete</argsstring>
+        <name>Engine</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine copy constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="104" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1abf4b69dd9d8d58f58b90e871bdf03dd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
+        <definition>Engine&amp; openage::Engine::operator=</definition>
+        <argsstring>(const Engine &amp;copy)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine assignment operator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="109" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a283f4dd83a0dad35b0aa5a950e200d5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Engine::Engine</definition>
+        <argsstring>(Engine &amp;&amp;other)=delete</argsstring>
+        <name>Engine</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine move constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1aa3b14310179f30d0357bdd5bfaf8990d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
+        <definition>Engine&amp; openage::Engine::operator=</definition>
+        <argsstring>(Engine &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine move operator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::Engine::~Engine</definition>
+        <argsstring>()</argsstring>
+        <name>~Engine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>engine destructor, cleans up memory etc. deletes opengl context, the SDL window, and engine variables. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="126" column="1" bodyfile="libopenage/engine.cpp" bodystart="227" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>starts the engine loop. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="131" column="1" bodyfile="libopenage/engine.cpp" bodystart="298" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>enqueues the stop of the main loop. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="136" column="1" bodyfile="libopenage/engine.cpp" bodystart="310" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::Engine::on_resize</definition>
+        <argsstring>(coord::viewport_delta new_size) override</argsstring>
+        <name>on_resize</name>
+        <reimplements refid="classopenage_1_1_resize_handler_1ac89fb1c1c32643ec234210884fc6b29d">on_resize</reimplements>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>new_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>window resize handler function. recalculates opengl settings like viewport and projection matrices. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="142" column="1" bodyfile="libopenage/engine.cpp" bodystart="242" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a06eb9cde29e294b956187c88042ae8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::start_game</definition>
+        <argsstring>(const Generator &amp;generator)</argsstring>
+        <name>start_game</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_generator" kindref="compound">Generator</ref> &amp;</type>
+          <declname>generator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Start a game with the given game generator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="147" column="1" bodyfile="libopenage/engine.cpp" bodystart="570" bodyend="573"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a7fc2ea0de672369761ffe6ee251a1bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::start_game</definition>
+        <argsstring>(std::unique_ptr&lt; GameMain &gt; &amp;&amp;game)</argsstring>
+        <name>start_game</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> &gt; &amp;&amp;</type>
+          <declname>game</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Start a game with the given initialized game. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="152" column="1" bodyfile="libopenage/engine.cpp" bodystart="562" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ad14908046077033490111f941fbc408f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::end_game</definition>
+        <argsstring>()</argsstring>
+        <name>end_game</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stop the running game. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="157" column="1" bodyfile="libopenage/engine.cpp" bodystart="575" bodyend="578"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a0920a489f61705be5c6dc40e894513ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::save_screenshot</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>save_screenshot</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>draw the current frames per second number on screen. save the current framebuffer to a given png file. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file where the picture will be saved to. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="164" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Engine::draw_debug_overlay</definition>
+        <argsstring>()</argsstring>
+        <name>draw_debug_overlay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Draw the game version and the current FPS on screen. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="169" column="1" bodyfile="libopenage/engine.cpp" bodystart="274" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a73fdf4e650bd81de3414ba5997a9129f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::register_input_action</definition>
+        <argsstring>(InputHandler *handler)</argsstring>
+        <name>register_input_action</name>
+        <param>
+          <type><ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref> *</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a new input event handler, run for each input event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="174" column="1" bodyfile="libopenage/engine.cpp" bodystart="463" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a39f0d187a32285eaa2dca377aee8be45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::register_tick_action</definition>
+        <argsstring>(TickHandler *handler)</argsstring>
+        <name>register_tick_action</name>
+        <param>
+          <type><ref refid="classopenage_1_1_tick_handler" kindref="compound">TickHandler</ref> *</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a tick action, executed upon engine tick. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="179" column="1" bodyfile="libopenage/engine.cpp" bodystart="467" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a28cf66f139dbd94097277d64984154db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::register_drawhud_action</definition>
+        <argsstring>(HudHandler *handler)</argsstring>
+        <name>register_drawhud_action</name>
+        <param>
+          <type><ref refid="classopenage_1_1_hud_handler" kindref="compound">HudHandler</ref> *</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a hud drawing handler, drawn in hud coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="184" column="1" bodyfile="libopenage/engine.cpp" bodystart="471" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a32161204054965fa310a15287087e619" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::register_draw_action</definition>
+        <argsstring>(DrawHandler *handler)</argsstring>
+        <name>register_draw_action</name>
+        <param>
+          <type><ref refid="classopenage_1_1_draw_handler" kindref="compound">DrawHandler</ref> *</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a draw handler, run in game coordinates. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="189" column="1" bodyfile="libopenage/engine.cpp" bodystart="475" bodyend="477"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a90a9eb968b51cb8166c058afff334eca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::register_resize_action</definition>
+        <argsstring>(ResizeHandler *handler)</argsstring>
+        <name>register_resize_action</name>
+        <param>
+          <type><ref refid="classopenage_1_1_resize_handler" kindref="compound">ResizeHandler</ref> *</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>register a resize handler, run when the window size changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="194" column="1" bodyfile="libopenage/engine.cpp" bodystart="479" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a1a34f025683f6be30e37154be879c354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+        <definition>const util::Path &amp; openage::Engine::get_root_dir</definition>
+        <argsstring>()</argsstring>
+        <name>get_root_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the data directory where the engine was started from. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="199" column="1" bodyfile="libopenage/engine.cpp" bodystart="483" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> *</type>
+        <definition>GameMain * openage::Engine::get_game</definition>
+        <argsstring>()</argsstring>
+        <name>get_game</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return currently running game or null if a game is not currently running </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="205" column="1" bodyfile="libopenage/engine.cpp" bodystart="487" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a65102655ef3f9fb0fc8617deb7e80c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref> *</type>
+        <definition>job::JobManager * openage::Engine::get_job_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_job_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s job manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="210" column="1" bodyfile="libopenage/engine.cpp" bodystart="491" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ad925a7a6258d1382edd274ee4ceafdbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">audio::AudioManager</ref> &amp;</type>
+        <definition>audio::AudioManager &amp; openage::Engine::get_audio_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_audio_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s audio manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="215" column="1" bodyfile="libopenage/engine.cpp" bodystart="495" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1aa913f604da61a636e6e22561da30256d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_screenshot_manager" kindref="compound">ScreenshotManager</ref> &amp;</type>
+        <definition>ScreenshotManager &amp; openage::Engine::get_screenshot_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_screenshot_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s screenshot manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="220" column="1" bodyfile="libopenage/engine.cpp" bodystart="499" bodyend="501"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ab6233b0bf461be4bb1633cd9f7e7f08b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">input::ActionManager</ref> &amp;</type>
+        <definition>input::ActionManager &amp; openage::Engine::get_action_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_action_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s action manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="225" column="1" bodyfile="libopenage/engine.cpp" bodystart="503" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1ab9a7642ba035448c4a3c22e11ad40646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">cvar::CVarManager</ref> &amp;</type>
+        <definition>cvar::CVarManager &amp; openage::Engine::get_cvar_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_cvar_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s cvar manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="230" column="1" bodyfile="libopenage/engine.cpp" bodystart="507" bodyend="509"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">input::InputManager</ref> &amp;</type>
+        <definition>input::InputManager &amp; openage::Engine::get_input_manager</definition>
+        <argsstring>()</argsstring>
+        <name>get_input_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s keybind manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="235" column="1" bodyfile="libopenage/engine.cpp" bodystart="511" bodyend="513"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a993ef0abb641566f661a99d288ae8e11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_selection" kindref="compound">UnitSelection</ref> *</type>
+        <definition>UnitSelection * openage::Engine::get_unit_selection</definition>
+        <argsstring>()</argsstring>
+        <name>get_unit_selection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s unit selection. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="240" column="1" bodyfile="libopenage/engine.cpp" bodystart="515" bodyend="517"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::announce_global_binds</definition>
+        <argsstring>()</argsstring>
+        <name>announce_global_binds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>send keybindings help string to gui. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="245" column="1" bodyfile="libopenage/engine.cpp" bodystart="519" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a5684ab06d65ff2afe5e3b8551809d668" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1_text_renderer" kindref="compound">renderer::TextRenderer</ref> *</type>
+        <definition>renderer::TextRenderer * openage::Engine::get_text_renderer</definition>
+        <argsstring>()</argsstring>
+        <name>get_text_renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return this engine&apos;s text renderer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="250" column="1" bodyfile="libopenage/engine.cpp" bodystart="525" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::Engine::lastframe_duration_nsec</definition>
+        <argsstring>() const</argsstring>
+        <name>lastframe_duration_nsec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the number of nanoseconds that have passed for rendering the last frame.</para>
+<para>use that for fps-independent input actions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="258" column="1" bodyfile="libopenage/engine.cpp" bodystart="529" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::render_text</definition>
+        <argsstring>(coord::viewport position, size_t size, const char *format,...) ATTRIBUTE_FORMAT(4</argsstring>
+        <name>render_text</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>render text with the at a position with specified font size </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="263" column="1" bodyfile="libopenage/engine.cpp" bodystart="533" bodyend="549"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void void</type>
+        <definition>void openage::Engine::move_phys_camera</definition>
+        <argsstring>(float x, float y, float amount=1.0)</argsstring>
+        <name>move_phys_camera</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>amount</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>move the phys3 camera incorporated in the engine </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="268" column="1" bodyfile="libopenage/engine.cpp" bodystart="551" bodyend="560"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Engine::loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>main engine loop function. this will be looped once per frame when the game is running.</para>
+<para>the loop invokes fps counting, SDL event handling, view translation, and calling the main draw_method. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="304" column="1" bodyfile="libopenage/engine.cpp" bodystart="315" bodyend="461"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>main engine container.</para>
+<para>central foundation for everything the openage engine is capable of.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref>: <verbatim>InputManager &amp;get_input_manager() except +
+CVarManager &amp;get_cvar_manager() except +
+CoordManager coord
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1260">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+      </node>
+      <node id="1258">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="1259" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1260" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1259">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1293">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="1268">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="1269">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="1270" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1294">
+        <label>openage::coord::camgame_delta</label>
+        <link refid="structopenage_1_1coord_1_1camgame__delta"/>
+        <childnode refid="1295" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1266">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="1272">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="1273" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="1274" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="1275">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="1265">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="1266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1270">
+        <label>QObject</label>
+      </node>
+      <node id="1271">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="1268" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+      <node id="1292">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="1293" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1278">
+        <label>openage::util::ExternalProfiler</label>
+        <link refid="classopenage_1_1util_1_1_external_profiler"/>
+      </node>
+      <node id="1263">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="1263" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="1290">
+        <label>openage::coord::viewport</label>
+        <link refid="structopenage_1_1coord_1_1viewport"/>
+        <childnode refid="1291" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1286">
+        <label>openage::input::ActionManager</label>
+        <link refid="classopenage_1_1input_1_1_action_manager"/>
+        <childnode refid="1271" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="1279" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1288">
+        <label>qtsdl::GuiSingletonItemsInfo</label>
+        <link refid="classqtsdl_1_1_gui_singleton_items_info"/>
+      </node>
+      <node id="1274">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="1275" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1285">
+        <label>CoordXYRelative&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="1281">
+        <label>openage::coord::input</label>
+        <link refid="structopenage_1_1coord_1_1input"/>
+        <childnode refid="1282" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1295">
+        <label>CoordXYRelative&lt; pixel_t, camgame, camgame_delta &gt;</label>
+      </node>
+      <node id="1273">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+      <node id="1282">
+        <label>CoordXYAbsolute&lt; pixel_t, input, input_delta &gt;</label>
+      </node>
+      <node id="1276">
+        <label>openage::util::FrameCounter</label>
+        <link refid="classopenage_1_1util_1_1_frame_counter"/>
+        <childnode refid="1277" relation="usage">
+          <edgelabel>-frame_timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="1283">
+        <label>openage::input::InputContext</label>
+        <link refid="classopenage_1_1input_1_1_input_context"/>
+        <childnode refid="1279" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1287">
+        <label>openage::gui::EngineQMLInfo</label>
+        <link refid="classopenage_1_1gui_1_1_engine_q_m_l_info"/>
+        <childnode refid="1288" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1268" relation="usage">
+          <edgelabel>+asset_dir</edgelabel>
+        </childnode>
+        <childnode refid="1261" relation="usage">
+          <edgelabel>+engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="1296">
+        <label>openage::audio::AudioManager</label>
+        <link refid="classopenage_1_1audio_1_1_audio_manager"/>
+        <childnode refid="1273" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1267">
+        <label>openage::util::Profiler</label>
+        <link refid="classopenage_1_1util_1_1_profiler"/>
+        <childnode refid="1261" relation="usage">
+          <edgelabel>-engine</edgelabel>
+        </childnode>
+      </node>
+      <node id="1261">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="1262" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1263" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1264" relation="usage">
+          <edgelabel>+drawing_huds</edgelabel>
+          <edgelabel>+drawing_debug_overlay</edgelabel>
+        </childnode>
+        <childnode refid="1267" relation="usage">
+          <edgelabel>-profiler</edgelabel>
+        </childnode>
+        <childnode refid="1268" relation="usage">
+          <edgelabel>-root_dir</edgelabel>
+        </childnode>
+        <childnode refid="1269" relation="usage">
+          <edgelabel>+gui_signals</edgelabel>
+        </childnode>
+        <childnode refid="1271" relation="usage">
+          <edgelabel>-cvar_manager</edgelabel>
+        </childnode>
+        <childnode refid="1272" relation="usage">
+          <edgelabel>-screenshot_manager</edgelabel>
+        </childnode>
+        <childnode refid="1276" relation="usage">
+          <edgelabel>-fps_counter</edgelabel>
+        </childnode>
+        <childnode refid="1278" relation="usage">
+          <edgelabel>+external_profiler</edgelabel>
+        </childnode>
+        <childnode refid="1279" relation="usage">
+          <edgelabel>-input_manager</edgelabel>
+        </childnode>
+        <childnode refid="1287" relation="usage">
+          <edgelabel>-qml_info</edgelabel>
+        </childnode>
+        <childnode refid="1289" relation="usage">
+          <edgelabel>+coord</edgelabel>
+        </childnode>
+        <childnode refid="1273" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="1286" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+        <childnode refid="1296" relation="usage">
+          <edgelabel>-audio_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1291">
+        <label>CoordXYAbsolute&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="1262">
+        <label>openage::ResizeHandler</label>
+        <link refid="classopenage_1_1_resize_handler"/>
+      </node>
+      <node id="1264">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="1265" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1284">
+        <label>openage::coord::input_delta</label>
+        <link refid="structopenage_1_1coord_1_1input__delta"/>
+        <childnode refid="1285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1277">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+      <node id="1280">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="1279">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="1280" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1281" relation="usage">
+          <edgelabel>-mouse_position</edgelabel>
+        </childnode>
+        <childnode refid="1283" relation="usage">
+          <edgelabel>-global_context</edgelabel>
+        </childnode>
+        <childnode refid="1284" relation="usage">
+          <edgelabel>-mouse_motion</edgelabel>
+        </childnode>
+        <childnode refid="1286" relation="usage">
+          <edgelabel>-action_manager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1289">
+        <label>openage::coord::CoordManager</label>
+        <link refid="classopenage_1_1coord_1_1_coord_manager"/>
+        <childnode refid="1290" relation="usage">
+          <edgelabel>+camgame_viewport</edgelabel>
+          <edgelabel>+camhud_viewport</edgelabel>
+        </childnode>
+        <childnode refid="1292" relation="usage">
+          <edgelabel>+camgame_phys</edgelabel>
+        </childnode>
+        <childnode refid="1294" relation="usage">
+          <edgelabel>+tile_size</edgelabel>
+        </childnode>
+        <childnode refid="1274" relation="usage">
+          <edgelabel>+viewport_size</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/engine.h" line="88" column="1" bodyfile="libopenage/engine.h" bodystart="88" bodyend="457"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_engine_1ac42c03e7695e4b1204abd0dd5f49c5fc" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>action_manager</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::Engine</scope><name>add</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::Engine</scope><name>add_action</name></member>
+      <member refid="classopenage_1_1_engine_1a0592aec2fe0da923bfc337154341cfa2" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>announce_global_binds</name></member>
+      <member refid="classopenage_1_1_engine_1a8d07f7c047d94e7406e58de892842ebc" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>audio_manager</name></member>
+      <member refid="classopenage_1_1_engine_1ad5478f5f2e6dba3a8b4aab3fe828ef3c" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>coord</name></member>
+      <member refid="classopenage_1_1_engine_1adc434fd28c47f5f35b3fd5494263346a" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>cvar_manager</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>do_action</name></member>
+      <member refid="classopenage_1_1_engine_1ae7f43b96e5e097cebfd9c102676cf2c8" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>draw_debug_overlay</name></member>
+      <member refid="classopenage_1_1_engine_1acaf343ec070a13eb8ba0a8a6ebd491e2" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>drawing_debug_overlay</name></member>
+      <member refid="classopenage_1_1_engine_1a013d979bb40340a91030282446285ce5" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>drawing_huds</name></member>
+      <member refid="classopenage_1_1_engine_1ad14908046077033490111f941fbc408f" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>end_game</name></member>
+      <member refid="classopenage_1_1_engine_1a201016f062279be18da34be570e9971c" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>Engine</name></member>
+      <member refid="classopenage_1_1_engine_1ae3da7b3e2452952347eb9aabf86004e2" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>Engine</name></member>
+      <member refid="classopenage_1_1_engine_1a283f4dd83a0dad35b0aa5a950e200d5b" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>Engine</name></member>
+      <member refid="classopenage_1_1_engine_1afb29bb815dbf7880a10e86554e54df1c" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>external_profiler</name></member>
+      <member refid="classopenage_1_1_engine_1acc6d5809d1a5248bb9998afa117ed9e2" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>font_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a5945fa6e3ca0ee33148a5b8c45dcb0c8" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>fonts</name></member>
+      <member refid="classopenage_1_1_engine_1a01813462b17de02e35b4ec8feeb87700" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>fps_counter</name></member>
+      <member refid="classopenage_1_1_engine_1ab27f53b425516d72e68110af3d937696" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>game</name></member>
+      <member refid="classopenage_1_1_engine_1a7df4a480dc3d7da6a5d9bc595f416cd5" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>GameMain</name></member>
+      <member refid="classopenage_1_1_engine_1ab6233b0bf461be4bb1633cd9f7e7f08b" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_action_manager</name></member>
+      <member refid="classopenage_1_1_engine_1ad925a7a6258d1382edd274ee4ceafdbd" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_audio_manager</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_child</name></member>
+      <member refid="classopenage_1_1_engine_1ab9a7642ba035448c4a3c22e11ad40646" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_cvar_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a3e79c3919abbc3cab0716e4807f7c93e" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_game</name></member>
+      <member refid="classopenage_1_1_engine_1a248149eac4678d70fe55d6ba5cdc695a" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_input_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a65102655ef3f9fb0fc8617deb7e80c02" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_job_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a1a34f025683f6be30e37154be879c354" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_root_dir</name></member>
+      <member refid="classopenage_1_1_engine_1aa913f604da61a636e6e22561da30256d" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_screenshot_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a5684ab06d65ff2afe5e3b8551809d668" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_text_renderer</name></member>
+      <member refid="classopenage_1_1_engine_1a993ef0abb641566f661a99d288ae8e11" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_unit_selection</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_variable</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>get_variable_rw</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3caf0f35390dcb01054beb14a4c20819" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>getv</name></member>
+      <member refid="classopenage_1_1_engine_1a881b3b503527175508666ec060cd5b75" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>glcontext</name></member>
+      <member refid="classopenage_1_1_engine_1a84cb7d3e3b37231b4391774f53c1afc7" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>gui</name></member>
+      <member refid="classopenage_1_1_engine_1a63de744f13a4a799defab0346abc51cf" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>gui_link</name></member>
+      <member refid="classopenage_1_1_engine_1a92b6d5f088aa6e52525d3f0c62ce0b99" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>gui_signals</name></member>
+      <member refid="classopenage_1_1_engine_1aaaf873634221216d4af0488731f64657" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>input_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a30ba8ac699ccc6e40306acc14fc4db59" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>job_manager</name></member>
+      <member refid="classopenage_1_1_engine_1a9315ef7e9b79a311f67421640f1b43c4" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>lastframe_duration_nsec</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>list_functions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>list_options</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>list_variables</name></member>
+      <member refid="classopenage_1_1_engine_1a5c189b01b1f03e17977f8cd17f6e2d13" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>logsink_file</name></member>
+      <member refid="classopenage_1_1_engine_1adc80abfebed9b4f30df3de15984431e8" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>loop</name></member>
+      <member refid="classopenage_1_1_engine_1a33f2433fb9ecb617c48d1b64d7f2cf27" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>move_phys_camera</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>name</name></member>
+      <member refid="classopenage_1_1_engine_1a29cd3713a4e3cf61b20dd640f17f6e6c" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>ns_per_frame</name></member>
+      <member refid="classopenage_1_1_engine_1ae125d1790d2b600e870907083ac2a5c6" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>on_drawgame</name></member>
+      <member refid="classopenage_1_1_engine_1aa8d4eb6fa73d837178b7873a527b83e3" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>on_drawhud</name></member>
+      <member refid="classopenage_1_1_engine_1abc559d76b47fb9cb37d99736bb5ac8e6" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>on_engine_tick</name></member>
+      <member refid="classopenage_1_1_engine_1a4d7ffa1833327c7bb76b7d79b75ae13f" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>on_input_event</name></member>
+      <member refid="classopenage_1_1_engine_1ae0d4c0fbfaa2b1bb13cc71456880e08c" prot="public" virt="virtual"><scope>openage::Engine</scope><name>on_resize</name></member>
+      <member refid="classopenage_1_1_engine_1aa8d8b0acb6f9e7895d16a3e936dd9866" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>on_resize_handler</name></member>
+      <member refid="classopenage_1_1_engine_1abf4b69dd9d8d58f58b90e871bdf03dd0" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1_engine_1aa3b14310179f30d0357bdd5bfaf8990d" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>OptionNode</name></member>
+      <member refid="classopenage_1_1_engine_1a3c055b8477b917561ddc1d3e460d8990" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>profiler</name></member>
+      <member refid="classopenage_1_1_engine_1aa4133c54d4a25e56795e8635466a2949" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>qml_info</name></member>
+      <member refid="classopenage_1_1_engine_1a32161204054965fa310a15287087e619" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>register_draw_action</name></member>
+      <member refid="classopenage_1_1_engine_1a28cf66f139dbd94097277d64984154db" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>register_drawhud_action</name></member>
+      <member refid="classopenage_1_1_engine_1a73fdf4e650bd81de3414ba5997a9129f" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>register_input_action</name></member>
+      <member refid="classopenage_1_1_engine_1a90a9eb968b51cb8166c058afff334eca" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>register_resize_action</name></member>
+      <member refid="classopenage_1_1_engine_1a39f0d187a32285eaa2dca377aee8be45" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>register_tick_action</name></member>
+      <member refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>render_text</name></member>
+      <member refid="classopenage_1_1_engine_1a8edfd53ab986b9aa55fcdac286fcedf3" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>root_dir</name></member>
+      <member refid="classopenage_1_1_engine_1a1f1b60bb90c738f6b64a6e19e49cde6d" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>run</name></member>
+      <member refid="classopenage_1_1_engine_1ae327c10821e16fcde04a0f8332fd013b" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>running</name></member>
+      <member refid="classopenage_1_1_engine_1a0920a489f61705be5c6dc40e894513ef" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>save_screenshot</name></member>
+      <member refid="classopenage_1_1_engine_1a57745886589dafd40bb527f09f97b566" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>screenshot_manager</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>set_parent</name></member>
+      <member refid="classopenage_1_1_engine_1a06eb9cde29e294b956187c88042ae8ea" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>start_game</name></member>
+      <member refid="classopenage_1_1_engine_1a7fc2ea0de672369761ffe6ee251a1bcb" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>start_game</name></member>
+      <member refid="classopenage_1_1_engine_1a7c6184d63bc3af2171d83b8941eb9204" prot="public" virt="non-virtual"><scope>openage::Engine</scope><name>stop</name></member>
+      <member refid="classopenage_1_1_engine_1a22745f25ef9b247bc854eeab993f8d04" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>text_renderer</name></member>
+      <member refid="classopenage_1_1_engine_1ac2fea2a2baf08cdd24f725bd2931eaa2" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>unit_selection</name></member>
+      <member refid="classopenage_1_1_engine_1a9576c29b225fb2904d496e02dd500448" prot="private" virt="non-virtual"><scope>openage::Engine</scope><name>window</name></member>
+      <member refid="classopenage_1_1_engine_1a659dbbf399baf90582f4d8c5b497babc" prot="public" virt="virtual"><scope>openage::Engine</scope><name>~Engine</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" prot="public" virt="virtual"><scope>openage::Engine</scope><name>~OptionNode</name></member>
+      <member refid="classopenage_1_1_resize_handler_1afc4933884e9ebdfebc3d68b7bb2a8e69" prot="public" virt="virtual"><scope>openage::Engine</scope><name>~ResizeHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

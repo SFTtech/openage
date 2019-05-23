@@ -1,0 +1,662 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="input__manager_8h" kind="file" language="C++">
+    <compoundname>input_manager.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">SDL2/SDL.h</includes>
+    <includes refid="handlers_8h" local="yes">../handlers.h</includes>
+    <includes refid="input_2action_8h" local="yes">action.h</includes>
+    <includes refid="input_2event_8h" local="yes">event.h</includes>
+    <includes refid="input__context_8h" local="yes">input_context.h</includes>
+    <includedby refid="engine_8h" local="yes">libopenage/engine.h</includedby>
+    <includedby refid="console_8h" local="yes">libopenage/console/console.h</includedby>
+    <includedby refid="game__renderer_8cpp" local="yes">libopenage/game_renderer.cpp</includedby>
+    <includedby refid="input_2action_8cpp" local="yes">libopenage/input/action.cpp</includedby>
+    <includedby refid="input__context_8cpp" local="yes">libopenage/input/input_context.cpp</includedby>
+    <includedby refid="input__manager_8cpp" local="yes">libopenage/input/input_manager.cpp</includedby>
+    <incdepgraph>
+      <node id="15746">
+        <label>list</label>
+      </node>
+      <node id="15740">
+        <label>atomic</label>
+      </node>
+      <node id="15716">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="15717" relation="include">
+        </childnode>
+        <childnode refid="15718" relation="include">
+        </childnode>
+        <childnode refid="15719" relation="include">
+        </childnode>
+        <childnode refid="15720" relation="include">
+        </childnode>
+        <childnode refid="15721" relation="include">
+        </childnode>
+        <childnode refid="15722" relation="include">
+        </childnode>
+        <childnode refid="15723" relation="include">
+        </childnode>
+        <childnode refid="15724" relation="include">
+        </childnode>
+      </node>
+      <node id="15720">
+        <label>iomanip</label>
+      </node>
+      <node id="15708">
+        <label>functional</label>
+      </node>
+      <node id="15721">
+        <label>limits</label>
+      </node>
+      <node id="15714">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="15715" relation="include">
+        </childnode>
+        <childnode refid="15716" relation="include">
+        </childnode>
+      </node>
+      <node id="15707">
+        <label>libopenage/input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="15708" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15710" relation="include">
+        </childnode>
+        <childnode refid="15711" relation="include">
+        </childnode>
+        <childnode refid="15751" relation="include">
+        </childnode>
+        <childnode refid="15753" relation="include">
+        </childnode>
+        <childnode refid="15755" relation="include">
+        </childnode>
+      </node>
+      <node id="15715">
+        <label>cstdint</label>
+      </node>
+      <node id="15742">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15743" relation="include">
+        </childnode>
+        <childnode refid="15708" relation="include">
+        </childnode>
+        <childnode refid="15720" relation="include">
+        </childnode>
+        <childnode refid="15728" relation="include">
+        </childnode>
+        <childnode refid="15744" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15727" relation="include">
+        </childnode>
+      </node>
+      <node id="15719">
+        <label>cmath</label>
+      </node>
+      <node id="15731">
+        <label>stdexcept</label>
+      </node>
+      <node id="15745">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15746" relation="include">
+        </childnode>
+        <childnode refid="15747" relation="include">
+        </childnode>
+        <childnode refid="15748" relation="include">
+        </childnode>
+      </node>
+      <node id="15743">
+        <label>cstdarg</label>
+      </node>
+      <node id="15709">
+        <label>string</label>
+      </node>
+      <node id="15735">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15715" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15736" relation="include">
+        </childnode>
+        <childnode refid="15737" relation="include">
+        </childnode>
+        <childnode refid="15739" relation="include">
+        </childnode>
+        <childnode refid="15745" relation="include">
+        </childnode>
+        <childnode refid="15748" relation="include">
+        </childnode>
+      </node>
+      <node id="15737">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15738" relation="include">
+        </childnode>
+      </node>
+      <node id="15739">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15740" relation="include">
+        </childnode>
+        <childnode refid="15728" relation="include">
+        </childnode>
+        <childnode refid="15723" relation="include">
+        </childnode>
+        <childnode refid="15732" relation="include">
+        </childnode>
+        <childnode refid="15741" relation="include">
+        </childnode>
+        <childnode refid="15742" relation="include">
+        </childnode>
+      </node>
+      <node id="15754">
+        <label>unordered_set</label>
+      </node>
+      <node id="15711">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="15710" relation="include">
+        </childnode>
+        <childnode refid="15712" relation="include">
+        </childnode>
+      </node>
+      <node id="15722">
+        <label>ostream</label>
+      </node>
+      <node id="15725">
+        <label>limits.h</label>
+      </node>
+      <node id="15729">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15730" relation="include">
+        </childnode>
+        <childnode refid="15728" relation="include">
+        </childnode>
+        <childnode refid="15731" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15732" relation="include">
+        </childnode>
+        <childnode refid="15735" relation="include">
+        </childnode>
+      </node>
+      <node id="15724">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="15717" relation="include">
+        </childnode>
+        <childnode refid="15725" relation="include">
+        </childnode>
+        <childnode refid="15719" relation="include">
+        </childnode>
+        <childnode refid="15726" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15727" relation="include">
+        </childnode>
+        <childnode refid="15728" relation="include">
+        </childnode>
+        <childnode refid="15729" relation="include">
+        </childnode>
+        <childnode refid="15732" relation="include">
+        </childnode>
+      </node>
+      <node id="15755">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="15708" relation="include">
+        </childnode>
+        <childnode refid="15756" relation="include">
+        </childnode>
+        <childnode refid="15752" relation="include">
+        </childnode>
+        <childnode refid="15727" relation="include">
+        </childnode>
+        <childnode refid="15751" relation="include">
+        </childnode>
+        <childnode refid="15753" relation="include">
+        </childnode>
+      </node>
+      <node id="15710">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="15750">
+        <label>typeinfo</label>
+      </node>
+      <node id="15713">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="15756">
+        <label>stack</label>
+      </node>
+      <node id="15727">
+        <label>vector</label>
+      </node>
+      <node id="15733">
+        <label>ciso646</label>
+      </node>
+      <node id="15751">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="15708" relation="include">
+        </childnode>
+        <childnode refid="15752" relation="include">
+        </childnode>
+        <childnode refid="15727" relation="include">
+        </childnode>
+        <childnode refid="15712" relation="include">
+        </childnode>
+        <childnode refid="15753" relation="include">
+        </childnode>
+      </node>
+      <node id="15744">
+        <label>sstream</label>
+      </node>
+      <node id="15732">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15733" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15734" relation="include">
+        </childnode>
+      </node>
+      <node id="15734">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15734" relation="include">
+        </childnode>
+      </node>
+      <node id="15741">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15730" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+      </node>
+      <node id="15748">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15749" relation="include">
+        </childnode>
+      </node>
+      <node id="15712">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="15713" relation="include">
+        </childnode>
+        <childnode refid="15714" relation="include">
+        </childnode>
+      </node>
+      <node id="15738">
+        <label>cstdlib</label>
+      </node>
+      <node id="15730">
+        <label>iostream</label>
+      </node>
+      <node id="15752">
+        <label>unordered_map</label>
+      </node>
+      <node id="15718">
+        <label>climits</label>
+      </node>
+      <node id="15747">
+        <label>mutex</label>
+      </node>
+      <node id="15753">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="15752" relation="include">
+        </childnode>
+        <childnode refid="15754" relation="include">
+        </childnode>
+        <childnode refid="15727" relation="include">
+        </childnode>
+        <childnode refid="15709" relation="include">
+        </childnode>
+        <childnode refid="15710" relation="include">
+        </childnode>
+      </node>
+      <node id="15723">
+        <label>type_traits</label>
+      </node>
+      <node id="15736">
+        <label>config.h</label>
+      </node>
+      <node id="15717">
+        <label>algorithm</label>
+      </node>
+      <node id="15726">
+        <label>cstring</label>
+      </node>
+      <node id="15728">
+        <label>memory</label>
+      </node>
+      <node id="15749">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15730" relation="include">
+        </childnode>
+        <childnode refid="15750" relation="include">
+        </childnode>
+        <childnode refid="15732" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15760">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="15773">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="15757">
+        <label>libopenage/input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="15758" relation="include">
+        </childnode>
+        <childnode refid="15781" relation="include">
+        </childnode>
+        <childnode refid="15765" relation="include">
+        </childnode>
+        <childnode refid="15783" relation="include">
+        </childnode>
+        <childnode refid="15784" relation="include">
+        </childnode>
+        <childnode refid="15785" relation="include">
+        </childnode>
+      </node>
+      <node id="15779">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="15781">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="15761" relation="include">
+        </childnode>
+        <childnode refid="15762" relation="include">
+        </childnode>
+        <childnode refid="15782" relation="include">
+        </childnode>
+        <childnode refid="15765" relation="include">
+        </childnode>
+        <childnode refid="15772" relation="include">
+        </childnode>
+      </node>
+      <node id="15777">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="15765">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="15783">
+        <label>libopenage/input/action.cpp</label>
+        <link refid="input_2action_8cpp"/>
+      </node>
+      <node id="15767">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="15772">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="15771">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="15759">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="15761">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="15776">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="15778">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="15768">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="15763">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="15758">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="15759" relation="include">
+        </childnode>
+        <childnode refid="15760" relation="include">
+        </childnode>
+        <childnode refid="15761" relation="include">
+        </childnode>
+        <childnode refid="15762" relation="include">
+        </childnode>
+        <childnode refid="15763" relation="include">
+        </childnode>
+        <childnode refid="15764" relation="include">
+        </childnode>
+        <childnode refid="15765" relation="include">
+        </childnode>
+        <childnode refid="15766" relation="include">
+        </childnode>
+        <childnode refid="15767" relation="include">
+        </childnode>
+        <childnode refid="15768" relation="include">
+        </childnode>
+        <childnode refid="15769" relation="include">
+        </childnode>
+        <childnode refid="15770" relation="include">
+        </childnode>
+        <childnode refid="15771" relation="include">
+        </childnode>
+        <childnode refid="15772" relation="include">
+        </childnode>
+        <childnode refid="15773" relation="include">
+        </childnode>
+        <childnode refid="15774" relation="include">
+        </childnode>
+        <childnode refid="15775" relation="include">
+        </childnode>
+        <childnode refid="15776" relation="include">
+        </childnode>
+        <childnode refid="15777" relation="include">
+        </childnode>
+        <childnode refid="15778" relation="include">
+        </childnode>
+        <childnode refid="15779" relation="include">
+        </childnode>
+        <childnode refid="15780" relation="include">
+        </childnode>
+      </node>
+      <node id="15775">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="15780">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="15774">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="15784">
+        <label>libopenage/input/input_context.cpp</label>
+        <link refid="input__context_8cpp"/>
+      </node>
+      <node id="15769">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="15766">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="15762">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="15785">
+        <label>libopenage/input/input_manager.cpp</label>
+        <link refid="input__manager_8cpp"/>
+      </node>
+      <node id="15782">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+      <node id="15770">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="15764">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1input_1_1_input_manager" prot="public">openage::input::InputManager</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp<sp/>cimport<sp/>bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.string<sp/>cimport<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;SDL2/SDL.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../handlers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input_2action_8h" kindref="compound">action.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input_2event_8h" kindref="compound">event.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input__context_8h" kindref="compound">input_context.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">input<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="namespaceopenage_1_1input_1a9e27223f05a88e3091798701b3770ffd" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a9e27223f05a88e3091798701b3770ffd" kindref="member">binding_map_t</ref><sp/>=<sp/>std::unordered_map&lt;action_t,<sp/>Event&gt;;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1input_1_1_input_manager" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7a" kindref="member">Edge</ref><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aa684d325a7303f52e64011467ff5c5758" kindref="member">LEFT</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aa21507b40c80068eda19865706fdc2403" kindref="member">RIGHT</ref>,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aafbaedde498cdead4f2780217646e9ba1" kindref="member">UP</ref>,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aac4e0e4e3118472beeb2ae75827450f1f" kindref="member">DOWN</ref></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a00f4f3f2347c90e118d83a6204646810" kindref="member">InputManager</ref>(<ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">ActionManager</ref><sp/>*<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a368dbccb090d17ca142b1bfde0763011" kindref="member">get_bind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;action);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1af93e6ca8bded1892c1c9d83332468e2d" kindref="member">set_bind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;bind_str,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>action);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2f44a9836b240db76767fe04584a36b4" kindref="member">key_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" kindref="member">mouse_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ae8d78a246ac5d178588ef79b9e380b89" kindref="member">wheel_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>&amp;<ref refid="classopenage_1_1input_1_1_input_manager_1a06819b1b5f717d9fbf45bc098e7fd457" kindref="member">get_global_context</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>&amp;<ref refid="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" kindref="member">get_top_context</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2ece2b2ad4a08c15fb00a39b0f553d3c" kindref="member">push_context</ref>(<ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>*context);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a469024c2b2ac7769e0fa578c73fde160" kindref="member">remove_context</ref>(<ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>*context);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" kindref="member">ignored</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;e);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;e);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">set_state</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a4fd1b0eb5adbdb5a04ebb22cd01a42e2" kindref="member">set_mouse</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aa51d0f61b2b3d3859067fa75e187d39d" kindref="member">set_motion</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" kindref="member">set_relative</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mode);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aee8d9369313ee81d552ea4fe97f6165c" kindref="member">is_mouse_at_edge</ref>(<ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7a" kindref="member">Edge</ref><sp/>edge,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_size);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref><sp/>&amp;cc)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref><sp/>ec,<sp/><ref refid="namespaceopenage_1_1input_1aae287ba8846c11563c4b17a98e220b54" kindref="member">code_t</ref><sp/>code)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>(SDL_Keycode<sp/>k)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a03c93e707ca0ace2d8d6d3621f09ee52" kindref="member">is_mod_down</ref>(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5" kindref="member">modifier</ref><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2e46dfc175d1fd66e92a8644d994e6ab" kindref="member">on_input</ref>(SDL_Event<sp/>*e)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" kindref="member">active_binds</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;action_t,<sp/>action_func_t&gt;<sp/>&amp;ctx_actions)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">ActionManager</ref><sp/>*<ref refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" kindref="member">get_action_manager</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a3f1fe3ab63277870db07fb817a91696b" kindref="member">get_mod</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">ActionManager</ref><sp/>*<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" kindref="member">global_context</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a9e27223f05a88e3091798701b3770ffd" kindref="member">binding_map_t</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;InputContext<sp/>*&gt;<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;ClassCode,<sp/>bool,<sp/>class_code_hash&gt;<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" kindref="member">states</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classopenage_1_1input_1_1_input_manager_1a928b8699a9d8af1fda4c14f02c97bef6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a928b8699a9d8af1fda4c14f02c97bef6" kindref="member">keymod</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" kindref="member">relative_mode</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1input" kindref="compound">coord::input</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" kindref="member">mouse_position</ref>{0,<sp/>0};</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1input__delta" kindref="compound">coord::input_delta</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" kindref="member">mouse_motion</ref>{0,<sp/>0};</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="classopenage_1_1input_1_1_input_manager_1a0a83cf1d9d4b11f7690284c4cb0acb3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a0a83cf1d9d4b11f7690284c4cb0acb3e" kindref="member">InputContext</ref>;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/input/input_manager.h"/>
+  </compounddef>
+</doxygen>

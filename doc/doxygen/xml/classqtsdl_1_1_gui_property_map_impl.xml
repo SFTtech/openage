@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_property_map_impl" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiPropertyMapImpl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="gui__property__map__impl_8h" local="no">gui_property_map_impl.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_property_map_impl_1ae39a771d14c1000e2614e9b11270dacd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiPropertyMapImpl::GuiPropertyMapImpl</definition>
+        <argsstring>()</argsstring>
+        <name>GuiPropertyMapImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="13" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_property_map_impl_1afadd863ae9d3f4b0f8105e7dcb893568" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::GuiPropertyMapImpl::~GuiPropertyMapImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiPropertyMapImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="14" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="17" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classqtsdl_1_1_gui_property_map_impl_1a2842145dde93db062bfcc6d8ba6e0d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiPropertyMapImpl::property_changed</definition>
+        <argsstring>(const QByteArray &amp;name, const QVariant &amp;value)</argsstring>
+        <name>property_changed</name>
+        <param>
+          <type>const QByteArray &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="17" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiPropertyMapImpl::event</definition>
+        <argsstring>(QEvent *e) override</argsstring>
+        <name>event</name>
+        <param>
+          <type>QEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="20" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.cpp" bodystart="20" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2746">
+        <label>QObject</label>
+      </node>
+      <node id="2745">
+        <label>qtsdl::GuiPropertyMapImpl</label>
+        <link refid="classqtsdl_1_1_gui_property_map_impl"/>
+        <childnode refid="2746" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2748">
+        <label>QObject</label>
+      </node>
+      <node id="2747">
+        <label>qtsdl::GuiPropertyMapImpl</label>
+        <link refid="classqtsdl_1_1_gui_property_map_impl"/>
+        <childnode refid="2748" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_property_map_impl.h" line="9" column="1" bodyfile="libopenage/gui/guisys/link/gui_property_map_impl.h" bodystart="9" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" prot="private" virt="virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>event</name></member>
+      <member refid="classqtsdl_1_1_gui_property_map_impl_1ae39a771d14c1000e2614e9b11270dacd" prot="public" virt="non-virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>GuiPropertyMapImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_property_map_impl_1a2842145dde93db062bfcc6d8ba6e0d90" prot="public" virt="non-virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>property_changed</name></member>
+      <member refid="classqtsdl_1_1_gui_property_map_impl_1afadd863ae9d3f4b0f8105e7dcb893568" prot="public" virt="virtual"><scope>qtsdl::GuiPropertyMapImpl</scope><name>~GuiPropertyMapImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

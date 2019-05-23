@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kind="struct" language="C++" prot="private">
+    <compoundname>openage::renderer::TextRenderer::text_render_batch</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+        <definition>Font* openage::renderer::TextRenderer::text_render_batch::font</definition>
+        <argsstring></argsstring>
+        <name>font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="98" column="1" bodyfile="libopenage/renderer/text.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref></type>
+        <definition>Color openage::renderer::TextRenderer::text_render_batch::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="99" column="1" bodyfile="libopenage/renderer/text.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1ae04333b7d526b473b0fe99ff8984a376" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch__pass" kindref="compound">text_render_batch_pass</ref> &gt;</type>
+        <definition>std::vector&lt;text_render_batch_pass&gt; openage::renderer::TextRenderer::text_render_batch::passes</definition>
+        <argsstring></argsstring>
+        <name>passes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="100" column="1" bodyfile="libopenage/renderer/text.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a6ca7d6db329efa777b4ca0c50d3540cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::TextRenderer::text_render_batch::text_render_batch</definition>
+        <argsstring>(Font *font, const Color &amp;color)</argsstring>
+        <name>text_render_batch</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref> *</type>
+          <declname>font</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.h" line="102" column="1" bodyfile="libopenage/renderer/text.h" bodystart="102" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The set of text draw requests with the same font and color. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4441">
+        <label>openage::renderer::Color</label>
+        <link refid="classopenage_1_1renderer_1_1_color"/>
+      </node>
+      <node id="4439">
+        <label>openage::renderer::Font</label>
+        <link refid="classopenage_1_1renderer_1_1_font"/>
+        <childnode refid="4440" relation="usage">
+          <edgelabel>+description</edgelabel>
+        </childnode>
+      </node>
+      <node id="4440">
+        <label>openage::renderer::font_description</label>
+        <link refid="structopenage_1_1renderer_1_1font__description"/>
+      </node>
+      <node id="4438">
+        <label>openage::renderer::TextRenderer::text_render_batch</label>
+        <link refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch"/>
+        <childnode refid="4439" relation="usage">
+          <edgelabel>+font</edgelabel>
+        </childnode>
+        <childnode refid="4441" relation="usage">
+          <edgelabel>+color</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/text.h" line="97" column="1" bodyfile="libopenage/renderer/text.h" bodystart="97" bodyend="107"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a170703fbdf13c83f061bd3c5285d8943" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>color</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>font</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1ae04333b7d526b473b0fe99ff8984a376" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>passes</name></member>
+      <member refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a6ca7d6db329efa777b4ca0c50d3540cd" prot="public" virt="non-virtual"><scope>openage::renderer::TextRenderer::text_render_batch</scope><name>text_render_batch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_d4038e006ae681f38d9f19ed63c3b2e6" kind="dir">
+    <compoundname>libopenage/log</compoundname>
+    <innerfile refid="file__logsink_8cpp">file_logsink.cpp</innerfile>
+    <innerfile refid="file__logsink_8h">file_logsink.h</innerfile>
+    <innerfile refid="level_8cpp">level.cpp</innerfile>
+    <innerfile refid="level_8h">level.h</innerfile>
+    <innerfile refid="log_8cpp">log.cpp</innerfile>
+    <innerfile refid="log_8h">log.h</innerfile>
+    <innerfile refid="logsink_8cpp">logsink.cpp</innerfile>
+    <innerfile refid="logsink_8h">logsink.h</innerfile>
+    <innerfile refid="logsource_8cpp">logsource.cpp</innerfile>
+    <innerfile refid="logsource_8h">logsource.h</innerfile>
+    <innerfile refid="message_8cpp">message.cpp</innerfile>
+    <innerfile refid="message_8h">message.h</innerfile>
+    <innerfile refid="named__logsource_8cpp">named_logsource.cpp</innerfile>
+    <innerfile refid="named__logsource_8h">named_logsource.h</innerfile>
+    <innerfile refid="stdout__logsink_8cpp">stdout_logsink.cpp</innerfile>
+    <innerfile refid="stdout__logsink_8h">stdout_logsink.h</innerfile>
+    <innerfile refid="test_8cpp">test.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/log/"/>
+  </compounddef>
+</doxygen>

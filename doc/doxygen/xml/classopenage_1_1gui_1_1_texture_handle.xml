@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_texture_handle" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::TextureHandle</compoundname>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_sized_texture_handle" prot="public" virt="non-virtual">openage::gui::SizedTextureHandle</derivedcompoundref>
+    <includes refid="gui__texture__handle_8h" local="no">gui_texture_handle.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">openage::Texture</ref> *</type>
+        <definition>openage::Texture* openage::gui::TextureHandle::texture</definition>
+        <argsstring></argsstring>
+        <name>texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::gui::TextureHandle::subid</definition>
+        <argsstring></argsstring>
+        <name>subid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="16" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4474">
+        <label>openage::gui::TextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_texture_handle"/>
+      </node>
+      <node id="4475">
+        <label>openage::gui::SizedTextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_sized_texture_handle"/>
+        <childnode refid="4474" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4478">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="4476">
+        <label>openage::gui::TextureHandle</label>
+        <link refid="classopenage_1_1gui_1_1_texture_handle"/>
+        <childnode refid="4477" relation="usage">
+          <edgelabel>+texture</edgelabel>
+        </childnode>
+      </node>
+      <node id="4477">
+        <label>openage::Texture</label>
+        <link refid="classopenage_1_1_texture"/>
+        <childnode refid="4478" relation="usage">
+          <edgelabel>-filename</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_texture_handle.h" line="13" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.h" bodystart="13" bodyend="17"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_texture_handle_1abb5d85fbb659fc9bb7f7dc018b2b36a4" prot="public" virt="non-virtual"><scope>openage::gui::TextureHandle</scope><name>subid</name></member>
+      <member refid="classopenage_1_1gui_1_1_texture_handle_1a97428c32c25fe252566c5206ad19dc87" prot="public" virt="non-virtual"><scope>openage::gui::TextureHandle</scope><name>texture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

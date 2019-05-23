@@ -1,0 +1,1204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="player_8cpp" kind="file" language="C++">
+    <compoundname>player.cpp</compoundname>
+    <includes refid="player_8h" local="yes">player.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="unit_8h" local="yes">../unit/unit.h</includes>
+    <includes refid="unit__type_8h" local="yes">../unit/unit_type.h</includes>
+    <includes refid="math__constants_8h" local="yes">../util/math_constants.h</includes>
+    <includes refid="team_8h" local="yes">team.h</includes>
+    <incdepgraph>
+      <node id="10132">
+        <label>list</label>
+      </node>
+      <node id="10109">
+        <label>atomic</label>
+      </node>
+      <node id="10157">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="10158" relation="include">
+        </childnode>
+        <childnode refid="10159" relation="include">
+        </childnode>
+        <childnode refid="10160" relation="include">
+        </childnode>
+        <childnode refid="10129" relation="include">
+        </childnode>
+        <childnode refid="10161" relation="include">
+        </childnode>
+        <childnode refid="10162" relation="include">
+        </childnode>
+        <childnode refid="10125" relation="include">
+        </childnode>
+        <childnode refid="10163" relation="include">
+        </childnode>
+      </node>
+      <node id="10129">
+        <label>iomanip</label>
+      </node>
+      <node id="10110">
+        <label>functional</label>
+      </node>
+      <node id="10187">
+        <label>queue</label>
+      </node>
+      <node id="10161">
+        <label>limits</label>
+      </node>
+      <node id="10156">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="10120" relation="include">
+        </childnode>
+        <childnode refid="10157" relation="include">
+        </childnode>
+      </node>
+      <node id="10105">
+        <label>game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="10106" relation="include">
+        </childnode>
+        <childnode refid="10140" relation="include">
+        </childnode>
+        <childnode refid="10141" relation="include">
+        </childnode>
+        <childnode refid="10142" relation="include">
+        </childnode>
+        <childnode refid="10178" relation="include">
+        </childnode>
+        <childnode refid="10179" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10181" relation="include">
+        </childnode>
+      </node>
+      <node id="10172">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="10173" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10174" relation="include">
+        </childnode>
+        <childnode refid="10169" relation="include">
+        </childnode>
+        <childnode refid="10171" relation="include">
+        </childnode>
+        <childnode refid="10175" relation="include">
+        </childnode>
+        <childnode refid="10176" relation="include">
+        </childnode>
+        <childnode refid="10145" relation="include">
+        </childnode>
+      </node>
+      <node id="10151">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+      </node>
+      <node id="10181">
+        <label>QObject</label>
+      </node>
+      <node id="10120">
+        <label>cstdint</label>
+      </node>
+      <node id="10102">
+        <label>civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10105" relation="include">
+        </childnode>
+      </node>
+      <node id="10190">
+        <label>../log/logsource.h</label>
+        <link refid="logsource_8h"/>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10119" relation="include">
+        </childnode>
+      </node>
+      <node id="10166">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="10127">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="10128" relation="include">
+        </childnode>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10129" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10130" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+      </node>
+      <node id="10137">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="10115" relation="include">
+        </childnode>
+      </node>
+      <node id="10150">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="10113" relation="include">
+        </childnode>
+      </node>
+      <node id="10160">
+        <label>cmath</label>
+      </node>
+      <node id="10140">
+        <label>../gamedata/gamedata.gen.h</label>
+      </node>
+      <node id="10115">
+        <label>stdexcept</label>
+      </node>
+      <node id="10149">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="10192">
+        <label>../util/timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="10120" relation="include">
+        </childnode>
+      </node>
+      <node id="10199">
+        <label>attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="10196" relation="include">
+        </childnode>
+        <childnode refid="10195" relation="include">
+        </childnode>
+      </node>
+      <node id="10144">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="10121" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10145" relation="include">
+        </childnode>
+      </node>
+      <node id="10193">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="10194" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10125" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10183" relation="include">
+        </childnode>
+      </node>
+      <node id="10131">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="10132" relation="include">
+        </childnode>
+        <childnode refid="10133" relation="include">
+        </childnode>
+        <childnode refid="10134" relation="include">
+        </childnode>
+      </node>
+      <node id="10128">
+        <label>cstdarg</label>
+      </node>
+      <node id="10100">
+        <label>string</label>
+      </node>
+      <node id="10119">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="10120" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10121" relation="include">
+        </childnode>
+        <childnode refid="10122" relation="include">
+        </childnode>
+        <childnode refid="10124" relation="include">
+        </childnode>
+        <childnode refid="10131" relation="include">
+        </childnode>
+        <childnode refid="10134" relation="include">
+        </childnode>
+      </node>
+      <node id="10122">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="10123" relation="include">
+        </childnode>
+      </node>
+      <node id="10124">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="10109" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10125" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+        <childnode refid="10126" relation="include">
+        </childnode>
+        <childnode refid="10127" relation="include">
+        </childnode>
+      </node>
+      <node id="10196">
+        <label>map</label>
+      </node>
+      <node id="10098">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+        <childnode refid="10099" relation="include">
+        </childnode>
+        <childnode refid="10185" relation="include">
+        </childnode>
+        <childnode refid="10186" relation="include">
+        </childnode>
+        <childnode refid="10202" relation="include">
+        </childnode>
+        <childnode refid="10204" relation="include">
+        </childnode>
+        <childnode refid="10205" relation="include">
+        </childnode>
+      </node>
+      <node id="10201">
+        <label>unordered_set</label>
+      </node>
+      <node id="10197">
+        <label>../gamedata/unit.gen.h</label>
+      </node>
+      <node id="10188">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="10189" relation="include">
+        </childnode>
+        <childnode refid="10169" relation="include">
+        </childnode>
+      </node>
+      <node id="10107">
+        <label>exception</label>
+      </node>
+      <node id="10112">
+        <label>stddef.h</label>
+      </node>
+      <node id="10180">
+        <label>fstream</label>
+      </node>
+      <node id="10162">
+        <label>ostream</label>
+      </node>
+      <node id="10191">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10112" relation="include">
+        </childnode>
+        <childnode refid="10171" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+      </node>
+      <node id="10099">
+        <label>player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10102" relation="include">
+        </childnode>
+        <childnode refid="10182" relation="include">
+        </childnode>
+        <childnode refid="10183" relation="include">
+        </childnode>
+        <childnode refid="10184" relation="include">
+        </childnode>
+      </node>
+      <node id="10146">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="10120" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10147" relation="include">
+        </childnode>
+        <childnode refid="10148" relation="include">
+        </childnode>
+      </node>
+      <node id="10164">
+        <label>limits.h</label>
+      </node>
+      <node id="10113">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10115" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+        <childnode refid="10119" relation="include">
+        </childnode>
+      </node>
+      <node id="10163">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="10158" relation="include">
+        </childnode>
+        <childnode refid="10164" relation="include">
+        </childnode>
+        <childnode refid="10160" relation="include">
+        </childnode>
+        <childnode refid="10165" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10113" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+      </node>
+      <node id="10179">
+        <label>../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="10123" relation="include">
+        </childnode>
+        <childnode refid="10165" relation="include">
+        </childnode>
+        <childnode refid="10180" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10113" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+        <childnode refid="10154" relation="include">
+        </childnode>
+        <childnode refid="10145" relation="include">
+        </childnode>
+      </node>
+      <node id="10167">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="10189">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="10200">
+        <label>command.h</label>
+        <link refid="command_8h"/>
+        <childnode refid="10201" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10193" relation="include">
+        </childnode>
+      </node>
+      <node id="10136">
+        <label>typeinfo</label>
+      </node>
+      <node id="10178">
+        <label>../unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="10120" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10141" relation="include">
+        </childnode>
+      </node>
+      <node id="10194">
+        <label>bitset</label>
+      </node>
+      <node id="10184">
+        <label>score.h</label>
+        <link refid="score_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10183" relation="include">
+        </childnode>
+      </node>
+      <node id="10170">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="10198">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10171" relation="include">
+        </childnode>
+        <childnode refid="10188" relation="include">
+        </childnode>
+        <childnode refid="10192" relation="include">
+        </childnode>
+      </node>
+      <node id="10139">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+      </node>
+      <node id="10104">
+        <label>vector</label>
+      </node>
+      <node id="10185">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="10134" relation="include">
+        </childnode>
+        <childnode refid="10119" relation="include">
+        </childnode>
+      </node>
+      <node id="10117">
+        <label>ciso646</label>
+      </node>
+      <node id="10108">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="10109" relation="include">
+        </childnode>
+        <childnode refid="10107" relation="include">
+        </childnode>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10111" relation="include">
+        </childnode>
+        <childnode refid="10113" relation="include">
+        </childnode>
+        <childnode refid="10137" relation="include">
+        </childnode>
+        <childnode refid="10138" relation="include">
+        </childnode>
+        <childnode refid="10139" relation="include">
+        </childnode>
+      </node>
+      <node id="10175">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="10173" relation="include">
+        </childnode>
+      </node>
+      <node id="10130">
+        <label>sstream</label>
+      </node>
+      <node id="10116">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="10117" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10118" relation="include">
+        </childnode>
+      </node>
+      <node id="10152">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10153" relation="include">
+        </childnode>
+        <childnode refid="10146" relation="include">
+        </childnode>
+      </node>
+      <node id="10118">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="10118" relation="include">
+        </childnode>
+      </node>
+      <node id="10183">
+        <label>resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+      </node>
+      <node id="10173">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="10126">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+      </node>
+      <node id="10134">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="10135" relation="include">
+        </childnode>
+      </node>
+      <node id="10169">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="10170" relation="include">
+        </childnode>
+        <childnode refid="10156" relation="include">
+        </childnode>
+      </node>
+      <node id="10204">
+        <label>../util/math_constants.h</label>
+        <link refid="math__constants_8h"/>
+        <childnode refid="10161" relation="include">
+        </childnode>
+      </node>
+      <node id="10154">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="10174">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="10153">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+      </node>
+      <node id="10123">
+        <label>cstdlib</label>
+      </node>
+      <node id="10114">
+        <label>iostream</label>
+      </node>
+      <node id="10106">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="10107" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10108" relation="include">
+        </childnode>
+      </node>
+      <node id="10176">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="10177" relation="include">
+        </childnode>
+        <childnode refid="10173" relation="include">
+        </childnode>
+      </node>
+      <node id="10101">
+        <label>unordered_map</label>
+      </node>
+      <node id="10186">
+        <label>../unit/unit.h</label>
+        <link refid="unit_8h"/>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10133" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10187" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10188" relation="include">
+        </childnode>
+        <childnode refid="10190" relation="include">
+        </childnode>
+        <childnode refid="10191" relation="include">
+        </childnode>
+        <childnode refid="10192" relation="include">
+        </childnode>
+        <childnode refid="10193" relation="include">
+        </childnode>
+        <childnode refid="10195" relation="include">
+        </childnode>
+        <childnode refid="10199" relation="include">
+        </childnode>
+        <childnode refid="10200" relation="include">
+        </childnode>
+        <childnode refid="10198" relation="include">
+        </childnode>
+      </node>
+      <node id="10148">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10133" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+        <childnode refid="10149" relation="include">
+        </childnode>
+        <childnode refid="10150" relation="include">
+        </childnode>
+        <childnode refid="10151" relation="include">
+        </childnode>
+      </node>
+      <node id="10159">
+        <label>climits</label>
+      </node>
+      <node id="10195">
+        <label>attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10196" relation="include">
+        </childnode>
+        <childnode refid="10158" relation="include">
+        </childnode>
+        <childnode refid="10171" relation="include">
+        </childnode>
+        <childnode refid="10197" relation="include">
+        </childnode>
+        <childnode refid="10191" relation="include">
+        </childnode>
+        <childnode refid="10183" relation="include">
+        </childnode>
+        <childnode refid="10198" relation="include">
+        </childnode>
+      </node>
+      <node id="10133">
+        <label>mutex</label>
+      </node>
+      <node id="10155">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="10156" relation="include">
+        </childnode>
+        <childnode refid="10166" relation="include">
+        </childnode>
+        <childnode refid="10167" relation="include">
+        </childnode>
+      </node>
+      <node id="10111">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="10112" relation="include">
+        </childnode>
+      </node>
+      <node id="10145">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10146" relation="include">
+        </childnode>
+        <childnode refid="10152" relation="include">
+        </childnode>
+        <childnode refid="10154" relation="include">
+        </childnode>
+      </node>
+      <node id="10202">
+        <label>../unit/unit_type.h</label>
+        <link refid="unit__type_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10203" relation="include">
+        </childnode>
+        <childnode refid="10199" relation="include">
+        </childnode>
+      </node>
+      <node id="10171">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="10156" relation="include">
+        </childnode>
+        <childnode refid="10166" relation="include">
+        </childnode>
+        <childnode refid="10167" relation="include">
+        </childnode>
+        <childnode refid="10163" relation="include">
+        </childnode>
+      </node>
+      <node id="10147">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="10182">
+        <label>population_tracker.h</label>
+        <link refid="population__tracker_8h"/>
+      </node>
+      <node id="10125">
+        <label>type_traits</label>
+      </node>
+      <node id="10143">
+        <label>set</label>
+      </node>
+      <node id="10121">
+        <label>config.h</label>
+      </node>
+      <node id="10205">
+        <label>team.h</label>
+        <link refid="team_8h"/>
+        <childnode refid="10100" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10184" relation="include">
+        </childnode>
+      </node>
+      <node id="10158">
+        <label>algorithm</label>
+      </node>
+      <node id="10138">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10139" relation="include">
+        </childnode>
+      </node>
+      <node id="10168">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="10163" relation="include">
+        </childnode>
+        <childnode refid="10156" relation="include">
+        </childnode>
+        <childnode refid="10166" relation="include">
+        </childnode>
+        <childnode refid="10167" relation="include">
+        </childnode>
+      </node>
+      <node id="10203">
+        <label>../gamestate/cost.h</label>
+        <link refid="cost_8h"/>
+        <childnode refid="10183" relation="include">
+        </childnode>
+      </node>
+      <node id="10165">
+        <label>cstring</label>
+      </node>
+      <node id="10141">
+        <label>../gamedata/graphic.gen.h</label>
+      </node>
+      <node id="10142">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10103" relation="include">
+        </childnode>
+        <childnode refid="10112" relation="include">
+        </childnode>
+        <childnode refid="10143" relation="include">
+        </childnode>
+        <childnode refid="10101" relation="include">
+        </childnode>
+        <childnode refid="10104" relation="include">
+        </childnode>
+        <childnode refid="10144" relation="include">
+        </childnode>
+        <childnode refid="10155" relation="include">
+        </childnode>
+        <childnode refid="10168" relation="include">
+        </childnode>
+        <childnode refid="10169" relation="include">
+        </childnode>
+        <childnode refid="10171" relation="include">
+        </childnode>
+        <childnode refid="10172" relation="include">
+        </childnode>
+        <childnode refid="10163" relation="include">
+        </childnode>
+      </node>
+      <node id="10103">
+        <label>memory</label>
+      </node>
+      <node id="10177">
+        <label>initializer_list</label>
+      </node>
+      <node id="10135">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10136" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="player_8h" kindref="compound">player.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../unit/unit.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../unit/unit_type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/math_constants.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="team_8h" kindref="compound">team.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1_player_1aa0bbbf96f0765ac2e2cd242302c86c1a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_player_1aa0bbbf96f0765ac2e2cd242302c86c1a" kindref="member">Player::Player</ref>(<ref refid="classopenage_1_1_civilisation" kindref="compound">Civilisation</ref><sp/>*civ,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number,<sp/>std::string<sp/>name)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>player_number{number},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>{number},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>civ{civ},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>name{name},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>team{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">population</ref>{0,<sp/>200},<sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change,<sp/>get<sp/>population<sp/>cap<sp/>max<sp/>from<sp/>game<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>score{</highlight><highlight class="keyword">this</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>age{1}<sp/>{<sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change,<sp/>get<sp/>starting<sp/>age<sp/>from<sp/>game<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>starting<sp/>resources</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change,<sp/>get<sp/>starting<sp/>resources<sp/>from<sp/>game<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;resources.set_all(1000);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>change,<sp/>get<sp/>starting<sp/>resources<sp/>capacity<sp/>from<sp/>game<sp/>options<sp/>or<sp/>nyan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;resources_capacity.set_all(<ref refid="namespaceopenage_1_1math_1ad9eeb53dc7ad24b525923f7eeca9f37a" kindref="member">math::DOUBLE_INF</ref><sp/>/<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>half<sp/>to<sp/>avoid<sp/>overflows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;on_resources_change();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1_player_1a1b907e14fdbcb176ed179f7d0751de76" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a1b907e14fdbcb176ed179f7d0751de76" kindref="member">Player::operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" kindref="member">player_number</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" kindref="member">player_number</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classopenage_1_1_player_1afa2d1a4238826a37a94b69e4583a6465" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1afa2d1a4238826a37a94b69e4583a6465" kindref="member">Player::is_enemy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!this-&gt;<ref refid="classopenage_1_1_player_1a1bc0f7b97c57e7c016d3d5df3de5223a" kindref="member">is_ally</ref>(other);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1_player_1a1bc0f7b97c57e7c016d3d5df3de5223a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a1bc0f7b97c57e7c016d3d5df3de5223a" kindref="member">Player::is_ally</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player" kindref="compound">Player</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" kindref="member">player_number</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1_player_1a83bca286500eb1564b4324714e00a6b8" kindref="member">player_number</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>same<sp/>player</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a49e6eb4d6794785417435205a53ae5cb" kindref="member">team</ref><sp/>&amp;&amp;<sp/>this-&gt;<ref refid="classopenage_1_1_player_1a49e6eb4d6794785417435205a53ae5cb" kindref="member">team</ref>-&gt;<ref refid="classopenage_1_1_team_1a28f7fcd17ef88d23eb7bc0cb11b57591" kindref="member">is_member</ref>(other))<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>same<sp/>team</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>everyone<sp/>else<sp/>is<sp/>enemy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1_player_1aefd20341c814fc53919cac8761bad38b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1aefd20341c814fc53919cac8761bad38b" kindref="member">Player::owns</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>&amp;unit)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit.<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">attr_type::owner</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>&amp;unit.<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">attr_type::owner</ref>&gt;().player;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" kindref="member">Player::receive</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref>&amp;<sp/>amount)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref><sp/>+=<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1_player_1aa5c3bbb49503d3166ce365686343f4da" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a728983ff63d9e16ecc874a942c61fa22" kindref="member">Player::receive</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>amount)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>[<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204" kindref="member">resource</ref>]<sp/>+=<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classopenage_1_1_player_1a7afa6e6f2c511235e1aa58a40b16eaf5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a7afa6e6f2c511235e1aa58a40b16eaf5" kindref="member">Player::can_receive</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref>&amp;<sp/>amount)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref>.<ref refid="classopenage_1_1_resource_bundle_1a386ff157dd71560a8c9b1578fe5386e6" kindref="member">has</ref>(this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>,<sp/>amount);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1_player_1a086e4dcf2bccd69fa8d48541c54c1768" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a7afa6e6f2c511235e1aa58a40b16eaf5" kindref="member">Player::can_receive</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>amount)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref>.<ref refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" kindref="member">get</ref>(resource)<sp/>&gt;=<sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" kindref="member">get</ref>(resource)<sp/>+<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" kindref="member">Player::deduct</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref>&amp;<sp/>amount)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1ae324ee7f007981e5f9629f6ed30b8641" kindref="member">deduct</ref>(amount))<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classopenage_1_1_player_1ae9e08a13015f842a55b37413c179dc4e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a3ff378e505d9036c74204730b53d9fba" kindref="member">Player::deduct</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>amount)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>[resource]<sp/>&gt;=<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>[<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a96ab4e163f4ee03aaa4d1051aa51d204" kindref="member">resource</ref>]<sp/>-=<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" kindref="member">Player::can_deduct</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref>&amp;<sp/>amount)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1a386ff157dd71560a8c9b1578fe5386e6" kindref="member">has</ref>(amount);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classopenage_1_1_player_1ab4df4918bf1f83664f7fd5e0bd0b5ff4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" kindref="member">Player::can_deduct</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>amount)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" kindref="member">get</ref>(resource)<sp/>&gt;=<sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">amount</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1ac7283a82ddfcc4a556ca4aa4f9277bbc" kindref="member">Player::amount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" kindref="member">get</ref>(resource);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classopenage_1_1_player_1a4909a76cf5b65e544b1a62dc21147d77" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a4909a76cf5b65e544b1a62dc21147d77" kindref="member">Player::can_make</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref><sp/>&amp;type)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a5511f9f158fdeabca07be9d5314d7c38" kindref="member">can_deduct</ref>(type.<ref refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" kindref="member">cost</ref>.<ref refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" kindref="member">get</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">))<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a03454af8fd68e803804e2619b62b7231" kindref="member">get_units_have</ref>(type.<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>())<sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" kindref="member">get_units_pending</ref>(type.<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>())<sp/>&lt;<sp/>type.<ref refid="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" kindref="member">have_limit</ref><sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;get_units_had(type.<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>())<sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" kindref="member">get_units_pending</ref>(type.<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>())<sp/>&lt;<sp/>type.<ref refid="classopenage_1_1_unit_type_1af3dc1ba3b4f6cc2418ebbc9375461e49" kindref="member">had_limit</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classopenage_1_1_player_1aebec55f09f5e295450a0d8381f0f86f2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1aebec55f09f5e295450a0d8381f0f86f2" kindref="member">Player::type_count</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" kindref="member">available_ids</ref>.size();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref><sp/>*<ref refid="classopenage_1_1_player_1a67c7f6853d4be5c38d2456169af3d5a1" kindref="member">Player::get_type</ref>(<ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/>type_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" kindref="member">available_ids</ref>.count(type_id)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type_id<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>ignoring<sp/>type_id:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>type_id);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" kindref="member">available_ids</ref>.at(type_id);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref><sp/>*<ref refid="classopenage_1_1_player_1ab1e818cc3361bbadd96add4cd83c86da" kindref="member">Player::get_type_index</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>type_index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type_index<sp/>&lt;<sp/><ref refid="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" kindref="member">available_objects</ref>.size())<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" kindref="member">available_objects</ref>.at(type_index).get();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>ignoring<sp/>type_index:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>type_index);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a95a450855aec639900bf4b5d24e98521" kindref="member">Player::initialise_unit_types</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1_player_1aa216130fcaccd6e6739868ae59bbb426" kindref="member">name</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>has<sp/>civilisation<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1_player_1a310acdae5a61cb9fa1f1e77ce2fcea40" kindref="member">civ</ref>-&gt;<ref refid="classopenage_1_1_civilisation_1abfe7c1fb0da5297fe076417bda22e711" kindref="member">civ_name</ref>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;type<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1_player_1a310acdae5a61cb9fa1f1e77ce2fcea40" kindref="member">civ</ref>-&gt;<ref refid="classopenage_1_1_civilisation_1acc3a4d02c42d7f8eda5b9b87175f4613" kindref="member">object_meta</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>shared_type<sp/>=<sp/>type-&gt;init(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a8f00ffffd7d8386f3c406ec373e100bf" kindref="member">index_t</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>shared_type-&gt;id();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a377bd0846efc82274d555e1f1069215c" kindref="member">available_objects</ref>.emplace_back(shared_type);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a3fd34994e4ac44efd89e567de46eb05f" kindref="member">available_ids</ref>[id]<sp/>=<sp/>shared_type.get();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a69c98ddc434aed6aceec5dbb4931f064" kindref="member">Player::active_unit_added</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*unit,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>from_pending)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>unit<sp/>is<sp/>actually<sp/>active</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" kindref="member">is_unit_pending</ref>(unit))<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" kindref="member">units_pending</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(from_pending)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" kindref="member">units_pending</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>-=<sp/>1;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4f928ee4c753d7360214912ab85bff3c" kindref="member">units_had</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>here<sp/>building<sp/>dependencies</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>population</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>popul<sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>&gt;();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(popul.demand<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" kindref="member">population</ref>.<ref refid="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" kindref="member">demand_population</ref>(popul.demand);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(popul.capacity<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" kindref="member">population</ref>.<ref refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" kindref="member">add_capacity</ref>(popul.capacity);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>resources<sp/>capacity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">attr_type::storage</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">storage</ref><sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">attr_type::storage</ref>&gt;();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref><sp/>+=<sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">storage</ref>.capacity;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>score</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>improve<sp/>selectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()<sp/>==<sp/>82<sp/>||<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()<sp/>==<sp/>276)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Castle,<sp/>Wonder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" kindref="member">score</ref>.<ref refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" kindref="member">add_score</ref>(<ref refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a7310936c1bff3304c3767495298a29fc" kindref="member">score_category::society</ref>,<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" kindref="member">cost</ref>.<ref refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" kindref="member">get</ref>(*this).<ref refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" kindref="member">sum</ref>()<sp/>*<sp/>0.2);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">attr_type::building</ref>)<sp/>||<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>))<sp/>{<sp/></highlight><highlight class="comment">//<sp/>building,<sp/>living</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" kindref="member">score</ref>.<ref refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" kindref="member">add_score</ref>(<ref refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a0959a8b663be96468a1c5c1d456243a2" kindref="member">score_category::economy</ref>,<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" kindref="member">cost</ref>.<ref refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" kindref="member">get</ref>(*this).<ref refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" kindref="member">sum</ref>()<sp/>*<sp/>0.2);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>here<sp/>on<sp/>create<sp/>unit<sp/>triggers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>check<sp/>for<sp/>unit<sp/>based<sp/>win<sp/>conditions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1ad3f9e5b486a9d6b07402596e3eabca82" kindref="member">Player::active_unit_removed</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*unit)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>unit<sp/>is<sp/>actually<sp/>active</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" kindref="member">is_unit_pending</ref>(unit))<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" kindref="member">units_pending</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>-=<sp/>1;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>[unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()]<sp/>-=<sp/>1;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>here<sp/>building<sp/>dependencies</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>population</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>popul<sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>&gt;();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(popul.demand<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" kindref="member">population</ref>.<ref refid="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" kindref="member">free_population</ref>(popul.demand);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(popul.capacity<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a296fc88baa2fa4d9d79e151edb2c4983" kindref="member">population</ref>.<ref refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" kindref="member">remove_capacity</ref>(popul.capacity);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>resources<sp/>capacity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">attr_type::storage</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">storage</ref><sp/>=<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">attr_type::storage</ref>&gt;();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref><sp/>-=<sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36addecebdea58b5f264d27f1f7909bab74" kindref="member">storage</ref>.capacity;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">on_resources_change</ref>();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>score</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>improve<sp/>selectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()<sp/>==<sp/>82<sp/>||<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" kindref="member">id</ref>()<sp/>==<sp/>276)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Castle,<sp/>Wonder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nothing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">attr_type::building</ref>)<sp/>||<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a248081ecb337c85ec8e4330e6099625a" kindref="member">attr_type::population</ref>))<sp/>{<sp/></highlight><highlight class="comment">//<sp/>building,<sp/>living</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" kindref="member">score</ref>.<ref refid="classopenage_1_1_score_1a7867975c457c1de476f8d5ecd1ae452f" kindref="member">remove_score</ref>(<ref refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a0959a8b663be96468a1c5c1d456243a2" kindref="member">score_category::economy</ref>,<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" kindref="member">cost</ref>.<ref refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" kindref="member">get</ref>(*this).<ref refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" kindref="member">sum</ref>()<sp/>*<sp/>0.2);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>handle<sp/>here<sp/>on<sp/>death<sp/>unit<sp/>triggers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>check<sp/>for<sp/>unit<sp/>based<sp/>win<sp/>conditions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="classopenage_1_1_player_1a2d3f269dc4b0acd1972e4d0a32f97c2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a2d3f269dc4b0acd1972e4d0a32f97c2f" kindref="member">Player::killed_unit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>&amp;<sp/>unit)<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>score</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" kindref="member">score</ref>.<ref refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" kindref="member">add_score</ref>(<ref refid="namespaceopenage_1a80d0d6e3a322272f55f01ca5cb372830a31ba6d3619a6d70c983151afa0764de4" kindref="member">score_category::military</ref>,<sp/>unit.<ref refid="classopenage_1_1_unit_1a2d7da7c7ccd95557e10d54a58a033187" kindref="member">unit_type</ref>-&gt;<ref refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" kindref="member">cost</ref>.<ref refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" kindref="member">get</ref>(*this).<ref refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" kindref="member">sum</ref>()<sp/>*<sp/>0.2);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classopenage_1_1_player_1ab5854d681fef5b4a8327097c8ea19bbe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1ab5854d681fef5b4a8327097c8ea19bbe" kindref="member">Player::advance_age</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1adef32e0454fc4063bcb2555efd0aa12a" kindref="member">age</ref><sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242" refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a2a7b7334922d4cdf68236f8684cbfe38" kindref="member">Player::on_resources_change</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>capacity<sp/>overflow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<sp/>(this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref><sp/>&gt;=<sp/>this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>.<ref refid="classopenage_1_1_resource_bundle_1aa3e1dfb21fe065f769a21a13f667984b" kindref="member">limit</ref>(this-&gt;<ref refid="classopenage_1_1_player_1aa946fbe10a693141b1743b25efe3b752" kindref="member">resources_capacity</ref>);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>score</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4672ffecb8a94271a0bf57121889f614" kindref="member">score</ref>.<ref refid="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" kindref="member">update_resources</ref>(this-&gt;<ref refid="classopenage_1_1_player_1ae9a61173c2ec7dd3266bc34f3f348b78" kindref="member">resources</ref>);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>check<sp/>for<sp/>resource<sp/>based<sp/>win<sp/>conditions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classopenage_1_1_player_1a03454af8fd68e803804e2619b62b7231" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a03454af8fd68e803804e2619b62b7231" kindref="member">Player::get_units_have</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.count(type_id))<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(type_id);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classopenage_1_1_player_1adc552ba67bafcfa1bd689b2c276ec7ce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1adc552ba67bafcfa1bd689b2c276ec7ce" kindref="member">Player::get_units_had</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a4f928ee4c753d7360214912ab85bff3c" kindref="member">units_had</ref>.count(type_id))<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a4f928ee4c753d7360214912ab85bff3c" kindref="member">units_had</ref>.at(type_id);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a2befde4e71e0efad0e77bf8525311a79" kindref="member">Player::get_units_pending</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" kindref="member">units_pending</ref>.count(type_id))<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1a10f9f2f61621bef39073421067f9f9db" kindref="member">units_pending</ref>.at(type_id);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1a5b26a30f3d83b7455b70fac759b07ae6" kindref="member">Player::is_unit_pending</ref>(<ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref><sp/>*unit)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>check<sp/>aslo<sp/>if<sp/>unit<sp/>is<sp/>training</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a6c56a8b7e9856a8e0535cacbe831bae7" kindref="member">has_attribute</ref>(<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">attr_type::building</ref>)<sp/>&amp;&amp;<sp/>unit-&gt;<ref refid="classopenage_1_1_unit_1a3e12324401051119f44e212dae1a87ce" kindref="member">get_attribute</ref>&lt;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a1b20e9021b3a16b059287caddc7862f6" kindref="member">attr_type::building</ref>&gt;().completed<sp/>&lt;<sp/>1.0f;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="classopenage_1_1_player_1af95cd6a1823c78ef20a347369901830d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_player_1af95cd6a1823c78ef20a347369901830d" kindref="member">Player::get_workforce_count</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>get<sp/>all<sp/>units<sp/>tagged<sp/>as<sp/>work<sp/>force</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(83)<sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(293)<sp/>+<sp/></highlight><highlight class="comment">//<sp/>villagers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(13)<sp/>+<sp/></highlight><highlight class="comment">//<sp/>fishing<sp/>ship</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(128)<sp/>+<sp/></highlight><highlight class="comment">//<sp/>trade<sp/>cart</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1_player_1abdcdac88382cd49622e56a46981a3ae7" kindref="member">units_have</ref>.at(545);<sp/></highlight><highlight class="comment">//<sp/>transport<sp/>ship</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gamestate/player.cpp"/>
+  </compounddef>
+</doxygen>

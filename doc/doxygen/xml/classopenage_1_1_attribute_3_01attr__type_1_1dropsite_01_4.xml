@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::dropsite &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_shared_attribute_container" prot="public" virt="non-virtual">openage::SharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a09579ea4ec5feb584b88a044356dea0a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref> &gt;</type>
+        <definition>std::vector&lt;game_resource&gt; openage::Attribute&lt; attr_type::dropsite &gt;::resource_types</definition>
+        <argsstring></argsstring>
+        <name>resource_types</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="494" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="494" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a7e18888cd242c93d8e4eb8d770938051" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::dropsite &gt;::Attribute</definition>
+        <argsstring>(std::vector&lt; game_resource &gt; types)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type>std::vector&lt; <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref> &gt;</type>
+          <declname>types</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="483" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="483" bodyend="486"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a4c35f9dc58f6fa9ba9f76a506a9dfebd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::dropsite &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="488" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="488" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1af3258763ccb44c7136525e19b8519f1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Attribute&lt; attr_type::dropsite &gt;::accepting_resource</definition>
+        <argsstring>(game_resource res) const</argsstring>
+        <name>accepting_resource</name>
+        <param>
+          <type><ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="492" column="1" bodyfile="libopenage/unit/attribute.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The resources that are accepted to be dropped. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="423">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="424" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="422">
+        <label>openage::Attribute&lt; attr_type::dropsite &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4"/>
+        <childnode refid="423" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="424">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="426">
+        <label>openage::SharedAttributeContainer</label>
+        <link refid="classopenage_1_1_shared_attribute_container"/>
+        <childnode refid="427" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="425">
+        <label>openage::Attribute&lt; attr_type::dropsite &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4"/>
+        <childnode refid="426" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="427">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="481" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="481" bodyend="495"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1af3258763ccb44c7136525e19b8519f1c" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>accepting_resource</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a7e18888cd242c93d8e4eb8d770938051" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a4c35f9dc58f6fa9ba9f76a506a9dfebd" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1dropsite_01_4_1a09579ea4ec5feb584b88a044356dea0a" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>resource_types</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a7fbb1dd2c3df6e5cd65cded8fac7c392" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_shared_attribute_container_1a388e553da5021f1cbfe8cfd46af315fc" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>SharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::dropsite &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

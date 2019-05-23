@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="quaternion_8cpp" kind="file" language="C++">
+    <compoundname>quaternion.cpp</compoundname>
+    <includes refid="quaternion_8h" local="yes">quaternion.h</includes>
+    <incdepgraph>
+      <node id="31536">
+        <label>list</label>
+      </node>
+      <node id="31527">
+        <label>atomic</label>
+      </node>
+      <node id="31532">
+        <label>iomanip</label>
+      </node>
+      <node id="31531">
+        <label>functional</label>
+      </node>
+      <node id="31543">
+        <label>limits</label>
+      </node>
+      <node id="31522">
+        <label>cstdint</label>
+      </node>
+      <node id="31508">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="31509" relation="include">
+        </childnode>
+        <childnode refid="31507" relation="include">
+        </childnode>
+        <childnode refid="31510" relation="include">
+        </childnode>
+        <childnode refid="31511" relation="include">
+        </childnode>
+        <childnode refid="31512" relation="include">
+        </childnode>
+        <childnode refid="31513" relation="include">
+        </childnode>
+      </node>
+      <node id="31529">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="31530" relation="include">
+        </childnode>
+        <childnode refid="31531" relation="include">
+        </childnode>
+        <childnode refid="31532" relation="include">
+        </childnode>
+        <childnode refid="31515" relation="include">
+        </childnode>
+        <childnode refid="31533" relation="include">
+        </childnode>
+        <childnode refid="31517" relation="include">
+        </childnode>
+        <childnode refid="31534" relation="include">
+        </childnode>
+      </node>
+      <node id="31506">
+        <label>quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="31507" relation="include">
+        </childnode>
+        <childnode refid="31508" relation="include">
+        </childnode>
+        <childnode refid="31542" relation="include">
+        </childnode>
+        <childnode refid="31513" relation="include">
+        </childnode>
+        <childnode refid="31514" relation="include">
+        </childnode>
+        <childnode refid="31541" relation="include">
+        </childnode>
+      </node>
+      <node id="31507">
+        <label>cmath</label>
+      </node>
+      <node id="31516">
+        <label>stdexcept</label>
+      </node>
+      <node id="31535">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="31536" relation="include">
+        </childnode>
+        <childnode refid="31537" relation="include">
+        </childnode>
+        <childnode refid="31538" relation="include">
+        </childnode>
+      </node>
+      <node id="31530">
+        <label>cstdarg</label>
+      </node>
+      <node id="31517">
+        <label>string</label>
+      </node>
+      <node id="31521">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="31522" relation="include">
+        </childnode>
+        <childnode refid="31517" relation="include">
+        </childnode>
+        <childnode refid="31523" relation="include">
+        </childnode>
+        <childnode refid="31524" relation="include">
+        </childnode>
+        <childnode refid="31526" relation="include">
+        </childnode>
+        <childnode refid="31535" relation="include">
+        </childnode>
+        <childnode refid="31538" relation="include">
+        </childnode>
+      </node>
+      <node id="31524">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="31525" relation="include">
+        </childnode>
+      </node>
+      <node id="31513">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="31509" relation="include">
+        </childnode>
+        <childnode refid="31507" relation="include">
+        </childnode>
+        <childnode refid="31510" relation="include">
+        </childnode>
+        <childnode refid="31511" relation="include">
+        </childnode>
+        <childnode refid="31512" relation="include">
+        </childnode>
+        <childnode refid="31514" relation="include">
+        </childnode>
+        <childnode refid="31541" relation="include">
+        </childnode>
+      </node>
+      <node id="31526">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="31527" relation="include">
+        </childnode>
+        <childnode refid="31515" relation="include">
+        </childnode>
+        <childnode refid="31512" relation="include">
+        </childnode>
+        <childnode refid="31518" relation="include">
+        </childnode>
+        <childnode refid="31528" relation="include">
+        </childnode>
+        <childnode refid="31529" relation="include">
+        </childnode>
+      </node>
+      <node id="31514">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="31511" relation="include">
+        </childnode>
+        <childnode refid="31515" relation="include">
+        </childnode>
+        <childnode refid="31516" relation="include">
+        </childnode>
+        <childnode refid="31517" relation="include">
+        </childnode>
+        <childnode refid="31518" relation="include">
+        </childnode>
+        <childnode refid="31521" relation="include">
+        </childnode>
+      </node>
+      <node id="31505">
+        <label>libopenage/util/quaternion.cpp</label>
+        <link refid="quaternion_8cpp"/>
+        <childnode refid="31506" relation="include">
+        </childnode>
+      </node>
+      <node id="31540">
+        <label>typeinfo</label>
+      </node>
+      <node id="31534">
+        <label>vector</label>
+      </node>
+      <node id="31541">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="31538" relation="include">
+        </childnode>
+        <childnode refid="31521" relation="include">
+        </childnode>
+      </node>
+      <node id="31519">
+        <label>ciso646</label>
+      </node>
+      <node id="31509">
+        <label>array</label>
+      </node>
+      <node id="31533">
+        <label>sstream</label>
+      </node>
+      <node id="31518">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="31519" relation="include">
+        </childnode>
+        <childnode refid="31517" relation="include">
+        </childnode>
+        <childnode refid="31520" relation="include">
+        </childnode>
+      </node>
+      <node id="31520">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="31520" relation="include">
+        </childnode>
+      </node>
+      <node id="31528">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="31511" relation="include">
+        </childnode>
+        <childnode refid="31517" relation="include">
+        </childnode>
+      </node>
+      <node id="31538">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="31539" relation="include">
+        </childnode>
+      </node>
+      <node id="31542">
+        <label>math_constants.h</label>
+        <link refid="math__constants_8h"/>
+        <childnode refid="31543" relation="include">
+        </childnode>
+      </node>
+      <node id="31525">
+        <label>cstdlib</label>
+      </node>
+      <node id="31511">
+        <label>iostream</label>
+      </node>
+      <node id="31537">
+        <label>mutex</label>
+      </node>
+      <node id="31512">
+        <label>type_traits</label>
+      </node>
+      <node id="31523">
+        <label>config.h</label>
+      </node>
+      <node id="31510">
+        <label>cstring</label>
+      </node>
+      <node id="31515">
+        <label>memory</label>
+      </node>
+      <node id="31539">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="31511" relation="include">
+        </childnode>
+        <childnode refid="31540" relation="include">
+        </childnode>
+        <childnode refid="31518" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="quaternion_8h" kindref="compound">quaternion.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Quaternion<sp/>is<sp/>all<sp/>templated,<sp/>so<sp/>there&apos;s<sp/>nothing<sp/>to<sp/>implement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/quaternion.cpp"/>
+  </compounddef>
+</doxygen>

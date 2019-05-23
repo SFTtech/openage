@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_engine_signals" kind="class" language="C++" prot="public">
+    <compoundname>openage::EngineSignals</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="engine_8h" local="no">engine.h</includes>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1_engine_signals_1a29e0341281c27dfa4fce142ffbe388a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::EngineSignals::global_binds_changed</definition>
+        <argsstring>(const std::vector&lt; std::string &gt; &amp;global_binds)</argsstring>
+        <name>global_binds_changed</name>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>global_binds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/engine.h" line="71" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Qt signals for the engine. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1378">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="1379" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1379">
+        <label>QObject</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1380">
+        <label>openage::EngineSignals</label>
+        <link refid="classopenage_1_1_engine_signals"/>
+        <childnode refid="1381" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1381">
+        <label>QObject</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/engine.h" line="66" column="1" bodyfile="libopenage/engine.h" bodystart="66" bodyend="72"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_engine_signals_1a29e0341281c27dfa4fce142ffbe388a6" prot="public" virt="non-virtual"><scope>openage::EngineSignals</scope><name>global_binds_changed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

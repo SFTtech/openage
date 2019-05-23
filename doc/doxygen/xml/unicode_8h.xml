@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="unicode_8h" kind="file" language="C++">
+    <compoundname>unicode.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string</includes>
+    <includedby refid="buf_8h" local="yes">libopenage/console/buf.h</includedby>
+    <includedby refid="buf_8cpp" local="yes">libopenage/console/buf.cpp</includedby>
+    <includedby refid="console_8cpp" local="yes">libopenage/console/console.cpp</includedby>
+    <includedby refid="fds_8cpp" local="yes">libopenage/util/fds.cpp</includedby>
+    <includedby refid="unicode_8cpp" local="yes">libopenage/util/unicode.cpp</includedby>
+    <incdepgraph>
+      <node id="33091">
+        <label>libopenage/util/unicode.h</label>
+        <link refid="unicode_8h"/>
+        <childnode refid="33092" relation="include">
+        </childnode>
+        <childnode refid="33093" relation="include">
+        </childnode>
+        <childnode refid="33094" relation="include">
+        </childnode>
+      </node>
+      <node id="33092">
+        <label>stdint.h</label>
+      </node>
+      <node id="33093">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33094">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="33095">
+        <label>libopenage/util/unicode.h</label>
+        <link refid="unicode_8h"/>
+        <childnode refid="33096" relation="include">
+        </childnode>
+        <childnode refid="33097" relation="include">
+        </childnode>
+        <childnode refid="33099" relation="include">
+        </childnode>
+        <childnode refid="33104" relation="include">
+        </childnode>
+        <childnode refid="33105" relation="include">
+        </childnode>
+      </node>
+      <node id="33104">
+        <label>libopenage/util/fds.cpp</label>
+        <link refid="fds_8cpp"/>
+      </node>
+      <node id="33098">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="33099" relation="include">
+        </childnode>
+        <childnode refid="33100" relation="include">
+        </childnode>
+        <childnode refid="33101" relation="include">
+        </childnode>
+        <childnode refid="33102" relation="include">
+        </childnode>
+        <childnode refid="33103" relation="include">
+        </childnode>
+      </node>
+      <node id="33102">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="33097">
+        <label>libopenage/console/buf.cpp</label>
+        <link refid="buf_8cpp"/>
+      </node>
+      <node id="33103">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="33105">
+        <label>libopenage/util/unicode.cpp</label>
+        <link refid="unicode_8cpp"/>
+      </node>
+      <node id="33099">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="33096">
+        <label>libopenage/console/buf.h</label>
+        <link refid="buf_8h"/>
+        <childnode refid="33097" relation="include">
+        </childnode>
+        <childnode refid="33098" relation="include">
+        </childnode>
+        <childnode refid="33100" relation="include">
+        </childnode>
+        <childnode refid="33101" relation="include">
+        </childnode>
+      </node>
+      <node id="33100">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="33101">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1utf8__decoder" prot="public">openage::util::utf8_decoder</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>we<sp/>could<sp/>simply<sp/>use<sp/>wchar_t<sp/>here,<sp/>but<sp/>legend<sp/>says<sp/>there<sp/>are<sp/>operating</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>systems<sp/>where<sp/>for<sp/>some<sp/>sick<sp/>reason<sp/>wchar_t<sp/>might<sp/>be<sp/>only<sp/>16<sp/>bits<sp/>wide.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>also,<sp/>a<sp/>signed<sp/>type<sp/>is<sp/>useful<sp/>here<sp/>to<sp/>mark<sp/>errors/illegal<sp/>characters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" kindref="member">codepoint_t</ref><sp/>=<sp/>int32_t;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1util_1_1utf8__decoder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1utf8__decoder" kindref="compound">utf8_decoder</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1utf8__decoder_1ae33f30385d0dd3708f7465705c9a73de" kindref="member">utf8_decoder</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" kindref="member">codepoint_t</ref><sp/><ref refid="classopenage_1_1util_1_1utf8__decoder_1ac5e38c7efcc1e8d4b7f7668da156ba4b" kindref="member">out</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1utf8__decoder_1a55d64109af786e729e84a4da7d275c19" kindref="member">remaining</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1utf8__decoder_1ad74a496758770d9f1be27e9b3fec4dd0" kindref="member">feed</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1utf8__decoder_1acca7311eed2d83530c6ae78e73132d31" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" kindref="member">utf8_decode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,<sp/><ref refid="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" kindref="member">codepoint_t</ref><sp/>*outbuf);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" kindref="member">utf8_encode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cp,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*outbuf);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" kindref="member">utf8_last_char_size</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">str</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" kindref="member">utf8_pop_back</ref>(std::string<sp/>&amp;<ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">str</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/unicode.h"/>
+  </compounddef>
+</doxygen>

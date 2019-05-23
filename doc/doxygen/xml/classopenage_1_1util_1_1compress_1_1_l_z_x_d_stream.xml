@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::compress::LZXDStream</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ad2a91fa7bf7fefb48ee08d52bd6ada15" prot="public" static="no" mutable="no">
+        <type>ssize_t</type>
+        <definition>ssize_t openage::util::compress::LZXDStream::output_pos</definition>
+        <argsstring></argsstring>
+        <name>output_pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="157" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a75bf79fb077819e2f985cdeb99b4d558" prot="public" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* openage::util::compress::LZXDStream::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="159" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a7451bf0e50d43622780af37485037ecc" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::window_size</definition>
+        <argsstring></argsstring>
+        <name>window_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="160" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a8ce8c008c7c4df2ab737f40a871cd261" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::window_posn</definition>
+        <argsstring></argsstring>
+        <name>window_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="161" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a4fa5827f8aa17dca5216ddfa0274c4da" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::frame_posn</definition>
+        <argsstring></argsstring>
+        <name>frame_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="162" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ad2b59324a0e966ee52206fc4140694a2" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::frame</definition>
+        <argsstring></argsstring>
+        <name>frame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="163" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a87e92b9f13204a689ff6dc9d0983c718" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::reset_interval</definition>
+        <argsstring></argsstring>
+        <name>reset_interval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="164" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ab5742fb4e2d4057d1a7d2d7bc233289e" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::R0</definition>
+        <argsstring></argsstring>
+        <name>R0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="166" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0664accf0c6f29475dd801d580ce8ab8" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::R1</definition>
+        <argsstring></argsstring>
+        <name>R1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="166" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a53c1a5f708f3f6d444b4f496e8eb840a" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::R2</definition>
+        <argsstring></argsstring>
+        <name>R2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="166" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae2350cf0b912903acccc36ecef023fe0" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::block_length</definition>
+        <argsstring></argsstring>
+        <name>block_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="167" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a3ca62b7fff8b704f8429542206d4ddc3" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::block_remaining</definition>
+        <argsstring></argsstring>
+        <name>block_remaining</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="168" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a33e4a28cfa430c0a9f53fc36aa7784bb" prot="public" static="no" mutable="no">
+        <type>signed int</type>
+        <definition>signed int openage::util::compress::LZXDStream::e8_magic</definition>
+        <argsstring></argsstring>
+        <name>e8_magic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="170" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ada584159bfea91c473a5a41e650a765d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::compress::LZXDStream::header_read</definition>
+        <argsstring></argsstring>
+        <name>header_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="173" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1aaaf627d2099d2d79354c730f59d77ddc" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::LZXDStream::block_type</definition>
+        <argsstring></argsstring>
+        <name>block_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="175" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a4e0e1171fcfe50f7d06e58c2a2923cd3" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::LZXDStream::posn_slots</definition>
+        <argsstring></argsstring>
+        <name>posn_slots</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="176" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1afbee9a6150c8c52cf8404bf343da4692" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream" kindref="compound">BitStream</ref>&lt; 4096 &gt;</type>
+        <definition>BitStream&lt;4096&gt; openage::util::compress::LZXDStream::bits</definition>
+        <argsstring></argsstring>
+        <name>bits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="179" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a1c0734cf2170ca3e28f39602dc7f8219" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table" kindref="compound">HuffmanTable</ref>&lt; <ref refid="namespaceopenage_1_1util_1_1compress_1af91efa77f8f600907c489a0902749971" kindref="member">LZX_PRETREE_MAXSYMBOLS</ref>, <ref refid="namespaceopenage_1_1util_1_1compress_1a0332219afcf379226d035ccf047daaf6" kindref="member">LZX_PRETREE_TABLEBITS</ref> &gt;</type>
+        <definition>HuffmanTable&lt;LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS&gt; openage::util::compress::LZXDStream::htpre</definition>
+        <argsstring></argsstring>
+        <name>htpre</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="182" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a65b33752965b0f4b2ed1898603417ef1" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table" kindref="compound">HuffmanTable</ref>&lt; <ref refid="namespaceopenage_1_1util_1_1compress_1a26cdb2480260be73fa269f982a416010" kindref="member">LZX_MAINTREE_MAXSYMBOLS</ref>, <ref refid="namespaceopenage_1_1util_1_1compress_1aa0fc34af35349c165672483bf156d07c" kindref="member">LZX_MAINTREE_TABLEBITS</ref> &gt;</type>
+        <definition>HuffmanTable&lt;LZX_MAINTREE_MAXSYMBOLS, LZX_MAINTREE_TABLEBITS&gt; openage::util::compress::LZXDStream::htmain</definition>
+        <argsstring></argsstring>
+        <name>htmain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="183" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1acd1ef6d1ea48f324c3a7fc293c4dcb68" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table" kindref="compound">HuffmanTable</ref>&lt; <ref refid="namespaceopenage_1_1util_1_1compress_1ab6ee57ad31f7a4b2e5cbe80e5ff0bf78" kindref="member">LZX_LENGTH_MAXSYMBOLS</ref>, <ref refid="namespaceopenage_1_1util_1_1compress_1a277c86b93d58635990ad4fe855839fcb" kindref="member">LZX_LENGTH_TABLEBITS</ref>, true &gt;</type>
+        <definition>HuffmanTable&lt;LZX_LENGTH_MAXSYMBOLS, LZX_LENGTH_TABLEBITS, true&gt; openage::util::compress::LZXDStream::htlength</definition>
+        <argsstring></argsstring>
+        <name>htlength</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="184" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a8671f082432c89e05797093348f16af0" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table" kindref="compound">HuffmanTable</ref>&lt; <ref refid="namespaceopenage_1_1util_1_1compress_1acfbbec691511fb87c1df869972edcc13" kindref="member">LZX_ALIGNED_MAXSYMBOLS</ref>, <ref refid="namespaceopenage_1_1util_1_1compress_1ac7382afbfe3e70045b5471207c6f0b1c" kindref="member">LZX_ALIGNED_TABLEBITS</ref> &gt;</type>
+        <definition>HuffmanTable&lt;LZX_ALIGNED_MAXSYMBOLS, LZX_ALIGNED_TABLEBITS&gt; openage::util::compress::LZXDStream::htaligned</definition>
+        <argsstring></argsstring>
+        <name>htaligned</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="185" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a491af9a4f0c2abc632c70db8705f1782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::LZXDStream::LZXDStream</definition>
+        <argsstring>(read_callback_t callback, unsigned int window_bits, unsigned int reset_interval)</argsstring>
+        <name>LZXDStream</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>window_bits</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>reset_interval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1abfa293c286465cc46f6a84bda5a8f908" kindref="member">LZXDecompressor::LZXDecompressor</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="188" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="415" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ac5a5bf3c111860662413597ba63d5769" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::LZXDStream::~LZXDStream</definition>
+        <argsstring>()</argsstring>
+        <name>~LZXDStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="189" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="453" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae3317f82bf1dfc26aa15f5e8830055ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::LZXDStream::LZXDStream</definition>
+        <argsstring>(const LZXDStream &amp;other)=delete</argsstring>
+        <name>LZXDStream</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="191" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1abd5a65fcceb1f08dc30337137f322a35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::LZXDStream::LZXDStream</definition>
+        <argsstring>(LZXDStream &amp;&amp;other)=delete</argsstring>
+        <name>LZXDStream</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="192" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a738c1121848546e96e9272bbad5180db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;</type>
+        <definition>LZXDStream&amp; openage::util::compress::LZXDStream::operator=</definition>
+        <argsstring>(const LZXDStream &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="193" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a37146b381d0eddb4aeb385eec9096c85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;</type>
+        <definition>LZXDStream&amp; openage::util::compress::LZXDStream::operator=</definition>
+        <argsstring>(LZXDStream &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="194" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::compress::LZXDStream::decompress_next_frame</definition>
+        <argsstring>(unsigned char *output_buf)</argsstring>
+        <name>decompress_next_frame</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>output_buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>See the doc for <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1ad03ce7fd20c3abe824f61dd382bab43c" kindref="member">LZXDecompressor::decompress_next_frame</ref> in <ref refid="lzxd_8h" kindref="compound">lzxd.h</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="197" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="740" bodyend="860"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a21cc21ce03f6a6aa488e48661666bdd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::LZXDStream::reset_state</definition>
+        <argsstring>()</argsstring>
+        <name>reset_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="235" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="458" bodyend="474"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::LZXDStream::init_next_block</definition>
+        <argsstring>()</argsstring>
+        <name>init_next_block</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the next block. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="202" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="477" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a2830bc244fc83678fc56f6e44c057e7c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::compress::LZXDStream::decode_symbol_from_verbatim_block</definition>
+        <argsstring>()</argsstring>
+        <name>decode_symbol_from_verbatim_block</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decodes one symbol from the current verbatim block. Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="209" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="526" bodyend="614"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0ced870a816503c5ae2c42756dc0adb2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::compress::LZXDStream::decode_symbol_from_aligned_block</definition>
+        <argsstring>()</argsstring>
+        <name>decode_symbol_from_aligned_block</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decodes one symbol from the current aligned block. Returns the number of bytes that were decoded. The bytes are written to the window, and window_posn is advanced. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="216" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="617" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af408bfffcc2e2e086066e13e1f6b96b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::LZXDStream::read_data_from_uncompressed_block</definition>
+        <argsstring>(unsigned int size)</argsstring>
+        <name>read_data_from_uncompressed_block</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the given amount of bytes from the current uncompressed block. Returns its argument (the number of bytes that were read). The bytes are written to the window, and window_posn is advanced. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="223" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="727" bodyend="737"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae957302fdbdcb4e99f5264bfc8da3e42" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::LZXDStream::postprocess_intel_e8</definition>
+        <argsstring>(unsigned char *output_buf, int frame_size)</argsstring>
+        <name>postprocess_intel_e8</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>output_buf</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>frame_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Postprocesses the a frame&apos;s decoded data with E8 decoding.</para>
+<para>Before compressing data, LZX pre-processes it by translating the four bytes following 0xE8-bytes; this optimizes intel x86 machine code.</para>
+<para>What the hell, Microsoft? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="233" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="863" bodyend="913"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3158">
+        <label>openage::util::compress::LZXDStream</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream"/>
+        <childnode refid="3159" relation="usage">
+          <edgelabel>+bits</edgelabel>
+        </childnode>
+        <childnode refid="3160" relation="usage">
+          <edgelabel>+htpre</edgelabel>
+        </childnode>
+        <childnode refid="3161" relation="usage">
+          <edgelabel>+htlength</edgelabel>
+        </childnode>
+        <childnode refid="3162" relation="usage">
+          <edgelabel>+htmain</edgelabel>
+        </childnode>
+        <childnode refid="3163" relation="usage">
+          <edgelabel>+htaligned</edgelabel>
+        </childnode>
+      </node>
+      <node id="3161">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_LENGTH_MAXSYMBOLS, LZX_LENGTH_TABLEBITS, true &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="3158" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="3159">
+        <label>openage::util::compress::BitStream&lt; 4096 &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
+      </node>
+      <node id="3163">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_ALIGNED_MAXSYMBOLS, LZX_ALIGNED_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="3158" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="3162">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_MAINTREE_MAXSYMBOLS, LZX_MAINTREE_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="3158" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="3160">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="3158" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/compress/lzxd.cpp" line="155" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="155" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1afbee9a6150c8c52cf8404bf343da4692" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae2350cf0b912903acccc36ecef023fe0" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>block_length</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a3ca62b7fff8b704f8429542206d4ddc3" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>block_remaining</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1aaaf627d2099d2d79354c730f59d77ddc" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>block_type</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0ced870a816503c5ae2c42756dc0adb2" prot="private" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>decode_symbol_from_aligned_block</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a2830bc244fc83678fc56f6e44c057e7c" prot="private" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>decode_symbol_from_verbatim_block</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a12047565515e79d8fa7ae56c1459a724" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>decompress_next_frame</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a33e4a28cfa430c0a9f53fc36aa7784bb" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>e8_magic</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ad2b59324a0e966ee52206fc4140694a2" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>frame</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a4fa5827f8aa17dca5216ddfa0274c4da" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>frame_posn</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ada584159bfea91c473a5a41e650a765d" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>header_read</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a8671f082432c89e05797093348f16af0" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>htaligned</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1acd1ef6d1ea48f324c3a7fc293c4dcb68" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>htlength</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a65b33752965b0f4b2ed1898603417ef1" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>htmain</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a1c0734cf2170ca3e28f39602dc7f8219" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>htpre</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af98ef8408ba92de4f9e28010c3b2d6c8" prot="private" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>init_next_block</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a491af9a4f0c2abc632c70db8705f1782" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>LZXDStream</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae3317f82bf1dfc26aa15f5e8830055ff" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>LZXDStream</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1abd5a65fcceb1f08dc30337137f322a35" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>LZXDStream</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a738c1121848546e96e9272bbad5180db" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a37146b381d0eddb4aeb385eec9096c85" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ad2a91fa7bf7fefb48ee08d52bd6ada15" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>output_pos</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a4e0e1171fcfe50f7d06e58c2a2923cd3" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>posn_slots</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ae957302fdbdcb4e99f5264bfc8da3e42" prot="private" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>postprocess_intel_e8</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ab5742fb4e2d4057d1a7d2d7bc233289e" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>R0</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a0664accf0c6f29475dd801d580ce8ab8" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>R1</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a53c1a5f708f3f6d444b4f496e8eb840a" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>R2</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1af408bfffcc2e2e086066e13e1f6b96b7" prot="private" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>read_data_from_uncompressed_block</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a87e92b9f13204a689ff6dc9d0983c718" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>reset_interval</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a21cc21ce03f6a6aa488e48661666bdd7" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>reset_state</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a75bf79fb077819e2f985cdeb99b4d558" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>window</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a8ce8c008c7c4df2ab737f40a871cd261" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>window_posn</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1a7451bf0e50d43622780af37485037ecc" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>window_size</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream_1ac5a5bf3c111860662413597ba63d5769" prot="public" virt="non-virtual"><scope>openage::util::compress::LZXDStream</scope><name>~LZXDStream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

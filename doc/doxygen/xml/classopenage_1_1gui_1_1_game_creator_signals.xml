@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_game_creator_signals" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GameCreatorSignals</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="game__creator_8h" local="no">game_creator.h</includes>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_game_creator_signals_1a7e7bae7a48ba179abb59ee099224e80f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GameCreatorSignals::error_message</definition>
+        <argsstring>(const QString &amp;error)</argsstring>
+        <name>error_message</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_creator.h" line="53" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1812">
+        <label>QObject</label>
+      </node>
+      <node id="1811">
+        <label>openage::gui::GameCreatorSignals</label>
+        <link refid="classopenage_1_1gui_1_1_game_creator_signals"/>
+        <childnode refid="1812" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1814">
+        <label>QObject</label>
+      </node>
+      <node id="1813">
+        <label>openage::gui::GameCreatorSignals</label>
+        <link refid="classopenage_1_1gui_1_1_game_creator_signals"/>
+        <childnode refid="1814" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/game_creator.h" line="48" column="1" bodyfile="libopenage/gui/game_creator.h" bodystart="48" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_game_creator_signals_1a7e7bae7a48ba179abb59ee099224e80f" prot="public" virt="non-virtual"><scope>openage::gui::GameCreatorSignals</scope><name>error_message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

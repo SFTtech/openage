@@ -1,0 +1,940 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1console_1_1_buf" kind="class" language="C++" prot="public">
+    <compoundname>openage::console::Buf</compoundname>
+    <includes refid="buf_8h" local="no">buf.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1console_1_1_buf_1a94f6263ebbf6ccfef936eb5c410c2ada" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class NewBuf</definition>
+        <argsstring></argsstring>
+        <name>NewBuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="122" column="1" bodyfile="libopenage/console/buf.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1ae41adb957a289c65c86f5e79702399de" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1utf8__decoder" kindref="compound">util::utf8_decoder</ref></type>
+        <definition>util::utf8_decoder openage::console::Buf::streamdecoder</definition>
+        <argsstring></argsstring>
+        <name>streamdecoder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>utf-8 state-machine that reads input bytes and outputs unicode codepoints </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="188" column="1" bodyfile="libopenage/console/buf.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1af591ad8b27d0d5528dd83f39589a377f" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::Buf::chrdata</definition>
+        <argsstring></argsstring>
+        <name>chrdata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the complete (2-dimensional) terminal output buffer content</para>
+<para>contains the screen buffer (where the cursor may move), and the scrollback buffer (which is invisible while not scrolled back)</para>
+<para>thus, its size is always screen buffer size + scrollback buffer size (dims.x * dims.y + dims.x * scrollback_lines)</para>
+<para>on resize, this buffer is completely re-created.</para>
+<para>the first entry of data is not neccesarily the first character of the screen or scrollback buffer; see screen_chrdata. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="347" column="1" bodyfile="libopenage/console/buf.h" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1ad3b09ac6afcafdabc8ac7cad2bbb1991" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::Buf::chrdata_size</definition>
+        <argsstring></argsstring>
+        <name>chrdata_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>stores the (array) size of data, for performance and convenience reasons.</para>
+<para>always has the value dims.x * (dims.y + scrollback_lines) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="356" column="1" bodyfile="libopenage/console/buf.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a55229c780654c2e7445cb313fde990a7" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::Buf::chrdata_end</definition>
+        <argsstring></argsstring>
+        <name>chrdata_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>stores the end of the region allocated for data, for performance and convenience reasons. points to the first memory region outside the data buffer.</para>
+<para>always has the value data + chrdata_size </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="366" column="1" bodyfile="libopenage/console/buf.h" bodystart="366" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1aae04bf7f71d8d61153a63c8016756bd0" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char* openage::console::Buf::screen_chrdata</definition>
+        <argsstring></argsstring>
+        <name>screen_chrdata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>points to the first character that belongs to the screen buffer, inside the data buffer. this pointer is changed when the terminal buffer advances one line.</para>
+<para>note that screen_chrdata may NOT be directly indexed, as *screen_chrdata[k] might be &gt;= chrdata_end. in this case, the correct memory location will be *screen_chrdata[k - chrdata_size].</para>
+<para>*screen_chrdata[0] always is the correct memory location of the screen buffer top left corner.</para>
+<para>*screen_chrdata[dims.x * dims.y] is the memory location of the scrollback buffer top left corner, but it might be neccesary to subtract chrdata_size to get an actually valid memory location. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="384" column="1" bodyfile="libopenage/console/buf.h" bodystart="384" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1ad524a3276262d17b952233d58d735fb2" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::Buf::linedata</definition>
+        <argsstring></argsstring>
+        <name>linedata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>similar to how data holds information about all characters, linedata holds information about all lines. currently, the only held information is whether the line has been started by wrapping an existing line (and thus is not a &apos;real&apos; new line) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="392" column="1" bodyfile="libopenage/console/buf.h" bodystart="392" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a0980d008e8fc8a7fc02f7bc51b253dc5" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::console::Buf::linedata_size</definition>
+        <argsstring></argsstring>
+        <name>linedata_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>see chrdata_size </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="397" column="1" bodyfile="libopenage/console/buf.h" bodystart="397" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1ab0c8a14f50eaeb58afc86d20bbb01158" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::Buf::linedata_end</definition>
+        <argsstring></argsstring>
+        <name>linedata_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>see chrdata_end </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="402" column="1" bodyfile="libopenage/console/buf.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a75cdec48d09432a80bc7e32182a4775a" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line* openage::console::Buf::screen_linedata</definition>
+        <argsstring></argsstring>
+        <name>screen_linedata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>as an analog to screen_chrdata, this points to the entry in linedata that holds metadata about the top line of the screen buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="408" column="1" bodyfile="libopenage/console/buf.h" bodystart="408" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1ac33c1a30d0a22cfee3d3eeabd33a606d" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+        <definition>coord::term_t openage::console::Buf::min_width</definition>
+        <argsstring></argsstring>
+        <name>min_width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>minimum screen buffer width </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="415" column="1" bodyfile="libopenage/console/buf.h" bodystart="415" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+        <definition>coord::term openage::console::Buf::dims</definition>
+        <argsstring></argsstring>
+        <name>dims</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>screen buffer dimensions (in characters) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="420" column="1" bodyfile="libopenage/console/buf.h" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a14f2cdfd24154571850ed8ca005d3efc" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+        <definition>coord::term_t openage::console::Buf::scrollback_lines</definition>
+        <argsstring></argsstring>
+        <name>scrollback_lines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>scrollback buffer height; scrollback buffer width is identical to screen buffer width. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="426" column="1" bodyfile="libopenage/console/buf.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+        <definition>coord::term openage::console::Buf::cursorpos</definition>
+        <argsstring></argsstring>
+        <name>cursorpos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>cursor position </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="433" column="1" bodyfile="libopenage/console/buf.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a7d65c2c715635ae80a3362abc61abc22" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+        <definition>coord::term openage::console::Buf::saved_cursorpos</definition>
+        <argsstring></argsstring>
+        <name>saved_cursorpos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>saved cursor position </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="438" column="1" bodyfile="libopenage/console/buf.h" bodystart="438" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::Buf::cursor_visible</definition>
+        <argsstring></argsstring>
+        <name>cursor_visible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true if the cursor is visible </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="443" column="1" bodyfile="libopenage/console/buf.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a53574615a1e2df75adad05bd27bf04d4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::Buf::cursor_special_lastcol</definition>
+        <argsstring></argsstring>
+        <name>cursor_special_lastcol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true if cursor is in the last column while whole line is filled this is very special. this allows CR after fully-filled lines to return to the same line, instead of being in the next line. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="451" column="1" bodyfile="libopenage/console/buf.h" bodystart="451" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1aabe7c503936227e510bb7be84bde2fa3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::Buf::escaped</definition>
+        <argsstring></argsstring>
+        <name>escaped</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true if we are currently reading an escape sequence </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="458" column="1" bodyfile="libopenage/console/buf.h" bodystart="458" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a381b42f50364ebd1842d1e330bae5909" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; openage::console::Buf::escape_sequence</definition>
+        <argsstring></argsstring>
+        <name>escape_sequence</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>current escape sequence </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="463" column="1" bodyfile="libopenage/console/buf.h" bodystart="463" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1afd9db1c1324909e2a0a98cafa53d9cd4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::console::Buf::bell</definition>
+        <argsstring></argsstring>
+        <name>bell</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true if an bell (&apos;<emphasis></emphasis>&apos;) has been received, but not cleared </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="468" column="1" bodyfile="libopenage/console/buf.h" bodystart="468" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a51310590a608b1d2b601d3303893500d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; openage::console::Buf::title</definition>
+        <argsstring></argsstring>
+        <name>title</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>window title </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="473" column="1" bodyfile="libopenage/console/buf.h" bodystart="473" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1af6fb637bfa9764b03b7e5c732b1628a6" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+        <definition>buf_char openage::console::Buf::current_char_fmt</definition>
+        <argsstring></argsstring>
+        <name>current_char_fmt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>surrently selected formatting (colors, flags). all printed chars, as well as all buffer clearing, will use this until it is changed by an SGR escape sequence.</para>
+<para>the codepoint is the codepoint used for filling empty chars (e.g. 0x20 (&apos;space&apos;)) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="483" column="1" bodyfile="libopenage/console/buf.h" bodystart="483" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a3fa3840a58379ede7a40f6382f95cc06" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+        <definition>const buf_char openage::console::Buf::default_char_fmt</definition>
+        <argsstring></argsstring>
+        <name>default_char_fmt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the default buf char, which will be used for filling new lines, or determining whether a line is empty. should have space (0x20) as its char, and the desired default values for fgcol and bgcol. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="491" column="1" bodyfile="libopenage/console/buf.h" bodystart="491" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1a324edefddfbe59f14ecd7841d2598c29" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+        <definition>coord::term_t openage::console::Buf::scrollback_possible</definition>
+        <argsstring></argsstring>
+        <name>scrollback_possible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how far it&apos;s currently possible to scroll back. this value steadily increases when the buffer advances.</para>
+<para>if this is 0, all lines outside the screen buffer are empty.</para>
+<para>must be &gt;= 0 and &lt;= scrollback_lines </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="501" column="1" bodyfile="libopenage/console/buf.h" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1console_1_1_buf_1aed68e2efd6dfa0dc6e4d2c6985965458" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+        <definition>coord::term_t openage::console::Buf::scrollback_pos</definition>
+        <argsstring></argsstring>
+        <name>scrollback_pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>how many lines the buffer is currently scrolled back. if 0, the screen buffer is wholly rendered. if the terminal is being advanced, this stays 0. this makes the terminal follow newly printed text. if &gt; 0, the bottom lines of the screen buffer are not rendered, and the bottom lines of the scrollback buffer are rendered instead. if screen buffer advances, this is increased accordingly (unless it would become &gt;= scrollback_lines). this causes the currently scrolled-to position to remain scrolled-to even when new text is printed.</para>
+<para>must be &gt;= 0 and &lt;= scrollback_possible. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="518" column="1" bodyfile="libopenage/console/buf.h" bodystart="518" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a51a780e9a4df80cdb56f8d94186d527e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::Buf::Buf</definition>
+        <argsstring>(coord::term dims, coord::term_t scrollback_lines, coord::term_t min_width, buf_char default_char_fmt={0x20, 254, 0, 0})</argsstring>
+        <name>Buf</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+          <declname>dims</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+          <declname>scrollback_lines</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+          <declname>min_width</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref></type>
+          <declname>default_char_fmt</declname>
+          <defval>{0x20, 254, 0, 0}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="125" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="14" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a83ecd364b255a4dd8964686fb0d069be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::Buf::~Buf</definition>
+        <argsstring>()</argsstring>
+        <name>~Buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="127" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a1b57a435f75898936d21928f3641f345" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> &amp;</type>
+        <definition>Buf&amp; openage::console::Buf::operator=</definition>
+        <argsstring>(const Buf &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="132" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a4fc8817e4fc059c81f836482b8f163b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::Buf::Buf</definition>
+        <argsstring>(const Buf &amp;)=delete</argsstring>
+        <name>Buf</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1console_1_1_buf" kindref="compound">Buf</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="133" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>resets the buffer to its constructor defaults </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="139" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="52" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a3db6d160e44c8db825a37c0cfbc143ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::write</definition>
+        <argsstring>(const char *c, ssize_t len=-1)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const char *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>ssize_t</type>
+          <declname>len</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write a byte string to the buffer</para>
+<para>the string is assumed to be UTF-8 encoded.</para>
+<para>if len &gt;= 0, it describes the length of the string. otherwise, the string is assumed to be null-terminated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="149" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="308" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::write</definition>
+        <argsstring>(char c)</argsstring>
+        <name>write</name>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write a single byte to the buffer.</para>
+<para>assumed to be UTF-8 encoded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="156" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="381" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::pop_last_char</definition>
+        <argsstring>()</argsstring>
+        <name>pop_last_char</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pop the last char of the current line</para>
+<para>Will correctly handle UTF-8 chars and wrapped lines. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="163" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="392" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a7060ca85ba5a820b0c8e55870a9919c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::resize</definition>
+        <argsstring>(coord::term new_dims)</argsstring>
+        <name>resize</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+          <declname>new_dims</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>resizes the screen buffer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="168" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="214" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a06f58f1b06e5aae9664b1d07d8607048" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::scroll</definition>
+        <argsstring>(coord::term_t lines)</argsstring>
+        <name>scroll</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+          <declname>lines</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>scrolls up or down by the given number of lines</para>
+<para>lines amount of lines to scroll up - may be negative if the upper or lower limit is reached, this is capped. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="177" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="321" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1adcdc21533ab920bd72f92f27333716bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::process_codepoint</definition>
+        <argsstring>(int cp)</argsstring>
+        <name>process_codepoint</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>processes one unicode codepoint internally called by <ref refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" kindref="member">write(char)</ref> after feeding the char into streamdecoder </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="195" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="415" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::print_codepoint</definition>
+        <argsstring>(int cp)</argsstring>
+        <name>print_codepoint</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>prints one unicode codepoint interally called by <ref refid="classopenage_1_1console_1_1_buf_1adcdc21533ab920bd72f92f27333716bf" kindref="member">process_codepoint(int cp)</ref> after sorting out escape sequences, and by some escape sequences such as CSI @ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="201" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="478" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1ac59a20dcbdcb3aaffaedc8d9d21d0ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::escape_sequence_aborted</definition>
+        <argsstring>()</argsstring>
+        <name>escape_sequence_aborted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>aborts the current escape sequence (e.g. because it contained an illegal character, or is not implemented) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="208" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="608" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a3e924482fd0e3524e44b20acc316fb19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::escape_sequence_processed</definition>
+        <argsstring>()</argsstring>
+        <name>escape_sequence_processed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>called when a escape sequence has been successfully processed, clears the sequence. either this or abort_escape_sequence is called for each escape sequence. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="216" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="615" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a83a7e7db654360cff1c6796b169efc22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::process_csi_escape_sequence</definition>
+        <argsstring>()</argsstring>
+        <name>process_csi_escape_sequence</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>processes the CSI escape sequence currently stored in escape_sequence. invalid sequences are ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="223" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="660" bodyend="916"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a809f4a27cd3bf92c2458a5b3176fae43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::process_escaped_cp</definition>
+        <argsstring>(int cp)</argsstring>
+        <name>process_escaped_cp</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>processes a single-codepoint escape sequence. invalid codepoints are ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="229" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="620" bodyend="630"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1aa6ae8933e3c2bbaafa8d81cf1c405406" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::process_text_escape_sequence</definition>
+        <argsstring>()</argsstring>
+        <name>process_text_escape_sequence</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>processes a text escape sequence that is one of OSC, DCS, APC or PM </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="235" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="632" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::process_sgr_code</definition>
+        <argsstring>(const std::vector&lt; int &gt; &amp;params)</argsstring>
+        <name>process_sgr_code</name>
+        <param>
+          <type>const std::vector&lt; int &gt; &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets graphics rendition parameters; called by process_escape_sequence</para>
+<para>params: numerical params list from escape sequence </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="244" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="918" bodyend="1075"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a752e54412ebbb08b3d8ac0edc90891ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::advance</definition>
+        <argsstring>(unsigned linecount=1)</argsstring>
+        <name>advance</name>
+        <param>
+          <type>unsigned</type>
+          <declname>linecount</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>advances the buffer by the specified number of lines.</para>
+<para>the top lines are moved to the scrollback buffer. the top lines of the scrollback buffer are discarded. the bottom lines of the buffer are empty after this. the cursor position is not changed by this.</para>
+<para>linecount: the number of lines to advance the buffer; defaults to one. may be &gt; buffer height. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="259" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="340" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1af6b49e0178333e01a08fd61ca2006219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::clear</definition>
+        <argsstring>(coord::term start, coord::term end, bool clear_end=false)</argsstring>
+        <name>clear</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>clear_end</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>clears the screen character and line buffers. lines are cleared iff all of their characters are cleared.</para>
+<para>if start &gt;= end, nothing happens.</para>
+<para>inputs are not sanitized.</para>
+<para>start screen buffer coordinates of first character to be deleted negative values of y indicate scrollback buffer -scrollback_lines &lt;= y &lt; dims.y 0 &lt;= x &lt; dims.x end screen buffer coordinates of first character not to be deleted negative values of y indicate scrollback buffer -scrollback_lines &lt;= y &lt; dims.y 0 &lt;= x &lt; dims.x {x, y} = {0, dims.y} is allowed. clear_end if true, end is incremented by 1. this affects all constraints. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="283" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1077" bodyend="1108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a1108eb4031232054e271e3c7321b24ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::chrdata_clear</definition>
+        <argsstring>(buf_char *start, buf_char *end)</argsstring>
+        <name>chrdata_clear</name>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>clears a range of the data buffer. end is the first character that is not cleared. end and start both must be valid pointers within data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="290" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1110" bodyend="1123"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a76d65b492fdef7853b939598235881e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::console::Buf::linedata_clear</definition>
+        <argsstring>(buf_line *start, buf_line *end)</argsstring>
+        <name>linedata_clear</name>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>clears a range of the linedata buffer. end is the first line that is not cleared. end and start both must be valid pointers within data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="297" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1125" bodyend="1138"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> *</type>
+        <definition>buf_char * openage::console::Buf::chrdataptr</definition>
+        <argsstring>(coord::term pos)</argsstring>
+        <name>chrdataptr</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref></type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a valid pointer to the character info for the character designated by pos</para>
+<para>pos screen buffer coordinates negative values of y indicate scrollback buffer -scrollback_lines &lt;= pos.y &lt;= dims.y 0 &lt;= pos.x &lt; dims.x if y == dims.y, the return ptr is not guaranteed to be valid. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="310" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1140" bodyend="1148"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1console_1_1buf__line" kindref="compound">buf_line</ref> *</type>
+        <definition>buf_line * openage::console::Buf::linedataptr</definition>
+        <argsstring>(coord::term_t lineno)</argsstring>
+        <name>linedataptr</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" kindref="member">coord::term_t</ref></type>
+          <declname>lineno</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a valid pointer to the line info for the line designated by lineno</para>
+<para>lineno number of line in screen buffer negative numbers indicate scrollback buffer -scrollback_lines &lt;= lineno &lt;= dims.y if lineno == dims.y, the return ptr is not guaranteed to be valid. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="322" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1150" bodyend="1159"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1console_1_1_buf_1ae0e0cf2f6bb5e5c324ff9f4554ec2852" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structopenage_1_1coord_1_1term" kindref="compound">coord::term</ref> &amp;</type>
+        <definition>const coord::term &amp; openage::console::Buf::get_dims</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dims</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the dimensions of the visible console area. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="327" column="1" bodyfile="libopenage/console/buf.cpp" bodystart="1161" bodyend="1163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="576">
+        <label>CoordXYAbsolute&lt; term_t, term, term_delta &gt;</label>
+      </node>
+      <node id="574">
+        <label>openage::util::utf8_decoder</label>
+        <link refid="classopenage_1_1util_1_1utf8__decoder"/>
+      </node>
+      <node id="572">
+        <label>openage::console::buf_char</label>
+        <link refid="structopenage_1_1console_1_1buf__char"/>
+      </node>
+      <node id="575">
+        <label>openage::coord::term</label>
+        <link refid="structopenage_1_1coord_1_1term"/>
+        <childnode refid="576" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="573">
+        <label>openage::console::buf_line</label>
+        <link refid="structopenage_1_1console_1_1buf__line"/>
+      </node>
+      <node id="571">
+        <label>openage::console::Buf</label>
+        <link refid="classopenage_1_1console_1_1_buf"/>
+        <childnode refid="572" relation="usage">
+          <edgelabel>+chrdata_end</edgelabel>
+          <edgelabel>+screen_chrdata</edgelabel>
+          <edgelabel>+chrdata</edgelabel>
+          <edgelabel>+current_char_fmt</edgelabel>
+          <edgelabel>+default_char_fmt</edgelabel>
+        </childnode>
+        <childnode refid="573" relation="usage">
+          <edgelabel>+linedata</edgelabel>
+          <edgelabel>+screen_linedata</edgelabel>
+          <edgelabel>+linedata_end</edgelabel>
+        </childnode>
+        <childnode refid="574" relation="usage">
+          <edgelabel>+streamdecoder</edgelabel>
+        </childnode>
+        <childnode refid="575" relation="usage">
+          <edgelabel>+cursorpos</edgelabel>
+          <edgelabel>+dims</edgelabel>
+          <edgelabel>+saved_cursorpos</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/console/buf.h" line="121" column="1" bodyfile="libopenage/console/buf.h" bodystart="121" bodyend="519"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1console_1_1_buf_1a752e54412ebbb08b3d8ac0edc90891ee" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>advance</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1afd9db1c1324909e2a0a98cafa53d9cd4" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>bell</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a51a780e9a4df80cdb56f8d94186d527e" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>Buf</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a4fc8817e4fc059c81f836482b8f163b5" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>Buf</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1af591ad8b27d0d5528dd83f39589a377f" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>chrdata</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a1108eb4031232054e271e3c7321b24ef" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>chrdata_clear</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a55229c780654c2e7445cb313fde990a7" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>chrdata_end</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ad3b09ac6afcafdabc8ac7cad2bbb1991" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>chrdata_size</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ad54e6fb8e82e15a085cae30d3646d7b7" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>chrdataptr</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1af6b49e0178333e01a08fd61ca2006219" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>clear</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1af6fb637bfa9764b03b7e5c732b1628a6" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>current_char_fmt</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a53574615a1e2df75adad05bd27bf04d4" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>cursor_special_lastcol</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a3b4aca71e4891bd71a0c57ca5fa58e86" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>cursor_visible</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a25719bddd1345d6b86e4373dfa474825" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>cursorpos</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a3fa3840a58379ede7a40f6382f95cc06" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>default_char_fmt</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a06e75c551d4009e9976cd43dab18fb30" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>dims</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a381b42f50364ebd1842d1e330bae5909" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>escape_sequence</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ac59a20dcbdcb3aaffaedc8d9d21d0ec9" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>escape_sequence_aborted</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a3e924482fd0e3524e44b20acc316fb19" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>escape_sequence_processed</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1aabe7c503936227e510bb7be84bde2fa3" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>escaped</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ae0e0cf2f6bb5e5c324ff9f4554ec2852" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>get_dims</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ad524a3276262d17b952233d58d735fb2" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>linedata</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a76d65b492fdef7853b939598235881e2" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>linedata_clear</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ab0c8a14f50eaeb58afc86d20bbb01158" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>linedata_end</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a0980d008e8fc8a7fc02f7bc51b253dc5" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>linedata_size</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a4c48f84f2a29ae7472c54bce03fcbd65" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>linedataptr</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ac33c1a30d0a22cfee3d3eeabd33a606d" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>min_width</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a94f6263ebbf6ccfef936eb5c410c2ada" prot="private" virt="non-virtual"><scope>openage::console::Buf</scope><name>NewBuf</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a1b57a435f75898936d21928f3641f345" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a698e2cce3ee2d13637bc55da38232a95" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>pop_last_char</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ab2dd3bbdbc82ae2a4276a433b40aac91" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>print_codepoint</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1adcdc21533ab920bd72f92f27333716bf" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>process_codepoint</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a83a7e7db654360cff1c6796b169efc22" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>process_csi_escape_sequence</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a809f4a27cd3bf92c2458a5b3176fae43" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>process_escaped_cp</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a9320618afe1ebdf770518ab69cc72271" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>process_sgr_code</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1aa6ae8933e3c2bbaafa8d81cf1c405406" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>process_text_escape_sequence</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a23267e4cb18a2921f14406e6307cbb95" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>reset</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a7060ca85ba5a820b0c8e55870a9919c8" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>resize</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a7d65c2c715635ae80a3362abc61abc22" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>saved_cursorpos</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1aae04bf7f71d8d61153a63c8016756bd0" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>screen_chrdata</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a75cdec48d09432a80bc7e32182a4775a" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>screen_linedata</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a06f58f1b06e5aae9664b1d07d8607048" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>scroll</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a14f2cdfd24154571850ed8ca005d3efc" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>scrollback_lines</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1aed68e2efd6dfa0dc6e4d2c6985965458" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>scrollback_pos</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a324edefddfbe59f14ecd7841d2598c29" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>scrollback_possible</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1ae41adb957a289c65c86f5e79702399de" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>streamdecoder</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a51310590a608b1d2b601d3303893500d" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>title</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a3db6d160e44c8db825a37c0cfbc143ea" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>write</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a7f70c41ed91a5283fd2dd337b7493eaa" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>write</name></member>
+      <member refid="classopenage_1_1console_1_1_buf_1a83ecd364b255a4dd8964686fb0d069be" prot="public" virt="non-virtual"><scope>openage::console::Buf</scope><name>~Buf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

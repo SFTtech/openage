@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_function_ptr" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::FunctionPtr</compoundname>
+    <includes refid="language_8h" local="no">language.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>ReturnType</declname>
+        <defname>ReturnType</defname>
+      </param>
+      <param>
+        <type>typename ...</type>
+        <declname>ArgTypes</declname>
+        <defname>ArgTypes</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_function_ptr_1ab5cdb320863a46abc561330527a01e3d" prot="public" static="no" mutable="no">
+        <type>ReturnType(*</type>
+        <definition>ReturnType(* openage::util::FunctionPtr&lt; ReturnType, ArgTypes &gt;::ptr) (ArgTypes ...)</definition>
+        <argsstring>)(ArgTypes ...)</argsstring>
+        <name>ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/language.h" line="28" column="1" bodyfile="libopenage/util/language.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_function_ptr_1a10ad84f67b4050c1b46fbd9166f31266" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FunctionPtr&lt; ReturnType, ArgTypes &gt;::FunctionPtr</definition>
+        <argsstring>(ReturnType(*ptr)(ArgTypes ...))</argsstring>
+        <name>FunctionPtr</name>
+        <param>
+          <type>ReturnType(*)(ArgTypes ...)</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implicit conversion from raw type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/language.h" line="25" column="1" bodyfile="libopenage/util/language.h" bodystart="25" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Simple wrapper type that contains a function pointer. Needed as workaround for <ulink url="http://stackoverflow.com/questions/31040075">http://stackoverflow.com/questions/31040075</ulink> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1562">
+        <label>openage::util::FunctionPtr&lt; ReturnType, ArgTypes &gt;</label>
+        <link refid="classopenage_1_1util_1_1_function_ptr"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/language.h" line="20" column="1" bodyfile="libopenage/util/language.h" bodystart="20" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_function_ptr_1a10ad84f67b4050c1b46fbd9166f31266" prot="public" virt="non-virtual"><scope>openage::util::FunctionPtr</scope><name>FunctionPtr</name></member>
+      <member refid="classopenage_1_1util_1_1_function_ptr_1ab5cdb320863a46abc561330527a01e3d" prot="public" virt="non-virtual"><scope>openage::util::FunctionPtr</scope><name>ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

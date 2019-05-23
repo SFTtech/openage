@@ -1,0 +1,3703 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="compiler_8h" kind="file" language="C++">
+    <compoundname>compiler.h</compoundname>
+    <includes local="no">ciso646</includes>
+    <includes local="no">string</includes>
+    <includes refid="signal_8h" local="no">signal.h</includes>
+    <includedby refid="functional_8h" local="yes">libopenage/pyinterface/functional.h</includedby>
+    <includedby refid="error_2error_8h" local="yes">libopenage/error/error.h</includedby>
+    <includedby refid="stringformatter_8h" local="yes">libopenage/util/stringformatter.h</includedby>
+    <includedby refid="enum_8h" local="yes">libopenage/util/enum.h</includedby>
+    <includedby refid="setup_8h" local="yes">libopenage/pyinterface/setup.h</includedby>
+    <includedby refid="filelike_8h" local="yes">libopenage/util/filelike/filelike.h</includedby>
+    <includedby refid="assetmanager_8cpp" local="yes">libopenage/assetmanager.cpp</includedby>
+    <includedby refid="misc_8h" local="yes">libopenage/util/misc.h</includedby>
+    <includedby refid="buf_8h" local="yes">libopenage/console/buf.h</includedby>
+    <includedby refid="pairing__heap_8h" local="yes">libopenage/datastructure/pairing_heap.h</includedby>
+    <includedby refid="csv_8h" local="yes">libopenage/util/csv.h</includedby>
+    <includedby refid="error_2error_8cpp" local="yes">libopenage/error/error.cpp</includedby>
+    <includedby refid="error_2handlers_8h" local="yes">libopenage/error/handlers.h</includedby>
+    <includedby refid="stackanalyzer_8cpp" local="yes">libopenage/error/stackanalyzer.cpp</includedby>
+    <includedby refid="event_2demo_2main_8h" local="yes">libopenage/event/demo/main.h</includedby>
+    <includedby refid="eventqueue_8cpp" local="yes">libopenage/event/eventqueue.cpp</includedby>
+    <includedby refid="eventstore_8cpp" local="yes">libopenage/event/eventstore.cpp</includedby>
+    <includedby refid="game__spec_8cpp" local="yes">libopenage/gamestate/game_spec.cpp</includedby>
+    <includedby refid="logsource_8cpp" local="yes">libopenage/log/logsource.cpp</includedby>
+    <includedby refid="message_8cpp" local="yes">libopenage/log/message.cpp</includedby>
+    <includedby refid="exctranslate_8cpp" local="yes">libopenage/pyinterface/exctranslate.cpp</includedby>
+    <includedby refid="setup_8cpp" local="yes">libopenage/pyinterface/setup.cpp</includedby>
+    <includedby refid="font_8cpp" local="yes">libopenage/renderer/font/font.cpp</includedby>
+    <includedby refid="renderer_2tests_8h" local="yes">libopenage/renderer/tests.h</includedby>
+    <includedby refid="program_8cpp" local="yes">libopenage/shader/program.cpp</includedby>
+    <includedby refid="compiler_8cpp" local="yes">libopenage/util/compiler.cpp</includedby>
+    <includedby refid="bitstream_8h" local="yes">libopenage/util/compress/bitstream.h</includedby>
+    <includedby refid="lzxd_8cpp" local="yes">libopenage/util/compress/lzxd.cpp</includedby>
+    <includedby refid="constinit__vector_8h" local="yes">libopenage/util/constinit_vector.h</includedby>
+    <includedby refid="util_2path_8cpp" local="yes">libopenage/util/path.cpp</includedby>
+    <includedby refid="strings_8cpp" local="yes">libopenage/util/strings.cpp</includedby>
+    <incdepgraph>
+      <node id="27257">
+        <label>string</label>
+      </node>
+      <node id="27256">
+        <label>ciso646</label>
+      </node>
+      <node id="27255">
+        <label>libopenage/util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="27256" relation="include">
+        </childnode>
+        <childnode refid="27257" relation="include">
+        </childnode>
+        <childnode refid="27258" relation="include">
+        </childnode>
+      </node>
+      <node id="27258">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="27258" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="27519">
+        <label>libopenage/event/eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="27520" relation="include">
+        </childnode>
+        <childnode refid="27521" relation="include">
+        </childnode>
+        <childnode refid="27516" relation="include">
+        </childnode>
+        <childnode refid="27517" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27512" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+      </node>
+      <node id="27386">
+        <label>libopenage/renderer/opengl/lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="27387" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+        <childnode refid="27388" relation="include">
+        </childnode>
+      </node>
+      <node id="27309">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="27347">
+        <label>libopenage/audio/resource_def.cpp</label>
+        <link refid="resource__def_8cpp"/>
+      </node>
+      <node id="27440">
+        <label>libopenage/coord/coordmanager.h</label>
+        <link refid="coordmanager_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27441" relation="include">
+        </childnode>
+        <childnode refid="27266" relation="include">
+        </childnode>
+        <childnode refid="27442" relation="include">
+        </childnode>
+        <childnode refid="27267" relation="include">
+        </childnode>
+      </node>
+      <node id="27371">
+        <label>libopenage/renderer/opengl/render_target.h</label>
+        <link refid="opengl_2render__target_8h"/>
+        <childnode refid="27372" relation="include">
+        </childnode>
+        <childnode refid="27373" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+      </node>
+      <node id="27336">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="27580">
+        <label>libopenage/error/gl_debug.cpp</label>
+        <link refid="gl__debug_8cpp"/>
+      </node>
+      <node id="27437">
+        <label>libopenage/util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="27438" relation="include">
+        </childnode>
+        <childnode refid="27491" relation="include">
+        </childnode>
+        <childnode refid="27534" relation="include">
+        </childnode>
+        <childnode refid="27535" relation="include">
+        </childnode>
+      </node>
+      <node id="27314">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="27363">
+        <label>libopenage/audio/opus_in_memory_loader.h</label>
+        <link refid="opus__in__memory__loader_8h"/>
+        <childnode refid="27362" relation="include">
+        </childnode>
+        <childnode refid="27353" relation="include">
+        </childnode>
+      </node>
+      <node id="27307">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27308" relation="include">
+        </childnode>
+        <childnode refid="27309" relation="include">
+        </childnode>
+      </node>
+      <node id="27557">
+        <label>libopenage/renderer/font/font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="27445" relation="include">
+        </childnode>
+        <childnode refid="27558" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27560" relation="include">
+        </childnode>
+        <childnode refid="27561" relation="include">
+        </childnode>
+        <childnode refid="27562" relation="include">
+        </childnode>
+        <childnode refid="27466" relation="include">
+        </childnode>
+      </node>
+      <node id="27525">
+        <label>libopenage/curve/iterator.cpp</label>
+        <link refid="iterator_8cpp"/>
+      </node>
+      <node id="27343">
+        <label>libopenage/audio/resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="27333" relation="include">
+        </childnode>
+        <childnode refid="27344" relation="include">
+        </childnode>
+        <childnode refid="27345" relation="include">
+        </childnode>
+        <childnode refid="27336" relation="include">
+        </childnode>
+        <childnode refid="27342" relation="include">
+        </childnode>
+      </node>
+      <node id="27554">
+        <label>libopenage/audio/format.cpp</label>
+        <link refid="format_8cpp"/>
+      </node>
+      <node id="27472">
+        <label>libopenage/pathfinding/path.h</label>
+        <link refid="pathfinding_2path_8h"/>
+        <childnode refid="27456" relation="include">
+        </childnode>
+        <childnode refid="27473" relation="include">
+        </childnode>
+        <childnode refid="27474" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27317" relation="include">
+        </childnode>
+        <childnode refid="27476" relation="include">
+        </childnode>
+      </node>
+      <node id="27517">
+        <label>libopenage/event/eventclass.cpp</label>
+        <link refid="eventclass_8cpp"/>
+      </node>
+      <node id="27618">
+        <label>libopenage/log/named_logsource.cpp</label>
+        <link refid="named__logsource_8cpp"/>
+      </node>
+      <node id="27362">
+        <label>libopenage/audio/in_memory_loader.cpp</label>
+        <link refid="in__memory__loader_8cpp"/>
+      </node>
+      <node id="27438">
+        <label>libopenage/coord/declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="27439" relation="include">
+        </childnode>
+        <childnode refid="27467" relation="include">
+        </childnode>
+        <childnode refid="27479" relation="include">
+        </childnode>
+        <childnode refid="27484" relation="include">
+        </childnode>
+        <childnode refid="27488" relation="include">
+        </childnode>
+        <childnode refid="27490" relation="include">
+        </childnode>
+      </node>
+      <node id="27571">
+        <label>libopenage/util/enum_test.cpp</label>
+        <link refid="enum__test_8cpp"/>
+      </node>
+      <node id="27342">
+        <label>libopenage/audio/sound.cpp</label>
+        <link refid="sound_8cpp"/>
+      </node>
+      <node id="27579">
+        <label>libopenage/error/error.cpp</label>
+        <link refid="error_2error_8cpp"/>
+      </node>
+      <node id="27520">
+        <label>libopenage/event/eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="27509" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+      </node>
+      <node id="27502">
+        <label>libopenage/event/demo/gamestate.cpp</label>
+        <link refid="gamestate_8cpp"/>
+      </node>
+      <node id="27349">
+        <label>libopenage/audio/dynamic_loader.cpp</label>
+        <link refid="dynamic__loader_8cpp"/>
+      </node>
+      <node id="27512">
+        <label>libopenage/event/eventtarget.cpp</label>
+        <link refid="eventtarget_8cpp"/>
+      </node>
+      <node id="27268">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="27269" relation="include">
+        </childnode>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27306" relation="include">
+        </childnode>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27307" relation="include">
+        </childnode>
+        <childnode refid="27310" relation="include">
+        </childnode>
+        <childnode refid="27311" relation="include">
+        </childnode>
+        <childnode refid="27312" relation="include">
+        </childnode>
+        <childnode refid="27313" relation="include">
+        </childnode>
+        <childnode refid="27314" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+      </node>
+      <node id="27509">
+        <label>libopenage/event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="27510" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27498" relation="include">
+        </childnode>
+        <childnode refid="27512" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+        <childnode refid="27514" relation="include">
+        </childnode>
+      </node>
+      <node id="27380">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="27324">
+        <label>libopenage/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27325" relation="include">
+        </childnode>
+        <childnode refid="27326" relation="include">
+        </childnode>
+        <childnode refid="27327" relation="include">
+        </childnode>
+        <childnode refid="27328" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27329" relation="include">
+        </childnode>
+        <childnode refid="27330" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+      </node>
+      <node id="27549">
+        <label>libopenage/job/tests.cpp</label>
+        <link refid="job_2tests_8cpp"/>
+      </node>
+      <node id="27632">
+        <label>libopenage/pyinterface/setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="27260" relation="include">
+        </childnode>
+        <childnode refid="27589" relation="include">
+        </childnode>
+      </node>
+      <node id="27318">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="27523">
+        <label>libopenage/curve/curve.cpp</label>
+        <link refid="curve_8cpp"/>
+      </node>
+      <node id="27444">
+        <label>libopenage/input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27445" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27357" relation="include">
+        </childnode>
+        <childnode refid="27447" relation="include">
+        </childnode>
+        <childnode refid="27448" relation="include">
+        </childnode>
+      </node>
+      <node id="27572">
+        <label>libopenage/util/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="27497">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="27269">
+        <label>libopenage/gamestate/civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="27270" relation="include">
+        </childnode>
+        <childnode refid="27305" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+      </node>
+      <node id="27475">
+        <label>libopenage/pathfinding/heuristics.cpp</label>
+        <link refid="heuristics_8cpp"/>
+      </node>
+      <node id="27295">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="27524">
+        <label>libopenage/curve/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="27525" relation="include">
+        </childnode>
+        <childnode refid="27526" relation="include">
+        </childnode>
+        <childnode refid="27530" relation="include">
+        </childnode>
+      </node>
+      <node id="27513">
+        <label>libopenage/event/loop.cpp</label>
+        <link refid="loop_8cpp"/>
+      </node>
+      <node id="27583">
+        <label>libopenage/util/matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="27584" relation="include">
+        </childnode>
+        <childnode refid="27573" relation="include">
+        </childnode>
+        <childnode refid="27585" relation="include">
+        </childnode>
+      </node>
+      <node id="27616">
+        <label>libopenage/log/file_logsink.cpp</label>
+        <link refid="file__logsink_8cpp"/>
+      </node>
+      <node id="27442">
+        <label>libopenage/coord/pixel.cpp</label>
+        <link refid="pixel_8cpp"/>
+      </node>
+      <node id="27367">
+        <label>libopenage/renderer/resources/texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="27368" relation="include">
+        </childnode>
+        <childnode refid="27379" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27382" relation="include">
+        </childnode>
+        <childnode refid="27383" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+        <childnode refid="27385" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+      </node>
+      <node id="27413">
+        <label>libopenage/util/fslike/directory.cpp</label>
+        <link refid="directory_8cpp"/>
+      </node>
+      <node id="27587">
+        <label>libopenage/util/vector.cpp</label>
+        <link refid="vector_8cpp"/>
+      </node>
+      <node id="27275">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="27276" relation="include">
+        </childnode>
+        <childnode refid="27277" relation="include">
+        </childnode>
+        <childnode refid="27278" relation="include">
+        </childnode>
+        <childnode refid="27279" relation="include">
+        </childnode>
+        <childnode refid="27280" relation="include">
+        </childnode>
+      </node>
+      <node id="27615">
+        <label>libopenage/log/logsource.h</label>
+        <link refid="logsource_8h"/>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27616" relation="include">
+        </childnode>
+        <childnode refid="27617" relation="include">
+        </childnode>
+        <childnode refid="27620" relation="include">
+        </childnode>
+        <childnode refid="27611" relation="include">
+        </childnode>
+      </node>
+      <node id="27504">
+        <label>libopenage/event/demo/physics.cpp</label>
+        <link refid="physics_8cpp"/>
+      </node>
+      <node id="27500">
+        <label>libopenage/event/demo/aicontroller.cpp</label>
+        <link refid="aicontroller_8cpp"/>
+      </node>
+      <node id="27426">
+        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <link refid="pyobject__tests_8cpp"/>
+      </node>
+      <node id="27506">
+        <label>libopenage/curve/discrete.cpp</label>
+        <link refid="discrete_8cpp"/>
+      </node>
+      <node id="27441">
+        <label>libopenage/coord/coordmanager.cpp</label>
+        <link refid="coordmanager_8cpp"/>
+      </node>
+      <node id="27531">
+        <label>libopenage/curve/queue.h</label>
+        <link refid="queue_8h"/>
+        <childnode refid="27532" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+      </node>
+      <node id="27397">
+        <label>libopenage/renderer/resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="27398" relation="include">
+        </childnode>
+        <childnode refid="27400" relation="include">
+        </childnode>
+        <childnode refid="27386" relation="include">
+        </childnode>
+        <childnode refid="27401" relation="include">
+        </childnode>
+        <childnode refid="27404" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+      </node>
+      <node id="27399">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="27373" relation="include">
+        </childnode>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+      </node>
+      <node id="27529">
+        <label>libopenage/curve/map_filter_iterator.cpp</label>
+        <link refid="map__filter__iterator_8cpp"/>
+      </node>
+      <node id="27408">
+        <label>libopenage/renderer/resources/shader_source.cpp</label>
+        <link refid="shader__source_8cpp"/>
+      </node>
+      <node id="27302">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="27297">
+        <label>libopenage/gamestate/cost.cpp</label>
+        <link refid="cost_8cpp"/>
+      </node>
+      <node id="27463">
+        <label>libopenage/screenshot.h</label>
+        <link refid="screenshot_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27464" relation="include">
+        </childnode>
+      </node>
+      <node id="27276">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="27277" relation="include">
+        </childnode>
+      </node>
+      <node id="27562">
+        <label>libopenage/renderer/font/tests.cpp</label>
+        <link refid="renderer_2font_2tests_8cpp"/>
+      </node>
+      <node id="27457">
+        <label>libopenage/unit/attributes.cpp</label>
+        <link refid="attributes_8cpp"/>
+      </node>
+      <node id="27543">
+        <label>libopenage/audio/category.cpp</label>
+        <link refid="category_8cpp"/>
+      </node>
+      <node id="27445">
+        <label>libopenage/console/console.h</label>
+        <link refid="console_8h"/>
+        <childnode refid="27337" relation="include">
+        </childnode>
+        <childnode refid="27338" relation="include">
+        </childnode>
+        <childnode refid="27446" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+      </node>
+      <node id="27527">
+        <label>libopenage/curve/map.h</label>
+        <link refid="map_8h"/>
+        <childnode refid="27528" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+      </node>
+      <node id="27353">
+        <label>libopenage/audio/opus_in_memory_loader.cpp</label>
+        <link refid="opus__in__memory__loader_8cpp"/>
+      </node>
+      <node id="27430">
+        <label>libopenage/pyinterface/exctranslate_tests.h</label>
+        <link refid="exctranslate__tests_8h"/>
+        <childnode refid="27424" relation="include">
+        </childnode>
+      </node>
+      <node id="27293">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="27552">
+        <label>libopenage/job/abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="27546" relation="include">
+        </childnode>
+        <childnode refid="27547" relation="include">
+        </childnode>
+      </node>
+      <node id="27484">
+        <label>libopenage/coord/term.h</label>
+        <link refid="term_8h"/>
+        <childnode refid="27485" relation="include">
+        </childnode>
+        <childnode refid="27487" relation="include">
+        </childnode>
+      </node>
+      <node id="27433">
+        <label>libopenage/pyinterface/exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="27260" relation="include">
+        </childnode>
+        <childnode refid="27423" relation="include">
+        </childnode>
+        <childnode refid="27434" relation="include">
+        </childnode>
+      </node>
+      <node id="27459">
+        <label>libopenage/game_renderer.h</label>
+        <link refid="game__renderer_8h"/>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+      </node>
+      <node id="27516">
+        <label>libopenage/event/event.cpp</label>
+        <link refid="event_2event_8cpp"/>
+      </node>
+      <node id="27585">
+        <label>libopenage/util/quaternion.h</label>
+        <link refid="quaternion_8h"/>
+        <childnode refid="27586" relation="include">
+        </childnode>
+        <childnode refid="27574" relation="include">
+        </childnode>
+      </node>
+      <node id="27597">
+        <label>libopenage/rng/rng.cpp</label>
+        <link refid="rng_8cpp"/>
+      </node>
+      <node id="27414">
+        <label>libopenage/util/path.cpp</label>
+        <link refid="util_2path_8cpp"/>
+      </node>
+      <node id="27617">
+        <label>libopenage/log/named_logsource.h</label>
+        <link refid="named__logsource_8h"/>
+        <childnode refid="27610" relation="include">
+        </childnode>
+        <childnode refid="27618" relation="include">
+        </childnode>
+        <childnode refid="27619" relation="include">
+        </childnode>
+      </node>
+      <node id="27508">
+        <label>libopenage/event/eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="27509" relation="include">
+        </childnode>
+        <childnode refid="27515" relation="include">
+        </childnode>
+      </node>
+      <node id="27374">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="27282">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="27491">
+        <label>libopenage/curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="27492" relation="include">
+        </childnode>
+        <childnode refid="27510" relation="include">
+        </childnode>
+        <childnode refid="27509" relation="include">
+        </childnode>
+        <childnode refid="27519" relation="include">
+        </childnode>
+        <childnode refid="27520" relation="include">
+        </childnode>
+        <childnode refid="27521" relation="include">
+        </childnode>
+        <childnode refid="27523" relation="include">
+        </childnode>
+        <childnode refid="27524" relation="include">
+        </childnode>
+        <childnode refid="27527" relation="include">
+        </childnode>
+        <childnode refid="27526" relation="include">
+        </childnode>
+        <childnode refid="27531" relation="include">
+        </childnode>
+        <childnode refid="27530" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27503" relation="include">
+        </childnode>
+      </node>
+      <node id="27550">
+        <label>libopenage/job/worker.cpp</label>
+        <link refid="worker_8cpp"/>
+      </node>
+      <node id="27629">
+        <label>libopenage/log/level.cpp</label>
+        <link refid="level_8cpp"/>
+      </node>
+      <node id="27452">
+        <label>libopenage/unit/attributes.h</label>
+        <link refid="attributes_8h"/>
+        <childnode refid="27453" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27457" relation="include">
+        </childnode>
+      </node>
+      <node id="27263">
+        <label>libopenage/assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27322" relation="include">
+        </childnode>
+      </node>
+      <node id="27346">
+        <label>libopenage/audio/in_memory_resource.cpp</label>
+        <link refid="in__memory__resource_8cpp"/>
+      </node>
+      <node id="27637">
+        <label>libopenage/event/demo/main.h</label>
+        <link refid="event_2demo_2main_8h"/>
+        <childnode refid="27501" relation="include">
+        </childnode>
+      </node>
+      <node id="27570">
+        <label>libopenage/util/constinit_vector.cpp</label>
+        <link refid="constinit__vector_8cpp"/>
+      </node>
+      <node id="27357">
+        <label>libopenage/input/action.cpp</label>
+        <link refid="input_2action_8cpp"/>
+      </node>
+      <node id="27480">
+        <label>libopenage/unit/ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="27449" relation="include">
+        </childnode>
+        <childnode refid="27481" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+      </node>
+      <node id="27477">
+        <label>libopenage/terrain/terrain_outline.h</label>
+        <link refid="terrain__outline_8h"/>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27329" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+      </node>
+      <node id="27493">
+        <label>libopenage/curve/value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="27494" relation="include">
+        </childnode>
+        <childnode refid="27505" relation="include">
+        </childnode>
+        <childnode refid="27507" relation="include">
+        </childnode>
+      </node>
+      <node id="27626">
+        <label>libopenage/log/logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="27606" relation="include">
+        </childnode>
+        <childnode refid="27627" relation="include">
+        </childnode>
+        <childnode refid="27628" relation="include">
+        </childnode>
+        <childnode refid="27621" relation="include">
+        </childnode>
+        <childnode refid="27620" relation="include">
+        </childnode>
+        <childnode refid="27611" relation="include">
+        </childnode>
+      </node>
+      <node id="27574">
+        <label>libopenage/util/quaternion_test.cpp</label>
+        <link refid="quaternion__test_8cpp"/>
+      </node>
+      <node id="27391">
+        <label>libopenage/util/csv.cpp</label>
+        <link refid="csv_8cpp"/>
+      </node>
+      <node id="27530">
+        <label>libopenage/curve/queue_filter_iterator.h</label>
+        <link refid="queue__filter__iterator_8h"/>
+        <childnode refid="27531" relation="include">
+        </childnode>
+        <childnode refid="27533" relation="include">
+        </childnode>
+      </node>
+      <node id="27412">
+        <label>libopenage/util/fslike/directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="27403" relation="include">
+        </childnode>
+        <childnode refid="27413" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+      </node>
+      <node id="27606">
+        <label>libopenage/log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="27432" relation="include">
+        </childnode>
+        <childnode refid="27607" relation="include">
+        </childnode>
+        <childnode refid="27615" relation="include">
+        </childnode>
+        <childnode refid="27357" relation="include">
+        </childnode>
+        <childnode refid="27616" relation="include">
+        </childnode>
+        <childnode refid="27610" relation="include">
+        </childnode>
+        <childnode refid="27621" relation="include">
+        </childnode>
+        <childnode refid="27622" relation="include">
+        </childnode>
+      </node>
+      <node id="27428">
+        <label>libopenage/util/filelike/python.h</label>
+        <link refid="filelike_2python_8h"/>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27429" relation="include">
+        </childnode>
+      </node>
+      <node id="27582">
+        <label>libopenage/util/vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="27498" relation="include">
+        </childnode>
+        <childnode refid="27583" relation="include">
+        </childnode>
+        <childnode refid="27573" relation="include">
+        </childnode>
+        <childnode refid="27585" relation="include">
+        </childnode>
+        <childnode refid="27587" relation="include">
+        </childnode>
+        <childnode refid="27575" relation="include">
+        </childnode>
+      </node>
+      <node id="27532">
+        <label>libopenage/curve/queue.cpp</label>
+        <link refid="queue_8cpp"/>
+      </node>
+      <node id="27429">
+        <label>libopenage/util/filelike/python.cpp</label>
+        <link refid="filelike_2python_8cpp"/>
+      </node>
+      <node id="27401">
+        <label>libopenage/renderer/shader_program.h</label>
+        <link refid="shader__program_8h"/>
+        <childnode refid="27399" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+        <childnode refid="27402" relation="include">
+        </childnode>
+      </node>
+      <node id="27375">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="27383">
+        <label>libopenage/renderer/opengl/texture_array.h</label>
+        <link refid="opengl_2texture__array_8h"/>
+        <childnode refid="27377" relation="include">
+        </childnode>
+      </node>
+      <node id="27605">
+        <label>libopenage/util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="27606" relation="include">
+        </childnode>
+        <childnode refid="27564" relation="include">
+        </childnode>
+        <childnode refid="27504" relation="include">
+        </childnode>
+        <childnode refid="27535" relation="include">
+        </childnode>
+        <childnode refid="27623" relation="include">
+        </childnode>
+      </node>
+      <node id="27636">
+        <label>libopenage/error/handlers.h</label>
+        <link refid="error_2handlers_8h"/>
+        <childnode refid="27581" relation="include">
+        </childnode>
+      </node>
+      <node id="27486">
+        <label>libopenage/console/buf.cpp</label>
+        <link refid="buf_8cpp"/>
+      </node>
+      <node id="27321">
+        <label>libopenage/terrain/terrain_search.cpp</label>
+        <link refid="terrain__search_8cpp"/>
+      </node>
+      <node id="27402">
+        <label>libopenage/renderer/vulkan/shader_program.h</label>
+        <link refid="vulkan_2shader__program_8h"/>
+        <childnode refid="27403" relation="include">
+        </childnode>
+      </node>
+      <node id="27291">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="27299">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="27281">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="27278">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="27454">
+        <label>libopenage/unit/attribute.cpp</label>
+        <link refid="attribute_8cpp"/>
+      </node>
+      <node id="27329">
+        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <link refid="terrain__outline_8cpp"/>
+      </node>
+      <node id="27313">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="27631">
+        <label>libopenage/util/enum_test.h</label>
+        <link refid="enum__test_8h"/>
+        <childnode refid="27571" relation="include">
+        </childnode>
+      </node>
+      <node id="27482">
+        <label>libopenage/unit/command.cpp</label>
+        <link refid="command_8cpp"/>
+      </node>
+      <node id="27264">
+        <label>libopenage/assetmanager.cpp</label>
+        <link refid="assetmanager_8cpp"/>
+      </node>
+      <node id="27316">
+        <label>libopenage/pathfinding/a_star.cpp</label>
+        <link refid="a__star_8cpp"/>
+      </node>
+      <node id="27588">
+        <label>libopenage/gui/integration/public/gui_game_spec_image_provider.cpp</label>
+        <link refid="gui__game__spec__image__provider_8cpp"/>
+      </node>
+      <node id="27393">
+        <label>libopenage/gui/main_args_link.h</label>
+        <link refid="main__args__link_8h"/>
+        <childnode refid="27360" relation="include">
+        </childnode>
+      </node>
+      <node id="27420">
+        <label>libopenage/shader/program.cpp</label>
+        <link refid="program_8cpp"/>
+      </node>
+      <node id="27317">
+        <label>libopenage/pathfinding/path.cpp</label>
+        <link refid="pathfinding_2path_8cpp"/>
+      </node>
+      <node id="27277">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="27551">
+        <label>libopenage/job/job_group.cpp</label>
+        <link refid="job__group_8cpp"/>
+      </node>
+      <node id="27355">
+        <label>libopenage/cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27356" relation="include">
+        </childnode>
+        <childnode refid="27357" relation="include">
+        </childnode>
+      </node>
+      <node id="27503">
+        <label>libopenage/event/demo/physics.h</label>
+        <link refid="physics_8h"/>
+        <childnode refid="27501" relation="include">
+        </childnode>
+        <childnode refid="27504" relation="include">
+        </childnode>
+      </node>
+      <node id="27443">
+        <label>libopenage/handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27444" relation="include">
+        </childnode>
+        <childnode refid="27449" relation="include">
+        </childnode>
+        <childnode refid="27450" relation="include">
+        </childnode>
+        <childnode refid="27445" relation="include">
+        </childnode>
+        <childnode refid="27458" relation="include">
+        </childnode>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27459" relation="include">
+        </childnode>
+        <childnode refid="27460" relation="include">
+        </childnode>
+      </node>
+      <node id="27407">
+        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <link refid="renderer_2opengl_2shader_8cpp"/>
+      </node>
+      <node id="27575">
+        <label>libopenage/util/vector_test.cpp</label>
+        <link refid="vector__test_8cpp"/>
+      </node>
+      <node id="27370">
+        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="27304">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="27528">
+        <label>libopenage/curve/map.cpp</label>
+        <link refid="map_8cpp"/>
+      </node>
+      <node id="27518">
+        <label>libopenage/event/eventqueue.cpp</label>
+        <link refid="eventqueue_8cpp"/>
+      </node>
+      <node id="27267">
+        <label>libopenage/coord/tile.cpp</label>
+        <link refid="tile_8cpp"/>
+      </node>
+      <node id="27511">
+        <label>libopenage/curve/keyframe_container.cpp</label>
+        <link refid="keyframe__container_8cpp"/>
+      </node>
+      <node id="27434">
+        <label>libopenage/pyinterface/hacks.h</label>
+        <link refid="hacks_8h"/>
+        <childnode refid="27435" relation="include">
+        </childnode>
+      </node>
+      <node id="27350">
+        <label>libopenage/audio/opus_dynamic_loader.h</label>
+        <link refid="opus__dynamic__loader_8h"/>
+        <childnode refid="27349" relation="include">
+        </childnode>
+        <childnode refid="27351" relation="include">
+        </childnode>
+      </node>
+      <node id="27358">
+        <label>libopenage/gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27359" relation="include">
+        </childnode>
+        <childnode refid="27340" relation="include">
+        </childnode>
+        <childnode refid="27360" relation="include">
+        </childnode>
+      </node>
+      <node id="27327">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="27494">
+        <label>libopenage/curve/continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="27495" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27498" relation="include">
+        </childnode>
+      </node>
+      <node id="27340">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="27411">
+        <label>libopenage/util/fslike/fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="27412" relation="include">
+        </childnode>
+        <childnode refid="27415" relation="include">
+        </childnode>
+        <childnode refid="27416" relation="include">
+        </childnode>
+      </node>
+      <node id="27471">
+        <label>libopenage/terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="27451" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27321" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27296" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27547">
+        <label>libopenage/job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27334" relation="include">
+        </childnode>
+        <childnode refid="27548" relation="include">
+        </childnode>
+        <childnode refid="27549" relation="include">
+        </childnode>
+        <childnode refid="27550" relation="include">
+        </childnode>
+        <childnode refid="27464" relation="include">
+        </childnode>
+      </node>
+      <node id="27468">
+        <label>libopenage/gamestate/generator.h</label>
+        <link refid="generator_8h"/>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27469" relation="include">
+        </childnode>
+        <childnode refid="27289" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+      </node>
+      <node id="27381">
+        <label>libopenage/renderer/texture.cpp</label>
+        <link refid="renderer_2texture_8cpp"/>
+      </node>
+      <node id="27270">
+        <label>libopenage/gamestate/player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="27271" relation="include">
+        </childnode>
+        <childnode refid="27290" relation="include">
+        </childnode>
+        <childnode refid="27297" relation="include">
+        </childnode>
+        <childnode refid="27298" relation="include">
+        </childnode>
+        <childnode refid="27299" relation="include">
+        </childnode>
+        <childnode refid="27300" relation="include">
+        </childnode>
+        <childnode refid="27301" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27303" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27372">
+        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="27613">
+        <label>libopenage/util/os.cpp</label>
+        <link refid="os_8cpp"/>
+      </node>
+      <node id="27601">
+        <label>libopenage/util/filelike/native.cpp</label>
+        <link refid="filelike_2native_8cpp"/>
+      </node>
+      <node id="27261">
+        <label>libopenage/pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="27262" relation="include">
+        </childnode>
+        <childnode refid="27419" relation="include">
+        </childnode>
+        <childnode refid="27422" relation="include">
+        </childnode>
+        <childnode refid="27427" relation="include">
+        </childnode>
+        <childnode refid="27426" relation="include">
+        </childnode>
+        <childnode refid="27428" relation="include">
+        </childnode>
+        <childnode refid="27416" relation="include">
+        </childnode>
+      </node>
+      <node id="27311">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="27423">
+        <label>libopenage/pyinterface/exctranslate.cpp</label>
+        <link refid="exctranslate_8cpp"/>
+      </node>
+      <node id="27348">
+        <label>libopenage/audio/dynamic_loader.h</label>
+        <link refid="dynamic__loader_8h"/>
+        <childnode refid="27349" relation="include">
+        </childnode>
+        <childnode refid="27350" relation="include">
+        </childnode>
+        <childnode refid="27344" relation="include">
+        </childnode>
+      </node>
+      <node id="27331">
+        <label>libopenage/audio/resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="27332" relation="include">
+        </childnode>
+        <childnode refid="27343" relation="include">
+        </childnode>
+        <childnode refid="27347" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+      </node>
+      <node id="27290">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+        <childnode refid="27296" relation="include">
+        </childnode>
+      </node>
+      <node id="27273">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27275" relation="include">
+        </childnode>
+        <childnode refid="27280" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+      </node>
+      <node id="27432">
+        <label>libopenage/error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="27433" relation="include">
+        </childnode>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27436" relation="include">
+        </childnode>
+        <childnode refid="27541" relation="include">
+        </childnode>
+        <childnode refid="27543" relation="include">
+        </childnode>
+        <childnode refid="27544" relation="include">
+        </childnode>
+        <childnode refid="27546" relation="include">
+        </childnode>
+        <childnode refid="27554" relation="include">
+        </childnode>
+        <childnode refid="27555" relation="include">
+        </childnode>
+        <childnode refid="27336" relation="include">
+        </childnode>
+        <childnode refid="27556" relation="include">
+        </childnode>
+        <childnode refid="27337" relation="include">
+        </childnode>
+        <childnode refid="27446" relation="include">
+        </childnode>
+        <childnode refid="27563" relation="include">
+        </childnode>
+        <childnode refid="27576" relation="include">
+        </childnode>
+        <childnode refid="27510" relation="include">
+        </childnode>
+        <childnode refid="27577" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27364" relation="include">
+        </childnode>
+        <childnode refid="27578" relation="include">
+        </childnode>
+        <childnode refid="27579" relation="include">
+        </childnode>
+        <childnode refid="27580" relation="include">
+        </childnode>
+        <childnode refid="27581" relation="include">
+        </childnode>
+        <childnode refid="27582" relation="include">
+        </childnode>
+        <childnode refid="27504" relation="include">
+        </childnode>
+        <childnode refid="27522" relation="include">
+        </childnode>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27339" relation="include">
+        </childnode>
+        <childnode refid="27310" relation="include">
+        </childnode>
+        <childnode refid="27311" relation="include">
+        </childnode>
+        <childnode refid="27312" relation="include">
+        </childnode>
+        <childnode refid="27313" relation="include">
+        </childnode>
+        <childnode refid="27314" relation="include">
+        </childnode>
+        <childnode refid="27309" relation="include">
+        </childnode>
+        <childnode refid="27588" relation="include">
+        </childnode>
+        <childnode refid="27360" relation="include">
+        </childnode>
+        <childnode refid="27280" relation="include">
+        </childnode>
+        <childnode refid="27566" relation="include">
+        </childnode>
+        <childnode refid="27423" relation="include">
+        </childnode>
+        <childnode refid="27422" relation="include">
+        </childnode>
+        <childnode refid="27589" relation="include">
+        </childnode>
+        <childnode refid="27560" relation="include">
+        </childnode>
+        <childnode refid="27559" relation="include">
+        </childnode>
+        <childnode refid="27590" relation="include">
+        </childnode>
+        <childnode refid="27591" relation="include">
+        </childnode>
+        <childnode refid="27387" relation="include">
+        </childnode>
+        <childnode refid="27401" relation="include">
+        </childnode>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+        <childnode refid="27388" relation="include">
+        </childnode>
+        <childnode refid="27375" relation="include">
+        </childnode>
+        <childnode refid="27404" relation="include">
+        </childnode>
+        <childnode refid="27385" relation="include">
+        </childnode>
+        <childnode refid="27592" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+        <childnode refid="27381" relation="include">
+        </childnode>
+        <childnode refid="27593" relation="include">
+        </childnode>
+        <childnode refid="27594" relation="include">
+        </childnode>
+        <childnode refid="27596" relation="include">
+        </childnode>
+        <childnode refid="27403" relation="include">
+        </childnode>
+        <childnode refid="27402" relation="include">
+        </childnode>
+        <childnode refid="27595" relation="include">
+        </childnode>
+        <childnode refid="27597" relation="include">
+        </childnode>
+        <childnode refid="27567" relation="include">
+        </childnode>
+        <childnode refid="27420" relation="include">
+        </childnode>
+        <childnode refid="27421" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27330" relation="include">
+        </childnode>
+        <childnode refid="27598" relation="include">
+        </childnode>
+        <childnode refid="27600" relation="include">
+        </childnode>
+        <childnode refid="27391" relation="include">
+        </childnode>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27601" relation="include">
+        </childnode>
+        <childnode refid="27602" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+        <childnode refid="27585" relation="include">
+        </childnode>
+        <childnode refid="27574" relation="include">
+        </childnode>
+        <childnode refid="27603" relation="include">
+        </childnode>
+        <childnode refid="27604" relation="include">
+        </childnode>
+      </node>
+      <node id="27604">
+        <label>libopenage/util/timing.cpp</label>
+        <link refid="timing_8cpp"/>
+      </node>
+      <node id="27354">
+        <label>libopenage/audio/opus_loading.cpp</label>
+        <link refid="opus__loading_8cpp"/>
+      </node>
+      <node id="27315">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="27436">
+        <label>libopenage/util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="27437" relation="include">
+        </childnode>
+        <childnode refid="27467" relation="include">
+        </childnode>
+        <childnode refid="27333" relation="include">
+        </childnode>
+        <childnode refid="27479" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27536" relation="include">
+        </childnode>
+        <childnode refid="27472" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27413" relation="include">
+        </childnode>
+        <childnode refid="27537" relation="include">
+        </childnode>
+        <childnode refid="27538" relation="include">
+        </childnode>
+        <childnode refid="27539" relation="include">
+        </childnode>
+        <childnode refid="27540" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+        <childnode refid="27341" relation="include">
+        </childnode>
+      </node>
+      <node id="27379">
+        <label>libopenage/renderer/texture.h</label>
+        <link refid="renderer_2texture_8h"/>
+        <childnode refid="27368" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+        <childnode refid="27381" relation="include">
+        </childnode>
+      </node>
+      <node id="27535">
+        <label>libopenage/util/fixed_point_test.cpp</label>
+        <link refid="fixed__point__test_8cpp"/>
+      </node>
+      <node id="27364">
+        <label>libopenage/util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="27268" relation="include">
+        </childnode>
+        <childnode refid="27365" relation="include">
+        </childnode>
+        <childnode refid="27385" relation="include">
+        </childnode>
+        <childnode refid="27330" relation="include">
+        </childnode>
+        <childnode refid="27391" relation="include">
+        </childnode>
+      </node>
+      <node id="27334">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="27404">
+        <label>libopenage/renderer/resources/mesh_data.cpp</label>
+        <link refid="mesh__data_8cpp"/>
+      </node>
+      <node id="27610">
+        <label>libopenage/log/log.cpp</label>
+        <link refid="log_8cpp"/>
+      </node>
+      <node id="27462">
+        <label>libopenage/input/input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="27444" relation="include">
+        </childnode>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27447" relation="include">
+        </childnode>
+      </node>
+      <node id="27460">
+        <label>libopenage/handlers.cpp</label>
+        <link refid="handlers_8cpp"/>
+      </node>
+      <node id="27569">
+        <label>libopenage/testing/testlist.h</label>
+        <link refid="testlist_8h"/>
+      </node>
+      <node id="27470">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="27465">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="27338" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27466" relation="include">
+        </childnode>
+      </node>
+      <node id="27382">
+        <label>libopenage/renderer/texture_array.h</label>
+        <link refid="texture__array_8h"/>
+        <childnode refid="27383" relation="include">
+        </childnode>
+        <childnode refid="27384" relation="include">
+        </childnode>
+      </node>
+      <node id="27369">
+        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="27370" relation="include">
+        </childnode>
+        <childnode refid="27371" relation="include">
+        </childnode>
+      </node>
+      <node id="27634">
+        <label>libopenage/util/filelike/native.h</label>
+        <link refid="filelike_2native_8h"/>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27601" relation="include">
+        </childnode>
+        <childnode refid="27413" relation="include">
+        </childnode>
+      </node>
+      <node id="27368">
+        <label>libopenage/renderer/opengl/texture.h</label>
+        <link refid="renderer_2opengl_2texture_8h"/>
+        <childnode refid="27369" relation="include">
+        </childnode>
+        <childnode refid="27371" relation="include">
+        </childnode>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+      </node>
+      <node id="27389">
+        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <link refid="texture__info_8cpp"/>
+      </node>
+      <node id="27326">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+      <node id="27596">
+        <label>libopenage/renderer/vulkan/loader.cpp</label>
+        <link refid="loader_8cpp"/>
+      </node>
+      <node id="27620">
+        <label>libopenage/log/logsource.cpp</label>
+        <link refid="logsource_8cpp"/>
+      </node>
+      <node id="27481">
+        <label>libopenage/unit/command.h</label>
+        <link refid="command_8h"/>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27482" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+      </node>
+      <node id="27501">
+        <label>libopenage/event/demo/main.cpp</label>
+        <link refid="event_2demo_2main_8cpp"/>
+      </node>
+      <node id="27586">
+        <label>libopenage/util/quaternion.cpp</label>
+        <link refid="quaternion_8cpp"/>
+      </node>
+      <node id="27337">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="27577">
+        <label>libopenage/datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="27565" relation="include">
+        </childnode>
+        <childnode refid="27366" relation="include">
+        </childnode>
+        <childnode refid="27387" relation="include">
+        </childnode>
+        <childnode refid="27407" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+        <childnode refid="27388" relation="include">
+        </childnode>
+        <childnode refid="27404" relation="include">
+        </childnode>
+      </node>
+      <node id="27427">
+        <label>libopenage/pyinterface/pyobject.cpp</label>
+        <link refid="pyobject_8cpp"/>
+      </node>
+      <node id="27483">
+        <label>libopenage/unit/unit_texture.h</label>
+        <link refid="unit__texture_8h"/>
+        <childnode refid="27268" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+      </node>
+      <node id="27287">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="27292">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="27300">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="27474">
+        <label>libopenage/pathfinding/a_star.h</label>
+        <link refid="a__star_8h"/>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+      </node>
+      <node id="27332">
+        <label>libopenage/audio/audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="27333" relation="include">
+        </childnode>
+        <childnode refid="27334" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27342" relation="include">
+        </childnode>
+      </node>
+      <node id="27536">
+        <label>libopenage/event/eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="27520" relation="include">
+        </childnode>
+        <childnode refid="27522" relation="include">
+        </childnode>
+      </node>
+      <node id="27339">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="27294">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="27622">
+        <label>libopenage/log/message.cpp</label>
+        <link refid="message_8cpp"/>
+      </node>
+      <node id="27515">
+        <label>libopenage/event/eventfilter.cpp</label>
+        <link refid="eventfilter_8cpp"/>
+      </node>
+      <node id="27510">
+        <label>libopenage/curve/keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="27493" relation="include">
+        </childnode>
+        <childnode refid="27511" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+      </node>
+      <node id="27418">
+        <label>libopenage/util/file.cpp</label>
+        <link refid="file_8cpp"/>
+      </node>
+      <node id="27546">
+        <label>libopenage/job/job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="27344" relation="include">
+        </childnode>
+        <childnode refid="27547" relation="include">
+        </childnode>
+        <childnode refid="27551" relation="include">
+        </childnode>
+      </node>
+      <node id="27590">
+        <label>libopenage/renderer/opengl/buffer.cpp</label>
+        <link refid="buffer_8cpp"/>
+      </node>
+      <node id="27286">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="27279" relation="include">
+        </childnode>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27288" relation="include">
+        </childnode>
+        <childnode refid="27289" relation="include">
+        </childnode>
+      </node>
+      <node id="27272">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="27335">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="27334" relation="include">
+        </childnode>
+        <childnode refid="27336" relation="include">
+        </childnode>
+        <childnode refid="27337" relation="include">
+        </childnode>
+        <childnode refid="27338" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27339" relation="include">
+        </childnode>
+        <childnode refid="27279" relation="include">
+        </childnode>
+        <childnode refid="27288" relation="include">
+        </childnode>
+        <childnode refid="27340" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+        <childnode refid="27341" relation="include">
+        </childnode>
+      </node>
+      <node id="27296">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="27492">
+        <label>libopenage/event/eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="27493" relation="include">
+        </childnode>
+        <childnode refid="27508" relation="include">
+        </childnode>
+        <childnode refid="27498" relation="include">
+        </childnode>
+        <childnode refid="27516" relation="include">
+        </childnode>
+        <childnode refid="27517" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27512" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+        <childnode refid="27514" relation="include">
+        </childnode>
+      </node>
+      <node id="27325">
+        <label>libopenage/terrain/terrain_chunk.h</label>
+        <link refid="terrain__chunk_8h"/>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+      </node>
+      <node id="27271">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27286" relation="include">
+        </childnode>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27289" relation="include">
+        </childnode>
+      </node>
+      <node id="27344">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="27334" relation="include">
+        </childnode>
+        <childnode refid="27336" relation="include">
+        </childnode>
+      </node>
+      <node id="27584">
+        <label>libopenage/util/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+      </node>
+      <node id="27450">
+        <label>libopenage/unit/unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="27449" relation="include">
+        </childnode>
+        <childnode refid="27271" relation="include">
+        </childnode>
+        <childnode refid="27451" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27456" relation="include">
+        </childnode>
+        <childnode refid="27296" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27360">
+        <label>libopenage/gui/main_args_link.cpp</label>
+        <link refid="main__args__link_8cpp"/>
+      </node>
+      <node id="27639">
+        <label>libopenage/util/constinit_vector.h</label>
+        <link refid="constinit__vector_8h"/>
+        <childnode refid="27570" relation="include">
+        </childnode>
+      </node>
+      <node id="27594">
+        <label>libopenage/renderer/vulkan/util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="27593" relation="include">
+        </childnode>
+        <childnode refid="27403" relation="include">
+        </childnode>
+        <childnode refid="27595" relation="include">
+        </childnode>
+      </node>
+      <node id="27598">
+        <label>libopenage/util/compress/bitstream.h</label>
+        <link refid="bitstream_8h"/>
+        <childnode refid="27599" relation="include">
+        </childnode>
+        <childnode refid="27600" relation="include">
+        </childnode>
+      </node>
+      <node id="27312">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="27607">
+        <label>libopenage/log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27333" relation="include">
+        </childnode>
+        <childnode refid="27543" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27334" relation="include">
+        </childnode>
+        <childnode refid="27351" relation="include">
+        </childnode>
+        <childnode refid="27353" relation="include">
+        </childnode>
+        <childnode refid="27354" relation="include">
+        </childnode>
+        <childnode refid="27337" relation="include">
+        </childnode>
+        <childnode refid="27446" relation="include">
+        </childnode>
+        <childnode refid="27509" relation="include">
+        </childnode>
+        <childnode refid="27494" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27356" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27578" relation="include">
+        </childnode>
+        <childnode refid="27608" relation="include">
+        </childnode>
+        <childnode refid="27582" relation="include">
+        </childnode>
+        <childnode refid="27516" relation="include">
+        </childnode>
+        <childnode refid="27517" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27512" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+        <childnode refid="27514" relation="include">
+        </childnode>
+        <childnode refid="27274" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27305" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27299" relation="include">
+        </childnode>
+        <childnode refid="27300" relation="include">
+        </childnode>
+        <childnode refid="27277" relation="include">
+        </childnode>
+        <childnode refid="27609" relation="include">
+        </childnode>
+        <childnode refid="27357" relation="include">
+        </childnode>
+        <childnode refid="27448" relation="include">
+        </childnode>
+        <childnode refid="27566" relation="include">
+        </childnode>
+        <childnode refid="27548" relation="include">
+        </childnode>
+        <childnode refid="27549" relation="include">
+        </childnode>
+        <childnode refid="27610" relation="include">
+        </childnode>
+        <childnode refid="27611" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27476" relation="include">
+        </childnode>
+        <childnode refid="27424" relation="include">
+        </childnode>
+        <childnode refid="27425" relation="include">
+        </childnode>
+        <childnode refid="27561" relation="include">
+        </childnode>
+        <childnode refid="27591" relation="include">
+        </childnode>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+        <childnode refid="27376" relation="include">
+        </childnode>
+        <childnode refid="27377" relation="include">
+        </childnode>
+        <childnode refid="27375" relation="include">
+        </childnode>
+        <childnode refid="27385" relation="include">
+        </childnode>
+        <childnode refid="27592" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+        <childnode refid="27593" relation="include">
+        </childnode>
+        <childnode refid="27402" relation="include">
+        </childnode>
+        <childnode refid="27595" relation="include">
+        </childnode>
+        <childnode refid="27567" relation="include">
+        </childnode>
+        <childnode refid="27464" relation="include">
+        </childnode>
+        <childnode refid="27420" relation="include">
+        </childnode>
+        <childnode refid="27421" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27330" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27296" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+        <childnode refid="27391" relation="include">
+        </childnode>
+        <childnode refid="27612" relation="include">
+        </childnode>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27417" relation="include">
+        </childnode>
+        <childnode refid="27613" relation="include">
+        </childnode>
+        <childnode refid="27585" relation="include">
+        </childnode>
+        <childnode refid="27574" relation="include">
+        </childnode>
+        <childnode refid="27614" relation="include">
+        </childnode>
+      </node>
+      <node id="27499">
+        <label>libopenage/event/demo/aicontroller.h</label>
+        <link refid="aicontroller_8h"/>
+        <childnode refid="27500" relation="include">
+        </childnode>
+        <childnode refid="27501" relation="include">
+        </childnode>
+      </node>
+      <node id="27320">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="27388">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="27435">
+        <label>libopenage/pyinterface/hacks.cpp</label>
+        <link refid="hacks_8cpp"/>
+      </node>
+      <node id="27341">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="27421">
+        <label>libopenage/shader/shader.cpp</label>
+        <link refid="shader_2shader_8cpp"/>
+      </node>
+      <node id="27323">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="27514">
+        <label>libopenage/event/tests.cpp</label>
+        <link refid="event_2tests_8cpp"/>
+      </node>
+      <node id="27630">
+        <label>libopenage/util/enum.cpp</label>
+        <link refid="enum_8cpp"/>
+      </node>
+      <node id="27461">
+        <label>libopenage/input/action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="27444" relation="include">
+        </childnode>
+        <childnode refid="27462" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27357" relation="include">
+        </childnode>
+        <childnode refid="27448" relation="include">
+        </childnode>
+      </node>
+      <node id="27285">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="27319">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="27395">
+        <label>libopenage/gui/registrations.cpp</label>
+        <link refid="registrations_8cpp"/>
+      </node>
+      <node id="27356">
+        <label>libopenage/cvar/cvar.cpp</label>
+        <link refid="cvar_8cpp"/>
+      </node>
+      <node id="27568">
+        <label>libopenage/testing/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="27424">
+        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <link refid="exctranslate__tests_8cpp"/>
+      </node>
+      <node id="27544">
+        <label>libopenage/job/typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="27545" relation="include">
+        </childnode>
+        <childnode refid="27552" relation="include">
+        </childnode>
+        <childnode refid="27553" relation="include">
+        </childnode>
+      </node>
+      <node id="27567">
+        <label>libopenage/rng/rng_tests.cpp</label>
+        <link refid="rng__tests_8cpp"/>
+      </node>
+      <node id="27303">
+        <label>libopenage/unit/research.cpp</label>
+        <link refid="research_8cpp"/>
+      </node>
+      <node id="27476">
+        <label>libopenage/pathfinding/tests.cpp</label>
+        <link refid="pathfinding_2tests_8cpp"/>
+      </node>
+      <node id="27415">
+        <label>libopenage/util/fslike/fslike.cpp</label>
+        <link refid="fslike_8cpp"/>
+      </node>
+      <node id="27361">
+        <label>libopenage/audio/in_memory_loader.h</label>
+        <link refid="in__memory__loader_8h"/>
+        <childnode refid="27362" relation="include">
+        </childnode>
+        <childnode refid="27363" relation="include">
+        </childnode>
+        <childnode refid="27346" relation="include">
+        </childnode>
+      </node>
+      <node id="27259">
+        <label>libopenage/util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="27260" relation="include">
+        </childnode>
+        <childnode refid="27432" relation="include">
+        </childnode>
+        <childnode refid="27605" relation="include">
+        </childnode>
+        <childnode refid="27624" relation="include">
+        </childnode>
+        <childnode refid="27632" relation="include">
+        </childnode>
+        <childnode refid="27633" relation="include">
+        </childnode>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27436" relation="include">
+        </childnode>
+        <childnode refid="27485" relation="include">
+        </childnode>
+        <childnode refid="27576" relation="include">
+        </childnode>
+        <childnode refid="27364" relation="include">
+        </childnode>
+        <childnode refid="27579" relation="include">
+        </childnode>
+        <childnode refid="27636" relation="include">
+        </childnode>
+        <childnode refid="27608" relation="include">
+        </childnode>
+        <childnode refid="27637" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27522" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+        <childnode refid="27620" relation="include">
+        </childnode>
+        <childnode refid="27622" relation="include">
+        </childnode>
+        <childnode refid="27423" relation="include">
+        </childnode>
+        <childnode refid="27589" relation="include">
+        </childnode>
+        <childnode refid="27560" relation="include">
+        </childnode>
+        <childnode refid="27409" relation="include">
+        </childnode>
+        <childnode refid="27420" relation="include">
+        </childnode>
+        <childnode refid="27638" relation="include">
+        </childnode>
+        <childnode refid="27598" relation="include">
+        </childnode>
+        <childnode refid="27600" relation="include">
+        </childnode>
+        <childnode refid="27639" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+        <childnode refid="27603" relation="include">
+        </childnode>
+      </node>
+      <node id="27322">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="27323" relation="include">
+        </childnode>
+        <childnode refid="27308" relation="include">
+        </childnode>
+      </node>
+      <node id="27559">
+        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <link refid="glyph__atlas_8cpp"/>
+      </node>
+      <node id="27469">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="27287" relation="include">
+        </childnode>
+        <childnode refid="27289" relation="include">
+        </childnode>
+        <childnode refid="27470" relation="include">
+        </childnode>
+      </node>
+      <node id="27284">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="27635">
+        <label>libopenage/util/filelike/filelike.cpp</label>
+        <link refid="filelike_8cpp"/>
+      </node>
+      <node id="27419">
+        <label>libopenage/util/file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="27262" relation="include">
+        </childnode>
+        <childnode refid="27264" relation="include">
+        </childnode>
+        <childnode refid="27325" relation="include">
+        </childnode>
+        <childnode refid="27281" relation="include">
+        </childnode>
+        <childnode refid="27408" relation="include">
+        </childnode>
+        <childnode refid="27411" relation="include">
+        </childnode>
+        <childnode refid="27420" relation="include">
+        </childnode>
+        <childnode refid="27421" relation="include">
+        </childnode>
+        <childnode refid="27391" relation="include">
+        </childnode>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27413" relation="include">
+        </childnode>
+        <childnode refid="27416" relation="include">
+        </childnode>
+      </node>
+      <node id="27447">
+        <label>libopenage/input/input_context.cpp</label>
+        <link refid="input__context_8cpp"/>
+      </node>
+      <node id="27537">
+        <label>libopenage/util/hash.cpp</label>
+        <link refid="hash_8cpp"/>
+      </node>
+      <node id="27573">
+        <label>libopenage/util/matrix_test.cpp</label>
+        <link refid="matrix__test_8cpp"/>
+      </node>
+      <node id="27328">
+        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <link refid="gui__texture__handle_8cpp"/>
+      </node>
+      <node id="27538">
+        <label>libopenage/util/hash_test.cpp</label>
+        <link refid="hash__test_8cpp"/>
+      </node>
+      <node id="27608">
+        <label>libopenage/error/stackanalyzer.cpp</label>
+        <link refid="stackanalyzer_8cpp"/>
+      </node>
+      <node id="27592">
+        <label>libopenage/renderer/sdl_global.cpp</label>
+        <link refid="sdl__global_8cpp"/>
+      </node>
+      <node id="27625">
+        <label>libopenage/log/level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="27626" relation="include">
+        </childnode>
+        <childnode refid="27606" relation="include">
+        </childnode>
+        <childnode refid="27607" relation="include">
+        </childnode>
+        <childnode refid="27629" relation="include">
+        </childnode>
+        <childnode refid="27423" relation="include">
+        </childnode>
+      </node>
+      <node id="27439">
+        <label>libopenage/coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="27324" relation="include">
+        </childnode>
+        <childnode refid="27440" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27443" relation="include">
+        </childnode>
+        <childnode refid="27461" relation="include">
+        </childnode>
+        <childnode refid="27449" relation="include">
+        </childnode>
+        <childnode refid="27463" relation="include">
+        </childnode>
+        <childnode refid="27445" relation="include">
+        </childnode>
+        <childnode refid="27465" relation="include">
+        </childnode>
+        <childnode refid="27266" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27442" relation="include">
+        </childnode>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27325" relation="include">
+        </childnode>
+        <childnode refid="27464" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+      </node>
+      <node id="27359">
+        <label>libopenage/gui/engine_info.cpp</label>
+        <link refid="engine__info_8cpp"/>
+      </node>
+      <node id="27392">
+        <label>libopenage/gui/engine_link.h</label>
+        <link refid="engine__link_8h"/>
+        <childnode refid="27323" relation="include">
+        </childnode>
+        <childnode refid="27339" relation="include">
+        </childnode>
+        <childnode refid="27279" relation="include">
+        </childnode>
+        <childnode refid="27288" relation="include">
+        </childnode>
+      </node>
+      <node id="27410">
+        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="27403" relation="include">
+        </childnode>
+      </node>
+      <node id="27400">
+        <label>libopenage/renderer/opengl/vertex_array.h</label>
+        <link refid="vertex__array_8h"/>
+        <childnode refid="27398" relation="include">
+        </childnode>
+        <childnode refid="27388" relation="include">
+        </childnode>
+      </node>
+      <node id="27398">
+        <label>libopenage/renderer/opengl/geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="27387" relation="include">
+        </childnode>
+        <childnode refid="27399" relation="include">
+        </childnode>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+      </node>
+      <node id="27306">
+        <label>libopenage/gui/category_contents_list_model.h</label>
+        <link refid="category__contents__list__model_8h"/>
+        <childnode refid="27278" relation="include">
+        </childnode>
+      </node>
+      <node id="27464">
+        <label>libopenage/screenshot.cpp</label>
+        <link refid="screenshot_8cpp"/>
+      </node>
+      <node id="27333">
+        <label>libopenage/audio/audio_manager.cpp</label>
+        <link refid="audio__manager_8cpp"/>
+      </node>
+      <node id="27405">
+        <label>libopenage/renderer/resources/shader_source.h</label>
+        <link refid="shader__source_8h"/>
+        <childnode refid="27399" relation="include">
+        </childnode>
+        <childnode refid="27406" relation="include">
+        </childnode>
+        <childnode refid="27408" relation="include">
+        </childnode>
+        <childnode refid="27380" relation="include">
+        </childnode>
+        <childnode refid="27403" relation="include">
+        </childnode>
+        <childnode refid="27402" relation="include">
+        </childnode>
+      </node>
+      <node id="27633">
+        <label>libopenage/util/filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="27419" relation="include">
+        </childnode>
+        <childnode refid="27634" relation="include">
+        </childnode>
+        <childnode refid="27428" relation="include">
+        </childnode>
+        <childnode refid="27635" relation="include">
+        </childnode>
+      </node>
+      <node id="27533">
+        <label>libopenage/curve/queue_filter_iterator.cpp</label>
+        <link refid="queue__filter__iterator_8cpp"/>
+      </node>
+      <node id="27298">
+        <label>libopenage/gamestate/market.cpp</label>
+        <link refid="market_8cpp"/>
+      </node>
+      <node id="27521">
+        <label>libopenage/event/event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="27509" relation="include">
+        </childnode>
+        <childnode refid="27501" relation="include">
+        </childnode>
+        <childnode refid="27516" relation="include">
+        </childnode>
+        <childnode refid="27517" relation="include">
+        </childnode>
+        <childnode refid="27518" relation="include">
+        </childnode>
+        <childnode refid="27522" relation="include">
+        </childnode>
+        <childnode refid="27512" relation="include">
+        </childnode>
+        <childnode refid="27513" relation="include">
+        </childnode>
+        <childnode refid="27514" relation="include">
+        </childnode>
+      </node>
+      <node id="27351">
+        <label>libopenage/audio/opus_dynamic_loader.cpp</label>
+        <link refid="opus__dynamic__loader_8cpp"/>
+      </node>
+      <node id="27416">
+        <label>libopenage/util/fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="27417" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+      </node>
+      <node id="27390">
+        <label>libopenage/renderer/resources/texture_subinfo.cpp</label>
+        <link refid="texture__subinfo_8cpp"/>
+      </node>
+      <node id="27378">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="27485">
+        <label>libopenage/console/buf.h</label>
+        <link refid="buf_8h"/>
+        <childnode refid="27486" relation="include">
+        </childnode>
+        <childnode refid="27445" relation="include">
+        </childnode>
+        <childnode refid="27338" relation="include">
+        </childnode>
+        <childnode refid="27446" relation="include">
+        </childnode>
+      </node>
+      <node id="27449">
+        <label>libopenage/unit/selection.h</label>
+        <link refid="selection_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+      </node>
+      <node id="27403">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="27406">
+        <label>libopenage/renderer/opengl/shader.h</label>
+        <link refid="renderer_2opengl_2shader_8h"/>
+        <childnode refid="27407" relation="include">
+        </childnode>
+        <childnode refid="27378" relation="include">
+        </childnode>
+      </node>
+      <node id="27505">
+        <label>libopenage/curve/discrete.h</label>
+        <link refid="discrete_8h"/>
+        <childnode refid="27506" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27498" relation="include">
+        </childnode>
+      </node>
+      <node id="27545">
+        <label>libopenage/job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="27344" relation="include">
+        </childnode>
+        <childnode refid="27546" relation="include">
+        </childnode>
+        <childnode refid="27547" relation="include">
+        </childnode>
+        <childnode refid="27268" relation="include">
+        </childnode>
+      </node>
+      <node id="27490">
+        <label>libopenage/coord/declarations.cpp</label>
+        <link refid="declarations_8cpp"/>
+      </node>
+      <node id="27576">
+        <label>libopenage/datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="27536" relation="include">
+        </childnode>
+        <childnode refid="27565" relation="include">
+        </childnode>
+        <childnode refid="27472" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+      </node>
+      <node id="27599">
+        <label>libopenage/util/compress/lzxd.h</label>
+        <link refid="lzxd_8h"/>
+        <childnode refid="27600" relation="include">
+        </childnode>
+      </node>
+      <node id="27553">
+        <label>libopenage/job/job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="27546" relation="include">
+        </childnode>
+        <childnode refid="27547" relation="include">
+        </childnode>
+      </node>
+      <node id="27638">
+        <label>libopenage/util/compiler.cpp</label>
+        <link refid="compiler_8cpp"/>
+      </node>
+      <node id="27455">
+        <label>libopenage/unit/unit.h</label>
+        <link refid="unit_8h"/>
+        <childnode refid="27456" relation="include">
+        </childnode>
+        <childnode refid="27290" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27285" relation="include">
+        </childnode>
+        <childnode refid="27299" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27454" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+        <childnode refid="27296" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27614">
+        <label>libopenage/util/subprocess.cpp</label>
+        <link refid="subprocess_8cpp"/>
+      </node>
+      <node id="27260">
+        <label>libopenage/pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="27261" relation="include">
+        </childnode>
+        <childnode refid="27355" relation="include">
+        </childnode>
+        <childnode refid="27422" relation="include">
+        </childnode>
+        <childnode refid="27430" relation="include">
+        </childnode>
+        <childnode refid="27431" relation="include">
+        </childnode>
+        <childnode refid="27428" relation="include">
+        </childnode>
+        <childnode refid="27416" relation="include">
+        </childnode>
+      </node>
+      <node id="27279">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="27609">
+        <label>libopenage/gui/integration/private/gui_log.cpp</label>
+        <link refid="gui__log_8cpp"/>
+      </node>
+      <node id="27451">
+        <label>libopenage/unit/attribute.h</label>
+        <link refid="attribute_8h"/>
+        <childnode refid="27452" relation="include">
+        </childnode>
+        <childnode refid="27456" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27454" relation="include">
+        </childnode>
+      </node>
+      <node id="27387">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="27602">
+        <label>libopenage/util/opengl.cpp</label>
+        <link refid="opengl_8cpp"/>
+      </node>
+      <node id="27619">
+        <label>libopenage/log/stdout_logsink.cpp</label>
+        <link refid="stdout__logsink_8cpp"/>
+      </node>
+      <node id="27365">
+        <label>libopenage/renderer/resources/texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="27366" relation="include">
+        </childnode>
+        <childnode refid="27390" relation="include">
+        </childnode>
+      </node>
+      <node id="27548">
+        <label>libopenage/job/job_manager.cpp</label>
+        <link refid="job__manager_8cpp"/>
+      </node>
+      <node id="27507">
+        <label>libopenage/curve/value_container.cpp</label>
+        <link refid="value__container_8cpp"/>
+      </node>
+      <node id="27563">
+        <label>libopenage/testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="27564" relation="include">
+        </childnode>
+        <childnode refid="27496" relation="include">
+        </childnode>
+        <childnode refid="27497" relation="include">
+        </childnode>
+        <childnode refid="27565" relation="include">
+        </childnode>
+        <childnode refid="27514" relation="include">
+        </childnode>
+        <childnode refid="27566" relation="include">
+        </childnode>
+        <childnode refid="27549" relation="include">
+        </childnode>
+        <childnode refid="27476" relation="include">
+        </childnode>
+        <childnode refid="27424" relation="include">
+        </childnode>
+        <childnode refid="27426" relation="include">
+        </childnode>
+        <childnode refid="27562" relation="include">
+        </childnode>
+        <childnode refid="27567" relation="include">
+        </childnode>
+        <childnode refid="27568" relation="include">
+        </childnode>
+        <childnode refid="27569" relation="include">
+        </childnode>
+        <childnode refid="27570" relation="include">
+        </childnode>
+        <childnode refid="27571" relation="include">
+        </childnode>
+        <childnode refid="27535" relation="include">
+        </childnode>
+        <childnode refid="27538" relation="include">
+        </childnode>
+        <childnode refid="27572" relation="include">
+        </childnode>
+        <childnode refid="27573" relation="include">
+        </childnode>
+        <childnode refid="27540" relation="include">
+        </childnode>
+        <childnode refid="27574" relation="include">
+        </childnode>
+        <childnode refid="27575" relation="include">
+        </childnode>
+      </node>
+      <node id="27458">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27340" relation="include">
+        </childnode>
+      </node>
+      <node id="27595">
+        <label>libopenage/renderer/vulkan/windowvk.cpp</label>
+        <link refid="windowvk_8cpp"/>
+      </node>
+      <node id="27565">
+        <label>libopenage/datastructure/tests.cpp</label>
+        <link refid="datastructure_2tests_8cpp"/>
+      </node>
+      <node id="27422">
+        <label>libopenage/pyinterface/pyexception.h</label>
+        <link refid="pyexception_8h"/>
+        <childnode refid="27423" relation="include">
+        </childnode>
+        <childnode refid="27424" relation="include">
+        </childnode>
+        <childnode refid="27425" relation="include">
+        </childnode>
+        <childnode refid="27426" relation="include">
+        </childnode>
+      </node>
+      <node id="27593">
+        <label>libopenage/renderer/vulkan/graphics_device.cpp</label>
+        <link refid="graphics__device_8cpp"/>
+      </node>
+      <node id="27345">
+        <label>libopenage/audio/in_memory_resource.h</label>
+        <link refid="in__memory__resource_8h"/>
+        <childnode refid="27346" relation="include">
+        </childnode>
+        <childnode refid="27336" relation="include">
+        </childnode>
+      </node>
+      <node id="27283">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="27417">
+        <label>libopenage/util/fslike/python.cpp</label>
+        <link refid="fslike_2python_8cpp"/>
+      </node>
+      <node id="27488">
+        <label>libopenage/coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="27489" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+      </node>
+      <node id="27385">
+        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <link refid="texture__data_8cpp"/>
+      </node>
+      <node id="27566">
+        <label>libopenage/input/text_to_event.cpp</label>
+        <link refid="text__to__event_8cpp"/>
+      </node>
+      <node id="27489">
+        <label>libopenage/coord/chunk.cpp</label>
+        <link refid="chunk_8cpp"/>
+      </node>
+      <node id="27310">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+      <node id="27262">
+        <label>libopenage/util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="27263" relation="include">
+        </childnode>
+        <childnode refid="27324" relation="include">
+        </childnode>
+        <childnode refid="27331" relation="include">
+        </childnode>
+        <childnode refid="27348" relation="include">
+        </childnode>
+        <childnode refid="27352" relation="include">
+        </childnode>
+        <childnode refid="27350" relation="include">
+        </childnode>
+        <childnode refid="27344" relation="include">
+        </childnode>
+        <childnode refid="27355" relation="include">
+        </childnode>
+        <childnode refid="27358" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27361" relation="include">
+        </childnode>
+        <childnode refid="27363" relation="include">
+        </childnode>
+        <childnode refid="27345" relation="include">
+        </childnode>
+        <childnode refid="27364" relation="include">
+        </childnode>
+        <childnode refid="27322" relation="include">
+        </childnode>
+        <childnode refid="27392" relation="include">
+        </childnode>
+        <childnode refid="27340" relation="include">
+        </childnode>
+        <childnode refid="27393" relation="include">
+        </childnode>
+        <childnode refid="27394" relation="include">
+        </childnode>
+        <childnode refid="27396" relation="include">
+        </childnode>
+        <childnode refid="27367" relation="include">
+        </childnode>
+        <childnode refid="27397" relation="include">
+        </childnode>
+        <childnode refid="27405" relation="include">
+        </childnode>
+        <childnode refid="27409" relation="include">
+        </childnode>
+        <childnode refid="27410" relation="include">
+        </childnode>
+        <childnode refid="27411" relation="include">
+        </childnode>
+        <childnode refid="27418" relation="include">
+        </childnode>
+        <childnode refid="27413" relation="include">
+        </childnode>
+        <childnode refid="27415" relation="include">
+        </childnode>
+        <childnode refid="27416" relation="include">
+        </childnode>
+        <childnode refid="27414" relation="include">
+        </childnode>
+      </node>
+      <node id="27453">
+        <label>libopenage/unit/unit_type.h</label>
+        <link refid="unit__type_8h"/>
+        <childnode refid="27273" relation="include">
+        </childnode>
+        <childnode refid="27290" relation="include">
+        </childnode>
+        <childnode refid="27305" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27284" relation="include">
+        </childnode>
+        <childnode refid="27299" relation="include">
+        </childnode>
+        <childnode refid="27454" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27560">
+        <label>libopenage/renderer/font/font.cpp</label>
+        <link refid="font_8cpp"/>
+      </node>
+      <node id="27396">
+        <label>libopenage/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="27281" relation="include">
+        </childnode>
+      </node>
+      <node id="27384">
+        <label>libopenage/renderer/texture_array.cpp</label>
+        <link refid="texture__array_8cpp"/>
+      </node>
+      <node id="27466">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+      </node>
+      <node id="27338">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="27578">
+        <label>libopenage/error/demo.cpp</label>
+        <link refid="demo_8cpp"/>
+      </node>
+      <node id="27467">
+        <label>libopenage/coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="27324" relation="include">
+        </childnode>
+        <childnode refid="27440" relation="include">
+        </childnode>
+        <childnode refid="27450" relation="include">
+        </childnode>
+        <childnode refid="27266" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27267" relation="include">
+        </childnode>
+        <childnode refid="27468" relation="include">
+        </childnode>
+        <childnode refid="27451" relation="include">
+        </childnode>
+        <childnode refid="27471" relation="include">
+        </childnode>
+        <childnode refid="27325" relation="include">
+        </childnode>
+        <childnode refid="27472" relation="include">
+        </childnode>
+        <childnode refid="27290" relation="include">
+        </childnode>
+        <childnode refid="27459" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27477" relation="include">
+        </childnode>
+        <childnode refid="27478" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+      </node>
+      <node id="27541">
+        <label>libopenage/audio/error.h</label>
+        <link refid="audio_2error_8h"/>
+        <childnode refid="27333" relation="include">
+        </childnode>
+        <childnode refid="27349" relation="include">
+        </childnode>
+        <childnode refid="27542" relation="include">
+        </childnode>
+        <childnode refid="27362" relation="include">
+        </childnode>
+        <childnode refid="27351" relation="include">
+        </childnode>
+        <childnode refid="27353" relation="include">
+        </childnode>
+        <childnode refid="27354" relation="include">
+        </childnode>
+        <childnode refid="27291" relation="include">
+        </childnode>
+      </node>
+      <node id="27301">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="27366">
+        <label>libopenage/renderer/resources/texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="27367" relation="include">
+        </childnode>
+        <childnode refid="27386" relation="include">
+        </childnode>
+        <childnode refid="27389" relation="include">
+        </childnode>
+      </node>
+      <node id="27539">
+        <label>libopenage/util/misc.cpp</label>
+        <link refid="misc_8cpp"/>
+      </node>
+      <node id="27377">
+        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <link refid="opengl_2texture__array_8cpp"/>
+      </node>
+      <node id="27534">
+        <label>libopenage/util/fixed_point.cpp</label>
+        <link refid="fixed__point_8cpp"/>
+      </node>
+      <node id="27558">
+        <label>libopenage/renderer/font/glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="27465" relation="include">
+        </childnode>
+        <childnode refid="27559" relation="include">
+        </childnode>
+      </node>
+      <node id="27487">
+        <label>libopenage/coord/term.cpp</label>
+        <link refid="term_8cpp"/>
+      </node>
+      <node id="27600">
+        <label>libopenage/util/compress/lzxd.cpp</label>
+        <link refid="lzxd_8cpp"/>
+      </node>
+      <node id="27589">
+        <label>libopenage/pyinterface/setup.cpp</label>
+        <link refid="setup_8cpp"/>
+      </node>
+      <node id="27556">
+        <label>libopenage/renderer/font/font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="27557" relation="include">
+        </childnode>
+        <childnode refid="27272" relation="include">
+        </childnode>
+        <childnode refid="27561" relation="include">
+        </childnode>
+        <childnode refid="27562" relation="include">
+        </childnode>
+      </node>
+      <node id="27266">
+        <label>libopenage/coord/phys.cpp</label>
+        <link refid="phys_8cpp"/>
+      </node>
+      <node id="27561">
+        <label>libopenage/renderer/font/font_manager.cpp</label>
+        <link refid="font__manager_8cpp"/>
+      </node>
+      <node id="27448">
+        <label>libopenage/input/input_manager.cpp</label>
+        <link refid="input__manager_8cpp"/>
+      </node>
+      <node id="27623">
+        <label>libopenage/util/stringformatter.cpp</label>
+        <link refid="stringformatter_8cpp"/>
+      </node>
+      <node id="27498">
+        <label>libopenage/event/demo/gamestate.h</label>
+        <link refid="gamestate_8h"/>
+        <childnode refid="27499" relation="include">
+        </childnode>
+        <childnode refid="27502" relation="include">
+        </childnode>
+        <childnode refid="27501" relation="include">
+        </childnode>
+        <childnode refid="27503" relation="include">
+        </childnode>
+      </node>
+      <node id="27473">
+        <label>libopenage/pathfinding/heuristics.h</label>
+        <link refid="heuristics_8h"/>
+        <childnode refid="27474" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27475" relation="include">
+        </childnode>
+        <childnode refid="27476" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+      </node>
+      <node id="27446">
+        <label>libopenage/console/tests.cpp</label>
+        <link refid="console_2tests_8cpp"/>
+      </node>
+      <node id="27555">
+        <label>libopenage/audio/loader_policy.cpp</label>
+        <link refid="loader__policy_8cpp"/>
+      </node>
+      <node id="27522">
+        <label>libopenage/event/eventstore.cpp</label>
+        <link refid="eventstore_8cpp"/>
+      </node>
+      <node id="27394">
+        <label>libopenage/gui/registrations.h</label>
+        <link refid="registrations_8h"/>
+        <childnode refid="27395" relation="include">
+        </childnode>
+      </node>
+      <node id="27564">
+        <label>libopenage/coord/coord_test.cpp</label>
+        <link refid="coord__test_8cpp"/>
+      </node>
+      <node id="27431">
+        <label>libopenage/pyinterface/functional.cpp</label>
+        <link refid="functional_8cpp"/>
+      </node>
+      <node id="27540">
+        <label>libopenage/util/misc_test.cpp</label>
+        <link refid="misc__test_8cpp"/>
+      </node>
+      <node id="27288">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="27581">
+        <label>libopenage/error/handlers.cpp</label>
+        <link refid="error_2handlers_8cpp"/>
+      </node>
+      <node id="27496">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+      <node id="27305">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+      </node>
+      <node id="27479">
+        <label>libopenage/coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="27440" relation="include">
+        </childnode>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27480" relation="include">
+        </childnode>
+        <childnode refid="27266" relation="include">
+        </childnode>
+        <childnode refid="27265" relation="include">
+        </childnode>
+        <childnode refid="27442" relation="include">
+        </childnode>
+        <childnode refid="27483" relation="include">
+        </childnode>
+        <childnode refid="27481" relation="include">
+        </childnode>
+        <childnode refid="27453" relation="include">
+        </childnode>
+        <childnode refid="27471" relation="include">
+        </childnode>
+        <childnode refid="27472" relation="include">
+        </childnode>
+        <childnode refid="27455" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27330" relation="include">
+        </childnode>
+        <childnode refid="27315" relation="include">
+        </childnode>
+      </node>
+      <node id="27274">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="27591">
+        <label>libopenage/renderer/opengl/context.cpp</label>
+        <link refid="context_8cpp"/>
+      </node>
+      <node id="27289">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="27542">
+        <label>libopenage/audio/error.cpp</label>
+        <link refid="audio_2error_8cpp"/>
+      </node>
+      <node id="27280">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="27627">
+        <label>libopenage/log/file_logsink.h</label>
+        <link refid="file__logsink_8h"/>
+        <childnode refid="27335" relation="include">
+        </childnode>
+        <childnode refid="27616" relation="include">
+        </childnode>
+      </node>
+      <node id="27478">
+        <label>libopenage/terrain/terrain_search.h</label>
+        <link refid="terrain__search_8h"/>
+        <childnode refid="27321" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+      </node>
+      <node id="27352">
+        <label>libopenage/audio/opus_loading.h</label>
+        <link refid="opus__loading_8h"/>
+        <childnode refid="27350" relation="include">
+        </childnode>
+        <childnode refid="27353" relation="include">
+        </childnode>
+        <childnode refid="27354" relation="include">
+        </childnode>
+      </node>
+      <node id="27308">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+      <node id="27265">
+        <label>libopenage/terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="27266" relation="include">
+        </childnode>
+        <childnode refid="27267" relation="include">
+        </childnode>
+        <childnode refid="27268" relation="include">
+        </childnode>
+        <childnode refid="27271" relation="include">
+        </childnode>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27283" relation="include">
+        </childnode>
+        <childnode refid="27316" relation="include">
+        </childnode>
+        <childnode refid="27317" relation="include">
+        </childnode>
+        <childnode refid="27318" relation="include">
+        </childnode>
+        <childnode refid="27319" relation="include">
+        </childnode>
+        <childnode refid="27320" relation="include">
+        </childnode>
+        <childnode refid="27321" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+      </node>
+      <node id="27425">
+        <label>libopenage/pyinterface/pyexception.cpp</label>
+        <link refid="pyexception_8cpp"/>
+      </node>
+      <node id="27628">
+        <label>libopenage/log/stdout_logsink.h</label>
+        <link refid="stdout__logsink_8h"/>
+        <childnode refid="27610" relation="include">
+        </childnode>
+        <childnode refid="27620" relation="include">
+        </childnode>
+        <childnode refid="27619" relation="include">
+        </childnode>
+      </node>
+      <node id="27456">
+        <label>libopenage/unit/action.h</label>
+        <link refid="unit_2action_8h"/>
+        <childnode refid="27282" relation="include">
+        </childnode>
+        <childnode refid="27302" relation="include">
+        </childnode>
+        <childnode refid="27292" relation="include">
+        </childnode>
+        <childnode refid="27293" relation="include">
+        </childnode>
+        <childnode refid="27294" relation="include">
+        </childnode>
+        <childnode refid="27295" relation="include">
+        </childnode>
+        <childnode refid="27304" relation="include">
+        </childnode>
+      </node>
+      <node id="27373">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="27374" relation="include">
+        </childnode>
+        <childnode refid="27375" relation="include">
+        </childnode>
+      </node>
+      <node id="27611">
+        <label>libopenage/log/test.cpp</label>
+        <link refid="test_8cpp"/>
+      </node>
+      <node id="27612">
+        <label>libopenage/util/externalprofiler.cpp</label>
+        <link refid="externalprofiler_8cpp"/>
+      </node>
+      <node id="27409">
+        <label>libopenage/renderer/tests.h</label>
+        <link refid="renderer_2tests_8h"/>
+        <childnode refid="27380" relation="include">
+        </childnode>
+      </node>
+      <node id="27603">
+        <label>libopenage/util/strings.cpp</label>
+        <link refid="strings_8cpp"/>
+      </node>
+      <node id="27624">
+        <label>libopenage/util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="27625" relation="include">
+        </childnode>
+        <childnode refid="27630" relation="include">
+        </childnode>
+        <childnode refid="27631" relation="include">
+        </childnode>
+      </node>
+      <node id="27621">
+        <label>libopenage/log/logsink.cpp</label>
+        <link refid="logsink_8cpp"/>
+      </node>
+      <node id="27330">
+        <label>libopenage/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+      <node id="27376">
+        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <link refid="renderer_2opengl_2texture_8cpp"/>
+      </node>
+      <node id="27495">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+      </node>
+      <node id="27526">
+        <label>libopenage/curve/map_filter_iterator.h</label>
+        <link refid="map__filter__iterator_8h"/>
+        <childnode refid="27527" relation="include">
+        </childnode>
+        <childnode refid="27529" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="compiler_8h_1aea581b919984cda327632efe3d11f8b3" prot="public" static="no">
+        <name>OAAPI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>DLL entry-point decorations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.h" line="26" column="11" bodyfile="libopenage/util/compiler.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" prot="public" static="no">
+        <name>likely</name>
+        <param><defname>x</defname></param>
+        <initializer>(x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.h" line="52" column="10" bodyfile="libopenage/util/compiler.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compiler_8h_1ac6c45889010c1bd68631771b64f18101" prot="public" static="no">
+        <name>unlikely</name>
+        <param><defname>x</defname></param>
+        <initializer>(x)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.h" line="53" column="9" bodyfile="libopenage/util/compiler.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compiler_8h_1a0409e98ff9aade482fcfc9e67e762a86" prot="public" static="no">
+        <name>BREAKPOINT</name>
+        <initializer>raise(SIGTRAP)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Software breakpoint if you&apos;re too lazy to add it in gdb but instead wanna add it into the code directly. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.h" line="65" column="13" bodyfile="libopenage/util/compiler.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="compiler_8h_1acfaed458bffc7554768bc825f3c91853" prot="public" static="no">
+        <name>TYPEINFO</name>
+        <param><defname>var</defname></param>
+        <initializer>printf(&quot;%d&quot;, var)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>As C++ is such a shit language, we found this awesome way to display a type of some variable as a warning.</para>
+<para>Other hacks like wrong assignments work as well, but crash the compilation by error. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.h" line="76" column="9" bodyfile="libopenage/util/compiler.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2019<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Some<sp/>general-purpose<sp/>utilities<sp/>related<sp/>to<sp/>the<sp/>C++<sp/>compiler<sp/>and<sp/>standard</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>library<sp/>implementations.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>May<sp/>contain<sp/>some<sp/>platform-dependent<sp/>code.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ciso646&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.string<sp/>cimport<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#if<sp/>defined(libopenage_EXPORTS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>OAAPI<sp/>__declspec(dllexport)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>OAAPI<sp/>__declspec(dllimport)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/></highlight><highlight class="comment">/*<sp/>libopenage_EXPORTS<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>OAAPI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#ifndef<sp/>HAVE_SSIZE_T</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ssize_t<sp/>is<sp/>defined<sp/>the<sp/>same<sp/>as<sp/>Python&apos;s<sp/>definition<sp/>it<sp/>in<sp/>pyconfig.h.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>necessary<sp/>to<sp/>facilitate<sp/>the<sp/>build<sp/>and<sp/>link<sp/>procedure<sp/>using<sp/>MSVC.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>_WIN64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>__int64<sp/>ssize_t;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ssize_t;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#define<sp/>HAVE_SSIZE_T<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/>//<sp/>HAVE_SSIZE_T</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>_MSC_VER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>Branch<sp/>prediction<sp/>tuning.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>the<sp/>expression<sp/>is<sp/>expected<sp/>to<sp/>be<sp/>true<sp/>(=likely)<sp/>or<sp/>false<sp/>(=unlikely).</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>btw,<sp/>this<sp/>implementation<sp/>was<sp/>taken<sp/>from<sp/>the<sp/>Linux<sp/>kernel.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>likely(x)<sp/><sp/><sp/><sp/>__builtin_expect(!!(x),<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>unlikely(x)<sp/><sp/>__builtin_expect(!!(x),<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>likely(x)<sp/><sp/><sp/>(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>unlikely(x)<sp/>(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor">#ifdef<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>BREAKPOINT<sp/>__debugbreak()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#include<sp/>&lt;<ref refid="signal_8h" kindref="compound">signal.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="compiler_8h_1a0409e98ff9aade482fcfc9e67e762a86" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>BREAKPOINT<sp/>raise(SIGTRAP)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="compiler_8h_1acfaed458bffc7554768bc825f3c91853" refkind="member"><highlight class="preprocessor">#define<sp/>TYPEINFO(var)<sp/>printf(&quot;%d&quot;,<sp/>var)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">std::string<sp/><ref refid="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" kindref="member">demangle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*symbol);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/>std::string<sp/><ref refid="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" kindref="member">symbol_name</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*addr,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>require_exact_addr=</highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>no_pure_addrs=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" kindref="member">is_symbol</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*addr);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/compiler.h"/>
+  </compounddef>
+</doxygen>

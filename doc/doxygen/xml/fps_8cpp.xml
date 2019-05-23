@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fps_8cpp" kind="file" language="C++">
+    <compoundname>fps.cpp</compoundname>
+    <includes refid="fps_8h" local="yes">fps.h</includes>
+    <includes refid="math_8h" local="no">math.h</includes>
+    <includes refid="timing_8h" local="yes">timing.h</includes>
+    <incdepgraph>
+      <node id="30305">
+        <label>math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="30306" relation="include">
+        </childnode>
+      </node>
+      <node id="30303">
+        <label>cstdint</label>
+      </node>
+      <node id="30306">
+        <label>cmath</label>
+      </node>
+      <node id="30304">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="30303" relation="include">
+        </childnode>
+      </node>
+      <node id="30300">
+        <label>libopenage/util/fps.cpp</label>
+        <link refid="fps_8cpp"/>
+        <childnode refid="30301" relation="include">
+        </childnode>
+        <childnode refid="30305" relation="include">
+        </childnode>
+        <childnode refid="30304" relation="include">
+        </childnode>
+      </node>
+      <node id="30302">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="30303" relation="include">
+        </childnode>
+        <childnode refid="30304" relation="include">
+        </childnode>
+      </node>
+      <node id="30301">
+        <label>fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="30302" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fps_8h" kindref="compound">fps.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="math_8h" kindref="compound">math.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timing_8h" kindref="compound">timing.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1util_1_1_frame_counter_1a332195a939c0cec7b42048c9304cb3e9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_frame_counter_1a332195a939c0cec7b42048c9304cb3e9" kindref="member">FrameCounter::FrameCounter</ref>()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>fps{0},</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>count{0},</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>nsec_lastframe{0},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>frame_count_weighted{0},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>frame_length_sum_weighted{0},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>frame_timer{</highlight><highlight class="keyword">false</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" kindref="member">FrameCounter::frame</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" kindref="member">frame_timer</ref>.<ref refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" kindref="member">getandresetval</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref><sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>never<sp/>can<sp/>be<sp/>safe<sp/>enough</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>frames<sp/>that<sp/>lie<sp/>0.5<sp/>seconds<sp/>in<sp/>the<sp/>past<sp/>have<sp/>1/e<sp/>of<sp/>the<sp/>weight</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>previous_frames_weight_adjustment<sp/>=<sp/>exp((-0.001<sp/>/<sp/>0.5)<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" kindref="member">frame_length_sum_weighted</ref><sp/>*=<sp/>previous_frames_weight_adjustment;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" kindref="member">frame_length_sum_weighted</ref><sp/>+=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" kindref="member">frame_count_weighted</ref><sp/>*=<sp/>previous_frames_weight_adjustment;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" kindref="member">frame_count_weighted</ref><sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;frame_length_sum_weighted<sp/>&lt;=<sp/>0<sp/>||<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" kindref="member">frame_count_weighted</ref><sp/>&lt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" kindref="member">fps</ref><sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" kindref="member">fps</ref><sp/>=<sp/>1e9<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" kindref="member">frame_count_weighted</ref><sp/>/<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" kindref="member">frame_length_sum_weighted</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" kindref="member">count</ref><sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fps.cpp"/>
+  </compounddef>
+</doxygen>

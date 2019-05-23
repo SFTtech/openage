@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="options_8cpp" kind="file" language="C++">
+    <compoundname>options.cpp</compoundname>
+    <includes refid="options_8h" local="yes">options.h</includes>
+    <incdepgraph>
+      <node id="18354">
+        <label>functional</label>
+      </node>
+      <node id="18356">
+        <label>string</label>
+      </node>
+      <node id="18359">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="18352">
+        <label>libopenage/options.cpp</label>
+        <link refid="options_8cpp"/>
+        <childnode refid="18353" relation="include">
+        </childnode>
+      </node>
+      <node id="18358">
+        <label>vector</label>
+      </node>
+      <node id="18353">
+        <label>options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="18354" relation="include">
+        </childnode>
+        <childnode refid="18355" relation="include">
+        </childnode>
+        <childnode refid="18356" relation="include">
+        </childnode>
+        <childnode refid="18357" relation="include">
+        </childnode>
+        <childnode refid="18358" relation="include">
+        </childnode>
+        <childnode refid="18359" relation="include">
+        </childnode>
+      </node>
+      <node id="18357">
+        <label>unordered_map</label>
+      </node>
+      <node id="18355">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1options">openage::options</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="options_8h" kindref="compound">options.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6" refid="namespaceopenage_1_1options" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">options<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">option_type::bool_type</ref>},</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;bool&gt;</ref>(b)}<sp/>{}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1options_1_1_option_value_1a5c270c02e50dd480b2536e14eb74e98c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;int&gt;</ref>(i)}<sp/>{}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1options_1_1_option_value_1a33e2a0c4037c94f23d8a72add56761af" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>},</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;double&gt;</ref>(d)}<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1options_1_1_option_value_1acae99f9c19fde936370b6d499051fc9f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>},</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;std::string&gt;</ref>(std::string(s))}<sp/>{}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1options_1_1_option_value_1a0629b9f69b41b92342586f19ccbf95b3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;s)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>},</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;std::string&gt;</ref>(s)}<sp/>{}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classopenage_1_1options_1_1_option_value_1ab7531638f7b5834ce7df56e6f0c1e889" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a53e5aeb32d312633e9f30394a4c21014" kindref="member">option_list</ref><sp/>&amp;l)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>},</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;option_list&gt;</ref>(l)}<sp/>{}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1options_1_1_option_value_1ab36530fdc058d652640f00c7768ac579" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;v)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>type{v.<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>},</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>var{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;set(v);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1options_1_1_option_value_1a46138f5f4b6064b427b50644e7345a4b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(<ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;bool&gt;</ref><sp/>*b)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">option_type::bool_type</ref>},</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>var{b}<sp/>{}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1options_1_1_option_value_1aca313b23f3bf17dfa4e3b6ff4425d996" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(<ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;int&gt;</ref><sp/>*i)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>},</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>var{i}<sp/>{}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1options_1_1_option_value_1a0b74d458a739861eaa7b03d094006b55" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(<ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;double&gt;</ref><sp/>*d)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>},</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>var{d}<sp/>{}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1options_1_1_option_value_1a70344d2366db773baac96d273dea434b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(<ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;std::string&gt;</ref><sp/>*s)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>},</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>var{s}<sp/>{}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classopenage_1_1options_1_1_option_value_1a6b933622a41a0ad29a39fe53fe233d8f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a15e57762430a4d7333a63918434dea5b" kindref="member">OptionValue::OptionValue</ref>(<ref refid="classopenage_1_1util_1_1_variable" kindref="compound">util::Variable&lt;option_list&gt;</ref><sp/>*l)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>type{<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>},</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36a72122ce96bfec66e2396d2e25225d70a" kindref="member">owner</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>var{l}<sp/>{}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classopenage_1_1options_1_1_option_value_1a387d858b9c133fc690e972f474242306" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value_1a387d858b9c133fc690e972f474242306" kindref="member">OptionValue::~OptionValue</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1aff36cc2b7adc32b62266be18fbeef197" kindref="member">owner</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ab140f0393e1c70bc71ffd251380c951e" kindref="member">var</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classopenage_1_1options_1_1_option_value_1a269d5de943bc725290a1ff4d12fc27c1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value_1a269d5de943bc725290a1ff4d12fc27c1" kindref="member">OptionValue::is_reference</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1aff36cc2b7adc32b62266be18fbeef197" kindref="member">owner</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1options_1_1_option_value_1a3131bfc6b2018d894fc51ecea54766ec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value_1a3131bfc6b2018d894fc51ecea54766ec" kindref="member">OptionValue::operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref><sp/>!=<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>each<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">option_type::bool_type</ref>:</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;bool&gt;()<sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" kindref="member">value</ref>&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;int&gt;()<sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" kindref="member">value</ref>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>:</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;double&gt;()<sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" kindref="member">value</ref>&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&gt;();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;std::string&gt;()<sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" kindref="member">value</ref>&lt;std::string&gt;();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;option_list&gt;()<sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1a594d9e00991ab3ad365ac200463dad3b" kindref="member">value</ref>&lt;<ref refid="namespaceopenage_1_1options_1a53e5aeb32d312633e9f30394a4c21014" kindref="member">option_list</ref>&gt;();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classopenage_1_1options_1_1_option_value_1ae274c0b2ad61b040b4e82312ea5b496b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;<ref refid="classopenage_1_1options_1_1_option_value_1ae274c0b2ad61b040b4e82312ea5b496b" kindref="member">OptionValue::operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref><sp/>==<sp/>other.<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1a4b1ec4a19215c1f708254e32d80c2b33" kindref="member">set</ref>(other);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classopenage_1_1options_1_1_option_value_1a4b1ec4a19215c1f708254e32d80c2b33" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value_1a4b1ec4a19215c1f708254e32d80c2b33" kindref="member">OptionValue::set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">option_type::bool_type</ref>:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;set_value&lt;bool&gt;(other);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;set_value&lt;int&gt;(other);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>:</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;set_value&lt;double&gt;(other);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;set_value&lt;std::string&gt;(other);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>:</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;set_value&lt;option_list&gt;(other);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1options_1_1_option_value_1a22038d95a9d6f275c9c87f415a8295a5" kindref="member">OptionValue::str_value</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_value_1ad75672e0015d2422ce4d6d5a7375bd42" kindref="member">type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">option_type::bool_type</ref>:</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;bool&gt;()?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>:</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;value&lt;int&gt;());</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>:</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(this-&gt;value&lt;double&gt;());</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;value&lt;std::string&gt;();</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>:<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/>this-&gt;value&lt;option_list&gt;())<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/>i.str_value()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;]&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="namespaceopenage_1_1options_1acc91ecb90435dec115544c5433fa8020" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/><ref refid="namespaceopenage_1_1options_1acc91ecb90435dec115544c5433fa8020" kindref="member">parse</ref>(<ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6b" kindref="member">option_type</ref><sp/>t,<sp/>std::string<sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(t)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" kindref="member">options::option_type::bool_type</ref>:</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(s<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" kindref="member">option_type::int_type</ref>:</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(stoi(s));</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" kindref="member">option_type::double_type</ref>:</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(stod(s));</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" kindref="member">option_type::string_type</ref>:</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(s);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" kindref="member">option_type::list_type</ref>:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">options::OptionValue</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="classopenage_1_1options_1_1_option_action_1a8543517939fade7350330c12c7f09e17" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_action_1a8543517939fade7350330c12c7f09e17" kindref="member">OptionAction::OptionAction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" kindref="member">opt_func_t</ref><sp/>f)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>name{<ref refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" kindref="member">name</ref>},</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">{f}<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/><ref refid="classopenage_1_1options_1_1_option_action_1ab89110849b5b0aa9846d773c15214e87" kindref="member">OptionAction::do_action</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;</highlight><highlight class="keyword">function</highlight><highlight class="normal">();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" kindref="member">OptionNode::OptionNode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;panel_name)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>name{panel_name},</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>parent{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" kindref="member">OptionNode::~OptionNode</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" kindref="member">parent</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" kindref="member">parent</ref>-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" kindref="member">remove_panel</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" kindref="member">OptionNode::list_options</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>recurse,<sp/>std::string<sp/>indent)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(indent<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;node<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" kindref="member">name</ref><sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>{&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>inner_indent<sp/>=<sp/>indent<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/><ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">varmap</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(inner_indent<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;var<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>v.first<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>v.second.str_value());</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;f<sp/>:<sp/><ref refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" kindref="member">actions</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(inner_indent<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;func<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>f.first<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;p<sp/>:<sp/><ref refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" kindref="member">children</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref><sp/>:<sp/>p.second-&gt;list_options(recurse,<sp/>inner_indent))<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(indent<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;}&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" kindref="member">OptionNode::list_variables</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;v<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">varmap</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(v.first);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274" refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" kindref="member">OptionNode::list_functions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;f<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" kindref="member">actions</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(f.first);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283" refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;<ref refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" kindref="member">OptionNode::get_variable_rw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">varmap</ref>.at(name);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;<ref refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" kindref="member">OptionNode::get_variable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">varmap</ref>.at(name);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref><sp/>*<ref refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" kindref="member">OptionNode::get_child</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>child<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" kindref="member">children</ref>.find(name);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(child<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" kindref="member">children</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>child-&gt;second;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" kindref="member">OptionNode::set_parent</ref>(<ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref><sp/>*new_parent)<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" kindref="member">parent</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" kindref="member">parent</ref>-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" kindref="member">remove_panel</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" kindref="member">parent</ref><sp/>=<sp/>new_parent;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>new_parent-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1ac202efde6818473f10cbb96bcc4d84d3" kindref="member">add_panel</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/><ref refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" kindref="member">OptionNode::do_action</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;aname)<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>a<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" kindref="member">actions</ref>.find(aname);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" kindref="member">actions</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a-&gt;second.do_action();</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" kindref="member">OptionNode::add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;vname,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref><sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" kindref="member">varmap</ref>.emplace(std::make_pair(vname,<sp/>value));</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" kindref="member">OptionNode::add_action</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_action" kindref="compound">OptionAction</ref><sp/>&amp;action)<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" kindref="member">actions</ref>.emplace(std::make_pair(action.<ref refid="classopenage_1_1options_1_1_option_action_1a2f859f32525ec58cca08e109ebf36031" kindref="member">name</ref>,<sp/>action));</highlight></codeline>
+<codeline lineno="327"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330" refid="classopenage_1_1options_1_1_option_node_1ac202efde6818473f10cbb96bcc4d84d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_node_1ac202efde6818473f10cbb96bcc4d84d3" kindref="member">OptionNode::add_panel</ref>(<ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref><sp/>*child)<sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" kindref="member">children</ref>.emplace(std::make_pair(child-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" kindref="member">name</ref>,<sp/>child));</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335" refid="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" kindref="member">OptionNode::remove_panel</ref>(<ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref><sp/>*child)<sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" kindref="member">children</ref>.erase(child-&gt;<ref refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" kindref="member">name</ref>);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340" refid="classopenage_1_1options_1_1_option_hud_1a256236aa1b443d974352f8a3a8a5fd09" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1options_1_1_option_hud_1a256236aa1b443d974352f8a3a8a5fd09" kindref="member">OptionHud::OptionHud</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/options.cpp"/>
+  </compounddef>
+</doxygen>

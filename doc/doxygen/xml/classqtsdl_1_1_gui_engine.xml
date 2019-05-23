@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_engine" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiEngine</compoundname>
+    <includes refid="gui__engine_8h" local="no">gui_engine.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_engine_1abd9b139996c2a4007f6a4352afb1acb8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiEngineImpl</definition>
+        <argsstring></argsstring>
+        <name>GuiEngineImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_engine.h" line="24" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_engine_1a59c5aae8ba0f37036d4e37cd90895b0b" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_engine_impl" kindref="compound">GuiEngineImpl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;GuiEngineImpl&gt; qtsdl::GuiEngine::impl</definition>
+        <argsstring></argsstring>
+        <name>impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_engine.h" line="25" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_engine_1ab7fa0c6752ac0f0adc5634be593facdf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiEngine::GuiEngine</definition>
+        <argsstring>(GuiRenderer *renderer, const std::vector&lt; GuiImageProvider * &gt; &amp;image_providers=std::vector&lt; GuiImageProvider * &gt;(), GuiSingletonItemsInfo *singleton_items_info=nullptr)</argsstring>
+        <name>GuiEngine</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref> * &gt; &amp;</type>
+          <declname>image_providers</declname>
+          <defval>std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref> * &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref> *</type>
+          <declname>singleton_items_info</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_engine.h" line="20" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_engine_1a239558965efcb73bf1f69d939b69e0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiEngine::~GuiEngine</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_engine.h" line="21" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.cpp" bodystart="14" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Represents one QML execution environment. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2502">
+        <label>qtsdl::GuiEngine</label>
+        <link refid="classqtsdl_1_1_gui_engine"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/public/gui_engine.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_engine.h" bodystart="18" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_engine_1ab7fa0c6752ac0f0adc5634be593facdf" prot="public" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>GuiEngine</name></member>
+      <member refid="classqtsdl_1_1_gui_engine_1abd9b139996c2a4007f6a4352afb1acb8" prot="private" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>GuiEngineImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_engine_1a59c5aae8ba0f37036d4e37cd90895b0b" prot="private" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>impl</name></member>
+      <member refid="classqtsdl_1_1_gui_engine_1a239558965efcb73bf1f69d939b69e0e1" prot="public" virt="non-virtual"><scope>qtsdl::GuiEngine</scope><name>~GuiEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

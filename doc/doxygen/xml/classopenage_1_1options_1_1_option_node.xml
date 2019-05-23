@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1options_1_1_option_node" kind="class" language="C++" prot="public">
+    <compoundname>openage::options::OptionNode</compoundname>
+    <derivedcompoundref refid="classopenage_1_1_engine" prot="public" virt="non-virtual">openage::Engine</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_game_main" prot="public" virt="non-virtual">openage::GameMain</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_render_options" prot="public" virt="non-virtual">openage::RenderOptions</derivedcompoundref>
+    <includes refid="options_8h" local="no">options.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1options_1_1_option_node_1ad7de03ef305d9c8aa94b4c3c0b4c987e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class Var</definition>
+        <argsstring></argsstring>
+        <name>Var</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="165" column="1" bodyfile="libopenage/options.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::options::OptionNode::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>name of this node </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="216" column="1" bodyfile="libopenage/options.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+        <definition>OptionNode* openage::options::OptionNode::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>parent of this node </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="242" column="1" bodyfile="libopenage/options.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, OptionValue&gt; openage::options::OptionNode::varmap</definition>
+        <argsstring></argsstring>
+        <name>varmap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Variables which can be used TODO: read only variables </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="248" column="1" bodyfile="libopenage/options.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classopenage_1_1options_1_1_option_action" kindref="compound">OptionAction</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, OptionAction&gt; openage::options::OptionNode::actions</definition>
+        <argsstring></argsstring>
+        <name>actions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="252" column="1" bodyfile="libopenage/options.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;std::string, OptionNode *&gt; openage::options::OptionNode::children</definition>
+        <argsstring></argsstring>
+        <name>children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>children of this node </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="257" column="1" bodyfile="libopenage/options.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::options::OptionNode::OptionNode</definition>
+        <argsstring>(const std::string &amp;panel_name)</argsstring>
+        <name>OptionNode</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>panel_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="167" column="1" bodyfile="libopenage/options.cpp" bodystart="231" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::options::OptionNode::~OptionNode</definition>
+        <argsstring>()</argsstring>
+        <name>~OptionNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="168" column="1" bodyfile="libopenage/options.cpp" bodystart="238" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::options::OptionNode::list_options</definition>
+        <argsstring>(bool recurse=false, std::string indent=&quot;&quot;)</argsstring>
+        <name>list_options</name>
+        <param>
+          <type>bool</type>
+          <declname>recurse</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>indent</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>lists all available options in a readable format </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="173" column="1" bodyfile="libopenage/options.cpp" bodystart="245" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::options::OptionNode::list_variables</definition>
+        <argsstring>() const</argsstring>
+        <name>list_variables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>shows all available variable names </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="178" column="1" bodyfile="libopenage/options.cpp" bodystart="265" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::options::OptionNode::list_functions</definition>
+        <argsstring>() const</argsstring>
+        <name>list_functions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>shows all the available function names </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="183" column="1" bodyfile="libopenage/options.cpp" bodystart="274" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+        <definition>OptionValue &amp; openage::options::OptionNode::get_variable_rw</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>get_variable_rw</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="185" column="1" bodyfile="libopenage/options.cpp" bodystart="283" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+        <definition>const OptionValue &amp; openage::options::OptionNode::get_variable</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>get_variable</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="186" column="1" bodyfile="libopenage/options.cpp" bodystart="288" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a3caf0f35390dcb01054beb14a4c20819" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>const T &amp;</type>
+        <definition>const T&amp; openage::options::OptionNode::getv</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>getv</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>shortcut for get_variable(name).value&lt;T&gt;() </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="192" column="1" bodyfile="libopenage/options.h" bodystart="192" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+        <definition>OptionNode * openage::options::OptionNode::get_child</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>get_child</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return a child by name, or null if not available </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="199" column="1" bodyfile="libopenage/options.cpp" bodystart="293" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionNode::set_parent</definition>
+        <argsstring>(OptionNode *parent)</argsstring>
+        <name>set_parent</name>
+        <param>
+          <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set a parent panel which implies adding a child to the parent </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="205" column="1" bodyfile="libopenage/options.cpp" bodystart="302" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref></type>
+        <definition>OptionValue openage::options::OptionNode::do_action</definition>
+        <argsstring>(const std::string &amp;aname)</argsstring>
+        <name>do_action</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>aname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>performs the named action returning the actions response </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="211" column="1" bodyfile="libopenage/options.cpp" bodystart="311" bodyend="317"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionNode::add</definition>
+        <argsstring>(const std::string &amp;vname, const OptionValue &amp;value)</argsstring>
+        <name>add</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>vname</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add types to the interface </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="223" column="1" bodyfile="libopenage/options.cpp" bodystart="320" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionNode::add_action</definition>
+        <argsstring>(const OptionAction &amp;action)</argsstring>
+        <name>add_action</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1options_1_1_option_action" kindref="compound">OptionAction</ref> &amp;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="225" column="1" bodyfile="libopenage/options.cpp" bodystart="325" bodyend="327"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1ac202efde6818473f10cbb96bcc4d84d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionNode::add_panel</definition>
+        <argsstring>(OptionNode *child)</argsstring>
+        <name>add_panel</name>
+        <param>
+          <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add child nodes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="232" column="1" bodyfile="libopenage/options.cpp" bodystart="330" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::options::OptionNode::remove_panel</definition>
+        <argsstring>(OptionNode *child)</argsstring>
+        <name>remove_panel</name>
+        <param>
+          <type><ref refid="classopenage_1_1options_1_1_option_node" kindref="compound">OptionNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>remove child nodes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="237" column="1" bodyfile="libopenage/options.cpp" bodystart="335" bodyend="337"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Allows objects to expose customisable features</para>
+<para>This is used to bind inner game classes with console interaction or gui elements </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3479">
+        <label>openage::GameMain</label>
+        <link refid="classopenage_1_1_game_main"/>
+        <childnode refid="3477" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3480">
+        <label>openage::RenderOptions</label>
+        <link refid="classopenage_1_1_render_options"/>
+        <childnode refid="3477" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3477">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+      </node>
+      <node id="3478">
+        <label>openage::Engine</label>
+        <link refid="classopenage_1_1_engine"/>
+        <childnode refid="3477" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3481">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="3481" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/options.h" line="163" column="1" bodyfile="libopenage/options.h" bodystart="163" bodyend="258"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_node_1a53b30acee78e9f4ddaea40dc96c7d3c3" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>actions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>add</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>add_action</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ac202efde6818473f10cbb96bcc4d84d3" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>add_panel</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a23ef51f6627fe05ea7b9027548e417d6" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>children</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>do_action</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>get_child</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>get_variable</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>get_variable_rw</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3caf0f35390dcb01054beb14a4c20819" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>getv</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>list_functions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>list_options</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>list_variables</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>name</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>OptionNode</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a609ae10fb729920475b15c83a7edeaf7" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>parent</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1acaa942ca2c4207d5960ade2e54099f98" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>remove_panel</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" prot="public" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>set_parent</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ad7de03ef305d9c8aa94b4c3c0b4c987e" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>Var</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a965533f59ae5fb52213d3ade08520cd2" prot="private" virt="non-virtual"><scope>openage::options::OptionNode</scope><name>varmap</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" prot="public" virt="virtual"><scope>openage::options::OptionNode</scope><name>~OptionNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

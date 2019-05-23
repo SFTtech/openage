@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1curve_1_1_queue_1_1queue__wrapper" kind="struct" language="C++" prot="private">
+    <compoundname>openage::curve::Queue::queue_wrapper</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1afdd6c72cb00c6b5906ab78af3fc77248" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
+        <definition>time_t openage::curve::Queue&lt; T &gt;::queue_wrapper::_time</definition>
+        <argsstring></argsstring>
+        <name>_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="21" column="1" bodyfile="libopenage/curve/queue.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1aa5a9f7f1c755925ed6fb65499089c91c" prot="public" static="no" mutable="no">
+        <type>T</type>
+        <definition>T openage::curve::Queue&lt; T &gt;::queue_wrapper::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="22" column="1" bodyfile="libopenage/curve/queue.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1a9f13d26ca7d8cc64b9b4d003c7d18873" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::Queue&lt; T &gt;::queue_wrapper::queue_wrapper</definition>
+        <argsstring>(const time_t &amp;time, const T &amp;value)</argsstring>
+        <name>queue_wrapper</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="24" column="1" bodyfile="libopenage/curve/queue.h" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1ac9a915e29db89fbd0731899d845db899" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref></type>
+        <definition>time_t openage::curve::Queue&lt; T &gt;::queue_wrapper::time</definition>
+        <argsstring>() const</argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="29" column="1" bodyfile="libopenage/curve/queue.h" bodystart="29" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3822">
+        <label>openage::curve::Queue&lt; T &gt;::queue_wrapper</label>
+        <link refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper"/>
+        <childnode refid="3823" relation="usage">
+          <edgelabel>+_time</edgelabel>
+        </childnode>
+      </node>
+      <node id="3823">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/queue.h" line="20" column="1" bodyfile="libopenage/curve/queue.h" bodystart="20" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1afdd6c72cb00c6b5906ab78af3fc77248" prot="public" virt="non-virtual"><scope>openage::curve::Queue::queue_wrapper</scope><name>_time</name></member>
+      <member refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1a9f13d26ca7d8cc64b9b4d003c7d18873" prot="public" virt="non-virtual"><scope>openage::curve::Queue::queue_wrapper</scope><name>queue_wrapper</name></member>
+      <member refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1ac9a915e29db89fbd0731899d845db899" prot="public" virt="non-virtual"><scope>openage::curve::Queue::queue_wrapper</scope><name>time</name></member>
+      <member refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper_1aa5a9f7f1c755925ed6fb65499089c91c" prot="public" virt="non-virtual"><scope>openage::curve::Queue::queue_wrapper</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

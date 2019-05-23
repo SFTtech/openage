@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_action_mode_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::ActionModeLink</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_inherits" prot="public" virt="non-virtual">qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</basecompoundref>
+    <includes refid="game__control__link_8h" local="no">game_control_link.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QString</type>
+        <definition>QString openage::gui::ActionModeLink::ability</definition>
+        <argsstring></argsstring>
+        <name>ability</name>
+        <read>get_ability</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QString</type>
+        <definition>QString openage::gui::ActionModeLink::population</definition>
+        <argsstring></argsstring>
+        <name>population</name>
+        <read>get_population</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool openage::gui::ActionModeLink::population_warn</definition>
+        <argsstring></argsstring>
+        <name>population_warn</name>
+        <read>get_population_warn</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="92" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a37fca1eda3c51fae919ef4a03742df19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::ActionModeLink::ActionModeLink</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>ActionModeLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="123" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="101" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a8e258d53755efda2f9f893bcc57747e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::ActionModeLink::~ActionModeLink</definition>
+        <argsstring>()</argsstring>
+        <name>~ActionModeLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="124" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="107" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1ab23bd1e10f623a3d67d12f10926b4209" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString openage::gui::ActionModeLink::get_ability</definition>
+        <argsstring>() const</argsstring>
+        <name>get_ability</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="126" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a52d11c3f9905a8ead41efd359f851c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString openage::gui::ActionModeLink::get_population</definition>
+        <argsstring>() const</argsstring>
+        <name>get_population</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="127" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="114" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a06a0537e099e72de7ca0413a5f553a84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::ActionModeLink::get_population_warn</definition>
+        <argsstring>() const</argsstring>
+        <name>get_population_warn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="128" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="118" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1abb719548ca39225996f9c61fb3434754" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Q_INVOKABLE void</type>
+        <definition>void openage::gui::ActionModeLink::act</definition>
+        <argsstring>(const QString &amp;action)</argsstring>
+        <name>act</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="130" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="122" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a75908804b2a081f7e055e60fe05bf211" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::ability_changed</definition>
+        <argsstring>()</argsstring>
+        <name>ability_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="133" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a840419e327078204b1a57ba5249ad644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::action_triggered</definition>
+        <argsstring>(const std::string &amp;ability)</argsstring>
+        <name>action_triggered</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ability</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="134" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::buttons_type_changed</definition>
+        <argsstring>(const ActionButtonsType buttons_type)</argsstring>
+        <name>buttons_type_changed</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref></type>
+          <declname>buttons_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="135" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_action_mode_link_1a6ea3f5513ed884b7b1f16bf9cf08dff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::population_changed</definition>
+        <argsstring>()</argsstring>
+        <name>population_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="136" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_action_mode_link_1a4eed7841550a933434148daef3a162fe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::on_ability_changed</definition>
+        <argsstring>(const std::string &amp;ability)</argsstring>
+        <name>on_ability_changed</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ability</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="139" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_action_mode_link_1a5b47b6c506c74c341fbbac395b910b7a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::on_buttons_type_changed</definition>
+        <argsstring>(const ActionButtonsType buttons_type)</argsstring>
+        <name>on_buttons_type_changed</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1afdbe6bcd8b7f61f9654a9736d9414ee5" kindref="member">ActionButtonsType</ref></type>
+          <declname>buttons_type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="140" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::on_population_changed</definition>
+        <argsstring>(int demand, int capacity, bool warn)</argsstring>
+        <name>on_population_changed</name>
+        <param>
+          <type>int</type>
+          <declname>demand</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>capacity</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>warn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="141" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="135" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::gui::ActionModeLink::on_core_adopted</definition>
+        <argsstring>() override</argsstring>
+        <name>on_core_adopted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_control_link.h" line="144" column="1" bodyfile="libopenage/gui/game_control_link.cpp" bodystart="141" bodyend="159"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="98">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="96">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="98" relation="public-inheritance">
+        </childnode>
+        <childnode refid="100" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>OutputModeLink</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="104">
+        <label>qtsdl::Shadow&lt; OutputModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_shadow"/>
+        <childnode refid="105" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>qtsdl::GuiItemMethods&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="102">
+        <label>openage::gui::ActionModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_action_mode_link"/>
+        <childnode refid="103" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="107" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>qtsdl::Inherits&lt; OutputModeLink, ActionModeLink &gt;</label>
+        <link refid="classqtsdl_1_1_inherits"/>
+        <childnode refid="104" relation="public-inheritance">
+        </childnode>
+        <childnode refid="106" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>OutputModeLink</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/game_control_link.h" line="115" column="1" bodyfile="libopenage/gui/game_control_link.h" bodystart="115" bodyend="149"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a7679f8dacc7ded6b0b6b4be1dc262094" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>ability</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a75908804b2a081f7e055e60fe05bf211" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>ability_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1abb719548ca39225996f9c61fb3434754" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>act</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a840419e327078204b1a57ba5249ad644" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>action_triggered</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a37fca1eda3c51fae919ef4a03742df19" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>ActionModeLink</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a2d82405ceec660c947a1f617cc30b517" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>buttons_type_changed</name></member>
+      <member refid="classqtsdl_1_1_shadow_1ae48245ef36d2e5c1b9efbdb8152c9367" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; ActionModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; ActionModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>get</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1ab23bd1e10f623a3d67d12f10926b4209" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>get_ability</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a52d11c3f9905a8ead41efd359f851c85" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>get_population</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a06a0537e099e72de7ca0413a5f553a84" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>get_population_warn</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a72190fd685d21b446fae24b92412b54f" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; ActionModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_inherits_1a8e40f947d69f66a2e6231d7243e14b1e" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>Inherits</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a4eed7841550a933434148daef3a162fe" prot="private" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>on_ability_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a5b47b6c506c74c341fbbac395b910b7a" prot="private" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>on_buttons_type_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a7f40baae6dc5feed6abebaa5eae2f2d6" prot="private" virt="virtual"><scope>openage::gui::ActionModeLink</scope><name>on_core_adopted</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a8388724e23846b1d337754421ce3fe88" prot="private" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>on_population_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a2b4381074edf33e765cf00ff8c8d66e2" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>population</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a6ea3f5513ed884b7b1f16bf9cf08dff6" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>population_changed</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1adb8d23678fa02f4d308d38723fc0edbc" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>population_warn</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a6701a7a35ed1c41d1c0ae2927e4fbc39" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; ActionModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_shadow_1a77412ce3729150d91b32364e2addbb40" prot="public" virt="non-virtual" ambiguityscope="Shadow&lt; OutputModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual" ambiguityscope="GuiItemCoreInstantiator&lt; ActionModeLink &gt;::"><scope>openage::gui::ActionModeLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_shadow_1aaad5e74a709811bf9c32405b9628d77b" prot="public" virt="non-virtual"><scope>openage::gui::ActionModeLink</scope><name>Shadow</name></member>
+      <member refid="classopenage_1_1gui_1_1_action_mode_link_1a8e258d53755efda2f9f893bcc57747e5" prot="public" virt="virtual"><scope>openage::gui::ActionModeLink</scope><name>~ActionModeLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>openage::gui::ActionModeLink</scope><name>~GuiItemMethods</name></member>
+      <member refid="classqtsdl_1_1_inherits_1a9c8a480b69f22524c19ae46704b42f7f" prot="public" virt="virtual"><scope>openage::gui::ActionModeLink</scope><name>~Inherits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

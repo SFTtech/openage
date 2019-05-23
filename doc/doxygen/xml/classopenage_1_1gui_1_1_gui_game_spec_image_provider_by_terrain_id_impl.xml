@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</compoundname>
+    <basecompoundref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl" prot="public" virt="non-virtual">openage::gui::GuiGameSpecImageProviderByIdImpl</basecompoundref>
+    <includes refid="gui__game__spec__image__provider__by__terrain__id__impl_8h" local="no">gui_game_spec_image_provider_by_terrain_id_impl.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1added4647bea4d50a74ce073bce12a458" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::GuiGameSpecImageProviderByTerrainIdImpl</definition>
+        <argsstring>(qtsdl::GuiEventQueue *render_updater)</argsstring>
+        <name>GuiGameSpecImageProviderByTerrainIdImpl</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref> *</type>
+          <declname>render_updater</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="17" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1a433b204c42334dbf6d046a5f8ec74d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::~GuiGameSpecImageProviderByTerrainIdImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiGameSpecImageProviderByTerrainIdImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="18" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp" bodystart="17" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1a5365e1b1e6ded2a6150d81cd1b244900" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::id</definition>
+        <argsstring>()</argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="20" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1ae9099f90705c5d62ac37d1216345d12a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::get_id</definition>
+        <argsstring>() const override</argsstring>
+        <name>get_id</name>
+        <reimplements refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e">get_id</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="23" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1acf8dfdfb5bd268168812ff893253dd2c" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1_texture" kindref="compound">openage::Texture</ref> *</type>
+        <definition>openage::Texture * openage::gui::GuiGameSpecImageProviderByTerrainIdImpl::get_texture</definition>
+        <argsstring>(int texture_id) override</argsstring>
+        <name>get_texture</name>
+        <reimplements refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a315e6d68cfa58f643450b3eae0fbd74e">get_texture</reimplements>
+        <param>
+          <type>int</type>
+          <declname>texture_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp" bodystart="28" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Exposes terrain textures to the Qt by their id.</para>
+<para>Numeric id has a form of &lt;texture-id&gt;.&lt;subid&gt; where texture-id is the position in the <ref refid="structopenage_1_1terrain__meta" kindref="compound">terrain_meta</ref>. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2576">
+        <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
+        <childnode refid="2577" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2577">
+        <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
+        <childnode refid="2578" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2578">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2579" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2579">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2580" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2580">
+        <label>QQuickImageProvider</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2581">
+        <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
+        <childnode refid="2582" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2587">
+        <label>QObject</label>
+      </node>
+      <node id="2582">
+        <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
+        <childnode refid="2583" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2586">
+        <label>qtsdl::GuiCallback</label>
+        <link refid="classqtsdl_1_1_gui_callback"/>
+        <childnode refid="2587" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2583">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2584" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2586" relation="usage">
+          <edgelabel>-render_thread_callback</edgelabel>
+        </childnode>
+      </node>
+      <node id="2584">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2585" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2585">
+        <label>QQuickImageProvider</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" line="15" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.h" bodystart="15" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>fill_texture_handle</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1ae9099f90705c5d62ac37d1216345d12a" prot="private" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>get_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a99c5f3aa01010aafd71bec94f1fd017d" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>get_missing_texture</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1acf8dfdfb5bd268168812ff893253dd2c" prot="private" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>get_texture</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a1c06cbd433d8f48a4e7ec3dc4d591596" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>GuiGameSpecImageProviderByIdImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1added4647bea4d50a74ce073bce12a458" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>GuiGameSpecImageProviderByTerrainIdImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1abf0126df9e8042f64226bbb1459c092c" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>GuiGameSpecImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>GuiImageProviderImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1a5365e1b1e6ded2a6150d81cd1b244900" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ae39715c0800f5ade30bdc6af6ad696b3" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>invalidated</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>loaded_game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a42ec51b02960edb6ef405251a640bd5f" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>on_game_spec_invalidated</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a96f49e5b70c5848778479d8ae36431b9" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>on_game_spec_loaded</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>take_ownership</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>take_ownership</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1af0d587f7988bf0b1131c9fe436b56f16" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>~GuiGameSpecImageProviderByIdImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1a433b204c42334dbf6d046a5f8ec74d24" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>~GuiGameSpecImageProviderByTerrainIdImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a10f2ca12803f2786d41353f6b5da338b" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>~GuiGameSpecImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</scope><name>~GuiImageProviderImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

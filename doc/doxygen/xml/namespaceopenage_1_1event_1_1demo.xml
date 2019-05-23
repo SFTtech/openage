@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1event_1_1demo" kind="namespace" language="C++">
+    <compoundname>openage::event::demo</compoundname>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_a_i_input" prot="public">openage::event::demo::AIInput</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel" prot="public">openage::event::demo::BallReflectPanel</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall" prot="public">openage::event::demo::BallReflectWall</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_physics" prot="public">openage::event::demo::Physics</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_pong_ball" prot="public">openage::event::demo::PongBall</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_pong_event" prot="public">openage::event::demo::PongEvent</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_pong_player" prot="public">openage::event::demo::PongPlayer</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_pong_state" prot="public">openage::event::demo::PongState</innerclass>
+    <innerclass refid="classopenage_1_1event_1_1demo_1_1_reset_game" prot="public">openage::event::demo::ResetGame</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1event_1_1demo_1a917d739b2622e48457d5ea001955f8af" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>timescale</name>
+        <enumvalue id="namespaceopenage_1_1event_1_1demo_1a917d739b2622e48457d5ea001955f8afa65296dcb194a9e54080c0abe84c75f31" prot="public">
+          <name>NOSLEEP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1event_1_1demo_1a917d739b2622e48457d5ea001955f8afa4abfc22ad3c3ef567d80c65263fd7754" prot="public">
+          <name>REALTIME</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1event_1_1demo_1a917d739b2622e48457d5ea001955f8afa0e3066cbbd284dce8b76e7c4620d6d75" prot="public">
+          <name>SLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1event_1_1demo_1a917d739b2622e48457d5ea001955f8afadca6e617f6fb54033deb311e7e7c93cc" prot="public">
+          <name>FAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Simulation speeds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/main.cpp" line="34" column="1" bodyfile="libopenage/event/demo/main.cpp" bodystart="34" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1event_1_1demo_1a941b2bcbd6e44b20cc352eb1c2b64068" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::event::demo::curvepong</definition>
+        <argsstring>(bool disable_gui, bool no_human)</argsstring>
+        <name>curvepong</name>
+        <param>
+          <type>bool</type>
+          <declname>disable_gui</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>no_human</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/main.cpp" line="42" column="1" bodyfile="libopenage/event/demo/main.cpp" bodystart="42" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1event_1_1demo_1a1607b8f39e576983b7c82860db47e224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::event::demo::curvepong</definition>
+        <argsstring>()</argsstring>
+        <name>curvepong</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/loop.h" line="20" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/event/demo/aicontroller.cpp" line="5" column="1"/>
+  </compounddef>
+</doxygen>

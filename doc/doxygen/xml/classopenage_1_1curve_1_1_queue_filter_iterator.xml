@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_queue_filter_iterator" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::QueueFilterIterator</compoundname>
+    <basecompoundref refid="classopenage_1_1curve_1_1_curve_iterator" prot="public" virt="non-virtual">openage::curve::CurveIterator&lt; val_t, container_t, container_t::const_iterator &gt;</basecompoundref>
+    <includes refid="queue__filter__iterator_8h" local="no">queue_filter_iterator.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>val_t</declname>
+        <defname>val_t</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>container_t</declname>
+        <defname>container_t</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_filter_iterator_1a3ee8b8c2f0c1fae7ea149f66f66937d6" prot="public" static="no">
+        <type>typename container_t::const_iterator</type>
+        <definition>using openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;::const_iterator =  typename container_t::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue_filter_iterator.h" line="26" column="1" bodyfile="libopenage/curve/queue_filter_iterator.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_filter_iterator_1aac60963e274576ab93d6410d56524fe7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;::QueueFilterIterator</definition>
+        <argsstring>(const const_iterator &amp;base, const container_t *base_container, const time_t &amp;from, const time_t &amp;to)</argsstring>
+        <name>QueueFilterIterator</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a3ee8b8c2f0c1fae7ea149f66f66937d6" kindref="member">const_iterator</ref> &amp;</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>const container_t *</type>
+          <declname>base_container</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct the iterator from its boundary conditions: time and container </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue_filter_iterator.h" line="31" column="1" bodyfile="libopenage/curve/queue_filter_iterator.h" bodystart="31" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_filter_iterator_1a3701a6bec3e58007aafd6c56248d99a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;::valid</definition>
+        <argsstring>() const override</argsstring>
+        <name>valid</name>
+        <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1a0b8d8cedf66ff2cbb551f2faf63d3026">valid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the iterator is still valid (this breaks from the stl - in the best way) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue_filter_iterator.h" line="38" column="1" bodyfile="libopenage/curve/queue_filter_iterator.h" bodystart="38" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_filter_iterator_1a4aafd29d89c2084adf6bebe8967ffcf8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const val_t &amp;</type>
+        <definition>const val_t&amp; openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;::value</definition>
+        <argsstring>() const override</argsstring>
+        <name>value</name>
+        <reimplements refid="classopenage_1_1curve_1_1_curve_iterator_1ab7d2b047846bd36fa2dee3d216bac420">value</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>access the value of the iterator </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue_filter_iterator.h" line="46" column="1" bodyfile="libopenage/curve/queue_filter_iterator.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A filtering operator to iterate over all elements of a queue whose elements exist at exactly one point of time, the range where to iterate is given at construction.</para>
+<para>It depends on val_t as its value type, container_t is the container to operate on and the function valid_f, that checks if an element is alive. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3824">
+        <label>openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_queue_filter_iterator"/>
+        <childnode refid="3825" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3825">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t, container_t::const_iterator &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3829">
+        <label>container_t</label>
+      </node>
+      <node id="3826">
+        <label>openage::curve::QueueFilterIterator&lt; val_t, container_t &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_queue_filter_iterator"/>
+        <childnode refid="3827" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3827">
+        <label>openage::curve::CurveIterator&lt; val_t, container_t, container_t::const_iterator &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_curve_iterator"/>
+        <childnode refid="3828" relation="usage">
+          <edgelabel>#from</edgelabel>
+          <edgelabel>#to</edgelabel>
+        </childnode>
+        <childnode refid="3829" relation="usage">
+          <edgelabel>#container</edgelabel>
+        </childnode>
+      </node>
+      <node id="3828">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/queue_filter_iterator.h" line="24" column="1" bodyfile="libopenage/curve/queue_filter_iterator.h" bodystart="24" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a11394d2684ffc192aaae3184df428003" prot="protected" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>base</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a3ee8b8c2f0c1fae7ea149f66f66937d6" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>const_iterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a9a96fab06cebd047fb68c95bef5b18f1" prot="protected" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>container</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1ad4bd1ef9f473fbdfa1d1df4288a50f2e" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a45e14ddb2e3759afe9b36d4b01d55cd0" prot="protected" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a40ebee2d0fa0286de5626196595fdeae" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>CurveIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a2fe1766ff4c5b6519e07785ed567a305" prot="protected" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>from</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1aa9fdd5bc51aff18de3955205eb89a4cb" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>get_base</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1aeb43903e1f5f74e50013d1234edc0160" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>get_from</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1acea98f4841a8ae5600d1a772ad3d1965" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>get_to</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a0e4ecb78a518cdb0f3606f23e851d802" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a9b701b5027187bea44a9f02dbf254912" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator *</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a33bad08eacbb20caa76fab3deca68ce8" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator -&gt;</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1ab14912b85502c78be50c1f1153910a04" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator++</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a984fc87d7f98bcf2ad157b46b8859719" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a75ae942a23bf9d03bca21d1085dbfbab" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_filter_iterator_1aac60963e274576ab93d6410d56524fe7" prot="public" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>QueueFilterIterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a91dc13f1422535e3f5a02b6c3893252f" prot="protected" virt="non-virtual"><scope>openage::curve::QueueFilterIterator</scope><name>to</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a3701a6bec3e58007aafd6c56248d99a3" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>valid</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_filter_iterator_1a4aafd29d89c2084adf6bebe8967ffcf8" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>value</name></member>
+      <member refid="classopenage_1_1curve_1_1_curve_iterator_1a46f039556f6f516d51e05a608319aba2" prot="public" virt="virtual"><scope>openage::curve::QueueFilterIterator</scope><name>~CurveIterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

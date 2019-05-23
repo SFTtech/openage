@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_on_init" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::OnInit</compoundname>
+    <includes refid="init_8h" local="no">init.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::OnInit::OnInit</definition>
+        <argsstring>(std::function&lt; void()&gt; code)</argsstring>
+        <name>OnInit</name>
+        <param>
+          <type>std::function&lt; void()&gt;</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="26" column="1" bodyfile="libopenage/util/init.h" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1aee68c717a9836e70bb40f74329ee376e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::OnInit::~OnInit</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OnInit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="30" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a3eeee4b424c992455890857b303a9402" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::OnInit::OnInit</definition>
+        <argsstring>(const OnInit &amp;)=delete</argsstring>
+        <name>OnInit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a87cd22b22dfd7501b1b157fe36d8cd97" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::OnInit::OnInit</definition>
+        <argsstring>(OnInit &amp;&amp;)=delete</argsstring>
+        <name>OnInit</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1aa8ed10ec7ad3387c11ab20f38dae1076" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
+        <definition>OnInit&amp; openage::util::OnInit::operator=</definition>
+        <argsstring>(const OnInit &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_on_init_1a63903e5182781e8b25233ea2642d99f5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;</type>
+        <definition>OnInit&amp; openage::util::OnInit::operator=</definition>
+        <argsstring>(OnInit &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">OnInit</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/init.h" line="38" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Runs code() on construction.</para>
+<para>Designed for use as a global object. Note that your regular dynamic initialization order concerns apply.</para>
+<para>Example:</para>
+<para>// anonymous namespace as container for these global objects namespace { <ref refid="classopenage_1_1util_1_1_on_init" kindref="compound">util::OnInit</ref> stuff_to_be_done_on_initialization([]() { do_stuff(1 * 2 + 3); }); } </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3472">
+        <label>openage::util::OnInit</label>
+        <link refid="classopenage_1_1util_1_1_on_init"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/init.h" line="24" column="1" bodyfile="libopenage/util/init.h" bodystart="24" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_on_init_1a3850d390b54879b220ea9cddfba27144" prot="public" virt="non-virtual"><scope>openage::util::OnInit</scope><name>OnInit</name></member>
+      <member refid="classopenage_1_1util_1_1_on_init_1a3eeee4b424c992455890857b303a9402" prot="private" virt="non-virtual"><scope>openage::util::OnInit</scope><name>OnInit</name></member>
+      <member refid="classopenage_1_1util_1_1_on_init_1a87cd22b22dfd7501b1b157fe36d8cd97" prot="private" virt="non-virtual"><scope>openage::util::OnInit</scope><name>OnInit</name></member>
+      <member refid="classopenage_1_1util_1_1_on_init_1aa8ed10ec7ad3387c11ab20f38dae1076" prot="private" virt="non-virtual"><scope>openage::util::OnInit</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_on_init_1a63903e5182781e8b25233ea2642d99f5" prot="private" virt="non-virtual"><scope>openage::util::OnInit</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_on_init_1aee68c717a9836e70bb40f74329ee376e" prot="public" virt="non-virtual"><scope>openage::util::OnInit</scope><name>~OnInit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

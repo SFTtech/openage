@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item_base" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItemBase</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_deferred_initial_constant_property_values" prot="public" virt="non-virtual">qtsdl::DeferredInitialConstantPropertyValues</basecompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_q_object" prot="public" virt="non-virtual">qtsdl::GuiItemQObject</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_list_model" prot="public" virt="non-virtual">qtsdl::GuiListModel</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_base_1af06ac41a40b996c41a6bea8eb81cdb34" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiLiveReloader</definition>
+        <argsstring></argsstring>
+        <name>GuiLiveReloader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="74" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_base_1a141ca92272c6cc5e6c97ea10b7e9b8e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiSubtreeImpl</definition>
+        <argsstring></argsstring>
+        <name>GuiSubtreeImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="75" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_base_1a43709c5aa9a03fdc13528f08551adf2f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class GuiItemMethods</definition>
+        <argsstring></argsstring>
+        <name>GuiItemMethods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="78" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_base_1a3d4fc768ba657ca0a2a2c4edc573c6d0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class GuiItemCoreInstantiator</definition>
+        <argsstring></argsstring>
+        <name>GuiItemCoreInstantiator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="81" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_base_1af2257b970c546bf1360c6d12537b64f1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class GuiItemListModel</definition>
+        <argsstring></argsstring>
+        <name>GuiItemListModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="84" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" prot="protected" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_game_logic_caller" kindref="compound">GameLogicCaller</ref></type>
+        <definition>GameLogicCaller qtsdl::GuiItemBase::game_logic_caller</definition>
+        <argsstring></argsstring>
+        <name>game_logic_caller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="120" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; std::unique_ptr&lt; <ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> &gt;)&gt;</type>
+        <definition>std::function&lt;std::unique_ptr&lt;PersistentCoreHolderBase&gt;)&gt; qtsdl::GuiItemBase::instantiate_core_func</definition>
+        <argsstring></argsstring>
+        <name>instantiate_core_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="121" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void(<ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> *, const QString &amp;)&gt;</type>
+        <definition>std::function&lt;void(PersistentCoreHolderBase*, const QString&amp;)&gt; qtsdl::GuiItemBase::do_adopt_core_func</definition>
+        <argsstring></argsstring>
+        <name>do_adopt_core_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="122" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" prot="protected" static="no" mutable="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>std::function&lt;void()&gt; qtsdl::GuiItemBase::on_core_adopted_func</definition>
+        <argsstring></argsstring>
+        <name>on_core_adopted_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="123" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual qtsdl::GuiItemBase::~GuiItemBase</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiItemBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="70" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="70" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1a5deaa06ceae4ec076f38c355547c41f8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;PersistentCoreHolderBase&gt; qtsdl::GuiItemBase::instantiate_core</definition>
+        <argsstring>()</argsstring>
+        <name>instantiate_core</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates and returns a core object inside a holder. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="89" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1af1433a540395f683b194c0471bef68ff" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiItemBase::adopt_core</definition>
+        <argsstring>(PersistentCoreHolderBase *holder, const QString &amp;tag)</argsstring>
+        <name>adopt_core</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> *</type>
+          <declname>holder</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attaches to a core object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="96" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="96" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1a7a29a7f13ba9826bbb31a32ad2d37707" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiItemBase::do_adopt_core</definition>
+        <argsstring>(PersistentCoreHolderBase *holder, const QString &amp;tag)</argsstring>
+        <name>do_adopt_core</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> *</type>
+          <declname>holder</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="105" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1aaa15e915bd7009ac4a332aa08d3e554f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::GuiItemBase::on_core_adopted</definition>
+        <argsstring>()</argsstring>
+        <name>on_core_adopted</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_output_mode_link_1a075e25acd5ad18242e42fb428c3c8b09">on_core_adopted</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_game_main_link_1a360f50de98c75d538bf46a03c3731874">on_core_adopted</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_game_spec_link_1aa2749ef2e6877074640f1a74b3d59eb5">on_core_adopted</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_game_control_link_1ac65023c9d5f785efe775b1dd99111c42">on_core_adopted</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="109" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="109" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_base_1a0567d09e763a08648aad1675201b75b8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiItemBase::set_game_logic_callback</definition>
+        <argsstring>(GuiCallback *game_logic_callback)</argsstring>
+        <name>set_game_logic_callback</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_callback" kindref="compound">GuiCallback</ref> *</type>
+          <declname>game_logic_callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set up signal to be able to run code in the game logic thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="115" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="115" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2644">
+        <label>openage::gui::GameSpecLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_spec_link"/>
+        <childnode refid="2640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2642">
+        <label>openage::gui::GameControlLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_control_link"/>
+        <childnode refid="2640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2641">
+        <label>openage::gui::AssetManagerLink</label>
+        <link refid="classopenage_1_1gui_1_1_asset_manager_link"/>
+        <childnode refid="2640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2645">
+        <label>openage::gui::OutputModeLink</label>
+        <link refid="classopenage_1_1gui_1_1_output_mode_link"/>
+        <childnode refid="2640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2639">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2640">
+        <label>qtsdl::GuiItemQObject</label>
+        <link refid="classqtsdl_1_1_gui_item_q_object"/>
+        <childnode refid="2638" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2638">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2639" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2646">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="2638" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2643">
+        <label>openage::gui::GameMainLink</label>
+        <link refid="classopenage_1_1gui_1_1_game_main_link"/>
+        <childnode refid="2640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2647">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="2646" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2651">
+        <label>QObject</label>
+      </node>
+      <node id="2649">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2648">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2649" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2650" relation="usage">
+          <edgelabel>#game_logic_caller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2650">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="2651" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="68" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="68" bodyend="124"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_item_base_1af1433a540395f683b194c0471bef68ff" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>adopt_core</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>apply_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>clear_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a7a29a7f13ba9826bbb31a32ad2d37707" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>do_adopt_core</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>do_adopt_core_func</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>game_logic_caller</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a3d4fc768ba657ca0a2a2c4edc573c6d0" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1af2257b970c546bf1360c6d12537b64f1" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>GuiItemListModel</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a43709c5aa9a03fdc13528f08551adf2f" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>GuiItemMethods</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1af06ac41a40b996c41a6bea8eb81cdb34" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>GuiLiveReloader</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a141ca92272c6cc5e6c97ea10b7e9b8e0" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>GuiSubtreeImpl</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a5deaa06ceae4ec076f38c355547c41f8" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>instantiate_core</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>instantiate_core_func</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>is_init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1aaa15e915bd7009ac4a332aa08d3e554f" prot="private" virt="virtual"><scope>qtsdl::GuiItemBase</scope><name>on_core_adopted</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>on_core_adopted_func</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a0567d09e763a08648aad1675201b75b8" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>set_game_logic_callback</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemBase</scope><name>static_properties_assignments</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" virt="virtual"><scope>qtsdl::GuiItemBase</scope><name>~DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" prot="public" virt="virtual"><scope>qtsdl::GuiItemBase</scope><name>~GuiItemBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

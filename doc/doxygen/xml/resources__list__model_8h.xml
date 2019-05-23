@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="resources__list__model_8h" kind="file" language="C++">
+    <compoundname>resources_list_model.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">QAbstractListModel</includes>
+    <includes refid="gamestate_2resource_8h" local="yes">../gamestate/resource.h</includes>
+    <includedby refid="resources__list__model_8cpp" local="yes">libopenage/gui/resources_list_model.cpp</includedby>
+    <incdepgraph>
+      <node id="15132">
+        <label>functional</label>
+      </node>
+      <node id="15127">
+        <label>libopenage/gui/resources_list_model.h</label>
+        <link refid="resources__list__model_8h"/>
+        <childnode refid="15128" relation="include">
+        </childnode>
+        <childnode refid="15129" relation="include">
+        </childnode>
+        <childnode refid="15130" relation="include">
+        </childnode>
+        <childnode refid="15131" relation="include">
+        </childnode>
+      </node>
+      <node id="15133">
+        <label>string</label>
+      </node>
+      <node id="15129">
+        <label>tuple</label>
+      </node>
+      <node id="15128">
+        <label>vector</label>
+      </node>
+      <node id="15131">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="15132" relation="include">
+        </childnode>
+        <childnode refid="15133" relation="include">
+        </childnode>
+      </node>
+      <node id="15130">
+        <label>QAbstractListModel</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15134">
+        <label>libopenage/gui/resources_list_model.h</label>
+        <link refid="resources__list__model_8h"/>
+        <childnode refid="15135" relation="include">
+        </childnode>
+      </node>
+      <node id="15135">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_resources_list_model" prot="public">openage::gui::ResourcesListModel</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QAbstractListModel&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../gamestate/resource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ActionModeLink;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1gui_1_1_resources_list_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_resources_list_model" kindref="compound">ResourcesListModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractListModel<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_PROPERTY(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">openage::gui::ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1af34e87db4e19b7d01a01577b974a8f0e" kindref="member">actionMode</ref><sp/>READ<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" kindref="member">get_action_mode</ref><sp/>WRITE<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" kindref="member">set_action_mode</ref>)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a7e4ee813a5fcd9e7dfe74f629c80d4c4" kindref="member">ResourcesListModel</ref>(QObject<sp/>*parent=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a22b3b963aacfc3a4d86a5195c02bfdc0" kindref="member">~ResourcesListModel</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref>*<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a8ef794a9d1aba12f46409a5cd2178e4d" kindref="member">get_action_mode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ac7c796467bd307ad2b501df35fa8139f" kindref="member">set_action_mode</ref>(<ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" kindref="member">action_mode</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a10d6d0fca4a81acbd8d14d9b89bbf438" kindref="member">on_resource_changed</ref>(<ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref><sp/>resource,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>amount);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ae95e757c9e3abcd727b89efe212b2127" kindref="member">rowCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex&amp;)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QVariant<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1ab5a3cadc4c413fbac7ec1de1a00433a7" kindref="member">data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role=Qt::DisplayRole)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="classopenage_1_1gui_1_1_resources_list_model_1a093b91cf46d48799de76c9f1034fba9e" kindref="member">amounts</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_action_mode_link" kindref="compound">ActionModeLink</ref><sp/>*<ref refid="classopenage_1_1gui_1_1_resources_list_model_1aa38a30d74f348b565b4fcd63e3a84bab" kindref="member">action_mode</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/resources_list_model.h"/>
+  </compounddef>
+</doxygen>

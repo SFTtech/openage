@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1texture__shader" kind="namespace" language="C++">
+    <compoundname>openage::texture_shader</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1texture__shader_1a5b862f8ed8e822e082d52a12511eeec9" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1shader_1_1_program" kindref="compound">shader::Program</ref> *</type>
+        <definition>shader::Program * openage::texture_shader::program</definition>
+        <argsstring></argsstring>
+        <name>program</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="22" column="1" bodyfile="libopenage/texture.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1texture__shader_1ab12adc72bbe0d0f68ad592800b3e57d4" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::texture_shader::texture</definition>
+        <argsstring></argsstring>
+        <name>texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="23" column="1" bodyfile="libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1texture__shader_1afc27bd08aad20cadf84d8f39268876af" prot="public" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint openage::texture_shader::tex_coord</definition>
+        <argsstring></argsstring>
+        <name>tex_coord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.cpp" line="23" column="1" bodyfile="libopenage/texture.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/texture.cpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

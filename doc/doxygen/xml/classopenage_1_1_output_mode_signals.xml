@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_output_mode_signals" kind="class" language="C++" prot="public">
+    <compoundname>openage::OutputModeSignals</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="game__control_8h" local="no">game_control.h</includes>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1_output_mode_signals_1a5789bb37fcce9236340a67c62124efe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::OutputModeSignals::announced</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>announced</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal is triggered to anounce a new output mode. name: name of the gui mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_control.h" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classopenage_1_1_output_mode_signals_1a6a7461c5308d407e9e2284efa3c7f90d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::OutputModeSignals::binds_changed</definition>
+        <argsstring>(const std::vector&lt; std::string &gt; &amp;binds)</argsstring>
+        <name>binds_changed</name>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>binds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal is triggered when the bindings of the mode change. binds: list of strings that describe keybindings. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_control.h" line="48" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Signals for a gui mode. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3575">
+        <label>QObject</label>
+      </node>
+      <node id="3574">
+        <label>openage::OutputModeSignals</label>
+        <link refid="classopenage_1_1_output_mode_signals"/>
+        <childnode refid="3575" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3577">
+        <label>QObject</label>
+      </node>
+      <node id="3576">
+        <label>openage::OutputModeSignals</label>
+        <link refid="classopenage_1_1_output_mode_signals"/>
+        <childnode refid="3577" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/game_control.h" line="33" column="1" bodyfile="libopenage/game_control.h" bodystart="33" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_output_mode_signals_1a5789bb37fcce9236340a67c62124efe4" prot="public" virt="non-virtual"><scope>openage::OutputModeSignals</scope><name>announced</name></member>
+      <member refid="classopenage_1_1_output_mode_signals_1a6a7461c5308d407e9e2284efa3c7f90d" prot="public" virt="non-virtual"><scope>openage::OutputModeSignals</scope><name>binds_changed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

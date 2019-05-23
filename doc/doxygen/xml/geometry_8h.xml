@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="geometry_8h" kind="file" language="C++">
+    <compoundname>geometry.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">cstddef</includes>
+    <includedby refid="geometry_8cpp" local="yes">libopenage/renderer/geometry.cpp</includedby>
+    <includedby refid="opengl_2geometry_8h" local="yes">libopenage/renderer/opengl/geometry.h</includedby>
+    <includedby refid="renderer_2tests_8cpp" local="yes">libopenage/renderer/tests.cpp</includedby>
+    <incdepgraph>
+      <node id="20772">
+        <label>libopenage/renderer/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="20773" relation="include">
+        </childnode>
+        <childnode refid="20774" relation="include">
+        </childnode>
+        <childnode refid="20775" relation="include">
+        </childnode>
+      </node>
+      <node id="20774">
+        <label>cstdint</label>
+      </node>
+      <node id="20773">
+        <label>vector</label>
+      </node>
+      <node id="20775">
+        <label>cstddef</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20776">
+        <label>libopenage/renderer/geometry.h</label>
+        <link refid="geometry_8h"/>
+        <childnode refid="20777" relation="include">
+        </childnode>
+        <childnode refid="20778" relation="include">
+        </childnode>
+        <childnode refid="20785" relation="include">
+        </childnode>
+      </node>
+      <node id="20785">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="20780">
+        <label>libopenage/renderer/opengl/shader_program.h</label>
+        <link refid="opengl_2shader__program_8h"/>
+        <childnode refid="20781" relation="include">
+        </childnode>
+        <childnode refid="20782" relation="include">
+        </childnode>
+        <childnode refid="20784" relation="include">
+        </childnode>
+      </node>
+      <node id="20782">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="20783">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="20777">
+        <label>libopenage/renderer/geometry.cpp</label>
+        <link refid="geometry_8cpp"/>
+      </node>
+      <node id="20778">
+        <label>libopenage/renderer/opengl/geometry.h</label>
+        <link refid="opengl_2geometry_8h"/>
+        <childnode refid="20779" relation="include">
+        </childnode>
+        <childnode refid="20780" relation="include">
+        </childnode>
+        <childnode refid="20782" relation="include">
+        </childnode>
+        <childnode refid="20784" relation="include">
+        </childnode>
+      </node>
+      <node id="20784">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="20779">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="20781">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="20782" relation="include">
+        </childnode>
+        <childnode refid="20783" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_geometry" prot="public">openage::renderer::Geometry</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" refkind="member"><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" kindref="member">geometry_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8ccaf8abdf5b19a729759024275eaeb19a6a" kindref="member">bufferless_quad</ref>,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cca09bc81c3aa886b690f84c5aba4109e20" kindref="member">mesh</ref>,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1renderer_1_1_geometry" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_geometry" kindref="compound">Geometry</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1a711a56b1b5c4bb7f0f7daa350fb9f9b7" kindref="member">~Geometry</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" kindref="member">geometry_t</ref><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1af798beba5997d99d6cd882ac4451cc25" kindref="member">get_type</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1afb295fcb36abc50ddc3925caf0fb5d03" kindref="member">update_verts</ref>(std::vector&lt;uint8_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>verts);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1a37b4e546a79628294086815a670b3376" kindref="member">update_verts_offset</ref>(std::vector&lt;uint8_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>verts,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1abd04967c368d566677e44d49f370135d" kindref="member">Geometry</ref>(<ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" kindref="member">geometry_t</ref><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1a2dcfbb664dc397e48d177243d0c57731" kindref="member">type</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46" refid="classopenage_1_1renderer_1_1_geometry_1a2dcfbb664dc397e48d177243d0c57731" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1af2d33145c158a54c1817ae1fc0aae8cc" kindref="member">geometry_t</ref><sp/><ref refid="classopenage_1_1renderer_1_1_geometry_1a2dcfbb664dc397e48d177243d0c57731" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/geometry.h"/>
+  </compounddef>
+</doxygen>

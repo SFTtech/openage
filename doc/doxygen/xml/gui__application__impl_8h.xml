@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__application__impl_8h" kind="file" language="C++">
+    <compoundname>gui_application_impl.h</compoundname>
+    <includes local="no">thread</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">QGuiApplication</includes>
+    <includedby refid="gui__application__impl_8cpp" local="yes">libopenage/gui/guisys/private/gui_application_impl.cpp</includedby>
+    <includedby refid="gui__dedicated__thread_8cpp" local="yes">libopenage/gui/guisys/private/gui_dedicated_thread.cpp</includedby>
+    <includedby refid="gui__application_8cpp" local="yes">libopenage/gui/guisys/public/gui_application.cpp</includedby>
+    <includedby refid="gui__application__with__logger_8cpp" local="yes">libopenage/gui/integration/public/gui_application_with_logger.cpp</includedby>
+    <incdepgraph>
+      <node id="12952">
+        <label>libopenage/gui/guisys/private/gui_application_impl.h</label>
+        <link refid="gui__application__impl_8h"/>
+        <childnode refid="12953" relation="include">
+        </childnode>
+        <childnode refid="12954" relation="include">
+        </childnode>
+        <childnode refid="12955" relation="include">
+        </childnode>
+      </node>
+      <node id="12955">
+        <label>QGuiApplication</label>
+      </node>
+      <node id="12953">
+        <label>thread</label>
+      </node>
+      <node id="12954">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12959">
+        <label>libopenage/gui/guisys/public/gui_application.cpp</label>
+        <link refid="gui__application_8cpp"/>
+      </node>
+      <node id="12958">
+        <label>libopenage/gui/guisys/private/gui_dedicated_thread.cpp</label>
+        <link refid="gui__dedicated__thread_8cpp"/>
+      </node>
+      <node id="12960">
+        <label>libopenage/gui/integration/public/gui_application_with_logger.cpp</label>
+        <link refid="gui__application__with__logger_8cpp"/>
+      </node>
+      <node id="12956">
+        <label>libopenage/gui/guisys/private/gui_application_impl.h</label>
+        <link refid="gui__application__impl_8h"/>
+        <childnode refid="12957" relation="include">
+        </childnode>
+        <childnode refid="12958" relation="include">
+        </childnode>
+        <childnode refid="12959" relation="include">
+        </childnode>
+        <childnode refid="12960" relation="include">
+        </childnode>
+      </node>
+      <node id="12957">
+        <label>libopenage/gui/guisys/private/gui_application_impl.cpp</label>
+        <link refid="gui__application__impl_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_gui_application_impl" prot="public">qtsdl::GuiApplicationImpl</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QGuiApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_application_impl" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;GuiApplicationImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" kindref="member">get</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1ae5819aa9c2ba2243cd33c6f46ea3ad8a" kindref="member">~GuiApplicationImpl</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a66c8c6711067ef52365fffbd8ccdfa1e" kindref="member">processEvents</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a8cdd1cbf6bdbdd693481dc9b92a8cac5" kindref="member">GuiApplicationImpl</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a8cdd1cbf6bdbdd693481dc9b92a8cac5" kindref="member">GuiApplicationImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref>&amp;<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1af820fc5e372a0575fc31f7f79cf34d0b" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classqtsdl_1_1_gui_application_impl_1ab858e2888aff37770b7db320875a82d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::thread::id<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1ab858e2888aff37770b7db320875a82d2" kindref="member">owner</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classqtsdl_1_1_gui_application_impl_1a6662b2733e6b860893730bb4b4d6f7eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QGuiApplication<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1a6662b2733e6b860893730bb4b4d6f7eb" kindref="member">app</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classqtsdl_1_1_gui_application_impl_1afb84a8b56b3a22baeb32c9fe9dc43399" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::weak_ptr&lt;GuiApplicationImpl&gt;<sp/><ref refid="classqtsdl_1_1_gui_application_impl_1afb84a8b56b3a22baeb32c9fe9dc43399" kindref="member">instance</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_application_impl.h"/>
+  </compounddef>
+</doxygen>

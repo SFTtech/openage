@@ -1,0 +1,796 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vulkan_2renderer_8cpp" kind="file" language="C++">
+    <compoundname>renderer.cpp</compoundname>
+    <includes refid="vulkan_2renderer_8h" local="yes">renderer.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="directory_8h" local="yes">../../util/fslike/directory.h</includes>
+    <includes refid="shader__source_8h" local="yes">../resources/shader_source.h</includes>
+    <includes refid="util_8h" local="yes">util.h</includes>
+    <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
+    <includes refid="vulkan_2render__target_8h" local="yes">render_target.h</includes>
+    <includes refid="vulkan_2shader__program_8h" local="yes">shader_program.h</includes>
+    <incdepgraph>
+      <node id="21367">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="21356">
+        <label>list</label>
+      </node>
+      <node id="21348">
+        <label>atomic</label>
+      </node>
+      <node id="21353">
+        <label>iomanip</label>
+      </node>
+      <node id="21333">
+        <label>functional</label>
+      </node>
+      <node id="21360">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="21333" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+      </node>
+      <node id="21330">
+        <label>cstdint</label>
+      </node>
+      <node id="21380">
+        <label>resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21381" relation="include">
+        </childnode>
+        <childnode refid="21330" relation="include">
+        </childnode>
+        <childnode refid="21346" relation="include">
+        </childnode>
+        <childnode refid="21365" relation="include">
+        </childnode>
+        <childnode refid="21327" relation="include">
+        </childnode>
+      </node>
+      <node id="21351">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="21352" relation="include">
+        </childnode>
+        <childnode refid="21333" relation="include">
+        </childnode>
+        <childnode refid="21353" relation="include">
+        </childnode>
+        <childnode refid="21326" relation="include">
+        </childnode>
+        <childnode refid="21354" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+      </node>
+      <node id="21339">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="21340" relation="include">
+        </childnode>
+      </node>
+      <node id="21342">
+        <label>stdexcept</label>
+      </node>
+      <node id="21338">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="21379">
+        <label>eigen3/Eigen/Dense</label>
+      </node>
+      <node id="21355">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="21356" relation="include">
+        </childnode>
+        <childnode refid="21334" relation="include">
+        </childnode>
+        <childnode refid="21357" relation="include">
+        </childnode>
+      </node>
+      <node id="21352">
+        <label>cstdarg</label>
+      </node>
+      <node id="21328">
+        <label>string</label>
+      </node>
+      <node id="21366">
+        <label>../../util/fslike/directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21367" relation="include">
+        </childnode>
+        <childnode refid="21368" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21369" relation="include">
+        </childnode>
+      </node>
+      <node id="21343">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="21330" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21344" relation="include">
+        </childnode>
+        <childnode refid="21345" relation="include">
+        </childnode>
+        <childnode refid="21347" relation="include">
+        </childnode>
+        <childnode refid="21355" relation="include">
+        </childnode>
+        <childnode refid="21357" relation="include">
+        </childnode>
+      </node>
+      <node id="21345">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="21346" relation="include">
+        </childnode>
+      </node>
+      <node id="21377">
+        <label>../shader_program.h</label>
+        <link refid="shader__program_8h"/>
+        <childnode refid="21330" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21378" relation="include">
+        </childnode>
+        <childnode refid="21379" relation="include">
+        </childnode>
+        <childnode refid="21380" relation="include">
+        </childnode>
+        <childnode refid="21340" relation="include">
+        </childnode>
+      </node>
+      <node id="21347">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="21348" relation="include">
+        </childnode>
+        <childnode refid="21326" relation="include">
+        </childnode>
+        <childnode refid="21349" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+        <childnode refid="21350" relation="include">
+        </childnode>
+        <childnode refid="21351" relation="include">
+        </childnode>
+      </node>
+      <node id="21378">
+        <label>map</label>
+      </node>
+      <node id="21375">
+        <label>shader_program.h</label>
+        <link refid="vulkan_2shader__program_8h"/>
+        <childnode refid="21340" relation="include">
+        </childnode>
+        <childnode refid="21376" relation="include">
+        </childnode>
+        <childnode refid="21371" relation="include">
+        </childnode>
+        <childnode refid="21377" relation="include">
+        </childnode>
+      </node>
+      <node id="21364">
+        <label>graphics_device.h</label>
+        <link refid="graphics__device_8h"/>
+        <childnode refid="21365" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21323" relation="include">
+        </childnode>
+      </node>
+      <node id="21369">
+        <label>fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="21330" relation="include">
+        </childnode>
+        <childnode refid="21341" relation="include">
+        </childnode>
+        <childnode refid="21326" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21370" relation="include">
+        </childnode>
+        <childnode refid="21327" relation="include">
+        </childnode>
+        <childnode refid="21361" relation="include">
+        </childnode>
+      </node>
+      <node id="21329">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="21330" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21331" relation="include">
+        </childnode>
+        <childnode refid="21332" relation="include">
+        </childnode>
+      </node>
+      <node id="21340">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="21341" relation="include">
+        </childnode>
+        <childnode refid="21326" relation="include">
+        </childnode>
+        <childnode refid="21342" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+        <childnode refid="21343" relation="include">
+        </childnode>
+      </node>
+      <node id="21359">
+        <label>typeinfo</label>
+      </node>
+      <node id="21368">
+        <label>tuple</label>
+      </node>
+      <node id="21365">
+        <label>optional</label>
+      </node>
+      <node id="21372">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="21323" relation="include">
+        </childnode>
+        <childnode refid="21340" relation="include">
+        </childnode>
+      </node>
+      <node id="21325">
+        <label>vector</label>
+      </node>
+      <node id="21376">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="21357" relation="include">
+        </childnode>
+        <childnode refid="21343" relation="include">
+        </childnode>
+      </node>
+      <node id="21336">
+        <label>ciso646</label>
+      </node>
+      <node id="21370">
+        <label>utility</label>
+      </node>
+      <node id="21323">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="21354">
+        <label>sstream</label>
+      </node>
+      <node id="21335">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="21336" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21337" relation="include">
+        </childnode>
+      </node>
+      <node id="21361">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="21326" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21362" relation="include">
+        </childnode>
+        <childnode refid="21329" relation="include">
+        </childnode>
+      </node>
+      <node id="21337">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="21337" relation="include">
+        </childnode>
+      </node>
+      <node id="21350">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="21341" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+      </node>
+      <node id="21357">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="21358" relation="include">
+        </childnode>
+      </node>
+      <node id="21363">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="21322">
+        <label>renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="21323" relation="include">
+        </childnode>
+        <childnode refid="21324" relation="include">
+        </childnode>
+        <childnode refid="21327" relation="include">
+        </childnode>
+        <childnode refid="21364" relation="include">
+        </childnode>
+      </node>
+      <node id="21371">
+        <label>../resources/shader_source.h</label>
+        <link refid="shader__source_8h"/>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21327" relation="include">
+        </childnode>
+      </node>
+      <node id="21362">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="21341" relation="include">
+        </childnode>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+      </node>
+      <node id="21346">
+        <label>cstdlib</label>
+      </node>
+      <node id="21341">
+        <label>iostream</label>
+      </node>
+      <node id="21321">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+        <childnode refid="21322" relation="include">
+        </childnode>
+        <childnode refid="21340" relation="include">
+        </childnode>
+        <childnode refid="21366" relation="include">
+        </childnode>
+        <childnode refid="21371" relation="include">
+        </childnode>
+        <childnode refid="21372" relation="include">
+        </childnode>
+        <childnode refid="21364" relation="include">
+        </childnode>
+        <childnode refid="21373" relation="include">
+        </childnode>
+        <childnode refid="21375" relation="include">
+        </childnode>
+      </node>
+      <node id="21324">
+        <label>../renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21326" relation="include">
+        </childnode>
+      </node>
+      <node id="21381">
+        <label>unordered_map</label>
+      </node>
+      <node id="21332">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="21333" relation="include">
+        </childnode>
+        <childnode refid="21334" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+        <childnode refid="21338" relation="include">
+        </childnode>
+        <childnode refid="21339" relation="include">
+        </childnode>
+        <childnode refid="21360" relation="include">
+        </childnode>
+      </node>
+      <node id="21334">
+        <label>mutex</label>
+      </node>
+      <node id="21327">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="21328" relation="include">
+        </childnode>
+        <childnode refid="21325" relation="include">
+        </childnode>
+        <childnode refid="21329" relation="include">
+        </childnode>
+        <childnode refid="21361" relation="include">
+        </childnode>
+        <childnode refid="21363" relation="include">
+        </childnode>
+      </node>
+      <node id="21331">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="21349">
+        <label>type_traits</label>
+      </node>
+      <node id="21344">
+        <label>config.h</label>
+      </node>
+      <node id="21374">
+        <label>algorithm</label>
+      </node>
+      <node id="21373">
+        <label>render_target.h</label>
+        <link refid="vulkan_2render__target_8h"/>
+        <childnode refid="21374" relation="include">
+        </childnode>
+        <childnode refid="21324" relation="include">
+        </childnode>
+        <childnode refid="21364" relation="include">
+        </childnode>
+      </node>
+      <node id="21326">
+        <label>memory</label>
+      </node>
+      <node id="21358">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="21341" relation="include">
+        </childnode>
+        <childnode refid="21359" relation="include">
+        </childnode>
+        <childnode refid="21335" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vulkan_2renderer_8h" kindref="compound">renderer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../util/fslike/directory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../resources/shader_source.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_8h" kindref="compound">util.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vulkan_2render__target_8h" kindref="compound">render_target.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vulkan_2shader__program_8h" kindref="compound">shader_program.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" kindref="member">VlkRenderer::do_the_thing</ref>(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>&amp;<sp/>dir)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Please<sp/>keep<sp/>in<sp/>mind<sp/>that<sp/>this<sp/>function<sp/>is<sp/>only<sp/>for<sp/>testing<sp/>and<sp/>so<sp/>might<sp/>be<sp/>messy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enumerate<sp/>available<sp/>physical<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>devices<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkEnumeratePhysicalDevices,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" kindref="member">instance</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(devices.empty())<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Vulkan<sp/>devices<sp/>available.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::pair&lt;VkPhysicalDevice,<sp/>SurfaceSupportDetails&gt;&gt;<sp/>support_per_dev;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dev<sp/>:<sp/>devices)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>support<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" kindref="member">VlkGraphicsDevice::find_device_surface_support</ref>(dev,<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" kindref="member">surface</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(support)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>support_per_dev.emplace_back(dev,<sp/>*support);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(support_per_dev.empty())<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>valid<sp/>Vulkan<sp/>device<sp/>available.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>rate<sp/>devices<sp/>based<sp/>on<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Given<sp/>an<sp/>instance<sp/>and<sp/>surface,<sp/>selects<sp/>the<sp/>best<sp/>(fastest,<sp/>most<sp/>capable,<sp/>etc.)<sp/>graphics<sp/>device</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>supports<sp/>rendering<sp/>onto<sp/>that<sp/>particular<sp/>surface<sp/>and<sp/>constructs<sp/>the<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>info<sp/>=<sp/>support_per_dev[0];</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>logical<sp/>device<sp/>with<sp/>a<sp/>single<sp/>queue<sp/>for<sp/>both<sp/>graphics<sp/>and<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info.second.maybe_present_fam)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device" kindref="compound">VlkGraphicsDevice</ref><sp/>dev(info.first,<sp/>{<sp/>info.second.graphics_fam<sp/>}<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" kindref="compound">VlkDrawableDisplay</ref><sp/>display(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>info.second);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>reinit<sp/>swapchain<sp/>on<sp/>window<sp/>resize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>vert<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref>(</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af" kindref="member">resources::shader_lang_t::spirv</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a" kindref="member">resources::shader_stage_t::vertex</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>(dir)<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;assets/shaders/vert.spv&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>frag<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref>(</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af" kindref="member">resources::shader_lang_t::spirv</ref>,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1" kindref="member">resources::shader_stage_t::fragment</ref>,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>(dir)<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;assets/shaders/frag.spv&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_shader_program" kindref="compound">VlkShaderProgram</ref><sp/>prog(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>{<sp/>vert,<sp/>frag<sp/>}<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineVertexInputStateCreateInfo<sp/>cr_vert_in<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_vert_in.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>all<sp/>init&apos;d<sp/>to<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineInputAssemblyStateCreateInfo<sp/>cr_in_asm<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_in_asm.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_in_asm.topology<sp/>=<sp/>VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_in_asm.primitiveRestartEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>VkViewport<sp/>viewport<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.x<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.y<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.width<sp/>=<sp/>display.extent.width;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.height<sp/>=<sp/>display.extent.height;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.minDepth<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>viewport.maxDepth<sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>VkRect2D<sp/>scissor<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>scissor.offset<sp/>=<sp/>{<sp/>0,<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>scissor.extent<sp/>=<sp/>display.extent;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineViewportStateCreateInfo<sp/>cr_view<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_view.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_view.viewportCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_view.pViewports<sp/>=<sp/>&amp;viewport;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_view.scissorCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_view.pScissors<sp/>=<sp/>&amp;scissor;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineRasterizationStateCreateInfo<sp/>cr_raster<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.depthClampEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.rasterizerDiscardEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.polygonMode<sp/>=<sp/>VK_POLYGON_MODE_FILL;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.lineWidth<sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.cullMode<sp/>=<sp/>VK_CULL_MODE_BACK_BIT;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.frontFace<sp/>=<sp/>VK_FRONT_FACE_CLOCKWISE;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_raster.depthBiasEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineMultisampleStateCreateInfo<sp/>cr_msaa<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_msaa.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_msaa.sampleShadingEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_msaa.rasterizationSamples<sp/>=<sp/>VK_SAMPLE_COUNT_1_BIT;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineColorBlendAttachmentState<sp/>blend_state<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.colorWriteMask<sp/>=<sp/>VK_COLOR_COMPONENT_R_BIT</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>VK_COLOR_COMPONENT_G_BIT</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>VK_COLOR_COMPONENT_B_BIT</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>VK_COLOR_COMPONENT_A_BIT;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.blendEnable<sp/>=<sp/>VK_TRUE;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.srcColorBlendFactor<sp/>=<sp/>VK_BLEND_FACTOR_SRC_ALPHA;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.dstColorBlendFactor<sp/>=<sp/>VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.colorBlendOp<sp/>=<sp/>VK_BLEND_OP_ADD;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.srcAlphaBlendFactor<sp/>=<sp/>VK_BLEND_FACTOR_ONE;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.dstAlphaBlendFactor<sp/>=<sp/>VK_BLEND_FACTOR_ZERO;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>blend_state.alphaBlendOp<sp/>=<sp/>VK_BLEND_OP_ADD;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineColorBlendStateCreateInfo<sp/>cr_blend<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_blend.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_blend.logicOpEnable<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_blend.attachmentCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_blend.pAttachments<sp/>=<sp/>&amp;blend_state;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineLayoutCreateInfo<sp/>cr_layout<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_layout.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipelineLayout<sp/>layout;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreatePipelineLayout,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_layout,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;layout);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>VkAttachmentDescription<sp/>color_attachment<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.format<sp/>=<sp/>display.format;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.samples<sp/>=<sp/>VK_SAMPLE_COUNT_1_BIT;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.loadOp<sp/>=<sp/>VK_ATTACHMENT_LOAD_OP_CLEAR;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.storeOp<sp/>=<sp/>VK_ATTACHMENT_STORE_OP_STORE;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.stencilLoadOp<sp/>=<sp/>VK_ATTACHMENT_LOAD_OP_DONT_CARE;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.stencilStoreOp<sp/>=<sp/>VK_ATTACHMENT_STORE_OP_DONT_CARE;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.initialLayout<sp/>=<sp/>VK_IMAGE_LAYOUT_UNDEFINED;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment.finalLayout<sp/>=<sp/>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>VkAttachmentReference<sp/>color_attachment_ref<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment_ref.attachment<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>color_attachment_ref.layout<sp/>=<sp/>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>VkSubpassDescription<sp/>subpass<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>subpass.pipelineBindPoint<sp/>=<sp/>VK_PIPELINE_BIND_POINT_GRAPHICS;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>subpass.colorAttachmentCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>subpass.pColorAttachments<sp/>=<sp/>&amp;color_attachment_ref;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>VkSubpassDependency<sp/>dep<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.srcSubpass<sp/>=<sp/>VK_SUBPASS_EXTERNAL;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.dstSubpass<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.srcStageMask<sp/>=<sp/>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.srcAccessMask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.dstStageMask<sp/>=<sp/>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>dep.dstAccessMask<sp/>=<sp/>VK_ACCESS_COLOR_ATTACHMENT_READ_BIT<sp/>|<sp/>VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>VkRenderPassCreateInfo<sp/>cr_render_pass<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.attachmentCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.pAttachments<sp/>=<sp/>&amp;color_attachment;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.subpassCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.pSubpasses<sp/>=<sp/>&amp;subpass;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.dependencyCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_render_pass.pDependencies<sp/>=<sp/>&amp;dep;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>VkRenderPass<sp/>render_pass;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateRenderPass,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_render_pass,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;render_pass);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>VkGraphicsPipelineCreateInfo<sp/>cr_pipeline<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.stageCount<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pStages<sp/>=<sp/>prog.pipeline_stage_infos.data();</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pVertexInputState<sp/>=<sp/>&amp;cr_vert_in;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pInputAssemblyState<sp/>=<sp/>&amp;cr_in_asm;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pViewportState<sp/>=<sp/>&amp;cr_view;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pRasterizationState<sp/>=<sp/>&amp;cr_raster;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pMultisampleState<sp/>=<sp/>&amp;cr_msaa;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pDepthStencilState<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pColorBlendState<sp/>=<sp/>&amp;cr_blend;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.pDynamicState<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.layout<sp/>=<sp/>layout;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.renderPass<sp/>=<sp/>render_pass;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.subpass<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.basePipelineHandle<sp/>=<sp/>VK_NULL_HANDLE;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pipeline.basePipelineIndex<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPipeline<sp/>pipeline;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateGraphicsPipelines,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>VK_NULL_HANDLE,<sp/>1,<sp/>&amp;cr_pipeline,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;pipeline);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkFramebuffer&gt;<sp/>fbufs;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>view<sp/>:<sp/>display.image_views)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkFramebufferCreateInfo<sp/>cr_fbuf<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.renderPass<sp/>=<sp/>render_pass;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.attachmentCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.pAttachments<sp/>=<sp/>&amp;view;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.width<sp/>=<sp/>display.extent.width;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.height<sp/>=<sp/>display.extent.height;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_fbuf.layers<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkFramebuffer<sp/>fbuf;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateFramebuffer,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_fbuf,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;fbuf);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fbufs.push_back(fbuf);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>VkCommandPoolCreateInfo<sp/>cr_pool<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pool.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pool.queueFamilyIndex<sp/>=<sp/>info.second.graphics_fam;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_pool.flags<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>VkCommandPool<sp/>pool;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateCommandPool,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_pool,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;pool);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkCommandBuffer&gt;<sp/>cmd_bufs(fbufs.size());</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>VkCommandBufferAllocateInfo<sp/>cr_cmd_bufs<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_cmd_bufs.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_cmd_bufs.commandPool<sp/>=<sp/>pool;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_cmd_bufs.level<sp/>=<sp/>VK_COMMAND_BUFFER_LEVEL_PRIMARY;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>cr_cmd_bufs.commandBufferCount<sp/>=<sp/>static_cast&lt;uint32_t&gt;(cmd_bufs.size());</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkAllocateCommandBuffers,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_cmd_bufs,<sp/>cmd_bufs.data());</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>cmd_bufs.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cmd_buf<sp/>=<sp/>cmd_bufs[i];</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fbuf<sp/>=<sp/>fbufs[i];</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkCommandBufferBeginInfo<sp/>begin_info<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>begin_info.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>begin_info.flags<sp/>=<sp/>VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>begin_info.pInheritanceInfo<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkBeginCommandBuffer(cmd_buf,<sp/>&amp;begin_info);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkRenderPassBeginInfo<sp/>cmd_render<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.renderPass<sp/>=<sp/>render_pass;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.framebuffer<sp/>=<sp/>fbuf;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.renderArea.offset<sp/>=<sp/>{<sp/>0,<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.renderArea.extent<sp/>=<sp/>display.extent;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkClearValue<sp/>clear_color<sp/>=<sp/>{{{<sp/>0.0f,<sp/>0.0f,<sp/>0.0f,<sp/>1.0f<sp/>}}};</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.clearValueCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd_render.pClearValues<sp/>=<sp/>&amp;clear_color;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkCmdBeginRenderPass(cmd_buf,<sp/>&amp;cmd_render,<sp/>VK_SUBPASS_CONTENTS_INLINE);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkCmdBindPipeline(cmd_buf,<sp/>VK_PIPELINE_BIND_POINT_GRAPHICS,<sp/>pipeline);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkCmdDraw(cmd_buf,<sp/>3,<sp/>1,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkCmdEndRenderPass(cmd_buf);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkEndCommandBuffer,<sp/>cmd_buf);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSemaphoreCreateInfo<sp/>cr_sem<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_sem.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSemaphore<sp/>sem_image_ready;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSemaphore<sp/>sem_render_done;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateSemaphore,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_sem,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;sem_image_ready);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateSemaphore,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>&amp;cr_sem,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;sem_render_done);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>img_idx<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkAcquireNextImageKHR,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>(),<sp/>display.swapchain,<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;uint64_t&gt;::max</ref>(),<sp/>sem_image_ready,<sp/>VK_NULL_HANDLE,<sp/>&amp;img_idx);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSubmitInfo<sp/>submit<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_SUBMIT_INFO;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.waitSemaphoreCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.pWaitSemaphores<sp/>=<sp/>&amp;sem_image_ready;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkPipelineStageFlags<sp/>mask<sp/>=<sp/>VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.pWaitDstStageMask<sp/>=<sp/>&amp;mask;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.commandBufferCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.pCommandBuffers<sp/>=<sp/>&amp;cmd_bufs[img_idx];</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.signalSemaphoreCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit.pSignalSemaphores<sp/>=<sp/>&amp;sem_render_done;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkQueueSubmit,<sp/>dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" kindref="member">get_queue</ref>(0),<sp/>1,<sp/>&amp;submit,<sp/>VK_NULL_HANDLE);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkPresentInfoKHR<sp/>present_info<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.waitSemaphoreCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.pWaitSemaphores<sp/>=<sp/>&amp;sem_render_done;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.swapchainCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.pSwapchains<sp/>=<sp/>&amp;display.swapchain;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.pImageIndices<sp/>=<sp/>&amp;img_idx;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present_info.pResults<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkQueuePresentKHR(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" kindref="member">get_queue</ref>(0),<sp/>&amp;present_info);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkQueueWaitIdle(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" kindref="member">get_queue</ref>(0));</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkDeviceWaitIdle(dev.<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">get_device</ref>());</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/renderer.cpp"/>
+  </compounddef>
+</doxygen>

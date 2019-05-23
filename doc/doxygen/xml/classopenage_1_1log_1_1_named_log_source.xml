@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1log_1_1_named_log_source" kind="class" language="C++" prot="public">
+    <compoundname>openage::log::NamedLogSource</compoundname>
+    <basecompoundref refid="classopenage_1_1log_1_1_log_source" prot="public" virt="non-virtual">openage::log::LogSource</basecompoundref>
+    <includes refid="named__logsource_8h" local="no">named_logsource.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::log::NamedLogSource::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/named_logsource.h" line="30" column="1" bodyfile="libopenage/log/named_logsource.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1log_1_1_named_log_source_1ae56c84e0a5777847acde06683885e1f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::log::NamedLogSource::NamedLogSource</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>NamedLogSource</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/named_logsource.h" line="25" column="1" bodyfile="libopenage/log/named_logsource.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1log_1_1_named_log_source_1a593db4f971f201789c72317980d99780" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::log::NamedLogSource::logsource_name</definition>
+        <argsstring>() override</argsstring>
+        <name>logsource_name</name>
+        <reimplements refid="classopenage_1_1log_1_1_log_source_1a7f4d82915a2298899da93d55ab92e7dc">logsource_name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/named_logsource.h" line="27" column="1" bodyfile="libopenage/log/named_logsource.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Simple pure log source class with a string name.</para>
+<para>pxd:</para>
+<para>cppclass NamedLogSource(LogSource): NamedLogSource(string name) except + </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3346">
+        <label>openage::log::NamedLogSource</label>
+        <link refid="classopenage_1_1log_1_1_named_log_source"/>
+        <childnode refid="3347" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3347">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3348">
+        <label>openage::log::NamedLogSource</label>
+        <link refid="classopenage_1_1log_1_1_named_log_source"/>
+        <childnode refid="3349" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3349">
+        <label>openage::log::LogSource</label>
+        <link refid="classopenage_1_1log_1_1_log_source"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/named_logsource.h" line="23" column="1" bodyfile="libopenage/log/named_logsource.h" bodystart="23" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" prot="public" virt="non-virtual"><scope>openage::log::NamedLogSource</scope><name>log</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1ae75ede4764f389add2e8a870584807bb" prot="public" virt="non-virtual"><scope>openage::log::NamedLogSource</scope><name>logger_id</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1aa2ff50c079c20b6ff1dfa08f45080b0a" prot="public" virt="non-virtual"><scope>openage::log::NamedLogSource</scope><name>LogSource</name></member>
+      <member refid="classopenage_1_1log_1_1_named_log_source_1a593db4f971f201789c72317980d99780" prot="public" virt="virtual"><scope>openage::log::NamedLogSource</scope><name>logsource_name</name></member>
+      <member refid="classopenage_1_1log_1_1_named_log_source_1a50c3fde3cfd67f27da6e72bf19d040c0" prot="private" virt="non-virtual"><scope>openage::log::NamedLogSource</scope><name>name</name></member>
+      <member refid="classopenage_1_1log_1_1_named_log_source_1ae56c84e0a5777847acde06683885e1f7" prot="public" virt="non-virtual"><scope>openage::log::NamedLogSource</scope><name>NamedLogSource</name></member>
+      <member refid="classopenage_1_1log_1_1_log_source_1aa74e829150dd523fea5173cd5d864285" prot="public" virt="virtual"><scope>openage::log::NamedLogSource</scope><name>~LogSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

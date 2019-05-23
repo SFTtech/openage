@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_population_tracker" kind="class" language="C++" prot="public">
+    <compoundname>openage::PopulationTracker</compoundname>
+    <includes refid="population__tracker_8h" local="no">population_tracker.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::demand</definition>
+        <argsstring></argsstring>
+        <name>demand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The population demand </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="75" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::capacity_static</definition>
+        <argsstring></argsstring>
+        <name>capacity_static</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The population capacity given by civ bonuses </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="80" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::capacity_real</definition>
+        <argsstring></argsstring>
+        <name>capacity_real</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The population capacity given by units </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="85" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::capacity_max</definition>
+        <argsstring></argsstring>
+        <name>capacity_max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The max population capacity </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="90" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::capacity_total</definition>
+        <argsstring></argsstring>
+        <name>capacity_total</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All the population capacity without the limitation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="97" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All the population capacity with the limitation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="102" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::PopulationTracker::PopulationTracker</definition>
+        <argsstring>(int capacity_static, int capacity_max)</argsstring>
+        <name>PopulationTracker</name>
+        <param>
+          <type>int</type>
+          <declname>capacity_static</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>capacity_max</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="13" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="7" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::demand_population</definition>
+        <argsstring>(int i)</argsstring>
+        <name>demand_population</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add to the population demand </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="18" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::free_population</definition>
+        <argsstring>(int i)</argsstring>
+        <name>free_population</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove from the population demand </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="23" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::add_capacity_static</definition>
+        <argsstring>(int i)</argsstring>
+        <name>add_capacity_static</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes the capacity given by civ bonuses </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="28" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::add_capacity</definition>
+        <argsstring>(int i)</argsstring>
+        <name>add_capacity</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add to the capacity given by units </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="33" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::remove_capacity</definition>
+        <argsstring>(int i)</argsstring>
+        <name>remove_capacity</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove from the capacity given by units </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="38" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::add_capacity_max</definition>
+        <argsstring>(int i)</argsstring>
+        <name>add_capacity_max</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes the max capacity given by civ bonuses </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="43" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::get_demand</definition>
+        <argsstring>() const</argsstring>
+        <name>get_demand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="45" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::get_capacity</definition>
+        <argsstring>() const</argsstring>
+        <name>get_capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="47" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::get_space</definition>
+        <argsstring>() const</argsstring>
+        <name>get_space</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the available population capacity for new units. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="52" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::PopulationTracker::get_capacity_overflow</definition>
+        <argsstring>() const</argsstring>
+        <name>get_capacity_overflow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the population capacity over the max limit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="57" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::PopulationTracker::is_capacity_maxed</definition>
+        <argsstring>() const</argsstring>
+        <name>is_capacity_maxed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the population capacity has reached the max limit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="62" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::PopulationTracker::update_capacity</definition>
+        <argsstring>()</argsstring>
+        <name>update_capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the capacity values based on the limits. Must be called when a capacity variable changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/population_tracker.h" line="70" column="1" bodyfile="libopenage/gamestate/population_tracker.cpp" bodystart="45" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Keeps track of the population size and capacity. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3702">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/population_tracker.h" line="10" column="1" bodyfile="libopenage/gamestate/population_tracker.h" bodystart="10" bodyend="104"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_population_tracker_1a4549680d186b62bb096efd831b2f59f4" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>add_capacity</name></member>
+      <member refid="classopenage_1_1_population_tracker_1ad45edecbeb9e2c4d5556358553987e74" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>add_capacity_max</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a39173054a05e8a7e0112a3e04af12b05" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>add_capacity_static</name></member>
+      <member refid="classopenage_1_1_population_tracker_1adb86ed2049dab051860412d1183fda04" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>capacity</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a000041298b40af4347a31588b78ce350" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>capacity_max</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a3452774981dfae6834e25d7d02bfdfa4" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>capacity_real</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a6f39186213fc70decc547f2df2b14221" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>capacity_static</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a8f9f23c87f44ae70f2eb3d45b058d8ff" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>capacity_total</name></member>
+      <member refid="classopenage_1_1_population_tracker_1af593bcd572ca983689688c233dfac90f" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>demand</name></member>
+      <member refid="classopenage_1_1_population_tracker_1aa3b830735b6f9fc33f5462294f7ace39" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>demand_population</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a040af223d85f69ceedbc5e51a393fb94" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>free_population</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a242d55ac22ccf345ad0fc827e563616a" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>get_capacity</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a2f957f62120cb0e6fd9d17aee546f2a8" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>get_capacity_overflow</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a42bdecd655ab9610ea76e12c0f4400ef" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>get_demand</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a07f5c1f9e8aa4c30d4a1e011d1ef7473" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>get_space</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a0aa45439099f85f9380da9a935a09b58" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>is_capacity_maxed</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a2abb5a76de1c7a7117433eea95eb0584" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>PopulationTracker</name></member>
+      <member refid="classopenage_1_1_population_tracker_1a665c07f6c453a6117c514a56eda96f36" prot="public" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>remove_capacity</name></member>
+      <member refid="classopenage_1_1_population_tracker_1ab62d8be3291c0fd95366875b7bf64d60" prot="private" virt="non-virtual"><scope>openage::PopulationTracker</scope><name>update_capacity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

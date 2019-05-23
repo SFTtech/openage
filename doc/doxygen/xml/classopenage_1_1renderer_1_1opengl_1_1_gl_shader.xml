@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlShader</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public" virt="non-virtual">openage::renderer::opengl::GlSimpleObject</basecompoundref>
+    <includes refid="renderer_2opengl_2shader_8h" local="no">shader.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1a6996be5a5f1b2ea8c38a19944331c273" prot="private" static="no" mutable="no">
+        <type>GLenum</type>
+        <definition>GLenum openage::renderer::opengl::GlShader::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>Which stage of the rendering pipeline this shader defines. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/shader.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1ac10355686749689056a938f3429629bb" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlShader::GlShader</definition>
+        <argsstring>(const resources::ShaderSource &amp;)</argsstring>
+        <name>GlShader</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" kindref="compound">resources::ShaderSource</ref> &amp;</type>
+          <defname>src</defname>
+        </param>
+        <briefdescription>
+<para>Compiles the shader from the given source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader.h" line="17" column="1" bodyfile="libopenage/renderer/opengl/shader.cpp" bodystart="20" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>GLenum</type>
+        <definition>GLenum openage::renderer::opengl::GlShader::get_type</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type</name>
+        <briefdescription>
+<para>Returns the stage of the rendering pipeline this shader defines. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader.h" line="20" column="1" bodyfile="libopenage/renderer/opengl/shader.cpp" bodystart="54" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A single OpenGL shader stage. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2411">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2410">
+        <label>openage::renderer::opengl::GlShader</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader"/>
+        <childnode refid="2411" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2413">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2412">
+        <label>openage::renderer::opengl::GlShader</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader"/>
+        <childnode refid="2413" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/shader.h" line="14" column="1" bodyfile="libopenage/renderer/opengl/shader.h" bodystart="14" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>delete_fun</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>get_handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1aba042d563b77c7bb225392508a64dbaf" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>get_type</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1ac10355686749689056a938f3429629bb" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>GlShader</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad01a0a9dfceabcf5ea48a6af86a805ed" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a9cb29e026e6097138f0e6d20d22eb6b9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a24d175d087077438ddf0667d4f0bb210" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a19018330cb67b7f63271764b883ff19a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aa5c241e2d89ec1043b3540c6beb8a3a2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_1a6996be5a5f1b2ea8c38a19944331c273" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlShader</scope><name>type</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a52d36fe37bbca9529578795d1042530d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlShader</scope><name>~GlSimpleObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

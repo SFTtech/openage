@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="bitstream_8h" kind="file" language="C++">
+    <compoundname>bitstream.h</compoundname>
+    <includes local="no">cstring</includes>
+    <includes local="no">functional</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="compiler_8h" local="yes">../compiler.h</includes>
+    <includedby refid="lzxd_8h" local="yes">libopenage/util/compress/lzxd.h</includedby>
+    <includedby refid="lzxd_8cpp" local="yes">libopenage/util/compress/lzxd.cpp</includedby>
+    <incdepgraph>
+      <node id="27666">
+        <label>list</label>
+      </node>
+      <node id="27657">
+        <label>atomic</label>
+      </node>
+      <node id="27662">
+        <label>iomanip</label>
+      </node>
+      <node id="27642">
+        <label>functional</label>
+      </node>
+      <node id="27652">
+        <label>cstdint</label>
+      </node>
+      <node id="27660">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="27661" relation="include">
+        </childnode>
+        <childnode refid="27642" relation="include">
+        </childnode>
+        <childnode refid="27662" relation="include">
+        </childnode>
+        <childnode refid="27645" relation="include">
+        </childnode>
+        <childnode refid="27663" relation="include">
+        </childnode>
+        <childnode refid="27647" relation="include">
+        </childnode>
+        <childnode refid="27664" relation="include">
+        </childnode>
+      </node>
+      <node id="27646">
+        <label>stdexcept</label>
+      </node>
+      <node id="27665">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="27666" relation="include">
+        </childnode>
+        <childnode refid="27667" relation="include">
+        </childnode>
+        <childnode refid="27668" relation="include">
+        </childnode>
+      </node>
+      <node id="27661">
+        <label>cstdarg</label>
+      </node>
+      <node id="27647">
+        <label>string</label>
+      </node>
+      <node id="27651">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="27652" relation="include">
+        </childnode>
+        <childnode refid="27647" relation="include">
+        </childnode>
+        <childnode refid="27653" relation="include">
+        </childnode>
+        <childnode refid="27654" relation="include">
+        </childnode>
+        <childnode refid="27656" relation="include">
+        </childnode>
+        <childnode refid="27665" relation="include">
+        </childnode>
+        <childnode refid="27668" relation="include">
+        </childnode>
+      </node>
+      <node id="27654">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="27655" relation="include">
+        </childnode>
+      </node>
+      <node id="27656">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="27657" relation="include">
+        </childnode>
+        <childnode refid="27645" relation="include">
+        </childnode>
+        <childnode refid="27658" relation="include">
+        </childnode>
+        <childnode refid="27648" relation="include">
+        </childnode>
+        <childnode refid="27659" relation="include">
+        </childnode>
+        <childnode refid="27660" relation="include">
+        </childnode>
+      </node>
+      <node id="27643">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="27644" relation="include">
+        </childnode>
+        <childnode refid="27645" relation="include">
+        </childnode>
+        <childnode refid="27646" relation="include">
+        </childnode>
+        <childnode refid="27647" relation="include">
+        </childnode>
+        <childnode refid="27648" relation="include">
+        </childnode>
+        <childnode refid="27651" relation="include">
+        </childnode>
+      </node>
+      <node id="27670">
+        <label>typeinfo</label>
+      </node>
+      <node id="27640">
+        <label>libopenage/util/compress/bitstream.h</label>
+        <link refid="bitstream_8h"/>
+        <childnode refid="27641" relation="include">
+        </childnode>
+        <childnode refid="27642" relation="include">
+        </childnode>
+        <childnode refid="27643" relation="include">
+        </childnode>
+        <childnode refid="27648" relation="include">
+        </childnode>
+      </node>
+      <node id="27664">
+        <label>vector</label>
+      </node>
+      <node id="27649">
+        <label>ciso646</label>
+      </node>
+      <node id="27663">
+        <label>sstream</label>
+      </node>
+      <node id="27648">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="27649" relation="include">
+        </childnode>
+        <childnode refid="27647" relation="include">
+        </childnode>
+        <childnode refid="27650" relation="include">
+        </childnode>
+      </node>
+      <node id="27650">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="27650" relation="include">
+        </childnode>
+      </node>
+      <node id="27659">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="27644" relation="include">
+        </childnode>
+        <childnode refid="27647" relation="include">
+        </childnode>
+      </node>
+      <node id="27668">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="27669" relation="include">
+        </childnode>
+      </node>
+      <node id="27655">
+        <label>cstdlib</label>
+      </node>
+      <node id="27644">
+        <label>iostream</label>
+      </node>
+      <node id="27667">
+        <label>mutex</label>
+      </node>
+      <node id="27658">
+        <label>type_traits</label>
+      </node>
+      <node id="27653">
+        <label>config.h</label>
+      </node>
+      <node id="27641">
+        <label>cstring</label>
+      </node>
+      <node id="27645">
+        <label>memory</label>
+      </node>
+      <node id="27669">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="27644" relation="include">
+        </childnode>
+        <childnode refid="27670" relation="include">
+        </childnode>
+        <childnode refid="27648" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="27671">
+        <label>libopenage/util/compress/bitstream.h</label>
+        <link refid="bitstream_8h"/>
+        <childnode refid="27672" relation="include">
+        </childnode>
+        <childnode refid="27673" relation="include">
+        </childnode>
+      </node>
+      <node id="27672">
+        <label>libopenage/util/compress/lzxd.h</label>
+        <link refid="lzxd_8h"/>
+        <childnode refid="27673" relation="include">
+        </childnode>
+      </node>
+      <node id="27673">
+        <label>libopenage/util/compress/lzxd.cpp</label>
+        <link refid="lzxd_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_bit_stream" prot="public">openage::util::compress::BitStream</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1compress">openage::util::compress</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../compiler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1_1compress" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">compress<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref><sp/>=<sp/>std::function&lt;size_t<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)&gt;;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inbuf_size&gt;</highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1util_1_1compress_1_1_bit_stream" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream" kindref="compound">BitStream</ref><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" kindref="member">eof</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" kindref="member">read_callback</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" kindref="member">inbuf</ref>[inbuf_size];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" kindref="member">i_ptr</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" kindref="member">i_end</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" kindref="member">stream_position</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" kindref="member">bitstream_mode</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" kindref="member">input_bytes_available</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;i_ptr<sp/>&gt;<sp/>this-&gt;i_end))<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;input<sp/>byte<sp/>buffer<sp/>state<sp/>invalid:<sp/>i_ptr<sp/>&gt;<sp/>i_end&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;i_end<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" kindref="member">i_ptr</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" kindref="member">ensure_input_bytes</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>we<sp/>need<sp/>to<sp/>actually<sp/>read<sp/>some<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" kindref="member">input_bytes_available</ref>()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>the<sp/>entire<sp/>input<sp/>buffer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" kindref="member">read_callback</ref>(this-&gt;inbuf,<sp/>inbuf_size);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>might<sp/>overrun<sp/>the<sp/>input<sp/>stream<sp/>by<sp/>asking<sp/>for<sp/>bits<sp/>we<sp/>don&apos;t<sp/>use,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>fake<sp/>2<sp/>more<sp/>bytes<sp/>at<sp/>the<sp/>end<sp/>of<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref><sp/>==<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;eof)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Unexpected<sp/>EOF<sp/>in<sp/>the<sp/>middle<sp/>of<sp/>a<sp/>block&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;inbuf[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;inbuf[1]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;eof<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref><sp/>&gt;<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>inbuf_size))<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;read()<sp/>returned<sp/>more<sp/>data<sp/>than<sp/>requested&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>i_ptr<sp/>and<sp/>i_end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;i_ptr<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" kindref="member">inbuf</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;i_end<sp/>=<sp/>&amp;this-&gt;inbuf[<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref>];</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>reading<sp/>was<sp/>successful.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;i_ptr<sp/>&gt;=<sp/>this-&gt;i_end))<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;input<sp/>byte<sp/>buffer<sp/>empty:<sp/>failed<sp/>to<sp/>ensure_input_bytes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>allow<sp/>our<sp/>friend<sp/>HuffmanTable<sp/>to<sp/>directly<sp/>use<sp/>ensure_bits,<sp/>peek_bits<sp/>and<sp/>remove_bits.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>maxsymbols_p,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>tablebits_p,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allow_empty&gt;</highlight></codeline>
+<codeline lineno="178" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a50503bd5290c8f14fae50bd980edc92a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table" kindref="compound">HuffmanTable</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" kindref="member">load_next_16_bits</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>example:<sp/>input<sp/>stream<sp/>contains<sp/>bytes<sp/>A,<sp/>B.<sp/>previous<sp/>byte<sp/>was<sp/>J.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5<sp/>bits<sp/>are<sp/>left</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bit<sp/>buffer<sp/>is:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jjjjj000<sp/>00000000<sp/>00000000<sp/>00000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure_bits(9)<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>b0<sp/>=<sp/>aaaaaaaa</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>b1<sp/>=<sp/>bbbbbbbb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bit_buffer<sp/>|=<sp/>bbbbbbbb<sp/>aaaaaaaa<sp/>&lt;&lt;<sp/>(32<sp/>-<sp/>16<sp/>-<sp/>5)<sp/>==<sp/>11</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>new<sp/>bit<sp/>buffer:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jjjjjbbb<sp/>bbbbbaaa<sp/>aaaaa000<sp/>00000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>two<sp/>bytes<sp/>to<sp/>b0,<sp/>b1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" kindref="member">ensure_input_bytes</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>b0<sp/>=<sp/>*<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" kindref="member">i_ptr</ref>++;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" kindref="member">ensure_input_bytes</ref>();</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>b1<sp/>=<sp/>*<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" kindref="member">i_ptr</ref>++;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>inject<sp/>bits<sp/>into<sp/>bit_buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref><sp/>|=<sp/>((b1<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>b0)<sp/>&lt;&lt;<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref>)<sp/>*<sp/>8<sp/>-<sp/>16<sp/>-<sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref><sp/>+=<sp/>16;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbits)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(!this-&gt;bitstream_mode))<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;instream:<sp/>attempted<sp/>to<sp/>ensure<sp/>bits<sp/>while<sp/>in<sp/>bytestream<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref><sp/>&lt;<sp/>nbits)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" kindref="member">load_next_16_bits</ref>();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" kindref="member">peek_bits</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbits)<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>example:<sp/>bit<sp/>buffer<sp/>is:<sp/><sp/><sp/>abcdefgh<sp/>ijkl0000<sp/>00000000<sp/>00000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>peek_bits(3)<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>(bit_buffer<sp/>&gt;&gt;<sp/>(32<sp/>-<sp/>3)<sp/>==<sp/>29</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>returned<sp/>value<sp/>is:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits</ref>(nbits);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref><sp/>&gt;&gt;<sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref>)<sp/>*<sp/>8<sp/>-<sp/>nbits));</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbits)<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>example:<sp/>bit<sp/>buffer<sp/>is:<sp/><sp/>abcdefgh<sp/>ijkl0000<sp/>00000000<sp/>00000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove_bits(3)<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bit_buffer<sp/>&lt;&lt;=<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>resulting<sp/>bit<sp/>buffer<sp/>is:<sp/>defghijk<sp/>l0000000<sp/>00000000<sp/>00000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits</ref>(nbits);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref><sp/>&lt;&lt;=<sp/>nbits;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref><sp/>-=<sp/>nbits;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;stream_position<sp/>+=<sp/>nbits;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" kindref="member">align_bitstream</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>min_discard=0)<sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbits<sp/>=<sp/>this-&gt;stream_position<sp/>%<sp/>16;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nbits<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbits<sp/>=<sp/>16<sp/>-<sp/>nbits;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(nbits<sp/>&lt;<sp/>min_discard))<sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nbits<sp/>+=<sp/>16;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nbits<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" kindref="member">peek_bits</ref>(nbits))<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>errmsg<sp/>=<sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errmsg<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;attempted<sp/>to<sp/>discard<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>nbits<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>non-null<sp/>bits:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>ctr<sp/>=<sp/>1;<sp/>ctr<sp/>&lt;=<sp/>nbits;<sp/>ctr++)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errmsg<sp/>&lt;&lt;<sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" kindref="member">peek_bits</ref>(ctr)<sp/>&amp;<sp/>1);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(errmsg);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits</ref>(nbits);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="295" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a58f06b5edf346fb0c963a2f2c246021e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a58f06b5edf346fb0c963a2f2c246021e" kindref="member">BitStream</ref>(<ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" kindref="member">read_callback</ref>)</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" kindref="member">eof</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" kindref="member">read_callback</ref>{<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" kindref="member">read_callback</ref>},</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" kindref="member">i_ptr</ref>{<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" kindref="member">inbuf</ref>},</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" kindref="member">i_end</ref>{<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" kindref="member">inbuf</ref>},</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" kindref="member">bit_buffer</ref>{0},</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" kindref="member">bits_left</ref>{0},</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" kindref="member">stream_position</ref>{0},</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" kindref="member">bitstream_mode</ref>{</highlight><highlight class="keyword">true</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert(inbuf_size<sp/>&gt;=<sp/>2,<sp/></highlight><highlight class="stringliteral">&quot;inbuf<sp/>size<sp/>must<sp/>be<sp/>at<sp/>least<sp/>2&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert(inbuf_size<sp/>%<sp/>2<sp/>==<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;inbuf<sp/>size<sp/>must<sp/>be<sp/>even&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" kindref="member">read_bits</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbits)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" kindref="member">peek_bits</ref>(nbits);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits</ref>(nbits);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buf,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>count)<sp/>{</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;bitstream_mode<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;attempt<sp/>to<sp/>read_bytes<sp/>while<sp/>in<sp/>bitstream<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" kindref="member">ensure_input_bytes</ref>();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>available<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" kindref="member">input_bytes_available</ref>();</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(available<sp/>&lt;<sp/>count)<sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>available;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(buf,<sp/>this-&gt;i_ptr,<sp/>count);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;i_ptr<sp/>+=<sp/>count;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;stream_position<sp/>+=<sp/>count;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>count;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1ac6c45889010c1bd68631771b64f18101" kindref="member">unlikely</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes</ref>(&amp;buf,<sp/>1)<sp/>!=<sp/>1))<sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>read<sp/>single<sp/>byte<sp/>in<sp/>bytestream<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buf;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" kindref="member">read_4bytes_le</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>()<sp/>&lt;&lt;<sp/><sp/>0;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>|=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>()<sp/>&lt;&lt;<sp/><sp/>8;</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>|=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>()<sp/>&lt;&lt;<sp/>16;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>|=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>()<sp/>&lt;&lt;<sp/>24;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" kindref="member">switch_to_bitstream_mode</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;bitstream_mode<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;stream_position<sp/>&amp;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bytestream<sp/>hat<sp/>odd<sp/>length;<sp/>discard<sp/>one<sp/>nullbyte.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>data<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" kindref="member">read_single_byte</ref>();</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err).fmt(</highlight><highlight class="stringliteral">&quot;attempted<sp/>to<sp/>discard<sp/>a<sp/>non-zero<sp/>byte<sp/>at<sp/>end<sp/>of<sp/>bytestream:<sp/>%02x&quot;</highlight><highlight class="normal">,<sp/>data));</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bitstream_mode<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;stream_position<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" kindref="member">switch_to_bytestream_mode</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;bitstream_mode<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>some<sp/>weird<sp/>reason,<sp/>the<sp/>alignment<sp/>padding<sp/>here<sp/>is<sp/>1<sp/>to<sp/>16<sp/>bits,<sp/>not<sp/>0<sp/>to<sp/>15.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>thus,<sp/>discard<sp/>an<sp/>additional<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" kindref="member">align_bitstream</ref>(1);</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bitstream_mode<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;stream_position<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;bits_left)<sp/>{</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;bits<sp/>left<sp/>after<sp/>switching<sp/>to<sp/>bytestream<sp/>mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;bits_left);</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428" refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" kindref="member">align_if_in_bitstream_mode</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;bitstream_mode<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" kindref="member">align_bitstream</ref>();</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="433"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::compress</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/compress/bitstream.h"/>
+  </compounddef>
+</doxygen>

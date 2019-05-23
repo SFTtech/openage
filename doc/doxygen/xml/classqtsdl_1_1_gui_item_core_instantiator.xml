@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item_core_instantiator" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItemCoreInstantiator</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_methods" prot="public" virt="non-virtual">qtsdl::GuiItemMethods&lt; T &gt;</basecompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item" prot="public" virt="non-virtual">qtsdl::GuiItem&lt; T &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiItemCoreInstantiator&lt; T &gt;::GuiItemCoreInstantiator</definition>
+        <argsstring>(GuiItemBase *item_base)</argsstring>
+        <name>GuiItemCoreInstantiator</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref> *</type>
+          <declname>item_base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up a factory for the type T. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="244" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="244" bodyend="252"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_core_instantiator_1a72c1388c7758fe72b737e8a17b291c88" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;PersistentCoreHolderBase&gt; qtsdl::GuiItemCoreInstantiator&lt; T &gt;::instantiate_core</definition>
+        <argsstring>()</argsstring>
+        <name>instantiate_core</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates and returns a core object of type Unwrap&lt;T&gt;::Type inside a holder. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="258" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="258" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiItemCoreInstantiator&lt; T &gt;::do_adopt_core</definition>
+        <argsstring>(PersistentCoreHolderBase *holder, const QString &amp;tag)</argsstring>
+        <name>do_adopt_core</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_persistent_core_holder_base" kindref="compound">PersistentCoreHolderBase</ref> *</type>
+          <declname>holder</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attaches to a core object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="272" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="272" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_core_instantiator_1ae117ca57234ffdf888f9dda756c706e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiItemCoreInstantiator&lt; T &gt;::GuiItemCoreInstantiator</definition>
+        <argsstring>(const GuiItemCoreInstantiator &amp;)=delete</argsstring>
+        <name>GuiItemCoreInstantiator</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="296" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_core_instantiator_1aac199f6ace73ba00c049c3f1b664e948" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref> &amp;</type>
+        <definition>GuiItemCoreInstantiator&amp; qtsdl::GuiItemCoreInstantiator&lt; T &gt;::operator=</definition>
+        <argsstring>(const GuiItemCoreInstantiator &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_gui_item_core_instantiator" kindref="compound">GuiItemCoreInstantiator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="297" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2653">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2652">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2653" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2654">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2652" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2655">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2654" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2657">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2656">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2657" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="239" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="239" bodyend="298"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a2069f6020034faeaae197821519fb732" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>do_adopt_core</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1ae117ca57234ffdf888f9dda756c706e0" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a72c1388c7758fe72b737e8a17b291c88" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>instantiate_core</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1aac199f6ace73ba00c049c3f1b664e948" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>operator=</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>qtsdl::GuiItemCoreInstantiator</scope><name>~GuiItemMethods</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

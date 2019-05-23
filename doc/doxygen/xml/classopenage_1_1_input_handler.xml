@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_input_handler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::InputHandler</compoundname>
+    <derivedcompoundref refid="classopenage_1_1console_1_1_console" prot="private" virt="non-virtual">openage::console::Console</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_g_u_i" prot="public" virt="non-virtual">openage::gui::GUI</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1input_1_1_input_manager" prot="public" virt="non-virtual">openage::input::InputManager</derivedcompoundref>
+    <includes refid="handlers_8h" local="no">handlers.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_input_handler_1abdb25a0f6baffa8c6bd4d69671565fc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::InputHandler::~InputHandler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~InputHandler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::InputHandler::on_input</definition>
+        <argsstring>(SDL_Event *event)=0</argsstring>
+        <name>on_input</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_g_u_i_1a957c6b92e9d51577da3e414f0307e455">on_input</reimplementedby>
+        <reimplementedby refid="classopenage_1_1console_1_1_console_1af42e9fbab2caf9c762303b7d55f85d3a">on_input</reimplementedby>
+        <reimplementedby refid="classopenage_1_1input_1_1_input_manager_1a2e46dfc175d1fd66e92a8644d994e6ab">on_input</reimplementedby>
+        <param>
+          <type>SDL_Event *</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>execute the input handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/handlers.h" line="63" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>superclass for handling any input event. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3002">
+        <label>openage::gui::GUI</label>
+        <link refid="classopenage_1_1gui_1_1_g_u_i"/>
+        <childnode refid="3000" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3001">
+        <label>openage::console::Console</label>
+        <link refid="classopenage_1_1console_1_1_console"/>
+        <childnode refid="3000" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3000">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+      <node id="3003">
+        <label>openage::input::InputManager</label>
+        <link refid="classopenage_1_1input_1_1_input_manager"/>
+        <childnode refid="3000" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3004">
+        <label>openage::InputHandler</label>
+        <link refid="classopenage_1_1_input_handler"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/handlers.h" line="56" column="1" bodyfile="libopenage/handlers.h" bodystart="56" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_input_handler_1ad2e50fdb45b1d46170ac0882518742e5" prot="public" virt="pure-virtual"><scope>openage::InputHandler</scope><name>on_input</name></member>
+      <member refid="classopenage_1_1_input_handler_1abdb25a0f6baffa8c6bd4d69671565fc6" prot="public" virt="virtual"><scope>openage::InputHandler</scope><name>~InputHandler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_color" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::Color</compoundname>
+    <includes refid="renderer_2color_8h" local="no">color.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t openage::renderer::Color::r</definition>
+        <argsstring></argsstring>
+        <name>r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="20" column="1" bodyfile="libopenage/renderer/color.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t openage::renderer::Color::g</definition>
+        <argsstring></argsstring>
+        <name>g</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="21" column="1" bodyfile="libopenage/renderer/color.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t openage::renderer::Color::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="22" column="1" bodyfile="libopenage/renderer/color.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t openage::renderer::Color::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="23" column="1" bodyfile="libopenage/renderer/color.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::Color::Color</definition>
+        <argsstring>()</argsstring>
+        <name>Color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="12" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="8" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1a70f81ed7c2563457d3b0b2bd65b5aaa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::Color::Color</definition>
+        <argsstring>(uint8_t r, uint8_t g, uint8_t b, uint8_t a)</argsstring>
+        <name>Color</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="14" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::Color::operator==</definition>
+        <argsstring>(const Color &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="16" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::Color::operator!=</definition>
+        <argsstring>(const Color &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/color.h" line="18" column="1" bodyfile="libopenage/renderer/color.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="786">
+        <label>openage::renderer::Color</label>
+        <link refid="classopenage_1_1renderer_1_1_color"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/color.h" line="10" column="1" bodyfile="libopenage/renderer/color.h" bodystart="10" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>a</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>b</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>Color</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1a70f81ed7c2563457d3b0b2bd65b5aaa5" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>Color</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>g</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>operator!=</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" prot="public" virt="non-virtual"><scope>openage::renderer::Color</scope><name>r</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

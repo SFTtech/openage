@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_e278ddfe79368c60cdfafbb290b31a25" kind="dir">
+    <compoundname>libopenage/curve/tests</compoundname>
+    <innerfile refid="container_8cpp">container.cpp</innerfile>
+    <innerfile refid="curve__types_8cpp">curve_types.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/curve/tests/"/>
+  </compounddef>
+</doxygen>

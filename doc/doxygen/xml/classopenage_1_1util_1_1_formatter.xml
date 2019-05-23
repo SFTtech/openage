@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_formatter" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Formatter</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_string_formatter" prot="public" virt="non-virtual">openage::util::StringFormatter&lt; Formatter &gt;</basecompoundref>
+    <includes refid="stringformatter_8h" local="no">stringformatter.h</includes>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Allows simple direct usage of <ref refid="classopenage_1_1util_1_1_string_formatter" kindref="compound">StringFormatter</ref>. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1511">
+        <label>openage::util::StringFormatter&lt; Formatter &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+      </node>
+      <node id="1510">
+        <label>openage::util::Formatter</label>
+        <link refid="classopenage_1_1util_1_1_formatter"/>
+        <childnode refid="1511" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1514">
+        <label>openage::util::CachableOSStream</label>
+        <link refid="classopenage_1_1util_1_1_cachable_o_s_stream"/>
+        <childnode refid="1515" relation="usage">
+          <edgelabel>+stream</edgelabel>
+        </childnode>
+      </node>
+      <node id="1513">
+        <label>openage::util::StringFormatter&lt; Formatter &gt;</label>
+        <link refid="classopenage_1_1util_1_1_string_formatter"/>
+        <childnode refid="1514" relation="usage">
+          <edgelabel>-stream_ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1512">
+        <label>openage::util::Formatter</label>
+        <link refid="classopenage_1_1util_1_1_formatter"/>
+        <childnode refid="1513" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1515">
+        <label>openage::util::ExternalOStringStream</label>
+        <link refid="classopenage_1_1util_1_1_external_o_string_stream"/>
+        <childnode refid="1516" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1517" relation="usage">
+          <edgelabel>-buf</edgelabel>
+        </childnode>
+      </node>
+      <node id="1518">
+        <label>std::streambuf</label>
+      </node>
+      <node id="1516">
+        <label>std::ostream</label>
+      </node>
+      <node id="1517">
+        <label>openage::util::ExternalStringBuf</label>
+        <link refid="classopenage_1_1util_1_1_external_string_buf"/>
+        <childnode refid="1518" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/stringformatter.h" line="248" column="1" bodyfile="libopenage/util/stringformatter.h" bodystart="248" bodyend="248"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1adee46a55b6f42172045bc199ef0469f0" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>child_type_ref</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a6d06a46c42c75fe91a1736559b914ab3" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>fmt</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad4ebd58a5fcd96c87d116a2090a9b334" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1afbfb9d33b20ea4ae22a8261bc82d0e1a" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a89d3cf2f11edaa7885c3ab0e6bfe3536" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a638f9190413d043007430971011ece57" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a34cd9ca325f900c88254381412c953c6" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a5219fb7cba6db3e5c7603a57c94c0326" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a21573badd1afe0cf9dc9b2c6311d34b3" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a42ffb5b1e764e003ac8c59facc580722" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1ad3a8b063f359dd603acf5b5de75307bf" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a3007d4045a594b7b18d9936908732cb1" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>reset_flags</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a9f4f8b039a336f8368ba3ab9f7464a60" prot="public" virt="virtual"><scope>openage::util::Formatter</scope><name>should_format</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1abc8c5d3dda80dadf6bbefa12c075bdab" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a14f06db924cc9c7f7a8cb71ac5849577" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1a2471b33c928800acb26d0660c5d647ef" prot="public" virt="non-virtual"><scope>openage::util::Formatter</scope><name>StringFormatter</name></member>
+      <member refid="classopenage_1_1util_1_1_string_formatter_1aa55bdace86e9b1eda7b225b694c5a165" prot="public" virt="virtual"><scope>openage::util::Formatter</scope><name>~StringFormatter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

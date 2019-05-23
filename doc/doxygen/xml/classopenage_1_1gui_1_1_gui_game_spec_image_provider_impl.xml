@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::gui::GuiGameSpecImageProviderImpl</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_image_provider_impl" prot="public" virt="non-virtual">qtsdl::GuiImageProviderImpl</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl" prot="public" virt="non-virtual">openage::gui::GuiGameSpecImageProviderByFilenameImpl</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl" prot="public" virt="non-virtual">openage::gui::GuiGameSpecImageProviderByIdImpl</derivedcompoundref>
+    <includes refid="gui__game__spec__image__provider__impl_8h" local="no">gui_game_spec_image_provider_impl.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GameSpec&gt; openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec</definition>
+        <argsstring></argsstring>
+        <name>loaded_game_spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="69" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ae39715c0800f5ade30bdc6af6ad696b3" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::gui::GuiGameSpecImageProviderImpl::invalidated</definition>
+        <argsstring></argsstring>
+        <name>invalidated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, still uses the old source but shows the &apos;missing texture&apos;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="74" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab94d9dbb8b7cba7e2376325a70e50160" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1gui_1_1_gui_filled_texture_handles" kindref="compound">GuiFilledTextureHandles</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GuiFilledTextureHandles&gt; openage::gui::GuiGameSpecImageProviderImpl::filled_handles</definition>
+        <argsstring></argsstring>
+        <name>filled_handles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changing the texture handles underneath the QSGTexture to reflect the reload of the <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref>.</para>
+<para>It&apos;s not a proper Qt usage, so the live reload of the game assets for the gui may break in future Qt releases. When it breaks, this feature should be implemented via the recreation of the qml engine. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="94" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ad5faedf27a1afe1b7191eaef0455125d" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_mutex</definition>
+        <argsstring></argsstring>
+        <name>loaded_game_spec_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="96" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1aa503f841ff5df35013cc125d3c62484b" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable openage::gui::GuiGameSpecImageProviderImpl::loaded_game_spec_cond</definition>
+        <argsstring></argsstring>
+        <name>loaded_game_spec_cond</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="97" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac0b9fa728c384bbe334fbc074298aad1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::gui::GuiGameSpecImageProviderImpl::ended</definition>
+        <argsstring></argsstring>
+        <name>ended</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="98" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a1c0744b49e86627437c99dc93922607c" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_callback" kindref="compound">qtsdl::GuiCallback</ref></type>
+        <definition>qtsdl::GuiCallback openage::gui::GuiGameSpecImageProviderImpl::render_thread_callback</definition>
+        <argsstring></argsstring>
+        <name>render_thread_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="100" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1abf0126df9e8042f64226bbb1459c092c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiGameSpecImageProviderImpl::GuiGameSpecImageProviderImpl</definition>
+        <argsstring>(qtsdl::GuiEventQueue *render_updater)</argsstring>
+        <name>GuiGameSpecImageProviderImpl</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref> *</type>
+          <declname>render_updater</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="37" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="20" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a10f2ca12803f2786d41353f6b5da338b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GuiGameSpecImageProviderImpl::~GuiGameSpecImageProviderImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiGameSpecImageProviderImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="38" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="32" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a96f49e5b70c5848778479d8ae36431b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_loaded</definition>
+        <argsstring>(const std::shared_ptr&lt; GameSpec &gt; &amp;loaded_game_spec)</argsstring>
+        <name>on_game_spec_loaded</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt; &amp;</type>
+          <declname>loaded_game_spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unblocks the provider.</para>
+<para>Refreshes already loaded assets (if this-&gt;loaded_game_spec wasn&apos;t null before the call).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loaded_game_spec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new source (can&apos;t be null) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="47" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="35" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a42ec51b02960edb6ef405251a640bd5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiGameSpecImageProviderImpl::on_game_spec_invalidated</definition>
+        <argsstring>()</argsstring>
+        <name>on_game_spec_invalidated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set to every sprite the &apos;missing texture&apos; from current spec.</para>
+<para>Needed as a visible reaction to setting the property to null. We can&apos;t unload the textures without recreating the engine, so we keep the old source. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="55" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="72" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_filled_texture_handle_user" kindref="compound">GuiFilledTextureHandleUser</ref></type>
+        <definition>GuiFilledTextureHandleUser openage::gui::GuiGameSpecImageProviderImpl::fill_texture_handle</definition>
+        <argsstring>(const QString &amp;id, const QSize &amp;requested_size, SizedTextureHandle *filled_handle)</argsstring>
+        <name>fill_texture_handle</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>requested_size</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref> *</type>
+          <declname>filled_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fills in the provided handle object.</para>
+<para>Memorizes pointer to it in order to update it if the source changes.</para>
+<para><simplesect kind="return"><para>pointer to all memorized handles, so the client can unsubscribe. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="64" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="86" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a99c5f3aa01010aafd71bec94f1fd017d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref></type>
+        <definition>TextureHandle openage::gui::GuiGameSpecImageProviderImpl::get_missing_texture</definition>
+        <argsstring>()</argsstring>
+        <name>get_missing_texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="67" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a28738ee06bd6ef675a723b0db02433c2" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref></type>
+        <definition>virtual TextureHandle openage::gui::GuiGameSpecImageProviderImpl::get_texture_handle</definition>
+        <argsstring>(const QString &amp;id)=0</argsstring>
+        <name>get_texture_handle</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl_1a42715118777dc5a4228e3bed2bb9d5cd">get_texture_handle</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl_1ad8530c9e494933db31e465f6947574d5">get_texture_handle</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="77" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a8a2c7319a6690e41380689f6f3283eea" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QQuickTextureFactory *</type>
+        <definition>QQuickTextureFactory * openage::gui::GuiGameSpecImageProviderImpl::requestTexture</definition>
+        <argsstring>(const QString &amp;id, QSize *size, const QSize &amp;requestedSize) override</argsstring>
+        <name>requestTexture</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>QSize *</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>requestedSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="78" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="95" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a72bac11f807d36b625ea4b345221256e" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiGameSpecImageProviderImpl::give_up</definition>
+        <argsstring>() override</argsstring>
+        <name>give_up</name>
+        <reimplements refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99">give_up</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="79" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="110" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab296b31a83e17fbd14f7106ce4c2a54a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiGameSpecImageProviderImpl::migrate_to_new_game_spec</definition>
+        <argsstring>(const std::shared_ptr&lt; GameSpec &gt; &amp;loaded_game_spec)</argsstring>
+        <name>migrate_to_new_game_spec</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt; &amp;</type>
+          <declname>loaded_game_spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the already produced texture handles to use new source. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="84" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="49" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac4c74475a47396d2e1824d2625e9d666" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiGameSpecImageProviderImpl::overwrite_texture_handle</definition>
+        <argsstring>(const QString &amp;id, const QSize &amp;requested_size, SizedTextureHandle *filled_handle)</argsstring>
+        <name>overwrite_texture_handle</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>requested_size</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref> *</type>
+          <declname>filled_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="86" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Exposes game textures to the Qt. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2593">
+        <label>openage::gui::GuiGameSpecImageProviderByGraphicIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl"/>
+        <childnode refid="2592" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2594">
+        <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
+        <childnode refid="2592" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2592">
+        <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
+        <childnode refid="2588" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2588">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2589" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2589">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2590" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2590">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="2591">
+        <label>openage::gui::GuiGameSpecImageProviderByFilenameImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl"/>
+        <childnode refid="2588" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2599">
+        <label>QObject</label>
+      </node>
+      <node id="2598">
+        <label>qtsdl::GuiCallback</label>
+        <link refid="classqtsdl_1_1_gui_callback"/>
+        <childnode refid="2599" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2595">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2596" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2598" relation="usage">
+          <edgelabel>-render_thread_callback</edgelabel>
+        </childnode>
+      </node>
+      <node id="2596">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2597" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2597">
+        <label>QQuickImageProvider</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" line="35" column="1" bodyfile="libopenage/gui/integration/private/gui_game_spec_image_provider_impl.h" bodystart="35" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac0b9fa728c384bbe334fbc074298aad1" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>ended</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a183dbf9c55bb6ce603654585a92db3b1" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>fill_texture_handle</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab94d9dbb8b7cba7e2376325a70e50160" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>filled_handles</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" virt="pure-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>get_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a99c5f3aa01010aafd71bec94f1fd017d" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>get_missing_texture</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a28738ee06bd6ef675a723b0db02433c2" prot="private" virt="pure-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>get_texture_handle</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a72bac11f807d36b625ea4b345221256e" prot="private" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>give_up</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1abf0126df9e8042f64226bbb1459c092c" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>GuiGameSpecImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>GuiImageProviderImpl</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ae39715c0800f5ade30bdc6af6ad696b3" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>invalidated</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a86e3131857e6876e76560d18e9b3057c" prot="protected" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>loaded_game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1aa503f841ff5df35013cc125d3c62484b" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>loaded_game_spec_cond</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ad5faedf27a1afe1b7191eaef0455125d" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>loaded_game_spec_mutex</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ab296b31a83e17fbd14f7106ce4c2a54a" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>migrate_to_new_game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a42ec51b02960edb6ef405251a640bd5f" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>on_game_spec_invalidated</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a96f49e5b70c5848778479d8ae36431b9" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>on_game_spec_loaded</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1ac4c74475a47396d2e1824d2625e9d666" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>overwrite_texture_handle</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a1c0744b49e86627437c99dc93922607c" prot="private" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>render_thread_callback</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a8a2c7319a6690e41380689f6f3283eea" prot="private" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>requestTexture</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>take_ownership</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" prot="public" virt="non-virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>take_ownership</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a10f2ca12803f2786d41353f6b5da338b" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>~GuiGameSpecImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" prot="public" virt="virtual"><scope>openage::gui::GuiGameSpecImageProviderImpl</scope><name>~GuiImageProviderImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

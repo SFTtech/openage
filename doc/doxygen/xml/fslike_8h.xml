@@ -1,0 +1,441 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fslike_8h" kind="file" language="C++">
+    <compoundname>fslike.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">utility</includes>
+    <includes refid="util_2path_8h" local="yes">../path.h</includes>
+    <includes refid="file_8h" local="yes">../file.h</includes>
+    <includedby refid="directory_8h" local="yes">libopenage/util/fslike/directory.h</includedby>
+    <includedby refid="fslike_8cpp" local="yes">libopenage/util/fslike/fslike.cpp</includedby>
+    <includedby refid="fslike_2python_8h" local="yes">libopenage/util/fslike/python.h</includedby>
+    <incdepgraph>
+      <node id="30519">
+        <label>list</label>
+      </node>
+      <node id="30511">
+        <label>atomic</label>
+      </node>
+      <node id="30516">
+        <label>iomanip</label>
+      </node>
+      <node id="30497">
+        <label>functional</label>
+      </node>
+      <node id="30523">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="30497" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+      </node>
+      <node id="30487">
+        <label>cstdint</label>
+      </node>
+      <node id="30514">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30515" relation="include">
+        </childnode>
+        <childnode refid="30497" relation="include">
+        </childnode>
+        <childnode refid="30516" relation="include">
+        </childnode>
+        <childnode refid="30489" relation="include">
+        </childnode>
+        <childnode refid="30517" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30493" relation="include">
+        </childnode>
+      </node>
+      <node id="30503">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="30504" relation="include">
+        </childnode>
+      </node>
+      <node id="30505">
+        <label>stdexcept</label>
+      </node>
+      <node id="30502">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="30518">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30519" relation="include">
+        </childnode>
+        <childnode refid="30498" relation="include">
+        </childnode>
+        <childnode refid="30520" relation="include">
+        </childnode>
+      </node>
+      <node id="30515">
+        <label>cstdarg</label>
+      </node>
+      <node id="30490">
+        <label>string</label>
+      </node>
+      <node id="30506">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30487" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30507" relation="include">
+        </childnode>
+        <childnode refid="30508" relation="include">
+        </childnode>
+        <childnode refid="30510" relation="include">
+        </childnode>
+        <childnode refid="30518" relation="include">
+        </childnode>
+        <childnode refid="30520" relation="include">
+        </childnode>
+      </node>
+      <node id="30508">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30509" relation="include">
+        </childnode>
+      </node>
+      <node id="30510">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30511" relation="include">
+        </childnode>
+        <childnode refid="30489" relation="include">
+        </childnode>
+        <childnode refid="30512" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+        <childnode refid="30513" relation="include">
+        </childnode>
+        <childnode refid="30514" relation="include">
+        </childnode>
+      </node>
+      <node id="30486">
+        <label>libopenage/util/fslike/fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="30487" relation="include">
+        </childnode>
+        <childnode refid="30488" relation="include">
+        </childnode>
+        <childnode refid="30489" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30491" relation="include">
+        </childnode>
+        <childnode refid="30492" relation="include">
+        </childnode>
+        <childnode refid="30524" relation="include">
+        </childnode>
+      </node>
+      <node id="30494">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="30487" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30493" relation="include">
+        </childnode>
+        <childnode refid="30495" relation="include">
+        </childnode>
+        <childnode refid="30496" relation="include">
+        </childnode>
+      </node>
+      <node id="30504">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30488" relation="include">
+        </childnode>
+        <childnode refid="30489" relation="include">
+        </childnode>
+        <childnode refid="30505" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+        <childnode refid="30506" relation="include">
+        </childnode>
+      </node>
+      <node id="30522">
+        <label>typeinfo</label>
+      </node>
+      <node id="30493">
+        <label>vector</label>
+      </node>
+      <node id="30500">
+        <label>ciso646</label>
+      </node>
+      <node id="30491">
+        <label>utility</label>
+      </node>
+      <node id="30517">
+        <label>sstream</label>
+      </node>
+      <node id="30499">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30500" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30501" relation="include">
+        </childnode>
+      </node>
+      <node id="30524">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="30489" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30493" relation="include">
+        </childnode>
+        <childnode refid="30525" relation="include">
+        </childnode>
+        <childnode refid="30494" relation="include">
+        </childnode>
+      </node>
+      <node id="30501">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30501" relation="include">
+        </childnode>
+      </node>
+      <node id="30513">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30488" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+      </node>
+      <node id="30520">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30521" relation="include">
+        </childnode>
+      </node>
+      <node id="30526">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="30525">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="30488" relation="include">
+        </childnode>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+      </node>
+      <node id="30509">
+        <label>cstdlib</label>
+      </node>
+      <node id="30488">
+        <label>iostream</label>
+      </node>
+      <node id="30496">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="30497" relation="include">
+        </childnode>
+        <childnode refid="30498" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+        <childnode refid="30502" relation="include">
+        </childnode>
+        <childnode refid="30503" relation="include">
+        </childnode>
+        <childnode refid="30523" relation="include">
+        </childnode>
+      </node>
+      <node id="30498">
+        <label>mutex</label>
+      </node>
+      <node id="30492">
+        <label>../path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="30490" relation="include">
+        </childnode>
+        <childnode refid="30493" relation="include">
+        </childnode>
+        <childnode refid="30494" relation="include">
+        </childnode>
+        <childnode refid="30524" relation="include">
+        </childnode>
+        <childnode refid="30526" relation="include">
+        </childnode>
+      </node>
+      <node id="30495">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="30512">
+        <label>type_traits</label>
+      </node>
+      <node id="30507">
+        <label>config.h</label>
+      </node>
+      <node id="30489">
+        <label>memory</label>
+      </node>
+      <node id="30521">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30488" relation="include">
+        </childnode>
+        <childnode refid="30522" relation="include">
+        </childnode>
+        <childnode refid="30499" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30530">
+        <label>libopenage/util/fslike/directory.cpp</label>
+        <link refid="directory_8cpp"/>
+      </node>
+      <node id="30531">
+        <label>libopenage/util/path.cpp</label>
+        <link refid="util_2path_8cpp"/>
+      </node>
+      <node id="30528">
+        <label>libopenage/util/fslike/directory.h</label>
+        <link refid="directory_8h"/>
+        <childnode refid="30529" relation="include">
+        </childnode>
+        <childnode refid="30530" relation="include">
+        </childnode>
+        <childnode refid="30531" relation="include">
+        </childnode>
+      </node>
+      <node id="30527">
+        <label>libopenage/util/fslike/fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="30528" relation="include">
+        </childnode>
+        <childnode refid="30532" relation="include">
+        </childnode>
+        <childnode refid="30533" relation="include">
+        </childnode>
+      </node>
+      <node id="30532">
+        <label>libopenage/util/fslike/fslike.cpp</label>
+        <link refid="fslike_8cpp"/>
+      </node>
+      <node id="30533">
+        <label>libopenage/util/fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="30534" relation="include">
+        </childnode>
+        <childnode refid="30531" relation="include">
+        </childnode>
+      </node>
+      <node id="30529">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="30534">
+        <label>libopenage/util/fslike/python.cpp</label>
+        <link refid="fslike_2python_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" prot="public">openage::util::fslike::FSLike</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp<sp/>cimport<sp/>bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.vector<sp/>cimport<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libc.stdint<sp/>cimport<sp/>uint64_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.memory<sp/>cimport<sp/>shared_ptr</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.string<sp/>cimport<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.utility<sp/>cimport<sp/>pair</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.path<sp/>cimport<sp/>Path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>ctypedef<sp/>vector[string]<sp/>parts_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.file<sp/>cimport<sp/>File</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../file.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fslike<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">FSLike</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;FSLike&gt;<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">FSLike</ref>();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">FSLike</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>root();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_file(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_dir(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>writable(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/><ref refid="namespaceopenage_1_1py_1a58cbca251b8e2118e0a6b9b0b78a7b32" kindref="member">list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mkdirs(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>open_r(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>open_w(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>open_rw(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>open_a(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/>open_ar(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>provide<sp/>a<sp/>default<sp/>implementation<sp/>that<sp/>resolves<sp/>the<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>checking<sp/>if<sp/>it<sp/>is<sp/>readable/writable:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::pair&lt;bool,<sp/>Path&gt;<sp/>resolve_r(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::pair&lt;bool,<sp/>Path&gt;<sp/>resolve_w(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/>get_native_path(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rename(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;target_parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rmdir(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>touch(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unlink(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>get_mtime(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>uint64_t<sp/>get_filesize(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_python_native()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::ostream<sp/>&amp;<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(std::ostream<sp/>&amp;)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fslike/fslike.h"/>
+  </compounddef>
+</doxygen>

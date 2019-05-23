@@ -1,0 +1,1032 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="texture_8h" kind="file" language="C++">
+    <compoundname>texture.h</compoundname>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includes local="yes">gamedata/texture.gen.h</includes>
+    <includes refid="pixel_8h" local="yes">coord/pixel.h</includes>
+    <includes refid="tile_8h" local="yes">coord/tile.h</includes>
+    <includes refid="program_8h" local="yes">shader/program.h</includes>
+    <includes refid="shader_2shader_8h" local="yes">shader/shader.h</includes>
+    <includes refid="util_2path_8h" local="yes">util/path.h</includes>
+    <includedby refid="assetmanager_8cpp" local="yes">libopenage/assetmanager.cpp</includedby>
+    <includedby refid="terrain_8h" local="yes">libopenage/terrain/terrain.h</includedby>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="terrain__chunk_8h" local="yes">libopenage/terrain/terrain_chunk.h</includedby>
+    <includedby refid="gui__texture_8cpp" local="yes">libopenage/gui/integration/private/gui_texture.cpp</includedby>
+    <includedby refid="gui__texture__factory_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_factory.cpp</includedby>
+    <includedby refid="gui__texture__handle_8cpp" local="yes">libopenage/gui/integration/private/gui_texture_handle.cpp</includedby>
+    <includedby refid="terrain__chunk_8cpp" local="yes">libopenage/terrain/terrain_chunk.cpp</includedby>
+    <includedby refid="terrain__object_8cpp" local="yes">libopenage/terrain/terrain_object.cpp</includedby>
+    <includedby refid="terrain__outline_8cpp" local="yes">libopenage/terrain/terrain_outline.cpp</includedby>
+    <includedby refid="texture_8cpp" local="yes">libopenage/texture.cpp</includedby>
+    <includedby refid="unit__texture_8cpp" local="yes">libopenage/unit/unit_texture.cpp</includedby>
+    <incdepgraph>
+      <node id="22363">
+        <label>list</label>
+      </node>
+      <node id="22356">
+        <label>atomic</label>
+      </node>
+      <node id="22333">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="22334" relation="include">
+        </childnode>
+        <childnode refid="22335" relation="include">
+        </childnode>
+        <childnode refid="22336" relation="include">
+        </childnode>
+        <childnode refid="22337" relation="include">
+        </childnode>
+        <childnode refid="22338" relation="include">
+        </childnode>
+        <childnode refid="22339" relation="include">
+        </childnode>
+        <childnode refid="22340" relation="include">
+        </childnode>
+        <childnode refid="22341" relation="include">
+        </childnode>
+      </node>
+      <node id="22360">
+        <label>functional</label>
+      </node>
+      <node id="22337">
+        <label>iomanip</label>
+      </node>
+      <node id="22338">
+        <label>limits</label>
+      </node>
+      <node id="22331">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="22332" relation="include">
+        </childnode>
+        <childnode refid="22333" relation="include">
+        </childnode>
+      </node>
+      <node id="22324">
+        <label>libopenage/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="22325" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22328" relation="include">
+        </childnode>
+        <childnode refid="22329" relation="include">
+        </childnode>
+        <childnode refid="22368" relation="include">
+        </childnode>
+        <childnode refid="22371" relation="include">
+        </childnode>
+        <childnode refid="22372" relation="include">
+        </childnode>
+        <childnode refid="22374" relation="include">
+        </childnode>
+      </node>
+      <node id="22380">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="22360" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+      </node>
+      <node id="22332">
+        <label>cstdint</label>
+      </node>
+      <node id="22369">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="22358">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="22359" relation="include">
+        </childnode>
+        <childnode refid="22360" relation="include">
+        </childnode>
+        <childnode refid="22337" relation="include">
+        </childnode>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22361" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+      </node>
+      <node id="22379">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="22345" relation="include">
+        </childnode>
+      </node>
+      <node id="22336">
+        <label>cmath</label>
+      </node>
+      <node id="22347">
+        <label>stdexcept</label>
+      </node>
+      <node id="22378">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="22362">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="22363" relation="include">
+        </childnode>
+        <childnode refid="22364" relation="include">
+        </childnode>
+        <childnode refid="22365" relation="include">
+        </childnode>
+      </node>
+      <node id="22359">
+        <label>cstdarg</label>
+      </node>
+      <node id="22344">
+        <label>string</label>
+      </node>
+      <node id="22351">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="22332" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22352" relation="include">
+        </childnode>
+        <childnode refid="22353" relation="include">
+        </childnode>
+        <childnode refid="22355" relation="include">
+        </childnode>
+        <childnode refid="22362" relation="include">
+        </childnode>
+        <childnode refid="22365" relation="include">
+        </childnode>
+      </node>
+      <node id="22353">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="22354" relation="include">
+        </childnode>
+      </node>
+      <node id="22355">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="22356" relation="include">
+        </childnode>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22340" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+        <childnode refid="22357" relation="include">
+        </childnode>
+        <childnode refid="22358" relation="include">
+        </childnode>
+      </node>
+      <node id="22339">
+        <label>ostream</label>
+      </node>
+      <node id="22375">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="22332" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+        <childnode refid="22376" relation="include">
+        </childnode>
+        <childnode refid="22377" relation="include">
+        </childnode>
+      </node>
+      <node id="22342">
+        <label>limits.h</label>
+      </node>
+      <node id="22345">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="22346" relation="include">
+        </childnode>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22347" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+        <childnode refid="22351" relation="include">
+        </childnode>
+      </node>
+      <node id="22341">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="22334" relation="include">
+        </childnode>
+        <childnode refid="22342" relation="include">
+        </childnode>
+        <childnode refid="22336" relation="include">
+        </childnode>
+        <childnode refid="22343" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22345" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+      </node>
+      <node id="22370">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="22367">
+        <label>typeinfo</label>
+      </node>
+      <node id="22330">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="22326">
+        <label>vector</label>
+      </node>
+      <node id="22349">
+        <label>ciso646</label>
+      </node>
+      <node id="22371">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="22325" relation="include">
+        </childnode>
+      </node>
+      <node id="22361">
+        <label>sstream</label>
+      </node>
+      <node id="22348">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="22349" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22350" relation="include">
+        </childnode>
+      </node>
+      <node id="22381">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="22327" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+        <childnode refid="22382" relation="include">
+        </childnode>
+        <childnode refid="22375" relation="include">
+        </childnode>
+      </node>
+      <node id="22350">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="22350" relation="include">
+        </childnode>
+      </node>
+      <node id="22325">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="22357">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="22346" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+      </node>
+      <node id="22365">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="22366" relation="include">
+        </childnode>
+      </node>
+      <node id="22329">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="22330" relation="include">
+        </childnode>
+        <childnode refid="22331" relation="include">
+        </childnode>
+      </node>
+      <node id="22383">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="22328">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="22382">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="22346" relation="include">
+        </childnode>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+      </node>
+      <node id="22354">
+        <label>cstdlib</label>
+      </node>
+      <node id="22346">
+        <label>iostream</label>
+      </node>
+      <node id="22372">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="22373" relation="include">
+        </childnode>
+        <childnode refid="22325" relation="include">
+        </childnode>
+      </node>
+      <node id="22377">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="22360" relation="include">
+        </childnode>
+        <childnode refid="22364" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+        <childnode refid="22378" relation="include">
+        </childnode>
+        <childnode refid="22379" relation="include">
+        </childnode>
+        <childnode refid="22380" relation="include">
+        </childnode>
+      </node>
+      <node id="22335">
+        <label>climits</label>
+      </node>
+      <node id="22364">
+        <label>mutex</label>
+      </node>
+      <node id="22374">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="22344" relation="include">
+        </childnode>
+        <childnode refid="22326" relation="include">
+        </childnode>
+        <childnode refid="22375" relation="include">
+        </childnode>
+        <childnode refid="22381" relation="include">
+        </childnode>
+        <childnode refid="22383" relation="include">
+        </childnode>
+      </node>
+      <node id="22368">
+        <label>coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="22331" relation="include">
+        </childnode>
+        <childnode refid="22369" relation="include">
+        </childnode>
+        <childnode refid="22370" relation="include">
+        </childnode>
+        <childnode refid="22341" relation="include">
+        </childnode>
+      </node>
+      <node id="22376">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="22340">
+        <label>type_traits</label>
+      </node>
+      <node id="22352">
+        <label>config.h</label>
+      </node>
+      <node id="22334">
+        <label>algorithm</label>
+      </node>
+      <node id="22343">
+        <label>cstring</label>
+      </node>
+      <node id="22327">
+        <label>memory</label>
+      </node>
+      <node id="22373">
+        <label>initializer_list</label>
+      </node>
+      <node id="22366">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="22346" relation="include">
+        </childnode>
+        <childnode refid="22367" relation="include">
+        </childnode>
+        <childnode refid="22348" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22430">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="22435">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__impl_8cpp"/>
+      </node>
+      <node id="22428">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="22408" relation="include">
+        </childnode>
+        <childnode refid="22429" relation="include">
+        </childnode>
+        <childnode refid="22430" relation="include">
+        </childnode>
+      </node>
+      <node id="22389">
+        <label>libopenage/gamestate/game_spec.h</label>
+        <link refid="game__spec_8h"/>
+        <childnode refid="22390" relation="include">
+        </childnode>
+        <childnode refid="22395" relation="include">
+        </childnode>
+        <childnode refid="22403" relation="include">
+        </childnode>
+        <childnode refid="22404" relation="include">
+        </childnode>
+        <childnode refid="22405" relation="include">
+        </childnode>
+        <childnode refid="22412" relation="include">
+        </childnode>
+        <childnode refid="22406" relation="include">
+        </childnode>
+        <childnode refid="22427" relation="include">
+        </childnode>
+        <childnode refid="22408" relation="include">
+        </childnode>
+        <childnode refid="22428" relation="include">
+        </childnode>
+        <childnode refid="22431" relation="include">
+        </childnode>
+        <childnode refid="22432" relation="include">
+        </childnode>
+        <childnode refid="22433" relation="include">
+        </childnode>
+        <childnode refid="22434" relation="include">
+        </childnode>
+        <childnode refid="22435" relation="include">
+        </childnode>
+        <childnode refid="22436" relation="include">
+        </childnode>
+      </node>
+      <node id="22384">
+        <label>libopenage/texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="22385" relation="include">
+        </childnode>
+        <childnode refid="22386" relation="include">
+        </childnode>
+        <childnode refid="22393" relation="include">
+        </childnode>
+        <childnode refid="22443" relation="include">
+        </childnode>
+        <childnode refid="22444" relation="include">
+        </childnode>
+        <childnode refid="22445" relation="include">
+        </childnode>
+        <childnode refid="22446" relation="include">
+        </childnode>
+        <childnode refid="22440" relation="include">
+        </childnode>
+        <childnode refid="22441" relation="include">
+        </childnode>
+        <childnode refid="22447" relation="include">
+        </childnode>
+        <childnode refid="22448" relation="include">
+        </childnode>
+        <childnode refid="22436" relation="include">
+        </childnode>
+      </node>
+      <node id="22439">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="22390">
+        <label>libopenage/gamestate/civilisation.h</label>
+        <link refid="civilisation_8h"/>
+        <childnode refid="22391" relation="include">
+        </childnode>
+        <childnode refid="22426" relation="include">
+        </childnode>
+        <childnode refid="22412" relation="include">
+        </childnode>
+      </node>
+      <node id="22416">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="22396">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="22397" relation="include">
+        </childnode>
+        <childnode refid="22398" relation="include">
+        </childnode>
+        <childnode refid="22399" relation="include">
+        </childnode>
+        <childnode refid="22400" relation="include">
+        </childnode>
+        <childnode refid="22401" relation="include">
+        </childnode>
+      </node>
+      <node id="22423">
+        <label>libopenage/unit/ability.cpp</label>
+        <link refid="ability_8cpp"/>
+      </node>
+      <node id="22418">
+        <label>libopenage/gamestate/cost.cpp</label>
+        <link refid="cost_8cpp"/>
+      </node>
+      <node id="22397">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="22398" relation="include">
+        </childnode>
+      </node>
+      <node id="22414">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="22403">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="22442">
+        <label>libopenage/terrain/terrain_search.cpp</label>
+        <link refid="terrain__search_8cpp"/>
+      </node>
+      <node id="22412">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="22420">
+        <label>libopenage/gamestate/player.cpp</label>
+        <link refid="player_8cpp"/>
+      </node>
+      <node id="22402">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="22399">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="22447">
+        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <link refid="terrain__outline_8cpp"/>
+      </node>
+      <node id="22434">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_terrain_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__terrain__id__impl_8cpp"/>
+      </node>
+      <node id="22385">
+        <label>libopenage/assetmanager.cpp</label>
+        <link refid="assetmanager_8cpp"/>
+      </node>
+      <node id="22437">
+        <label>libopenage/pathfinding/a_star.cpp</label>
+        <link refid="a__star_8cpp"/>
+      </node>
+      <node id="22438">
+        <label>libopenage/pathfinding/path.cpp</label>
+        <link refid="pathfinding_2path_8cpp"/>
+      </node>
+      <node id="22398">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="22425">
+        <label>libopenage/unit/unit_type.cpp</label>
+        <link refid="unit__type_8cpp"/>
+      </node>
+      <node id="22388">
+        <label>libopenage/coord/tile.cpp</label>
+        <link refid="tile_8cpp"/>
+      </node>
+      <node id="22445">
+        <label>libopenage/gui/integration/private/gui_texture_factory.cpp</label>
+        <link refid="gui__texture__factory_8cpp"/>
+      </node>
+      <node id="22391">
+        <label>libopenage/gamestate/player.h</label>
+        <link refid="player_8h"/>
+        <childnode refid="22392" relation="include">
+        </childnode>
+        <childnode refid="22411" relation="include">
+        </childnode>
+        <childnode refid="22418" relation="include">
+        </childnode>
+        <childnode refid="22419" relation="include">
+        </childnode>
+        <childnode refid="22420" relation="include">
+        </childnode>
+        <childnode refid="22421" relation="include">
+        </childnode>
+        <childnode refid="22422" relation="include">
+        </childnode>
+        <childnode refid="22423" relation="include">
+        </childnode>
+        <childnode refid="22424" relation="include">
+        </childnode>
+        <childnode refid="22425" relation="include">
+        </childnode>
+      </node>
+      <node id="22432">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_graphic_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__graphic__id__impl_8cpp"/>
+      </node>
+      <node id="22411">
+        <label>libopenage/unit/producer.h</label>
+        <link refid="producer_8h"/>
+        <childnode refid="22403" relation="include">
+        </childnode>
+        <childnode refid="22405" relation="include">
+        </childnode>
+        <childnode refid="22412" relation="include">
+        </childnode>
+        <childnode refid="22413" relation="include">
+        </childnode>
+        <childnode refid="22414" relation="include">
+        </childnode>
+        <childnode refid="22415" relation="include">
+        </childnode>
+        <childnode refid="22416" relation="include">
+        </childnode>
+        <childnode refid="22417" relation="include">
+        </childnode>
+      </node>
+      <node id="22394">
+        <label>libopenage/game_control.h</label>
+        <link refid="game__control_8h"/>
+        <childnode refid="22395" relation="include">
+        </childnode>
+        <childnode refid="22396" relation="include">
+        </childnode>
+        <childnode refid="22401" relation="include">
+        </childnode>
+        <childnode refid="22402" relation="include">
+        </childnode>
+      </node>
+      <node id="22436">
+        <label>libopenage/unit/unit_texture.cpp</label>
+        <link refid="unit__texture_8cpp"/>
+      </node>
+      <node id="22444">
+        <label>libopenage/gui/integration/private/gui_texture.cpp</label>
+        <link refid="gui__texture_8cpp"/>
+      </node>
+      <node id="22408">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="22413">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="22421">
+        <label>libopenage/gamestate/score.cpp</label>
+        <link refid="score_8cpp"/>
+      </node>
+      <node id="22415">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="22407">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="22400" relation="include">
+        </childnode>
+        <childnode refid="22408" relation="include">
+        </childnode>
+        <childnode refid="22409" relation="include">
+        </childnode>
+        <childnode refid="22410" relation="include">
+        </childnode>
+      </node>
+      <node id="22393">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="22417">
+        <label>libopenage/unit/unit_container.cpp</label>
+        <link refid="unit__container_8cpp"/>
+      </node>
+      <node id="22443">
+        <label>libopenage/terrain/terrain_chunk.h</label>
+        <link refid="terrain__chunk_8h"/>
+        <childnode refid="22395" relation="include">
+        </childnode>
+        <childnode refid="22405" relation="include">
+        </childnode>
+        <childnode refid="22406" relation="include">
+        </childnode>
+        <childnode refid="22439" relation="include">
+        </childnode>
+        <childnode refid="22440" relation="include">
+        </childnode>
+        <childnode refid="22441" relation="include">
+        </childnode>
+      </node>
+      <node id="22392">
+        <label>libopenage/gamestate/game_main.h</label>
+        <link refid="game__main_8h"/>
+        <childnode refid="22393" relation="include">
+        </childnode>
+        <childnode refid="22394" relation="include">
+        </childnode>
+        <childnode refid="22403" relation="include">
+        </childnode>
+        <childnode refid="22404" relation="include">
+        </childnode>
+        <childnode refid="22405" relation="include">
+        </childnode>
+        <childnode refid="22406" relation="include">
+        </childnode>
+        <childnode refid="22407" relation="include">
+        </childnode>
+        <childnode refid="22408" relation="include">
+        </childnode>
+        <childnode refid="22410" relation="include">
+        </childnode>
+      </node>
+      <node id="22433">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_id_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__id__impl_8cpp"/>
+      </node>
+      <node id="22441">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="22406">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="22440">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="22424">
+        <label>libopenage/unit/research.cpp</label>
+        <link refid="research_8cpp"/>
+      </node>
+      <node id="22405">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="22446">
+        <label>libopenage/gui/integration/private/gui_texture_handle.cpp</label>
+        <link refid="gui__texture__handle_8cpp"/>
+      </node>
+      <node id="22427">
+        <label>libopenage/gui/category_contents_list_model.h</label>
+        <link refid="category__contents__list__model_8h"/>
+        <childnode refid="22399" relation="include">
+        </childnode>
+      </node>
+      <node id="22419">
+        <label>libopenage/gamestate/market.cpp</label>
+        <link refid="market_8cpp"/>
+      </node>
+      <node id="22400">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="22404">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="22431">
+        <label>libopenage/gui/integration/private/gui_game_spec_image_provider_by_filename_impl.cpp</label>
+        <link refid="gui__game__spec__image__provider__by__filename__impl_8cpp"/>
+      </node>
+      <node id="22422">
+        <label>libopenage/gamestate/team.cpp</label>
+        <link refid="team_8cpp"/>
+      </node>
+      <node id="22387">
+        <label>libopenage/coord/phys.cpp</label>
+        <link refid="phys_8cpp"/>
+      </node>
+      <node id="22409">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="22426">
+        <label>libopenage/gamestate/civilisation.cpp</label>
+        <link refid="civilisation_8cpp"/>
+      </node>
+      <node id="22395">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="22410">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="22401">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="22429">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+      <node id="22386">
+        <label>libopenage/terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="22387" relation="include">
+        </childnode>
+        <childnode refid="22388" relation="include">
+        </childnode>
+        <childnode refid="22389" relation="include">
+        </childnode>
+        <childnode refid="22392" relation="include">
+        </childnode>
+        <childnode refid="22403" relation="include">
+        </childnode>
+        <childnode refid="22404" relation="include">
+        </childnode>
+        <childnode refid="22437" relation="include">
+        </childnode>
+        <childnode refid="22438" relation="include">
+        </childnode>
+        <childnode refid="22439" relation="include">
+        </childnode>
+        <childnode refid="22440" relation="include">
+        </childnode>
+        <childnode refid="22441" relation="include">
+        </childnode>
+        <childnode refid="22442" relation="include">
+        </childnode>
+        <childnode refid="22413" relation="include">
+        </childnode>
+        <childnode refid="22414" relation="include">
+        </childnode>
+        <childnode refid="22415" relation="include">
+        </childnode>
+        <childnode refid="22416" relation="include">
+        </childnode>
+      </node>
+      <node id="22448">
+        <label>libopenage/texture.cpp</label>
+        <link refid="texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1gl__texture__buffer" prot="public">openage::gl_texture_buffer</innerclass>
+    <innerclass refid="classopenage_1_1_texture" prot="public">openage::Texture</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1texture__shader">openage::texture_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1teamcolor__shader">openage::teamcolor_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1alphamask__shader">openage::alphamask_shader</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;gamedata/texture.gen.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pixel_8h" kindref="compound">coord/pixel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tile_8h" kindref="compound">coord/tile.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="program_8h" kindref="compound">shader/program.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="shader_2shader_8h" kindref="compound">shader/shader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_2path_8h" kindref="compound">util/path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Terrain;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Path;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" kindref="member">coord</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CoordManager;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">texture_shader<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>shader::Program<sp/>*<ref refid="namespaceopenage_1_1texture__shader_1a5b862f8ed8e822e082d52a12511eeec9" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>GLint<sp/><ref refid="namespaceopenage_1_1texture__shader_1ab12adc72bbe0d0f68ad592800b3e57d4" kindref="member">texture</ref>,<sp/><ref refid="namespaceopenage_1_1texture__shader_1afc27bd08aad20cadf84d8f39268876af" kindref="member">tex_coord</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>texture_shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">teamcolor_shader<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>shader::Program<sp/>*<ref refid="namespaceopenage_1_1teamcolor__shader_1a290de9c73d125cfbdbf583ee24cee3c8" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>GLint<sp/><ref refid="namespaceopenage_1_1teamcolor__shader_1a82581c01972dbc5864d834a7106b5802" kindref="member">texture</ref>,<sp/><ref refid="namespaceopenage_1_1teamcolor__shader_1a0d006aeb703278468eb6e97c4fca9abe" kindref="member">tex_coord</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>GLint<sp/><ref refid="namespaceopenage_1_1teamcolor__shader_1a34ad1a040b992e6be28c954460c611f8" kindref="member">player_id_var</ref>,<sp/><ref refid="namespaceopenage_1_1teamcolor__shader_1a250c796f16cfb2e4ae0a31d812e500c4" kindref="member">alpha_marker_var</ref>,<sp/><ref refid="namespaceopenage_1_1teamcolor__shader_1ae06f7518406e08c1c00ae0f281ecb4ef" kindref="member">player_color_var</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>teamcolor_shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">alphamask_shader<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>shader::Program<sp/>*<ref refid="namespaceopenage_1_1alphamask__shader_1a91d9794fbedeb8a2ca32f79e13c860e3" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>GLint<sp/><ref refid="namespaceopenage_1_1alphamask__shader_1a39389a158565f7be3c74a786671bcbcc" kindref="member">base_texture</ref>,<sp/><ref refid="namespaceopenage_1_1alphamask__shader_1a64874bd7ffd0c4f356826976af477bb3" kindref="member">mask_texture</ref>,<sp/><ref refid="namespaceopenage_1_1alphamask__shader_1a58775bda88577e4b2819a53e55ddd9be" kindref="member">base_coord</ref>,<sp/><ref refid="namespaceopenage_1_1alphamask__shader_1aadcbcdb078318bc73e55755280dda70b" kindref="member">mask_coord</ref>,<sp/><ref refid="namespaceopenage_1_1alphamask__shader_1a4413a93ea827ac75b828f77f6cc69e17" kindref="member">show_mask</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>alphamask_shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>bitmasks<sp/>for<sp/>shader<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a1345d2b9c7e4136c640ecd2f43acebff" kindref="member">PLAYERCOLORED</ref><sp/>=<sp/>1<sp/>&lt;&lt;<sp/>0;</highlight></codeline>
+<codeline lineno="46" refid="namespaceopenage_1a8f58bd5706ab9adf5f5905a0966d188a" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a8f58bd5706ab9adf5f5905a0966d188a" kindref="member">ALPHAMASKED</ref><sp/><sp/><sp/>=<sp/>1<sp/>&lt;&lt;<sp/>1;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structopenage_1_1gl__texture__buffer" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1gl__texture__buffer" kindref="compound">gl_texture_buffer</ref><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="structopenage_1_1gl__texture__buffer_1a35cb39b23cff59f3dc0c8912840e2b38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="structopenage_1_1gl__texture__buffer_1aed6aaf0950f0fddb799d7ec956230138" kindref="member">id</ref>,<sp/><ref refid="structopenage_1_1gl__texture__buffer_1a35cb39b23cff59f3dc0c8912840e2b38" kindref="member">vertbuf</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>requires<sp/>loading<sp/>on<sp/>the<sp/>main<sp/>thread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structopenage_1_1gl__texture__buffer_1a697bbf741b2eca6f560121aac3bc0c0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1gl__texture__buffer_1a697bbf741b2eca6f560121aac3bc0c0a" kindref="member">transferred</ref>;</highlight></codeline>
+<codeline lineno="56" refid="structopenage_1_1gl__texture__buffer_1ac06991269c1a68d34684abbbefac807c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1gl__texture__buffer_1ac06991269c1a68d34684abbbefac807c" kindref="member">texture_format_in</ref>;</highlight></codeline>
+<codeline lineno="57" refid="structopenage_1_1gl__texture__buffer_1a14a0c70991272a36f844cb8d7d874a29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1gl__texture__buffer_1a14a0c70991272a36f844cb8d7d874a29" kindref="member">texture_format_out</ref>;</highlight></codeline>
+<codeline lineno="58" refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;uint32_t[]&gt;<sp/><ref refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1_texture" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73" refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" kindref="member">w</ref>;</highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" kindref="member">h</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture_1a9e58058cc22522ac149768038cc2dc08" kindref="member">Texture</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height,<sp/>std::unique_ptr&lt;uint32_t[]&gt;<sp/>data);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture_1a9e58058cc22522ac149768038cc2dc08" kindref="member">Texture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;<ref refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" kindref="member">filename</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" kindref="member">use_metafile</ref>=</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_texture_1aedb0d8e12aa8cc20d364b12a75045a5e" kindref="member">~Texture</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" kindref="member">draw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="structopenage_1_1coord_1_1camhud" kindref="compound">coord::camhud</ref><sp/>pos,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mirrored=</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subid=0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>player=0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" kindref="member">draw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="structopenage_1_1coord_1_1camgame" kindref="compound">coord::camgame</ref><sp/>pos,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode=0,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mirrored=</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subid=0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>player=0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" kindref="member">draw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref><sp/>&amp;mgr,<sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>pos,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode=0,<sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mirrored=</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subid=0,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>player=0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" kindref="member">draw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1coord_1_1_coord_manager" kindref="compound">coord::CoordManager</ref><sp/>&amp;mgr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref><sp/>&amp;terrain,<sp/><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref><sp/>pos,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subid,<sp/><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>*alpha_texture,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alpha_subid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0bb8ecfa34c39de191c45b95139da3ed" kindref="member">draw</ref>(<ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>pos,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mirrored,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>subid,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>player,<sp/><ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>*alpha_texture,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alpha_subid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1ac02524c602d22cecd5a06199e113cc43" kindref="member">reload</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::subtexture<sp/>*<ref refid="classopenage_1_1_texture_1aa2ba756d0a2a61a5dada563790e3ceec" kindref="member">get_subtexture</ref>(uint64_t<sp/>subid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a4548b2bc3eb5310a97deee94ab536035" kindref="member">get_subtexture_count</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a0b306cf19280092e3fe22340e04f1abd" kindref="member">get_subtexture_size</ref>(uint64_t<sp/>subid,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" kindref="member">w</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" kindref="member">h</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" kindref="member">get_subtexture_coordinates</ref>(uint64_t<sp/>subid,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txl,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txt,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txb)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a092c7e4cb300b5fda314d0c951d866d3" kindref="member">get_subtexture_coordinates</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gamedata::subtexture<sp/>*subtex,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txl,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txt,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*txb)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a5b69e4f44b43bb966b8b5030873c1ddd" kindref="member">fix_hotspots</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>y);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a622e7c5ad0a837004883818ec8f91147" kindref="member">activate_alphamask</ref>(<ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref><sp/>*mask,<sp/>uint64_t<sp/>subid);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1abc6ca9da94bcd6ada3ada56606ca96dd" kindref="member">disable_alphamask</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1_texture_1a4a39cc1e433e023254dabef12fe20490" kindref="member">get_texture_id</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="170" refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;gl_texture_buffer&gt;<sp/><ref refid="classopenage_1_1_texture_1aae75f4bf910ace9dcb0dfe55f1a6d8d5" kindref="member">buffer</ref>;</highlight></codeline>
+<codeline lineno="171" refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;gamedata::subtexture&gt;<sp/><ref refid="classopenage_1_1_texture_1a27d11c496e6544f5288e3c6d7e732a55" kindref="member">subtextures</ref>;</highlight></codeline>
+<codeline lineno="172" refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1ad2dc162a91c07aaf2875f3f6e3f8a45b" kindref="member">use_metafile</ref>;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/><ref refid="classopenage_1_1_texture_1a1ff717001fe34c3296fb292d83247326" kindref="member">filename</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a1fba0cda4b2ce8306d8f6278e936681a" kindref="member">load</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a3360ead41cd7e078088ae3a5cdf4606b" kindref="member">load_in_glthread</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1_texture_1a210c36d673ca296a040fdb72da5ee89f" kindref="member">make_gl_texture</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iformat,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>oformat,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a2954f2796e06c22fc2a08361f565b892" kindref="member">w</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a615e1dad6c2f29c113da88c1c01270d1" kindref="member">h</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_texture_1a137e84aed7b62a503d06dfe6301f62fd" kindref="member">unload</ref>();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/texture.h"/>
+  </compounddef>
+</doxygen>

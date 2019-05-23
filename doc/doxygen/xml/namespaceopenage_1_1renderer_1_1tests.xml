@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1renderer_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::renderer::tests</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a4039c91caacfac63dd3f6c5a9b1c44c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::tests::font_manager_test_get_font</definition>
+        <argsstring>()</argsstring>
+        <name>font_manager_test_get_font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/tests.cpp" line="12" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="12" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a108b5241d922a4e8936bb243998e9055" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::tests::font_manager</definition>
+        <argsstring>()</argsstring>
+        <name>font_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/tests.cpp" line="25" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a4d5611a559a9c63bcb0865c8a0829d4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::tests::font_test_font_description</definition>
+        <argsstring>()</argsstring>
+        <name>font_test_font_description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/tests.cpp" line="29" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="29" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::tests::font</definition>
+        <argsstring>()</argsstring>
+        <name>font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/font/tests.cpp" line="59" column="1" bodyfile="libopenage/renderer/font/tests.cpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1a6f980e5dd40ec0b730e586e2484233d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::tests::renderer_demo_0</definition>
+        <argsstring>(const util::Path &amp;path)</argsstring>
+        <name>renderer_demo_0</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/tests.cpp" line="33" column="1" bodyfile="libopenage/renderer/tests.cpp" bodystart="33" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1tests_1ac2256044717a0f7f7aafbb1f2be3a1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::renderer::tests::renderer_demo</definition>
+        <argsstring>(int demo_id, util::Path path)</argsstring>
+        <name>renderer_demo</name>
+        <param>
+          <type>int</type>
+          <declname>demo_id</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/tests.cpp" line="280" column="1" bodyfile="libopenage/renderer/tests.cpp" bodystart="280" bodyend="290"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/font/tests.cpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

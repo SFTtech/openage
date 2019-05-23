@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_image_provider" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiImageProvider</compoundname>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" prot="public" virt="non-virtual">openage::gui::GuiGameSpecImageProvider</derivedcompoundref>
+    <includes refid="gui__image__provider_8h" local="no">gui_image_provider.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_image_provider_1a322ba95139d34df3f26b05be98a8292f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class GuiImageProviderImpl</definition>
+        <argsstring></argsstring>
+        <name>GuiImageProviderImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_image_provider.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_image_provider.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref>, std::function&lt; void(<ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> *)&gt; &gt;</type>
+        <definition>std::unique_ptr&lt;GuiImageProviderImpl, std::function&lt;void(GuiImageProviderImpl*)&gt; &gt; qtsdl::GuiImageProvider::impl</definition>
+        <argsstring></argsstring>
+        <name>impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_image_provider.h" line="19" column="1" bodyfile="libopenage/gui/guisys/public/gui_image_provider.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_1a4e9879f5d4bec950192552f9161ee13f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiImageProvider::GuiImageProvider</definition>
+        <argsstring>(std::unique_ptr&lt; GuiImageProviderImpl &gt; impl)</argsstring>
+        <name>GuiImageProvider</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt;</type>
+          <declname>impl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_image_provider.h" line="14" column="1" bodyfile="libopenage/gui/guisys/public/gui_image_provider.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_1a5d0006588b63fff9b74ea46c9de784be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiImageProvider::~GuiImageProvider</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiImageProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_image_provider.h" line="15" column="1" bodyfile="libopenage/gui/guisys/public/gui_image_provider.cpp" bodystart="14" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2600">
+        <label>qtsdl::GuiImageProvider</label>
+        <link refid="classqtsdl_1_1_gui_image_provider"/>
+      </node>
+      <node id="2601">
+        <label>openage::gui::GuiGameSpecImageProvider</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider"/>
+        <childnode refid="2600" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2602">
+        <label>qtsdl::GuiImageProvider</label>
+        <link refid="classqtsdl_1_1_gui_image_provider"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/public/gui_image_provider.h" line="12" column="1" bodyfile="libopenage/gui/guisys/public/gui_image_provider.h" bodystart="12" bodyend="20"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_image_provider_1a4e9879f5d4bec950192552f9161ee13f" prot="public" virt="non-virtual"><scope>qtsdl::GuiImageProvider</scope><name>GuiImageProvider</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_1a322ba95139d34df3f26b05be98a8292f" prot="private" virt="non-virtual"><scope>qtsdl::GuiImageProvider</scope><name>GuiImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_1aa623a958d71e9f94a64b75411bece630" prot="private" virt="non-virtual"><scope>qtsdl::GuiImageProvider</scope><name>impl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_1a5d0006588b63fff9b74ea46c9de784be" prot="public" virt="non-virtual"><scope>qtsdl::GuiImageProvider</scope><name>~GuiImageProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,633 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="text_8cpp" kind="file" language="C++">
+    <compoundname>text.cpp</compoundname>
+    <includes refid="text_8h" local="yes">text.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">harfbuzz/hb.h</includes>
+    <includes refid="strings_8h" local="yes">../util/strings.h</includes>
+    <includes refid="font_8h" local="yes">font/font.h</includes>
+    <incdepgraph>
+      <node id="23540">
+        <label>list</label>
+      </node>
+      <node id="23533">
+        <label>atomic</label>
+      </node>
+      <node id="23510">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="23511" relation="include">
+        </childnode>
+        <childnode refid="23512" relation="include">
+        </childnode>
+        <childnode refid="23513" relation="include">
+        </childnode>
+        <childnode refid="23514" relation="include">
+        </childnode>
+        <childnode refid="23515" relation="include">
+        </childnode>
+        <childnode refid="23516" relation="include">
+        </childnode>
+        <childnode refid="23517" relation="include">
+        </childnode>
+        <childnode refid="23518" relation="include">
+        </childnode>
+      </node>
+      <node id="23537">
+        <label>functional</label>
+      </node>
+      <node id="23514">
+        <label>iomanip</label>
+      </node>
+      <node id="23549">
+        <label>font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23550" relation="include">
+        </childnode>
+        <childnode refid="23503" relation="include">
+        </childnode>
+        <childnode refid="23551" relation="include">
+        </childnode>
+        <childnode refid="23553" relation="include">
+        </childnode>
+      </node>
+      <node id="23515">
+        <label>limits</label>
+      </node>
+      <node id="23508">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="23509" relation="include">
+        </childnode>
+        <childnode refid="23510" relation="include">
+        </childnode>
+      </node>
+      <node id="23546">
+        <label>color.h</label>
+        <link refid="renderer_2color_8h"/>
+        <childnode refid="23509" relation="include">
+        </childnode>
+      </node>
+      <node id="23509">
+        <label>cstdint</label>
+      </node>
+      <node id="23535">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23536" relation="include">
+        </childnode>
+        <childnode refid="23537" relation="include">
+        </childnode>
+        <childnode refid="23514" relation="include">
+        </childnode>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23538" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23503" relation="include">
+        </childnode>
+      </node>
+      <node id="23551">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="23531" relation="include">
+        </childnode>
+        <childnode refid="23552" relation="include">
+        </childnode>
+      </node>
+      <node id="23513">
+        <label>cmath</label>
+      </node>
+      <node id="23524">
+        <label>stdexcept</label>
+      </node>
+      <node id="23539">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23540" relation="include">
+        </childnode>
+        <childnode refid="23541" relation="include">
+        </childnode>
+        <childnode refid="23542" relation="include">
+        </childnode>
+      </node>
+      <node id="23536">
+        <label>cstdarg</label>
+      </node>
+      <node id="23504">
+        <label>string</label>
+      </node>
+      <node id="23528">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23509" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23529" relation="include">
+        </childnode>
+        <childnode refid="23530" relation="include">
+        </childnode>
+        <childnode refid="23532" relation="include">
+        </childnode>
+        <childnode refid="23539" relation="include">
+        </childnode>
+        <childnode refid="23542" relation="include">
+        </childnode>
+      </node>
+      <node id="23530">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23531" relation="include">
+        </childnode>
+      </node>
+      <node id="23532">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23533" relation="include">
+        </childnode>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23517" relation="include">
+        </childnode>
+        <childnode refid="23525" relation="include">
+        </childnode>
+        <childnode refid="23534" relation="include">
+        </childnode>
+        <childnode refid="23535" relation="include">
+        </childnode>
+      </node>
+      <node id="23516">
+        <label>ostream</label>
+      </node>
+      <node id="23519">
+        <label>limits.h</label>
+      </node>
+      <node id="23522">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23523" relation="include">
+        </childnode>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23524" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23525" relation="include">
+        </childnode>
+        <childnode refid="23528" relation="include">
+        </childnode>
+      </node>
+      <node id="23518">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="23511" relation="include">
+        </childnode>
+        <childnode refid="23519" relation="include">
+        </childnode>
+        <childnode refid="23513" relation="include">
+        </childnode>
+        <childnode refid="23520" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23503" relation="include">
+        </childnode>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23522" relation="include">
+        </childnode>
+        <childnode refid="23525" relation="include">
+        </childnode>
+      </node>
+      <node id="23502">
+        <label>text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="23503" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23505" relation="include">
+        </childnode>
+        <childnode refid="23506" relation="include">
+        </childnode>
+        <childnode refid="23545" relation="include">
+        </childnode>
+        <childnode refid="23546" relation="include">
+        </childnode>
+        <childnode refid="23547" relation="include">
+        </childnode>
+      </node>
+      <node id="23544">
+        <label>typeinfo</label>
+      </node>
+      <node id="23507">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="23503">
+        <label>vector</label>
+      </node>
+      <node id="23526">
+        <label>ciso646</label>
+      </node>
+      <node id="23552">
+        <label>array</label>
+      </node>
+      <node id="23545">
+        <label>../shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="23505" relation="include">
+        </childnode>
+      </node>
+      <node id="23538">
+        <label>sstream</label>
+      </node>
+      <node id="23525">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23526" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23527" relation="include">
+        </childnode>
+      </node>
+      <node id="23554">
+        <label>ft2build.h</label>
+      </node>
+      <node id="23527">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23527" relation="include">
+        </childnode>
+      </node>
+      <node id="23505">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="23534">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23523" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+      </node>
+      <node id="23542">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23543" relation="include">
+        </childnode>
+      </node>
+      <node id="23506">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="23507" relation="include">
+        </childnode>
+        <childnode refid="23508" relation="include">
+        </childnode>
+      </node>
+      <node id="23531">
+        <label>cstdlib</label>
+      </node>
+      <node id="23523">
+        <label>iostream</label>
+      </node>
+      <node id="23548">
+        <label>unordered_map</label>
+      </node>
+      <node id="23512">
+        <label>climits</label>
+      </node>
+      <node id="23541">
+        <label>mutex</label>
+      </node>
+      <node id="23501">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+        <childnode refid="23502" relation="include">
+        </childnode>
+        <childnode refid="23511" relation="include">
+        </childnode>
+        <childnode refid="23555" relation="include">
+        </childnode>
+        <childnode refid="23535" relation="include">
+        </childnode>
+        <childnode refid="23549" relation="include">
+        </childnode>
+      </node>
+      <node id="23517">
+        <label>type_traits</label>
+      </node>
+      <node id="23529">
+        <label>config.h</label>
+      </node>
+      <node id="23547">
+        <label>font/glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23548" relation="include">
+        </childnode>
+        <childnode refid="23503" relation="include">
+        </childnode>
+        <childnode refid="23549" relation="include">
+        </childnode>
+      </node>
+      <node id="23553">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="23554" relation="include">
+        </childnode>
+        <childnode refid="23521" relation="include">
+        </childnode>
+        <childnode refid="23504" relation="include">
+        </childnode>
+        <childnode refid="23548" relation="include">
+        </childnode>
+        <childnode refid="23522" relation="include">
+        </childnode>
+      </node>
+      <node id="23555">
+        <label>harfbuzz/hb.h</label>
+      </node>
+      <node id="23511">
+        <label>algorithm</label>
+      </node>
+      <node id="23520">
+        <label>cstring</label>
+      </node>
+      <node id="23521">
+        <label>memory</label>
+      </node>
+      <node id="23550">
+        <label>typeindex</label>
+      </node>
+      <node id="23543">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23523" relation="include">
+        </childnode>
+        <childnode refid="23544" relation="include">
+        </childnode>
+        <childnode refid="23525" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structopenage_1_1renderer_1_1text__render__vertex" prot="public">openage::renderer::text_render_vertex</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1text__render__task" prot="public">openage::renderer::text_render_task</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1texturefont__shader">openage::texturefont_shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="text_8h" kindref="compound">text.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;harfbuzz/hb.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/strings.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="font_8h" kindref="compound">font/font.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1texturefont__shader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">texturefont_shader<sp/>{</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1shader_1_1_program" kindref="compound">shader::Program</ref><sp/>*<ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">program</ref>;</highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" refkind="member"><highlight class="normal">GLint<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a80b2cb1e92b294620d32e9378f795083" kindref="member">texture</ref>,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>,<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" kindref="member">tex_coord</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>texture_shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="structopenage_1_1renderer_1_1text__render__vertex" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref><sp/>{</highlight></codeline>
+<codeline lineno="22" refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="23" refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="24" refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" kindref="member">u</ref>;</highlight></codeline>
+<codeline lineno="25" refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" kindref="member">v</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structopenage_1_1renderer_1_1text__render__vertex_1ababa4a88b3cd8a7a9b4be85243d41a1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1ababa4a88b3cd8a7a9b4be85243d41a1a" kindref="member">text_render_vertex</ref>()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>{0.0f,<sp/>0.0f,<sp/>0.0f,<sp/>0.0f}<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="structopenage_1_1renderer_1_1text__render__vertex_1a4051a213715aafdf36f356ebeb1d925c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a4051a213715aafdf36f356ebeb1d925c" kindref="member">text_render_vertex</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" kindref="member">x</ref>,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" kindref="member">y</ref>,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" kindref="member">u</ref>,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" kindref="member">v</ref>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" kindref="member">x</ref>{<ref refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" kindref="member">x</ref>},</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" kindref="member">y</ref>{<ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" kindref="member">y</ref>},</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" kindref="member">u</ref>{<ref refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" kindref="member">u</ref>},</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" kindref="member">v</ref>{<ref refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" kindref="member">v</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="structopenage_1_1renderer_1_1text__render__task" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1text__render__task" kindref="compound">text_render_task</ref><sp/>{</highlight></codeline>
+<codeline lineno="42" refid="structopenage_1_1renderer_1_1text__render__task_1a7ed5173e4105299826d0522a1525499d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLenum<sp/><ref refid="structopenage_1_1renderer_1_1text__render__task_1a7ed5173e4105299826d0522a1525499d" kindref="member">mode</ref>;</highlight></codeline>
+<codeline lineno="43" refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/><ref refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" kindref="member">color</ref>;</highlight></codeline>
+<codeline lineno="44" refid="structopenage_1_1renderer_1_1text__render__task_1adce9b78e58d984de0a9fe96955fa8c44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__task_1adce9b78e58d984de0a9fe96955fa8c44" kindref="member">num_elements</ref>;</highlight></codeline>
+<codeline lineno="45" refid="structopenage_1_1renderer_1_1text__render__task_1ac6e8e5b831ee591d7c003b62574efcc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1text__render__task_1ac6e8e5b831ee591d7c003b62574efcc5" kindref="member">offset</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classopenage_1_1renderer_1_1_text_renderer_1abce6be4c1b901fb91a52e29829260eab" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_text_renderer_1abce6be4c1b901fb91a52e29829260eab" kindref="member">TextRenderer::TextRenderer</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>current_font{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>current_color{255,<sp/>255,<sp/>255,<sp/>255},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>is_dirty{</highlight><highlight class="keyword">true</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>vbo{0},</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>ibo{0}<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenBuffers(1,<sp/>&amp;this-&gt;vbo);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenBuffers(1,<sp/>&amp;this-&gt;ibo);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_text_renderer_1abe8c2a17582e57d5244fa3414b57333b" kindref="member">TextRenderer::~TextRenderer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" kindref="member">vbo</ref><sp/>!=<sp/>0u)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDeleteBuffers(1,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" kindref="member">vbo</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" kindref="member">ibo</ref><sp/>!=<sp/>0u)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDeleteBuffers(1,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" kindref="member">ibo</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1aa13c06f0e7bc0b5f09f8adcd399f6676" kindref="member">TextRenderer::set_font</ref>(<ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" kindref="member">current_font</ref><sp/>==<sp/>font)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" kindref="member">current_font</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" kindref="member">is_dirty</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb1f0841f532f86ddb815e13fd77bca3" kindref="member">TextRenderer::set_color</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;<ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" kindref="member">current_color</ref><sp/>==<sp/>color)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" kindref="member">current_color</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">color</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" kindref="member">is_dirty</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">TextRenderer::draw</ref>(<ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format,<sp/>...)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>text;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>va_list<sp/>vl;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>va_start(vl,<sp/>format);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" kindref="member">util::vsformat</ref>(format,<sp/>vl,<sp/>text);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(vl);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">draw</ref>(position.x,<sp/>position.y,<sp/>text);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classopenage_1_1renderer_1_1_text_renderer_1a021938d1c8fb338a055a3a01d7f06214" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">TextRenderer::draw</ref>(<ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>position,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">draw</ref>(position.x,<sp/>position.y,<sp/>text);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classopenage_1_1renderer_1_1_text_renderer_1a9e468eb149f70e240cba45046904eb61" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad4f6173d90b1ecf5a918908172f44fbf" kindref="member">TextRenderer::draw</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;text)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" kindref="member">is_dirty</ref><sp/>||<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>.emplace_back(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a2a787554cfaf147fc43ac0e3bf96dd7b" kindref="member">current_font</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5b8c493c97942d746975f2099431ad41" kindref="member">current_color</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a0b3dc5f5b71ee184134b339f633d2801" kindref="member">is_dirty</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>.back().passes.emplace_back(x,<sp/>y,<sp/>text);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_text_renderer_1ad5f8238ffefc1fcf24366c34141b710e" kindref="member">TextRenderer::render</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sort<sp/>the<sp/>batches<sp/>by<sp/>font</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>std::sort(std::begin(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>),<sp/>std::end(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>),</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kindref="compound">text_render_batch</ref><sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch" kindref="compound">text_render_batch</ref><sp/>&amp;b)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref><sp/>&lt;<sp/>b.<ref refid="structopenage_1_1renderer_1_1_text_renderer_1_1text__render__batch_1a149a150018b21b22aa4ff2e270fc5a50" kindref="member">font</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Merge<sp/>consecutive<sp/>batches<sp/>if<sp/>font<sp/>and<sp/>color<sp/>values<sp/>are<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>current_batch<sp/>=<sp/>std::begin(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>);<sp/>current_batch<sp/>!=<sp/>std::end(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>);<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>next_batch<sp/>=<sp/>current_batch;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_batch++;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(next_batch<sp/>!=<sp/>std::end(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_batch-&gt;font<sp/>==<sp/>next_batch-&gt;font<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_batch-&gt;color<sp/>==<sp/>next_batch-&gt;color)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Merge<sp/>the<sp/>render<sp/>passes<sp/>of<sp/>current<sp/>and<sp/>next<sp/>batches<sp/>and<sp/>remove<sp/>the<sp/>next<sp/>batch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(std::begin(next_batch-&gt;passes),</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::end(next_batch-&gt;passes),</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::back_inserter(current_batch-&gt;passes));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>.erase(next_batch);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_batch++;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;text_render_vertex&gt;<sp/>vertices;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>int&gt;<sp/>indices;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;text_render_task&gt;<sp/>render_tasks;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>render_tasks.reserve(this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>.size());</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>vertices<sp/>and<sp/>indices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;batch<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a5d95de38db15ee1396952d2b951ce6e0" kindref="member">render_batches</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref><sp/>=<sp/>batch.font;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_elements<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pass<sp/>:<sp/>batch.passes)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>static_cast&lt;float&gt;(pass.x);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>static_cast&lt;float&gt;(pass.y);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;codepoint_t&gt;<sp/>glyphs<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>-&gt;get_glyphs(pass.text);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>will<sp/>create<sp/>4<sp/>vertices<sp/>&amp;<sp/>6<sp/>indices<sp/>for<sp/>each<sp/>glyph<sp/>(GL_TRIANGLES)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertices.resize(vertices.size()<sp/>+<sp/>glyphs.size()<sp/>*<sp/>4);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices.resize(indices.size()<sp/>+<sp/>glyphs.size()<sp/>*<sp/>6);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>previous_glyph<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>glyph<sp/>:<sp/>glyphs)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref><sp/>entry<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" kindref="member">glyph_atlas</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" kindref="member">get</ref>(font,<sp/>glyph);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x0<sp/>=<sp/>x<sp/>+<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1a94e2543084eb7e2ac8fe13e4d015f7c8" kindref="member">x_offset</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y0<sp/>=<sp/>y<sp/>+<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1a12f912aad42ece5d86f04099a47e5637" kindref="member">y_offset</ref><sp/>-<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x1<sp/>=<sp/>x0<sp/>+<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y1<sp/>=<sp/>y0<sp/>+<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertices[index*4<sp/>+<sp/>0]<sp/>=<sp/>{x0,<sp/>y0,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" kindref="member">u0</ref>,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" kindref="member">v0</ref>};</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertices[index*4<sp/>+<sp/>1]<sp/>=<sp/>{x0,<sp/>y1,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" kindref="member">u0</ref>,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" kindref="member">v1</ref>};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertices[index*4<sp/>+<sp/>2]<sp/>=<sp/>{x1,<sp/>y1,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" kindref="member">u1</ref>,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" kindref="member">v1</ref>};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vertices[index*4<sp/>+<sp/>3]<sp/>=<sp/>{x1,<sp/>y0,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" kindref="member">u1</ref>,<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" kindref="member">v0</ref>};</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>0]<sp/>=<sp/>index*4<sp/>+<sp/>0;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>1]<sp/>=<sp/>index*4<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>2]<sp/>=<sp/>index*4<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>3]<sp/>=<sp/>index*4<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>4]<sp/>=<sp/>index*4<sp/>+<sp/>3;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>indices[index*6<sp/>+<sp/>5]<sp/>=<sp/>index*4<sp/>+<sp/>0;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advance<sp/>the<sp/>pen<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>+=<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1a5e1d2609718ce2306232f0ff1da01e16" kindref="member">x_advance</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>+=<sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_1a45c0a5e003e4d480e7b0e2a3d41b7ed9" kindref="member">y_advance</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>font<sp/>kerning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(previous_glyph<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>+=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>-&gt;get_horizontal_kerning(previous_glyph,<sp/>glyph);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index++;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_elements<sp/>+=<sp/>6;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>previous_glyph<sp/>=<sp/>glyph;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1text__render__task" kindref="compound">text_render_task</ref><sp/>render_task{GL_TRIANGLES,<sp/>batch.<ref refid="structopenage_1_1renderer_1_1text__render__task_1ac8d6319ff91243157c01b89acfbaf599" kindref="member">color</ref>,<sp/>num_elements,<sp/>offset};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>render_tasks.push_back(render_task);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/>num_elements;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Upload<sp/>vertices<sp/>and<sp/>indices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(GL_ARRAY_BUFFER,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1adb2415c3914c1ef7328c733021660b77" kindref="member">vbo</ref>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1a6f0c64a89c8443226eaae7c86258a0e0" kindref="member">ibo</ref>);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferData(GL_ARRAY_BUFFER,<sp/>vertices.size()<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>),<sp/>&amp;vertices[0],<sp/>GL_STATIC_DRAW);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>glBufferData(GL_ELEMENT_ARRAY_BUFFER,<sp/>indices.size()<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int),<sp/>&amp;indices[0],<sp/>GL_STATIC_DRAW);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">texturefont_shader::program</ref>-&gt;<ref refid="classopenage_1_1shader_1_1_program_1ab36b7c92db2a3e3ce76b79e0451b6978" kindref="member">use</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_text_renderer_1aadc2e04e192e80822188952d141a9a35" kindref="member">glyph_atlas</ref>.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" kindref="member">bind</ref>(0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnableVertexAttribArray(<ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">texturefont_shader::program</ref>-&gt;pos_id);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnableVertexAttribArray(<ref refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" kindref="member">texturefont_shader::tex_coord</ref>);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>glVertexAttribPointer(<ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">texturefont_shader::program</ref>-&gt;pos_id,<sp/>2,<sp/>GL_FLOAT,<sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>),<sp/>(GLvoid<sp/>*)<sp/>offsetof(<ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>,<sp/>x));</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>glVertexAttribPointer(<ref refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" kindref="member">texturefont_shader::tex_coord</ref>,<sp/>2,<sp/>GL_FLOAT,<sp/>GL_FALSE,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>),<sp/>(GLvoid<sp/>*)<sp/>offsetof(<ref refid="structopenage_1_1renderer_1_1text__render__vertex" kindref="compound">text_render_vertex</ref>,<sp/>u));</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;task<sp/>:<sp/>render_tasks)<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glUniform4f(<ref refid="namespaceopenage_1_1texturefont__shader_1a82374b732aa3c4123fee88dc25508564" kindref="member">texturefont_shader::color</ref>,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>task.color.r/255.f,<sp/>task.color.g/255.f,<sp/>task.color.b/255.f,<sp/>task.color.a/255.f);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDrawElements(task.mode,<sp/>task.num_elements,<sp/>GL_UNSIGNED_INT,<sp/>(GLvoid<sp/>*)<sp/>(task.offset<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>glDisableVertexAttribArray(<ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">texturefont_shader::program</ref>-&gt;pos_id);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>glDisableVertexAttribArray(<ref refid="namespaceopenage_1_1texturefont__shader_1a9783220dab674cce458e30335942571e" kindref="member">texturefont_shader::tex_coord</ref>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1texturefont__shader_1a4b7dfc749fd189a6bd8d12bf2bd89a62" kindref="member">texturefont_shader::program</ref>-&gt;<ref refid="classopenage_1_1shader_1_1_program_1abfd70a48ce216cf044f558328f8dfa4e" kindref="member">stopusing</ref>();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,<sp/>0);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindBuffer(GL_ARRAY_BUFFER,<sp/>0);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>the<sp/>render<sp/>batches<sp/>for<sp/>next<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;render_batches.clear();</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/text.cpp"/>
+  </compounddef>
+</doxygen>

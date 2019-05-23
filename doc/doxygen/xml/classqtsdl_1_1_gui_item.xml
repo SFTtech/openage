@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItem</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_origin" prot="public" virt="non-virtual">qtsdl::GuiItemOrigin&lt; T &gt;</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_core_instantiator" prot="public" virt="non-virtual">qtsdl::GuiItemCoreInstantiator&lt; T &gt;</basecompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_list_model" prot="public" virt="non-virtual">qtsdl::GuiItemListModel&lt; T &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiItem&lt; T &gt;::GuiItem</definition>
+        <argsstring>(GuiItemBase *item_base)</argsstring>
+        <name>GuiItem</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_item_base" kindref="compound">GuiItemBase</ref> *</type>
+          <declname>item_base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an empty QObject shell for a core that is wrappable into a type *T. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="317" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="317" bodyend="321"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Base for shell QObjects that need corresponding cores to be kept alive across GUI reloads.</para>
+<para>These shell objects are destroyed by Qt during GUI reload. Their cores are adopted by new shells identified by the &apos;LR.tag&apos; in QML code.</para>
+<para>For each descendant the specializations of <ref refid="structqtsdl_1_1_wrap" kindref="compound">Wrap</ref> and <ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap</ref> must be provided. Corresponding cores must have public &apos;gui::GuiItemLink *gui_link` members.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of the concrete shell class (pass the descendant class) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2630">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2629">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2630" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2628">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+      </node>
+      <node id="2627">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2628" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2629" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2631">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2627" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2634">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="2635" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2635">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="2637">
+        <label>qtsdl::GuiItemMethods&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2636">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2637" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2633">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="2634" relation="usage">
+          <edgelabel>-holder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2632">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2633" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2636" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="312" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="312" bodyend="322"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" prot="public" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>GuiItem</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual"><scope>qtsdl::GuiItem</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>qtsdl::GuiItem</scope><name>~GuiItemMethods</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

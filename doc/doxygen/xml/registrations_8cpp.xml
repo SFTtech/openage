@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="registrations_8cpp" kind="file" language="C++">
+    <compoundname>registrations.cpp</compoundname>
+    <includes refid="registrations_8h" local="yes">registrations.h</includes>
+    <includes local="no">QMetaType</includes>
+    <incdepgraph>
+      <node id="14943">
+        <label>list</label>
+      </node>
+      <node id="14935">
+        <label>atomic</label>
+      </node>
+      <node id="14940">
+        <label>iomanip</label>
+      </node>
+      <node id="14919">
+        <label>functional</label>
+      </node>
+      <node id="14947">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="14919" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+      </node>
+      <node id="14916">
+        <label>cstdint</label>
+      </node>
+      <node id="14938">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="14939" relation="include">
+        </childnode>
+        <childnode refid="14919" relation="include">
+        </childnode>
+        <childnode refid="14940" relation="include">
+        </childnode>
+        <childnode refid="14928" relation="include">
+        </childnode>
+        <childnode refid="14941" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14914" relation="include">
+        </childnode>
+      </node>
+      <node id="14925">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="14926" relation="include">
+        </childnode>
+      </node>
+      <node id="14929">
+        <label>stdexcept</label>
+      </node>
+      <node id="14924">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="14911">
+        <label>QMetaType</label>
+      </node>
+      <node id="14942">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="14943" relation="include">
+        </childnode>
+        <childnode refid="14920" relation="include">
+        </childnode>
+        <childnode refid="14944" relation="include">
+        </childnode>
+      </node>
+      <node id="14939">
+        <label>cstdarg</label>
+      </node>
+      <node id="14913">
+        <label>string</label>
+      </node>
+      <node id="14930">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="14916" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14931" relation="include">
+        </childnode>
+        <childnode refid="14932" relation="include">
+        </childnode>
+        <childnode refid="14934" relation="include">
+        </childnode>
+        <childnode refid="14942" relation="include">
+        </childnode>
+        <childnode refid="14944" relation="include">
+        </childnode>
+      </node>
+      <node id="14932">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="14933" relation="include">
+        </childnode>
+      </node>
+      <node id="14934">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="14935" relation="include">
+        </childnode>
+        <childnode refid="14928" relation="include">
+        </childnode>
+        <childnode refid="14936" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+        <childnode refid="14937" relation="include">
+        </childnode>
+        <childnode refid="14938" relation="include">
+        </childnode>
+      </node>
+      <node id="14915">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="14916" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14914" relation="include">
+        </childnode>
+        <childnode refid="14917" relation="include">
+        </childnode>
+        <childnode refid="14918" relation="include">
+        </childnode>
+      </node>
+      <node id="14926">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="14927" relation="include">
+        </childnode>
+        <childnode refid="14928" relation="include">
+        </childnode>
+        <childnode refid="14929" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+        <childnode refid="14930" relation="include">
+        </childnode>
+      </node>
+      <node id="14946">
+        <label>typeinfo</label>
+      </node>
+      <node id="14914">
+        <label>vector</label>
+      </node>
+      <node id="14922">
+        <label>ciso646</label>
+      </node>
+      <node id="14909">
+        <label>libopenage/gui/registrations.cpp</label>
+        <link refid="registrations_8cpp"/>
+        <childnode refid="14910" relation="include">
+        </childnode>
+        <childnode refid="14911" relation="include">
+        </childnode>
+      </node>
+      <node id="14941">
+        <label>sstream</label>
+      </node>
+      <node id="14921">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="14922" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14923" relation="include">
+        </childnode>
+      </node>
+      <node id="14948">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="14928" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14914" relation="include">
+        </childnode>
+        <childnode refid="14949" relation="include">
+        </childnode>
+        <childnode refid="14915" relation="include">
+        </childnode>
+      </node>
+      <node id="14923">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="14923" relation="include">
+        </childnode>
+      </node>
+      <node id="14937">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="14927" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+      </node>
+      <node id="14944">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="14945" relation="include">
+        </childnode>
+      </node>
+      <node id="14950">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="14949">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="14927" relation="include">
+        </childnode>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+      </node>
+      <node id="14933">
+        <label>cstdlib</label>
+      </node>
+      <node id="14927">
+        <label>iostream</label>
+      </node>
+      <node id="14918">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="14919" relation="include">
+        </childnode>
+        <childnode refid="14920" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+        <childnode refid="14924" relation="include">
+        </childnode>
+        <childnode refid="14925" relation="include">
+        </childnode>
+        <childnode refid="14947" relation="include">
+        </childnode>
+      </node>
+      <node id="14920">
+        <label>mutex</label>
+      </node>
+      <node id="14912">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="14913" relation="include">
+        </childnode>
+        <childnode refid="14914" relation="include">
+        </childnode>
+        <childnode refid="14915" relation="include">
+        </childnode>
+        <childnode refid="14948" relation="include">
+        </childnode>
+        <childnode refid="14950" relation="include">
+        </childnode>
+      </node>
+      <node id="14917">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="14936">
+        <label>type_traits</label>
+      </node>
+      <node id="14931">
+        <label>config.h</label>
+      </node>
+      <node id="14910">
+        <label>registrations.h</label>
+        <link refid="registrations_8h"/>
+        <childnode refid="14911" relation="include">
+        </childnode>
+        <childnode refid="14912" relation="include">
+        </childnode>
+      </node>
+      <node id="14928">
+        <label>memory</label>
+      </node>
+      <node id="14945">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="14927" relation="include">
+        </childnode>
+        <childnode refid="14946" relation="include">
+        </childnode>
+        <childnode refid="14921" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="registrations_8h" kindref="compound">registrations.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMetaType&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="namespaceopenage_1_1gui_1aab12594ba4e08cbab511c42d2b7ebef9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1gui_1aab12594ba4e08cbab511c42d2b7ebef9" kindref="member">reg_path</ref><sp/>=<sp/>qRegisterMetaType&lt;util::Path&gt;(</highlight><highlight class="stringliteral">&quot;util::Path&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/registrations.cpp"/>
+  </compounddef>
+</doxygen>

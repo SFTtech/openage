@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::EventQueue::OnChangeElement::Hasher</compoundname>
+    <includes refid="eventqueue_8h" local="no">eventqueue.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher_1a4d09231e34a0c45f2a639c34efbf32b2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::event::EventQueue::OnChangeElement::Hasher::operator()</definition>
+        <argsstring>(const OnChangeElement &amp;e) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element" kindref="compound">OnChangeElement</ref> &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventqueue.h" line="36" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2845">
+        <label>openage::event::EventQueue::OnChangeElement::Hasher</label>
+        <link refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventqueue.h" line="34" column="1" bodyfile="libopenage/event/eventqueue.h" bodystart="34" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_queue_1_1_on_change_element_1_1_hasher_1a4d09231e34a0c45f2a639c34efbf32b2" prot="public" virt="non-virtual"><scope>openage::event::EventQueue::OnChangeElement::Hasher</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

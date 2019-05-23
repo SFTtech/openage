@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1shader_1_1_shader" kind="class" language="C++" prot="public">
+    <compoundname>openage::shader::Shader</compoundname>
+    <includes refid="shader_2shader_8h" local="no">shader.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" prot="public" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::shader::Shader::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/shader/shader.h" line="19" column="1" bodyfile="libopenage/shader/shader.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" prot="public" static="no" mutable="no">
+        <type>GLenum</type>
+        <definition>GLenum openage::shader::Shader::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/shader/shader.h" line="20" column="1" bodyfile="libopenage/shader/shader.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::shader::Shader::Shader</definition>
+        <argsstring>(GLenum type, std::initializer_list&lt; const char * &gt; sources)</argsstring>
+        <name>Shader</name>
+        <param>
+          <type>GLenum</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>std::initializer_list&lt; const char * &gt;</type>
+          <declname>sources</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/shader/shader.h" line="16" column="1" bodyfile="libopenage/shader/shader.cpp" bodystart="29" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1shader_1_1_shader_1a1cf8a9e587452d5df6e384c870ebf966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::shader::Shader::~Shader</definition>
+        <argsstring>()</argsstring>
+        <name>~Shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/shader/shader.h" line="17" column="1" bodyfile="libopenage/shader/shader.cpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4144">
+        <label>openage::shader::Shader</label>
+        <link refid="classopenage_1_1shader_1_1_shader"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/shader/shader.h" line="14" column="1" bodyfile="libopenage/shader/shader.h" bodystart="14" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1shader_1_1_shader_1a63d479d4533ccab5ee9df02cb515a000" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>id</name></member>
+      <member refid="classopenage_1_1shader_1_1_shader_1a5b35381e3fb9341d92d531c127472ff2" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>Shader</name></member>
+      <member refid="classopenage_1_1shader_1_1_shader_1a6544f6bc7a470a81829568a61af2227e" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>type</name></member>
+      <member refid="classopenage_1_1shader_1_1_shader_1a1cf8a9e587452d5df6e384c870ebf966" prot="public" virt="non-virtual"><scope>openage::shader::Shader</scope><name>~Shader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,615 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1rng_1_1_r_n_g" kind="class" language="C++" prot="public">
+    <compoundname>openage::rng::RNG</compoundname>
+    <includes refid="rng_8h" local="no">rng.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1rng_1_1_r_n_g_1a6b0ce95fbbca6511dc9f1a683fa452f9" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::RNG::state[2]</definition>
+        <argsstring>[2]</argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The internal state array </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="179" column="1" bodyfile="libopenage/rng/rng.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1rng_1_1_r_n_g_1ad04d259df8af8d4f0bc1deed13641a12" prot="private" static="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::rng::RNG::discard_on_seed</definition>
+        <argsstring></argsstring>
+        <name>discard_on_seed</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>elements to discard on seed to escape from high-zero seeds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="185" column="1" bodyfile="libopenage/rng/rng.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ade1468036c9d6dcb19a7d32b500e049b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::rng::RNG::RNG</definition>
+        <argsstring>(uint64_t seed)</argsstring>
+        <name>RNG</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an rng and seeds it with the 64 bit seed <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>seed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The inital seed for the following number generation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="22" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a7a75b6d2b1900c1166d7aeea9c777f6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::rng::RNG::RNG</definition>
+        <argsstring>(const void *data, size_t count)</argsstring>
+        <name>RNG</name>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the rng using data from the buffer pointed to by data <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer that contains data for seeding the rng </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the buffer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if 0 bytes are passed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="31" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a7afae418b44df4e10bbb3fcd09c21f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::rng::RNG::RNG</definition>
+        <argsstring>(const std::string &amp;instr)</argsstring>
+        <name>RNG</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>instr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the rng in from the passed string. If you want to use the data in the string as a seed, then pass the c_str() to rng(const void*, size_t). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string from which the rng is serialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the rng cannot be read from the string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="41" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a7d14a4486213742ed28bcdd360cf0dc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::rng::RNG::RNG</definition>
+        <argsstring>(std::istream &amp;instream)</argsstring>
+        <name>RNG</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>instream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the rng in from the passed std::istream. This serializes the rng, and does not use the data as a random seed. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>instream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input stream for serializing the rng </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if stream initialization fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="50" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a76d8d1e95491447e8b8ed7946ff4c695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::seed</definition>
+        <argsstring>(uint64_t val)</argsstring>
+        <name>seed</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Seeds with the 64 bit seed </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="56" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a196e215960939e55ac626c9c75a451e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::seed</definition>
+        <argsstring>(const void *data, size_t count)</argsstring>
+        <name>seed</name>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the rng using bits from the buffer pointed to by data <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer that contains data for seeding the rng </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes in the buffer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if 0 bytes are passed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="65" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="58" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::RNG::random</definition>
+        <argsstring>()</argsstring>
+        <name>random</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a random value from the generator </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="71" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1af15bf503f42fbb7d08fa5273065ae0ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::RNG::operator()</definition>
+        <argsstring>()</argsstring>
+        <name>operator()</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a random value from the generator </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="77" column="1" bodyfile="libopenage/rng/rng.h" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ad7b2ba8c495b7ee100b7708b633bc060" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::RNG::random_range</definition>
+        <argsstring>(uint64_t lower, uint64_t upper)</argsstring>
+        <name>random_range</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>upper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a random integer in the range [lower, upper] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="85" column="1" bodyfile="libopenage/rng/rng.h" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ab24ce8fabde7df2ec900e3e1883281a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::rng::RNG::probability</definition>
+        <argsstring>(double prob)</argsstring>
+        <name>probability</name>
+        <param>
+          <type>double</type>
+          <declname>prob</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true with the passed probability </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="93" column="1" bodyfile="libopenage/rng/rng.h" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::rng::RNG::real</definition>
+        <argsstring>()</argsstring>
+        <name>real</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves a double in [0, 1) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="101" column="1" bodyfile="libopenage/rng/rng.h" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a7f8fa5c414eb4888ee638441585fdcec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::rng::RNG::real_range</definition>
+        <argsstring>(double lower, double upper)</argsstring>
+        <name>real_range</name>
+        <param>
+          <type>double</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>upper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a double in the range [min, max) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="109" column="1" bodyfile="libopenage/rng/rng.h" bodystart="109" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a77a4af9133abbcd242c9adf3921bbd89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::fill</definition>
+        <argsstring>(uint64_t *data, size_t len)</argsstring>
+        <name>fill</name>
+        <param>
+          <type>uint64_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effeciently fills a chunk of 64 bit integers. Gives identical result to calling <ref refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" kindref="member">random()</ref> len times <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The buffer to be filled with random numbers </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the length of the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="120" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="120" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ab7dbd0bef0c06a30b6724f2352af833c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::fill_real</definition>
+        <argsstring>(double *data, size_t len)</argsstring>
+        <name>fill_real</name>
+        <param>
+          <type>double *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fills an array of doubles with values in [0, 1) Gives identical results as <ref refid="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" kindref="member">real()</ref> but more effeciently <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer t0 the buffer of doubles </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The length of the buffer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="129" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="138" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a36e03ae10106b4de88c7af38f0c0dedc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::discard</definition>
+        <argsstring>(size_t num_discard)</argsstring>
+        <name>discard</name>
+        <param>
+          <type>size_t</type>
+          <declname>num_discard</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Discards num_discard numbers from the generator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="135" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="130" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a144e524ab2720b65d7369fdfaf6f3136" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::rng::RNG::to_stream</definition>
+        <argsstring>(std::ostream &amp;out) const</argsstring>
+        <name>to_stream</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Outputs the rng state to a stream <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if writing data fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="142" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="148" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ae7d9467b4f3d76c68a9a7f85a78510cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::istream &amp;</type>
+        <definition>std::istream &amp; openage::rng::RNG::from_stream</definition>
+        <argsstring>(std::istream &amp;in)</argsstring>
+        <name>from_stream</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the rng state from a stream <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if reading the stream fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="149" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="157" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1a3d2fc24293e9eb420a93a696b544d812" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::rng::RNG::to_string</definition>
+        <argsstring>() const</argsstring>
+        <name>to_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Writes the rng state to a string </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="155" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="166" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1ad4167cc984c7979737fe798e9b79265f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::rng::RNG::from_string</definition>
+        <argsstring>(const std::string &amp;instr)</argsstring>
+        <name>from_string</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>instr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the rng in from a string <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if reading from the string fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="162" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="173" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1accd55f47ffd4049900e96f032f0a9375" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr uint64_t</type>
+        <definition>static constexpr uint64_t openage::rng::RNG::max</definition>
+        <argsstring>()</argsstring>
+        <name>max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="165" column="1" bodyfile="libopenage/rng/rng.h" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1rng_1_1_r_n_g_1abb4883daeb3ccf4d99167a89ab1513da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr uint64_t</type>
+        <definition>static constexpr uint64_t openage::rng::RNG::min</definition>
+        <argsstring>()</argsstring>
+        <name>min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.h" line="170" column="1" bodyfile="libopenage/rng/rng.h" bodystart="170" bodyend="172"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class holds an xorshift128+ rng, as well as utility generator functions </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4125">
+        <label>openage::rng::RNG</label>
+        <link refid="classopenage_1_1rng_1_1_r_n_g"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/rng/rng.h" line="16" column="1" bodyfile="libopenage/rng/rng.h" bodystart="16" bodyend="186"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a36e03ae10106b4de88c7af38f0c0dedc" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>discard</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ad04d259df8af8d4f0bc1deed13641a12" prot="private" virt="non-virtual"><scope>openage::rng::RNG</scope><name>discard_on_seed</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a77a4af9133abbcd242c9adf3921bbd89" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>fill</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ab7dbd0bef0c06a30b6724f2352af833c" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>fill_real</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ae7d9467b4f3d76c68a9a7f85a78510cd" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>from_stream</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ad4167cc984c7979737fe798e9b79265f" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>from_string</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1accd55f47ffd4049900e96f032f0a9375" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>max</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1abb4883daeb3ccf4d99167a89ab1513da" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>min</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1af15bf503f42fbb7d08fa5273065ae0ef" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>operator()</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ab24ce8fabde7df2ec900e3e1883281a4" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>probability</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a95f8c2c7e00ab2531e0e6c33ae70e154" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>random</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ad7b2ba8c495b7ee100b7708b633bc060" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>random_range</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a2d906c2de63a31a89589a34bac2a3dd8" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>real</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a7f8fa5c414eb4888ee638441585fdcec" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>real_range</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1ade1468036c9d6dcb19a7d32b500e049b" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>RNG</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a7a75b6d2b1900c1166d7aeea9c777f6f" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>RNG</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a7afae418b44df4e10bbb3fcd09c21f56" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>RNG</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a7d14a4486213742ed28bcdd360cf0dc9" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>RNG</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a76d8d1e95491447e8b8ed7946ff4c695" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>seed</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a196e215960939e55ac626c9c75a451e0" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>seed</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a6b0ce95fbbca6511dc9f1a683fa452f9" prot="private" virt="non-virtual"><scope>openage::rng::RNG</scope><name>state</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a144e524ab2720b65d7369fdfaf6f3136" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>to_stream</name></member>
+      <member refid="classopenage_1_1rng_1_1_r_n_g_1a3d2fc24293e9eb420a93a696b544d812" prot="public" virt="non-virtual"><scope>openage::rng::RNG</scope><name>to_string</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

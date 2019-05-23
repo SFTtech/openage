@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vulkan_2renderer_8h" kind="file" language="C++">
+    <compoundname>renderer.h</compoundname>
+    <includes local="no">vulkan/vulkan.h</includes>
+    <includes refid="renderer_8h" local="yes">../renderer.h</includes>
+    <includes refid="util_2path_8h" local="yes">../../util/path.h</includes>
+    <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <incdepgraph>
+      <node id="21514">
+        <label>list</label>
+      </node>
+      <node id="21506">
+        <label>atomic</label>
+      </node>
+      <node id="21511">
+        <label>iomanip</label>
+      </node>
+      <node id="21491">
+        <label>functional</label>
+      </node>
+      <node id="21518">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="21491" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+      </node>
+      <node id="21488">
+        <label>cstdint</label>
+      </node>
+      <node id="21509">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="21510" relation="include">
+        </childnode>
+        <childnode refid="21491" relation="include">
+        </childnode>
+        <childnode refid="21511" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21512" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+      </node>
+      <node id="21497">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="21498" relation="include">
+        </childnode>
+      </node>
+      <node id="21500">
+        <label>stdexcept</label>
+      </node>
+      <node id="21496">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="21513">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="21514" relation="include">
+        </childnode>
+        <childnode refid="21492" relation="include">
+        </childnode>
+        <childnode refid="21515" relation="include">
+        </childnode>
+      </node>
+      <node id="21510">
+        <label>cstdarg</label>
+      </node>
+      <node id="21486">
+        <label>string</label>
+      </node>
+      <node id="21501">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="21488" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21502" relation="include">
+        </childnode>
+        <childnode refid="21503" relation="include">
+        </childnode>
+        <childnode refid="21505" relation="include">
+        </childnode>
+        <childnode refid="21513" relation="include">
+        </childnode>
+        <childnode refid="21515" relation="include">
+        </childnode>
+      </node>
+      <node id="21503">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="21504" relation="include">
+        </childnode>
+      </node>
+      <node id="21505">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="21506" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21507" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+        <childnode refid="21508" relation="include">
+        </childnode>
+        <childnode refid="21509" relation="include">
+        </childnode>
+      </node>
+      <node id="21522">
+        <label>graphics_device.h</label>
+        <link refid="graphics__device_8h"/>
+        <childnode refid="21523" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21481" relation="include">
+        </childnode>
+      </node>
+      <node id="21487">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="21488" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21489" relation="include">
+        </childnode>
+        <childnode refid="21490" relation="include">
+        </childnode>
+      </node>
+      <node id="21498">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21500" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+        <childnode refid="21501" relation="include">
+        </childnode>
+      </node>
+      <node id="21517">
+        <label>typeinfo</label>
+      </node>
+      <node id="21523">
+        <label>optional</label>
+      </node>
+      <node id="21483">
+        <label>vector</label>
+      </node>
+      <node id="21494">
+        <label>ciso646</label>
+      </node>
+      <node id="21481">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="21512">
+        <label>sstream</label>
+      </node>
+      <node id="21493">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="21494" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21495" relation="include">
+        </childnode>
+      </node>
+      <node id="21519">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="21484" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21520" relation="include">
+        </childnode>
+        <childnode refid="21487" relation="include">
+        </childnode>
+      </node>
+      <node id="21495">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="21495" relation="include">
+        </childnode>
+      </node>
+      <node id="21508">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+      </node>
+      <node id="21515">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="21516" relation="include">
+        </childnode>
+      </node>
+      <node id="21521">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="21480">
+        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="21481" relation="include">
+        </childnode>
+        <childnode refid="21482" relation="include">
+        </childnode>
+        <childnode refid="21485" relation="include">
+        </childnode>
+        <childnode refid="21522" relation="include">
+        </childnode>
+      </node>
+      <node id="21520">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+      </node>
+      <node id="21504">
+        <label>cstdlib</label>
+      </node>
+      <node id="21499">
+        <label>iostream</label>
+      </node>
+      <node id="21482">
+        <label>../renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21484" relation="include">
+        </childnode>
+      </node>
+      <node id="21490">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="21491" relation="include">
+        </childnode>
+        <childnode refid="21492" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+        <childnode refid="21496" relation="include">
+        </childnode>
+        <childnode refid="21497" relation="include">
+        </childnode>
+        <childnode refid="21518" relation="include">
+        </childnode>
+      </node>
+      <node id="21492">
+        <label>mutex</label>
+      </node>
+      <node id="21485">
+        <label>../../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="21486" relation="include">
+        </childnode>
+        <childnode refid="21483" relation="include">
+        </childnode>
+        <childnode refid="21487" relation="include">
+        </childnode>
+        <childnode refid="21519" relation="include">
+        </childnode>
+        <childnode refid="21521" relation="include">
+        </childnode>
+      </node>
+      <node id="21489">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="21507">
+        <label>type_traits</label>
+      </node>
+      <node id="21502">
+        <label>config.h</label>
+      </node>
+      <node id="21484">
+        <label>memory</label>
+      </node>
+      <node id="21516">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="21499" relation="include">
+        </childnode>
+        <childnode refid="21517" relation="include">
+        </childnode>
+        <childnode refid="21493" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21524">
+        <label>libopenage/renderer/vulkan/renderer.h</label>
+        <link refid="vulkan_2renderer_8h"/>
+        <childnode refid="21525" relation="include">
+        </childnode>
+      </node>
+      <node id="21525">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer" prot="public">openage::renderer::vulkan::VlkRenderer</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vulkan/vulkan.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../util/path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer" kindref="compound">VlkRenderer</ref><sp/>{</highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkInstance<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" kindref="member">instance</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkSurfaceKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" kindref="member">surface</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a1d6c65604305a3193079ff8026a20c9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a1d6c65604305a3193079ff8026a20c9f" kindref="member">VlkRenderer</ref>(VkInstance<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" kindref="member">instance</ref>,<sp/>VkSurfaceKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" kindref="member">surface</ref>)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" kindref="member">instance</ref>(<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" kindref="member">instance</ref>)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" kindref="member">surface</ref>(<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" kindref="member">surface</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" kindref="member">do_the_thing</ref>(<ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>&amp;<sp/>dir);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/renderer.h"/>
+  </compounddef>
+</doxygen>

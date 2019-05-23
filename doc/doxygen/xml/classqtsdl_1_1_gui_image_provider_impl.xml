@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_image_provider_impl" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>qtsdl::GuiImageProviderImpl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QQuickImageProvider</basecompoundref>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" prot="public" virt="non-virtual">openage::gui::GuiGameSpecImageProviderImpl</derivedcompoundref>
+    <includes refid="gui__image__provider__impl_8h" local="no">gui_image_provider_impl.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiImageProviderImpl::GuiImageProviderImpl</definition>
+        <argsstring>()</argsstring>
+        <name>GuiImageProviderImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>qtsdl::GuiImageProviderImpl::~GuiImageProviderImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiImageProviderImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char* qtsdl::GuiImageProviderImpl::get_id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>get_id</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl_1ae9099f90705c5d62ac37d1216345d12a">get_id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl_1a74695f0140fb890efb9f712a6be0a45b">get_id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl_1a64c6bb0b6f235504eadf5b6dc90143d2">get_id</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::GuiImageProviderImpl::give_up</definition>
+        <argsstring>()=0</argsstring>
+        <name>give_up</name>
+        <reimplementedby refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl_1a72bac11f807d36b625ea4b345221256e">give_up</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="24" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; GuiImageProviderImpl &gt; qtsdl::GuiImageProviderImpl::take_ownership</definition>
+        <argsstring>(GuiImageProvider *image_provider)</argsstring>
+        <name>take_ownership</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref> *</type>
+          <declname>image_provider</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="19" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classqtsdl_1_1_gui_image_provider_impl" kindref="compound">GuiImageProviderImpl</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::unique_ptr&lt; GuiImageProviderImpl &gt; &gt; qtsdl::GuiImageProviderImpl::take_ownership</definition>
+        <argsstring>(const std::vector&lt; GuiImageProvider * &gt; &amp;image_providers)</argsstring>
+        <name>take_ownership</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="classqtsdl_1_1_gui_image_provider" kindref="compound">GuiImageProvider</ref> * &gt; &amp;</type>
+          <declname>image_providers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.cpp" bodystart="25" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2608">
+        <label>openage::gui::GuiGameSpecImageProviderByGraphicIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl"/>
+        <childnode refid="2607" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2609">
+        <label>openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl"/>
+        <childnode refid="2607" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2607">
+        <label>openage::gui::GuiGameSpecImageProviderByIdImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl"/>
+        <childnode refid="2605" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2605">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2603" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2603">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2604" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2604">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="2606">
+        <label>openage::gui::GuiGameSpecImageProviderByFilenameImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl"/>
+        <childnode refid="2605" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2610">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2611" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2611">
+        <label>QQuickImageProvider</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_image_provider_impl.h" line="14" column="1" bodyfile="libopenage/gui/guisys/private/gui_image_provider_impl.h" bodystart="14" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3611fcc07dd0e4199aa4465f20cfef5e" prot="public" virt="pure-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>get_id</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1ac13c4caf2c86355f2ae34c8c5c436f99" prot="public" virt="pure-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>give_up</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a914b88104905d80cf71119697d980946" prot="public" virt="non-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>GuiImageProviderImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a1cf6dfe2bc7558c22f3af638e0286cf1" prot="public" virt="non-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>take_ownership</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a3342ed0870fb23d0aeba69113c5ac05d" prot="public" virt="non-virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>take_ownership</name></member>
+      <member refid="classqtsdl_1_1_gui_image_provider_impl_1a8c4afdcca5cb73c89a1874980f7602eb" prot="public" virt="virtual"><scope>qtsdl::GuiImageProviderImpl</scope><name>~GuiImageProviderImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

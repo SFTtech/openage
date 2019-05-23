@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_persistent_core_holder_base" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>qtsdl::PersistentCoreHolderBase</compoundname>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameControlLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameMainLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameSpecLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; OutputModeLink &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_persistent_core_holder" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolder&lt; T &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual qtsdl::PersistentCoreHolderBase::~PersistentCoreHolderBase</definition>
+        <argsstring>()</argsstring>
+        <name>~PersistentCoreHolderBase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="36" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="36" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::PersistentCoreHolderBase::adopt_shell</definition>
+        <argsstring>(GuiItemLink *link)=0</argsstring>
+        <name>adopt_shell</name>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <reimplementedby refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56">adopt_shell</reimplementedby>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Establish link from the core to the shell. Core must have a public &apos;gui::GuiItemLink *gui_link` member. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="43" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Helper to hide the type of the core. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3647">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3645">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3642">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameControlLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3640">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="3641">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; AssetManagerLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3646">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; OutputModeLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3643">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameMainLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3644">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GameSpecLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3648">
+        <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3640" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3649">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="34" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="34" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a" prot="public" virt="pure-virtual"><scope>qtsdl::PersistentCoreHolderBase</scope><name>adopt_shell</name></member>
+      <member refid="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" prot="public" virt="virtual"><scope>qtsdl::PersistentCoreHolderBase</scope><name>~PersistentCoreHolderBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

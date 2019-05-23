@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::SurfaceSupportDetails</compoundname>
+    <includes refid="graphics__device_8h" local="no">graphics_device.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ac06746db6fdd8c3138eb65760d9c5d1a" prot="public" static="no" mutable="no">
+        <type>VkPhysicalDevice</type>
+        <definition>VkPhysicalDevice openage::renderer::vulkan::SurfaceSupportDetails::phys_device</definition>
+        <argsstring></argsstring>
+        <name>phys_device</name>
+        <briefdescription>
+<para>The physical device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="19" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" prot="public" static="no" mutable="no">
+        <type>VkSurfaceKHR</type>
+        <definition>VkSurfaceKHR openage::renderer::vulkan::SurfaceSupportDetails::surface</definition>
+        <argsstring></argsstring>
+        <name>surface</name>
+        <briefdescription>
+<para>The surface to which it can draw. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; VkPresentModeKHR &gt;</type>
+        <definition>std::vector&lt;VkPresentModeKHR&gt; openage::renderer::vulkan::SurfaceSupportDetails::present_modes</definition>
+        <argsstring></argsstring>
+        <name>present_modes</name>
+        <briefdescription>
+<para>Available present modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; VkSurfaceFormatKHR &gt;</type>
+        <definition>std::vector&lt;VkSurfaceFormatKHR&gt; openage::renderer::vulkan::SurfaceSupportDetails::surface_formats</definition>
+        <argsstring></argsstring>
+        <name>surface_formats</name>
+        <briefdescription>
+<para>Available surface formats. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="28" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" prot="public" static="no" mutable="no">
+        <type>VkSurfaceCapabilitiesKHR</type>
+        <definition>VkSurfaceCapabilitiesKHR openage::renderer::vulkan::SurfaceSupportDetails::surface_caps</definition>
+        <argsstring></argsstring>
+        <name>surface_caps</name>
+        <briefdescription>
+<para>Various capabilities of presentation to the surface. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="31" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t openage::renderer::vulkan::SurfaceSupportDetails::graphics_fam</definition>
+        <argsstring></argsstring>
+        <name>graphics_fam</name>
+        <briefdescription>
+<para>Index of the device queue family with graphics support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="34" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; uint32_t &gt;</type>
+        <definition>std::optional&lt;uint32_t&gt; openage::renderer::vulkan::SurfaceSupportDetails::maybe_present_fam</definition>
+        <argsstring></argsstring>
+        <name>maybe_present_fam</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Index of the queue family with presentation support. This might be the same as the graphics family, in which case this optional is empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/graphics_device.h" line="38" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains information about the support of a given physical device for a given surface, for example the formats using which it can present onto the surface. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4287">
+        <label>openage::renderer::vulkan::SurfaceSupportDetails</label>
+        <link refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/graphics_device.h" line="17" column="1" bodyfile="libopenage/renderer/vulkan/graphics_device.h" bodystart="17" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>graphics_fam</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>maybe_present_fam</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ac06746db6fdd8c3138eb65760d9c5d1a" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>phys_device</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>present_modes</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>surface</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>surface_caps</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::SurfaceSupportDetails</scope><name>surface_formats</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

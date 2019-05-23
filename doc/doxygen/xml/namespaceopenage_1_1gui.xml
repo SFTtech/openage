@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1gui" kind="namespace" language="C++">
+    <compoundname>openage::gui</compoundname>
+    <innerclass refid="classopenage_1_1gui_1_1_action_mode_link" prot="public">openage::gui::ActionModeLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_actions_list_model" prot="public">openage::gui::ActionsListModel</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_asset_manager_link" prot="public">openage::gui::AssetManagerLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_category_contents_list_model" prot="public">openage::gui::CategoryContentsListModel</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_create_mode_link" prot="public">openage::gui::CreateModeLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_editor_mode_link" prot="public">openage::gui::EditorModeLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_engine_link" prot="public">openage::gui::EngineLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_engine_q_m_l_info" prot="public">openage::gui::EngineQMLInfo</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_control_link" prot="public">openage::gui::GameControlLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_creator" prot="public">openage::gui::GameCreator</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_creator_signals" prot="public">openage::gui::GameCreatorSignals</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_main_link" prot="public">openage::gui::GameMainLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_saver" prot="public">openage::gui::GameSaver</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_saver_signals" prot="public">openage::gui::GameSaverSignals</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_game_spec_link" prot="public">openage::gui::GameSpecLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_generator_link" prot="public">openage::gui::GeneratorLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_g_u_i" prot="public">openage::gui::GUI</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_application_with_logger" prot="public">openage::gui::GuiApplicationWithLogger</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_filled_texture_handles" prot="public">openage::gui::GuiFilledTextureHandles</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_filled_texture_handle_user" prot="public">openage::gui::GuiFilledTextureHandleUser</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" prot="public">openage::gui::GuiGameSpecImageProvider</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_filename_impl" prot="public">openage::gui::GuiGameSpecImageProviderByFilenameImpl</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_graphic_id_impl" prot="public">openage::gui::GuiGameSpecImageProviderByGraphicIdImpl</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_id_impl" prot="public">openage::gui::GuiGameSpecImageProviderByIdImpl</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_by_terrain_id_impl" prot="public">openage::gui::GuiGameSpecImageProviderByTerrainIdImpl</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" prot="public">openage::gui::GuiGameSpecImageProviderImpl</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_image_provider_link" prot="public">openage::gui::GuiImageProviderLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_standalone_subtexture" prot="public">openage::gui::GuiStandaloneSubtexture</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_texture" prot="public">openage::gui::GuiTexture</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_gui_texture_factory" prot="public">openage::gui::GuiTextureFactory</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_main_args_link" prot="public">openage::gui::MainArgsLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_output_mode_link" prot="public">openage::gui::OutputModeLink</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_resources_list_model" prot="public">openage::gui::ResourcesListModel</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_sized_texture_handle" prot="public">openage::gui::SizedTextureHandle</innerclass>
+    <innerclass refid="classopenage_1_1gui_1_1_texture_handle" prot="public">openage::gui::TextureHandle</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1gui_1aab12594ba4e08cbab511c42d2b7ebef9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int openage::gui::reg_path</definition>
+        <argsstring></argsstring>
+        <name>reg_path</name>
+        <initializer>= qRegisterMetaType&lt;<ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref>&gt;(&quot;util::Path&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/registrations.cpp" line="10" column="1" bodyfile="libopenage/gui/registrations.cpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1a92817cf5cb133b7059976330da2f9931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::gui_log</definition>
+        <argsstring>(QtMsgType type, const QMessageLogContext &amp;context, const QString &amp;msg)</argsstring>
+        <name>gui_log</name>
+        <param>
+          <type>QtMsgType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const QMessageLogContext &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_log.cpp" line="12" column="1" bodyfile="libopenage/gui/integration/private/gui_log.cpp" bodystart="12" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1ad386ee98cd26c09c0e03fdc7f50ad6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; QSGTexture &gt;</type>
+        <definition>std::unique_ptr&lt; QSGTexture &gt; openage::gui::make_standalone_subtexture</definition>
+        <argsstring>(GLuint id, const QSize &amp;size)</argsstring>
+        <name>make_standalone_subtexture</name>
+        <param>
+          <type>GLuint</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" line="9" column="1" bodyfile="libopenage/gui/integration/private/gui_make_standalone_subtexture.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1af717f0e1527d227ea7c4a8e9f34e87b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::gui::isAtlasTexture</definition>
+        <argsstring>(const TextureHandle &amp;texture_handle)</argsstring>
+        <name>isAtlasTexture</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref> &amp;</type>
+          <declname>texture_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="24" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1a1404eed030dfc77b51edc61cb3fbbbef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QSize</type>
+        <definition>QSize openage::gui::textureSize</definition>
+        <argsstring>(const SizedTextureHandle &amp;texture_handle)</argsstring>
+        <name>textureSize</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1gui_1_1_sized_texture_handle" kindref="compound">SizedTextureHandle</ref> &amp;</type>
+          <declname>texture_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="28" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1a4f415900a4d4e55b09b0be3c2ba60d54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QSize</type>
+        <definition>QSize openage::gui::native_size</definition>
+        <argsstring>(const TextureHandle &amp;texture_handle)</argsstring>
+        <name>native_size</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref> &amp;</type>
+          <declname>texture_handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="32" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="32" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gui_1a1ed7c99cf0d2a47548927d8d688b0c42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QSize</type>
+        <definition>QSize openage::gui::aspect_fit_size</definition>
+        <argsstring>(const TextureHandle &amp;texture_handle, const QSize &amp;requested_size)</argsstring>
+        <name>aspect_fit_size</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1gui_1_1_texture_handle" kindref="compound">TextureHandle</ref> &amp;</type>
+          <declname>texture_handle</declname>
+        </param>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>requested_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The sourceSize property of the Image QML element ends up here for checking.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>requested_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>sourceSize if used in Image QML element. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>if !requested_size.isValid() or requested_size.isNull() then native size, otherwise fit in the requested_size (zero component in requested_size means unbounded). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_texture_handle.cpp" line="43" column="1" bodyfile="libopenage/gui/integration/private/gui_texture_handle.cpp" bodystart="43" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/engine.h" line="38" column="1"/>
+  </compounddef>
+</doxygen>

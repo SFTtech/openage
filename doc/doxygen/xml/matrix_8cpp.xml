@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="matrix_8cpp" kind="file" language="C++">
+    <compoundname>matrix.cpp</compoundname>
+    <includes refid="matrix_8h" local="yes">matrix.h</includes>
+    <incdepgraph>
+      <node id="30903">
+        <label>list</label>
+      </node>
+      <node id="30894">
+        <label>atomic</label>
+      </node>
+      <node id="30899">
+        <label>iomanip</label>
+      </node>
+      <node id="30898">
+        <label>functional</label>
+      </node>
+      <node id="30889">
+        <label>cstdint</label>
+      </node>
+      <node id="30874">
+        <label>matrix.h</label>
+        <link refid="matrix_8h"/>
+        <childnode refid="30875" relation="include">
+        </childnode>
+        <childnode refid="30876" relation="include">
+        </childnode>
+        <childnode refid="30877" relation="include">
+        </childnode>
+        <childnode refid="30878" relation="include">
+        </childnode>
+        <childnode refid="30879" relation="include">
+        </childnode>
+        <childnode refid="30880" relation="include">
+        </childnode>
+      </node>
+      <node id="30896">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="30897" relation="include">
+        </childnode>
+        <childnode refid="30898" relation="include">
+        </childnode>
+        <childnode refid="30899" relation="include">
+        </childnode>
+        <childnode refid="30882" relation="include">
+        </childnode>
+        <childnode refid="30900" relation="include">
+        </childnode>
+        <childnode refid="30884" relation="include">
+        </childnode>
+        <childnode refid="30901" relation="include">
+        </childnode>
+      </node>
+      <node id="30876">
+        <label>cmath</label>
+      </node>
+      <node id="30883">
+        <label>stdexcept</label>
+      </node>
+      <node id="30902">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="30903" relation="include">
+        </childnode>
+        <childnode refid="30904" relation="include">
+        </childnode>
+        <childnode refid="30905" relation="include">
+        </childnode>
+      </node>
+      <node id="30897">
+        <label>cstdarg</label>
+      </node>
+      <node id="30884">
+        <label>string</label>
+      </node>
+      <node id="30888">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="30889" relation="include">
+        </childnode>
+        <childnode refid="30884" relation="include">
+        </childnode>
+        <childnode refid="30890" relation="include">
+        </childnode>
+        <childnode refid="30891" relation="include">
+        </childnode>
+        <childnode refid="30893" relation="include">
+        </childnode>
+        <childnode refid="30902" relation="include">
+        </childnode>
+        <childnode refid="30905" relation="include">
+        </childnode>
+      </node>
+      <node id="30891">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="30892" relation="include">
+        </childnode>
+      </node>
+      <node id="30880">
+        <label>vector.h</label>
+        <link refid="vector_8h"/>
+        <childnode refid="30875" relation="include">
+        </childnode>
+        <childnode refid="30876" relation="include">
+        </childnode>
+        <childnode refid="30877" relation="include">
+        </childnode>
+        <childnode refid="30878" relation="include">
+        </childnode>
+        <childnode refid="30879" relation="include">
+        </childnode>
+        <childnode refid="30881" relation="include">
+        </childnode>
+        <childnode refid="30908" relation="include">
+        </childnode>
+      </node>
+      <node id="30893">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="30894" relation="include">
+        </childnode>
+        <childnode refid="30882" relation="include">
+        </childnode>
+        <childnode refid="30879" relation="include">
+        </childnode>
+        <childnode refid="30885" relation="include">
+        </childnode>
+        <childnode refid="30895" relation="include">
+        </childnode>
+        <childnode refid="30896" relation="include">
+        </childnode>
+      </node>
+      <node id="30881">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="30878" relation="include">
+        </childnode>
+        <childnode refid="30882" relation="include">
+        </childnode>
+        <childnode refid="30883" relation="include">
+        </childnode>
+        <childnode refid="30884" relation="include">
+        </childnode>
+        <childnode refid="30885" relation="include">
+        </childnode>
+        <childnode refid="30888" relation="include">
+        </childnode>
+      </node>
+      <node id="30907">
+        <label>typeinfo</label>
+      </node>
+      <node id="30873">
+        <label>libopenage/util/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+        <childnode refid="30874" relation="include">
+        </childnode>
+      </node>
+      <node id="30901">
+        <label>vector</label>
+      </node>
+      <node id="30908">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="30905" relation="include">
+        </childnode>
+        <childnode refid="30888" relation="include">
+        </childnode>
+      </node>
+      <node id="30886">
+        <label>ciso646</label>
+      </node>
+      <node id="30875">
+        <label>array</label>
+      </node>
+      <node id="30900">
+        <label>sstream</label>
+      </node>
+      <node id="30885">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="30886" relation="include">
+        </childnode>
+        <childnode refid="30884" relation="include">
+        </childnode>
+        <childnode refid="30887" relation="include">
+        </childnode>
+      </node>
+      <node id="30887">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="30887" relation="include">
+        </childnode>
+      </node>
+      <node id="30895">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="30878" relation="include">
+        </childnode>
+        <childnode refid="30884" relation="include">
+        </childnode>
+      </node>
+      <node id="30905">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="30906" relation="include">
+        </childnode>
+      </node>
+      <node id="30892">
+        <label>cstdlib</label>
+      </node>
+      <node id="30878">
+        <label>iostream</label>
+      </node>
+      <node id="30904">
+        <label>mutex</label>
+      </node>
+      <node id="30879">
+        <label>type_traits</label>
+      </node>
+      <node id="30890">
+        <label>config.h</label>
+      </node>
+      <node id="30877">
+        <label>cstring</label>
+      </node>
+      <node id="30882">
+        <label>memory</label>
+      </node>
+      <node id="30906">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="30878" relation="include">
+        </childnode>
+        <childnode refid="30907" relation="include">
+        </childnode>
+        <childnode refid="30885" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matrix_8h" kindref="compound">matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Matrix<sp/>is<sp/>all<sp/>templated,<sp/>so<sp/>there&apos;s<sp/>nothing<sp/>to<sp/>implement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/matrix.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,472 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="pyobject__tests_8cpp" kind="file" language="C++">
+    <compoundname>pyobject_tests.cpp</compoundname>
+    <includes refid="pyobject__tests_8h" local="yes">pyobject_tests.h</includes>
+    <includes local="no">unordered_set</includes>
+    <includes refid="pyobject_8h" local="yes">pyobject.h</includes>
+    <includes refid="pyexception_8h" local="yes">pyexception.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="20187">
+        <label>list</label>
+      </node>
+      <node id="20179">
+        <label>atomic</label>
+      </node>
+      <node id="20184">
+        <label>iomanip</label>
+      </node>
+      <node id="20163">
+        <label>functional</label>
+      </node>
+      <node id="20193">
+        <label>../error/backtrace.h</label>
+        <link refid="backtrace_8h"/>
+        <childnode refid="20160" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20171" relation="include">
+        </childnode>
+        <childnode refid="20163" relation="include">
+        </childnode>
+      </node>
+      <node id="20191">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="20163" relation="include">
+        </childnode>
+        <childnode refid="20165" relation="include">
+        </childnode>
+      </node>
+      <node id="20158">
+        <label>cstdint</label>
+      </node>
+      <node id="20154">
+        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <link refid="pyobject__tests_8cpp"/>
+        <childnode refid="20155" relation="include">
+        </childnode>
+        <childnode refid="20156" relation="include">
+        </childnode>
+        <childnode refid="20157" relation="include">
+        </childnode>
+        <childnode refid="20192" relation="include">
+        </childnode>
+        <childnode refid="20194" relation="include">
+        </childnode>
+      </node>
+      <node id="20182">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20183" relation="include">
+        </childnode>
+        <childnode refid="20163" relation="include">
+        </childnode>
+        <childnode refid="20184" relation="include">
+        </childnode>
+        <childnode refid="20172" relation="include">
+        </childnode>
+        <childnode refid="20185" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20160" relation="include">
+        </childnode>
+      </node>
+      <node id="20169">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="20170" relation="include">
+        </childnode>
+      </node>
+      <node id="20173">
+        <label>stdexcept</label>
+      </node>
+      <node id="20168">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="20186">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20187" relation="include">
+        </childnode>
+        <childnode refid="20164" relation="include">
+        </childnode>
+        <childnode refid="20188" relation="include">
+        </childnode>
+      </node>
+      <node id="20183">
+        <label>cstdarg</label>
+      </node>
+      <node id="20159">
+        <label>string</label>
+      </node>
+      <node id="20174">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20158" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20175" relation="include">
+        </childnode>
+        <childnode refid="20176" relation="include">
+        </childnode>
+        <childnode refid="20178" relation="include">
+        </childnode>
+        <childnode refid="20186" relation="include">
+        </childnode>
+        <childnode refid="20188" relation="include">
+        </childnode>
+      </node>
+      <node id="20176">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20177" relation="include">
+        </childnode>
+      </node>
+      <node id="20178">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20179" relation="include">
+        </childnode>
+        <childnode refid="20172" relation="include">
+        </childnode>
+        <childnode refid="20180" relation="include">
+        </childnode>
+        <childnode refid="20165" relation="include">
+        </childnode>
+        <childnode refid="20181" relation="include">
+        </childnode>
+        <childnode refid="20182" relation="include">
+        </childnode>
+      </node>
+      <node id="20156">
+        <label>unordered_set</label>
+      </node>
+      <node id="20155">
+        <label>pyobject_tests.h</label>
+        <link refid="pyobject__tests_8h"/>
+      </node>
+      <node id="20157">
+        <label>pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="20158" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20160" relation="include">
+        </childnode>
+        <childnode refid="20161" relation="include">
+        </childnode>
+        <childnode refid="20162" relation="include">
+        </childnode>
+      </node>
+      <node id="20170">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20171" relation="include">
+        </childnode>
+        <childnode refid="20172" relation="include">
+        </childnode>
+        <childnode refid="20173" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20165" relation="include">
+        </childnode>
+        <childnode refid="20174" relation="include">
+        </childnode>
+      </node>
+      <node id="20190">
+        <label>typeinfo</label>
+      </node>
+      <node id="20160">
+        <label>vector</label>
+      </node>
+      <node id="20166">
+        <label>ciso646</label>
+      </node>
+      <node id="20185">
+        <label>sstream</label>
+      </node>
+      <node id="20165">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20166" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20167" relation="include">
+        </childnode>
+      </node>
+      <node id="20167">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20167" relation="include">
+        </childnode>
+      </node>
+      <node id="20181">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20171" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+      </node>
+      <node id="20188">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20189" relation="include">
+        </childnode>
+      </node>
+      <node id="20177">
+        <label>cstdlib</label>
+      </node>
+      <node id="20171">
+        <label>iostream</label>
+      </node>
+      <node id="20162">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="20163" relation="include">
+        </childnode>
+        <childnode refid="20164" relation="include">
+        </childnode>
+        <childnode refid="20165" relation="include">
+        </childnode>
+        <childnode refid="20168" relation="include">
+        </childnode>
+        <childnode refid="20169" relation="include">
+        </childnode>
+        <childnode refid="20191" relation="include">
+        </childnode>
+      </node>
+      <node id="20194">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="20170" relation="include">
+        </childnode>
+      </node>
+      <node id="20164">
+        <label>mutex</label>
+      </node>
+      <node id="20192">
+        <label>pyexception.h</label>
+        <link refid="pyexception_8h"/>
+        <childnode refid="20172" relation="include">
+        </childnode>
+        <childnode refid="20159" relation="include">
+        </childnode>
+        <childnode refid="20160" relation="include">
+        </childnode>
+        <childnode refid="20170" relation="include">
+        </childnode>
+        <childnode refid="20193" relation="include">
+        </childnode>
+        <childnode refid="20162" relation="include">
+        </childnode>
+        <childnode refid="20157" relation="include">
+        </childnode>
+      </node>
+      <node id="20161">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="20180">
+        <label>type_traits</label>
+      </node>
+      <node id="20175">
+        <label>config.h</label>
+      </node>
+      <node id="20172">
+        <label>memory</label>
+      </node>
+      <node id="20189">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20171" relation="include">
+        </childnode>
+        <childnode refid="20190" relation="include">
+        </childnode>
+        <childnode refid="20165" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface">openage::pyinterface</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1pyinterface_1_1tests">openage::pyinterface::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pyobject__tests_8h" kindref="compound">pyobject_tests.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pyobject_8h" kindref="compound">pyobject.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pyexception_8h" kindref="compound">pyexception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">pyinterface<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1ad69d94519ba25682897d8da53beb86df" kindref="member">pyobject</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">py::str</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">).<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;&apos;foo&apos;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" kindref="member">py::bytes</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">).<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;b&apos;foo&apos;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" kindref="member">py::integer</ref>(1337).<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;1337&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(py::None.<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;None&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;None&quot;</highlight><highlight class="normal">).equals(py::None),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;None&quot;</highlight><highlight class="normal">).is(py::None),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" kindref="member">py::True</ref>.<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;True&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;True&quot;</highlight><highlight class="normal">).equals(<ref refid="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" kindref="member">py::True</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;True&quot;</highlight><highlight class="normal">).is(<ref refid="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" kindref="member">py::True</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1pyinterface_1a09953e7373020e0af78c70ea155754ee" kindref="member">py::True</ref>.to_bool(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" kindref="member">py::False</ref>.<ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;False&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;False&quot;</highlight><highlight class="normal">).equals(<ref refid="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" kindref="member">py::False</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;False&quot;</highlight><highlight class="normal">).is(<ref refid="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" kindref="member">py::False</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1pyinterface_1ad71d6296abe650b46217af0efb0725a2" kindref="member">py::False</ref>.to_bool(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">py::dict</ref>());</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;{}&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;dict&quot;</highlight><highlight class="normal">).<ref refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kindref="member">call</ref>().equals(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;dict&quot;</highlight><highlight class="normal">).<ref refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kindref="member">call</ref>().is(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>deque;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(deque<sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a74056a2f34d9bc9aed2a687a85794e7a" kindref="member">py::import</ref>(</highlight><highlight class="stringliteral">&quot;collections&quot;</highlight><highlight class="normal">).getattr(</highlight><highlight class="stringliteral">&quot;deque&quot;</highlight><highlight class="normal">).<ref refid="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" kindref="member">call</ref>());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(deque.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;deque([])&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" kindref="member">TESTTHROWS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" kindref="member">exec</ref>(</highlight><highlight class="stringliteral">&quot;raise<sp/>Exception()&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" kindref="member">exec</ref>(</highlight><highlight class="stringliteral">&quot;x<sp/>=<sp/>[]&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;[]&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">py::str</ref>(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">).in(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5108334e805e942718d59b97160775d1" kindref="member">py::bytes</ref>(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">).in(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" kindref="member">exec</ref>(</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;class<sp/>A:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>def<sp/>__del__(self):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x.append(1)\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>def<sp/>__str__(self):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>&apos;A&apos;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>def<sp/>__repr__(self):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>&apos;A()&apos;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>def<sp/>__bytes__(self):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>b&apos;bytes-A()&apos;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>test<sp/>what<sp/>happens<sp/>when<sp/>a<sp/>goes<sp/>out<sp/>of<sp/>scope</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>a;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(a<sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" kindref="member">eval</ref>(</highlight><highlight class="stringliteral">&quot;A()&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;A()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" kindref="member">str</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;A&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" kindref="member">bytes</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;bytes-A()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a9c0069c03b9c5ab553f49b6cc790f8e0" kindref="member">setattr</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>deque));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" kindref="member">getattr</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" kindref="member">is</ref>(deque),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" kindref="member">hasattr</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(a.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0298b14066d342bc4b85a679ad777f28" kindref="member">hasattr</ref>(</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>__del__<sp/>added<sp/>a<sp/>&apos;1&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>x;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(x<sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afc75f5918216b0b5c64c7a3f83626ea6" kindref="member">repr</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;[1]&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a09ea43fdc78d2458748887fa72ae1a9d" kindref="member">len</ref>(),<sp/>1);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" kindref="member">py::integer</ref>(1).in(x),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(0).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" kindref="member">equals</ref>(<ref refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" kindref="member">py::integer</ref>(1)),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(0).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" kindref="member">equals</ref>(<ref refid="namespaceopenage_1_1py_1a1f03713cea0d4ee15fc445111404e7d7" kindref="member">py::integer</ref>(2)),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" kindref="member">isinstance</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;dict&quot;</highlight><highlight class="normal">)),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2b5e4fb00fdfa866cf3cf0abf78e07e1" kindref="member">isinstance</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;list&quot;</highlight><highlight class="normal">)),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>pop;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(pop<sp/>=<sp/>x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" kindref="member">getattr</ref>(</highlight><highlight class="stringliteral">&quot;pop&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a2790fe7f033dc93a820a13535421aa98" kindref="member">callable</ref>(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(pop.callable(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(pop.call().repr(),<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" kindref="member">to_bool</ref>(),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a02b9a4b5f4123474f3d2c7be438eed21" kindref="member">to_bool</ref>(),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_set&lt;std::string&gt;<sp/>dir;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(pop.dir([&amp;](std::string<sp/>s)<sp/>{dir.insert(s);}));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>dir.find(</highlight><highlight class="stringliteral">&quot;__self__&quot;</highlight><highlight class="normal">)<sp/>==<sp/>dir.end()<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>dir.clear();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(pop.getattr(</highlight><highlight class="stringliteral">&quot;__self__&quot;</highlight><highlight class="normal">).is(x),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" kindref="member">equals</ref>(deque),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(x.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ad14d4168fbabc89c1b48186ba1df98b2" kindref="member">equals</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;list&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" kindref="member">call</ref>()),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1aad12aea6d10bda9d75570193f562645e" kindref="member">type</ref>().<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" kindref="member">is</ref>(<ref refid="namespaceopenage_1_1py_1ac68b5313b47c4615286f64c7d996a903" kindref="member">py::builtin</ref>(</highlight><highlight class="stringliteral">&quot;dict&quot;</highlight><highlight class="normal">)),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afd545e1817cad9ab9f5c84934d83e428" kindref="member">modulename</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;builtins&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a912e76dc7854f9c1816533f6f8571767" kindref="member">classname</ref>(),<sp/></highlight><highlight class="stringliteral">&quot;dict&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>btw,<sp/>if<sp/>I<sp/>invoke<sp/>a<sp/>nonexisting<sp/>member<sp/>function<sp/>on<sp/>a<sp/>(a.foob(b))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>python<sp/>heap<sp/>will<sp/>corrupt<sp/>in<sp/>printing<sp/>the<sp/>&quot;has<sp/>no<sp/>member&quot;<sp/>backtrace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" kindref="member">TESTNOEXCEPT</ref>(<ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" kindref="member">exec</ref>(</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;def<sp/>mul(x,<sp/>y):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>return<sp/>x<sp/>*<sp/>y\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;def<sp/>strformat(a,<sp/>b):\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>return<sp/>a.format(b)\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(</highlight><highlight class="stringliteral">&quot;mul&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" kindref="member">call</ref>(13,<sp/>37).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1ab33e45c3e5b581e5c1dbc74282f6f168" kindref="member">to_int</ref>(),</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>13<sp/>*<sp/>37</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">dict</ref>.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a853f15a5d55d1143418e208fac044119" kindref="member">get</ref>(</highlight><highlight class="stringliteral">&quot;strformat&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" kindref="member">call</ref>(<ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">py::str</ref>(</highlight><highlight class="stringliteral">&quot;stuff:<sp/>{}&quot;</highlight><highlight class="normal">),<sp/>1337).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" kindref="member">str</ref>(),</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1py_1a4d2bbe46a5d10404c658b54f3b199551" kindref="member">py::str</ref>(</highlight><highlight class="stringliteral">&quot;stuff:<sp/>{}&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1afb0f22eaba43f4419e7edf3eaa1f957a" kindref="member">getattr</ref>(</highlight><highlight class="stringliteral">&quot;format&quot;</highlight><highlight class="normal">).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" kindref="member">call</ref>(1337).<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" kindref="member">str</ref>()</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1pyinterface_1_1tests_1a0f930d1710b53aa90f3e05e85aa5d544" kindref="member">pyobject_demo</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>globals<sp/>=<sp/><ref refid="namespaceopenage_1_1py_1a5ba80af3e9224d2de11179ce232f75d9" kindref="member">py::dict</ref>();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>inputfunc<sp/>=<sp/>globals.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a17d24db4d17d8aba1a9b71c79fe3aa40" kindref="member">eval</ref>(</highlight><highlight class="stringliteral">&quot;lambda:<sp/>input(&apos;&gt;&gt;&gt;<sp/>&apos;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>input;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>input<sp/>=<sp/>inputfunc.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a54af3d98bf36729efd5a013bc124a2e9" kindref="member">call</ref>();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref><sp/>&amp;exc)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(exc.<ref refid="classopenage_1_1pyinterface_1_1_py_exception_1a1352d1476e7824c11aca00df918879e1" kindref="member">type_name</ref>()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;builtins.EOFError&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;goodbye.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>exc<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>globals.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a0d7ef968ad02a1d4a52251ccd16eb85f" kindref="member">exec</ref>(input.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1acd17e87d491659af8fb3ac621f9f4732" kindref="member">str</ref>());</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1pyinterface_1_1_py_exception" kindref="compound">PyException</ref><sp/>&amp;exc)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>exc<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::pyinterface::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pyinterface/pyobject_tests.cpp"/>
+  </compounddef>
+</doxygen>

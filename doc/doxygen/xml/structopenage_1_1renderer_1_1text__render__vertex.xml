@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1text__render__vertex" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::text_render_vertex</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::text_render_vertex::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="22" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::text_render_vertex::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="23" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::text_render_vertex::u</definition>
+        <argsstring></argsstring>
+        <name>u</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="24" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::renderer::text_render_vertex::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="25" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1text__render__vertex_1ababa4a88b3cd8a7a9b4be85243d41a1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::text_render_vertex::text_render_vertex</definition>
+        <argsstring>()</argsstring>
+        <name>text_render_vertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="27" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1renderer_1_1text__render__vertex_1a4051a213715aafdf36f356ebeb1d925c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::text_render_vertex::text_render_vertex</definition>
+        <argsstring>(float x, float y, float u, float v)</argsstring>
+        <name>text_render_vertex</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/text.cpp" line="32" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="32" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4448">
+        <label>openage::renderer::text_render_vertex</label>
+        <link refid="structopenage_1_1renderer_1_1text__render__vertex"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/text.cpp" line="21" column="1" bodyfile="libopenage/renderer/text.cpp" bodystart="21" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1ababa4a88b3cd8a7a9b4be85243d41a1a" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>text_render_vertex</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1a4051a213715aafdf36f356ebeb1d925c" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>text_render_vertex</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1a9588d4314c3c5635e4ff5794de34ef4e" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>u</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1ab0bcc4bf01780a19cba4a8cfa7c48462" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>v</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1add7b1f7f76a58b5e84da5adb25646503" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>x</name></member>
+      <member refid="structopenage_1_1renderer_1_1text__render__vertex_1a46a7a4e3f7a3727b1dcd8b521f30102a" prot="public" virt="non-virtual"><scope>openage::renderer::text_render_vertex</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,574 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="terrain__chunk_8h" kind="file" language="C++">
+    <compoundname>terrain_chunk.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">vector</includes>
+    <includes refid="pixel_8h" local="yes">../coord/pixel.h</includes>
+    <includes refid="tile_8h" local="yes">../coord/tile.h</includes>
+    <includes refid="texture_8h" local="yes">../texture.h</includes>
+    <includes refid="file_8h" local="yes">../util/file.h</includes>
+    <includedby refid="game__control_8cpp" local="yes">libopenage/game_control.cpp</includedby>
+    <includedby refid="game__save_8cpp" local="yes">libopenage/gamestate/game_save.cpp</includedby>
+    <includedby refid="generator_8cpp" local="yes">libopenage/gamestate/generator.cpp</includedby>
+    <includedby refid="terrain_8cpp" local="yes">libopenage/terrain/terrain.cpp</includedby>
+    <includedby refid="terrain__chunk_8cpp" local="yes">libopenage/terrain/terrain_chunk.cpp</includedby>
+    <includedby refid="terrain__object_8cpp" local="yes">libopenage/terrain/terrain_object.cpp</includedby>
+    <incdepgraph>
+      <node id="24581">
+        <label>list</label>
+      </node>
+      <node id="24574">
+        <label>atomic</label>
+      </node>
+      <node id="24550">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="24551" relation="include">
+        </childnode>
+        <childnode refid="24552" relation="include">
+        </childnode>
+        <childnode refid="24553" relation="include">
+        </childnode>
+        <childnode refid="24554" relation="include">
+        </childnode>
+        <childnode refid="24555" relation="include">
+        </childnode>
+        <childnode refid="24556" relation="include">
+        </childnode>
+        <childnode refid="24557" relation="include">
+        </childnode>
+        <childnode refid="24558" relation="include">
+        </childnode>
+      </node>
+      <node id="24578">
+        <label>functional</label>
+      </node>
+      <node id="24554">
+        <label>iomanip</label>
+      </node>
+      <node id="24555">
+        <label>limits</label>
+      </node>
+      <node id="24548">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="24549" relation="include">
+        </childnode>
+        <childnode refid="24550" relation="include">
+        </childnode>
+      </node>
+      <node id="24589">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="24590" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24591" relation="include">
+        </childnode>
+        <childnode refid="24546" relation="include">
+        </childnode>
+        <childnode refid="24586" relation="include">
+        </childnode>
+        <childnode refid="24592" relation="include">
+        </childnode>
+        <childnode refid="24593" relation="include">
+        </childnode>
+        <childnode refid="24595" relation="include">
+        </childnode>
+      </node>
+      <node id="24601">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="24578" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+      </node>
+      <node id="24549">
+        <label>cstdint</label>
+      </node>
+      <node id="24587">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="24576">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="24577" relation="include">
+        </childnode>
+        <childnode refid="24578" relation="include">
+        </childnode>
+        <childnode refid="24554" relation="include">
+        </childnode>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24579" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+      </node>
+      <node id="24600">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="24563" relation="include">
+        </childnode>
+      </node>
+      <node id="24553">
+        <label>cmath</label>
+      </node>
+      <node id="24565">
+        <label>stdexcept</label>
+      </node>
+      <node id="24599">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="24580">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="24581" relation="include">
+        </childnode>
+        <childnode refid="24582" relation="include">
+        </childnode>
+        <childnode refid="24583" relation="include">
+        </childnode>
+      </node>
+      <node id="24577">
+        <label>cstdarg</label>
+      </node>
+      <node id="24561">
+        <label>string</label>
+      </node>
+      <node id="24569">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="24549" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24570" relation="include">
+        </childnode>
+        <childnode refid="24571" relation="include">
+        </childnode>
+        <childnode refid="24573" relation="include">
+        </childnode>
+        <childnode refid="24580" relation="include">
+        </childnode>
+        <childnode refid="24583" relation="include">
+        </childnode>
+      </node>
+      <node id="24571">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="24572" relation="include">
+        </childnode>
+      </node>
+      <node id="24573">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="24574" relation="include">
+        </childnode>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24557" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+        <childnode refid="24575" relation="include">
+        </childnode>
+        <childnode refid="24576" relation="include">
+        </childnode>
+      </node>
+      <node id="24544">
+        <label>stddef.h</label>
+      </node>
+      <node id="24556">
+        <label>ostream</label>
+      </node>
+      <node id="24596">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="24549" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24597" relation="include">
+        </childnode>
+        <childnode refid="24598" relation="include">
+        </childnode>
+      </node>
+      <node id="24559">
+        <label>limits.h</label>
+      </node>
+      <node id="24563">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="24564" relation="include">
+        </childnode>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24565" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+        <childnode refid="24569" relation="include">
+        </childnode>
+      </node>
+      <node id="24558">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="24551" relation="include">
+        </childnode>
+        <childnode refid="24559" relation="include">
+        </childnode>
+        <childnode refid="24553" relation="include">
+        </childnode>
+        <childnode refid="24560" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24563" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+      </node>
+      <node id="24588">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="24585">
+        <label>typeinfo</label>
+      </node>
+      <node id="24547">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="24543">
+        <label>libopenage/terrain/terrain_chunk.h</label>
+        <link refid="terrain__chunk_8h"/>
+        <childnode refid="24544" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24546" relation="include">
+        </childnode>
+        <childnode refid="24586" relation="include">
+        </childnode>
+        <childnode refid="24589" relation="include">
+        </childnode>
+        <childnode refid="24602" relation="include">
+        </childnode>
+      </node>
+      <node id="24545">
+        <label>vector</label>
+      </node>
+      <node id="24567">
+        <label>ciso646</label>
+      </node>
+      <node id="24592">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="24590" relation="include">
+        </childnode>
+      </node>
+      <node id="24579">
+        <label>sstream</label>
+      </node>
+      <node id="24566">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="24567" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24568" relation="include">
+        </childnode>
+      </node>
+      <node id="24602">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="24562" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24603" relation="include">
+        </childnode>
+        <childnode refid="24596" relation="include">
+        </childnode>
+      </node>
+      <node id="24568">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="24568" relation="include">
+        </childnode>
+      </node>
+      <node id="24590">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="24575">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="24564" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+      </node>
+      <node id="24583">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="24584" relation="include">
+        </childnode>
+      </node>
+      <node id="24546">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="24547" relation="include">
+        </childnode>
+        <childnode refid="24548" relation="include">
+        </childnode>
+      </node>
+      <node id="24604">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="24591">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="24603">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="24564" relation="include">
+        </childnode>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+      </node>
+      <node id="24572">
+        <label>cstdlib</label>
+      </node>
+      <node id="24564">
+        <label>iostream</label>
+      </node>
+      <node id="24593">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="24594" relation="include">
+        </childnode>
+        <childnode refid="24590" relation="include">
+        </childnode>
+      </node>
+      <node id="24598">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="24578" relation="include">
+        </childnode>
+        <childnode refid="24582" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+        <childnode refid="24599" relation="include">
+        </childnode>
+        <childnode refid="24600" relation="include">
+        </childnode>
+        <childnode refid="24601" relation="include">
+        </childnode>
+      </node>
+      <node id="24552">
+        <label>climits</label>
+      </node>
+      <node id="24582">
+        <label>mutex</label>
+      </node>
+      <node id="24595">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="24561" relation="include">
+        </childnode>
+        <childnode refid="24545" relation="include">
+        </childnode>
+        <childnode refid="24596" relation="include">
+        </childnode>
+        <childnode refid="24602" relation="include">
+        </childnode>
+        <childnode refid="24604" relation="include">
+        </childnode>
+      </node>
+      <node id="24586">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="24548" relation="include">
+        </childnode>
+        <childnode refid="24587" relation="include">
+        </childnode>
+        <childnode refid="24588" relation="include">
+        </childnode>
+        <childnode refid="24558" relation="include">
+        </childnode>
+      </node>
+      <node id="24597">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="24557">
+        <label>type_traits</label>
+      </node>
+      <node id="24570">
+        <label>config.h</label>
+      </node>
+      <node id="24551">
+        <label>algorithm</label>
+      </node>
+      <node id="24560">
+        <label>cstring</label>
+      </node>
+      <node id="24562">
+        <label>memory</label>
+      </node>
+      <node id="24594">
+        <label>initializer_list</label>
+      </node>
+      <node id="24584">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="24564" relation="include">
+        </childnode>
+        <childnode refid="24585" relation="include">
+        </childnode>
+        <childnode refid="24566" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="24609">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="24605">
+        <label>libopenage/terrain/terrain_chunk.h</label>
+        <link refid="terrain__chunk_8h"/>
+        <childnode refid="24606" relation="include">
+        </childnode>
+        <childnode refid="24607" relation="include">
+        </childnode>
+        <childnode refid="24608" relation="include">
+        </childnode>
+        <childnode refid="24609" relation="include">
+        </childnode>
+        <childnode refid="24610" relation="include">
+        </childnode>
+        <childnode refid="24611" relation="include">
+        </childnode>
+      </node>
+      <node id="24611">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="24608">
+        <label>libopenage/gamestate/generator.cpp</label>
+        <link refid="generator_8cpp"/>
+      </node>
+      <node id="24610">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="24607">
+        <label>libopenage/gamestate/game_save.cpp</label>
+        <link refid="game__save_8cpp"/>
+      </node>
+      <node id="24606">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1chunk__neighbors" prot="public">openage::chunk_neighbors</innerclass>
+    <innerclass refid="classopenage_1_1_terrain_chunk" prot="public">openage::TerrainChunk</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/pixel.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../coord/tile.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../texture.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/file.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Terrain;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TerrainChunk;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TileContent;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TerrainObject;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a56cc6de59321c74676f145eecf8a8ac9" kindref="member">chunk_size</ref><sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structopenage_1_1chunk__neighbors" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1chunk__neighbors" kindref="compound">chunk_neighbors</ref><sp/>{</highlight></codeline>
+<codeline lineno="37" refid="structopenage_1_1chunk__neighbors_1aa77bd299cd7666a9072e5eb7575eb578" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref><sp/>*<ref refid="structopenage_1_1chunk__neighbors_1aa77bd299cd7666a9072e5eb7575eb578" kindref="member">neighbor</ref>[8];</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1_terrain_chunk" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1_terrain_chunk" kindref="compound">TerrainChunk</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain_chunk_1a340c8a5833eb3641fbb9dde1da642ef9" kindref="member">TerrainChunk</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain_chunk_1a2b2390fe12d10f37c1941a38245cecad" kindref="member">~TerrainChunk</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a0e1f05a8b33d584a6aaceb05683d7700" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1_terrain_chunk_1a81015b410635cc83ba91f84bb92e8cb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a81015b410635cc83ba91f84bb92e8cb7" kindref="member">tile_count</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1_terrain_chunk_1a8a7bc88cee1e85210f19389eab6794eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1a8a7bc88cee1e85210f19389eab6794eb" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1_terrain_chunk_1ab088f35d85210954b671156b32346207" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1ab088f35d85210954b671156b32346207" kindref="member">terrain</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1_terrain_chunk_1a6477efccb3a365d5b9ad716a306d4541" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1chunk__neighbors" kindref="compound">chunk_neighbors</ref><sp/><ref refid="classopenage_1_1_terrain_chunk_1a6477efccb3a365d5b9ad716a306d4541" kindref="member">neighbors</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a0ef52e27a6d0a1d17559634fa63a50db" kindref="member">draw</ref>(<ref refid="structopenage_1_1coord_1_1chunk" kindref="compound">coord::chunk</ref><sp/>chunk_pos);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1af163db3fba4ae99206de76666f8424df" kindref="member">get_data</ref>(<ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref><sp/>abspos);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1af163db3fba4ae99206de76666f8424df" kindref="member">get_data</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>pos);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1af163db3fba4ae99206de76666f8424df" kindref="member">get_data</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref><sp/>*<ref refid="classopenage_1_1_terrain_chunk_1aa27071b50ca9d928ef1a9ce1af5b8328" kindref="member">get_data_neigh</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>pos);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a75e4bde3d50f5af6b946a08ba5e50dbb" kindref="member">neighbor_id_by_pos</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>pos);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a3c24b782383d5e958a13572159e9218b" kindref="member">tile_position</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>pos);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a87b39afb17262f5239f3cc5fbed48dc2" kindref="member">tile_position_neigh</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>pos);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a0cec083889df11012ebb47c045e149fd" kindref="member">get_tile_count</ref>();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1a19e798d7eab806f1b5d72846ce588b33" kindref="member">tiles_in_row</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1afd204c75d8f3ef28ad07f8ce1ba79894" kindref="member">get_size</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1ae77efc0ad732593eddaeb1f34a1452ac" kindref="member">set_terrain</ref>(<ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref><sp/>*parent);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classopenage_1_1_terrain_chunk_1acae374402b048f40f7a730b5d05adcdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_terrain_chunk_1acae374402b048f40f7a730b5d05adcdc" kindref="member">manually_created</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/terrain/terrain_chunk.h"/>
+  </compounddef>
+</doxygen>

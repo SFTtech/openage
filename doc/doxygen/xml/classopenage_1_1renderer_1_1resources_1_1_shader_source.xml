@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1resources_1_1_shader_source" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::ShaderSource</compoundname>
+    <includes refid="shader__source_8h" local="no">shader_source.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a1034b46c17340377da97803c55e3e11b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" kindref="member">shader_lang_t</ref></type>
+        <definition>shader_lang_t openage::renderer::resources::ShaderSource::lang</definition>
+        <argsstring></argsstring>
+        <name>lang</name>
+        <briefdescription>
+<para>The source language. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="50" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1abce7bdd2a60e72749136f09a3d76fa5e" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">shader_stage_t</ref></type>
+        <definition>shader_stage_t openage::renderer::resources::ShaderSource::stage</definition>
+        <argsstring></argsstring>
+        <name>stage</name>
+        <briefdescription>
+<para>The implemented stage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="53" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a96b0a5e25ae7af0a656e1df4d67819c3" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::renderer::resources::ShaderSource::code</definition>
+        <argsstring></argsstring>
+        <name>code</name>
+        <briefdescription>
+<para>The shader source code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="56" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a5718f5735e7127cc7cbfe1778f4cb40e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::ShaderSource::ShaderSource</definition>
+        <argsstring>(shader_lang_t, shader_stage_t, const util::Path &amp;path)</argsstring>
+        <name>ShaderSource</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" kindref="member">shader_lang_t</ref></type>
+          <defname>lang</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">shader_stage_t</ref></type>
+          <defname>stage</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Obtain shader source code from a file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="33" column="1" bodyfile="libopenage/renderer/resources/shader_source.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1aa9139f618ba5d9a9c476ffa53f89e831" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::ShaderSource::ShaderSource</definition>
+        <argsstring>(shader_lang_t, shader_stage_t, std::string &amp;&amp;code)</argsstring>
+        <name>ShaderSource</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" kindref="member">shader_lang_t</ref></type>
+          <defname>lang</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">shader_stage_t</ref></type>
+          <defname>stage</defname>
+        </param>
+        <param>
+          <type>std::string &amp;&amp;</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+<para>Obtain shader source code from a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="36" column="1" bodyfile="libopenage/renderer/resources/shader_source.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1ae7f9c8a43c7278ac2df0bc0fa62dc197" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string const  &amp;</type>
+        <definition>std::string const  &amp; openage::renderer::resources::ShaderSource::get_source</definition>
+        <argsstring>() const</argsstring>
+        <name>get_source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a view of the shader source code. This might be text or binary data. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="40" column="1" bodyfile="libopenage/renderer/resources/shader_source.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a7552e8e1291797e0ddbc4dee22eded8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" kindref="member">shader_lang_t</ref></type>
+        <definition>shader_lang_t openage::renderer::resources::ShaderSource::get_lang</definition>
+        <argsstring>() const</argsstring>
+        <name>get_lang</name>
+        <briefdescription>
+<para>Returns the language of this shader source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="43" column="1" bodyfile="libopenage/renderer/resources/shader_source.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_shader_source_1aa5e20650dffdb5bef1334ad8a0ec5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">shader_stage_t</ref></type>
+        <definition>shader_stage_t openage::renderer::resources::ShaderSource::get_stage</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stage</name>
+        <briefdescription>
+<para>Returns the stage which this shader source implements. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="46" column="1" bodyfile="libopenage/renderer/resources/shader_source.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores source code for a part of a shader program. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4149">
+        <label>openage::renderer::resources::ShaderSource</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_shader_source"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/shader_source.h" line="30" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="30" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a96b0a5e25ae7af0a656e1df4d67819c3" prot="private" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>code</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a7552e8e1291797e0ddbc4dee22eded8e" prot="public" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>get_lang</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1ae7f9c8a43c7278ac2df0bc0fa62dc197" prot="public" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>get_source</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1aa5e20650dffdb5bef1334ad8a0ec5b8f" prot="public" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>get_stage</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a1034b46c17340377da97803c55e3e11b" prot="private" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>lang</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1a5718f5735e7127cc7cbfe1778f4cb40e" prot="public" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>ShaderSource</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1aa9139f618ba5d9a9c476ffa53f89e831" prot="public" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>ShaderSource</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_shader_source_1abce7bdd2a60e72749136f09a3d76fa5e" prot="private" virt="non-virtual"><scope>openage::renderer::resources::ShaderSource</scope><name>stage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

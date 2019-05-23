@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_render_options" kind="class" language="C++" prot="public">
+    <compoundname>openage::RenderOptions</compoundname>
+    <basecompoundref refid="classopenage_1_1options_1_1_option_node" prot="public" virt="non-virtual">openage::options::OptionNode</basecompoundref>
+    <includes refid="game__renderer_8h" local="no">game_renderer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_render_options_1aa4161a856f857cc96774a07a7b2fa2b5" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
+        <definition>options::Var&lt;bool&gt; openage::RenderOptions::draw_debug</definition>
+        <argsstring></argsstring>
+        <name>draw_debug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_renderer.h" line="31" column="1" bodyfile="libopenage/game_renderer.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_render_options_1afa9ff97e7c4c0d15f01e0765f9a05ce0" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1options_1_1_var" kindref="compound">options::Var</ref>&lt; bool &gt;</type>
+        <definition>options::Var&lt;bool&gt; openage::RenderOptions::terrain_blending</definition>
+        <argsstring></argsstring>
+        <name>terrain_blending</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_renderer.h" line="32" column="1" bodyfile="libopenage/game_renderer.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_render_options_1ab73b075ba250a083e1bc300ad660a820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::RenderOptions::RenderOptions</definition>
+        <argsstring>()</argsstring>
+        <name>RenderOptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/game_renderer.h" line="29" column="1" bodyfile="libopenage/game_renderer.cpp" bodystart="29" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Options for the renderer. These will be included in the user interface via reflection, so adding new members will always be visible</para>
+<para>TODO include fog drawing etc </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3901">
+        <label>openage::RenderOptions</label>
+        <link refid="classopenage_1_1_render_options"/>
+        <childnode refid="3902" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3902">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3907">
+        <label>openage::util::VariableBase</label>
+        <link refid="classopenage_1_1util_1_1_variable_base"/>
+      </node>
+      <node id="3906">
+        <label>openage::util::Variable&lt; bool &gt;</label>
+        <link refid="classopenage_1_1util_1_1_variable"/>
+        <childnode refid="3907" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3903">
+        <label>openage::RenderOptions</label>
+        <link refid="classopenage_1_1_render_options"/>
+        <childnode refid="3904" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3905" relation="usage">
+          <edgelabel>+draw_debug</edgelabel>
+          <edgelabel>+terrain_blending</edgelabel>
+        </childnode>
+      </node>
+      <node id="3904">
+        <label>openage::options::OptionNode</label>
+        <link refid="classopenage_1_1options_1_1_option_node"/>
+        <childnode refid="3904" relation="usage">
+          <edgelabel>-parent</edgelabel>
+        </childnode>
+      </node>
+      <node id="3905">
+        <label>openage::options::Var&lt; bool &gt;</label>
+        <link refid="classopenage_1_1options_1_1_var"/>
+        <childnode refid="3906" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/game_renderer.h" line="27" column="1" bodyfile="libopenage/game_renderer.h" bodystart="27" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1b4855d85ec0476c9cb0a960c026c519" prot="protected" virt="non-virtual"><scope>openage::RenderOptions</scope><name>add</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa11c77b98eb54e58b103c04047b82141" prot="protected" virt="non-virtual"><scope>openage::RenderOptions</scope><name>add_action</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a5775b31044dc13690cd51bd6215afac8" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>do_action</name></member>
+      <member refid="classopenage_1_1_render_options_1aa4161a856f857cc96774a07a7b2fa2b5" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>draw_debug</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae22a4fe4b21f2c39e808a29a03e79d04" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>get_child</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ad125b54608d277acbe6c66c572cbdbee" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>get_variable</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a4c973221dd02e35c7cf6ecbd2a3c677a" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>get_variable_rw</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3caf0f35390dcb01054beb14a4c20819" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>getv</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1ae516506e6ddeac33956e5e8ba71668c8" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>list_functions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a39b02a21c2c4b5693dba2e515a81dd2d" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>list_options</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a922dfcd1bf96406142c868eaf6407550" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>list_variables</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1aa016978791629312b59e2f4ec64471c5" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>name</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a3764c2b88f493980f4b46eb9f21dbc77" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>OptionNode</name></member>
+      <member refid="classopenage_1_1_render_options_1ab73b075ba250a083e1bc300ad660a820" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>RenderOptions</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a079876f216961d551413c7c0d73e9a06" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>set_parent</name></member>
+      <member refid="classopenage_1_1_render_options_1afa9ff97e7c4c0d15f01e0765f9a05ce0" prot="public" virt="non-virtual"><scope>openage::RenderOptions</scope><name>terrain_blending</name></member>
+      <member refid="classopenage_1_1options_1_1_option_node_1a1db44d7380fed8fa3525104dcc5c6840" prot="public" virt="virtual"><scope>openage::RenderOptions</scope><name>~OptionNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

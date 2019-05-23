@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__list__model_8cpp" kind="file" language="C++">
+    <compoundname>gui_list_model.cpp</compoundname>
+    <includes refid="gui__list__model_8h" local="yes">gui_list_model.h</includes>
+    <includes local="no">algorithm</includes>
+    <incdepgraph>
+      <node id="12769">
+        <label>functional</label>
+      </node>
+      <node id="12773">
+        <label>QObject</label>
+      </node>
+      <node id="12761">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+        <childnode refid="12762" relation="include">
+        </childnode>
+        <childnode refid="12781" relation="include">
+        </childnode>
+      </node>
+      <node id="12768">
+        <label>cassert</label>
+      </node>
+      <node id="12774">
+        <label>QMetaType</label>
+      </node>
+      <node id="12778">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12763" relation="include">
+        </childnode>
+        <childnode refid="12769" relation="include">
+        </childnode>
+      </node>
+      <node id="12766">
+        <label>gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12767" relation="include">
+        </childnode>
+        <childnode refid="12768" relation="include">
+        </childnode>
+        <childnode refid="12769" relation="include">
+        </childnode>
+        <childnode refid="12770" relation="include">
+        </childnode>
+        <childnode refid="12771" relation="include">
+        </childnode>
+        <childnode refid="12772" relation="include">
+        </childnode>
+        <childnode refid="12773" relation="include">
+        </childnode>
+        <childnode refid="12774" relation="include">
+        </childnode>
+        <childnode refid="12775" relation="include">
+        </childnode>
+        <childnode refid="12776" relation="include">
+        </childnode>
+        <childnode refid="12777" relation="include">
+        </childnode>
+        <childnode refid="12778" relation="include">
+        </childnode>
+        <childnode refid="12779" relation="include">
+        </childnode>
+        <childnode refid="12780" relation="include">
+        </childnode>
+      </node>
+      <node id="12780">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12770" relation="include">
+        </childnode>
+        <childnode refid="12779" relation="include">
+        </childnode>
+      </node>
+      <node id="12771">
+        <label>typeinfo</label>
+      </node>
+      <node id="12764">
+        <label>tuple</label>
+      </node>
+      <node id="12776">
+        <label>QDebug</label>
+      </node>
+      <node id="12763">
+        <label>vector</label>
+      </node>
+      <node id="12775">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12772">
+        <label>utility</label>
+      </node>
+      <node id="12779">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12768" relation="include">
+        </childnode>
+      </node>
+      <node id="12762">
+        <label>gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12763" relation="include">
+        </childnode>
+        <childnode refid="12764" relation="include">
+        </childnode>
+        <childnode refid="12765" relation="include">
+        </childnode>
+        <childnode refid="12766" relation="include">
+        </childnode>
+      </node>
+      <node id="12765">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="12770">
+        <label>type_traits</label>
+      </node>
+      <node id="12781">
+        <label>algorithm</label>
+      </node>
+      <node id="12777">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12769" relation="include">
+        </childnode>
+        <childnode refid="12773" relation="include">
+        </childnode>
+      </node>
+      <node id="12767">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__list__model_8h" kindref="compound">gui_list_model.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_gui_list_model_1ad514c8599de32fc4fb249a7dac8b8c39" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_list_model_1ad514c8599de32fc4fb249a7dac8b8c39" kindref="member">GuiListModel::GuiListModel</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>QAbstractListModel{parent}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_list_model_1abb32032b168269f94df6120f96a60e33" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_list_model_1abb32032b168269f94df6120f96a60e33" kindref="member">GuiListModel::~GuiListModel</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" kindref="member">GuiListModel::set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a7deb96e08e8e82e52d83fb34f6db25da" kindref="member">std::vector</ref>&lt;std::tuple&lt;QByteArray,<sp/>QVariant&gt;&gt;<sp/>&amp;values)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;beginResetModel();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref><sp/>=<sp/><ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;endResetModel();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classqtsdl_1_1_gui_list_model_1af824d1dbf7e1cf3b5575c7259269d609" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1af824d1dbf7e1cf3b5575c7259269d609" kindref="member">GuiListModel::on_property_changed</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QByteArray<sp/>&amp;name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QVariant<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>foundIt<sp/>=<sp/>std::find_if(std::begin(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>),<sp/>std::end(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>),<sp/>[&amp;name]<sp/>(std::tuple&lt;QByteArray,<sp/>QVariant&gt;&amp;<sp/>p)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;QByteArray&gt;(p)<sp/>==<sp/>name;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(foundIt<sp/>!=<sp/>std::end(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;current_value<sp/>=<sp/>std::get&lt;QVariant&gt;(*foundIt);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_value<sp/>!=<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_value<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>this-&gt;index(std::distance(std::begin(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>),<sp/>foundIt));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;dataChanged(i,<sp/>i,<sp/>{Qt::EditRole});</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;beginInsertRows(QModelIndex(),<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>.size(),<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>.size());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>.emplace(std::end(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>),<sp/>name,<sp/>value);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;endInsertRows();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classqtsdl_1_1_gui_list_model_1afec43184609ce9ce8975c9e9aa983cfe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1afec43184609ce9ce8975c9e9aa983cfe" kindref="member">GuiListModel::rowCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>.size();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classqtsdl_1_1_gui_list_model_1af26ee16e1227eb9e9441fc91d2de811e" refkind="member"><highlight class="normal">Qt::ItemFlags<sp/><ref refid="classqtsdl_1_1_gui_list_model_1af26ee16e1227eb9e9441fc91d2de811e" kindref="member">GuiListModel::flags</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Qt::ItemIsEditable<sp/>|<sp/>this-&gt;QAbstractListModel::flags(index);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classqtsdl_1_1_gui_list_model_1ac1efa21889a4cc3539c2e02d7e605016" refkind="member"><highlight class="normal">QVariant<sp/><ref refid="classqtsdl_1_1_gui_list_model_1ac1efa21889a4cc3539c2e02d7e605016" kindref="member">GuiListModel::data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(role)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::DisplayRole:</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;QByteArray&gt;(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>[index.row()]);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Qt::EditRole:<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;QVariant&gt;(this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>[index.row()]);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>QVariant{};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_list_model_1a768ce053c81647b3e5f7ea06f142abf3" kindref="member">GuiListModel::setData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QVariant<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(role<sp/>==<sp/>Qt::EditRole)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;</highlight><highlight class="keyword">property</highlight><highlight class="normal"><sp/>=<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1ab4336cb00be35c4528ee7f2213bc3add" kindref="member">values</ref>[index.row()];</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e" kindref="member">changed_from_gui</ref>(std::get&lt;QByteArray&gt;(property),<sp/>std::get&lt;QVariant&gt;(property)<sp/>=<sp/>value);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_list_model.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1cvar_1_1_c_var_manager" kind="class" language="C++" prot="public">
+    <compoundname>openage::cvar::CVarManager</compoundname>
+    <includes refid="cvar_8h" local="no">cvar.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::pair&lt; <ref refid="namespaceopenage_1_1cvar_1aebb2850e226c43da630c2dc95802f4ee" kindref="member">get_func</ref>, <ref refid="namespaceopenage_1_1cvar_1a9da0b79349923d4b334b76da9ea8828f" kindref="member">set_func</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::pair&lt;get_func, set_func&gt; &gt; openage::cvar::CVarManager::store</definition>
+        <argsstring></argsstring>
+        <name>store</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Store the key-value pair of config options. The clue is to store the &quot;what does the config do&quot;, not the actual value. That way the system is universal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="84" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::cvar::CVarManager::path</definition>
+        <argsstring></argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Magic path that stores config files. Auto-redirects to the default and write paths in the home folder. It is set up in openage/cvar/location.py and openage/game/main.py </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="91" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1ae47e10a45c7b6d8376d153937651ce34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::cvar::CVarManager::CVarManager</definition>
+        <argsstring>(const util::Path &amp;path)</argsstring>
+        <name>CVarManager</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="45" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1a093074d20bdce055fac654ba01733f36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::cvar::CVarManager::create</definition>
+        <argsstring>(const std::string &amp;name, const std::pair&lt; get_func, set_func &gt; &amp;accessors)</argsstring>
+        <name>create</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::pair&lt; <ref refid="namespaceopenage_1_1cvar_1aebb2850e226c43da630c2dc95802f4ee" kindref="member">get_func</ref>, <ref refid="namespaceopenage_1_1cvar_1a9da0b79349923d4b334b76da9ea8828f" kindref="member">set_func</ref> &gt; &amp;</type>
+          <declname>accessors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a configuration entry <simplesect kind="return"><para>if the entry name was successful. It won&apos;t be if the name was used before. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="52" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="16" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1abf47769212763bbf43146a97443779da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::cvar::CVarManager::get</definition>
+        <argsstring>(const std::string &amp;name) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the value of a config entry. Internally calls the stored get function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="59" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1a972739b7927c488b0761a10319653e8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::cvar::CVarManager::set</definition>
+        <argsstring>(const std::string &amp;name, const std::string &amp;value) const</argsstring>
+        <name>set</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the config entry value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="64" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::cvar::CVarManager::load_config</definition>
+        <argsstring>(const util::Path &amp;path)</argsstring>
+        <name>load_config</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs the loading of a configuration file via the Python implementation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="70" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1cvar_1_1_c_var_manager_1a8fcaa20636cab773dc70db2c74a4308e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::cvar::CVarManager::load_all</definition>
+        <argsstring>()</argsstring>
+        <name>load_all</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Perform the load of the default config files. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/cvar/cvar.h" line="75" column="1" bodyfile="libopenage/cvar/cvar.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Configuration manager.</para>
+<para>Stores key-value pairs of config data. Actually it doesn&apos;t store data, instead functions that perform/fetch the configuration at the appropriate place.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">CVarManager</ref>: string get(string name) except + void set(string name, string value) except + void load_config(Path path) except + </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1048">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="1047">
+        <label>openage::cvar::CVarManager</label>
+        <link refid="classopenage_1_1cvar_1_1_c_var_manager"/>
+        <childnode refid="1048" relation="usage">
+          <edgelabel>-path</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/cvar/cvar.h" line="42" column="1" bodyfile="libopenage/cvar/cvar.h" bodystart="42" bodyend="92"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1a093074d20bdce055fac654ba01733f36" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>create</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1ae47e10a45c7b6d8376d153937651ce34" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>CVarManager</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1abf47769212763bbf43146a97443779da" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>get</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1a8fcaa20636cab773dc70db2c74a4308e" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>load_all</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1af7fcfc7c5b2700e1ed0feba06fc57a63" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>load_config</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1a0aa073ffda4e894c0f62a108da465a89" prot="private" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>path</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1a972739b7927c488b0761a10319653e8a" prot="public" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>set</name></member>
+      <member refid="classopenage_1_1cvar_1_1_c_var_manager_1a200171b969c1254dc7c3258af7be3ce2" prot="private" virt="non-virtual"><scope>openage::cvar::CVarManager</scope><name>store</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

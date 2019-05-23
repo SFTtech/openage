@@ -1,0 +1,495 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fslike_2python_8h" kind="file" language="C++">
+    <compoundname>python.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes refid="functional_8h" local="yes">../../pyinterface/functional.h</includes>
+    <includes refid="pyobject_8h" local="yes">../../pyinterface/pyobject.h</includes>
+    <includes refid="fslike_8h" local="yes">fslike.h</includes>
+    <includes refid="util_2path_8h" local="yes">../path.h</includes>
+    <includes refid="file_8h" local="yes">../file.h</includes>
+    <includedby refid="fslike_2python_8cpp" local="yes">libopenage/util/fslike/python.cpp</includedby>
+    <includedby refid="util_2path_8cpp" local="yes">libopenage/util/path.cpp</includedby>
+    <incdepgraph>
+      <node id="29992">
+        <label>list</label>
+      </node>
+      <node id="29984">
+        <label>atomic</label>
+      </node>
+      <node id="29989">
+        <label>iomanip</label>
+      </node>
+      <node id="29969">
+        <label>functional</label>
+      </node>
+      <node id="29996">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="29969" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+      </node>
+      <node id="29964">
+        <label>cstdint</label>
+      </node>
+      <node id="29987">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="29988" relation="include">
+        </childnode>
+        <childnode refid="29969" relation="include">
+        </childnode>
+        <childnode refid="29989" relation="include">
+        </childnode>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29990" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29967" relation="include">
+        </childnode>
+      </node>
+      <node id="29975">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="29976" relation="include">
+        </childnode>
+      </node>
+      <node id="29978">
+        <label>stdexcept</label>
+      </node>
+      <node id="29974">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="29991">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="29992" relation="include">
+        </childnode>
+        <childnode refid="29970" relation="include">
+        </childnode>
+        <childnode refid="29993" relation="include">
+        </childnode>
+      </node>
+      <node id="29988">
+        <label>cstdarg</label>
+      </node>
+      <node id="29966">
+        <label>string</label>
+      </node>
+      <node id="29979">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="29964" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29980" relation="include">
+        </childnode>
+        <childnode refid="29981" relation="include">
+        </childnode>
+        <childnode refid="29983" relation="include">
+        </childnode>
+        <childnode refid="29991" relation="include">
+        </childnode>
+        <childnode refid="29993" relation="include">
+        </childnode>
+      </node>
+      <node id="29981">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="29982" relation="include">
+        </childnode>
+      </node>
+      <node id="29983">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="29984" relation="include">
+        </childnode>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29985" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+        <childnode refid="29986" relation="include">
+        </childnode>
+        <childnode refid="29987" relation="include">
+        </childnode>
+      </node>
+      <node id="29999">
+        <label>fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="29964" relation="include">
+        </childnode>
+        <childnode refid="29977" relation="include">
+        </childnode>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="30000" relation="include">
+        </childnode>
+        <childnode refid="30001" relation="include">
+        </childnode>
+        <childnode refid="30002" relation="include">
+        </childnode>
+      </node>
+      <node id="29997">
+        <label>../../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="29964" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29967" relation="include">
+        </childnode>
+        <childnode refid="29998" relation="include">
+        </childnode>
+        <childnode refid="29968" relation="include">
+        </childnode>
+      </node>
+      <node id="29976">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="29977" relation="include">
+        </childnode>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29978" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+        <childnode refid="29979" relation="include">
+        </childnode>
+      </node>
+      <node id="29995">
+        <label>typeinfo</label>
+      </node>
+      <node id="29967">
+        <label>vector</label>
+      </node>
+      <node id="29972">
+        <label>ciso646</label>
+      </node>
+      <node id="30000">
+        <label>utility</label>
+      </node>
+      <node id="29990">
+        <label>sstream</label>
+      </node>
+      <node id="29971">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="29972" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29973" relation="include">
+        </childnode>
+      </node>
+      <node id="30002">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29967" relation="include">
+        </childnode>
+        <childnode refid="30003" relation="include">
+        </childnode>
+        <childnode refid="29997" relation="include">
+        </childnode>
+      </node>
+      <node id="29973">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="29973" relation="include">
+        </childnode>
+      </node>
+      <node id="29986">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="29977" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+      </node>
+      <node id="29993">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="29994" relation="include">
+        </childnode>
+      </node>
+      <node id="30004">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="30003">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="29977" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+      </node>
+      <node id="29982">
+        <label>cstdlib</label>
+      </node>
+      <node id="29963">
+        <label>libopenage/util/fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="29964" relation="include">
+        </childnode>
+        <childnode refid="29965" relation="include">
+        </childnode>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29967" relation="include">
+        </childnode>
+        <childnode refid="29968" relation="include">
+        </childnode>
+        <childnode refid="29997" relation="include">
+        </childnode>
+        <childnode refid="29999" relation="include">
+        </childnode>
+        <childnode refid="30001" relation="include">
+        </childnode>
+        <childnode refid="30002" relation="include">
+        </childnode>
+      </node>
+      <node id="29977">
+        <label>iostream</label>
+      </node>
+      <node id="29968">
+        <label>../../pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="29969" relation="include">
+        </childnode>
+        <childnode refid="29970" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+        <childnode refid="29974" relation="include">
+        </childnode>
+        <childnode refid="29975" relation="include">
+        </childnode>
+        <childnode refid="29996" relation="include">
+        </childnode>
+      </node>
+      <node id="29970">
+        <label>mutex</label>
+      </node>
+      <node id="30001">
+        <label>../path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="29966" relation="include">
+        </childnode>
+        <childnode refid="29967" relation="include">
+        </childnode>
+        <childnode refid="29997" relation="include">
+        </childnode>
+        <childnode refid="30002" relation="include">
+        </childnode>
+        <childnode refid="30004" relation="include">
+        </childnode>
+      </node>
+      <node id="29998">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="29985">
+        <label>type_traits</label>
+      </node>
+      <node id="29980">
+        <label>config.h</label>
+      </node>
+      <node id="29965">
+        <label>memory</label>
+      </node>
+      <node id="29994">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="29977" relation="include">
+        </childnode>
+        <childnode refid="29995" relation="include">
+        </childnode>
+        <childnode refid="29971" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30007">
+        <label>libopenage/util/path.cpp</label>
+        <link refid="util_2path_8cpp"/>
+      </node>
+      <node id="30005">
+        <label>libopenage/util/fslike/python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="30006" relation="include">
+        </childnode>
+        <childnode refid="30007" relation="include">
+        </childnode>
+      </node>
+      <node id="30006">
+        <label>libopenage/util/fslike/python.cpp</label>
+        <link refid="fslike_2python_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1fslike_1_1_python" prot="public">openage::util::fslike::Python</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp<sp/>cimport<sp/>bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libc.stdint<sp/>cimport<sp/>uint64_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.string<sp/>cimport<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.vector<sp/>cimport<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.pyinterface.functional<sp/>cimport<sp/>PyIfFunc1,<sp/>PyIfFunc2,<sp/>PyIfFunc3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../pyinterface/functional.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.pyinterface.pyobject<sp/>cimport<sp/>PyObj,<sp/>PyObjectPtr,<sp/>PyObjectRef</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../pyinterface/pyobject.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.fslike.fslike<sp/>cimport<sp/>FSLike</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fslike_8h" kindref="compound">fslike.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.path<sp/>cimport<sp/>Path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.file<sp/>cimport<sp/>File</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../file.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fslike<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1util_1_1fslike_1_1_python" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1fslike_1_1_python" kindref="compound">Python</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">FSLike</ref><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1664f9cc8d1b61daac2d96245f480d7" kindref="member">Python</ref>(<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a88d8a47b3dab58e2c4f126b59525f6b7" kindref="member">is_file</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a0e95258f4bc84e6a518b92ff56c11a13" kindref="member">is_dir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a18eb89f1cba644f09f4747f67373f79f" kindref="member">writable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Path::part_t&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abc83bf9b01ac2fa5d924f7bb041d63a7" kindref="member">list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" kindref="member">mkdirs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a4326f9bf1a1d1cd4dc8fb948f54d572b" kindref="member">open_r</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a150b1a465f29315a0eea7dbfdb42a084" kindref="member">open_w</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a71a089f553bf3b7ea541e9058e601b45" kindref="member">open_rw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a68697819783d818ddb27bb6cb49a8fb0" kindref="member">open_a</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a78894b8819ad14a60438e8365b55b20d" kindref="member">open_ar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>specialize<sp/>the<sp/>resolve<sp/>functions<sp/>to<sp/>relay<sp/>them<sp/>to<sp/>python.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>Path&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a4ed41ccdd26277c5b64a21409f95e683" kindref="member">resolve_r</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>Path&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1365f11fc02d7dd469842eaa82d47ec" kindref="member">resolve_w</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" kindref="member">get_native_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ac70ab501b00e2175822b704023f35a22" kindref="member">rename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;target_parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a9793a38c4778210e5689429936b07405" kindref="member">rmdir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a5bfc607e7cf03d69174e9c7983336bcb" kindref="member">touch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ab2fbc85162983fc432c05f3b040756d5" kindref="member">unlink</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abeba06958f44fb55a6eff0fb3d6a3db9" kindref="member">get_mtime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ab0ed3935ca1b6a5bd1cd3556b7be606d" kindref="member">get_filesize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af5a0b97ff0aea88ef52e0159e0b9a5dc" kindref="member">is_python_native</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" kindref="member">get_py_fsobj</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a5a401d90c67757c7650d5940d3f67051" kindref="member">repr</ref>(std::ostream<sp/>&amp;)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74" refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;py::Obj&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_is_file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a58745e546150f688fef38aea4a79f62d" kindref="member">pyx_fs_is_file</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_is_dir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adb6b99b51b87bdd1555bbdb7d825ebcf" kindref="member">pyx_fs_is_dir</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_writable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1abe8d1a76998314cd0b0299a62dd6785e" kindref="member">pyx_fs_writable</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[vector[string],<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;std::vector&lt;std::string&gt;</ref>,<sp/><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref><sp/>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aff46d25610d837c53fa4da00296bea9b" kindref="member">pyx_fs_list</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_mkdirs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7c3f79a881aa369fb0989fe6c5046364" kindref="member">pyx_fs_mkdirs</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[File,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_open_r</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adf6e3f1eaa86e32e959db4c7811b135b" kindref="member">pyx_fs_open_r</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[File,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_open_w</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa5ecccf4f624340bbfc4a232e7b7233b" kindref="member">pyx_fs_open_w</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[File,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_open_rw</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa51d7a44aca7c081abe0ff6e632e0f24" kindref="member">pyx_fs_open_rw</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[File,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_open_a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ad6dd5c0c16e9659c91112cd80251c4a2" kindref="member">pyx_fs_open_a</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[File,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_open_ar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a52670ad8a70c09b27de32b6831985de2" kindref="member">pyx_fs_open_ar</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[Path,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_resolve_r</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;Path, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1acbd9965cb5857759fe13d98cb606b740" kindref="member">pyx_fs_resolve_r</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[Path,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_resolve_w</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;Path, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1afd1f9717e3b0a3c03b0757064f732fc3" kindref="member">pyx_fs_resolve_w</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[PyObjectRef,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_get_native_path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;py::Obj, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a94e28b922b84615a619cf4ba6e602dbf" kindref="member">pyx_fs_get_native_path</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc3[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string],<sp/>const<sp/>vector[string]]<sp/>pyx_fs_rename</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aaa675eab58642d6f4b1c74921fd398d8" kindref="member">pyx_fs_rename</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_rmdir</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ae593e16f4b47c11df659a50f8431d49e" kindref="member">pyx_fs_rmdir</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_touch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7937af583786f1e81f44a94f4b7b309e" kindref="member">pyx_fs_touch</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[bool,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_unlink</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2692fa8f758ce0eddce2e2a43a9bfc5c" kindref="member">pyx_fs_unlink</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[int,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_get_mtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;int, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a23477e560d8a5a995664fbcda9414f48" kindref="member">pyx_fs_get_mtime</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc2[uint64_t,<sp/>PyObjectPtr,<sp/>const<sp/>vector[string]]<sp/>pyx_fs_get_filesize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;uint64_t, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2f0988f5df9b52231e5ffd64d92fe490" kindref="member">pyx_fs_get_filesize</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>PyIfFunc1[bool,<sp/>PyObjectPtr]<sp/>pyx_fs_is_fslike_directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ad9a10d50910ce2850da6335c0b37ffd8" kindref="member">pyx_fs_is_fslike_directory</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fslike/python.h"/>
+  </compounddef>
+</doxygen>

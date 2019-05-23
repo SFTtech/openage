@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1demo_1_1_reset_game" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::demo::ResetGame</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_once_event_class" prot="public" virt="non-virtual">openage::event::OnceEventClass</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a16a85582aadff8d8b2f796730ea76ed0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::demo::ResetGame::ResetGame</definition>
+        <argsstring>()</argsstring>
+        <name>ResetGame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="268" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="268" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a3f85b39bd4cd0b45ec66c681f5a3553e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::ResetGame::setup_event</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;, const std::shared_ptr&lt; State &gt; &amp;) override</argsstring>
+        <name>setup_event</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e">setup_event</reimplements>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. The job of the setup function is to add all dependencies with other event targets found in state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="272" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="272" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void openage::event::demo::ResetGame::invoke</definition>
+        <argsstring>(Loop &amp;, const std::shared_ptr&lt; EventTarget &gt; &amp;, const std::shared_ptr&lt; State &gt; &amp;gstate, const curve::time_t &amp;now, const EventClass::param_map &amp;) override</argsstring>
+        <name>invoke</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c">invoke</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">EventClass::param_map</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method implements the effects of the event. It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
+<para>Called from the <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="275" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="275" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1demo_1_1_reset_game_1a33a2a9a5f92a673b2cef91dac21eab78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::demo::ResetGame::predict_invoke_time</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;, const std::shared_ptr&lt; State &gt; &amp;, const curve::time_t &amp;old_time) override</argsstring>
+        <name>predict_invoke_time</name>
+        <reimplements refid="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b">predict_invoke_time</reimplements>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the target the event was created for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the state this shall work on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>at</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the time when the change happened, from there on it shall be calculated onwards</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>.</para>
+<para>If the time is lower than the previous time, then dependencies may not be resolved perfectly anymore (if other events have already been calculated before that). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/demo/physics.cpp" line="354" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="354" bodyend="358"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4081">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="4080">
+        <label>openage::event::OnceEventClass</label>
+        <link refid="classopenage_1_1event_1_1_once_event_class"/>
+        <childnode refid="4081" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4079">
+        <label>openage::event::demo::ResetGame</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
+        <childnode refid="4080" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4084">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="4083">
+        <label>openage::event::OnceEventClass</label>
+        <link refid="classopenage_1_1event_1_1_once_event_class"/>
+        <childnode refid="4084" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4082">
+        <label>openage::event::demo::ResetGame</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
+        <childnode refid="4083" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/demo/physics.cpp" line="266" column="1" bodyfile="libopenage/event/demo/physics.cpp" bodystart="266" bodyend="359"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>EventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3" prot="public" virt="virtual"><scope>openage::event::demo::ResetGame</scope><name>invoke</name></member>
+      <member refid="classopenage_1_1event_1_1_once_event_class_1ac6408645e243f6d995ef42b2425eda80" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>OnceEventClass</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a33a2a9a5f92a673b2cef91dac21eab78" prot="public" virt="virtual"><scope>openage::event::demo::ResetGame</scope><name>predict_invoke_time</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a16a85582aadff8d8b2f796730ea76ed0" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>ResetGame</name></member>
+      <member refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a3f85b39bd4cd0b45ec66c681f5a3553e" prot="public" virt="virtual"><scope>openage::event::demo::ResetGame</scope><name>setup_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>trigger_type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" prot="public" virt="non-virtual"><scope>openage::event::demo::ResetGame</scope><name>type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" virt="virtual"><scope>openage::event::demo::ResetGame</scope><name>~EventClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

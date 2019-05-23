@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1coord" kind="namespace" language="C++">
+    <compoundname>openage::coord</compoundname>
+    <innerclass refid="structopenage_1_1coord_1_1camgame" prot="public">openage::coord::camgame</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1camgame__delta" prot="public">openage::coord::camgame_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1camhud" prot="public">openage::coord::camhud</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1camhud__delta" prot="public">openage::coord::camhud_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1chunk" prot="public">openage::coord::chunk</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1chunk3" prot="public">openage::coord::chunk3</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1chunk3__delta" prot="public">openage::coord::chunk3_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1chunk__delta" prot="public">openage::coord::chunk_delta</innerclass>
+    <innerclass refid="classopenage_1_1coord_1_1_coord_manager" prot="public">openage::coord::CoordManager</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1input" prot="public">openage::coord::input</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1input__delta" prot="public">openage::coord::input_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1phys2" prot="public">openage::coord::phys2</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1phys2__delta" prot="public">openage::coord::phys2_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1phys3" prot="public">openage::coord::phys3</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1phys3__delta" prot="public">openage::coord::phys3_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1term" prot="public">openage::coord::term</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1term__delta" prot="public">openage::coord::term_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1tile" prot="public">openage::coord::tile</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1tile3" prot="public">openage::coord::tile3</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1tile3__delta" prot="public">openage::coord::tile3_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1tile__delta" prot="public">openage::coord::tile_delta</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1viewport" prot="public">openage::coord::viewport</innerclass>
+    <innerclass refid="structopenage_1_1coord_1_1viewport__delta" prot="public">openage::coord::viewport_delta</innerclass>
+    <innernamespace refid="namespaceopenage_1_1coord_1_1tests">openage::coord::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">util::FixedPoint</ref>&lt; int64_t, <ref refid="namespaceopenage_1_1coord_1aef29fba6eb5da1b25c082ce986080f56" kindref="member">phys_t_radix_pos</ref> &gt;</type>
+        <definition>using openage::coord::phys_t = typedef util::FixedPoint&lt;int64_t, phys_t_radix_pos&gt;</definition>
+        <argsstring></argsstring>
+        <name>phys_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="22" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a89337255daa472cb4631091a38bac268" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>using openage::coord::tile_t = typedef int64_t</definition>
+        <argsstring></argsstring>
+        <name>tile_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="30" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>using openage::coord::pixel_t = typedef int32_t</definition>
+        <argsstring></argsstring>
+        <name>pixel_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="40" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a7ef0c2cf43638acb541a4c9d37bf9e24" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>using openage::coord::chunk_t = typedef int32_t</definition>
+        <argsstring></argsstring>
+        <name>chunk_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="52" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1coord_1a0eec10a35243d1dcb3e4d1154a82127c" prot="public" static="no">
+        <type>int</type>
+        <definition>using openage::coord::term_t = typedef int</definition>
+        <argsstring></argsstring>
+        <name>term_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="60" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1coord_1aef29fba6eb5da1b25c082ce986080f56" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int openage::coord::phys_t_radix_pos</definition>
+        <argsstring></argsstring>
+        <name>phys_t_radix_pos</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="20" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1coord_1a056453272e2aabdf7fcf4ecc3b5fe7f7" prot="public" static="no" mutable="no">
+        <type>constexpr <ref refid="namespaceopenage_1_1coord_1a89337255daa472cb4631091a38bac268" kindref="member">tile_t</ref></type>
+        <definition>constexpr tile_t openage::coord::tiles_per_chunk</definition>
+        <argsstring></argsstring>
+        <name>tiles_per_chunk</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/declarations.h" line="32" column="1" bodyfile="libopenage/coord/declarations.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/coord/chunk.cpp" line="6" column="1"/>
+  </compounddef>
+</doxygen>

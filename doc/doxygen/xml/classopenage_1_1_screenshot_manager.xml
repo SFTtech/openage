@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_screenshot_manager" kind="class" language="C++" prot="public">
+    <compoundname>openage::ScreenshotManager</compoundname>
+    <includes refid="screenshot_8h" local="no">screenshot.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1a40b3ce8efd1c2541084ba989334fd2c3" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+        <definition>coord::viewport_delta openage::ScreenshotManager::window_size</definition>
+        <argsstring></argsstring>
+        <name>window_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>size of the game window, in coord_sdl </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="34" column="1" bodyfile="libopenage/screenshot.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" prot="private" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned openage::ScreenshotManager::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>contains the number to be in the next screenshot filename </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="42" column="1" bodyfile="libopenage/screenshot.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" prot="private" static="no" mutable="no">
+        <type>std::time_t</type>
+        <definition>std::time_t openage::ScreenshotManager::last_time</definition>
+        <argsstring></argsstring>
+        <name>last_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>contains the last time when a screenshot was taken </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="45" column="1" bodyfile="libopenage/screenshot.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_screenshot_manager_1a24d9434b761a19c8dfe2d0e2a48416ca" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref> *</type>
+        <definition>job::JobManager* openage::ScreenshotManager::job_manager</definition>
+        <argsstring></argsstring>
+        <name>job_manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the job manager this screenshot manager uses </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="48" column="1" bodyfile="libopenage/screenshot.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1aa0ffb635153d732ccd9f550cec11f33a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ScreenshotManager::ScreenshotManager</definition>
+        <argsstring>(job::JobManager *job_mgr)</argsstring>
+        <name>ScreenshotManager</name>
+        <param>
+          <type><ref refid="classopenage_1_1job_1_1_job_manager" kindref="compound">job::JobManager</ref> *</type>
+          <declname>job_mgr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the screenshot manager with the given job manager. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="22" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1ab95fb468a5a80196941863fee32ff2f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ScreenshotManager::~ScreenshotManager</definition>
+        <argsstring>()</argsstring>
+        <name>~ScreenshotManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="24" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ScreenshotManager::save_screenshot</definition>
+        <argsstring>(coord::viewport_delta size)</argsstring>
+        <name>save_screenshot</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>To be called to save a screenshot. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="27" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="51" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ScreenshotManager::encode_png</definition>
+        <argsstring>(std::shared_ptr&lt; uint8_t &gt; pxdata, coord::viewport_delta size)</argsstring>
+        <name>encode_png</name>
+        <param>
+          <type>std::shared_ptr&lt; uint8_t &gt;</type>
+          <declname>pxdata</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>To be called by the job manager. Returns true on success, false otherwise. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="30" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="65" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::ScreenshotManager::gen_next_filename</definition>
+        <argsstring>()</argsstring>
+        <name>gen_next_filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>to be called to get the next screenshot filename into the array </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/screenshot.h" line="39" column="1" bodyfile="libopenage/screenshot.cpp" bodystart="32" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4131">
+        <label>openage::ScreenshotManager</label>
+        <link refid="classopenage_1_1_screenshot_manager"/>
+        <childnode refid="4132" relation="usage">
+          <edgelabel>-job_manager</edgelabel>
+        </childnode>
+        <childnode refid="4133" relation="usage">
+          <edgelabel>+window_size</edgelabel>
+        </childnode>
+      </node>
+      <node id="4134">
+        <label>CoordXYRelative&lt; pixel_t, viewport, viewport_delta &gt;</label>
+      </node>
+      <node id="4133">
+        <label>openage::coord::viewport_delta</label>
+        <link refid="structopenage_1_1coord_1_1viewport__delta"/>
+        <childnode refid="4134" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4132">
+        <label>openage::job::JobManager</label>
+        <link refid="classopenage_1_1job_1_1_job_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/screenshot.h" line="17" column="1" bodyfile="libopenage/screenshot.h" bodystart="17" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_screenshot_manager_1a8fbe887bb624f7d6a60711ab953aadb4" prot="private" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>count</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1adbb75d33b45dc67e5264b7caa4248ff0" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>encode_png</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1ac4fdd57b37fe1bfae00abc167ccd6bbd" prot="private" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>gen_next_filename</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1a24d9434b761a19c8dfe2d0e2a48416ca" prot="private" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>job_manager</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1ae6c92d1757aa0e9a49b996ed4fd610fa" prot="private" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>last_time</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1a810563b379906491c07a5c951cb4f535" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>save_screenshot</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1aa0ffb635153d732ccd9f550cec11f33a" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>ScreenshotManager</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1a40b3ce8efd1c2541084ba989334fd2c3" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>window_size</name></member>
+      <member refid="classopenage_1_1_screenshot_manager_1ab95fb468a5a80196941863fee32ff2f2" prot="public" virt="non-virtual"><scope>openage::ScreenshotManager</scope><name>~ScreenshotManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_resource_cost" kind="class" language="C++" prot="public">
+    <compoundname>openage::ResourceCost</compoundname>
+    <includes refid="cost_8h" local="no">cost.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_resource_cost_1ae25bdb1fe923bc3235f81bbf0ec0059c" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" kindref="member">cost_type</ref></type>
+        <definition>cost_type openage::ResourceCost::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="57" column="1" bodyfile="libopenage/gamestate/cost.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_resource_cost_1ad1575bed3c28d5d3ded555f073c70ab4" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::ResourceCost::resources</definition>
+        <argsstring></argsstring>
+        <name>resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="59" column="1" bodyfile="libopenage/gamestate/cost.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1a9a89c8e50a444b08360a6b194fde3120" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceCost::ResourceCost</definition>
+        <argsstring>()</argsstring>
+        <name>ResourceCost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constant zero cost </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="34" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1a3d62f67492a228892cf2d358548866fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceCost::ResourceCost</definition>
+        <argsstring>(const ResourceBundle &amp;resources)</argsstring>
+        <name>ResourceCost</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>resources</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constant cost </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="39" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="14" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1a0782269a3b0dd214c28b57c2108adca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceCost::ResourceCost</definition>
+        <argsstring>(cost_type type, const ResourceBundle &amp;multiplier)</argsstring>
+        <name>ResourceCost</name>
+        <param>
+          <type><ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" kindref="member">cost_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>multiplier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Dynamic cost </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="44" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1af56c3f3d20064dd6a35914dd60f573b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::ResourceCost::~ResourceCost</definition>
+        <argsstring>()</argsstring>
+        <name>~ResourceCost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="46" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="28" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1a3eefe52413dfb71d8a1bef9a5705f78e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceCost::set</definition>
+        <argsstring>(cost_type type, const ResourceBundle &amp;multiplier)</argsstring>
+        <name>set</name>
+        <param>
+          <type><ref refid="namespaceopenage_1abda3971a8397f9204b2ad873b645251c" kindref="member">cost_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>multiplier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="48" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>const ResourceBundle openage::ResourceCost::get</definition>
+        <argsstring>(const Player &amp;player) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the cost. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/cost.h" line="53" column="1" bodyfile="libopenage/gamestate/cost.cpp" bodystart="36" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A container for a constant or dynamic <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> representing the cost. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4106">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="4105">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="4106" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/cost.h" line="28" column="1" bodyfile="libopenage/gamestate/cost.h" bodystart="28" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_resource_cost_1a916923be9959f675aadb992258068e32" prot="public" virt="non-virtual"><scope>openage::ResourceCost</scope><name>get</name></member>
+      <member refid="classopenage_1_1_resource_cost_1a9a89c8e50a444b08360a6b194fde3120" prot="public" virt="non-virtual"><scope>openage::ResourceCost</scope><name>ResourceCost</name></member>
+      <member refid="classopenage_1_1_resource_cost_1a3d62f67492a228892cf2d358548866fe" prot="public" virt="non-virtual"><scope>openage::ResourceCost</scope><name>ResourceCost</name></member>
+      <member refid="classopenage_1_1_resource_cost_1a0782269a3b0dd214c28b57c2108adca0" prot="public" virt="non-virtual"><scope>openage::ResourceCost</scope><name>ResourceCost</name></member>
+      <member refid="classopenage_1_1_resource_cost_1ad1575bed3c28d5d3ded555f073c70ab4" prot="private" virt="non-virtual"><scope>openage::ResourceCost</scope><name>resources</name></member>
+      <member refid="classopenage_1_1_resource_cost_1a3eefe52413dfb71d8a1bef9a5705f78e" prot="public" virt="non-virtual"><scope>openage::ResourceCost</scope><name>set</name></member>
+      <member refid="classopenage_1_1_resource_cost_1ae25bdb1fe923bc3235f81bbf0ec0059c" prot="private" virt="non-virtual"><scope>openage::ResourceCost</scope><name>type</name></member>
+      <member refid="classopenage_1_1_resource_cost_1af56c3f3d20064dd6a35914dd60f573b8" prot="public" virt="virtual"><scope>openage::ResourceCost</scope><name>~ResourceCost</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1job" kind="namespace" language="C++">
+    <compoundname>openage::job</compoundname>
+    <innerclass refid="classopenage_1_1job_1_1_abortable_job_state" prot="public">openage::job::AbortableJobState</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job" prot="public">openage::job::Job</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job_aborted_exception" prot="public">openage::job::JobAbortedException</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job_group" prot="public">openage::job::JobGroup</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job_manager" prot="public">openage::job::JobManager</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job_state" prot="public">openage::job::JobState</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_job_state_base" prot="public">openage::job::JobStateBase</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_typed_job_state_base" prot="public">openage::job::TypedJobStateBase</innerclass>
+    <innerclass refid="classopenage_1_1job_1_1_worker" prot="public">openage::job::Worker</innerclass>
+    <innernamespace refid="namespaceopenage_1_1job_1_1tests">openage::job::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1a3e3a23d8e117aba5577c273f75ed630e" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::function&lt; T()&gt;</type>
+        <definition>using openage::job::job_function_t = typedef std::function&lt;T()&gt;</definition>
+        <argsstring></argsstring>
+        <name>job_function_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a function that is executed by a job and returns a result.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the job&apos;s result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="16" column="1" bodyfile="libopenage/job/types.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1aae93538aa9f8440cd9bbd3fe67d88e75" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::function&lt; T(std::function&lt; bool()&gt;, std::function&lt; void()&gt;)&gt;</type>
+        <definition>using openage::job::abortable_function_t = typedef std::function&lt;T(std::function&lt;bool()&gt;,std::function&lt;void()&gt;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>abortable_function_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a function that is executed by a job and returns a result. It can be aborted using the two passed function objects.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the job&apos;s result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="25" column="1" bodyfile="libopenage/job/types.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1aa7f614139b9f8585d91285475c260c2f" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::function&lt; T()&gt;</type>
+        <definition>using openage::job::result_function_t = typedef std::function&lt;T()&gt;</definition>
+        <argsstring></argsstring>
+        <name>result_function_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a function to retrieve the result of a job. If the job threw an exception, it is rethrown by this function.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the job&apos;s result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="34" column="1" bodyfile="libopenage/job/types.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1a9e457e59ab065783dbb679ab82cfdfa4" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::function&lt; void(<ref refid="namespaceopenage_1_1job_1aa7f614139b9f8585d91285475c260c2f" kindref="member">result_function_t</ref>&lt; T &gt;)&gt;</type>
+        <definition>using openage::job::callback_function_t = typedef std::function&lt;void(result_function_t&lt;T&gt;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>callback_function_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a job&apos;s callback function, which is called, when a job has finished. The passed result function object is used to retrieve the job&apos;s result.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the job&apos;s result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="43" column="1" bodyfile="libopenage/job/types.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1aa67062d8c4a001038067eb490177604b" prot="public" static="no">
+        <type>std::function&lt; bool()&gt;</type>
+        <definition>using openage::job::should_abort_t = typedef std::function&lt;bool()&gt;</definition>
+        <argsstring></argsstring>
+        <name>should_abort_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a function that returns whether a job should be aborted. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="46" column="1" bodyfile="libopenage/job/types.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1job_1a8e43d5cc58984baa7a8d4f3ea294cee8" prot="public" static="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>using openage::job::abort_t = typedef std::function&lt;void()&gt;</definition>
+        <argsstring></argsstring>
+        <name>abort_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type of a function that aborts a job. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/job/types.h" line="49" column="1" bodyfile="libopenage/job/types.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/audio/audio_manager.h" line="22" column="1"/>
+  </compounddef>
+</doxygen>

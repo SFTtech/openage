@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_team" kind="class" language="C++" prot="public">
+    <compoundname>openage::Team</compoundname>
+    <includes refid="team_8h" local="no">team.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_team_1af76dcbf241d204080d8611b47a8abdfa" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int openage::Team::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unique id of the team </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="39" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::Team::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>visible name of this team </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="44" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_team_1ac579ae1a33f33dfe6e53b738a9cfe160" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_team_score" kindref="compound">TeamScore</ref></type>
+        <definition>TeamScore openage::Team::score</definition>
+        <argsstring></argsstring>
+        <name>score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The score of the team, based on the team&apos;s players score. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="67" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_team_1a90db0a9e2f47e7c2e71491a4f4d514f7" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> *, <ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref> &gt;</type>
+        <definition>std::unordered_map&lt;const Player*, member_type&gt; openage::Team::members</definition>
+        <argsstring></argsstring>
+        <name>members</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="71" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_team_1a95315c61259b04bf05b041839389cb7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Team::Team</definition>
+        <argsstring>(unsigned int id)</argsstring>
+        <name>Team</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="32" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a871d305bda3d5b80473d39cc51356870" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Team::Team</definition>
+        <argsstring>(unsigned int id, std::string name)</argsstring>
+        <name>Team</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="33" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a0592d736d0aab3f59f5934f9a7aea21e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::Team::Team</definition>
+        <argsstring>(unsigned int id, std::string name, Player *leader)</argsstring>
+        <name>Team</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> *</type>
+          <declname>leader</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="34" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="18" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1ae7260e58a9de11c652b7ac45af4398e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Team::operator==</definition>
+        <argsstring>(const Team &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_team" kindref="compound">Team</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="46" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a8a3ccfc2cfbf00c6328163d17754aa35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Team::add_member</definition>
+        <argsstring>(Player &amp;player, const member_type type)</argsstring>
+        <name>add_member</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="49" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a8841ac7c0200c6b7ac9c731b562aa709" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Team::change_member_type</definition>
+        <argsstring>(Player &amp;player, const member_type type)</argsstring>
+        <name>change_member_type</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="51" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a28f7fcd17ef88d23eb7bc0cb11b57591" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::Team::is_member</definition>
+        <argsstring>(const Player &amp;player) const</argsstring>
+        <name>is_member</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="53" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1a229182c2ce03ddfb87dd88411c2fa571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::Team::remove_member</definition>
+        <argsstring>(Player &amp;player)</argsstring>
+        <name>remove_member</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="55" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1ad138154240e5b09d93d6beaf7ae6af82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1aa21eadb859314fbec96b58838fa90cd0" kindref="member">member_type</ref></type>
+        <definition>member_type openage::Team::get_member_type</definition>
+        <argsstring>(Player &amp;player)</argsstring>
+        <name>get_member_type</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="57" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="58" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_1aa066bf2eeff40da381503faa00507657" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> * &gt;</type>
+        <definition>std::vector&lt; const Player * &gt; openage::Team::get_players</definition>
+        <argsstring>() const</argsstring>
+        <name>get_players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO find a better way to get all the players </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/team.h" line="62" column="1" bodyfile="libopenage/gamestate/team.cpp" bodystart="67" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A team of players </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4319">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="4320" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4318" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="4320">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="4318">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="4319" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/team.h" line="30" column="1" bodyfile="libopenage/gamestate/team.h" bodystart="30" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_team_1a8a3ccfc2cfbf00c6328163d17754aa35" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>add_member</name></member>
+      <member refid="classopenage_1_1_team_1a8841ac7c0200c6b7ac9c731b562aa709" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>change_member_type</name></member>
+      <member refid="classopenage_1_1_team_1ad138154240e5b09d93d6beaf7ae6af82" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>get_member_type</name></member>
+      <member refid="classopenage_1_1_team_1aa066bf2eeff40da381503faa00507657" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>get_players</name></member>
+      <member refid="classopenage_1_1_team_1af76dcbf241d204080d8611b47a8abdfa" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>id</name></member>
+      <member refid="classopenage_1_1_team_1a28f7fcd17ef88d23eb7bc0cb11b57591" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>is_member</name></member>
+      <member refid="classopenage_1_1_team_1a90db0a9e2f47e7c2e71491a4f4d514f7" prot="private" virt="non-virtual"><scope>openage::Team</scope><name>members</name></member>
+      <member refid="classopenage_1_1_team_1a5848834a4c8056b0545a98b1b311d8b2" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>name</name></member>
+      <member refid="classopenage_1_1_team_1ae7260e58a9de11c652b7ac45af4398e5" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1_team_1a229182c2ce03ddfb87dd88411c2fa571" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>remove_member</name></member>
+      <member refid="classopenage_1_1_team_1ac579ae1a33f33dfe6e53b738a9cfe160" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>score</name></member>
+      <member refid="classopenage_1_1_team_1a95315c61259b04bf05b041839389cb7c" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>Team</name></member>
+      <member refid="classopenage_1_1_team_1a871d305bda3d5b80473d39cc51356870" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>Team</name></member>
+      <member refid="classopenage_1_1_team_1a0592d736d0aab3f59f5934f9a7aea21e" prot="public" virt="non-virtual"><scope>openage::Team</scope><name>Team</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::Texture2dInfo</compoundname>
+    <includes refid="texture__info_8h" local="no">texture_info.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aa5a45cabdac647582d3f5bea32dbfc39" prot="private" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t openage::renderer::resources::Texture2dInfo::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <briefdescription>
+<para>Width and height of this texture. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" prot="private" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t openage::renderer::resources::Texture2dInfo::h</definition>
+        <argsstring></argsstring>
+        <name>h</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="106" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
+        <definition>pixel_format openage::renderer::resources::Texture2dInfo::format</definition>
+        <argsstring></argsstring>
+        <name>format</name>
+        <briefdescription>
+<para>The pixel format of this texture. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="109" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::Texture2dInfo::row_alignment</definition>
+        <argsstring></argsstring>
+        <name>row_alignment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The alignment of texture rows to byte boundaries. Can be 1, 2, 4 or 8. There is padding at the end of each row to match the alignment if the row size is not a multiple of the alignment. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="114" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &gt;</type>
+        <definition>std::vector&lt;Texture2dSubInfo&gt; openage::renderer::resources::Texture2dInfo::subtextures</definition>
+        <argsstring></argsstring>
+        <name>subtextures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Some textures are merged together into texture atlases, large images which contain more than one individual texture. These are their positions in the atlas. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="118" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a36c4a4a6cf0c80587df4a4fe5b9d77b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dInfo::Texture2dInfo</definition>
+        <argsstring>(size_t width, size_t height, pixel_format, size_t row_alignment=1, std::vector&lt; Texture2dSubInfo &gt; &amp;&amp;=std::vector&lt; Texture2dSubInfo &gt;())</argsstring>
+        <name>Texture2dInfo</name>
+        <param>
+          <type>size_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
+          <defname>fmt</defname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>row_alignment</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &gt; &amp;&amp;</type>
+          <defname>subs</defname>
+          <defval>std::vector&lt; <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> with the given information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="57" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="10" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a21576236d6837b2d3d19d9d3a8429c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dInfo::Texture2dInfo</definition>
+        <argsstring>()=default</argsstring>
+        <name>Texture2dInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a4b4038b52a59ab7847feb0a22497fa52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dInfo::Texture2dInfo</definition>
+        <argsstring>(Texture2dInfo const &amp;)=default</argsstring>
+        <name>Texture2dInfo</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aba844ce34d032c1f8512bfa0b3029e27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::Texture2dInfo::~Texture2dInfo</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Texture2dInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::resources::Texture2dInfo::operator==</definition>
+        <argsstring>(Texture2dInfo const &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> const &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compares the texture parameters <emphasis>excluding</emphasis> the subtexture information and returns true if they&apos;re equal, false otherwise. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="65" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a887af57038df9ce8406e1ba6fff27cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::renderer::resources::Texture2dInfo::operator!=</definition>
+        <argsstring>(Texture2dInfo const &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">Texture2dInfo</ref> const &amp;</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+<para>See operator==. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="68" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; int32_t, int32_t &gt;</type>
+        <definition>std::pair&lt; int32_t, int32_t &gt; openage::renderer::resources::Texture2dInfo::get_size</definition>
+        <argsstring>() const</argsstring>
+        <name>get_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the dimensions of the whole texture bitmap <simplesect kind="return"><para>tuple(width, height) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="72" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
+        <definition>pixel_format openage::renderer::resources::Texture2dInfo::get_format</definition>
+        <argsstring>() const</argsstring>
+        <name>get_format</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the format of pixels in this texture </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="75" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1af981ae334cc8a2499278fd15af4d21fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::Texture2dInfo::get_row_alignment</definition>
+        <argsstring>() const</argsstring>
+        <name>get_row_alignment</name>
+        <briefdescription>
+<para>Returns the alignment of texture rows to byte boundaries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="78" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::Texture2dInfo::get_row_size</definition>
+        <argsstring>() const</argsstring>
+        <name>get_row_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the size in bytes of a single row, including possible padding at its end. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="82" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="40" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::Texture2dInfo::get_data_size</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the size in bytes of the raw pixel data. It is equal to <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" kindref="member">get_row_size()</ref> * <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" kindref="member">get_size()</ref>.second. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="86" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1abaa2fb4684682990cde06485dc8b514d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::Texture2dInfo::get_subtexture_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_subtexture_count</name>
+        <briefdescription>
+<para>Returns the number of available subtextures. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="89" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" kindref="compound">Texture2dSubInfo</ref> &amp;</type>
+        <definition>const Texture2dSubInfo &amp; openage::renderer::resources::Texture2dInfo::get_subtexture</definition>
+        <argsstring>(size_t subid) const</argsstring>
+        <name>get_subtexture</name>
+        <param>
+          <type>size_t</type>
+          <declname>subid</declname>
+        </param>
+        <briefdescription>
+<para>Returns the coordinates of the subtexture with the given ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="92" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="61" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; int32_t, int32_t &gt;</type>
+        <definition>std::pair&lt; int, int &gt; openage::renderer::resources::Texture2dInfo::get_subtexture_size</definition>
+        <argsstring>(size_t subid) const</argsstring>
+        <name>get_subtexture_size</name>
+        <param>
+          <type>size_t</type>
+          <declname>subid</declname>
+        </param>
+        <briefdescription>
+<para>Returns the size of the subtexture with the given ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="95" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aeb376e40e3da8cadee1848fa1ea28226" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; float, float, float, float &gt;</type>
+        <definition>std::tuple&lt; float, float, float, float &gt; openage::renderer::resources::Texture2dInfo::get_subtexture_coordinates</definition>
+        <argsstring>(size_t subid) const</argsstring>
+        <name>get_subtexture_coordinates</name>
+        <param>
+          <type>size_t</type>
+          <declname>subid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns atlas subtexture coordinates.</para>
+<para><simplesect kind="return"><para>left, right, top and bottom bounds as coordinates these pick the requested area out of the big texture. returned as floats in range 0.0 to 1.0, relative to the whole surface size. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="102" column="1" bodyfile="libopenage/renderer/resources/texture_info.cpp" bodystart="74" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains information about a 2D texture surface, without actual texture data. The class supports subtextures, so that one big texture (&quot;texture atlas&quot;) can contain several smaller images, which can be extracted for rendering one-by-one. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4471">
+        <label>openage::renderer::resources::Texture2dInfo</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/texture_info.h" line="54" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="54" bodyend="119"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a525eb2ee4e7e27c1950c89b196216745" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>format</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a09329202a589131b1c723fbffb1f806b" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_data_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a57830eb6623cc7171953bc0214c6ee2c" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_format</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1af981ae334cc8a2499278fd15af4d21fc" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_row_alignment</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2d87c131a3e1f175ce29d3ec146c2790" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_row_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a3bd462432c63a67c1b199c3f717bce50" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ac6b8cd33b4ba1ba68f10f504d92c42f6" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_subtexture</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aeb376e40e3da8cadee1848fa1ea28226" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_subtexture_coordinates</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1abaa2fb4684682990cde06485dc8b514d" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_subtexture_count</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad2a2f302bd53b1aee538de9c21c896c3" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>get_subtexture_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1afc16ec7911794145e6aef3fd89904f58" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>h</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a887af57038df9ce8406e1ba6fff27cc8" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>operator!=</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ade47ab8302168c26da6ac96b2ffca2b6" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a2616b266e8ff20d318bf6bc2e075f089" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>row_alignment</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1ad287ca6248fd2444a8953737456a0198" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>subtextures</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a36c4a4a6cf0c80587df4a4fe5b9d77b1" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>Texture2dInfo</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a21576236d6837b2d3d19d9d3a8429c4f" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>Texture2dInfo</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1a4b4038b52a59ab7847feb0a22497fa52" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>Texture2dInfo</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aa5a45cabdac647582d3f5bea32dbfc39" prot="private" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>w</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info_1aba844ce34d032c1f8512bfa0b3029e27" prot="public" virt="non-virtual"><scope>openage::renderer::resources::Texture2dInfo</scope><name>~Texture2dInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

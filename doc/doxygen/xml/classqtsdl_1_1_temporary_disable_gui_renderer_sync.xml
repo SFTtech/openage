@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_temporary_disable_gui_renderer_sync" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::TemporaryDisableGuiRendererSync</compoundname>
+    <includes refid="gui__renderer__impl_8h" local="no">gui_renderer_impl.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref> &amp;</type>
+        <definition>GuiRendererImpl&amp; qtsdl::TemporaryDisableGuiRendererSync::renderer</definition>
+        <argsstring></argsstring>
+        <name>renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="156" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool qtsdl::TemporaryDisableGuiRendererSync::need_sync</definition>
+        <argsstring></argsstring>
+        <name>need_sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="157" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a1c09bf6d7d98cdd77fe4b555f4936cd4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync</definition>
+        <argsstring>(GuiRendererImpl &amp;renderer)</argsstring>
+        <name>TemporaryDisableGuiRendererSync</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref> &amp;</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="149" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="248" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::TemporaryDisableGuiRendererSync::~TemporaryDisableGuiRendererSync</definition>
+        <argsstring>()</argsstring>
+        <name>~TemporaryDisableGuiRendererSync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="150" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="254" bodyend="257"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1ac8e3b091581f62c5e12a269d333f0dc9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::TemporaryDisableGuiRendererSync::TemporaryDisableGuiRendererSync</definition>
+        <argsstring>(const TemporaryDisableGuiRendererSync &amp;)=delete</argsstring>
+        <name>TemporaryDisableGuiRendererSync</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync" kindref="compound">TemporaryDisableGuiRendererSync</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="153" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2e38cb892002811af384624e9031187c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync" kindref="compound">TemporaryDisableGuiRendererSync</ref> &amp;</type>
+        <definition>TemporaryDisableGuiRendererSync&amp; qtsdl::TemporaryDisableGuiRendererSync::operator=</definition>
+        <argsstring>(const TemporaryDisableGuiRendererSync &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync" kindref="compound">TemporaryDisableGuiRendererSync</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="154" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4330">
+        <label>qtsdl::GuiRenderingSetupRoutines</label>
+        <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
+      </node>
+      <node id="4329">
+        <label>QObject</label>
+      </node>
+      <node id="4328">
+        <label>qtsdl::GuiRendererImpl</label>
+        <link refid="classqtsdl_1_1_gui_renderer_impl"/>
+        <childnode refid="4329" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4330" relation="usage">
+          <edgelabel>-gui_rendering_setup_routines</edgelabel>
+        </childnode>
+      </node>
+      <node id="4327">
+        <label>qtsdl::TemporaryDisableGuiRendererSync</label>
+        <link refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync"/>
+        <childnode refid="4328" relation="usage">
+          <edgelabel>-renderer</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="147" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="147" bodyend="158"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1aae479c1e36ae807e757f2f584ba028ab" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>need_sync</name></member>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2e38cb892002811af384624e9031187c" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>operator=</name></member>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a2a1fb8ac3f1aeb4799c933d38c1bd9fc" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>renderer</name></member>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a1c09bf6d7d98cdd77fe4b555f4936cd4" prot="public" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>TemporaryDisableGuiRendererSync</name></member>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1ac8e3b091581f62c5e12a269d333f0dc9" prot="private" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>TemporaryDisableGuiRendererSync</name></member>
+      <member refid="classqtsdl_1_1_temporary_disable_gui_renderer_sync_1a4152b315fb0d96caecbcb95c4c2623ff" prot="public" virt="non-virtual"><scope>qtsdl::TemporaryDisableGuiRendererSync</scope><name>~TemporaryDisableGuiRendererSync</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

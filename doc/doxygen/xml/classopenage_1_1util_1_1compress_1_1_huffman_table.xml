@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1compress_1_1_huffman_table" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::compress::HuffmanTable</compoundname>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>maxsymbols_p</declname>
+        <defname>maxsymbols_p</defname>
+      </param>
+      <param>
+        <type>unsigned int</type>
+        <declname>tablebits_p</declname>
+        <defname>tablebits_p</defname>
+      </param>
+      <param>
+        <type>bool</type>
+        <declname>allow_empty</declname>
+        <defname>allow_empty</defname>
+        <defval>false</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a997dcfba10999b15243bc36218e0782a" prot="private" static="no" mutable="no">
+        <type>class <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> *</type>
+        <definition>class LZXDStream* openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::lzx</definition>
+        <argsstring></argsstring>
+        <name>lzx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="96" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1abdc66dd010cb036245a0992a599ddff5" prot="public" static="yes" mutable="no">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::HUFF_MAXBITS</definition>
+        <argsstring></argsstring>
+        <name>HUFF_MAXBITS</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="99" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1aaaea7324005ce900ce270da741c53640" prot="public" static="yes" mutable="no">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::maxsymbols</definition>
+        <argsstring></argsstring>
+        <name>maxsymbols</name>
+        <initializer>= maxsymbols_p</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="100" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a72edd87d81a878e15a73138240999bda" prot="public" static="yes" mutable="no">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::tablebits</definition>
+        <argsstring></argsstring>
+        <name>tablebits</name>
+        <initializer>= tablebits_p</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="101" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a3bbe52e654dd6ad728e626cb84b1400e" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::len[maxsymbols_p+LZX_LENTABLE_SAFETY]</definition>
+        <argsstring>[maxsymbols_p+LZX_LENTABLE_SAFETY]</argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>table of code lengths (in bits) for each symbol </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="106" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a2b93c25503f0c98e4420d82e7b104213" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::table[(1&lt;&lt; tablebits_p)+(maxsymbols_p *2)]</definition>
+        <argsstring>[(1&lt;&lt; tablebits_p)+(maxsymbols_p *2)]</argsstring>
+        <name>table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>table to fill up with decoded values for symbols, and pointers. symbols shorter than tablebits_p are decoded by direct lookup (that&apos;s the first (1&lt;&lt;tablebits_p) entries). longer symbols are decoded by following pointers to the appropriate leaf in the upper nsyms*2 fields. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="115" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a7df946fa968a570c9bde8aaa9437d1f2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::is_empty</definition>
+        <argsstring></argsstring>
+        <name>is_empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the table could not be constructed and is empty (try_make_decode_table failed). this will lead to errors, should <ref refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" kindref="member">read_sym()</ref> be called. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="121" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a041e0bae2c9b121a0c77682b940c42d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::HuffmanTable</definition>
+        <argsstring>(class LZXDStream *lzx)</argsstring>
+        <name>HuffmanTable</name>
+        <param>
+          <type>class <ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref> *</type>
+          <declname>lzx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="123" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::read_sym</definition>
+        <argsstring>()</argsstring>
+        <name>read_sym</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decodes the next huffman symbol from the input bitstream, and returns it. Do not use this function on a table unless build_decode_table() succeeded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="130" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="240" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a1e2e81d74fd03fd894c4acf72227cc2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::make_decode_table</definition>
+        <argsstring>()</argsstring>
+        <name>make_decode_table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>calls try_make_decode_table, and, if allow_empty is false, raises an exception on failure. builds a huffman lookup table from code lengths. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="137" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="259" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1a281ecfaf32eb7102310771c48034e107" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::read_lengths</definition>
+        <argsstring>(unsigned int first, unsigned int last)</argsstring>
+        <name>read_lengths</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reads in code lengths for symbols first to last in the given table. The code lengths are stored in their own special LZX way. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="143" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="363" bodyend="412"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_huffman_table_1af44253d3e7adef12c7a4c4371b97a2fd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;::try_make_decode_table</definition>
+        <argsstring>()</argsstring>
+        <name>try_make_decode_table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function was originally coded by David Tritscher. It builds a fast huffman decoding table from a canonical huffman code lengths table. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/lzxd.cpp" line="151" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="281" bodyend="359"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2926">
+        <label>openage::util::compress::LZXDStream</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream"/>
+        <childnode refid="2927" relation="usage">
+          <edgelabel>+bits</edgelabel>
+        </childnode>
+        <childnode refid="2928" relation="usage">
+          <edgelabel>+htpre</edgelabel>
+        </childnode>
+        <childnode refid="2929" relation="usage">
+          <edgelabel>+htlength</edgelabel>
+        </childnode>
+        <childnode refid="2930" relation="usage">
+          <edgelabel>+htmain</edgelabel>
+        </childnode>
+        <childnode refid="2931" relation="usage">
+          <edgelabel>+htaligned</edgelabel>
+        </childnode>
+      </node>
+      <node id="2929">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_LENGTH_MAXSYMBOLS, LZX_LENGTH_TABLEBITS, true &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="2925">
+        <label>openage::util::compress::HuffmanTable&lt; maxsymbols_p, tablebits_p, allow_empty &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="2927">
+        <label>openage::util::compress::BitStream&lt; 4096 &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
+      </node>
+      <node id="2931">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_ALIGNED_MAXSYMBOLS, LZX_ALIGNED_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="2930">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_MAINTREE_MAXSYMBOLS, LZX_MAINTREE_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+      <node id="2928">
+        <label>openage::util::compress::HuffmanTable&lt; LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_huffman_table"/>
+        <childnode refid="2926" relation="usage">
+          <edgelabel>-lzx</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/compress/lzxd.cpp" line="94" column="1" bodyfile="libopenage/util/compress/lzxd.cpp" bodystart="94" bodyend="152"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1abdc66dd010cb036245a0992a599ddff5" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>HUFF_MAXBITS</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a041e0bae2c9b121a0c77682b940c42d3" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>HuffmanTable</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a7df946fa968a570c9bde8aaa9437d1f2" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>is_empty</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a3bbe52e654dd6ad728e626cb84b1400e" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>len</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a997dcfba10999b15243bc36218e0782a" prot="private" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>lzx</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a1e2e81d74fd03fd894c4acf72227cc2d" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>make_decode_table</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1aaaea7324005ce900ce270da741c53640" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>maxsymbols</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a281ecfaf32eb7102310771c48034e107" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>read_lengths</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1ae6b32648570816ac41436130bd87f3be" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>read_sym</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a2b93c25503f0c98e4420d82e7b104213" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>table</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1a72edd87d81a878e15a73138240999bda" prot="public" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>tablebits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_huffman_table_1af44253d3e7adef12c7a4c4371b97a2fd" prot="private" virt="non-virtual"><scope>openage::util::compress::HuffmanTable</scope><name>try_make_decode_table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_gui_image_provider_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GuiImageProviderLink</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="gui__image__provider__link_8h" local="no">gui_image_provider_link.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a6d76eda2c9b3824f51b992dd9a304e47" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">openage::gui::GameSpecLink</ref></type>
+        <definition>openage::gui::GameSpecLink openage::gui::GuiImageProviderLink::gameSpec</definition>
+        <argsstring></argsstring>
+        <name>gameSpec</name>
+        <read>get_game_spec</read>
+        <write>set_game_spec</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="27" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a7fc1c91b77238a9965744ca0c10ff5a2" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" kindref="compound">GuiGameSpecImageProviderImpl</ref> &amp;</type>
+        <definition>GuiGameSpecImageProviderImpl&amp; openage::gui::GuiImageProviderLink::image_provider</definition>
+        <argsstring></argsstring>
+        <name>image_provider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="56" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a2907f115e82ccc31a7122d1fe5fec1c9" prot="private" static="no" mutable="no">
+        <type>QPointer&lt; <ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">GameSpecLink</ref> &gt;</type>
+        <definition>QPointer&lt;GameSpecLink&gt; openage::gui::GuiImageProviderLink::game_spec</definition>
+        <argsstring></argsstring>
+        <name>game_spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="57" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a729df2d43ffca0b89bb49268c5fc9990" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiImageProviderLink::GuiImageProviderLink</definition>
+        <argsstring>(QObject *parent, GuiGameSpecImageProviderImpl &amp;image_provider)</argsstring>
+        <name>GuiImageProviderLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl" kindref="compound">GuiGameSpecImageProviderImpl</ref> &amp;</type>
+          <declname>image_provider</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="28" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="30" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a62f76fdd86321be5c0989c9fd7465222" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GuiImageProviderLink::~GuiImageProviderLink</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiImageProviderLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="29" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a2b7ee0e8956060381467c600e73831d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">GameSpecLink</ref> *</type>
+        <definition>GameSpecLink * openage::gui::GuiImageProviderLink::get_game_spec</definition>
+        <argsstring>() const</argsstring>
+        <name>get_game_spec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="31" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a545162ca0fa8e596f4a2afafda0e2b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiImageProviderLink::set_game_spec</definition>
+        <argsstring>(GameSpecLink *game_spec)</argsstring>
+        <name>set_game_spec</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">GameSpecLink</ref> *</type>
+          <declname>game_spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the game spec to load textures from.</para>
+<para>Setting to null doesn&apos;t detach from the spec, but picks the &apos;missing texture&apos; from that spec and sets it to every sprite. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="39" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="47" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1ae433067db623c8643f5ed0103c4d6863" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QObject *</type>
+        <definition>QObject * openage::gui::GuiImageProviderLink::provider</definition>
+        <argsstring>(QQmlEngine *, const char *id)</argsstring>
+        <name>provider</name>
+        <param>
+          <type>QQmlEngine *</type>
+          <defname>engine</defname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="41" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="66" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a989ea662cb7263963d41ba114a4a79a1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QObject *</type>
+        <definition>QObject * openage::gui::GuiImageProviderLink::provider_by_filename</definition>
+        <argsstring>(QQmlEngine *, QJSEngine *)</argsstring>
+        <name>provider_by_filename</name>
+        <param>
+          <type>QQmlEngine *</type>
+          <defname>engine</defname>
+        </param>
+        <param>
+          <type>QJSEngine *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="42" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a67931b9e4a8bf221cc0b3b1417d05e2a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QObject *</type>
+        <definition>QObject * openage::gui::GuiImageProviderLink::provider_by_graphic_id</definition>
+        <argsstring>(QQmlEngine *, QJSEngine *)</argsstring>
+        <name>provider_by_graphic_id</name>
+        <param>
+          <type>QQmlEngine *</type>
+          <defname>engine</defname>
+        </param>
+        <param>
+          <type>QJSEngine *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="43" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a3e0aeaaabf3592bdf50e0fe9968aeb0e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QObject *</type>
+        <definition>QObject * openage::gui::GuiImageProviderLink::provider_by_terrain_id</definition>
+        <argsstring>(QQmlEngine *, QJSEngine *)</argsstring>
+        <name>provider_by_terrain_id</name>
+        <param>
+          <type>QQmlEngine *</type>
+          <defname>engine</defname>
+        </param>
+        <param>
+          <type>QJSEngine *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="44" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classopenage_1_1gui_1_1_gui_image_provider_link_1a4448d1bf9cbb8e7f8842989fd414c66b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GuiImageProviderLink::on_game_spec_loaded</definition>
+        <argsstring>(GameSpecLink *game_spec, std::shared_ptr&lt; GameSpec &gt; loaded_game_spec)</argsstring>
+        <name>on_game_spec_loaded</name>
+        <param>
+          <type><ref refid="classopenage_1_1gui_1_1_game_spec_link" kindref="compound">GameSpecLink</ref> *</type>
+          <declname>game_spec</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_game_spec" kindref="compound">GameSpec</ref> &gt;</type>
+          <declname>loaded_game_spec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pass loaded assets to the image provider.</para>
+<para>Need to check if we still attached to that spec. Also it may be invalidated in the meantime, so share the ownership. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="53" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.cpp" bodystart="92" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2613">
+        <label>QObject</label>
+      </node>
+      <node id="2612">
+        <label>openage::gui::GuiImageProviderLink</label>
+        <link refid="classopenage_1_1gui_1_1_gui_image_provider_link"/>
+        <childnode refid="2613" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2615">
+        <label>QObject</label>
+      </node>
+      <node id="2619">
+        <label>qtsdl::GuiCallback</label>
+        <link refid="classqtsdl_1_1_gui_callback"/>
+        <childnode refid="2615" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2616">
+        <label>openage::gui::GuiGameSpecImageProviderImpl</label>
+        <link refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider_impl"/>
+        <childnode refid="2617" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2619" relation="usage">
+          <edgelabel>-render_thread_callback</edgelabel>
+        </childnode>
+      </node>
+      <node id="2614">
+        <label>openage::gui::GuiImageProviderLink</label>
+        <link refid="classopenage_1_1gui_1_1_gui_image_provider_link"/>
+        <childnode refid="2615" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2616" relation="usage">
+          <edgelabel>-image_provider</edgelabel>
+        </childnode>
+      </node>
+      <node id="2617">
+        <label>qtsdl::GuiImageProviderImpl</label>
+        <link refid="classqtsdl_1_1_gui_image_provider_impl"/>
+        <childnode refid="2618" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2618">
+        <label>QQuickImageProvider</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/private/gui_image_provider_link.h" line="22" column="1" bodyfile="libopenage/gui/integration/private/gui_image_provider_link.h" bodystart="22" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a2907f115e82ccc31a7122d1fe5fec1c9" prot="private" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a6d76eda2c9b3824f51b992dd9a304e47" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>gameSpec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a2b7ee0e8956060381467c600e73831d6" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>get_game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a729df2d43ffca0b89bb49268c5fc9990" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>GuiImageProviderLink</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a7fc1c91b77238a9965744ca0c10ff5a2" prot="private" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>image_provider</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a4448d1bf9cbb8e7f8842989fd414c66b" prot="private" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>on_game_spec_loaded</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1ae433067db623c8643f5ed0103c4d6863" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>provider</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a989ea662cb7263963d41ba114a4a79a1" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>provider_by_filename</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a67931b9e4a8bf221cc0b3b1417d05e2a" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>provider_by_graphic_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a3e0aeaaabf3592bdf50e0fe9968aeb0e" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>provider_by_terrain_id</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a545162ca0fa8e596f4a2afafda0e2b0f" prot="public" virt="non-virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>set_game_spec</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_image_provider_link_1a62f76fdd86321be5c0989c9fd7465222" prot="public" virt="virtual"><scope>openage::gui::GuiImageProviderLink</scope><name>~GuiImageProviderLink</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

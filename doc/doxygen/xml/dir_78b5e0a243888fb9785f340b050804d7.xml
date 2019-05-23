@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_78b5e0a243888fb9785f340b050804d7" kind="dir">
+    <compoundname>libopenage/gui/guisys/private</compoundname>
+    <innerdir refid="dir_9a525e6df3ce662347fd0125e10bcda2">libopenage/gui/guisys/private/livereload</innerdir>
+    <innerdir refid="dir_87ca0b16c40389b37efbe69b92f7a47c">libopenage/gui/guisys/private/platforms</innerdir>
+    <innerfile refid="game__logic__caller_8cpp">game_logic_caller.cpp</innerfile>
+    <innerfile refid="game__logic__caller_8h">game_logic_caller.h</innerfile>
+    <innerfile refid="gui__application__impl_8cpp">gui_application_impl.cpp</innerfile>
+    <innerfile refid="gui__application__impl_8h">gui_application_impl.h</innerfile>
+    <innerfile refid="gui__callback_8cpp">gui_callback.cpp</innerfile>
+    <innerfile refid="gui__callback_8h">gui_callback.h</innerfile>
+    <innerfile refid="gui__ctx__setup_8cpp">gui_ctx_setup.cpp</innerfile>
+    <innerfile refid="gui__ctx__setup_8h">gui_ctx_setup.h</innerfile>
+    <innerfile refid="gui__dedicated__thread_8cpp">gui_dedicated_thread.cpp</innerfile>
+    <innerfile refid="gui__dedicated__thread_8h">gui_dedicated_thread.h</innerfile>
+    <innerfile refid="gui__engine__impl_8cpp">gui_engine_impl.cpp</innerfile>
+    <innerfile refid="gui__engine__impl_8h">gui_engine_impl.h</innerfile>
+    <innerfile refid="gui__event__queue__impl_8cpp">gui_event_queue_impl.cpp</innerfile>
+    <innerfile refid="gui__event__queue__impl_8h">gui_event_queue_impl.h</innerfile>
+    <innerfile refid="gui__image__provider__impl_8cpp">gui_image_provider_impl.cpp</innerfile>
+    <innerfile refid="gui__image__provider__impl_8h">gui_image_provider_impl.h</innerfile>
+    <innerfile refid="gui__input__impl_8cpp">gui_input_impl.cpp</innerfile>
+    <innerfile refid="gui__input__impl_8h">gui_input_impl.h</innerfile>
+    <innerfile refid="gui__renderer__impl_8cpp">gui_renderer_impl.cpp</innerfile>
+    <innerfile refid="gui__renderer__impl_8h">gui_renderer_impl.h</innerfile>
+    <innerfile refid="gui__rendering__setup__routines_8cpp">gui_rendering_setup_routines.cpp</innerfile>
+    <innerfile refid="gui__rendering__setup__routines_8h">gui_rendering_setup_routines.h</innerfile>
+    <innerfile refid="gui__subtree__impl_8cpp">gui_subtree_impl.cpp</innerfile>
+    <innerfile refid="gui__subtree__impl_8h">gui_subtree_impl.h</innerfile>
+    <innerfile refid="opengl__debug__logger_8cpp">opengl_debug_logger.cpp</innerfile>
+    <innerfile refid="opengl__debug__logger_8h">opengl_debug_logger.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gui/guisys/private/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_enum_value" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::EnumValue</compoundname>
+    <includes refid="enum_8h" local="no">enum.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>DerivedType</declname>
+        <defname>DerivedType</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>NumericType</declname>
+        <defname>NumericType</defname>
+        <defval>int</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* openage::util::EnumValue&lt; DerivedType, NumericType &gt;::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="89" column="1" bodyfile="libopenage/util/enum.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_enum_value_1aac09469400ad13bdfba4926dd02d3164" prot="public" static="no" mutable="no">
+        <type>NumericType</type>
+        <definition>NumericType openage::util::EnumValue&lt; DerivedType, NumericType &gt;::numeric</definition>
+        <argsstring></argsstring>
+        <name>numeric</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="90" column="1" bodyfile="libopenage/util/enum.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::EnumValue&lt; DerivedType, NumericType &gt;::EnumValue</definition>
+        <argsstring>(const EnumValue &amp;other)=delete</argsstring>
+        <name>EnumValue</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_enum_value" kindref="compound">EnumValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a1dab353da4486a9c8c60bd8e14ee98d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_enum_value" kindref="compound">EnumValue</ref> &amp;</type>
+        <definition>EnumValue&amp; openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator=</definition>
+        <argsstring>(const EnumValue &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_enum_value" kindref="compound">EnumValue</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a0796e1f8a1fa21cc20f1ad2c7da69415" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator==</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="60" column="1" bodyfile="libopenage/util/enum.h" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1ad3945ffef23580f7a64757b886c2e2ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator !=</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator !=</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="64" column="1" bodyfile="libopenage/util/enum.h" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1a9bb6a21bf004e58196e4bda16b7e849a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator&lt;=</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="68" column="1" bodyfile="libopenage/util/enum.h" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1adbb6e103305a98ca4ffd7ede8f3a527c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator&lt;</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="72" column="1" bodyfile="libopenage/util/enum.h" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1afcd1b51f6b424f2752c26122f426d49b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator &gt;=</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator &gt;=</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="76" column="1" bodyfile="libopenage/util/enum.h" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_enum_value_1ab3e1f8bcc46314730c71ae5af29dd306" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool openage::util::EnumValue&lt; DerivedType, NumericType &gt;::operator &gt;</definition>
+        <argsstring>(const DerivedType &amp;other) const</argsstring>
+        <name>operator &gt;</name>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="80" column="1" bodyfile="libopenage/util/enum.h" bodystart="80" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_enum_value_1a87eacf2dd2baa94e8796f3d805c16150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const DerivedType &amp;arg)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const DerivedType &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum.h" line="84" column="1" bodyfile="libopenage/util/enum.h" bodystart="84" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1389">
+        <label>openage::util::EnumValue&lt; DerivedType, NumericType &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+        <childnode refid="1390" relation="usage">
+          <edgelabel>+numeric</edgelabel>
+        </childnode>
+      </node>
+      <node id="1390">
+        <label>NumericType</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/enum.h" line="47" column="1" bodyfile="libopenage/util/enum.h" bodystart="47" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>EnumValue</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>name</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1aac09469400ad13bdfba4926dd02d3164" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>numeric</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ad3945ffef23580f7a64757b886c2e2ce" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ab3e1f8bcc46314730c71ae5af29dd306" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator &gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1afcd1b51f6b424f2752c26122f426d49b" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator &gt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1adbb6e103305a98ca4ffd7ede8f3a527c" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a87eacf2dd2baa94e8796f3d805c16150" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a9bb6a21bf004e58196e4bda16b7e849a" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator&lt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a1dab353da4486a9c8c60bd8e14ee98d0" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a0796e1f8a1fa21cc20f1ad2c7da69415" prot="public" virt="non-virtual"><scope>openage::util::EnumValue</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

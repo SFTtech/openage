@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_nyan_research_type" kind="class" language="C++" prot="public">
+    <compoundname>openage::NyanResearchType</compoundname>
+    <basecompoundref refid="classopenage_1_1_research_type" prot="public" virt="non-virtual">openage::ResearchType</basecompoundref>
+    <includes refid="research_8h" local="no">research.h</includes>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_nyan_research_type_1afb573573d0536a0775ff420f7559c74f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::NyanResearchType::NyanResearchType</definition>
+        <argsstring>(Player &amp;owner)</argsstring>
+        <name>NyanResearchType</name>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/research.h" line="94" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3375">
+        <label>openage::ResearchType</label>
+        <link refid="classopenage_1_1_research_type"/>
+      </node>
+      <node id="3374">
+        <label>openage::NyanResearchType</label>
+        <link refid="classopenage_1_1_nyan_research_type"/>
+        <childnode refid="3375" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3382">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="3380" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3381" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="3379">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="3380" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3378" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="3380">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="3381">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="3382" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="3385">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="3378">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="3379" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="3381" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="3383" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="3384" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="3385" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="3383">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="3384">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="3377">
+        <label>openage::ResearchType</label>
+        <link refid="classopenage_1_1_research_type"/>
+        <childnode refid="3378" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="3376">
+        <label>openage::NyanResearchType</label>
+        <link refid="classopenage_1_1_nyan_research_type"/>
+        <childnode refid="3377" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/research.h" line="91" column="1" bodyfile="libopenage/unit/research.h" bodystart="91" bodyend="96"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_research_type_1af58948dd42b8d8a97233d2fdd9885e83" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>apply</name></member>
+      <member refid="classopenage_1_1_research_type_1a76a5bd220674135f0bf93eed3f1bce92" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>category</name></member>
+      <member refid="classopenage_1_1_research_type_1aca6b37a0f8d31b9646a97ee0bf2f2228" prot="public" virt="non-virtual"><scope>openage::NyanResearchType</scope><name>get_max_repeats</name></member>
+      <member refid="classopenage_1_1_research_type_1a2b99e4ff298e19b86c6fa251802fcaf3" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>get_research_cost</name></member>
+      <member refid="classopenage_1_1_research_type_1a4a3186a0805b6d799dfc6abac2c9a404" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>get_research_time</name></member>
+      <member refid="classopenage_1_1_research_type_1a36804d9b56a050b726d0c3e036ae0d89" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>id</name></member>
+      <member refid="classopenage_1_1_research_type_1a52361828cbac190a167c20a3fc825490" prot="public" virt="non-virtual"><scope>openage::NyanResearchType</scope><name>initialise</name></member>
+      <member refid="classopenage_1_1_research_type_1a46f438491a0104f174bdb54034f88288" prot="public" virt="pure-virtual"><scope>openage::NyanResearchType</scope><name>name</name></member>
+      <member refid="classopenage_1_1_nyan_research_type_1afb573573d0536a0775ff420f7559c74f" prot="private" virt="non-virtual"><scope>openage::NyanResearchType</scope><name>NyanResearchType</name></member>
+      <member refid="classopenage_1_1_research_type_1adb394897aa588ce3b6399adb8b53b4ec" prot="public" virt="non-virtual"><scope>openage::NyanResearchType</scope><name>owner</name></member>
+      <member refid="classopenage_1_1_research_type_1ad59b4d014b294022fef3a9ce5a9a5a53" prot="public" virt="non-virtual"><scope>openage::NyanResearchType</scope><name>ResearchType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

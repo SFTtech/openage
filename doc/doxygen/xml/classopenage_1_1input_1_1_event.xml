@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1input_1_1_event" kind="class" language="C++" prot="public">
+    <compoundname>openage::input::Event</compoundname>
+    <includes refid="input_2event_8h" local="no">event.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref></type>
+        <definition>const ClassCode openage::input::Event::cc</definition>
+        <argsstring></argsstring>
+        <name>cc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="137" column="1" bodyfile="libopenage/input/event.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" prot="public" static="no" mutable="no">
+        <type>const <ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref></type>
+        <definition>const modset_t openage::input::Event::mod</definition>
+        <argsstring></argsstring>
+        <name>mod</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="138" column="1" bodyfile="libopenage/input/event.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1input_1_1_event_1a0b02a6e43b8ce3aec0ab4c99d54e33ac" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::input::Event::utf8</definition>
+        <argsstring></argsstring>
+        <name>utf8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="139" column="1" bodyfile="libopenage/input/event.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1ad9b6a91a005fc0ca700694d9ecb597af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::input::Event::Event</definition>
+        <argsstring>(event_class cl, code_t code, modset_t mod)</argsstring>
+        <name>Event</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref></type>
+          <declname>cl</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1aae287ba8846c11563c4b17a98e220b54" kindref="member">code_t</ref></type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref></type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="115" column="1" bodyfile="libopenage/input/event.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a1ed6390f49c4ed6eb562aa830c9a758b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::input::Event::Event</definition>
+        <argsstring>(event_class cl, const std::string &amp;, modset_t mod)</argsstring>
+        <name>Event</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref></type>
+          <declname>cl</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <defname>text</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref></type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="116" column="1" bodyfile="libopenage/input/event.cpp" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a99740091e0cdf50a32f93b70967df361" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char openage::input::Event::as_char</definition>
+        <argsstring>() const</argsstring>
+        <name>as_char</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return keyboard text as char returns 0 for non-text events </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="122" column="1" bodyfile="libopenage/input/event.cpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a1c423e3dac033838c02e10a69c521056" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::input::Event::as_utf8</definition>
+        <argsstring>() const</argsstring>
+        <name>as_utf8</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a utf encoded char or an empty string for non-utf8 events </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="128" column="1" bodyfile="libopenage/input/event.cpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::input::Event::info</definition>
+        <argsstring>() const</argsstring>
+        <name>info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>logable debug info </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="133" column="1" bodyfile="libopenage/input/event.cpp" bodystart="69" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1input_1_1_event_1a63c37062819178a819bfbb553c353f17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::input::Event::operator==</definition>
+        <argsstring>(const Event &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="135" column="1" bodyfile="libopenage/input/event.cpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Input event, as triggered by some input device like mouse, kezb, joystick, tablet, microwave or dildo. Some modifier keys may also be pressed during the event. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1417">
+        <label>openage::input::Event</label>
+        <link refid="classopenage_1_1input_1_1_event"/>
+        <childnode refid="1418" relation="usage">
+          <edgelabel>+cc</edgelabel>
+        </childnode>
+      </node>
+      <node id="1418">
+        <label>openage::input::ClassCode</label>
+        <link refid="classopenage_1_1input_1_1_class_code"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/input/event.h" line="113" column="1" bodyfile="libopenage/input/event.h" bodystart="113" bodyend="140"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1input_1_1_event_1a99740091e0cdf50a32f93b70967df361" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>as_char</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1a1c423e3dac033838c02e10a69c521056" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>as_utf8</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>cc</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1ad9b6a91a005fc0ca700694d9ecb597af" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>Event</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1a1ed6390f49c4ed6eb562aa830c9a758b" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>Event</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1a241514ea09af26b4f9bd106dbf79475d" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>info</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>mod</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1a63c37062819178a819bfbb553c353f17" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1input_1_1_event_1a0b02a6e43b8ce3aec0ab4c99d54e33ac" prot="public" virt="non-virtual"><scope>openage::input::Event</scope><name>utf8</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

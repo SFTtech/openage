@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__logic__caller_8h" kind="file" language="C++">
+    <compoundname>game_logic_caller.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes local="no">QObject</includes>
+    <includedby refid="gui__item_8h" local="yes">libopenage/gui/guisys/link/gui_item.h</includedby>
+    <includedby refid="game__logic__caller_8cpp" local="yes">libopenage/gui/guisys/private/game_logic_caller.cpp</includedby>
+    <incdepgraph>
+      <node id="12914">
+        <label>functional</label>
+      </node>
+      <node id="12915">
+        <label>QObject</label>
+      </node>
+      <node id="12913">
+        <label>libopenage/gui/guisys/private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12914" relation="include">
+        </childnode>
+        <childnode refid="12915" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="12932">
+        <label>libopenage/gui/integration/private/gui_image_provider_link.cpp</label>
+        <link refid="gui__image__provider__link_8cpp"/>
+      </node>
+      <node id="12931">
+        <label>libopenage/gui/game_spec_link.h</label>
+        <link refid="game__spec__link_8h"/>
+        <childnode refid="12928" relation="include">
+        </childnode>
+        <childnode refid="12926" relation="include">
+        </childnode>
+        <childnode refid="12932" relation="include">
+        </childnode>
+      </node>
+      <node id="12937">
+        <label>libopenage/gui/guisys/link/gui_list_model.cpp</label>
+        <link refid="gui__list__model_8cpp"/>
+      </node>
+      <node id="12940">
+        <label>libopenage/gui/guisys/private/livereload/gui_live_reloader.cpp</label>
+        <link refid="gui__live__reloader_8cpp"/>
+      </node>
+      <node id="12918">
+        <label>libopenage/gui/game_control_link.h</label>
+        <link refid="game__control__link_8h"/>
+        <childnode refid="12919" relation="include">
+        </childnode>
+        <childnode refid="12920" relation="include">
+        </childnode>
+        <childnode refid="12921" relation="include">
+        </childnode>
+        <childnode refid="12922" relation="include">
+        </childnode>
+        <childnode refid="12923" relation="include">
+        </childnode>
+      </node>
+      <node id="12919">
+        <label>libopenage/gui/actions_list_model.h</label>
+        <link refid="actions__list__model_8h"/>
+        <childnode refid="12920" relation="include">
+        </childnode>
+      </node>
+      <node id="12917">
+        <label>libopenage/gui/guisys/link/gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12918" relation="include">
+        </childnode>
+        <childnode refid="12924" relation="include">
+        </childnode>
+        <childnode refid="12927" relation="include">
+        </childnode>
+        <childnode refid="12931" relation="include">
+        </childnode>
+        <childnode refid="12933" relation="include">
+        </childnode>
+        <childnode refid="12936" relation="include">
+        </childnode>
+        <childnode refid="12938" relation="include">
+        </childnode>
+        <childnode refid="12939" relation="include">
+        </childnode>
+        <childnode refid="12940" relation="include">
+        </childnode>
+      </node>
+      <node id="12921">
+        <label>libopenage/gui/category_contents_list_model.cpp</label>
+        <link refid="category__contents__list__model_8cpp"/>
+      </node>
+      <node id="12920">
+        <label>libopenage/gui/actions_list_model.cpp</label>
+        <link refid="actions__list__model_8cpp"/>
+      </node>
+      <node id="12938">
+        <label>libopenage/gui/guisys/link/gui_item.cpp</label>
+        <link refid="gui__item_8cpp"/>
+      </node>
+      <node id="12935">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+      </node>
+      <node id="12928">
+        <label>libopenage/gui/game_creator.cpp</label>
+        <link refid="game__creator_8cpp"/>
+      </node>
+      <node id="12927">
+        <label>libopenage/gui/game_main_link.h</label>
+        <link refid="game__main__link_8h"/>
+        <childnode refid="12922" relation="include">
+        </childnode>
+        <childnode refid="12928" relation="include">
+        </childnode>
+        <childnode refid="12929" relation="include">
+        </childnode>
+        <childnode refid="12930" relation="include">
+        </childnode>
+      </node>
+      <node id="12925">
+        <label>libopenage/gui/assetmanager_link.cpp</label>
+        <link refid="assetmanager__link_8cpp"/>
+      </node>
+      <node id="12941">
+        <label>libopenage/gui/guisys/private/game_logic_caller.cpp</label>
+        <link refid="game__logic__caller_8cpp"/>
+      </node>
+      <node id="12924">
+        <label>libopenage/gui/assetmanager_link.h</label>
+        <link refid="assetmanager__link_8h"/>
+        <childnode refid="12925" relation="include">
+        </childnode>
+        <childnode refid="12926" relation="include">
+        </childnode>
+      </node>
+      <node id="12934">
+        <label>libopenage/gui/generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12928" relation="include">
+        </childnode>
+        <childnode refid="12930" relation="include">
+        </childnode>
+        <childnode refid="12935" relation="include">
+        </childnode>
+      </node>
+      <node id="12936">
+        <label>libopenage/gui/guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12934" relation="include">
+        </childnode>
+      </node>
+      <node id="12922">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="12939">
+        <label>libopenage/gui/guisys/private/gui_subtree_impl.cpp</label>
+        <link refid="gui__subtree__impl_8cpp"/>
+      </node>
+      <node id="12933">
+        <label>libopenage/gui/guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12934" relation="include">
+        </childnode>
+        <childnode refid="12936" relation="include">
+        </childnode>
+        <childnode refid="12937" relation="include">
+        </childnode>
+      </node>
+      <node id="12929">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="12916">
+        <label>libopenage/gui/guisys/private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12917" relation="include">
+        </childnode>
+        <childnode refid="12941" relation="include">
+        </childnode>
+      </node>
+      <node id="12930">
+        <label>libopenage/gui/game_saver.cpp</label>
+        <link refid="game__saver_8cpp"/>
+      </node>
+      <node id="12923">
+        <label>libopenage/gui/resources_list_model.cpp</label>
+        <link refid="resources__list__model_8cpp"/>
+      </node>
+      <node id="12926">
+        <label>libopenage/gui/game_spec_link.cpp</label>
+        <link refid="game__spec__link_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classqtsdl_1_1_game_logic_caller" prot="public">qtsdl::GameLogicCaller</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiCallback;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classqtsdl_1_1_game_logic_caller" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classqtsdl_1_1_game_logic_caller" kindref="compound">GameLogicCaller</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" kindref="member">GameLogicCaller</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" kindref="member">set_game_logic_callback</ref>(<ref refid="classqtsdl_1_1_gui_callback" kindref="compound">GuiCallback</ref><sp/>*game_logic_callback);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">in_game_logic_thread</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;&amp;<sp/>f)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" kindref="member">in_game_logic_thread_blocking</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;&amp;<sp/>f)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/game_logic_caller.h"/>
+  </compounddef>
+</doxygen>

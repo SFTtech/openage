@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_ee52762a54ed24851c9ca23cf72f1a00" kind="dir">
+    <compoundname>libopenage/gui/guisys/public</compoundname>
+    <innerfile refid="gui__application_8cpp">gui_application.cpp</innerfile>
+    <innerfile refid="gui__application_8h">gui_application.h</innerfile>
+    <innerfile refid="gui__engine_8cpp">gui_engine.cpp</innerfile>
+    <innerfile refid="gui__engine_8h">gui_engine.h</innerfile>
+    <innerfile refid="gui__event__queue_8cpp">gui_event_queue.cpp</innerfile>
+    <innerfile refid="gui__event__queue_8h">gui_event_queue.h</innerfile>
+    <innerfile refid="gui__image__provider_8cpp">gui_image_provider.cpp</innerfile>
+    <innerfile refid="gui__image__provider_8h">gui_image_provider.h</innerfile>
+    <innerfile refid="gui__input_8cpp">gui_input.cpp</innerfile>
+    <innerfile refid="gui__input_8h">gui_input.h</innerfile>
+    <innerfile refid="gui__property__map_8cpp">gui_property_map.cpp</innerfile>
+    <innerfile refid="gui__property__map_8h">gui_property_map.h</innerfile>
+    <innerfile refid="gui__renderer_8cpp">gui_renderer.cpp</innerfile>
+    <innerfile refid="gui__renderer_8h">gui_renderer.h</innerfile>
+    <innerfile refid="gui__singleton__items__info_8h">gui_singleton_items_info.h</innerfile>
+    <innerfile refid="gui__subtree_8cpp">gui_subtree.cpp</innerfile>
+    <innerfile refid="gui__subtree_8h">gui_subtree.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gui/guisys/public/"/>
+  </compounddef>
+</doxygen>

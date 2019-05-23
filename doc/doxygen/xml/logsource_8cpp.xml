@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="logsource_8cpp" kind="file" language="C++">
+    <compoundname>logsource.cpp</compoundname>
+    <includes refid="logsource_8h" local="yes">logsource.h</includes>
+    <includes refid="compiler_8h" local="yes">../util/compiler.h</includes>
+    <includes refid="logsink_8h" local="yes">logsink.h</includes>
+    <includes refid="stdout__logsink_8h" local="yes">stdout_logsink.h</includes>
+    <incdepgraph>
+      <node id="17726">
+        <label>list</label>
+      </node>
+      <node id="17711">
+        <label>atomic</label>
+      </node>
+      <node id="17722">
+        <label>iomanip</label>
+      </node>
+      <node id="17721">
+        <label>functional</label>
+      </node>
+      <node id="17706">
+        <label>cstdint</label>
+      </node>
+      <node id="17703">
+        <label>logsource.h</label>
+        <link refid="logsource_8h"/>
+        <childnode refid="17704" relation="include">
+        </childnode>
+        <childnode refid="17705" relation="include">
+        </childnode>
+      </node>
+      <node id="17719">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="17720" relation="include">
+        </childnode>
+        <childnode refid="17721" relation="include">
+        </childnode>
+        <childnode refid="17722" relation="include">
+        </childnode>
+        <childnode refid="17712" relation="include">
+        </childnode>
+        <childnode refid="17723" relation="include">
+        </childnode>
+        <childnode refid="17704" relation="include">
+        </childnode>
+        <childnode refid="17724" relation="include">
+        </childnode>
+      </node>
+      <node id="17725">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="17726" relation="include">
+        </childnode>
+        <childnode refid="17727" relation="include">
+        </childnode>
+        <childnode refid="17728" relation="include">
+        </childnode>
+      </node>
+      <node id="17720">
+        <label>cstdarg</label>
+      </node>
+      <node id="17704">
+        <label>string</label>
+      </node>
+      <node id="17705">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="17706" relation="include">
+        </childnode>
+        <childnode refid="17704" relation="include">
+        </childnode>
+        <childnode refid="17707" relation="include">
+        </childnode>
+        <childnode refid="17708" relation="include">
+        </childnode>
+        <childnode refid="17710" relation="include">
+        </childnode>
+        <childnode refid="17725" relation="include">
+        </childnode>
+        <childnode refid="17728" relation="include">
+        </childnode>
+      </node>
+      <node id="17708">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="17709" relation="include">
+        </childnode>
+      </node>
+      <node id="17710">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="17711" relation="include">
+        </childnode>
+        <childnode refid="17712" relation="include">
+        </childnode>
+        <childnode refid="17713" relation="include">
+        </childnode>
+        <childnode refid="17714" relation="include">
+        </childnode>
+        <childnode refid="17717" relation="include">
+        </childnode>
+        <childnode refid="17719" relation="include">
+        </childnode>
+      </node>
+      <node id="17702">
+        <label>libopenage/log/logsource.cpp</label>
+        <link refid="logsource_8cpp"/>
+        <childnode refid="17703" relation="include">
+        </childnode>
+        <childnode refid="17714" relation="include">
+        </childnode>
+        <childnode refid="17725" relation="include">
+        </childnode>
+        <childnode refid="17731" relation="include">
+        </childnode>
+      </node>
+      <node id="17730">
+        <label>typeinfo</label>
+      </node>
+      <node id="17724">
+        <label>vector</label>
+      </node>
+      <node id="17715">
+        <label>ciso646</label>
+      </node>
+      <node id="17723">
+        <label>sstream</label>
+      </node>
+      <node id="17714">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="17715" relation="include">
+        </childnode>
+        <childnode refid="17704" relation="include">
+        </childnode>
+        <childnode refid="17716" relation="include">
+        </childnode>
+      </node>
+      <node id="17716">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="17716" relation="include">
+        </childnode>
+      </node>
+      <node id="17717">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="17718" relation="include">
+        </childnode>
+        <childnode refid="17704" relation="include">
+        </childnode>
+      </node>
+      <node id="17728">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="17729" relation="include">
+        </childnode>
+      </node>
+      <node id="17709">
+        <label>cstdlib</label>
+      </node>
+      <node id="17718">
+        <label>iostream</label>
+      </node>
+      <node id="17727">
+        <label>mutex</label>
+      </node>
+      <node id="17713">
+        <label>type_traits</label>
+      </node>
+      <node id="17707">
+        <label>config.h</label>
+      </node>
+      <node id="17712">
+        <label>memory</label>
+      </node>
+      <node id="17731">
+        <label>stdout_logsink.h</label>
+        <link refid="stdout__logsink_8h"/>
+        <childnode refid="17725" relation="include">
+        </childnode>
+      </node>
+      <node id="17729">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="17718" relation="include">
+        </childnode>
+        <childnode refid="17730" relation="include">
+        </childnode>
+        <childnode refid="17714" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logsource_8h" kindref="compound">logsource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/compiler.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logsink_8h" kindref="compound">logsink.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stdout__logsink_8h" kindref="compound">stdout_logsink.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1log_1_1_log_source_1aa2ff50c079c20b6ff1dfa08f45080b0a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_log_source_1aa2ff50c079c20b6ff1dfa08f45080b0a" kindref="member">LogSource::LogSource</ref>()</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>logger_id{<ref refid="classopenage_1_1log_1_1_log_source_1a10cb7dc55a04eb782bbed1d4dbc688bf" kindref="member">LogSource::get_unique_logger_id</ref>()}<sp/>{}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_source_1a5640099e20af4cd368c767dbcef3a1df" kindref="member">LogSource::log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref><sp/>&amp;msg)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ensure<sp/>that<sp/>the<sp/>global<sp/>stdoutsink<sp/>has<sp/>been<sp/>constructed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(and<sp/>thus<sp/>at<sp/>least<sp/>one<sp/>sink<sp/>exists).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" kindref="member">global_stdoutsink</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_log_sink_list_1a2d47416fab12651553b4b58c86fd6f84" kindref="member">LogSinkList::instance</ref>().<ref refid="classopenage_1_1log_1_1_log_sink_list_1a8456b84ab55e1fe151c51438c5bfebdd" kindref="member">log</ref>(msg,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1log_1_1_log_source_1a10cb7dc55a04eb782bbed1d4dbc688bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_source_1a10cb7dc55a04eb782bbed1d4dbc688bf" kindref="member">LogSource::get_unique_logger_id</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Strictly-monotonically<sp/>increasing<sp/>counter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::atomic&lt;size_t&gt;<sp/>ctr{0};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ctr++;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/log/logsource.cpp"/>
+  </compounddef>
+</doxygen>

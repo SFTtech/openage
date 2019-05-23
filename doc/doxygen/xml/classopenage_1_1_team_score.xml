@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_team_score" kind="class" language="C++" prot="public">
+    <compoundname>openage::TeamScore</compoundname>
+    <basecompoundref refid="classopenage_1_1_score" prot="public" virt="non-virtual">openage::Score</basecompoundref>
+    <includes refid="score_8h" local="no">score.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_team_score_1aeb59d0d8fe3ea34b2711054911218b15" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_team" kindref="compound">Team</ref> *</type>
+        <definition>Team* openage::TeamScore::team</definition>
+        <argsstring></argsstring>
+        <name>team</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/score.h" line="117" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_team_score_1af536dd5a6cc198597d43d3656392e7d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::TeamScore::TeamScore</definition>
+        <argsstring>(Team *team)</argsstring>
+        <name>TeamScore</name>
+        <param>
+          <type><ref refid="classopenage_1_1_team" kindref="compound">Team</ref> *</type>
+          <declname>team</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/score.h" line="109" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="71" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::TeamScore::update_score</definition>
+        <argsstring>() override</argsstring>
+        <name>update_score</name>
+        <reimplements refid="classopenage_1_1_score_1ad71b795068636d35bd174acde2e080fd">update_score</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculates the total score from the sub-scores. TODO update gui here </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/score.h" line="111" column="1" bodyfile="libopenage/gamestate/score.cpp" bodystart="77" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The score of a team </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4321">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="4322" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4322">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4323">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="4324" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4325" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="4324">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="4325">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="4323" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/score.h" line="106" column="1" bodyfile="libopenage/gamestate/score.h" bodystart="106" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_score_1ab03c4138b0129edb062c498f4393b8ba" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>add_score</name></member>
+      <member refid="classopenage_1_1_score_1aeac024481d04808435d7a31fa3eb2d0e" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>add_score</name></member>
+      <member refid="classopenage_1_1_score_1a544fc32ebabe81bb0122dcd4ea9c7931" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>get_score</name></member>
+      <member refid="classopenage_1_1_score_1af89e51c1d6fa79f4c919ab3149ecabd4" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>get_score</name></member>
+      <member refid="classopenage_1_1_score_1aaae75d0638c4c4f1dbd9905d39855821" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>get_score_total</name></member>
+      <member refid="classopenage_1_1_score_1a7867975c457c1de476f8d5ecd1ae452f" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>remove_score</name></member>
+      <member refid="classopenage_1_1_score_1aa5c379cb015205d10950f61b40a51f10" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>remove_score</name></member>
+      <member refid="classopenage_1_1_score_1a016dd90c78d38ec3009b61b49a937960" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>Score</name></member>
+      <member refid="classopenage_1_1_score_1a34656b36845ee87f8678156079551a7f" prot="protected" virt="non-virtual"><scope>openage::TeamScore</scope><name>score</name></member>
+      <member refid="classopenage_1_1_score_1a88422345732818ee036e2f25898c08ef" prot="protected" virt="non-virtual"><scope>openage::TeamScore</scope><name>score_total</name></member>
+      <member refid="classopenage_1_1_team_score_1aeb59d0d8fe3ea34b2711054911218b15" prot="private" virt="non-virtual"><scope>openage::TeamScore</scope><name>team</name></member>
+      <member refid="classopenage_1_1_team_score_1af536dd5a6cc198597d43d3656392e7d0" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>TeamScore</name></member>
+      <member refid="classopenage_1_1_score_1a6a66aa42a2fc87950c5b26ed4a4ce6fb" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>update_map_explored</name></member>
+      <member refid="classopenage_1_1_score_1a692b0ccf6ec945e3cb5e8540b6b9abc6" prot="public" virt="non-virtual"><scope>openage::TeamScore</scope><name>update_resources</name></member>
+      <member refid="classopenage_1_1_team_score_1ad1af15c7921ffc8ffc57c04b3c8084ff" prot="public" virt="virtual"><scope>openage::TeamScore</scope><name>update_score</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

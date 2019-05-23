@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="main_8h" kind="file" language="C++">
+    <compoundname>main.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">cstdint</includes>
+    <includes refid="util_2path_8h" local="yes">util/path.h</includes>
+    <includedby refid="main_8cpp" local="yes">libopenage/main.cpp</includedby>
+    <incdepgraph>
+      <node id="7280">
+        <label>list</label>
+      </node>
+      <node id="7272">
+        <label>atomic</label>
+      </node>
+      <node id="7277">
+        <label>iomanip</label>
+      </node>
+      <node id="7256">
+        <label>functional</label>
+      </node>
+      <node id="7284">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+      </node>
+      <node id="7250">
+        <label>cstdint</label>
+      </node>
+      <node id="7275">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="7276" relation="include">
+        </childnode>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7277" relation="include">
+        </childnode>
+        <childnode refid="7265" relation="include">
+        </childnode>
+        <childnode refid="7278" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+      </node>
+      <node id="7262">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="7263" relation="include">
+        </childnode>
+      </node>
+      <node id="7266">
+        <label>stdexcept</label>
+      </node>
+      <node id="7261">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="7279">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="7280" relation="include">
+        </childnode>
+        <childnode refid="7257" relation="include">
+        </childnode>
+        <childnode refid="7281" relation="include">
+        </childnode>
+      </node>
+      <node id="7276">
+        <label>cstdarg</label>
+      </node>
+      <node id="7249">
+        <label>string</label>
+      </node>
+      <node id="7267">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7268" relation="include">
+        </childnode>
+        <childnode refid="7269" relation="include">
+        </childnode>
+        <childnode refid="7271" relation="include">
+        </childnode>
+        <childnode refid="7279" relation="include">
+        </childnode>
+        <childnode refid="7281" relation="include">
+        </childnode>
+      </node>
+      <node id="7269">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="7270" relation="include">
+        </childnode>
+      </node>
+      <node id="7271">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="7272" relation="include">
+        </childnode>
+        <childnode refid="7265" relation="include">
+        </childnode>
+        <childnode refid="7273" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+        <childnode refid="7274" relation="include">
+        </childnode>
+        <childnode refid="7275" relation="include">
+        </childnode>
+      </node>
+      <node id="7253">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+        <childnode refid="7254" relation="include">
+        </childnode>
+        <childnode refid="7255" relation="include">
+        </childnode>
+      </node>
+      <node id="7263">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="7264" relation="include">
+        </childnode>
+        <childnode refid="7265" relation="include">
+        </childnode>
+        <childnode refid="7266" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+        <childnode refid="7267" relation="include">
+        </childnode>
+      </node>
+      <node id="7283">
+        <label>typeinfo</label>
+      </node>
+      <node id="7252">
+        <label>vector</label>
+      </node>
+      <node id="7259">
+        <label>ciso646</label>
+      </node>
+      <node id="7278">
+        <label>sstream</label>
+      </node>
+      <node id="7258">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="7259" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7260" relation="include">
+        </childnode>
+      </node>
+      <node id="7285">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="7265" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+        <childnode refid="7286" relation="include">
+        </childnode>
+        <childnode refid="7253" relation="include">
+        </childnode>
+      </node>
+      <node id="7260">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="7260" relation="include">
+        </childnode>
+      </node>
+      <node id="7274">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="7264" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+      </node>
+      <node id="7281">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="7282" relation="include">
+        </childnode>
+      </node>
+      <node id="7287">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="7286">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="7264" relation="include">
+        </childnode>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+      </node>
+      <node id="7270">
+        <label>cstdlib</label>
+      </node>
+      <node id="7264">
+        <label>iostream</label>
+      </node>
+      <node id="7255">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7257" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+        <childnode refid="7261" relation="include">
+        </childnode>
+        <childnode refid="7262" relation="include">
+        </childnode>
+        <childnode refid="7284" relation="include">
+        </childnode>
+      </node>
+      <node id="7257">
+        <label>mutex</label>
+      </node>
+      <node id="7251">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+        <childnode refid="7253" relation="include">
+        </childnode>
+        <childnode refid="7285" relation="include">
+        </childnode>
+        <childnode refid="7287" relation="include">
+        </childnode>
+      </node>
+      <node id="7248">
+        <label>libopenage/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7251" relation="include">
+        </childnode>
+      </node>
+      <node id="7254">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="7273">
+        <label>type_traits</label>
+      </node>
+      <node id="7268">
+        <label>config.h</label>
+      </node>
+      <node id="7265">
+        <label>memory</label>
+      </node>
+      <node id="7282">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="7264" relation="include">
+        </childnode>
+        <childnode refid="7283" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7289">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7288">
+        <label>libopenage/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="7289" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1main__arguments" prot="public">openage::main_arguments</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp<sp/>cimport<sp/>bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libcpp.string<sp/>cimport<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libc.stdint<sp/>cimport<sp/>int32_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.util.path<sp/>cimport<sp/>Path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_2path_8h" kindref="compound">util/path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structopenage_1_1main__arguments" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/><ref refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" kindref="member">root_path</ref>;</highlight></codeline>
+<codeline lineno="29" refid="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/><ref refid="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" kindref="member">fps_limit</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" kindref="member">gl_debug</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a6d1bbdba1ef04b571d6e84020406312e" kindref="member">run_game</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref><sp/>&amp;args);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/main.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1compress_1_1_bit_stream" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::compress::BitStream</compoundname>
+    <includes refid="bitstream_8h" local="no">bitstream.h</includes>
+    <templateparamlist>
+      <param>
+        <type>unsigned int</type>
+        <declname>inbuf_size</declname>
+        <defname>inbuf_size</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" prot="public" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::BitStream&lt; inbuf_size &gt;::eof</definition>
+        <argsstring></argsstring>
+        <name>eof</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true if the read callback has returned EOF. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="74" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref></type>
+        <definition>read_callback_t openage::util::compress::BitStream&lt; inbuf_size &gt;::read_callback</definition>
+        <argsstring></argsstring>
+        <name>read_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read callback function; invoked whenever the input buffer is empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="80" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::BitStream&lt; inbuf_size &gt;::inbuf[inbuf_size]</definition>
+        <argsstring>[inbuf_size]</argsstring>
+        <name>inbuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Input byte buffer. Used by both modes (via ensure_bits and read_bytes). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="86" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" prot="private" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* openage::util::compress::BitStream&lt; inbuf_size &gt;::i_ptr</definition>
+        <argsstring></argsstring>
+        <name>i_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to current position in inbuf. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="91" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" prot="private" static="no" mutable="no">
+        <type>unsigned char *</type>
+        <definition>unsigned char* openage::util::compress::BitStream&lt; inbuf_size &gt;::i_end</definition>
+        <argsstring></argsstring>
+        <name>i_end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to end of valid data in inbuf. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="96" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::BitStream&lt; inbuf_size &gt;::bit_buffer</definition>
+        <argsstring></argsstring>
+        <name>bit_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bit buffer; used in bitstream mode. Filled by via get_next_byte() via <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" kindref="member">ensure_bits()</ref>, read by peak_bits(), cleared by <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" kindref="member">remove_bits()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="104" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::BitStream&lt; inbuf_size &gt;::bits_left</definition>
+        <argsstring></argsstring>
+        <name>bits_left</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of valid bits in bit_buffer. If e.g. the value is 2, only the two most significant bits of bit_buffer are set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="111" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::util::compress::BitStream&lt; inbuf_size &gt;::stream_position</definition>
+        <argsstring></argsstring>
+        <name>stream_position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>counts the number of bits (in bitstream mode) or bytes (in bytestream mode), for determining the correct number of bits/bytes to discard. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="117" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::compress::BitStream&lt; inbuf_size &gt;::bitstream_mode</definition>
+        <argsstring></argsstring>
+        <name>bitstream_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If set, the bitstream is currently in bytestream mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="122" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a50503bd5290c8f14fae50bd980edc92a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>maxsymbols_p</declname>
+            <defname>maxsymbols_p</defname>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>tablebits_p</declname>
+            <defname>tablebits_p</defname>
+          </param>
+          <param>
+            <type>bool</type>
+            <declname>allow_empty</declname>
+            <defname>allow_empty</defname>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class HuffmanTable</definition>
+        <argsstring></argsstring>
+        <name>HuffmanTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="178" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::BitStream&lt; inbuf_size &gt;::input_bytes_available</definition>
+        <argsstring>()</argsstring>
+        <name>input_bytes_available</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the number of bytes that are available in the input byte buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="127" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="127" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::ensure_input_bytes</definition>
+        <argsstring>()</argsstring>
+        <name>ensure_input_bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ensures that at least one byte is available in the input byte buffer.</para>
+<para>returns the amount of available bytes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="140" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="140" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::load_next_16_bits</definition>
+        <argsstring>()</argsstring>
+        <name>load_next_16_bits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>loads the next 16-bit value into the bitstream. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="185" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="185" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::ensure_bits</definition>
+        <argsstring>(unsigned int nbits)</argsstring>
+        <name>ensure_bits</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nbits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>ensures there are at least nbits bits in the bit buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="214" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="214" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::compress::BitStream&lt; inbuf_size &gt;::peek_bits</definition>
+        <argsstring>(unsigned int nbits)</argsstring>
+        <name>peek_bits</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nbits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>returns nbits bits from the bit buffer, without removing them. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="229" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="229" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::remove_bits</definition>
+        <argsstring>(unsigned int nbits)</argsstring>
+        <name>remove_bits</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nbits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>removes nbits bits from the bit buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="247" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="247" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::align_bitstream</definition>
+        <argsstring>(unsigned int min_discard=0)</argsstring>
+        <name>align_bitstream</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>min_discard</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>Aligns the bitstream to the next multiple of 2 bytes.</para>
+<para>If min_discard is given, at least that amount of bits is discarded. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="269" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="269" bodyend="292"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a58f06b5edf346fb0c963a2f2c246021e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::compress::BitStream&lt; inbuf_size &gt;::BitStream</definition>
+        <argsstring>(read_callback_t read_callback)</argsstring>
+        <name>BitStream</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref></type>
+          <declname>read_callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="295" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="295" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::compress::BitStream&lt; inbuf_size &gt;::read_bits</definition>
+        <argsstring>(unsigned int nbits)</argsstring>
+        <name>read_bits</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nbits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bitstream mode.</para>
+<para>takes nbits bits from the bit buffer and returns them. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="315" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="315" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned openage::util::compress::BitStream&lt; inbuf_size &gt;::read_bytes</definition>
+        <argsstring>(unsigned char *buf, unsigned count)</argsstring>
+        <name>read_bytes</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bytestream mode.</para>
+<para>reads up to count verbatim bytes from the input byte buffer, and writes them to *buf.</para>
+<para>reads at least 1 and at most count bytes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="329" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="329" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char openage::util::compress::BitStream&lt; inbuf_size &gt;::read_single_byte</definition>
+        <argsstring>()</argsstring>
+        <name>read_single_byte</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bytestream mode.</para>
+<para>reads a single verbatim byte from the input byte buffer, and returns it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="353" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="353" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::util::compress::BitStream&lt; inbuf_size &gt;::read_4bytes_le</definition>
+        <argsstring>()</argsstring>
+        <name>read_4bytes_le</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>for use in bytestream mode.</para>
+<para>reads a little-endian-encoded 4-byte number and returns it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="368" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="368" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::switch_to_bitstream_mode</definition>
+        <argsstring>()</argsstring>
+        <name>switch_to_bitstream_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Switches to bitstream mode.</para>
+<para>If the previous bytestream had an odd size, one byte is discarded first. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="384" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="384" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::switch_to_bytestream_mode</definition>
+        <argsstring>()</argsstring>
+        <name>switch_to_bytestream_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Switches to bytestream mode.</para>
+<para>Discards 1 to 16 bits to align the bitstream first. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="406" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="406" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::compress::BitStream&lt; inbuf_size &gt;::align_if_in_bitstream_mode</definition>
+        <argsstring>()</argsstring>
+        <name>align_if_in_bitstream_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Aligns the bitstream - that is, <emphasis>if</emphasis> we&apos;re currenlty in bitstream mode.</para>
+<para>Otherwise, a no-op. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compress/bitstream.h" line="428" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="428" bodyend="432"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Bitstream that is stored in 16-bit little-endian numbers. There are two modes:</para>
+<para><heading level="2">Bit stream </heading>
+</para>
+<para>This is the default mode. Bits may be retrieved via <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" kindref="member">read_bits()</ref>.</para>
+<para>The input bytes</para>
+<para>0babcdefgh 0bijklmnop 0bmnopqrst 0buvwxyzAB</para>
+<para>are decoded to the following bitstream:</para>
+<para>ijkl mnop abcd efgh uvwx yzAB mnop qrst</para>
+<para>Someone should get a medal for this.</para>
+<para><heading level="2">Byte stream </heading>
+</para>
+<para>In bytestream mode, <ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" kindref="member">read_bytes()</ref> can be used to read any number of bytes, verbatim, from the data source.</para>
+<para><heading level="2">Mode switching </heading>
+</para>
+<para>You can switch between modes via</para>
+<para><itemizedlist>
+<listitem><para><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" kindref="member">switch_to_bytestream_mode()</ref></para>
+</listitem><listitem><para><ref refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" kindref="member">switch_to_bitstream_mode()</ref></para>
+</listitem></itemizedlist>
+</para>
+<para>Every modeswitch aligns the stream to a 16-bit boundary by discarding the appropriate amount of nullbits/nullbytes. Calling the modeswitch methods while already in the respective mode does nothing. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="569">
+        <label>openage::util::compress::BitStream&lt; inbuf_size &gt;</label>
+        <link refid="classopenage_1_1util_1_1compress_1_1_bit_stream"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/compress/bitstream.h" line="69" column="1" bodyfile="libopenage/util/compress/bitstream.h" bodystart="69" bodyend="433"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a29bf6b73c439be6e72434af82309bc54" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>align_bitstream</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a9740c842e2425f54ddfc168c0df8bb" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>align_if_in_bitstream_mode</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1affde2836bacf9c151d2e948c6a63142c" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>bit_buffer</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a21ca9188361a3509167a4aec70f31f75" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>bits_left</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a58f06b5edf346fb0c963a2f2c246021e" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>BitStream</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ad394c424cb9dce3e7c79e07dacafee60" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>bitstream_mode</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a5a9875f4e718027a319d43a5939d9d95" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>ensure_bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a9acf1a67f1d14213c39e611068f8d435" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>ensure_input_bytes</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af838909174b3ceb524b2a84d601eae40" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>eof</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a50503bd5290c8f14fae50bd980edc92a" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>HuffmanTable</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ae7ce94956c72390c58d9a73752b4b78a" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>i_end</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a135389936c8b0ccb1040d3dfcb891fcb" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>i_ptr</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aa35e71c7747a466560300921128c0311" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>inbuf</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a3dd5d41385065ddc49e0038916e68197" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>input_bytes_available</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaca412bb0ba077bf3239ec39b1f2fa82" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>load_next_16_bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2bb87ab9b57a3a5ef8f492c4cbe12b40" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>peek_bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a80c91d5b7ddc061dd9082827286f0e1e" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>read_4bytes_le</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af4522bbae0ee989e1f5b45606fb2e673" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>read_bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1ac38c2ac02d9fa968f2c3e74a404e4014" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>read_bytes</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a2cb36e4bf92437f4d9f6a9f56709c5d4" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>read_callback</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a32ee58040a10ca9b1b347f7d535d6439" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>read_single_byte</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a7a6ffb1cd9c139eeaf11f1bfec7bc444" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>remove_bits</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1aaba7eceb80262c8b4e5c8e5bef734b41" prot="private" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>stream_position</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1a0a33a092ac1b0b664ecf4ced11e1a313" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>switch_to_bitstream_mode</name></member>
+      <member refid="classopenage_1_1util_1_1compress_1_1_bit_stream_1af9c25fda38455fbfc348a777e109d03e" prot="public" virt="non-virtual"><scope>openage::util::compress::BitStream</scope><name>switch_to_bytestream_mode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

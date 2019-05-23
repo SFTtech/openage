@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="opengl__debug__logger_8h" kind="file" language="C++">
+    <compoundname>opengl_debug_logger.h</compoundname>
+    <includes local="no">QOpenGLFunctions</includes>
+    <includedby refid="gui__ctx__setup_8cpp" local="yes">libopenage/gui/guisys/private/gui_ctx_setup.cpp</includedby>
+    <includedby refid="opengl__debug__logger_8cpp" local="yes">libopenage/gui/guisys/private/opengl_debug_logger.cpp</includedby>
+    <incdepgraph>
+      <node id="13413">
+        <label>libopenage/gui/guisys/private/opengl_debug_logger.h</label>
+        <link refid="opengl__debug__logger_8h"/>
+        <childnode refid="13414" relation="include">
+        </childnode>
+      </node>
+      <node id="13414">
+        <label>QOpenGLFunctions</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13415">
+        <label>libopenage/gui/guisys/private/opengl_debug_logger.h</label>
+        <link refid="opengl__debug__logger_8h"/>
+        <childnode refid="13416" relation="include">
+        </childnode>
+        <childnode refid="13417" relation="include">
+        </childnode>
+      </node>
+      <node id="13416">
+        <label>libopenage/gui/guisys/private/gui_ctx_setup.cpp</label>
+        <link refid="gui__ctx__setup_8cpp"/>
+      </node>
+      <node id="13417">
+        <label>libopenage/gui/guisys/private/opengl_debug_logger.cpp</label>
+        <link refid="opengl__debug__logger_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structqtsdl_1_1gl__debug__parameters" prot="public">qtsdl::gl_debug_parameters</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QOpenGLFunctions&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">QT_FORWARD_DECLARE_CLASS(QOpenGLContext)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="10" refid="structqtsdl_1_1gl__debug__parameters" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structqtsdl_1_1gl__debug__parameters" kindref="compound">gl_debug_parameters</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1gl__debug__parameters_1a3c0f773866f167abd3ae8a8eb5f20b81" kindref="member">is_debug</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLvoid<sp/>*<ref refid="structqtsdl_1_1gl__debug__parameters_1a3335cbc888aa1e8af4eaeeb04a12d8b0" kindref="member">callback</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structqtsdl_1_1gl__debug__parameters_1a5385ec6236d57a59258093b560a84bfe" kindref="member">synchronous</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="structqtsdl_1_1gl__debug__parameters" kindref="compound">gl_debug_parameters</ref><sp/><ref refid="namespaceqtsdl_1ac53ee23059783401c6e7bcdfc1dfd314" kindref="member">get_current_opengl_debug_parameters</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QOpenGLContext<sp/>&amp;current_source_context);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceqtsdl_1ab9d9e0ee6419f87d80c1ed0067c3c08f" kindref="member">apply_opengl_debug_parameters</ref>(<ref refid="structqtsdl_1_1gl__debug__parameters" kindref="compound">gl_debug_parameters</ref><sp/>params,<sp/>QOpenGLContext<sp/>&amp;current_dest_context);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/opengl_debug_logger.h"/>
+  </compounddef>
+</doxygen>

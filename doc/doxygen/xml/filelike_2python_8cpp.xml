@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="filelike_2python_8cpp" kind="file" language="C++">
+    <compoundname>python.cpp</compoundname>
+    <includes refid="filelike_2python_8h" local="yes">python.h</includes>
+    <includes local="no">type_traits</includes>
+    <incdepgraph>
+      <node id="29870">
+        <label>list</label>
+      </node>
+      <node id="29861">
+        <label>atomic</label>
+      </node>
+      <node id="29866">
+        <label>iomanip</label>
+      </node>
+      <node id="29849">
+        <label>functional</label>
+      </node>
+      <node id="29874">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="29849" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+      </node>
+      <node id="29856">
+        <label>cstdint</label>
+      </node>
+      <node id="29864">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="29865" relation="include">
+        </childnode>
+        <childnode refid="29849" relation="include">
+        </childnode>
+        <childnode refid="29866" relation="include">
+        </childnode>
+        <childnode refid="29842" relation="include">
+        </childnode>
+        <childnode refid="29867" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29868" relation="include">
+        </childnode>
+      </node>
+      <node id="29852">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="29853" relation="include">
+        </childnode>
+      </node>
+      <node id="29854">
+        <label>stdexcept</label>
+      </node>
+      <node id="29851">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="29869">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="29870" relation="include">
+        </childnode>
+        <childnode refid="29850" relation="include">
+        </childnode>
+        <childnode refid="29871" relation="include">
+        </childnode>
+      </node>
+      <node id="29865">
+        <label>cstdarg</label>
+      </node>
+      <node id="29843">
+        <label>string</label>
+      </node>
+      <node id="29855">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="29856" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29857" relation="include">
+        </childnode>
+        <childnode refid="29858" relation="include">
+        </childnode>
+        <childnode refid="29860" relation="include">
+        </childnode>
+        <childnode refid="29869" relation="include">
+        </childnode>
+        <childnode refid="29871" relation="include">
+        </childnode>
+      </node>
+      <node id="29840">
+        <label>python.h</label>
+        <link refid="filelike_2python_8h"/>
+        <childnode refid="29841" relation="include">
+        </childnode>
+        <childnode refid="29842" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29844" relation="include">
+        </childnode>
+        <childnode refid="29848" relation="include">
+        </childnode>
+        <childnode refid="29875" relation="include">
+        </childnode>
+      </node>
+      <node id="29858">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="29859" relation="include">
+        </childnode>
+      </node>
+      <node id="29839">
+        <label>libopenage/util/filelike/python.cpp</label>
+        <link refid="filelike_2python_8cpp"/>
+        <childnode refid="29840" relation="include">
+        </childnode>
+        <childnode refid="29862" relation="include">
+        </childnode>
+      </node>
+      <node id="29860">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="29861" relation="include">
+        </childnode>
+        <childnode refid="29842" relation="include">
+        </childnode>
+        <childnode refid="29862" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+        <childnode refid="29863" relation="include">
+        </childnode>
+        <childnode refid="29864" relation="include">
+        </childnode>
+      </node>
+      <node id="29875">
+        <label>../../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="29856" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29868" relation="include">
+        </childnode>
+        <childnode refid="29876" relation="include">
+        </childnode>
+        <childnode refid="29848" relation="include">
+        </childnode>
+      </node>
+      <node id="29853">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="29841" relation="include">
+        </childnode>
+        <childnode refid="29842" relation="include">
+        </childnode>
+        <childnode refid="29854" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+        <childnode refid="29855" relation="include">
+        </childnode>
+      </node>
+      <node id="29873">
+        <label>typeinfo</label>
+      </node>
+      <node id="29868">
+        <label>vector</label>
+      </node>
+      <node id="29846">
+        <label>ciso646</label>
+      </node>
+      <node id="29867">
+        <label>sstream</label>
+      </node>
+      <node id="29845">
+        <label>../compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="29846" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29847" relation="include">
+        </childnode>
+      </node>
+      <node id="29847">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="29847" relation="include">
+        </childnode>
+      </node>
+      <node id="29863">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="29841" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+      </node>
+      <node id="29871">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="29872" relation="include">
+        </childnode>
+      </node>
+      <node id="29844">
+        <label>filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="29841" relation="include">
+        </childnode>
+        <childnode refid="29843" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+      </node>
+      <node id="29859">
+        <label>cstdlib</label>
+      </node>
+      <node id="29841">
+        <label>iostream</label>
+      </node>
+      <node id="29848">
+        <label>../../pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="29849" relation="include">
+        </childnode>
+        <childnode refid="29850" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+        <childnode refid="29851" relation="include">
+        </childnode>
+        <childnode refid="29852" relation="include">
+        </childnode>
+        <childnode refid="29874" relation="include">
+        </childnode>
+      </node>
+      <node id="29850">
+        <label>mutex</label>
+      </node>
+      <node id="29876">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="29862">
+        <label>type_traits</label>
+      </node>
+      <node id="29857">
+        <label>config.h</label>
+      </node>
+      <node id="29842">
+        <label>memory</label>
+      </node>
+      <node id="29872">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="29841" relation="include">
+        </childnode>
+        <childnode refid="29873" relation="include">
+        </childnode>
+        <childnode refid="29845" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike">openage::util::filelike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filelike_2python_8h" kindref="compound">python.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">filelike<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1util_1_1filelike_1_1_python_1ad969c124846fa875d04b292129a30e35" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1ad969c124846fa875d04b292129a30e35" kindref="member">Python::Python</ref>(<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>fileobj)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>fileobj{std::make_shared&lt;py::Obj&gt;(<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>)}<sp/>{}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a500f0ef3f3893079acfe354590d37757" kindref="member">Python::read</ref>(ssize_t<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" kindref="member">pyx_file_read</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref(),<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a69e25c42db2d4572b9123837828b9d32" kindref="member">Python::read_to</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>ssize_t<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" kindref="member">pyx_file_read_to</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref(),<sp/>buf,<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">max</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a0157f1ed40600eecb7d4bed851edb6b1" kindref="member">Python::readable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" kindref="member">pyx_file_readable</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1ae17e38029290fc952d205feaeb22b1e7" kindref="member">Python::write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;data)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" kindref="member">pyx_file_write</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref(),<sp/>data);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1ab7482859f642fe13a008a24649c52168" kindref="member">Python::writable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" kindref="member">pyx_file_writable</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a55a9c3d987583a4c1cd15d12a6fa2ed9" kindref="member">Python::seek</ref>(ssize_t<sp/>offset,<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_file_like_1aa76486a78f59d7f073b158e048ea016a" kindref="member">seek_t</ref><sp/>how)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transform<sp/>the<sp/>enum<sp/>class...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>how_i<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::underlying_type&lt;seek_t&gt;::type</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(how);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" kindref="member">pyx_file_seek</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref(),<sp/>offset,<sp/>how_i);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a0ec0ef68f31f321141366c4ac973d5a9" kindref="member">Python::seekable</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" kindref="member">pyx_file_seekable</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a116cc148489f31270f4f85c8d8ecf1f1" kindref="member">Python::tell</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" kindref="member">pyx_file_tell</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a92a48e36d073209320e82a95c938b87d" kindref="member">Python::close</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" kindref="member">pyx_file_close</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a5d79e5e57eb6a0b84fec9a1434fe4cf5" kindref="member">Python::flush</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" kindref="member">pyx_file_flush</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" refkind="member"><highlight class="normal">ssize_t<sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1aa2723a9836cd17708e0341691d5ca5dd" kindref="member">Python::get_size</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" kindref="member">pyx_file_size</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;get_ref());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a6d1586c8395b00f2a42f49848f88d6cc" kindref="member">Python::is_python_native</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1aab01dfa426d143c014c45e2fdf8a8041" kindref="member">Python::get_py_fileobj</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>.get();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1a3c8813eb52c9290f57331f787e6354ca" kindref="member">Python::repr</ref>(std::ostream<sp/>&amp;stream)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1filelike_1_1_python_1affe5218f148537c6bd0dec4f6d4d77dc" kindref="member">fileobj</ref>-&gt;repr();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;std::string, PyObject *, ssize_t&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a2817e59393a622a116520c54848a78c9" kindref="member">pyx_file_read</ref>;</highlight></codeline>
+<codeline lineno="92" refid="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;size_t, PyObject *, void *, ssize_t&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1af28b1f910f7f1f3190744c62372d41e3" kindref="member">pyx_file_read_to</ref>;</highlight></codeline>
+<codeline lineno="93" refid="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a944caf0d54087ff1b0eb5f83b6bf396c" kindref="member">pyx_file_readable</ref>;</highlight></codeline>
+<codeline lineno="94" refid="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;void, PyObject *, const std::string &amp;&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a60440c5a30b6f40e876304b01869aff2" kindref="member">pyx_file_write</ref>;</highlight></codeline>
+<codeline lineno="95" refid="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a4edcacb480cad085008af292392eec8f" kindref="member">pyx_file_writable</ref>;</highlight></codeline>
+<codeline lineno="96" refid="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;void, PyObject *, ssize_t, int&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ac737364afe13f01a4c290e87d2026ff5" kindref="member">pyx_file_seek</ref>;</highlight></codeline>
+<codeline lineno="97" refid="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ab03e3cdc5b7edc31da343f41fa8ab842" kindref="member">pyx_file_seekable</ref>;</highlight></codeline>
+<codeline lineno="98" refid="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;size_t, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1ae8c9004b956b3f9de7ae4d5ea6b02751" kindref="member">pyx_file_tell</ref>;</highlight></codeline>
+<codeline lineno="99" refid="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;void, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a3760d7ab207ef4d32602f8e2cab9cb4f" kindref="member">pyx_file_close</ref>;</highlight></codeline>
+<codeline lineno="100" refid="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;void, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1af30fd7868a0a53fd70dfb8dc95299daf" kindref="member">pyx_file_flush</ref>;</highlight></codeline>
+<codeline lineno="101" refid="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;ssize_t, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1filelike_1a01300297fc15c6381786483c46bd457f" kindref="member">pyx_file_size</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::filelike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/filelike/python.cpp"/>
+  </compounddef>
+</doxygen>

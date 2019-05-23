@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_7f22ae691c2f00df38feb17398996147" kind="dir">
+    <compoundname>libopenage/coord</compoundname>
+    <innerfile refid="chunk_8cpp">chunk.cpp</innerfile>
+    <innerfile refid="chunk_8h">chunk.h</innerfile>
+    <innerfile refid="coord__test_8cpp">coord_test.cpp</innerfile>
+    <innerfile refid="coordmanager_8cpp">coordmanager.cpp</innerfile>
+    <innerfile refid="coordmanager_8h">coordmanager.h</innerfile>
+    <innerfile refid="declarations_8cpp">declarations.cpp</innerfile>
+    <innerfile refid="declarations_8h">declarations.h</innerfile>
+    <innerfile refid="phys_8cpp">phys.cpp</innerfile>
+    <innerfile refid="phys_8h">phys.h</innerfile>
+    <innerfile refid="pixel_8cpp">pixel.cpp</innerfile>
+    <innerfile refid="pixel_8h">pixel.h</innerfile>
+    <innerfile refid="term_8cpp">term.cpp</innerfile>
+    <innerfile refid="term_8h">term.h</innerfile>
+    <innerfile refid="tile_8cpp">tile.cpp</innerfile>
+    <innerfile refid="tile_8h">tile.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/coord/"/>
+  </compounddef>
+</doxygen>

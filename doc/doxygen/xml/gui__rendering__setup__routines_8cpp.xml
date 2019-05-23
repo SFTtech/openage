@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__rendering__setup__routines_8cpp" kind="file" language="C++">
+    <compoundname>gui_rendering_setup_routines.cpp</compoundname>
+    <includes refid="gui__rendering__setup__routines_8h" local="yes">gui_rendering_setup_routines.h</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">QDebug</includes>
+    <includes refid="gui__ctx__setup_8h" local="yes">gui_ctx_setup.h</includes>
+    <incdepgraph>
+      <node id="13206">
+        <label>functional</label>
+      </node>
+      <node id="13208">
+        <label>QOffscreenSurface</label>
+      </node>
+      <node id="13202">
+        <label>cassert</label>
+      </node>
+      <node id="13205">
+        <label>stdexcept</label>
+      </node>
+      <node id="13201">
+        <label>QtGlobal</label>
+      </node>
+      <node id="13203">
+        <label>QDebug</label>
+      </node>
+      <node id="13204">
+        <label>gui_ctx_setup.h</label>
+        <link refid="gui__ctx__setup_8h"/>
+        <childnode refid="13205" relation="include">
+        </childnode>
+        <childnode refid="13200" relation="include">
+        </childnode>
+        <childnode refid="13206" relation="include">
+        </childnode>
+        <childnode refid="13207" relation="include">
+        </childnode>
+        <childnode refid="13208" relation="include">
+        </childnode>
+      </node>
+      <node id="13198">
+        <label>libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp</label>
+        <link refid="gui__rendering__setup__routines_8cpp"/>
+        <childnode refid="13199" relation="include">
+        </childnode>
+        <childnode refid="13202" relation="include">
+        </childnode>
+        <childnode refid="13203" relation="include">
+        </childnode>
+        <childnode refid="13204" relation="include">
+        </childnode>
+      </node>
+      <node id="13207">
+        <label>QOpenGLContext</label>
+      </node>
+      <node id="13200">
+        <label>memory</label>
+      </node>
+      <node id="13199">
+        <label>gui_rendering_setup_routines.h</label>
+        <link refid="gui__rendering__setup__routines_8h"/>
+        <childnode refid="13200" relation="include">
+        </childnode>
+        <childnode refid="13201" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__rendering__setup__routines_8h" kindref="compound">gui_rendering_setup_routines.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__ctx__setup_8h" kindref="compound">gui_ctx_setup.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classqtsdl_1_1_gui_rendering_setup_routines_1aeefd59c38fe8d9ac2bae03c690497b70" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1aeefd59c38fe8d9ac2bae03c690497b70" kindref="member">GuiRenderingSetupRoutines::GuiRenderingSetupRoutines</ref>(SDL_Window<sp/>*window)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" kindref="member">ctx_extraction_mode</ref><sp/>=<sp/>std::make_unique&lt;GuiUniqueRenderingContext&gt;(window);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_ctx_extraction_exception" kindref="compound">CtxExtractionException</ref>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qInfo()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Falling<sp/>back<sp/>to<sp/>separate<sp/>render<sp/>context<sp/>for<sp/>GUI&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" kindref="member">ctx_extraction_mode</ref><sp/>=<sp/>std::make_unique&lt;GuiSeparateRenderingContext&gt;(window);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_ctx_extraction_exception" kindref="compound">CtxExtractionException</ref>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/></highlight><highlight class="stringliteral">&quot;setting<sp/>up<sp/>context<sp/>for<sp/>GUI<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classqtsdl_1_1_gui_rendering_setup_routines_1a5a11aab18d8dab01d045bd9121208a00" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1a5a11aab18d8dab01d045bd9121208a00" kindref="member">GuiRenderingSetupRoutines::~GuiRenderingSetupRoutines</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" refkind="member"><highlight class="normal">QOpenGLContext*<sp/><ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1aa429b17e8b2687c755e3db6de5840515" kindref="member">GuiRenderingSetupRoutines::get_ctx</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" kindref="member">ctx_extraction_mode</ref>-&gt;get_ctx();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" kindref="member">GuiRenderingSetupRoutines::pre_render</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" kindref="member">ctx_extraction_mode</ref>-&gt;pre_render();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" kindref="member">GuiRenderingSetupRoutines::post_render</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1acfdc691e9a1e1ae1d37d159a1dd6efce" kindref="member">ctx_extraction_mode</ref>-&gt;post_render();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa35cec488317da1f7a2d420071732aac" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa35cec488317da1f7a2d420071732aac" kindref="member">GuiRenderingCtxActivator::GuiRenderingCtxActivator</ref>(<ref refid="classqtsdl_1_1_gui_rendering_setup_routines" kindref="compound">GuiRenderingSetupRoutines</ref><sp/>&amp;rendering_setup_routines)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>rendering_setup_routines{&amp;<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" kindref="member">rendering_setup_routines</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;rendering_setup_routines-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1a7096b83cec9e9fb6b62022ce96cb3120" kindref="member">pre_render</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a7f43aa071cbea190624038b51a108beb" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a7f43aa071cbea190624038b51a108beb" kindref="member">GuiRenderingCtxActivator::~GuiRenderingCtxActivator</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" kindref="member">rendering_setup_routines</ref>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" kindref="member">rendering_setup_routines</ref>-&gt;<ref refid="classqtsdl_1_1_gui_rendering_setup_routines_1a8b6317b9432812092926b549c28c3501" kindref="member">post_render</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a9a630441e906c2d1d8d556a2d44458c2" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa35cec488317da1f7a2d420071732aac" kindref="member">GuiRenderingCtxActivator::GuiRenderingCtxActivator</ref>(<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref>&amp;&amp;<sp/>o)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>rendering_setup_routines{o.rendering_setup_routines}<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>o.rendering_setup_routines<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa0430aa5fc865190596ff5d729f42abb" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref>&amp;<sp/><ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1aa0430aa5fc865190596ff5d729f42abb" kindref="member">GuiRenderingCtxActivator::operator=</ref>(<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref>&amp;&amp;<sp/>o)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_rendering_ctx_activator_1a3d3399b8a08ab74b762af3070af8c9e1" kindref="member">rendering_setup_routines</ref><sp/>=<sp/>o.rendering_setup_routines;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>o.rendering_setup_routines<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/gui_rendering_setup_routines.cpp"/>
+  </compounddef>
+</doxygen>

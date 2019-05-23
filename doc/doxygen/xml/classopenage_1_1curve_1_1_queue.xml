@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1curve_1_1_queue" kind="class" language="C++" prot="public">
+    <compoundname>openage::curve::Queue</compoundname>
+    <includes refid="queue_8h" local="no">queue.h</includes>
+    <innerclass refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper" prot="private">openage::curve::Queue::queue_wrapper</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_1a3a1cbe5732b66e9a5251750a1a24bc22" prot="public" static="no">
+        <type>typename std::deque&lt; <ref refid="structopenage_1_1curve_1_1_queue_1_1queue__wrapper" kindref="compound">queue_wrapper</ref> &gt;</type>
+        <definition>using openage::curve::Queue&lt; T &gt;::container_t =  typename std::deque&lt;queue_wrapper&gt;</definition>
+        <argsstring></argsstring>
+        <name>container_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="35" column="1" bodyfile="libopenage/curve/queue.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_1af08e78e0f32281f493f714e9e56211fd" prot="public" static="no">
+        <type>typename container_t::const_iterator</type>
+        <definition>using openage::curve::Queue&lt; T &gt;::const_iterator =  typename container_t::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="36" column="1" bodyfile="libopenage/curve/queue.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1curve_1_1_queue_1aa2bd95142aa49866516f901aece7e7d5" prot="public" static="no">
+        <type>typename container_t::const_iterator</type>
+        <definition>using openage::curve::Queue&lt; T &gt;::iterator =  typename container_t::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="37" column="1" bodyfile="libopenage/curve/queue.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1curve_1_1_queue_1a0d3c32ed29fe967fc04b27b2db69d924" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1curve_1_1_queue_1a3a1cbe5732b66e9a5251750a1a24bc22" kindref="member">container_t</ref></type>
+        <definition>container_t openage::curve::Queue&lt; T &gt;::container</definition>
+        <argsstring></argsstring>
+        <name>container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="68" column="1" bodyfile="libopenage/curve/queue.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a7fe7c6b582f57ac867d198e9677a2156" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T &amp; openage::curve::Queue&lt; T &gt;::front</definition>
+        <argsstring>(const time_t &amp;) const</argsstring>
+        <name>front</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="40" column="1" bodyfile="libopenage/curve/queue.h" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
+        <definition>QueueFilterIterator&lt; T, Queue&lt; T &gt; &gt; openage::curve::Queue&lt; T &gt;::begin</definition>
+        <argsstring>(const time_t &amp;t=-std::numeric_limits&lt; time_t &gt;::max()) const</argsstring>
+        <name>begin</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>t</declname>
+          <defval>-std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="43" column="1" bodyfile="libopenage/curve/queue.h" bodystart="79" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
+        <definition>QueueFilterIterator&lt; T, Queue&lt; T &gt; &gt; openage::curve::Queue&lt; T &gt;::end</definition>
+        <argsstring>(const time_t &amp;t=std::numeric_limits&lt; time_t &gt;::max()) const</argsstring>
+        <name>end</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>t</declname>
+          <defval>std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="46" column="1" bodyfile="libopenage/curve/queue.h" bodystart="95" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
+        <definition>QueueFilterIterator&lt; T, Queue&lt; T &gt; &gt; openage::curve::Queue&lt; T &gt;::between</definition>
+        <argsstring>(const time_t &amp;begin=std::numeric_limits&lt; time_t &gt;::max(), const time_t &amp;end=std::numeric_limits&lt; time_t &gt;::max()) const</argsstring>
+        <name>between</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>begin</declname>
+          <defval>std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <declname>end</declname>
+          <defval>std::numeric_limits&lt; <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &gt;::max()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="49" column="1" bodyfile="libopenage/curve/queue.h" bodystart="105" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1acb732f8f9c5ec59d691d59067fa09d66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::Queue&lt; T &gt;::erase</definition>
+        <argsstring>(const CurveIterator&lt; T, Queue&lt; T &gt;&gt; &amp;)</argsstring>
+        <name>erase</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1curve_1_1_curve_iterator" kindref="compound">CurveIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt;&gt; &amp;</type>
+          <defname>t</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="53" column="1" bodyfile="libopenage/curve/queue.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1curve_1_1_queue_filter_iterator" kindref="compound">QueueFilterIterator</ref>&lt; T, <ref refid="classopenage_1_1curve_1_1_queue" kindref="compound">Queue</ref>&lt; T &gt; &gt;</type>
+        <definition>QueueFilterIterator&lt; T, Queue&lt; T &gt; &gt; openage::curve::Queue&lt; T &gt;::insert</definition>
+        <argsstring>(const time_t &amp;, const T &amp;e)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="55" column="1" bodyfile="libopenage/curve/queue.h" bodystart="129" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a5ee4f2514bc1ea089a5aa32567ec0195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::Queue&lt; T &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="57" column="1" bodyfile="libopenage/curve/queue.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1ac48eba75b18f46ba566155cb9a18d478" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::Queue&lt; T &gt;::clean</definition>
+        <argsstring>(const time_t &amp;)</argsstring>
+        <name>clean</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">time_t</ref> &amp;</type>
+          <defname>time</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="59" column="1" bodyfile="libopenage/curve/queue.h" bodystart="164" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1curve_1_1_queue_1a87ae2b6fac07d94e9936b70d664cf35c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::curve::Queue&lt; T &gt;::dump</definition>
+        <argsstring>()</argsstring>
+        <name>dump</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/curve/queue.h" line="61" column="1" bodyfile="libopenage/curve/queue.h" bodystart="61" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A container that manages events on a timeline. Every event has exactly one time it will happen. This container can be used to store interactions </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3820">
+        <label>openage::curve::Queue&lt; T &gt;</label>
+        <link refid="classopenage_1_1curve_1_1_queue"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/curve/queue.h" line="19" column="1" bodyfile="libopenage/curve/queue.h" bodystart="19" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1curve_1_1_queue_1acbff846f0aad39b82c1dbffe83f80fba" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>begin</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a3ba35a56fa550d939d0d16c71c63e56c" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>between</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1ac48eba75b18f46ba566155cb9a18d478" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>clean</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a5ee4f2514bc1ea089a5aa32567ec0195" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>clear</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1af08e78e0f32281f493f714e9e56211fd" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>const_iterator</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a0d3c32ed29fe967fc04b27b2db69d924" prot="private" virt="non-virtual"><scope>openage::curve::Queue</scope><name>container</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a3a1cbe5732b66e9a5251750a1a24bc22" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>container_t</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a87ae2b6fac07d94e9936b70d664cf35c" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>dump</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a3a60297cec80ae6d759ea3567922db8e" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>end</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1acb732f8f9c5ec59d691d59067fa09d66" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>erase</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1a7fe7c6b582f57ac867d198e9677a2156" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>front</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1ae7d94b0875221550e5af663a64ea2aec" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>insert</name></member>
+      <member refid="classopenage_1_1curve_1_1_queue_1aa2bd95142aa49866516f901aece7e7d5" prot="public" virt="non-virtual"><scope>openage::curve::Queue</scope><name>iterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

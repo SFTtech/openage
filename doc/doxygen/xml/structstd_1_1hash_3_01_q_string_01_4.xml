@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structstd_1_1hash_3_01_q_string_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; QString &gt;</compoundname>
+    <includes refid="gui__live__reloader_8h" local="no">gui_live_reloader.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01_q_string_01_4_1a4af48f66875105bf664aac0717926e59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; QString &gt;::operator()</definition>
+        <argsstring>(const QString &amp;val) const</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>val</declname>
+        </param>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="17" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2839">
+        <label>std::hash&lt; QString &gt;</label>
+        <link refid="structstd_1_1hash_3_01_q_string_01_4"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/livereload/gui_live_reloader.h" bodystart="16" bodyend="20"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01_q_string_01_4_1a4af48f66875105bf664aac0717926e59" prot="public" virt="non-virtual"><scope>std::hash&lt; QString &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

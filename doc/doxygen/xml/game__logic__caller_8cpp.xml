@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="game__logic__caller_8cpp" kind="file" language="C++">
+    <compoundname>game_logic_caller.cpp</compoundname>
+    <includes refid="game__logic__caller_8h" local="yes">game_logic_caller.h</includes>
+    <includes refid="gui__callback_8h" local="yes">gui_callback.h</includes>
+    <incdepgraph>
+      <node id="12908">
+        <label>functional</label>
+      </node>
+      <node id="12909">
+        <label>QObject</label>
+      </node>
+      <node id="12911">
+        <label>QMetaType</label>
+      </node>
+      <node id="12910">
+        <label>gui_callback.h</label>
+        <link refid="gui__callback_8h"/>
+        <childnode refid="12908" relation="include">
+        </childnode>
+        <childnode refid="12909" relation="include">
+        </childnode>
+        <childnode refid="12911" relation="include">
+        </childnode>
+      </node>
+      <node id="12906">
+        <label>libopenage/gui/guisys/private/game_logic_caller.cpp</label>
+        <link refid="game__logic__caller_8cpp"/>
+        <childnode refid="12907" relation="include">
+        </childnode>
+        <childnode refid="12910" relation="include">
+        </childnode>
+      </node>
+      <node id="12907">
+        <label>game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12908" relation="include">
+        </childnode>
+        <childnode refid="12909" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="game__logic__caller_8h" kindref="compound">game_logic_caller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__callback_8h" kindref="compound">gui_callback.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" kindref="member">GameLogicCaller::GameLogicCaller</ref>()</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" kindref="member">GameLogicCaller::set_game_logic_callback</ref>(<ref refid="classqtsdl_1_1_gui_callback" kindref="compound">GuiCallback</ref><sp/>*game_logic_callback)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::disconnect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">GameLogicCaller::in_game_logic_thread</ref>,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::disconnect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" kindref="member">GameLogicCaller::in_game_logic_thread_blocking</ref>,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" kindref="member">GameLogicCaller::in_game_logic_thread</ref>,<sp/>game_logic_callback,<sp/>&amp;<ref refid="classqtsdl_1_1_gui_callback_1ab84c2a4152e0ab297025079a4d15746c" kindref="member">GuiCallback::process</ref>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" kindref="member">GameLogicCaller::in_game_logic_thread_blocking</ref>,<sp/>game_logic_callback,<sp/>&amp;<ref refid="classqtsdl_1_1_gui_callback_1a3cfbf34933c59c043267e2ba916dc15f" kindref="member">GuiCallback::process_blocking</ref>,<sp/>Qt::DirectConnection);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/private/game_logic_caller.cpp"/>
+  </compounddef>
+</doxygen>

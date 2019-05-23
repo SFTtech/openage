@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fslike_2python_8cpp" kind="file" language="C++">
+    <compoundname>python.cpp</compoundname>
+    <includes refid="fslike_2python_8h" local="yes">python.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <incdepgraph>
+      <node id="29908">
+        <label>list</label>
+      </node>
+      <node id="29900">
+        <label>atomic</label>
+      </node>
+      <node id="29905">
+        <label>iomanip</label>
+      </node>
+      <node id="29885">
+        <label>functional</label>
+      </node>
+      <node id="29912">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="29885" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+      </node>
+      <node id="29880">
+        <label>cstdint</label>
+      </node>
+      <node id="29903">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="29904" relation="include">
+        </childnode>
+        <childnode refid="29885" relation="include">
+        </childnode>
+        <childnode refid="29905" relation="include">
+        </childnode>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29906" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29883" relation="include">
+        </childnode>
+      </node>
+      <node id="29891">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="29892" relation="include">
+        </childnode>
+      </node>
+      <node id="29894">
+        <label>stdexcept</label>
+      </node>
+      <node id="29890">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="29907">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="29908" relation="include">
+        </childnode>
+        <childnode refid="29886" relation="include">
+        </childnode>
+        <childnode refid="29909" relation="include">
+        </childnode>
+      </node>
+      <node id="29904">
+        <label>cstdarg</label>
+      </node>
+      <node id="29882">
+        <label>string</label>
+      </node>
+      <node id="29895">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="29880" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29896" relation="include">
+        </childnode>
+        <childnode refid="29897" relation="include">
+        </childnode>
+        <childnode refid="29899" relation="include">
+        </childnode>
+        <childnode refid="29907" relation="include">
+        </childnode>
+        <childnode refid="29909" relation="include">
+        </childnode>
+      </node>
+      <node id="29897">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="29898" relation="include">
+        </childnode>
+      </node>
+      <node id="29899">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="29900" relation="include">
+        </childnode>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29901" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+        <childnode refid="29902" relation="include">
+        </childnode>
+        <childnode refid="29903" relation="include">
+        </childnode>
+      </node>
+      <node id="29915">
+        <label>fslike.h</label>
+        <link refid="fslike_8h"/>
+        <childnode refid="29880" relation="include">
+        </childnode>
+        <childnode refid="29893" relation="include">
+        </childnode>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29916" relation="include">
+        </childnode>
+        <childnode refid="29917" relation="include">
+        </childnode>
+        <childnode refid="29918" relation="include">
+        </childnode>
+      </node>
+      <node id="29913">
+        <label>../../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="29880" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29883" relation="include">
+        </childnode>
+        <childnode refid="29914" relation="include">
+        </childnode>
+        <childnode refid="29884" relation="include">
+        </childnode>
+      </node>
+      <node id="29892">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="29893" relation="include">
+        </childnode>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29894" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+        <childnode refid="29895" relation="include">
+        </childnode>
+      </node>
+      <node id="29911">
+        <label>typeinfo</label>
+      </node>
+      <node id="29883">
+        <label>vector</label>
+      </node>
+      <node id="29921">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="29909" relation="include">
+        </childnode>
+        <childnode refid="29895" relation="include">
+        </childnode>
+      </node>
+      <node id="29888">
+        <label>ciso646</label>
+      </node>
+      <node id="29916">
+        <label>utility</label>
+      </node>
+      <node id="29906">
+        <label>sstream</label>
+      </node>
+      <node id="29887">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="29888" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29889" relation="include">
+        </childnode>
+      </node>
+      <node id="29918">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29883" relation="include">
+        </childnode>
+        <childnode refid="29919" relation="include">
+        </childnode>
+        <childnode refid="29913" relation="include">
+        </childnode>
+      </node>
+      <node id="29889">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="29889" relation="include">
+        </childnode>
+      </node>
+      <node id="29902">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="29893" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+      </node>
+      <node id="29909">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="29910" relation="include">
+        </childnode>
+      </node>
+      <node id="29920">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="29919">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="29893" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+      </node>
+      <node id="29898">
+        <label>cstdlib</label>
+      </node>
+      <node id="29879">
+        <label>python.h</label>
+        <link refid="fslike_2python_8h"/>
+        <childnode refid="29880" relation="include">
+        </childnode>
+        <childnode refid="29881" relation="include">
+        </childnode>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29883" relation="include">
+        </childnode>
+        <childnode refid="29884" relation="include">
+        </childnode>
+        <childnode refid="29913" relation="include">
+        </childnode>
+        <childnode refid="29915" relation="include">
+        </childnode>
+        <childnode refid="29917" relation="include">
+        </childnode>
+        <childnode refid="29918" relation="include">
+        </childnode>
+      </node>
+      <node id="29893">
+        <label>iostream</label>
+      </node>
+      <node id="29884">
+        <label>../../pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="29885" relation="include">
+        </childnode>
+        <childnode refid="29886" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+        <childnode refid="29890" relation="include">
+        </childnode>
+        <childnode refid="29891" relation="include">
+        </childnode>
+        <childnode refid="29912" relation="include">
+        </childnode>
+      </node>
+      <node id="29886">
+        <label>mutex</label>
+      </node>
+      <node id="29878">
+        <label>libopenage/util/fslike/python.cpp</label>
+        <link refid="fslike_2python_8cpp"/>
+        <childnode refid="29879" relation="include">
+        </childnode>
+        <childnode refid="29921" relation="include">
+        </childnode>
+      </node>
+      <node id="29917">
+        <label>../path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="29882" relation="include">
+        </childnode>
+        <childnode refid="29883" relation="include">
+        </childnode>
+        <childnode refid="29913" relation="include">
+        </childnode>
+        <childnode refid="29918" relation="include">
+        </childnode>
+        <childnode refid="29920" relation="include">
+        </childnode>
+      </node>
+      <node id="29914">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="29901">
+        <label>type_traits</label>
+      </node>
+      <node id="29896">
+        <label>config.h</label>
+      </node>
+      <node id="29881">
+        <label>memory</label>
+      </node>
+      <node id="29910">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="29893" relation="include">
+        </childnode>
+        <childnode refid="29911" relation="include">
+        </childnode>
+        <childnode refid="29887" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fslike_2python_8h" kindref="compound">python.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fslike<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1664f9cc8d1b61daac2d96245f480d7" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1664f9cc8d1b61daac2d96245f480d7" kindref="member">Python::Python</ref>(<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>fsobj)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>fsobj{std::make_shared&lt;py::Obj&gt;(<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>)}<sp/>{}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1util_1_1fslike_1_1_python_1a88d8a47b3dab58e2c4f126b59525f6b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a88d8a47b3dab58e2c4f126b59525f6b7" kindref="member">Python::is_file</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a58745e546150f688fef38aea4a79f62d" kindref="member">pyx_fs_is_file</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1util_1_1fslike_1_1_python_1a0e95258f4bc84e6a518b92ff56c11a13" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a0e95258f4bc84e6a518b92ff56c11a13" kindref="member">Python::is_dir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adb6b99b51b87bdd1555bbdb7d825ebcf" kindref="member">pyx_fs_is_dir</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1util_1_1fslike_1_1_python_1a18eb89f1cba644f09f4747f67373f79f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a18eb89f1cba644f09f4747f67373f79f" kindref="member">Python::writable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1abe8d1a76998314cd0b0299a62dd6785e" kindref="member">pyx_fs_writable</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1util_1_1fslike_1_1_python_1abc83bf9b01ac2fa5d924f7bb041d63a7" refkind="member"><highlight class="normal">std::vector&lt;Path::part_t&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abc83bf9b01ac2fa5d924f7bb041d63a7" kindref="member">Python::list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aff46d25610d837c53fa4da00296bea9b" kindref="member">pyx_fs_list</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" kindref="member">Python::mkdirs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7c3f79a881aa369fb0989fe6c5046364" kindref="member">pyx_fs_mkdirs</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classopenage_1_1util_1_1fslike_1_1_python_1a4326f9bf1a1d1cd4dc8fb948f54d572b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a4326f9bf1a1d1cd4dc8fb948f54d572b" kindref="member">Python::open_r</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adf6e3f1eaa86e32e959db4c7811b135b" kindref="member">pyx_fs_open_r</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classopenage_1_1util_1_1fslike_1_1_python_1a150b1a465f29315a0eea7dbfdb42a084" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a150b1a465f29315a0eea7dbfdb42a084" kindref="member">Python::open_w</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa5ecccf4f624340bbfc4a232e7b7233b" kindref="member">pyx_fs_open_w</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classopenage_1_1util_1_1fslike_1_1_python_1a71a089f553bf3b7ea541e9058e601b45" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a71a089f553bf3b7ea541e9058e601b45" kindref="member">Python::open_rw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa51d7a44aca7c081abe0ff6e632e0f24" kindref="member">pyx_fs_open_rw</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classopenage_1_1util_1_1fslike_1_1_python_1a68697819783d818ddb27bb6cb49a8fb0" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a68697819783d818ddb27bb6cb49a8fb0" kindref="member">Python::open_a</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ad6dd5c0c16e9659c91112cd80251c4a2" kindref="member">pyx_fs_open_a</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classopenage_1_1util_1_1fslike_1_1_python_1a78894b8819ad14a60438e8365b55b20d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a78894b8819ad14a60438e8365b55b20d" kindref="member">Python::open_ar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a52670ad8a70c09b27de32b6831985de2" kindref="member">pyx_fs_open_ar</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classopenage_1_1util_1_1fslike_1_1_python_1a4ed41ccdd26277c5b64a21409f95e683" refkind="member"><highlight class="normal">std::pair&lt;bool,<sp/>Path&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a4ed41ccdd26277c5b64a21409f95e683" kindref="member">Python::resolve_r</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>path<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1acbd9965cb5857759fe13d98cb606b740" kindref="member">pyx_fs_resolve_r</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_pair(path.get_fsobj()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>path);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1365f11fc02d7dd469842eaa82d47ec" refkind="member"><highlight class="normal">std::pair&lt;bool,<sp/>Path&gt;<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1365f11fc02d7dd469842eaa82d47ec" kindref="member">Python::resolve_w</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>path<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1afd1f9717e3b0a3c03b0757064f732fc3" kindref="member">pyx_fs_resolve_w</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_pair(path.get_fsobj()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>path);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" kindref="member">Python::get_native_path</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>ret<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a94e28b922b84615a619cf4ba6e602dbf" kindref="member">pyx_fs_get_native_path</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a078ffdebeb6488c9b045d8d49f0f47de" kindref="member">is</ref>(py::None))<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret.<ref refid="classopenage_1_1pyinterface_1_1_py_object_ref_1a76e2c7f1e3147d1d726d5c277daff1f8" kindref="member">bytes</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classopenage_1_1util_1_1fslike_1_1_python_1ac70ab501b00e2175822b704023f35a22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ac70ab501b00e2175822b704023f35a22" kindref="member">Python::rename</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;target_parts)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aaa675eab58642d6f4b1c74921fd398d8" kindref="member">pyx_fs_rename</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts,<sp/>target_parts);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classopenage_1_1util_1_1fslike_1_1_python_1a9793a38c4778210e5689429936b07405" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a9793a38c4778210e5689429936b07405" kindref="member">Python::rmdir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ae593e16f4b47c11df659a50f8431d49e" kindref="member">pyx_fs_rmdir</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classopenage_1_1util_1_1fslike_1_1_python_1a5bfc607e7cf03d69174e9c7983336bcb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a5bfc607e7cf03d69174e9c7983336bcb" kindref="member">Python::touch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7937af583786f1e81f44a94f4b7b309e" kindref="member">pyx_fs_touch</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classopenage_1_1util_1_1fslike_1_1_python_1ab2fbc85162983fc432c05f3b040756d5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ab2fbc85162983fc432c05f3b040756d5" kindref="member">Python::unlink</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2692fa8f758ce0eddce2e2a43a9bfc5c" kindref="member">pyx_fs_unlink</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classopenage_1_1util_1_1fslike_1_1_python_1abeba06958f44fb55a6eff0fb3d6a3db9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abeba06958f44fb55a6eff0fb3d6a3db9" kindref="member">Python::get_mtime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a23477e560d8a5a995664fbcda9414f48" kindref="member">pyx_fs_get_mtime</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classopenage_1_1util_1_1fslike_1_1_python_1ab0ed3935ca1b6a5bd1cd3556b7be606d" refkind="member"><highlight class="normal">uint64_t<sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1ab0ed3935ca1b6a5bd1cd3556b7be606d" kindref="member">Python::get_filesize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref><sp/>&amp;parts)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2f0988f5df9b52231e5ffd64d92fe490" kindref="member">pyx_fs_get_filesize</ref>.call(this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;get_ref(),<sp/>parts);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classopenage_1_1util_1_1fslike_1_1_python_1af5a0b97ff0aea88ef52e0159e0b9a5dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af5a0b97ff0aea88ef52e0159e0b9a5dc" kindref="member">Python::is_python_native</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_object_ref" kindref="compound">py::Obj</ref><sp/>&amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" kindref="member">Python::get_py_fsobj</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>.get();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classopenage_1_1util_1_1fslike_1_1_python_1a5a401d90c67757c7650d5940d3f67051" refkind="member"><highlight class="normal">std::ostream<sp/>&amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1a5a401d90c67757c7650d5940d3f67051" kindref="member">Python::repr</ref>(std::ostream<sp/>&amp;stream)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" kindref="member">fsobj</ref>-&gt;str();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="namespaceopenage_1_1util_1_1fslike_1a58745e546150f688fef38aea4a79f62d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a58745e546150f688fef38aea4a79f62d" kindref="member">pyx_fs_is_file</ref>;</highlight></codeline>
+<codeline lineno="122" refid="namespaceopenage_1_1util_1_1fslike_1adb6b99b51b87bdd1555bbdb7d825ebcf" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adb6b99b51b87bdd1555bbdb7d825ebcf" kindref="member">pyx_fs_is_dir</ref>;</highlight></codeline>
+<codeline lineno="123" refid="namespaceopenage_1_1util_1_1fslike_1abe8d1a76998314cd0b0299a62dd6785e" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1abe8d1a76998314cd0b0299a62dd6785e" kindref="member">pyx_fs_writable</ref>;</highlight></codeline>
+<codeline lineno="124" refid="namespaceopenage_1_1util_1_1fslike_1aff46d25610d837c53fa4da00296bea9b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;std::vector&lt;std::string&gt;</ref>,<sp/><ref refid="defs_8h_1afcb7b4d4ac414eefbeef02c60e6acb52" kindref="member">PyObject</ref><sp/>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aff46d25610d837c53fa4da00296bea9b" kindref="member">pyx_fs_list</ref>;</highlight></codeline>
+<codeline lineno="125" refid="namespaceopenage_1_1util_1_1fslike_1a7c3f79a881aa369fb0989fe6c5046364" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7c3f79a881aa369fb0989fe6c5046364" kindref="member">pyx_fs_mkdirs</ref>;</highlight></codeline>
+<codeline lineno="126" refid="namespaceopenage_1_1util_1_1fslike_1adf6e3f1eaa86e32e959db4c7811b135b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1adf6e3f1eaa86e32e959db4c7811b135b" kindref="member">pyx_fs_open_r</ref>;</highlight></codeline>
+<codeline lineno="127" refid="namespaceopenage_1_1util_1_1fslike_1aa5ecccf4f624340bbfc4a232e7b7233b" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa5ecccf4f624340bbfc4a232e7b7233b" kindref="member">pyx_fs_open_w</ref>;</highlight></codeline>
+<codeline lineno="128" refid="namespaceopenage_1_1util_1_1fslike_1aa51d7a44aca7c081abe0ff6e632e0f24" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aa51d7a44aca7c081abe0ff6e632e0f24" kindref="member">pyx_fs_open_rw</ref>;</highlight></codeline>
+<codeline lineno="129" refid="namespaceopenage_1_1util_1_1fslike_1ad6dd5c0c16e9659c91112cd80251c4a2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ad6dd5c0c16e9659c91112cd80251c4a2" kindref="member">pyx_fs_open_a</ref>;</highlight></codeline>
+<codeline lineno="130" refid="namespaceopenage_1_1util_1_1fslike_1a52670ad8a70c09b27de32b6831985de2" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;File, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a52670ad8a70c09b27de32b6831985de2" kindref="member">pyx_fs_open_ar</ref>;</highlight></codeline>
+<codeline lineno="131" refid="namespaceopenage_1_1util_1_1fslike_1acbd9965cb5857759fe13d98cb606b740" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;Path, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1acbd9965cb5857759fe13d98cb606b740" kindref="member">pyx_fs_resolve_r</ref>;</highlight></codeline>
+<codeline lineno="132" refid="namespaceopenage_1_1util_1_1fslike_1afd1f9717e3b0a3c03b0757064f732fc3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;Path, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1afd1f9717e3b0a3c03b0757064f732fc3" kindref="member">pyx_fs_resolve_w</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="namespaceopenage_1_1util_1_1fslike_1a94e28b922b84615a619cf4ba6e602dbf" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;py::Obj, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a94e28b922b84615a619cf4ba6e602dbf" kindref="member">pyx_fs_get_native_path</ref>;</highlight></codeline>
+<codeline lineno="135" refid="namespaceopenage_1_1util_1_1fslike_1aaa675eab58642d6f4b1c74921fd398d8" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1aaa675eab58642d6f4b1c74921fd398d8" kindref="member">pyx_fs_rename</ref>;</highlight></codeline>
+<codeline lineno="136" refid="namespaceopenage_1_1util_1_1fslike_1ae593e16f4b47c11df659a50f8431d49e" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ae593e16f4b47c11df659a50f8431d49e" kindref="member">pyx_fs_rmdir</ref>;</highlight></codeline>
+<codeline lineno="137" refid="namespaceopenage_1_1util_1_1fslike_1a7937af583786f1e81f44a94f4b7b309e" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a7937af583786f1e81f44a94f4b7b309e" kindref="member">pyx_fs_touch</ref>;</highlight></codeline>
+<codeline lineno="138" refid="namespaceopenage_1_1util_1_1fslike_1a2692fa8f758ce0eddce2e2a43a9bfc5c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2692fa8f758ce0eddce2e2a43a9bfc5c" kindref="member">pyx_fs_unlink</ref>;</highlight></codeline>
+<codeline lineno="139" refid="namespaceopenage_1_1util_1_1fslike_1a23477e560d8a5a995664fbcda9414f48" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;int, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a23477e560d8a5a995664fbcda9414f48" kindref="member">pyx_fs_get_mtime</ref>;</highlight></codeline>
+<codeline lineno="140" refid="namespaceopenage_1_1util_1_1fslike_1a2f0988f5df9b52231e5ffd64d92fe490" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;uint64_t, PyObject *, const std::vector&lt;std::string&gt;</ref>&amp;&gt;<sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1a2f0988f5df9b52231e5ffd64d92fe490" kindref="member">pyx_fs_get_filesize</ref>;</highlight></codeline>
+<codeline lineno="141" refid="namespaceopenage_1_1util_1_1fslike_1ad9a10d50910ce2850da6335c0b37ffd8" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1pyinterface_1_1_py_if_func" kindref="compound">pyinterface::PyIfFunc&lt;bool, PyObject *&gt;</ref><sp/><ref refid="namespaceopenage_1_1util_1_1fslike_1ad9a10d50910ce2850da6335c0b37ffd8" kindref="member">pyx_fs_is_fslike_directory</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::fslike</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fslike/python.cpp"/>
+  </compounddef>
+</doxygen>

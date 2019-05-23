@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement" kind="struct" language="C++" prot="public">
+    <compoundname>openage::event::tests::TestState::traceelement</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a259e055907453f783d9bbe82acc1c89b" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>curve::time_t openage::event::tests::TestState::traceelement::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="60" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::event::tests::TestState::traceelement::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="61" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a83ebdbc18d10c912a9940a8c4e15c545" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::tests::TestState::traceelement::traceelement</definition>
+        <argsstring>(const std::string &amp;event, curve::time_t time)</argsstring>
+        <name>traceelement</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="55" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4522">
+        <label>openage::event::tests::TestState::traceelement</label>
+        <link refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement"/>
+        <childnode refid="4523" relation="usage">
+          <edgelabel>+time</edgelabel>
+        </childnode>
+      </node>
+      <node id="4523">
+        <label>openage::util::FixedPoint&lt; int64_t, 16 &gt;</label>
+        <link refid="classopenage_1_1util_1_1_fixed_point"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/tests.cpp" line="54" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="54" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1aac3d3b574662dc79341881cea4d17692" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::traceelement</scope><name>name</name></member>
+      <member refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a259e055907453f783d9bbe82acc1c89b" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::traceelement</scope><name>time</name></member>
+      <member refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement_1a83ebdbc18d10c912a9940a8c4e15c545" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState::traceelement</scope><name>traceelement</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

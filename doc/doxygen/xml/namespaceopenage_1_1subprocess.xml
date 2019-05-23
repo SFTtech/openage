@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1subprocess" kind="namespace" language="C++">
+    <compoundname>openage::subprocess</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1subprocess_1af8b5d87acaf3d044fdd924ef68a1cec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::subprocess::is_executable</definition>
+        <argsstring>(const char *filename)</argsstring>
+        <name>is_executable</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true IFF the file is executable </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/subprocess.cpp" line="25" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="25" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1subprocess_1aea6af6d7d8e5290e58dfafd50a96a069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::subprocess::which</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>which</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>finds the path to an executable by evaluating env[PATH] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/subprocess.cpp" line="37" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="37" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1subprocess_1a0a0bbc382a5c765c627d6f79d8aeaf59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::subprocess::call</definition>
+        <argsstring>(const std::vector&lt; const char * &gt; &amp;argv, bool wait, const char *redirect_stdout_to)</argsstring>
+        <name>call</name>
+        <param>
+          <type>const std::vector&lt; const char * &gt; &amp;</type>
+          <declname>argv</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>redirect_stdout_to</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>starts the process at argv[0] passes argv as argv</para>
+<para>on failure, -1 is returned.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>must consist of at least one non-empty string, and end with a nullptr. this is not verified.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>decides whether we wait for the process to finish. if true, returns the process&apos;s return value if false, returns 0</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>redirect_stdout_to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if not nullptr, the given file is opened and substituted for the process&apos;s stdout. the existing file is overwritten. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/subprocess.cpp" line="72" column="1" bodyfile="libopenage/util/subprocess.cpp" bodystart="72" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>similar in its goals to Python&apos;s subprocess module </para>
+    </detaileddescription>
+    <location file="libopenage/util/subprocess.cpp" line="23" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="lzxd_8h" kind="file" language="C++">
+    <compoundname>lzxd.h</compoundname>
+    <includes local="no">cstdlib</includes>
+    <includes refid="bitstream_8h" local="yes">bitstream.h</includes>
+    <includedby refid="lzxd_8cpp" local="yes">libopenage/util/compress/lzxd.cpp</includedby>
+    <incdepgraph>
+      <node id="27740">
+        <label>list</label>
+      </node>
+      <node id="27731">
+        <label>atomic</label>
+      </node>
+      <node id="27736">
+        <label>iomanip</label>
+      </node>
+      <node id="27717">
+        <label>functional</label>
+      </node>
+      <node id="27727">
+        <label>cstdint</label>
+      </node>
+      <node id="27734">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="27735" relation="include">
+        </childnode>
+        <childnode refid="27717" relation="include">
+        </childnode>
+        <childnode refid="27736" relation="include">
+        </childnode>
+        <childnode refid="27720" relation="include">
+        </childnode>
+        <childnode refid="27737" relation="include">
+        </childnode>
+        <childnode refid="27722" relation="include">
+        </childnode>
+        <childnode refid="27738" relation="include">
+        </childnode>
+      </node>
+      <node id="27721">
+        <label>stdexcept</label>
+      </node>
+      <node id="27739">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="27740" relation="include">
+        </childnode>
+        <childnode refid="27741" relation="include">
+        </childnode>
+        <childnode refid="27742" relation="include">
+        </childnode>
+      </node>
+      <node id="27735">
+        <label>cstdarg</label>
+      </node>
+      <node id="27722">
+        <label>string</label>
+      </node>
+      <node id="27726">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="27727" relation="include">
+        </childnode>
+        <childnode refid="27722" relation="include">
+        </childnode>
+        <childnode refid="27728" relation="include">
+        </childnode>
+        <childnode refid="27729" relation="include">
+        </childnode>
+        <childnode refid="27730" relation="include">
+        </childnode>
+        <childnode refid="27739" relation="include">
+        </childnode>
+        <childnode refid="27742" relation="include">
+        </childnode>
+      </node>
+      <node id="27729">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="27714" relation="include">
+        </childnode>
+      </node>
+      <node id="27730">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="27731" relation="include">
+        </childnode>
+        <childnode refid="27720" relation="include">
+        </childnode>
+        <childnode refid="27732" relation="include">
+        </childnode>
+        <childnode refid="27723" relation="include">
+        </childnode>
+        <childnode refid="27733" relation="include">
+        </childnode>
+        <childnode refid="27734" relation="include">
+        </childnode>
+      </node>
+      <node id="27718">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="27719" relation="include">
+        </childnode>
+        <childnode refid="27720" relation="include">
+        </childnode>
+        <childnode refid="27721" relation="include">
+        </childnode>
+        <childnode refid="27722" relation="include">
+        </childnode>
+        <childnode refid="27723" relation="include">
+        </childnode>
+        <childnode refid="27726" relation="include">
+        </childnode>
+      </node>
+      <node id="27744">
+        <label>typeinfo</label>
+      </node>
+      <node id="27715">
+        <label>bitstream.h</label>
+        <link refid="bitstream_8h"/>
+        <childnode refid="27716" relation="include">
+        </childnode>
+        <childnode refid="27717" relation="include">
+        </childnode>
+        <childnode refid="27718" relation="include">
+        </childnode>
+        <childnode refid="27723" relation="include">
+        </childnode>
+      </node>
+      <node id="27738">
+        <label>vector</label>
+      </node>
+      <node id="27724">
+        <label>ciso646</label>
+      </node>
+      <node id="27737">
+        <label>sstream</label>
+      </node>
+      <node id="27723">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="27724" relation="include">
+        </childnode>
+        <childnode refid="27722" relation="include">
+        </childnode>
+        <childnode refid="27725" relation="include">
+        </childnode>
+      </node>
+      <node id="27725">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="27725" relation="include">
+        </childnode>
+      </node>
+      <node id="27733">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="27719" relation="include">
+        </childnode>
+        <childnode refid="27722" relation="include">
+        </childnode>
+      </node>
+      <node id="27742">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="27743" relation="include">
+        </childnode>
+      </node>
+      <node id="27714">
+        <label>cstdlib</label>
+      </node>
+      <node id="27719">
+        <label>iostream</label>
+      </node>
+      <node id="27713">
+        <label>libopenage/util/compress/lzxd.h</label>
+        <link refid="lzxd_8h"/>
+        <childnode refid="27714" relation="include">
+        </childnode>
+        <childnode refid="27715" relation="include">
+        </childnode>
+      </node>
+      <node id="27741">
+        <label>mutex</label>
+      </node>
+      <node id="27732">
+        <label>type_traits</label>
+      </node>
+      <node id="27728">
+        <label>config.h</label>
+      </node>
+      <node id="27716">
+        <label>cstring</label>
+      </node>
+      <node id="27720">
+        <label>memory</label>
+      </node>
+      <node id="27743">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="27719" relation="include">
+        </childnode>
+        <childnode refid="27744" relation="include">
+        </childnode>
+        <childnode refid="27723" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="27745">
+        <label>libopenage/util/compress/lzxd.h</label>
+        <link refid="lzxd_8h"/>
+        <childnode refid="27746" relation="include">
+        </childnode>
+      </node>
+      <node id="27746">
+        <label>libopenage/util/compress/lzxd.cpp</label>
+        <link refid="lzxd_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" prot="public">openage::util::compress::LZXDecompressor</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1compress">openage::util::compress</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>from<sp/>libopenage.pyinterface.functional<sp/>cimport<sp/>Func2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="bitstream_8h" kindref="compound">bitstream.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">compress<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pxd:<sp/>const<sp/>unsigned<sp/>LZX_FRAME_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="namespaceopenage_1_1util_1_1compress_1a72fc5c91c3e79ff1d0e2348b50b8f013" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1compress_1a72fc5c91c3e79ff1d0e2348b50b8f013" kindref="member">LZX_FRAME_SIZE</ref><sp/>=<sp/>32768;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Initialises<sp/>LZX<sp/>decompression<sp/>state<sp/>for<sp/>decoding<sp/>an<sp/>LZX<sp/>stream.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>read_callback<sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>callback<sp/>method<sp/>that<sp/>is<sp/>invoked<sp/>whenever<sp/>the<sp/>decompressor</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requires<sp/>more<sp/>data<sp/>on<sp/>the<sp/>input<sp/>stream.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>first<sp/>argument:<sp/>buf<sp/>(writable<sp/>buffer),</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>second<sp/>argument:<sp/>size<sp/>(amount<sp/>of<sp/>data<sp/>requested).</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>must<sp/>return:<sp/>0<sp/>on<sp/>EOF,<sp/>and<sp/>1<sp/>to<sp/>size<sp/>otherwise.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>must<sp/>fill<sp/>buf<sp/>[result]<sp/>bytes.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>must<sp/>throw<sp/>an<sp/>exception<sp/>on<sp/>error.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>window_bits<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>size<sp/>of<sp/>the<sp/>decoding<sp/>window,<sp/>which<sp/>must<sp/>be</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>between<sp/>15<sp/>and<sp/>21<sp/>inclusive.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>reset_interval<sp/><sp/><sp/><sp/><sp/>the<sp/>interval<sp/>at<sp/>which<sp/>the<sp/>LZX<sp/>bitstream<sp/>is</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reset,<sp/>in<sp/>multiples<sp/>of<sp/>LZX<sp/>frames<sp/>(32678</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes),<sp/>e.g.<sp/>a<sp/>value<sp/>of<sp/>2<sp/>indicates<sp/>the<sp/>input</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>resets<sp/>after<sp/>every<sp/>65536<sp/>output<sp/>bytes.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>value<sp/>of<sp/>0<sp/>indicates<sp/>that<sp/>the<sp/>bitstream<sp/>never</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resets,<sp/>such<sp/>as<sp/>in<sp/>CAB<sp/>LZX<sp/>streams.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>(<ref refid="namespaceopenage_1_1util_1_1compress_1a129fc036a27a40e60785ce5bb1aa5627" kindref="member">read_callback_t</ref><sp/>read_callback,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_bits=21,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset_interval=0);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>decompress_next_frame(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*output_buf);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80" refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1a476d05993567d0c02d6ced2e6216795e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_d_stream" kindref="compound">LZXDStream</ref><sp/>*<ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor_1a476d05993567d0c02d6ced2e6216795e" kindref="member">stream</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>don&apos;t<sp/>even<sp/>think<sp/>about<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref>(<ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;operator<sp/>=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;operator<sp/>=(<ref refid="classopenage_1_1util_1_1compress_1_1_l_z_x_decompressor" kindref="compound">LZXDecompressor</ref><sp/>&amp;&amp;other)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::compress</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/compress/lzxd.h"/>
+  </compounddef>
+</doxygen>

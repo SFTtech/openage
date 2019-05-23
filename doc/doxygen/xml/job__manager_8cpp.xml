@@ -1,0 +1,510 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="job__manager_8cpp" kind="file" language="C++">
+    <compoundname>job_manager.cpp</compoundname>
+    <includes refid="job__manager_8h" local="yes">job_manager.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="thread__id_8h" local="yes">../util/thread_id.h</includes>
+    <includes refid="worker_8h" local="yes">worker.h</includes>
+    <incdepgraph>
+      <node id="16241">
+        <label>list</label>
+      </node>
+      <node id="16206">
+        <label>atomic</label>
+      </node>
+      <node id="16237">
+        <label>iomanip</label>
+      </node>
+      <node id="16214">
+        <label>functional</label>
+      </node>
+      <node id="16210">
+        <label>queue</label>
+      </node>
+      <node id="16228">
+        <label>cstdint</label>
+      </node>
+      <node id="16235">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="16236" relation="include">
+        </childnode>
+        <childnode refid="16214" relation="include">
+        </childnode>
+        <childnode refid="16237" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16238" relation="include">
+        </childnode>
+        <childnode refid="16223" relation="include">
+        </childnode>
+        <childnode refid="16239" relation="include">
+        </childnode>
+      </node>
+      <node id="16215">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="16216" relation="include">
+        </childnode>
+      </node>
+      <node id="16213">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="16214" relation="include">
+        </childnode>
+        <childnode refid="16215" relation="include">
+        </childnode>
+        <childnode refid="16217" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+      </node>
+      <node id="16216">
+        <label>stdexcept</label>
+      </node>
+      <node id="16240">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="16241" relation="include">
+        </childnode>
+        <childnode refid="16209" relation="include">
+        </childnode>
+        <childnode refid="16242" relation="include">
+        </childnode>
+      </node>
+      <node id="16236">
+        <label>cstdarg</label>
+      </node>
+      <node id="16223">
+        <label>string</label>
+      </node>
+      <node id="16227">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="16228" relation="include">
+        </childnode>
+        <childnode refid="16223" relation="include">
+        </childnode>
+        <childnode refid="16229" relation="include">
+        </childnode>
+        <childnode refid="16230" relation="include">
+        </childnode>
+        <childnode refid="16232" relation="include">
+        </childnode>
+        <childnode refid="16240" relation="include">
+        </childnode>
+        <childnode refid="16242" relation="include">
+        </childnode>
+      </node>
+      <node id="16230">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="16231" relation="include">
+        </childnode>
+      </node>
+      <node id="16232">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="16206" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16233" relation="include">
+        </childnode>
+        <childnode refid="16224" relation="include">
+        </childnode>
+        <childnode refid="16234" relation="include">
+        </childnode>
+        <childnode refid="16235" relation="include">
+        </childnode>
+      </node>
+      <node id="16218">
+        <label>exception</label>
+      </node>
+      <node id="16220">
+        <label>stddef.h</label>
+      </node>
+      <node id="16205">
+        <label>job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="16206" relation="include">
+        </childnode>
+        <childnode refid="16207" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16209" relation="include">
+        </childnode>
+        <childnode refid="16210" relation="include">
+        </childnode>
+        <childnode refid="16211" relation="include">
+        </childnode>
+        <childnode refid="16212" relation="include">
+        </childnode>
+        <childnode refid="16213" relation="include">
+        </childnode>
+        <childnode refid="16247" relation="include">
+        </childnode>
+        <childnode refid="16248" relation="include">
+        </childnode>
+        <childnode refid="16249" relation="include">
+        </childnode>
+        <childnode refid="16245" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+      </node>
+      <node id="16221">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="16222" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16216" relation="include">
+        </childnode>
+        <childnode refid="16223" relation="include">
+        </childnode>
+        <childnode refid="16224" relation="include">
+        </childnode>
+        <childnode refid="16227" relation="include">
+        </childnode>
+      </node>
+      <node id="16250">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="16206" relation="include">
+        </childnode>
+        <childnode refid="16207" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16210" relation="include">
+        </childnode>
+        <childnode refid="16211" relation="include">
+        </childnode>
+        <childnode refid="16245" relation="include">
+        </childnode>
+      </node>
+      <node id="16207">
+        <label>condition_variable</label>
+      </node>
+      <node id="16244">
+        <label>typeinfo</label>
+      </node>
+      <node id="16248">
+        <label>job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16221" relation="include">
+        </childnode>
+        <childnode refid="16213" relation="include">
+        </childnode>
+        <childnode refid="16247" relation="include">
+        </childnode>
+        <childnode refid="16249" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+        <childnode refid="16250" relation="include">
+        </childnode>
+      </node>
+      <node id="16246">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="16214" relation="include">
+        </childnode>
+      </node>
+      <node id="16239">
+        <label>vector</label>
+      </node>
+      <node id="16251">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="16242" relation="include">
+        </childnode>
+        <childnode refid="16227" relation="include">
+        </childnode>
+      </node>
+      <node id="16225">
+        <label>ciso646</label>
+      </node>
+      <node id="16217">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="16206" relation="include">
+        </childnode>
+        <childnode refid="16218" relation="include">
+        </childnode>
+        <childnode refid="16214" relation="include">
+        </childnode>
+        <childnode refid="16219" relation="include">
+        </childnode>
+        <childnode refid="16221" relation="include">
+        </childnode>
+        <childnode refid="16215" relation="include">
+        </childnode>
+        <childnode refid="16245" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+      </node>
+      <node id="16238">
+        <label>sstream</label>
+      </node>
+      <node id="16224">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="16225" relation="include">
+        </childnode>
+        <childnode refid="16223" relation="include">
+        </childnode>
+        <childnode refid="16226" relation="include">
+        </childnode>
+      </node>
+      <node id="16226">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="16226" relation="include">
+        </childnode>
+      </node>
+      <node id="16234">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="16222" relation="include">
+        </childnode>
+        <childnode refid="16223" relation="include">
+        </childnode>
+      </node>
+      <node id="16242">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="16243" relation="include">
+        </childnode>
+      </node>
+      <node id="16231">
+        <label>cstdlib</label>
+      </node>
+      <node id="16222">
+        <label>iostream</label>
+      </node>
+      <node id="16247">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="16218" relation="include">
+        </childnode>
+        <childnode refid="16208" relation="include">
+        </childnode>
+        <childnode refid="16217" relation="include">
+        </childnode>
+      </node>
+      <node id="16212">
+        <label>unordered_map</label>
+      </node>
+      <node id="16249">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="16214" relation="include">
+        </childnode>
+        <childnode refid="16217" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+      </node>
+      <node id="16204">
+        <label>libopenage/job/job_manager.cpp</label>
+        <link refid="job__manager_8cpp"/>
+        <childnode refid="16205" relation="include">
+        </childnode>
+        <childnode refid="16251" relation="include">
+        </childnode>
+        <childnode refid="16219" relation="include">
+        </childnode>
+        <childnode refid="16250" relation="include">
+        </childnode>
+      </node>
+      <node id="16209">
+        <label>mutex</label>
+      </node>
+      <node id="16219">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="16220" relation="include">
+        </childnode>
+      </node>
+      <node id="16211">
+        <label>thread</label>
+      </node>
+      <node id="16233">
+        <label>type_traits</label>
+      </node>
+      <node id="16229">
+        <label>config.h</label>
+      </node>
+      <node id="16245">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="16214" relation="include">
+        </childnode>
+        <childnode refid="16246" relation="include">
+        </childnode>
+      </node>
+      <node id="16208">
+        <label>memory</label>
+      </node>
+      <node id="16243">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="16222" relation="include">
+        </childnode>
+        <childnode refid="16244" relation="include">
+        </childnode>
+        <childnode refid="16224" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1job">openage::job</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="job__manager_8h" kindref="compound">job_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/thread_id.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="worker_8h" kindref="compound">worker.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">job<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1job_1_1_job_manager_1a523d19942779f3f34be97a8d56325196" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job_manager_1a523d19942779f3f34be97a8d56325196" kindref="member">JobManager::JobManager</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number_of_workers)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>number_of_workers{<ref refid="classopenage_1_1job_1_1_job_manager_1aabb63639d8326d816988f150aab64732" kindref="member">number_of_workers</ref>},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>group_index{0},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>is_running{</highlight><highlight class="keyword">false</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>number_of_workers;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;workers.emplace_back(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Worker{</highlight><highlight class="keyword">this</highlight><highlight class="normal">});</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1job_1_1_job_manager_1a4478894f90499d1f560284a194e83a4f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job_manager_1a4478894f90499d1f560284a194e83a4f" kindref="member">JobManager::~JobManager</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" kindref="member">stop</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1ab2bf41f6b397b1acf10665ad93425b5e" kindref="member">JobManager::start</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>workers<sp/>have<sp/>not<sp/>been<sp/>started,<sp/>start<sp/>them<sp/>now</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a49ed9cbf861e5492e4295399827ab22d" kindref="member">is_running</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a49ed9cbf861e5492e4295399827ab22d" kindref="member">is_running</ref>.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref><sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a0854e76d52b714a2d7af57f333ea4e0e" kindref="member">workers</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref>-&gt;start();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Started<sp/>JobManager<sp/>with<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;number_of_workers<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>worker<sp/>threads&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1ac2cd8aa519595a5b0f50e796d5d00208" kindref="member">JobManager::stop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>is_running<sp/>to<sp/>false,<sp/>notify<sp/>and<sp/>join<sp/>all<sp/>workers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a49ed9cbf861e5492e4295399827ab22d" kindref="member">is_running</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a49ed9cbf861e5492e4295399827ab22d" kindref="member">is_running</ref>.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref><sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a0854e76d52b714a2d7af57f333ea4e0e" kindref="member">workers</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref>-&gt;stop();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref><sp/>:<sp/>this-&gt;workers)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref>-&gt;join();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Stopped<sp/>JobManager<sp/>with<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>this-&gt;number_of_workers<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>worker<sp/>threads&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classopenage_1_1job_1_1_job_manager_1ae81b425a182f26b155c9f31de6b74d63" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1ae81b425a182f26b155c9f31de6b74d63" kindref="member">JobManager::execute_callbacks</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>run<sp/>callbacks<sp/>for<sp/>finished<sp/>jobs<sp/>on<sp/>this<sp/>thread<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/><ref refid="namespaceopenage_1_1util_1ac99f61e1d0c06d9b83650a71cff2f02f" kindref="member">util::get_current_thread_id</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a8c5ab0694cd354dc3f02ee94ab0fbbc1" kindref="member">finished_jobs_mutex</ref>};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab4f9aa57c80b620acd97107ad7a7308e" kindref="member">finished_jobs</ref>.find(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>std::end(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab4f9aa57c80b620acd97107ad7a7308e" kindref="member">finished_jobs</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>move<sp/>the<sp/><sp/>the<sp/>finished<sp/>job<sp/>list<sp/>here<sp/>so<sp/>we<sp/>can<sp/>disable<sp/>the<sp/>lock</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;JobStateBase&gt;&gt;<sp/>jobs;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::swap(jobs,<sp/>it-&gt;second);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>the<sp/>worker&apos;s<sp/>old<sp/>finished<sp/>job<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second.clear();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>.unlock();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;job<sp/>:<sp/>jobs)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>job<sp/>may<sp/>throw<sp/>an<sp/>exception<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>job-&gt;execute_callback();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classopenage_1_1job_1_1_job_manager_1a26dd9d9c12b38ca0d7bf4c7e3c17ee36" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1job_1_1_job_group" kindref="compound">JobGroup</ref><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1a26dd9d9c12b38ca0d7bf4c7e3c17ee36" kindref="member">JobManager::create_job_group</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a572906422c0f2a770a1ba36f76e2a8cc" kindref="member">group_index</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a572906422c0f2a770a1ba36f76e2a8cc" kindref="member">group_index</ref><sp/>=<sp/>(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a572906422c0f2a770a1ba36f76e2a8cc" kindref="member">group_index</ref><sp/>+<sp/>1)<sp/>%<sp/>this-&gt;number_of_workers;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_group" kindref="compound">JobGroup</ref>{this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a0854e76d52b714a2d7af57f333ea4e0e" kindref="member">workers</ref>[index].get()};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classopenage_1_1job_1_1_job_manager_1a0f13eaafaebb859ca13dad1884c18031" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1a0f13eaafaebb859ca13dad1884c18031" kindref="member">JobManager::enqueue_state</ref>(std::shared_ptr&lt;JobStateBase&gt;<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a69c457e906f144c30338f2bd2e2ca2ec" kindref="member">pending_jobs_mutex</ref>};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac53233115d6b82623630131775aca1e8" kindref="member">pending_jobs</ref>.push(state);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref><sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a0854e76d52b714a2d7af57f333ea4e0e" kindref="member">workers</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a38adadf644885a7fe121be11ffeb8c36ab61822e8357dcaff77eaaccf348d9134" kindref="member">worker</ref>-&gt;notify();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classopenage_1_1job_1_1_job_manager_1adefba3f5fb9db0931cca54c27ab31041" refkind="member"><highlight class="normal">std::shared_ptr&lt;JobStateBase&gt;<sp/><ref refid="classopenage_1_1job_1_1_job_manager_1adefba3f5fb9db0931cca54c27ab31041" kindref="member">JobManager::fetch_job</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a69c457e906f144c30338f2bd2e2ca2ec" kindref="member">pending_jobs_mutex</ref>};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac53233115d6b82623630131775aca1e8" kindref="member">pending_jobs</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;JobStateBase&gt;{};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>job<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac53233115d6b82623630131775aca1e8" kindref="member">pending_jobs</ref>.front();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac53233115d6b82623630131775aca1e8" kindref="member">pending_jobs</ref>.pop();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>job;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1job_1_1_job_manager_1afc81fa6e3be5780014ced15942a48fa2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1afc81fa6e3be5780014ced15942a48fa2" kindref="member">JobManager::has_job</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a69c457e906f144c30338f2bd2e2ca2ec" kindref="member">pending_jobs_mutex</ref>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>not<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ac53233115d6b82623630131775aca1e8" kindref="member">pending_jobs</ref>.empty();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classopenage_1_1job_1_1_job_manager_1a9e5e1a95045cef58acd980ebdabc6285" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_manager_1a9e5e1a95045cef58acd980ebdabc6285" kindref="member">JobManager::finish_job</ref>(std::shared_ptr&lt;JobStateBase&gt;<sp/>job)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/><ref refid="setup_8cpp_1a8ae9fdb10d60db487571238897882e2b" kindref="member">lock</ref>{this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1a8c5ab0694cd354dc3f02ee94ab0fbbc1" kindref="member">finished_jobs_mutex</ref>};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab4f9aa57c80b620acd97107ad7a7308e" kindref="member">finished_jobs</ref>.find(job-&gt;get_thread_id());</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>there<sp/>hasn&apos;t<sp/>been<sp/>a<sp/>finished<sp/>job<sp/>for<sp/>the<sp/>thread_id,<sp/>create<sp/>a<sp/>new</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>entry</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>std::end(this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab4f9aa57c80b620acd97107ad7a7308e" kindref="member">finished_jobs</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1job_1_1_job_manager_1ab4f9aa57c80b620acd97107ad7a7308e" kindref="member">finished_jobs</ref>.insert({job-&gt;get_thread_id(),<sp/>{job}});</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>otherwise,<sp/>we<sp/>append<sp/>the<sp/>job<sp/>to<sp/>the<sp/>existing<sp/>entry</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;second.push_back(job);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::job</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/job/job_manager.cpp"/>
+  </compounddef>
+</doxygen>

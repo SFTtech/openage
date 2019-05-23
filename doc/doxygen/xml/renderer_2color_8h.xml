@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="renderer_2color_8h" kind="file" language="C++">
+    <compoundname>color.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includedby refid="text_8h" local="yes">libopenage/renderer/text.h</includedby>
+    <includedby refid="renderer_2color_8cpp" local="yes">libopenage/renderer/color.cpp</includedby>
+    <incdepgraph>
+      <node id="20422">
+        <label>libopenage/renderer/color.h</label>
+        <link refid="renderer_2color_8h"/>
+        <childnode refid="20423" relation="include">
+        </childnode>
+      </node>
+      <node id="20423">
+        <label>cstdint</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="20424">
+        <label>libopenage/renderer/color.h</label>
+        <link refid="renderer_2color_8h"/>
+        <childnode refid="20425" relation="include">
+        </childnode>
+        <childnode refid="20430" relation="include">
+        </childnode>
+      </node>
+      <node id="20428">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="20430">
+        <label>libopenage/renderer/color.cpp</label>
+        <link refid="renderer_2color_8cpp"/>
+      </node>
+      <node id="20425">
+        <label>libopenage/renderer/text.h</label>
+        <link refid="text_8h"/>
+        <childnode refid="20426" relation="include">
+        </childnode>
+        <childnode refid="20427" relation="include">
+        </childnode>
+        <childnode refid="20428" relation="include">
+        </childnode>
+        <childnode refid="20429" relation="include">
+        </childnode>
+      </node>
+      <node id="20427">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="20429">
+        <label>libopenage/renderer/text.cpp</label>
+        <link refid="text_8cpp"/>
+      </node>
+      <node id="20426">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1_color" prot="public">openage::renderer::Color</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classopenage_1_1renderer_1_1_color" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" kindref="member">Color</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_color_1aa205e489b79a057bc93bfc10bf940814" kindref="member">Color</ref>(uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" kindref="member">r</ref>,<sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" kindref="member">g</ref>,<sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" kindref="member">b</ref>,<sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" kindref="member">a</ref>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color_1abe80105fe7a572b495669ffd31a932d7" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color_1a63c38572218be6594fbaf4e27c0d0e0d" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_color" kindref="compound">Color</ref><sp/>&amp;other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a6d7d59cb33a7f225d85c8be89d514d05" kindref="member">r</ref>;</highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a3f5f98d44dcbec8457fae6a91907e337" kindref="member">g</ref>;</highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1ace5f8f492f08b4267faf06f5f3b63fee" kindref="member">b</ref>;</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classopenage_1_1renderer_1_1_color_1a01b10cabd8f93b6e61bebe484259cbfb" kindref="member">a</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/color.h"/>
+  </compounddef>
+</doxygen>

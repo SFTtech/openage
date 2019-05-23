@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1tests_1_1_test_state" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::tests::TestState</compoundname>
+    <basecompoundref refid="classopenage_1_1event_1_1_state" prot="public" virt="non-virtual">openage::event::State</basecompoundref>
+    <innerclass refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object" prot="public">openage::event::tests::TestState::TestObject</innerclass>
+    <innerclass refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement" prot="public">openage::event::tests::TestState::traceelement</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1tests_1_1_test_state_1a85fc736846c1a53eed28c4b0f02bbd09" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object" kindref="compound">TestObject</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;TestObject&gt; openage::event::tests::TestState::objectA</definition>
+        <argsstring></argsstring>
+        <name>objectA</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="51" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1tests_1_1_test_state_1a3106a6af096add1a6a2a6cc663fe05c6" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1tests_1_1_test_state_1_1_test_object" kindref="compound">TestObject</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;TestObject&gt; openage::event::tests::TestState::objectB</definition>
+        <argsstring></argsstring>
+        <name>objectB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="52" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1event_1_1tests_1_1_test_state_1a45754e041824ad45c8824a61ede82021" prot="public" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="structopenage_1_1event_1_1tests_1_1_test_state_1_1traceelement" kindref="compound">traceelement</ref> &gt;</type>
+        <definition>std::list&lt;traceelement&gt; openage::event::tests::TestState::trace</definition>
+        <argsstring></argsstring>
+        <name>trace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="64" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1a3a0b7e55abbb96de06b5ecdcc823299c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::tests::TestState::TestState</definition>
+        <argsstring>(const std::shared_ptr&lt; Loop &gt; &amp;loop)</argsstring>
+        <name>TestState</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &gt; &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="45" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1tests_1_1_test_state_1ae1464903f08fcc8b86ab86fcc995334e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::event::tests::TestState::log_dbg</definition>
+        <argsstring>()</argsstring>
+        <name>log_dbg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/tests.cpp" line="66" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="66" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4433">
+        <label>openage::event::tests::TestState</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_state"/>
+        <childnode refid="4434" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4434">
+        <label>openage::event::State</label>
+        <link refid="classopenage_1_1event_1_1_state"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4435">
+        <label>openage::event::tests::TestState</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_state"/>
+        <childnode refid="4436" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4436">
+        <label>openage::event::State</label>
+        <link refid="classopenage_1_1event_1_1_state"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/tests.cpp" line="18" column="1" bodyfile="libopenage/event/tests.cpp" bodystart="18" bodyend="72"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1ae1464903f08fcc8b86ab86fcc995334e" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>log_dbg</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1a85fc736846c1a53eed28c4b0f02bbd09" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>objectA</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1a3106a6af096add1a6a2a6cc663fe05c6" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>objectB</name></member>
+      <member refid="classopenage_1_1event_1_1_state_1a83f7eab17997e052ac5b1919ddf59798" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>State</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1a3a0b7e55abbb96de06b5ecdcc823299c" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>TestState</name></member>
+      <member refid="classopenage_1_1event_1_1tests_1_1_test_state_1a45754e041824ad45c8824a61ede82021" prot="public" virt="non-virtual"><scope>openage::event::tests::TestState</scope><name>trace</name></member>
+      <member refid="classopenage_1_1event_1_1_state_1a9dd924ee0bebc52e5356b6d05aaa6e0c" prot="public" virt="virtual"><scope>openage::event::tests::TestState</scope><name>~State</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

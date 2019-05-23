@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_dedicated_thread" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiDedicatedThread</compoundname>
+    <includes refid="gui__dedicated__thread_8h" local="no">gui_dedicated_thread.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1adb99230c55459bafd54f09ee67b35b28" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread qtsdl::GuiDedicatedThread::worker</definition>
+        <argsstring></argsstring>
+        <name>worker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="26" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1a569418caf8eb1698b0563f6382aedf5e" prot="private" static="yes" mutable="no">
+        <type>std::weak_ptr&lt; <ref refid="classqtsdl_1_1_gui_dedicated_thread" kindref="compound">GuiDedicatedThread</ref> &gt;</type>
+        <definition>std::weak_ptr&lt; GuiDedicatedThread &gt; qtsdl::GuiDedicatedThread::instance</definition>
+        <argsstring></argsstring>
+        <name>instance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="28" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1acb18aaa9962e0f94f007e81c792d071f" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiDedicatedThread::exists</definition>
+        <argsstring></argsstring>
+        <name>exists</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="30" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1a23c98485b115500bc1f4cef767c15ec4" prot="private" static="yes" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex qtsdl::GuiDedicatedThread::existence_guard</definition>
+        <argsstring></argsstring>
+        <name>existence_guard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="31" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_dedicated_thread_1a64948a610eb428e9a9ba9603a9466d15" prot="private" static="yes" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable qtsdl::GuiDedicatedThread::destroyed</definition>
+        <argsstring></argsstring>
+        <name>destroyed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="32" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classqtsdl_1_1_gui_dedicated_thread" kindref="compound">GuiDedicatedThread</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; GuiDedicatedThread &gt; qtsdl::GuiDedicatedThread::get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="19" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="51" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_dedicated_thread_1a19a6835538cf7d7ccad33ad97969f2fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiDedicatedThread::~GuiDedicatedThread</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiDedicatedThread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="21" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_dedicated_thread_1a7df4d5c05f49eac41404768088ed38ee" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiDedicatedThread::GuiDedicatedThread</definition>
+        <argsstring>()</argsstring>
+        <name>GuiDedicatedThread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="24" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.cpp" bodystart="20" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Runs the gui logic in separate thread.</para>
+<para>For sharing the thread with something else, use <ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">qtsdl::GuiApplicationImpl</ref> instead. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2500">
+        <label>qtsdl::GuiDedicatedThread</label>
+        <link refid="classqtsdl_1_1_gui_dedicated_thread"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_dedicated_thread.h" line="17" column="1" bodyfile="libopenage/gui/guisys/private/gui_dedicated_thread.h" bodystart="17" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a64948a610eb428e9a9ba9603a9466d15" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>destroyed</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a23c98485b115500bc1f4cef767c15ec4" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>existence_guard</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1acb18aaa9962e0f94f007e81c792d071f" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>exists</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a45341ecc344b0f1b31f44e907d2cb5bf" prot="public" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a7df4d5c05f49eac41404768088ed38ee" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>GuiDedicatedThread</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a569418caf8eb1698b0563f6382aedf5e" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>instance</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1adb99230c55459bafd54f09ee67b35b28" prot="private" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>worker</name></member>
+      <member refid="classqtsdl_1_1_gui_dedicated_thread_1a19a6835538cf7d7ccad33ad97969f2fe" prot="public" virt="non-virtual"><scope>qtsdl::GuiDedicatedThread</scope><name>~GuiDedicatedThread</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

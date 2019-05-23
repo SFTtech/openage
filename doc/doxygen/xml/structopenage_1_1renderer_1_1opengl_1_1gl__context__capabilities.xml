@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::opengl::gl_context_capabilities</compoundname>
+    <includes refid="context_8h" local="no">context.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1ae6138bd9a7ee57bd2bab3ae8da0948ac" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::gl_context_capabilities::max_vertex_attributes</definition>
+        <argsstring></argsstring>
+        <name>max_vertex_attributes</name>
+        <briefdescription>
+<para>The maximum number of vertex attributes in a shader. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="15" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::gl_context_capabilities::max_texture_slots</definition>
+        <argsstring></argsstring>
+        <name>max_texture_slots</name>
+        <briefdescription>
+<para>The amount of texture units (GL_TEXTUREi) available. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="17" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::gl_context_capabilities::max_texture_size</definition>
+        <argsstring></argsstring>
+        <name>max_texture_size</name>
+        <briefdescription>
+<para>The maximum size of a single dimension of a texture. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="19" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a9a2dd88927d6944721d842e76ef087c3" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::gl_context_capabilities::max_uniform_buffer_bindings</definition>
+        <argsstring></argsstring>
+        <name>max_uniform_buffer_bindings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The maximum number of binding points for uniform blocks in a single shader. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="22" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::opengl::gl_context_capabilities::major_version</definition>
+        <argsstring></argsstring>
+        <name>major_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::renderer::opengl::gl_context_capabilities::minor_version</definition>
+        <argsstring></argsstring>
+        <name>minor_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.h" line="25" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores information about context capabilities and limitations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2371">
+        <label>openage::renderer::opengl::gl_context_capabilities</label>
+        <link refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/context.h" line="13" column="1" bodyfile="libopenage/renderer/opengl/context.h" bodystart="13" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>major_version</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>max_texture_size</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>max_texture_slots</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a9a2dd88927d6944721d842e76ef087c3" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>max_uniform_buffer_bindings</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1ae6138bd9a7ee57bd2bab3ae8da0948ac" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>max_vertex_attributes</name></member>
+      <member refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::gl_context_capabilities</scope><name>minor_version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

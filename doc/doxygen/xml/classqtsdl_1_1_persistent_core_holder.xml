@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_persistent_core_holder" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::PersistentCoreHolder</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_persistent_core_holder_base" prot="public" virt="non-virtual">qtsdl::PersistentCoreHolderBase</basecompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; T &gt;</type>
+        <definition>std::unique_ptr&lt;T&gt; qtsdl::PersistentCoreHolder&lt; T &gt;::core</definition>
+        <argsstring></argsstring>
+        <name>core</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="64" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_1a1014c04e322e957f3f698bb23a81d121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::PersistentCoreHolder&lt; T &gt;::PersistentCoreHolder</definition>
+        <argsstring>(std::unique_ptr&lt; T &gt; core)</argsstring>
+        <name>PersistentCoreHolder</name>
+        <param>
+          <type>std::unique_ptr&lt; T &gt;</type>
+          <declname>core</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="49" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_1a0b277e49a1e40beb7eebeb6d1effe40c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::PersistentCoreHolder&lt; T &gt;::PersistentCoreHolder</definition>
+        <argsstring>()</argsstring>
+        <name>PersistentCoreHolder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="55" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void qtsdl::PersistentCoreHolder&lt; T &gt;::adopt_shell</definition>
+        <argsstring>(GuiItemLink *link) override</argsstring>
+        <name>adopt_shell</name>
+        <reimplements refid="classqtsdl_1_1_persistent_core_holder_base_1a9325679eda318e5ea9cfa3700fae428a">adopt_shell</reimplements>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_item_link" kindref="compound">GuiItemLink</ref> *</type>
+          <declname>link</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Establish link from the core to the shell. Core must have a public &apos;gui::GuiItemLink *gui_link` member. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="60" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="60" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3637">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="3636">
+        <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3637" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3639">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="3638">
+        <label>qtsdl::PersistentCoreHolder&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="3639" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="47" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="47" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_persistent_core_holder_1a0c0dd7fa44ec292a103049f5fd74fd56" prot="public" virt="virtual"><scope>qtsdl::PersistentCoreHolder</scope><name>adopt_shell</name></member>
+      <member refid="classqtsdl_1_1_persistent_core_holder_1abc03e02b436a9b771b3e35efa5230780" prot="public" virt="non-virtual"><scope>qtsdl::PersistentCoreHolder</scope><name>core</name></member>
+      <member refid="classqtsdl_1_1_persistent_core_holder_1a1014c04e322e957f3f698bb23a81d121" prot="public" virt="non-virtual"><scope>qtsdl::PersistentCoreHolder</scope><name>PersistentCoreHolder</name></member>
+      <member refid="classqtsdl_1_1_persistent_core_holder_1a0b277e49a1e40beb7eebeb6d1effe40c" prot="public" virt="non-virtual"><scope>qtsdl::PersistentCoreHolder</scope><name>PersistentCoreHolder</name></member>
+      <member refid="classqtsdl_1_1_persistent_core_holder_base_1a589b08c027d9b78aabb97972f6e95557" prot="public" virt="virtual"><scope>qtsdl::PersistentCoreHolder</scope><name>~PersistentCoreHolderBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1gameio" kind="namespace" language="C++">
+    <compoundname>openage::gameio</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1gameio_1adf4c124763b55a6c31005b67d3f398a4" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::gameio::save_label</definition>
+        <argsstring></argsstring>
+        <name>save_label</name>
+        <initializer>= &quot;openage-<ref refid="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" kindref="member">save</ref>-file&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.h" line="14" column="1" bodyfile="libopenage/gamestate/game_save.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1gameio_1a78ae26de66b1864190daaef67669bd98" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openage::gameio::save_version</definition>
+        <argsstring></argsstring>
+        <name>save_version</name>
+        <initializer>= &quot;v0.1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.h" line="15" column="1" bodyfile="libopenage/gamestate/game_save.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1a644610ec4e114bf5109a4a46847f3762" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gameio::save_unit</definition>
+        <argsstring>(std::ofstream &amp;file, Unit *unit)</argsstring>
+        <name>save_unit</name>
+        <param>
+          <type>std::ofstream &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="20" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="20" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1ac86e0756708907f826cb04e6f13d588d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gameio::load_unit</definition>
+        <argsstring>(std::ifstream &amp;file, GameMain *game)</argsstring>
+        <name>load_unit</name>
+        <param>
+          <type>std::ifstream &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_game_main" kindref="compound">GameMain</ref> *</type>
+          <declname>game</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="33" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="33" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1a3dbc6f4b94629a296a514691fb34a470" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gameio::save_tile_content</definition>
+        <argsstring>(std::ofstream &amp;file, openage::TileContent *content)</argsstring>
+        <name>save_tile_content</name>
+        <param>
+          <type>std::ofstream &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_tile_content" kindref="compound">openage::TileContent</ref> *</type>
+          <declname>content</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="56" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1a4141acb6d3c777a66792c1f02a8678bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_tile_content" kindref="compound">TileContent</ref></type>
+        <definition>TileContent openage::gameio::load_tile_content</definition>
+        <argsstring>(std::ifstream &amp;file)</argsstring>
+        <name>load_tile_content</name>
+        <param>
+          <type>std::ifstream &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="61" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1a2c4db428aa6da2185b33a86508fb49a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gameio::save</definition>
+        <argsstring>(openage::GameMain *game, std::string fname)</argsstring>
+        <name>save</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_main" kindref="compound">openage::GameMain</ref> *</type>
+          <defname>game</defname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a game save function that sometimes works </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="70" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="70" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1gameio_1a75b0984fd51cdc53616318d3f5a0d50f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gameio::load</definition>
+        <argsstring>(openage::GameMain *game, std::string fname)</argsstring>
+        <name>load</name>
+        <param>
+          <type><ref refid="classopenage_1_1_game_main" kindref="compound">openage::GameMain</ref> *</type>
+          <defname>game</defname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a game load function that sometimes works </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/game_save.cpp" line="102" column="1" bodyfile="libopenage/gamestate/game_save.cpp" bodystart="102" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/gamestate/game_save.cpp" line="18" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,480 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1input" kind="namespace" language="C++">
+    <compoundname>openage::input</compoundname>
+    <innerclass refid="structopenage_1_1input_1_1action__arg__t" prot="public">openage::input::action_arg_t</innerclass>
+    <innerclass refid="classopenage_1_1input_1_1_action_manager" prot="public">openage::input::ActionManager</innerclass>
+    <innerclass refid="structopenage_1_1input_1_1class__code__hash" prot="public">openage::input::class_code_hash</innerclass>
+    <innerclass refid="classopenage_1_1input_1_1_class_code" prot="public">openage::input::ClassCode</innerclass>
+    <innerclass refid="classopenage_1_1input_1_1_event" prot="public">openage::input::Event</innerclass>
+    <innerclass refid="structopenage_1_1input_1_1event__class__hash" prot="public">openage::input::event_class_hash</innerclass>
+    <innerclass refid="structopenage_1_1input_1_1event__hash" prot="public">openage::input::event_hash</innerclass>
+    <innerclass refid="classopenage_1_1input_1_1_input_context" prot="public">openage::input::InputContext</innerclass>
+    <innerclass refid="classopenage_1_1input_1_1_input_manager" prot="public">openage::input::InputManager</innerclass>
+    <innerclass refid="structopenage_1_1input_1_1modifier__hash" prot="public">openage::input::modifier_hash</innerclass>
+    <innernamespace refid="namespaceopenage_1_1input_1_1tests">openage::input::tests</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>event_class</name>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a8e1bde3c3d303163521522cf1d62f21f" prot="public">
+          <name>ANY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" prot="public">
+          <name>KEYBOARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" prot="public">
+          <name>CHAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a002101f8725e5c78d9f30d87f3fa4c87" prot="public">
+          <name>ALPHA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a999bbbf1d86bc7611397c77222e076db" prot="public">
+          <name>DIGIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849af96eee4e48ee90430f17fb3a8388507b" prot="public">
+          <name>PRINT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a473d7f95e1409a797f859f013fbccaa2" prot="public">
+          <name>NONPRINT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a03570470bad94692ce93e32700d2e1cb" prot="public">
+          <name>OTHER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1" prot="public">
+          <name>UTF8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" prot="public">
+          <name>MOUSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a3421ce503e9731d435babad896b7aef8" prot="public">
+          <name>MOUSE_BUTTON</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849ac80e822dfb2e91b477ea25b533fb001d" prot="public">
+          <name>MOUSE_BUTTON_UP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a765637629248160cb31a3c9a33e085e2" prot="public">
+          <name>MOUSE_BUTTON_DOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc" prot="public">
+          <name>MOUSE_WHEEL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a6a52684199a74ef0bd3415fe6a76da4f" prot="public">
+          <name>MOUSE_MOTION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>highest level classes of input </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="18" column="1" bodyfile="libopenage/input/event.h" bodystart="18" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>modifier</name>
+        <enumvalue id="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a32f7eee2581c72a5561c21df3013a89a" prot="public">
+          <name>CTRL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5adfbfc9cc7a235560f04cb1a5faf1ec3e" prot="public">
+          <name>ALT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a46afff2b309b8b16a46d812172a9235c" prot="public">
+          <name>SHIFT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>mods set on an event </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="63" column="1" bodyfile="libopenage/input/event.h" bodystart="63" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>using openage::input::action_t = typedef unsigned int</definition>
+        <argsstring></argsstring>
+        <name>action_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Used to identify actions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/action.h" line="27" column="1" bodyfile="libopenage/input/action.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a1b138fc1f2c04cbb787073b612f1e5a9" prot="public" static="no">
+        <type><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref></type>
+        <definition>using openage::input::action_id_t = typedef action_t</definition>
+        <argsstring></argsstring>
+        <name>action_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/action.h" line="65" column="1" bodyfile="libopenage/input/action.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a20e943c4e2c674bd2fbc51cc1aa95f4e" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structopenage_1_1input_1_1action__arg__t" kindref="compound">action_arg_t</ref> &amp;)&gt;</type>
+        <definition>using openage::input::action_func_t = typedef std::function&lt;void(const action_arg_t &amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>action_func_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs the effect of an action. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/action.h" line="89" column="1" bodyfile="libopenage/input/action.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a749551c9ca7f855abac1a48f51a3f1bf" prot="public" static="no">
+        <type>std::function&lt; bool(const <ref refid="structopenage_1_1input_1_1action__arg__t" kindref="compound">action_arg_t</ref> &amp;)&gt;</type>
+        <definition>using openage::input::action_check_t = typedef std::function&lt;bool(const action_arg_t &amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>action_check_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>For receivers of sets of events a bool is returned to indicate if the event was used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/action.h" line="96" column="1" bodyfile="libopenage/input/action.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1aae287ba8846c11563c4b17a98e220b54" prot="public" static="no">
+        <type>int</type>
+        <definition>using openage::input::code_t = typedef int</definition>
+        <argsstring></argsstring>
+        <name>code_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>types used by events </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="78" column="1" bodyfile="libopenage/input/event.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" prot="public" static="no">
+        <type>std::unordered_set&lt; <ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5" kindref="member">modifier</ref>, <ref refid="structopenage_1_1input_1_1modifier__hash" kindref="compound">modifier_hash</ref> &gt;</type>
+        <definition>using openage::input::modset_t = typedef std::unordered_set&lt;modifier, modifier_hash&gt;</definition>
+        <argsstring></argsstring>
+        <name>modset_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="79" column="1" bodyfile="libopenage/input/event.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a32d326b457190871e29cec30fe274ff2" prot="public" static="no">
+        <type>std::unordered_set&lt; <ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref>, <ref refid="structopenage_1_1input_1_1event__hash" kindref="compound">event_hash</ref> &gt;</type>
+        <definition>using openage::input::event_set_t = typedef std::unordered_set&lt;Event, event_hash&gt;</definition>
+        <argsstring></argsstring>
+        <name>event_set_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="148" column="1" bodyfile="libopenage/input/event.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1input_1a9e27223f05a88e3091798701b3770ffd" prot="public" static="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref>, <ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref> &gt;</type>
+        <definition>using openage::input::binding_map_t = typedef std::unordered_map&lt;action_t, Event&gt;</definition>
+        <argsstring></argsstring>
+        <name>binding_map_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>maps actions to events. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/input_manager.h" line="29" column="1" bodyfile="libopenage/input/input_manager.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1input_1ad9e6713c5f62a1f050142ffd4993cc7e" prot="public" static="yes" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref>, <ref refid="structopenage_1_1input_1_1event__class__hash" kindref="compound">event_class_hash</ref> &gt;</type>
+        <definition>std::unordered_map&lt;event_class, event_class, event_class_hash&gt; openage::input::event_base</definition>
+        <argsstring></argsstring>
+        <name>event_base</name>
+        <initializer>{
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" kindref="member">event_class::KEYBOARD</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a8e1bde3c3d303163521522cf1d62f21f" kindref="member">event_class::ANY</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" kindref="member">event_class::CHAR</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" kindref="member">event_class::KEYBOARD</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a002101f8725e5c78d9f30d87f3fa4c87" kindref="member">event_class::ALPHA</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" kindref="member">event_class::CHAR</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a999bbbf1d86bc7611397c77222e076db" kindref="member">event_class::DIGIT</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" kindref="member">event_class::CHAR</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849af96eee4e48ee90430f17fb3a8388507b" kindref="member">event_class::PRINT</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" kindref="member">event_class::CHAR</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a473d7f95e1409a797f859f013fbccaa2" kindref="member">event_class::NONPRINT</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" kindref="member">event_class::KEYBOARD</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a03570470bad94692ce93e32700d2e1cb" kindref="member">event_class::OTHER</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" kindref="member">event_class::KEYBOARD</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1" kindref="member">event_class::UTF8</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aedda266cdb6345b9f6914cc2e7577475" kindref="member">event_class::KEYBOARD</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">event_class::MOUSE</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a8e1bde3c3d303163521522cf1d62f21f" kindref="member">event_class::ANY</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a3421ce503e9731d435babad896b7aef8" kindref="member">event_class::MOUSE_BUTTON</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">event_class::MOUSE</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc" kindref="member">event_class::MOUSE_WHEEL</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">event_class::MOUSE</ref>},
+	{<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a6a52684199a74ef0bd3415fe6a76da4f" kindref="member">event_class::MOUSE_MOTION</ref>, <ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">event_class::MOUSE</ref>},
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>each event type mapped to parent type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.h" line="45" column="1" bodyfile="libopenage/input/event.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1input_1a1d09cb9758cee29027f1ddfea81cf1ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::input::operator==</definition>
+        <argsstring>(ClassCode a, ClassCode b)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type><ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="41" column="1" bodyfile="libopenage/input/event.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref></type>
+        <definition>modset_t openage::input::sdl_mod</definition>
+        <argsstring>(SDL_Keymod mod)</argsstring>
+        <name>sdl_mod</name>
+        <param>
+          <type>SDL_Keymod</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="110" column="1" bodyfile="libopenage/input/event.cpp" bodystart="110" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::sdl_key</definition>
+        <argsstring>(SDL_Keycode code, SDL_Keymod mod)</argsstring>
+        <name>sdl_key</name>
+        <param>
+          <type>SDL_Keycode</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>SDL_Keymod</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="127" column="1" bodyfile="libopenage/input/event.cpp" bodystart="127" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1a66c182e7a6c17284f918dd401d6fded3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::utf8</definition>
+        <argsstring>(const std::string &amp;text)</argsstring>
+        <name>utf8</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="152" column="1" bodyfile="libopenage/input/event.cpp" bodystart="152" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::sdl_mouse</definition>
+        <argsstring>(int button, SDL_Keymod mod)</argsstring>
+        <name>sdl_mouse</name>
+        <param>
+          <type>int</type>
+          <declname>button</declname>
+        </param>
+        <param>
+          <type>SDL_Keymod</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="156" column="1" bodyfile="libopenage/input/event.cpp" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::sdl_mouse_up_down</definition>
+        <argsstring>(int button, bool up, SDL_Keymod mod)</argsstring>
+        <name>sdl_mouse_up_down</name>
+        <param>
+          <type>int</type>
+          <declname>button</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>up</declname>
+        </param>
+        <param>
+          <type>SDL_Keymod</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="160" column="1" bodyfile="libopenage/input/event.cpp" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1ab6f0345d20c07a72034dc85a73d1cdf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::sdl_wheel</definition>
+        <argsstring>(int direction, SDL_Keymod mod)</argsstring>
+        <name>sdl_wheel</name>
+        <param>
+          <type>int</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>SDL_Keymod</type>
+          <declname>mod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/input/event.cpp" line="164" column="1" bodyfile="libopenage/input/event.cpp" bodystart="164" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref></type>
+        <definition>Event openage::input::text_to_event</definition>
+        <argsstring>(const std::string &amp;event_str)</argsstring>
+        <name>text_to_event</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>event_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a string to an event, throw if the string is not a valid event. </para>
+        </detaileddescription>
+        <inbodydescription>
+<para>First element is the entire match, so search from the second.</para>
+        </inbodydescription>
+        <location file="libopenage/input/text_to_event.cpp" line="76" column="1" bodyfile="libopenage/input/text_to_event.cpp" bodystart="76" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The openage input layer. It gets all the events and processes them accordingly. </para>
+    </detaileddescription>
+    <location file="libopenage/input/action.cpp" line="14" column="1"/>
+  </compounddef>
+</doxygen>

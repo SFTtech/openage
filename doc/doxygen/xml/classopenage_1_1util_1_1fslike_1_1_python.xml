@@ -1,0 +1,503 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1_python" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::fslike::Python</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" prot="public" virt="non-virtual">openage::util::fslike::FSLike</basecompoundref>
+    <includes refid="fslike_2python_8h" local="no">python.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;py::Obj&gt; openage::util::fslike::Python::fsobj</definition>
+        <argsstring></argsstring>
+        <name>fsobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="74" column="1" bodyfile="libopenage/util/fslike/python.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1aa1664f9cc8d1b61daac2d96245f480d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::fslike::Python::Python</definition>
+        <argsstring>(py::Obj fsobj)</argsstring>
+        <name>Python</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref></type>
+          <declname>fsobj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="43" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a88d8a47b3dab58e2c4f126b59525f6b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::is_file</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>is_file</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adf2810f95545a0ad3ff943031c2dc5be">is_file</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="45" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a0e95258f4bc84e6a518b92ff56c11a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::is_dir</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>is_dir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3482e633a1c66d185899bc827b535500">is_dir</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="46" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a18eb89f1cba644f09f4747f67373f79f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::writable</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a881da38b6c5fc9d6e2b11144ee53feb4">writable</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="47" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1abc83bf9b01ac2fa5d924f7bb041d63a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">Path::part_t</ref> &gt;</type>
+        <definition>std::vector&lt; Path::part_t &gt; openage::util::fslike::Python::list</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>list</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a9106c192b17224d429822edd0ffd6ecd">list</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="48" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::mkdirs</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>mkdirs</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a0b9f9850507320cc4d3dc4393a4e7195">mkdirs</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="49" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a4326f9bf1a1d1cd4dc8fb948f54d572b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Python::open_r</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abf13ccd935fb36f6d3eb78b296abb3a8">open_r</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="50" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a150b1a465f29315a0eea7dbfdb42a084" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Python::open_w</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a489ac2d07d76709781f16eb2d405f1fe">open_w</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="51" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a71a089f553bf3b7ea541e9058e601b45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Python::open_rw</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_rw</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2aded78ac99255c9f770434bbd6d94c3">open_rw</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="52" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a68697819783d818ddb27bb6cb49a8fb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Python::open_a</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_a</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8b0ccf47acfb5ab6755bfce2f791f2b3">open_a</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="53" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a78894b8819ad14a60438e8365b55b20d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Python::open_ar</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_ar</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a4b5616d9717e5301c7a02c0ec817ec4d">open_ar</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="54" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a4ed41ccdd26277c5b64a21409f95e683" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; bool, <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
+        <definition>std::pair&lt; bool, Path &gt; openage::util::fslike::Python::resolve_r</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>resolve_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a5dd908fc01d858dd0ad6d796cfa4caa6">resolve_r</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="56" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1aa1365f11fc02d7dd469842eaa82d47ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::pair&lt; bool, <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
+        <definition>std::pair&lt; bool, Path &gt; openage::util::fslike::Python::resolve_w</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>resolve_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2624d82034fe926a371f978b1d572f93">resolve_w</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="57" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::fslike::Python::get_native_path</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_native_path</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a46e98d2f10ea90e0c3bdf10cd7c3a55c">get_native_path</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="58" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="67" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1ac70ab501b00e2175822b704023f35a22" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::rename</definition>
+        <argsstring>(const Path::parts_t &amp;parts, const Path::parts_t &amp;target_parts) override</argsstring>
+        <name>rename</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1ac309157d7ca897b70ad1bd2422278a76">rename</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>target_parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="59" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a9793a38c4778210e5689429936b07405" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::rmdir</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>rmdir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a059fb6fed999bf853991bc33ed85f039">rmdir</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="61" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a5bfc607e7cf03d69174e9c7983336bcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::touch</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>touch</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a60b98d35f3dd77e2c25bc39bb495c274">touch</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="62" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="87" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1ab2fbc85162983fc432c05f3b040756d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::unlink</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>unlink</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1acf305e89dcfa13a3bfac108943793bfe">unlink</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="63" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1abeba06958f44fb55a6eff0fb3d6a3db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::util::fslike::Python::get_mtime</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_mtime</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3a5e4bbcf3223072add552c6cbb3cef4">get_mtime</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="65" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1ab0ed3935ca1b6a5bd1cd3556b7be606d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::fslike::Python::get_filesize</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_filesize</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a08ae94dab451787650b27a828ddd6d01">get_filesize</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="66" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1af5a0b97ff0aea88ef52e0159e0b9a5dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Python::is_python_native</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>is_python_native</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8d65a4b885c3b6669added656e4b9d6f">is_python_native</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="68" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="compiler_8h_1aea581b919984cda327632efe3d11f8b3" kindref="member">OAAPI</ref> <ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref> &amp;</type>
+        <definition>py::Obj &amp; openage::util::fslike::Python::get_py_fsobj</definition>
+        <argsstring>() const</argsstring>
+        <name>get_py_fsobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="69" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_python_1a5a401d90c67757c7650d5940d3f67051" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::util::fslike::Python::repr</definition>
+        <argsstring>(std::ostream &amp;) override</argsstring>
+        <name>repr</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1af59ec3100e97086edd094242f700e454">repr</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+          <defname>stream</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/python.h" line="71" column="1" bodyfile="libopenage/util/fslike/python.cpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Filesystem-like object that wraps a filesystem-like object from <ref refid="classopenage_1_1util_1_1fslike_1_1_python" kindref="compound">Python</ref>. Calls are relayed via Cython, which performs the data conversion.</para>
+<para>pxd: cppclass Python(FSLike): PyObj &amp;<ref refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" kindref="member">get_py_fsobj()</ref> except + </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3806">
+        <label>openage::util::fslike::FSLike</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
+        <childnode refid="3807" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3807">
+        <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
+      </node>
+      <node id="3805">
+        <label>openage::util::fslike::Python</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_python"/>
+        <childnode refid="3806" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3809">
+        <label>openage::util::fslike::FSLike</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
+        <childnode refid="3810" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3810">
+        <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
+      </node>
+      <node id="3808">
+        <label>openage::util::fslike::Python</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_python"/>
+        <childnode refid="3809" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fslike/python.h" line="41" column="1" bodyfile="libopenage/util/fslike/python.h" bodystart="41" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a360e94675cb97c2efa393d03be02b46c" prot="public" virt="non-virtual"><scope>openage::util::fslike::Python</scope><name>FSLike</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1abd5230fb3e92a6d3cfa7636d6bf55f00" prot="protected" virt="non-virtual"><scope>openage::util::fslike::Python</scope><name>fsobj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1ab0ed3935ca1b6a5bd1cd3556b7be606d" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>get_filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1abeba06958f44fb55a6eff0fb3d6a3db9" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>get_mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a0602b597585db95c4a27cb2d114b8f22" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1af1a29b68853bfb3befa61da1137abd95" prot="public" virt="non-virtual"><scope>openage::util::fslike::Python</scope><name>get_py_fsobj</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a0e95258f4bc84e6a518b92ff56c11a13" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a88d8a47b3dab58e2c4f126b59525f6b7" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1af5a0b97ff0aea88ef52e0159e0b9a5dc" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>is_python_native</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1abc83bf9b01ac2fa5d924f7bb041d63a7" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a18b9a8b137320ac0897f06e541c19a97" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a68697819783d818ddb27bb6cb49a8fb0" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a78894b8819ad14a60438e8365b55b20d" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a4326f9bf1a1d1cd4dc8fb948f54d572b" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a71a089f553bf3b7ea541e9058e601b45" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a150b1a465f29315a0eea7dbfdb42a084" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1664f9cc8d1b61daac2d96245f480d7" prot="public" virt="non-virtual"><scope>openage::util::fslike::Python</scope><name>Python</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1ac70ab501b00e2175822b704023f35a22" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a5a401d90c67757c7650d5940d3f67051" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>repr</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a4ed41ccdd26277c5b64a21409f95e683" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1aa1365f11fc02d7dd469842eaa82d47ec" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a9793a38c4778210e5689429936b07405" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adcba7ad7135736cf7f7c105ef2a4473d" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a5bfc607e7cf03d69174e9c7983336bcb" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1ab2fbc85162983fc432c05f3b040756d5" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_python_1a18eb89f1cba644f09f4747f67373f79f" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abb03f19eab3eb3794c6d2fea224880fd" prot="public" virt="virtual"><scope>openage::util::fslike::Python</scope><name>~FSLike</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

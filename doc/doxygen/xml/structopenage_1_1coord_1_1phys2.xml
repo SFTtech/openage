@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1coord_1_1phys2" kind="struct" language="C++" prot="public">
+    <compoundname>openage::coord::phys2</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CoordNeSeAbsolute&lt; phys_t, phys2, phys2_delta &gt;</basecompoundref>
+    <includes refid="phys_8h" local="no">phys.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a8ecf41059192ad2da4940f93a00a0294" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">tile</ref></type>
+        <definition>tile openage::coord::phys2::to_tile</definition>
+        <argsstring>() const</argsstring>
+        <name>to_tile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="35" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">phys3</ref></type>
+        <definition>phys3 openage::coord::phys2::to_phys3</definition>
+        <argsstring>(const Terrain &amp;terrain, phys_t altitude=0) const</argsstring>
+        <name>to_phys3</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &amp;</type>
+          <declname>terrain</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1coord_1a257112db0574d981f4bd017656c687fe" kindref="member">phys_t</ref></type>
+          <declname>altitude</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="36" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::coord::phys2::distance</definition>
+        <argsstring>(phys2 other) const</argsstring>
+        <name>distance</name>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys2" kindref="compound">phys2</ref></type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/coord/phys.h" line="38" column="1" bodyfile="libopenage/coord/phys.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3650">
+        <label>openage::coord::phys2</label>
+        <link refid="structopenage_1_1coord_1_1phys2"/>
+        <childnode refid="3651" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3651">
+        <label>CoordNeSeAbsolute&lt; phys_t, phys2, phys2_delta &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3652">
+        <label>openage::coord::phys2</label>
+        <link refid="structopenage_1_1coord_1_1phys2"/>
+        <childnode refid="3653" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3653">
+        <label>CoordNeSeAbsolute&lt; phys_t, phys2, phys2_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/coord/phys.h" line="32" column="1" bodyfile="libopenage/coord/phys.h" bodystart="32" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1coord_1_1phys2_1a759b5a67a3faf43208cfb35712f26451" prot="public" virt="non-virtual"><scope>openage::coord::phys2</scope><name>distance</name></member>
+      <member refid="structopenage_1_1coord_1_1phys2_1a2cbf9e4669fb9702e6b086de22ac5eac" prot="public" virt="non-virtual"><scope>openage::coord::phys2</scope><name>to_phys3</name></member>
+      <member refid="structopenage_1_1coord_1_1phys2_1a8ecf41059192ad2da4940f93a00a0294" prot="public" virt="non-virtual"><scope>openage::coord::phys2</scope><name>to_tile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

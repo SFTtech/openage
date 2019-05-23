@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_generator_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GeneratorLink</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_list_model" prot="public" virt="non-virtual">qtsdl::GuiListModel</basecompoundref>
+    <basecompoundref refid="classqtsdl_1_1_gui_item_list_model" prot="public" virt="non-virtual">qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</basecompoundref>
+    <includes refid="generator__link_8h" local="no">generator_link.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_generator_link_1af6c3069ee8314d5b4ac0df5954e36d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GeneratorLink::GeneratorLink</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>GeneratorLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/generator_link.h" line="36" column="1" bodyfile="libopenage/gui/generator_link.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_generator_link_1ab449400db5f69284b5de28ceb7bfb4d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::gui::GeneratorLink::~GeneratorLink</definition>
+        <argsstring>()</argsstring>
+        <name>~GeneratorLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/generator_link.h" line="37" column="1" bodyfile="libopenage/gui/generator_link.cpp" bodystart="24" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2350">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2351" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2346">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2345">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2348">
+        <label>qtsdl::GuiItem&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2349" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2350" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2351">
+        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2344">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2345" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2342">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="2343" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2344" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2346" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2347">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2343">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="2349">
+        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+      </node>
+      <node id="2341">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="2342" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2347" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2365">
+        <label>qtsdl::GuiItemCoreInstantiator&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_core_instantiator"/>
+        <childnode refid="2366" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2359">
+        <label>qtsdl::GuiItemLink</label>
+        <link refid="classqtsdl_1_1_gui_item_link"/>
+      </node>
+      <node id="2363">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; GeneratorLink &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="2364" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2358">
+        <label>QObject</label>
+      </node>
+      <node id="2356">
+        <label>qtsdl::DeferredInitialConstantPropertyValues</label>
+        <link refid="classqtsdl_1_1_deferred_initial_constant_property_values"/>
+      </node>
+      <node id="2364">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="2361">
+        <label>qtsdl::GuiItem&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2362" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2365" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2366">
+        <label>qtsdl::GuiItemMethods&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_methods"/>
+      </node>
+      <node id="2355">
+        <label>qtsdl::GuiItemBase</label>
+        <link refid="classqtsdl_1_1_gui_item_base"/>
+        <childnode refid="2356" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2357" relation="usage">
+          <edgelabel>#game_logic_caller</edgelabel>
+        </childnode>
+      </node>
+      <node id="2353">
+        <label>qtsdl::GuiListModel</label>
+        <link refid="classqtsdl_1_1_gui_list_model"/>
+        <childnode refid="2354" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2355" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2359" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2360">
+        <label>qtsdl::GuiItemListModel&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2361" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2354">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="2362">
+        <label>qtsdl::GuiItemOrigin&lt; GeneratorLink &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="2363" relation="usage">
+          <edgelabel>-holder</edgelabel>
+        </childnode>
+      </node>
+      <node id="2357">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="2358" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2352">
+        <label>openage::gui::GeneratorLink</label>
+        <link refid="classopenage_1_1gui_1_1_generator_link"/>
+        <childnode refid="2353" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2360" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/generator_link.h" line="32" column="1" bodyfile="libopenage/gui/generator_link.h" bodystart="32" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a6f205a98802394ea87deebf898d29d01" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>apply_static_properties</name></member>
+      <member refid="classqtsdl_1_1_gui_list_model_1a8602a92a9ef7e6350a387ae7b229b10e" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>changed_from_gui</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a028fdd93b87d2d9e83d7fe4cd0d4b92a" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>clear_static_properties</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1aac6c766faef0e1e1dfb459529ec10651" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad1c9fc4f541bc3439cf43d12f8de1d44" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>do_adopt_core_func</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a43b9a4ff7add26dee471445ad54720d3" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>game_logic_caller</name></member>
+      <member refid="classopenage_1_1gui_1_1_generator_link_1af6c3069ee8314d5b4ac0df5954e36d63" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>GeneratorLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a4312ae7a277d9ff2826d92545f332e70" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a7c8977ff5ebdd15a717e677f7109deab" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>get</name></member>
+      <member refid="classqtsdl_1_1_gui_item_1a3d22c3629a4de170f646540b319da3c3" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>GuiItem</name></member>
+      <member refid="classqtsdl_1_1_gui_item_core_instantiator_1a979723391eb9d236f0b0ffe2a93a4ed2" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_list_model_1aca239fddd00b3178a7984f4523bfc09a" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>GuiItemListModel</name></member>
+      <member refid="classqtsdl_1_1_gui_list_model_1ad514c8599de32fc4fb249a7dac8b8c39" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>GuiListModel</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ac54e8509493e71387cc423d3b594c774" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>i</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af17ad49a07c95416daf1eaca114abfd0" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ada4a1f11684bf31b94c33de0660387e2" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>instantiate_core_func</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a7fcda7b66f1088fe1fab1a1b06035090" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>is_init_over</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1a9c7fab23cf21d5ff2016ef7bd4def7fb" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>on_core_adopted_func</name></member>
+      <member refid="classqtsdl_1_1_gui_list_model_1af824d1dbf7e1cf3b5575c7259269d609" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>on_property_changed</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1ae1736d128156183ad9e760b8a49b3361" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>s</name></member>
+      <member refid="classqtsdl_1_1_gui_list_model_1a507b8bbdfc20a92392ef5550e0916d74" prot="public" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>set</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1adbc7a1a8ccb4aca1bdb9c4797bdd8700" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>sf</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1af1b4bdb4d0af72707d5897cda5823706" prot="protected" virt="non-virtual"><scope>openage::gui::GeneratorLink</scope><name>static_properties_assignments</name></member>
+      <member refid="classqtsdl_1_1_deferred_initial_constant_property_values_1a8a83f3321c8f127a794b92f1998c48a8" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~DeferredInitialConstantPropertyValues</name></member>
+      <member refid="classopenage_1_1gui_1_1_generator_link_1ab449400db5f69284b5de28ceb7bfb4d9" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~GeneratorLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_base_1ad81204fb45b5cee201186dcb16734bdf" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~GuiItemBase</name></member>
+      <member refid="classqtsdl_1_1_gui_item_link_1aaaa016cbf90ebc67e8c3c5d2a73f4f85" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~GuiItemLink</name></member>
+      <member refid="classqtsdl_1_1_gui_item_methods_1a83fd1f9b76b289632f8229b635c731fb" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~GuiItemMethods</name></member>
+      <member refid="classqtsdl_1_1_gui_list_model_1abb32032b168269f94df6120f96a60e33" prot="public" virt="virtual"><scope>openage::gui::GeneratorLink</scope><name>~GuiListModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

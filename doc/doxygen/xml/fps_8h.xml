@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fps_8h" kind="file" language="C++">
+    <compoundname>fps.h</compoundname>
+    <includes refid="timer_8h" local="yes">timer.h</includes>
+    <includedby refid="engine_8h" local="yes">libopenage/engine.h</includedby>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="fps_8cpp" local="yes">libopenage/util/fps.cpp</includedby>
+    <incdepgraph>
+      <node id="30310">
+        <label>cstdint</label>
+      </node>
+      <node id="30311">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="30310" relation="include">
+        </childnode>
+      </node>
+      <node id="30309">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="30310" relation="include">
+        </childnode>
+        <childnode refid="30311" relation="include">
+        </childnode>
+      </node>
+      <node id="30308">
+        <label>libopenage/util/fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="30309" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30315">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="30328">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="30334">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="30332">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="30320">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="30322">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="30327">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="30326">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="30314">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="30316">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="30331">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="30333">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="30323">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="30336">
+        <label>libopenage/util/fps.cpp</label>
+        <link refid="fps_8cpp"/>
+      </node>
+      <node id="30318">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="30313">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="30314" relation="include">
+        </childnode>
+        <childnode refid="30315" relation="include">
+        </childnode>
+        <childnode refid="30316" relation="include">
+        </childnode>
+        <childnode refid="30317" relation="include">
+        </childnode>
+        <childnode refid="30318" relation="include">
+        </childnode>
+        <childnode refid="30319" relation="include">
+        </childnode>
+        <childnode refid="30320" relation="include">
+        </childnode>
+        <childnode refid="30321" relation="include">
+        </childnode>
+        <childnode refid="30322" relation="include">
+        </childnode>
+        <childnode refid="30323" relation="include">
+        </childnode>
+        <childnode refid="30324" relation="include">
+        </childnode>
+        <childnode refid="30325" relation="include">
+        </childnode>
+        <childnode refid="30326" relation="include">
+        </childnode>
+        <childnode refid="30327" relation="include">
+        </childnode>
+        <childnode refid="30328" relation="include">
+        </childnode>
+        <childnode refid="30329" relation="include">
+        </childnode>
+        <childnode refid="30330" relation="include">
+        </childnode>
+        <childnode refid="30331" relation="include">
+        </childnode>
+        <childnode refid="30332" relation="include">
+        </childnode>
+        <childnode refid="30333" relation="include">
+        </childnode>
+        <childnode refid="30334" relation="include">
+        </childnode>
+        <childnode refid="30335" relation="include">
+        </childnode>
+      </node>
+      <node id="30330">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="30335">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="30329">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="30324">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="30321">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="30317">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="30325">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="30319">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+      <node id="30312">
+        <label>libopenage/util/fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="30313" relation="include">
+        </childnode>
+        <childnode refid="30318" relation="include">
+        </childnode>
+        <childnode refid="30336" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1util_1_1_frame_counter" prot="public">openage::util::FrameCounter</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timer_8h" kindref="compound">timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classopenage_1_1util_1_1_frame_counter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1util_1_1_frame_counter" kindref="compound">FrameCounter</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a332195a939c0cec7b42048c9304cb3e9" kindref="member">FrameCounter</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a1fe36cffea5d8120ac1606d1a2cf380b" kindref="member">~FrameCounter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a9dd54183a6ebd91c10bbc51abcb57f2d" kindref="member">frame</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1acaef6b525478b3913d90616d077d9c4d" kindref="member">fps</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1ace701686a6325ef36f6001a9eb40b419" kindref="member">count</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a1105a8ccfb449e4cd1cd5554ad405af5" kindref="member">nsec_lastframe</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28" refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a15f9857fcbaaa1869071a9fba9731644" kindref="member">frame_count_weighted</ref>;</highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a8ede56edd7c320f7c60998dbbcc662f5" kindref="member">frame_length_sum_weighted</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_timer" kindref="compound">Timer</ref><sp/><ref refid="classopenage_1_1util_1_1_frame_counter_1a1d5d5f0a62b39530f8d975e039a5dfbe" kindref="member">frame_timer</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/fps.h"/>
+  </compounddef>
+</doxygen>

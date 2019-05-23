@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_f_d" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::FD</compoundname>
+    <includes refid="fds_8h" local="no">fds.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::util::FD::fd</definition>
+        <argsstring></argsstring>
+        <name>fd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="33" column="1" bodyfile="libopenage/util/fds.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::FD::close_on_destroy</definition>
+        <argsstring></argsstring>
+        <name>close_on_destroy</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>if this is set to true, the destructor will close the fd. will be set to true by the constructor iff the fd was duped. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="39" column="1" bodyfile="libopenage/util/fds.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::FD::restore_input_mode_on_destroy</definition>
+        <argsstring></argsstring>
+        <name>restore_input_mode_on_destroy</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>if this is set to true, the destructor will restore the input mode. will be set on <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="45" column="1" bodyfile="libopenage/util/fds.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_f_d_1a04fbb0344faa51064a9e6f1beebc29ac" prot="public" static="no" mutable="no">
+        <type>struct termios</type>
+        <definition>struct termios openage::util::FD::old_tio</definition>
+        <argsstring></argsstring>
+        <name>old_tio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="85" column="1" bodyfile="libopenage/util/fds.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a832a1b981d9ae02efe69ecf59a4f76d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FD::FD</definition>
+        <argsstring>(int fd)</argsstring>
+        <name>FD</name>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>wraps an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="22" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a7be00038f51e04a9aeb8ef67fcb27fff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FD::FD</definition>
+        <argsstring>(int fd, bool set_nonblocking)</argsstring>
+        <name>FD</name>
+        <param>
+          <type>int</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>set_nonblocking</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>duplicates an existing <ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref>, and optionally sets it to non-blocking mode </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="28" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="27" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a2e25fcf3aa2ab408ead85e312de80888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FD::FD</definition>
+        <argsstring>(FD *fd, bool set_nonblocking)</argsstring>
+        <name>FD</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_f_d" kindref="compound">FD</ref> *</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>set_nonblocking</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="29" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::FD::~FD</definition>
+        <argsstring>()</argsstring>
+        <name>~FD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="31" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="43" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::FD::write</definition>
+        <argsstring>(const char *buf, size_t bytes)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const char *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>writes &apos;bytes&apos; bytes from buf </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="50" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::FD::puts</definition>
+        <argsstring>(const char *str)</argsstring>
+        <name>puts</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>writes the string (excluding the null terminator) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="55" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::FD::putbyte</definition>
+        <argsstring>(char c)</argsstring>
+        <name>putbyte</name>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>writes the char </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="60" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::FD::putcp</definition>
+        <argsstring>(int cp)</argsstring>
+        <name>putcp</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>writes the unicode codepoint, as utf-8 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="65" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="65" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::FD::printf</definition>
+        <argsstring>(const char *format,...)</argsstring>
+        <name>printf</name>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>guess what this does. because I won&apos;t tell you. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="70" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="75" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::FD::setinputmodecanon</definition>
+        <argsstring>()</argsstring>
+        <name>setinputmodecanon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sets input to canonical mode. this includes:<itemizedlist>
+<listitem><para>disabling ECHO</para>
+</listitem><listitem><para>non-buffered input</para>
+</listitem><listitem><para>no generation of signals on ^C, ^Z, ... </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="79" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="112" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::FD::restoreinputmode</definition>
+        <argsstring>()</argsstring>
+        <name>restoreinputmode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>restores the input mode to the mode that was backed up during the last <ref refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" kindref="member">setinputmodecanon()</ref> mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fds.h" line="85" column="1" bodyfile="libopenage/util/fds.cpp" bodystart="130" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>wraps a POSIX file descriptor </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1482">
+        <label>openage::util::FD</label>
+        <link refid="classopenage_1_1util_1_1_f_d"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fds.h" line="17" column="1" bodyfile="libopenage/util/fds.h" bodystart="17" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_f_d_1ada7855eacf804de00a87133a77a53847" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>close_on_destroy</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1ad74377a363842f04fa8cf7c3d110ab01" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>fd</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a832a1b981d9ae02efe69ecf59a4f76d3" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>FD</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a7be00038f51e04a9aeb8ef67fcb27fff" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>FD</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a2e25fcf3aa2ab408ead85e312de80888" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>FD</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a04fbb0344faa51064a9e6f1beebc29ac" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>old_tio</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1ac3b4a14cfa134355f0890c1d9ea608f4" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>printf</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1aa7042077eda5413ddddf0075a1a66761" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>putbyte</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a6826267ab945c97663c9e3506bbf2542" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>putcp</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a5c27276c6b3cf4af0e5d13979c0e81a0" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>puts</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a4aa40717929b388f0d8572765ec1132f" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>restore_input_mode_on_destroy</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a0a5d58436cb743cc2a19b40c24d98512" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>restoreinputmode</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a4455d9a6fa5ec24fef9b0c28fc4ef483" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>setinputmodecanon</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1a3e0c796f513380f80b1f0c11d29bab15" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>write</name></member>
+      <member refid="classopenage_1_1util_1_1_f_d_1accc8dcfb03019d9d3a9c12bc435de0bb" prot="public" virt="non-virtual"><scope>openage::util::FD</scope><name>~FD</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

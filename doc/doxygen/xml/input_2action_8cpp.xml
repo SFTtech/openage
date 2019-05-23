@@ -1,0 +1,691 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="input_2action_8cpp" kind="file" language="C++">
+    <compoundname>action.cpp</compoundname>
+    <includes local="no">functional</includes>
+    <includes refid="cvar_8h" local="yes">../cvar/cvar.h</includes>
+    <includes refid="input_2action_8h" local="yes">action.h</includes>
+    <includes refid="input__manager_8h" local="yes">input_manager.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="message_8h" local="yes">../log/message.h</includes>
+    <includes refid="repr_8h" local="yes">../util/repr.h</includes>
+    <incdepgraph>
+      <node id="15169">
+        <label>list</label>
+      </node>
+      <node id="15160">
+        <label>atomic</label>
+      </node>
+      <node id="15184">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="15185" relation="include">
+        </childnode>
+        <childnode refid="15186" relation="include">
+        </childnode>
+        <childnode refid="15187" relation="include">
+        </childnode>
+        <childnode refid="15165" relation="include">
+        </childnode>
+        <childnode refid="15188" relation="include">
+        </childnode>
+        <childnode refid="15189" relation="include">
+        </childnode>
+        <childnode refid="15161" relation="include">
+        </childnode>
+        <childnode refid="15190" relation="include">
+        </childnode>
+      </node>
+      <node id="15165">
+        <label>iomanip</label>
+      </node>
+      <node id="15137">
+        <label>functional</label>
+      </node>
+      <node id="15188">
+        <label>limits</label>
+      </node>
+      <node id="15183">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="15155" relation="include">
+        </childnode>
+        <childnode refid="15184" relation="include">
+        </childnode>
+      </node>
+      <node id="15173">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+      </node>
+      <node id="15196">
+        <label>input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15195" relation="include">
+        </childnode>
+        <childnode refid="15197" relation="include">
+        </childnode>
+        <childnode refid="15180" relation="include">
+        </childnode>
+        <childnode refid="15193" relation="include">
+        </childnode>
+        <childnode refid="15198" relation="include">
+        </childnode>
+      </node>
+      <node id="15155">
+        <label>cstdint</label>
+      </node>
+      <node id="15139">
+        <label>stdlib.h</label>
+      </node>
+      <node id="15163">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15164" relation="include">
+        </childnode>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15165" relation="include">
+        </childnode>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15166" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+      </node>
+      <node id="15149">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="15150" relation="include">
+        </childnode>
+      </node>
+      <node id="15187">
+        <label>cmath</label>
+      </node>
+      <node id="15153">
+        <label>stdexcept</label>
+      </node>
+      <node id="15148">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="15136">
+        <label>libopenage/input/action.cpp</label>
+        <link refid="input_2action_8cpp"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15138" relation="include">
+        </childnode>
+        <childnode refid="15180" relation="include">
+        </childnode>
+        <childnode refid="15196" relation="include">
+        </childnode>
+        <childnode refid="15200" relation="include">
+        </childnode>
+        <childnode refid="15154" relation="include">
+        </childnode>
+        <childnode refid="15201" relation="include">
+        </childnode>
+      </node>
+      <node id="15168">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15169" relation="include">
+        </childnode>
+        <childnode refid="15144" relation="include">
+        </childnode>
+        <childnode refid="15170" relation="include">
+        </childnode>
+      </node>
+      <node id="15164">
+        <label>cstdarg</label>
+      </node>
+      <node id="15140">
+        <label>string</label>
+      </node>
+      <node id="15154">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15155" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15156" relation="include">
+        </childnode>
+        <childnode refid="15157" relation="include">
+        </childnode>
+        <childnode refid="15159" relation="include">
+        </childnode>
+        <childnode refid="15168" relation="include">
+        </childnode>
+        <childnode refid="15170" relation="include">
+        </childnode>
+      </node>
+      <node id="15157">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15158" relation="include">
+        </childnode>
+      </node>
+      <node id="15159">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15160" relation="include">
+        </childnode>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15161" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15162" relation="include">
+        </childnode>
+        <childnode refid="15163" relation="include">
+        </childnode>
+      </node>
+      <node id="15194">
+        <label>unordered_set</label>
+      </node>
+      <node id="15138">
+        <label>../cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15139" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15141" relation="include">
+        </childnode>
+        <childnode refid="15142" relation="include">
+        </childnode>
+        <childnode refid="15143" relation="include">
+        </childnode>
+        <childnode refid="15174" relation="include">
+        </childnode>
+      </node>
+      <node id="15197">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="15195" relation="include">
+        </childnode>
+        <childnode refid="15181" relation="include">
+        </childnode>
+      </node>
+      <node id="15189">
+        <label>ostream</label>
+      </node>
+      <node id="15175">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="15155" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15176" relation="include">
+        </childnode>
+        <childnode refid="15143" relation="include">
+        </childnode>
+      </node>
+      <node id="15191">
+        <label>limits.h</label>
+      </node>
+      <node id="15150">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15151" relation="include">
+        </childnode>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15153" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15154" relation="include">
+        </childnode>
+      </node>
+      <node id="15190">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="15185" relation="include">
+        </childnode>
+        <childnode refid="15191" relation="include">
+        </childnode>
+        <childnode refid="15187" relation="include">
+        </childnode>
+        <childnode refid="15192" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15150" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+      </node>
+      <node id="15198">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15199" relation="include">
+        </childnode>
+        <childnode refid="15141" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15180" relation="include">
+        </childnode>
+        <childnode refid="15193" relation="include">
+        </childnode>
+      </node>
+      <node id="15195">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="15201">
+        <label>../util/repr.h</label>
+        <link refid="repr_8h"/>
+        <childnode refid="15140" relation="include">
+        </childnode>
+      </node>
+      <node id="15172">
+        <label>typeinfo</label>
+      </node>
+      <node id="15182">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="15199">
+        <label>stack</label>
+      </node>
+      <node id="15167">
+        <label>vector</label>
+      </node>
+      <node id="15200">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="15170" relation="include">
+        </childnode>
+        <childnode refid="15154" relation="include">
+        </childnode>
+      </node>
+      <node id="15146">
+        <label>ciso646</label>
+      </node>
+      <node id="15180">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15141" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15181" relation="include">
+        </childnode>
+        <childnode refid="15193" relation="include">
+        </childnode>
+      </node>
+      <node id="15142">
+        <label>utility</label>
+      </node>
+      <node id="15166">
+        <label>sstream</label>
+      </node>
+      <node id="15145">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15146" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15147" relation="include">
+        </childnode>
+      </node>
+      <node id="15177">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="15152" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15178" relation="include">
+        </childnode>
+        <childnode refid="15175" relation="include">
+        </childnode>
+      </node>
+      <node id="15147">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15147" relation="include">
+        </childnode>
+      </node>
+      <node id="15162">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15151" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+      </node>
+      <node id="15170">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15171" relation="include">
+        </childnode>
+      </node>
+      <node id="15181">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="15182" relation="include">
+        </childnode>
+        <childnode refid="15183" relation="include">
+        </childnode>
+      </node>
+      <node id="15179">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="15178">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="15151" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+      </node>
+      <node id="15158">
+        <label>cstdlib</label>
+      </node>
+      <node id="15151">
+        <label>iostream</label>
+      </node>
+      <node id="15141">
+        <label>unordered_map</label>
+      </node>
+      <node id="15143">
+        <label>../pyinterface/functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="15137" relation="include">
+        </childnode>
+        <childnode refid="15144" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+        <childnode refid="15148" relation="include">
+        </childnode>
+        <childnode refid="15149" relation="include">
+        </childnode>
+        <childnode refid="15173" relation="include">
+        </childnode>
+      </node>
+      <node id="15186">
+        <label>climits</label>
+      </node>
+      <node id="15144">
+        <label>mutex</label>
+      </node>
+      <node id="15174">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15175" relation="include">
+        </childnode>
+        <childnode refid="15177" relation="include">
+        </childnode>
+        <childnode refid="15179" relation="include">
+        </childnode>
+      </node>
+      <node id="15193">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="15141" relation="include">
+        </childnode>
+        <childnode refid="15194" relation="include">
+        </childnode>
+        <childnode refid="15167" relation="include">
+        </childnode>
+        <childnode refid="15140" relation="include">
+        </childnode>
+        <childnode refid="15195" relation="include">
+        </childnode>
+      </node>
+      <node id="15176">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="15161">
+        <label>type_traits</label>
+      </node>
+      <node id="15156">
+        <label>config.h</label>
+      </node>
+      <node id="15185">
+        <label>algorithm</label>
+      </node>
+      <node id="15192">
+        <label>cstring</label>
+      </node>
+      <node id="15152">
+        <label>memory</label>
+      </node>
+      <node id="15171">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15151" relation="include">
+        </childnode>
+        <childnode refid="15172" relation="include">
+        </childnode>
+        <childnode refid="15145" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../cvar/cvar.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input_2action_8h" kindref="compound">action.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input__manager_8h" kindref="compound">input_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/message.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/repr.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="namespaceopenage_1_1input" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">input<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>list<sp/>of<sp/>action<sp/>names<sp/>that<sp/>will<sp/>be<sp/>added<sp/>during<sp/>the<sp/>constructor<sp/>of<sp/>ActionManager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>DEFAULT_ACTIONS<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;START_GAME&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;STOP_GAME&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_HUD&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SCREENSHOT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_DEBUG_OVERLAY&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_DEBUG_GRID&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;QUICK_SAVE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;QUICK_LOAD&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_MODE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_MENU&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_ITEM&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_BLENDING&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_PROFILER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_CONSTRUCT_MODE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_UNIT_DEBUG&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TRAIN_OBJECT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ENABLE_BUILDING_PLACEMENT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DISABLE_SET_ABILITY&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_MOVE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_GATHER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET_ABILITY_GARRISON&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;TOGGLE_CONSOLE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SPAWN_VILLAGER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;KILL_UNIT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILD_MENU&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILD_MENU_MIL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;CANCEL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_HOUS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MILL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MINE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_SMIL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_DOCK&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_FARM&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_BLAC&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_MRKT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_CRCH&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_UNIV&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_RTWC&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WNDR&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_BRKS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_ARRG&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_STBL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_SIWS&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTWX&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WALL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WALL2&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_WCTW4&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_GTCA2&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_CSTL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_TOWN_CENTER&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_1&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_2&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_3&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_4&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_5&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_6&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_7&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SWITCH_TO_PLAYER_8&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UP_ARROW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DOWN_ARROW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;LEFT_ARROW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RIGHT_ARROW&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SELECT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DESELECT&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BEGIN_SELECTION&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;END_SELECTION&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;FORWARD&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BACK&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PAINT_TERRAIN&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_5&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_6&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_7&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILDING_8&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;BUILD&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;KEEP_BUILDING&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;INCREASE_SELECTION&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ORDER_SELECT&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classopenage_1_1input_1_1_action_manager_1a4a464cc59f73c65528f92ec8379b3878" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_action_manager_1a4a464cc59f73c65528f92ec8379b3878" kindref="member">ActionManager::ActionManager</ref>(<ref refid="classopenage_1_1input_1_1_input_manager" kindref="compound">InputManager</ref><sp/>*input_manager,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1cvar_1_1_c_var_manager" kindref="compound">cvar::CVarManager</ref><sp/>*cvar_manager)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>input_manager{<ref refid="classopenage_1_1input_1_1_action_manager_1a65f3385ebda802a0c4f1a1e89f18d484" kindref="member">input_manager</ref>},</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>cvar_manager{cvar_manager}<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;create(</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;type<sp/>:<sp/>DEFAULT_ACTIONS)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;create(type);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classopenage_1_1input_1_1_action_manager_1a172292484fa92f4c391479d6e656808a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_action_manager_1a172292484fa92f4c391479d6e656808a" kindref="member">ActionManager::create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>.find(type)<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>action<sp/>is<sp/>already<sp/>in<sp/>the<sp/>list.<sp/>fail.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>throw<sp/>an<sp/>exception<sp/>instead?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>now,<sp/>just<sp/>print<sp/>a<sp/>warning<sp/>log<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a271d8f7f52be750e5c744a394ec71344" kindref="member">WARN</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;can<sp/>not<sp/>create<sp/>action<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" kindref="member">util::repr</ref>(type)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>already<sp/>exists&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/>action_id<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a80b0b1c5bd381d79459958c15c4f0983" kindref="member">next_action_id</ref>++;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a2278ba8f1edd88616de83b020147e13c" kindref="member">reverse_map</ref>[action_id]<sp/>=<sp/>type;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>[type]<sp/>=<sp/>action_id;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>the<sp/>corresponding<sp/>cvar,<sp/>which<sp/>modifies<sp/>the<sp/>action<sp/>bindings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>this<sp/>has<sp/>nothing<sp/>to<sp/>do<sp/>with<sp/>the<sp/>actionmanager!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove<sp/>the<sp/>cvarmanager-access<sp/>here!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a2c664814e0ae1cb76108a7b4ece1c988" kindref="member">cvar_manager</ref>-&gt;<ref refid="classopenage_1_1cvar_1_1_c_var_manager_1a093074d20bdce055fac654ba01733f36" kindref="member">create</ref>(type,<sp/>std::make_pair(</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>cvar&apos;s<sp/>getter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[type,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">]()<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a65f3385ebda802a0c4f1a1e89f18d484" kindref="member">input_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a368dbccb090d17ca142b1bfde0763011" kindref="member">get_bind</ref>(type);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>cvar&apos;s<sp/>setter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[type,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a65f3385ebda802a0c4f1a1e89f18d484" kindref="member">input_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1af93e6ca8bded1892c1c9d83332468e2d" kindref="member">set_bind</ref>(value.c_str(),<sp/>type);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classopenage_1_1input_1_1_action_manager_1a743f9d44332f84adb3eca195732ed09d" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/><ref refid="classopenage_1_1input_1_1_action_manager_1a743f9d44332f84adb3eca195732ed09d" kindref="member">ActionManager::get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;type)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>.find(type);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1aca4e1790866a8accadc1221a4bb7a3f2" kindref="member">actions</ref>.at(</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classopenage_1_1input_1_1_action_manager_1a44e53d5edb2092424df17b709b743358" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_action_manager_1a44e53d5edb2092424df17b709b743358" kindref="member">ActionManager::get_name</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/>action)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a2278ba8f1edd88616de83b020147e13c" kindref="member">reverse_map</ref>.find(action);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a2278ba8f1edd88616de83b020147e13c" kindref="member">reverse_map</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="classopenage_1_1input_1_1_action_manager_1a252869fbc85be3b450eb290794352ba4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_action_manager_1a252869fbc85be3b450eb290794352ba4" kindref="member">ActionManager::is</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/>action)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a743f9d44332f84adb3eca195732ed09d" kindref="member">get</ref>(type)<sp/>==<sp/>action;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/input/action.cpp"/>
+  </compounddef>
+</doxygen>

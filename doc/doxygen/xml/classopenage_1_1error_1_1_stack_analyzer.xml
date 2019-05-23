@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1error_1_1_stack_analyzer" kind="class" language="C++" prot="public">
+    <compoundname>openage::error::StackAnalyzer</compoundname>
+    <basecompoundref refid="classopenage_1_1error_1_1_backtrace" prot="public" virt="non-virtual">openage::error::Backtrace</basecompoundref>
+    <includes refid="stackanalyzer_8h" local="no">stackanalyzer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1error_1_1_stack_analyzer_1a6ff702e8c60bc0f7aa6ab908e85cde07" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; void * &gt;</type>
+        <definition>std::vector&lt;void *&gt; openage::error::StackAnalyzer::stack_addrs</definition>
+        <argsstring></argsstring>
+        <name>stack_addrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All program counters of this backtrace. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.h" line="43" column="1" bodyfile="libopenage/error/stackanalyzer.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1a82f244c47e648d1b7e1eefa577fc3622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::error::StackAnalyzer::StackAnalyzer</definition>
+        <argsstring>()=default</argsstring>
+        <name>StackAnalyzer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an empty <ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref> object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::error::StackAnalyzer::analyze</definition>
+        <argsstring>()</argsstring>
+        <name>analyze</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.h" line="38" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="222" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::error::StackAnalyzer::get_symbols</definition>
+        <argsstring>(std::function&lt; void(const backtrace_symbol *)&gt; cb, bool reversed) const override</argsstring>
+        <name>get_symbols</name>
+        <reimplements refid="classopenage_1_1error_1_1_backtrace_1ad4e4e82a65ad250f048f66667d810440">get_symbols</reimplements>
+        <param>
+          <type>std::function&lt; void(const <ref refid="structopenage_1_1error_1_1backtrace__symbol" kindref="compound">backtrace_symbol</ref> *)&gt;</type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns (via the callback) symbolic names for all stack frames, to its best knowledge.</para>
+<para>The most recent call is returned last (alike Python).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is called for every symbol in the backtrace, starting with the top-most frame. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reversed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, the most recent call is given last. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.h" line="46" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="268" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::error::StackAnalyzer::trim_to_current_stack_frame</definition>
+        <argsstring>() override</argsstring>
+        <name>trim_to_current_stack_frame</name>
+        <reimplements refid="classopenage_1_1error_1_1_backtrace_1a08fdb69045e972de1323464a09daad42">trim_to_current_stack_frame</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes all the lower frames that are also present in the current stack.</para>
+<para>Designed to be used in catch clauses, to simulate stack trace collection from throw to catch, instead of from throw to the process entry point.</para>
+<para>Defaults to no-op. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/error/stackanalyzer.h" line="48" column="1" bodyfile="libopenage/error/stackanalyzer.cpp" bodystart="305" bodyend="317"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Implementation of the <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref> interface that analyzes the current C++ stack.</para>
+<para>The Usage is:</para>
+<para><ref refid="classopenage_1_1error_1_1_stack_analyzer" kindref="compound">StackAnalyzer</ref> sa; sa.analyze();</para>
+<para>Integrating <ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze()</ref> into the constructor would be a bad idea because then, all sorts of allocators and other gory constructor internals might be visible in the <ref refid="classopenage_1_1error_1_1_backtrace" kindref="compound">Backtrace</ref>.</para>
+<para>The implementation of <ref refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" kindref="member">analyze()</ref> and <ref refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" kindref="member">get_symbols()</ref> may use all sorts of analyzers, depending on what&apos;s available on the platform. The quality of the resolved symbol names may vary accordingly. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4264">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+      <node id="4263">
+        <label>openage::error::StackAnalyzer</label>
+        <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
+        <childnode refid="4264" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4266">
+        <label>openage::error::Backtrace</label>
+        <link refid="classopenage_1_1error_1_1_backtrace"/>
+      </node>
+      <node id="4265">
+        <label>openage::error::StackAnalyzer</label>
+        <link refid="classopenage_1_1error_1_1_stack_analyzer"/>
+        <childnode refid="4266" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/error/stackanalyzer.h" line="27" column="1" bodyfile="libopenage/error/stackanalyzer.h" bodystart="27" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1error_1_1_stack_analyzer_1acd0f91c95c892dbb81e037a3bca05daf" prot="public" virt="non-virtual"><scope>openage::error::StackAnalyzer</scope><name>analyze</name></member>
+      <member refid="classopenage_1_1error_1_1_stack_analyzer_1ab807f0825ce961e84c901c715cc79976" prot="public" virt="virtual"><scope>openage::error::StackAnalyzer</scope><name>get_symbols</name></member>
+      <member refid="classopenage_1_1error_1_1_stack_analyzer_1a6ff702e8c60bc0f7aa6ab908e85cde07" prot="public" virt="non-virtual"><scope>openage::error::StackAnalyzer</scope><name>stack_addrs</name></member>
+      <member refid="classopenage_1_1error_1_1_stack_analyzer_1a82f244c47e648d1b7e1eefa577fc3622" prot="public" virt="non-virtual"><scope>openage::error::StackAnalyzer</scope><name>StackAnalyzer</name></member>
+      <member refid="classopenage_1_1error_1_1_stack_analyzer_1a5630036766dda80a645cdfbcfc010348" prot="public" virt="virtual"><scope>openage::error::StackAnalyzer</scope><name>trim_to_current_stack_frame</name></member>
+      <member refid="classopenage_1_1error_1_1_backtrace_1abb0eb435370a245c3d5b73f083852d93" prot="public" virt="virtual"><scope>openage::error::StackAnalyzer</scope><name>~Backtrace</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

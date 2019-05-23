@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="graphics__device_8cpp" kind="file" language="C++">
+    <compoundname>graphics_device.cpp</compoundname>
+    <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
+    <includes local="no">cstring</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="util_8h" local="yes">util.h</includes>
+    <incdepgraph>
+      <node id="23644">
+        <label>list</label>
+      </node>
+      <node id="23635">
+        <label>atomic</label>
+      </node>
+      <node id="23641">
+        <label>iomanip</label>
+      </node>
+      <node id="23640">
+        <label>functional</label>
+      </node>
+      <node id="23630">
+        <label>cstdint</label>
+      </node>
+      <node id="23638">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="23639" relation="include">
+        </childnode>
+        <childnode refid="23640" relation="include">
+        </childnode>
+        <childnode refid="23641" relation="include">
+        </childnode>
+        <childnode refid="23623" relation="include">
+        </childnode>
+        <childnode refid="23642" relation="include">
+        </childnode>
+        <childnode refid="23625" relation="include">
+        </childnode>
+        <childnode refid="23618" relation="include">
+        </childnode>
+      </node>
+      <node id="23624">
+        <label>stdexcept</label>
+      </node>
+      <node id="23643">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="23644" relation="include">
+        </childnode>
+        <childnode refid="23645" relation="include">
+        </childnode>
+        <childnode refid="23646" relation="include">
+        </childnode>
+      </node>
+      <node id="23639">
+        <label>cstdarg</label>
+      </node>
+      <node id="23625">
+        <label>string</label>
+      </node>
+      <node id="23629">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="23630" relation="include">
+        </childnode>
+        <childnode refid="23625" relation="include">
+        </childnode>
+        <childnode refid="23631" relation="include">
+        </childnode>
+        <childnode refid="23632" relation="include">
+        </childnode>
+        <childnode refid="23634" relation="include">
+        </childnode>
+        <childnode refid="23643" relation="include">
+        </childnode>
+        <childnode refid="23646" relation="include">
+        </childnode>
+      </node>
+      <node id="23632">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="23633" relation="include">
+        </childnode>
+      </node>
+      <node id="23634">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="23635" relation="include">
+        </childnode>
+        <childnode refid="23623" relation="include">
+        </childnode>
+        <childnode refid="23636" relation="include">
+        </childnode>
+        <childnode refid="23626" relation="include">
+        </childnode>
+        <childnode refid="23637" relation="include">
+        </childnode>
+        <childnode refid="23638" relation="include">
+        </childnode>
+      </node>
+      <node id="23616">
+        <label>graphics_device.h</label>
+        <link refid="graphics__device_8h"/>
+        <childnode refid="23617" relation="include">
+        </childnode>
+        <childnode refid="23618" relation="include">
+        </childnode>
+        <childnode refid="23619" relation="include">
+        </childnode>
+      </node>
+      <node id="23621">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="23622" relation="include">
+        </childnode>
+        <childnode refid="23623" relation="include">
+        </childnode>
+        <childnode refid="23624" relation="include">
+        </childnode>
+        <childnode refid="23625" relation="include">
+        </childnode>
+        <childnode refid="23626" relation="include">
+        </childnode>
+        <childnode refid="23629" relation="include">
+        </childnode>
+      </node>
+      <node id="23648">
+        <label>typeinfo</label>
+      </node>
+      <node id="23617">
+        <label>optional</label>
+      </node>
+      <node id="23650">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="23619" relation="include">
+        </childnode>
+        <childnode refid="23621" relation="include">
+        </childnode>
+      </node>
+      <node id="23618">
+        <label>vector</label>
+      </node>
+      <node id="23649">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="23646" relation="include">
+        </childnode>
+        <childnode refid="23629" relation="include">
+        </childnode>
+      </node>
+      <node id="23627">
+        <label>ciso646</label>
+      </node>
+      <node id="23619">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="23642">
+        <label>sstream</label>
+      </node>
+      <node id="23626">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="23627" relation="include">
+        </childnode>
+        <childnode refid="23625" relation="include">
+        </childnode>
+        <childnode refid="23628" relation="include">
+        </childnode>
+      </node>
+      <node id="23628">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="23628" relation="include">
+        </childnode>
+      </node>
+      <node id="23637">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="23622" relation="include">
+        </childnode>
+        <childnode refid="23625" relation="include">
+        </childnode>
+      </node>
+      <node id="23646">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="23647" relation="include">
+        </childnode>
+      </node>
+      <node id="23633">
+        <label>cstdlib</label>
+      </node>
+      <node id="23622">
+        <label>iostream</label>
+      </node>
+      <node id="23645">
+        <label>mutex</label>
+      </node>
+      <node id="23615">
+        <label>libopenage/renderer/vulkan/graphics_device.cpp</label>
+        <link refid="graphics__device_8cpp"/>
+        <childnode refid="23616" relation="include">
+        </childnode>
+        <childnode refid="23620" relation="include">
+        </childnode>
+        <childnode refid="23621" relation="include">
+        </childnode>
+        <childnode refid="23649" relation="include">
+        </childnode>
+        <childnode refid="23650" relation="include">
+        </childnode>
+      </node>
+      <node id="23636">
+        <label>type_traits</label>
+      </node>
+      <node id="23631">
+        <label>config.h</label>
+      </node>
+      <node id="23620">
+        <label>cstring</label>
+      </node>
+      <node id="23623">
+        <label>memory</label>
+      </node>
+      <node id="23647">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="23622" relation="include">
+        </childnode>
+        <childnode refid="23648" relation="include">
+        </childnode>
+        <childnode refid="23626" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_8h" kindref="compound">util.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1renderer_1_1vulkan" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" refkind="member"><highlight class="normal">std::optional&lt;SurfaceSupportDetails&gt;<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a5d8a1353bad85bd21c733fc21d8bef76" kindref="member">VlkGraphicsDevice::find_device_surface_support</ref>(VkPhysicalDevice<sp/>dev,<sp/>VkSurfaceKHR<sp/>surf)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Search<sp/>for<sp/>queue<sp/>families<sp/>in<sp/>the<sp/>device</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>q_fams<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkGetPhysicalDeviceQueueFamilyProperties,<sp/>dev);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;uint32_t&gt;<sp/>maybe_graphics_fam<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;uint32_t&gt;<sp/>maybe_present_fam<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Figure<sp/>out<sp/>if<sp/>any<sp/>of<sp/>the<sp/>families<sp/>supports<sp/>graphics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>q_fams.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>q_fam<sp/>=<sp/>q_fams[i];</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(q_fam.queueCount<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((q_fam.queueFlags<sp/>&amp;<sp/>VK_QUEUE_GRAPHICS_BIT)<sp/>!=<sp/>0u)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maybe_graphics_fam<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>See<sp/>if<sp/>it<sp/>also<sp/>supports<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkBool32<sp/>support<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkGetPhysicalDeviceSurfaceSupportKHR(dev,<sp/>i,<sp/>surf,<sp/>&amp;support);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(support<sp/>!=<sp/>VK_FALSE)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>family<sp/>support<sp/>both,<sp/>we&apos;re<sp/>done</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maybe_present_fam<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!maybe_graphics_fam)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>device<sp/>has<sp/>no<sp/>graphics<sp/>queue<sp/>family<sp/>that<sp/>works<sp/>with<sp/>the<sp/>surface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" kindref="compound">SurfaceSupportDetails</ref><sp/>details<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ac06746db6fdd8c3138eb65760d9c5d1a" kindref="member">phys_device</ref><sp/>=<sp/>dev;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" kindref="member">surface</ref><sp/>=<sp/>surf;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>we<sp/>have<sp/>found<sp/>a<sp/>family<sp/>that<sp/>support<sp/>both<sp/>graphics<sp/>and<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(maybe_present_fam)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" kindref="member">graphics_fam</ref><sp/>=<sp/>*maybe_graphics_fam;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" kindref="member">maybe_present_fam</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>look<sp/>for<sp/>a<sp/>present-only<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>q_fams.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>q_fam<sp/>=<sp/>q_fams[i];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(q_fam.queueCount<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkBool32<sp/>support<sp/>=<sp/>VK_FALSE;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkGetPhysicalDeviceSurfaceSupportKHR(dev,<sp/>i,<sp/>surf,<sp/>&amp;support);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(support<sp/>!=<sp/>VK_FALSE)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maybe_present_fam<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!maybe_present_fam)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>device<sp/>has<sp/>no<sp/>present<sp/>queue<sp/>family<sp/>that<sp/>works<sp/>with<sp/>the<sp/>surface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" kindref="member">graphics_fam</ref><sp/>=<sp/>*maybe_graphics_fam;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" kindref="member">maybe_present_fam</ref><sp/>=<sp/>maybe_present_fam;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Obtain<sp/>other<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" kindref="member">surface_formats</ref><sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkGetPhysicalDeviceSurfaceFormatsKHR,<sp/>dev,<sp/>surf);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" kindref="member">present_modes</ref><sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkGetPhysicalDeviceSurfacePresentModesKHR,<sp/>dev,<sp/>surf);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>vkGetPhysicalDeviceSurfaceCapabilitiesKHR(dev,<sp/>surf,<sp/>&amp;details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Finally,<sp/>check<sp/>that<sp/>we<sp/>have<sp/>at<sp/>least<sp/>one<sp/>format<sp/>and<sp/>present<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" kindref="member">surface_formats</ref>.empty()<sp/>||<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" kindref="member">present_modes</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>details;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a6df789786ae44a2914cdb488bfbb7de3" kindref="member">VlkGraphicsDevice::VlkGraphicsDevice</ref>(VkPhysicalDevice<sp/>dev,<sp/>std::vector&lt;uint32_t&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>q_fams)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>phys_device(dev)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prepare<sp/>queue<sp/>creation<sp/>info<sp/>for<sp/>each<sp/>family<sp/>requested</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkDeviceQueueCreateInfo&gt;<sp/>q_infos(q_fams.size());</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>p<sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>q_fams.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_infos[i].sType<sp/>=<sp/>VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_infos[i].queueFamilyIndex<sp/>=<sp/>q_fams[i];</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_infos[i].queueCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_infos[i].pQueuePriorities<sp/>=<sp/>&amp;p;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>these<sp/>extensions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;const<sp/>char*&gt;<sp/>ext_names<sp/>=<sp/>{<sp/>VK_KHR_SWAPCHAIN_EXTENSION_NAME<sp/>};</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>extensions<sp/>are<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>exts<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkEnumerateDeviceExtensionProperties,<sp/>dev,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ext<sp/>:<sp/>ext_names)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::count_if(exts.begin(),<sp/>exts.end(),<sp/>[=]<sp/>(VkExtensionProperties<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>p)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::strcmp(p.extensionName,<sp/>ext)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>)<sp/>==<sp/>0</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Tried<sp/>to<sp/>instantiate<sp/>device,<sp/>but<sp/>it&apos;s<sp/>missing<sp/>this<sp/>extension:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ext);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkPhysicalDeviceProperties<sp/>dev_props;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkGetPhysicalDeviceProperties(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" kindref="member">phys_device</ref>,<sp/>&amp;dev_props);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Chosen<sp/>Vulkan<sp/>graphics<sp/>device:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>dev_props.deviceName);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>extensions:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>ext<sp/>:<sp/>exts)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\t&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ext.extensionName);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prepare<sp/>device<sp/>creation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDeviceCreateInfo<sp/>create_dev<sp/>{};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.queueCreateInfoCount<sp/>=<sp/>q_infos.size();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.pQueueCreateInfos<sp/>=<sp/>q_infos.data();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.enabledExtensionCount<sp/>=<sp/>ext_names.size();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.ppEnabledExtensionNames<sp/>=<sp/>ext_names.data();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPhysicalDeviceFeatures<sp/>features<sp/>{};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>request<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dev.pEnabledFeatures<sp/>=<sp/>&amp;features;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateDevice,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" kindref="member">phys_device</ref>,<sp/>&amp;create_dev,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" kindref="member">device</ref>);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Obtain<sp/>handles<sp/>for<sp/>the<sp/>created<sp/>queues</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1aabfea62d48c4b0dd2845fab343c17bc7" kindref="member">queues</ref>.resize(q_fams.size());</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>q_fams.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkGetDeviceQueue(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" kindref="member">device</ref>,<sp/>q_fams[i],<sp/>0,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1aabfea62d48c4b0dd2845fab343c17bc7" kindref="member">queues</ref>[i]);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a556f0778edd592a69b5d7091966099f5" refkind="member"><highlight class="normal">VkPhysicalDevice<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a556f0778edd592a69b5d7091966099f5" kindref="member">VlkGraphicsDevice::get_physical_device</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a77edd4a9a9a7eea1920c8fec848b25d8" kindref="member">phys_device</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" refkind="member"><highlight class="normal">VkDevice<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a19d43547d0fa2d45ae1b9299637c2f8e" kindref="member">VlkGraphicsDevice::get_device</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" kindref="member">device</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" refkind="member"><highlight class="normal">VkQueue<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a94443fbae944ba5163514c6ea7397099" kindref="member">VlkGraphicsDevice::get_queue</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>idx)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1aabfea62d48c4b0dd2845fab343c17bc7" kindref="member">queues</ref>[idx];</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a8b09aa54c6f71565308faabdacc12f6c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1a8b09aa54c6f71565308faabdacc12f6c" kindref="member">VlkGraphicsDevice::~VlkGraphicsDevice</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>vkDestroyDevice(this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_graphics_device_1ae3ce45b1d6a9a7b759dd1d8800d9fe1d" kindref="member">device</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/graphics_device.cpp"/>
+  </compounddef>
+</doxygen>

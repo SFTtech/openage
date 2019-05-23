@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui_2gui_8h" kind="file" language="C++">
+    <compoundname>gui.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes refid="gui__application__with__logger_8h" local="yes">integration/public/gui_application_with_logger.h</includes>
+    <includes refid="gui__game__spec__image__provider_8h" local="yes">integration/public/gui_game_spec_image_provider.h</includes>
+    <includes refid="gui__engine_8h" local="yes">guisys/public/gui_engine.h</includes>
+    <includes refid="gui__event__queue_8h" local="yes">guisys/public/gui_event_queue.h</includes>
+    <includes refid="gui__input_8h" local="yes">guisys/public/gui_input.h</includes>
+    <includes refid="gui__renderer_8h" local="yes">guisys/public/gui_renderer.h</includes>
+    <includes refid="gui__subtree_8h" local="yes">guisys/public/gui_subtree.h</includes>
+    <includes refid="handlers_8h" local="yes">../handlers.h</includes>
+    <includedby refid="engine_8cpp" local="yes">libopenage/engine.cpp</includedby>
+    <includedby refid="gui_2gui_8cpp" local="yes">libopenage/gui/gui.cpp</includedby>
+    <incdepgraph>
+      <node id="6996">
+        <label>list</label>
+      </node>
+      <node id="6990">
+        <label>atomic</label>
+      </node>
+      <node id="6968">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="6969" relation="include">
+        </childnode>
+        <childnode refid="6970" relation="include">
+        </childnode>
+        <childnode refid="6971" relation="include">
+        </childnode>
+        <childnode refid="6972" relation="include">
+        </childnode>
+        <childnode refid="6973" relation="include">
+        </childnode>
+        <childnode refid="6974" relation="include">
+        </childnode>
+        <childnode refid="6975" relation="include">
+        </childnode>
+        <childnode refid="6976" relation="include">
+        </childnode>
+      </node>
+      <node id="6972">
+        <label>iomanip</label>
+      </node>
+      <node id="6953">
+        <label>functional</label>
+      </node>
+      <node id="6973">
+        <label>limits</label>
+      </node>
+      <node id="6966">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="6967" relation="include">
+        </childnode>
+        <childnode refid="6968" relation="include">
+        </childnode>
+      </node>
+      <node id="6951">
+        <label>integration/public/gui_game_spec_image_provider.h</label>
+        <link refid="gui__game__spec__image__provider_8h"/>
+        <childnode refid="6952" relation="include">
+        </childnode>
+      </node>
+      <node id="6967">
+        <label>cstdint</label>
+      </node>
+      <node id="6992">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="6993" relation="include">
+        </childnode>
+        <childnode refid="6953" relation="include">
+        </childnode>
+        <childnode refid="6972" relation="include">
+        </childnode>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6994" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6955" relation="include">
+        </childnode>
+      </node>
+      <node id="6971">
+        <label>cmath</label>
+      </node>
+      <node id="6954">
+        <label>guisys/public/gui_engine.h</label>
+        <link refid="gui__engine_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6955" relation="include">
+        </childnode>
+      </node>
+      <node id="6981">
+        <label>stdexcept</label>
+      </node>
+      <node id="6995">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="6996" relation="include">
+        </childnode>
+        <childnode refid="6997" relation="include">
+        </childnode>
+        <childnode refid="6998" relation="include">
+        </childnode>
+      </node>
+      <node id="6993">
+        <label>cstdarg</label>
+      </node>
+      <node id="6948">
+        <label>string</label>
+      </node>
+      <node id="6985">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="6967" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6986" relation="include">
+        </childnode>
+        <childnode refid="6987" relation="include">
+        </childnode>
+        <childnode refid="6989" relation="include">
+        </childnode>
+        <childnode refid="6995" relation="include">
+        </childnode>
+        <childnode refid="6998" relation="include">
+        </childnode>
+      </node>
+      <node id="6987">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="6988" relation="include">
+        </childnode>
+      </node>
+      <node id="6989">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="6990" relation="include">
+        </childnode>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6975" relation="include">
+        </childnode>
+        <childnode refid="6982" relation="include">
+        </childnode>
+        <childnode refid="6991" relation="include">
+        </childnode>
+        <childnode refid="6992" relation="include">
+        </childnode>
+      </node>
+      <node id="6962">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="6963" relation="include">
+        </childnode>
+        <childnode refid="6964" relation="include">
+        </childnode>
+      </node>
+      <node id="6974">
+        <label>ostream</label>
+      </node>
+      <node id="6977">
+        <label>limits.h</label>
+      </node>
+      <node id="6979">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="6980" relation="include">
+        </childnode>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6981" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6982" relation="include">
+        </childnode>
+        <childnode refid="6985" relation="include">
+        </childnode>
+      </node>
+      <node id="6976">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="6969" relation="include">
+        </childnode>
+        <childnode refid="6977" relation="include">
+        </childnode>
+        <childnode refid="6971" relation="include">
+        </childnode>
+        <childnode refid="6978" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6955" relation="include">
+        </childnode>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6979" relation="include">
+        </childnode>
+        <childnode refid="6982" relation="include">
+        </childnode>
+      </node>
+      <node id="6957">
+        <label>guisys/public/gui_input.h</label>
+        <link refid="gui__input_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6958" relation="include">
+        </childnode>
+      </node>
+      <node id="6963">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="7000">
+        <label>typeinfo</label>
+      </node>
+      <node id="6965">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="6955">
+        <label>vector</label>
+      </node>
+      <node id="6983">
+        <label>ciso646</label>
+      </node>
+      <node id="6958">
+        <label>SDL2/SDL_events.h</label>
+      </node>
+      <node id="6950">
+        <label>../../guisys/public/gui_application.h</label>
+        <link refid="gui__application_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+      </node>
+      <node id="6994">
+        <label>sstream</label>
+      </node>
+      <node id="6982">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="6983" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6984" relation="include">
+        </childnode>
+      </node>
+      <node id="6984">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="6984" relation="include">
+        </childnode>
+      </node>
+      <node id="6991">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="6980" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+      </node>
+      <node id="6998">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="6999" relation="include">
+        </childnode>
+      </node>
+      <node id="6964">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="6965" relation="include">
+        </childnode>
+        <childnode refid="6966" relation="include">
+        </childnode>
+      </node>
+      <node id="6961">
+        <label>guisys/public/gui_subtree.h</label>
+        <link refid="gui__subtree_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+      </node>
+      <node id="6988">
+        <label>cstdlib</label>
+      </node>
+      <node id="6980">
+        <label>iostream</label>
+      </node>
+      <node id="6952">
+        <label>../../guisys/public/gui_image_provider.h</label>
+        <link refid="gui__image__provider_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6953" relation="include">
+        </childnode>
+      </node>
+      <node id="6970">
+        <label>climits</label>
+      </node>
+      <node id="6997">
+        <label>mutex</label>
+      </node>
+      <node id="6959">
+        <label>guisys/public/gui_renderer.h</label>
+        <link refid="gui__renderer_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6960" relation="include">
+        </childnode>
+      </node>
+      <node id="6946">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6949" relation="include">
+        </childnode>
+        <childnode refid="6951" relation="include">
+        </childnode>
+        <childnode refid="6954" relation="include">
+        </childnode>
+        <childnode refid="6956" relation="include">
+        </childnode>
+        <childnode refid="6957" relation="include">
+        </childnode>
+        <childnode refid="6959" relation="include">
+        </childnode>
+        <childnode refid="6961" relation="include">
+        </childnode>
+        <childnode refid="6962" relation="include">
+        </childnode>
+      </node>
+      <node id="6975">
+        <label>type_traits</label>
+      </node>
+      <node id="6949">
+        <label>integration/public/gui_application_with_logger.h</label>
+        <link refid="gui__application__with__logger_8h"/>
+        <childnode refid="6950" relation="include">
+        </childnode>
+      </node>
+      <node id="6986">
+        <label>config.h</label>
+      </node>
+      <node id="6956">
+        <label>guisys/public/gui_event_queue.h</label>
+        <link refid="gui__event__queue_8h"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+      </node>
+      <node id="6969">
+        <label>algorithm</label>
+      </node>
+      <node id="6960">
+        <label>GL/gl.h</label>
+      </node>
+      <node id="6978">
+        <label>cstring</label>
+      </node>
+      <node id="6947">
+        <label>memory</label>
+      </node>
+      <node id="6999">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="6980" relation="include">
+        </childnode>
+        <childnode refid="7000" relation="include">
+        </childnode>
+        <childnode refid="6982" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7003">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="7002">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="7001">
+        <label>libopenage/gui/gui.h</label>
+        <link refid="gui_2gui_8h"/>
+        <childnode refid="7002" relation="include">
+        </childnode>
+        <childnode refid="7003" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1gui_1_1_g_u_i" prot="public">openage::gui::GUI</innerclass>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1shader">openage::shader</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__application__with__logger_8h" kindref="compound">integration/public/gui_application_with_logger.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__game__spec__image__provider_8h" kindref="compound">integration/public/gui_game_spec_image_provider.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__engine_8h" kindref="compound">guisys/public/gui_engine.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__event__queue_8h" kindref="compound">guisys/public/gui_event_queue.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__input_8h" kindref="compound">guisys/public/gui_input.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__renderer_8h" kindref="compound">guisys/public/gui_renderer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__subtree_8h" kindref="compound">guisys/public/gui_subtree.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../handlers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">GuiSingletonItemsInfo;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="namespaceopenage_1_1shader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">shader<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1shader_1_1_program" kindref="compound">Program</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>shader</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EngineQMLInfo;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classopenage_1_1gui_1_1_g_u_i" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_g_u_i" kindref="compound">GUI</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_input_handler" kindref="compound">InputHandler</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_resize_handler" kindref="compound">ResizeHandler</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1_hud_handler" kindref="compound">HudHandler</ref><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6f81aa111b1a7ff6859726c699a64013" kindref="member">GUI</ref>(SDL_Window<sp/>*window,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;source,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;rootdir,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_engine_q_m_l_info" kindref="compound">EngineQMLInfo</ref><sp/>*info=</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a82e8ee16b97b2616a2dccf4256d47fd0" kindref="member">~GUI</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1afa4d056d76395d3d4041a4ec0e1b3cb8" kindref="member">process_events</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a10ef720725de7e19d860f66593944edc" kindref="member">on_resize</ref>(<ref refid="structopenage_1_1coord_1_1viewport__delta" kindref="compound">coord::viewport_delta</ref><sp/>new_size)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a957c6b92e9d51577da3e414f0307e455" kindref="member">on_input</ref>(SDL_Event<sp/>*event)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1ac8c4bc112830f466957923bde0e65a6c" kindref="member">on_drawhud</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1gui_1_1_g_u_i_1a75920972ecfc5cb1e53960009c37e9d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a75920972ecfc5cb1e53960009c37e9d0" kindref="member">tex_loc</ref>;</highlight></codeline>
+<codeline lineno="51" refid="classopenage_1_1gui_1_1_g_u_i_1ad673c3a2aeeef059292d5d00584972be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1ad673c3a2aeeef059292d5d00584972be" kindref="member">screen_quad_vbo</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classopenage_1_1gui_1_1_g_u_i_1a7923e9a1a58548b7033fd6c7c9254976" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_application_with_logger" kindref="compound">GuiApplicationWithLogger</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a7923e9a1a58548b7033fd6c7c9254976" kindref="member">application</ref>;</highlight></codeline>
+<codeline lineno="54" refid="classopenage_1_1gui_1_1_g_u_i_1a6429d665f885c79c6e4280626f13035d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6429d665f885c79c6e4280626f13035d" kindref="member">render_updater</ref>;</highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1gui_1_1_g_u_i_1a4522bc62960e209a5f81aaa79e23e640" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">qtsdl::GuiRenderer</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a4522bc62960e209a5f81aaa79e23e640" kindref="member">renderer</ref>;</highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1gui_1_1_g_u_i_1aeca55f30a8929263df1804c78e50fc49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">qtsdl::GuiEventQueue</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1aeca55f30a8929263df1804c78e50fc49" kindref="member">game_logic_updater</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classopenage_1_1gui_1_1_g_u_i_1a6c10ea98ed9ae679f41e90f22815e29c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6c10ea98ed9ae679f41e90f22815e29c" kindref="member">image_provider_by_filename</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classopenage_1_1gui_1_1_g_u_i_1afb03deb29373c86376233249c88f348e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1afb03deb29373c86376233249c88f348e" kindref="member">image_provider_by_graphic_id</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classopenage_1_1gui_1_1_g_u_i_1ab04227eeba600c818677a3fde1e728e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1gui_1_1_gui_game_spec_image_provider" kindref="compound">GuiGameSpecImageProvider</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1ab04227eeba600c818677a3fde1e728e5" kindref="member">image_provider_by_terrain_id</ref>;</highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1gui_1_1_g_u_i_1a6aa61529cf73a7584b4a133d430a0e76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_engine" kindref="compound">qtsdl::GuiEngine</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a6aa61529cf73a7584b4a133d430a0e76" kindref="member">engine</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classopenage_1_1gui_1_1_g_u_i_1a0d146022a2e11c526c87e96361d0f291" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_subtree" kindref="compound">qtsdl::GuiSubtree</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a0d146022a2e11c526c87e96361d0f291" kindref="member">subtree</ref>;</highlight></codeline>
+<codeline lineno="62" refid="classopenage_1_1gui_1_1_g_u_i_1af41e48b5e92a34b6765028eebd1fd984" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classqtsdl_1_1_gui_input" kindref="compound">qtsdl::GuiInput</ref><sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1af41e48b5e92a34b6765028eebd1fd984" kindref="member">input</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needs<sp/>to<sp/>be<sp/>deallocated<sp/>before<sp/>the<sp/>GuiRenderer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>accesses<sp/>opengl<sp/>api<sp/>functions<sp/>which<sp/>require<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>current<sp/>context:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classopenage_1_1gui_1_1_g_u_i_1a07e48889629f2311c0510cf641474955" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;shader::Program&gt;<sp/><ref refid="classopenage_1_1gui_1_1_g_u_i_1a07e48889629f2311c0510cf641474955" kindref="member">textured_screen_quad_shader</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/gui.h"/>
+  </compounddef>
+</doxygen>

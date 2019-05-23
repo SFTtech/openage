@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1gl__texture__buffer" kind="struct" language="C++" prot="public">
+    <compoundname>openage::gl_texture_buffer</compoundname>
+    <includes refid="texture_8h" local="no">texture.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1aed6aaf0950f0fddb799d7ec956230138" prot="public" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::gl_texture_buffer::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="52" column="1" bodyfile="libopenage/texture.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a35cb39b23cff59f3dc0c8912840e2b38" prot="public" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint openage::gl_texture_buffer::vertbuf</definition>
+        <argsstring></argsstring>
+        <name>vertbuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="52" column="1" bodyfile="libopenage/texture.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a697bbf741b2eca6f560121aac3bc0c0a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::gl_texture_buffer::transferred</definition>
+        <argsstring></argsstring>
+        <name>transferred</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="55" column="1" bodyfile="libopenage/texture.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1ac06991269c1a68d34684abbbefac807c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::gl_texture_buffer::texture_format_in</definition>
+        <argsstring></argsstring>
+        <name>texture_format_in</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="56" column="1" bodyfile="libopenage/texture.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a14a0c70991272a36f844cb8d7d874a29" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::gl_texture_buffer::texture_format_out</definition>
+        <argsstring></argsstring>
+        <name>texture_format_out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="57" column="1" bodyfile="libopenage/texture.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; uint32_t[]&gt;</type>
+        <definition>std::unique_ptr&lt;uint32_t[]&gt; openage::gl_texture_buffer::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/texture.h" line="58" column="1" bodyfile="libopenage/texture.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>enables transfer of data to opengl </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2375">
+        <label>openage::gl_texture_buffer</label>
+        <link refid="structopenage_1_1gl__texture__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/texture.h" line="51" column="1" bodyfile="libopenage/texture.h" bodystart="51" bodyend="59"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1gl__texture__buffer_1a3abbe6b36f1c51753e80ca80c6ac27b8" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>data</name></member>
+      <member refid="structopenage_1_1gl__texture__buffer_1aed6aaf0950f0fddb799d7ec956230138" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>id</name></member>
+      <member refid="structopenage_1_1gl__texture__buffer_1ac06991269c1a68d34684abbbefac807c" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>texture_format_in</name></member>
+      <member refid="structopenage_1_1gl__texture__buffer_1a14a0c70991272a36f844cb8d7d874a29" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>texture_format_out</name></member>
+      <member refid="structopenage_1_1gl__texture__buffer_1a697bbf741b2eca6f560121aac3bc0c0a" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>transferred</name></member>
+      <member refid="structopenage_1_1gl__texture__buffer_1a35cb39b23cff59f3dc0c8912840e2b38" prot="public" virt="non-virtual"><scope>openage::gl_texture_buffer</scope><name>vertbuf</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

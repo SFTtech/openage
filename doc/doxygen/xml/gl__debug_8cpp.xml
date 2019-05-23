@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gl__debug_8cpp" kind="file" language="C++">
+    <compoundname>gl_debug.cpp</compoundname>
+    <includes refid="gl__debug_8h" local="yes">gl_debug.h</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="error_2error_8h" local="yes">error.h</includes>
+    <incdepgraph>
+      <node id="6295">
+        <label>list</label>
+      </node>
+      <node id="6285">
+        <label>atomic</label>
+      </node>
+      <node id="6267">
+        <label>libopenage/error/gl_debug.cpp</label>
+        <link refid="gl__debug_8cpp"/>
+        <childnode refid="6268" relation="include">
+        </childnode>
+        <childnode refid="6270" relation="include">
+        </childnode>
+        <childnode refid="6271" relation="include">
+        </childnode>
+      </node>
+      <node id="6291">
+        <label>iomanip</label>
+      </node>
+      <node id="6290">
+        <label>functional</label>
+      </node>
+      <node id="6280">
+        <label>cstdint</label>
+      </node>
+      <node id="6288">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="6289" relation="include">
+        </childnode>
+        <childnode refid="6290" relation="include">
+        </childnode>
+        <childnode refid="6291" relation="include">
+        </childnode>
+        <childnode refid="6273" relation="include">
+        </childnode>
+        <childnode refid="6292" relation="include">
+        </childnode>
+        <childnode refid="6275" relation="include">
+        </childnode>
+        <childnode refid="6293" relation="include">
+        </childnode>
+      </node>
+      <node id="6274">
+        <label>stdexcept</label>
+      </node>
+      <node id="6294">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="6295" relation="include">
+        </childnode>
+        <childnode refid="6296" relation="include">
+        </childnode>
+        <childnode refid="6297" relation="include">
+        </childnode>
+      </node>
+      <node id="6289">
+        <label>cstdarg</label>
+      </node>
+      <node id="6275">
+        <label>string</label>
+      </node>
+      <node id="6279">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="6280" relation="include">
+        </childnode>
+        <childnode refid="6275" relation="include">
+        </childnode>
+        <childnode refid="6281" relation="include">
+        </childnode>
+        <childnode refid="6282" relation="include">
+        </childnode>
+        <childnode refid="6284" relation="include">
+        </childnode>
+        <childnode refid="6294" relation="include">
+        </childnode>
+        <childnode refid="6297" relation="include">
+        </childnode>
+      </node>
+      <node id="6282">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="6283" relation="include">
+        </childnode>
+      </node>
+      <node id="6284">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="6285" relation="include">
+        </childnode>
+        <childnode refid="6273" relation="include">
+        </childnode>
+        <childnode refid="6286" relation="include">
+        </childnode>
+        <childnode refid="6276" relation="include">
+        </childnode>
+        <childnode refid="6287" relation="include">
+        </childnode>
+        <childnode refid="6288" relation="include">
+        </childnode>
+      </node>
+      <node id="6271">
+        <label>error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="6272" relation="include">
+        </childnode>
+        <childnode refid="6273" relation="include">
+        </childnode>
+        <childnode refid="6274" relation="include">
+        </childnode>
+        <childnode refid="6275" relation="include">
+        </childnode>
+        <childnode refid="6276" relation="include">
+        </childnode>
+        <childnode refid="6279" relation="include">
+        </childnode>
+      </node>
+      <node id="6269">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="6299">
+        <label>typeinfo</label>
+      </node>
+      <node id="6293">
+        <label>vector</label>
+      </node>
+      <node id="6277">
+        <label>ciso646</label>
+      </node>
+      <node id="6292">
+        <label>sstream</label>
+      </node>
+      <node id="6276">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="6277" relation="include">
+        </childnode>
+        <childnode refid="6275" relation="include">
+        </childnode>
+        <childnode refid="6278" relation="include">
+        </childnode>
+      </node>
+      <node id="6278">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="6278" relation="include">
+        </childnode>
+      </node>
+      <node id="6270">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="6287">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="6272" relation="include">
+        </childnode>
+        <childnode refid="6275" relation="include">
+        </childnode>
+      </node>
+      <node id="6297">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="6298" relation="include">
+        </childnode>
+      </node>
+      <node id="6283">
+        <label>cstdlib</label>
+      </node>
+      <node id="6272">
+        <label>iostream</label>
+      </node>
+      <node id="6296">
+        <label>mutex</label>
+      </node>
+      <node id="6286">
+        <label>type_traits</label>
+      </node>
+      <node id="6281">
+        <label>config.h</label>
+      </node>
+      <node id="6273">
+        <label>memory</label>
+      </node>
+      <node id="6298">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="6272" relation="include">
+        </childnode>
+        <childnode refid="6299" relation="include">
+        </childnode>
+        <childnode refid="6276" relation="include">
+        </childnode>
+      </node>
+      <node id="6268">
+        <label>gl_debug.h</label>
+        <link refid="gl__debug_8h"/>
+        <childnode refid="6269" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1error">openage::error</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gl__debug_8h" kindref="compound">gl_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="error_2error_8h" kindref="compound">error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">error<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>APIENTRY<sp/>callback(GLenum<sp/>source,<sp/>GLenum,<sp/>GLuint,<sp/>GLenum,<sp/>GLsizei,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLchar<sp/>*message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*source_name;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(source)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_API:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;API&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_WINDOW_SYSTEM:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;window<sp/>system&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_SHADER_COMPILER:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;shader<sp/>compiler&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_THIRD_PARTY:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;third<sp/>party&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_APPLICATION:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;application&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_DEBUG_SOURCE_OTHER:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;other&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source_name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;unknown&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>Error(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;OpenGL<sp/>error<sp/>from<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>source_name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>message<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" refkind="member"><highlight class="normal">SDL_GLContext<sp/><ref refid="namespaceopenage_1_1error_1a95135ee267683c05e0a7b64a4b32a999" kindref="member">create_debug_context</ref>(SDL_Window<sp/>*window)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS,<sp/>SDL_GL_CONTEXT_DEBUG_FLAG);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ctx<sp/>=<sp/>SDL_GL_CreateContext(window);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ctx<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLint<sp/>flags;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glGetIntegerv(GL_CONTEXT_FLAGS,<sp/>&amp;flags);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(flags<sp/>&amp;<sp/>GL_CONTEXT_FLAG_DEBUG_BIT))</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>creating<sp/>a<sp/>debug<sp/>OpenGL<sp/>context.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDebugMessageControl(GL_DONT_CARE,<sp/>GL_DONT_CARE,<sp/>GL_DONT_CARE,<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>GL_FALSE);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDebugMessageControl(GL_DONT_CARE,<sp/>GL_DEBUG_TYPE_ERROR,<sp/>GL_DONT_CARE,<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>GL_TRUE);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDebugMessageControl(GL_DONT_CARE,<sp/>GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR,<sp/>GL_DONT_CARE,<sp/>0,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>GL_TRUE);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDebugMessageCallback(callback,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ctx;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::error</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/error/gl_debug.cpp"/>
+  </compounddef>
+</doxygen>

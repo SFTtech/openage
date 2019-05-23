@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::VlkLoader</compoundname>
+    <includes refid="loader_8h" local="no">loader.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" prot="private" static="no" mutable="no">
+        <type>PFN_vkCreateDebugReportCallbackEXT</type>
+        <definition>PFN_vkCreateDebugReportCallbackEXT openage::renderer::vulkan::VlkLoader::pCreateDebugReportCallbackEXT</definition>
+        <argsstring></argsstring>
+        <name>pCreateDebugReportCallbackEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="15" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" prot="private" static="no" mutable="no">
+        <type>PFN_vkDestroyDebugReportCallbackEXT</type>
+        <definition>PFN_vkDestroyDebugReportCallbackEXT openage::renderer::vulkan::VlkLoader::pDestroyDebugReportCallbackEXT</definition>
+        <argsstring></argsstring>
+        <name>pDestroyDebugReportCallbackEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="16" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::renderer::vulkan::VlkLoader::inited</definition>
+        <argsstring></argsstring>
+        <name>inited</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="19" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a4ef8a837fbbfe62d5f4a76cf836566c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkLoader::VlkLoader</definition>
+        <argsstring>()</argsstring>
+        <name>VlkLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="12" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::vulkan::VlkLoader::init</definition>
+        <argsstring>(VkInstance)</argsstring>
+        <name>init</name>
+        <param>
+          <type>VkInstance</type>
+          <defname>instance</defname>
+        </param>
+        <briefdescription>
+<para>Initialize this loader for the given Vulkan instance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="15" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VkResult</type>
+        <definition>VkResult openage::renderer::vulkan::VlkLoader::vkCreateDebugReportCallbackEXT</definition>
+        <argsstring>(VkInstance instance, const VkDebugReportCallbackCreateInfoEXT *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkDebugReportCallbackEXT *pCallback)</argsstring>
+        <name>vkCreateDebugReportCallbackEXT</name>
+        <param>
+          <type>VkInstance</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type>const VkDebugReportCallbackCreateInfoEXT *</type>
+          <declname>pCreateInfo</declname>
+        </param>
+        <param>
+          <type>const VkAllocationCallbacks *</type>
+          <declname>pAllocator</declname>
+        </param>
+        <param>
+          <type>VkDebugReportCallbackEXT *</type>
+          <declname>pCallback</declname>
+        </param>
+        <briefdescription>
+<para>Part of VK_EXT_debug_report, allows setting a callback for debug events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="25" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::vulkan::VlkLoader::vkDestroyDebugReportCallbackEXT</definition>
+        <argsstring>(VkInstance instance, VkDebugReportCallbackEXT callback, const VkAllocationCallbacks *pAllocator)</argsstring>
+        <name>vkDestroyDebugReportCallbackEXT</name>
+        <param>
+          <type>VkInstance</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type>VkDebugReportCallbackEXT</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const VkAllocationCallbacks *</type>
+          <declname>pAllocator</declname>
+        </param>
+        <briefdescription>
+<para>Part of VK_EXT_debug_report, destroys the debug callback object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/loader.h" line="38" column="1" bodyfile="libopenage/renderer/vulkan/loader.cpp" bodystart="42" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class for dynamically loading Vulkan extension functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4954">
+        <label>openage::renderer::vulkan::VlkLoader</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/loader.h" line="13" column="1" bodyfile="libopenage/renderer/vulkan/loader.h" bodystart="13" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aca5b135198f0fd9f54e53efb490dde89" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>init</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a842f62f3de380d19149191a81bc93b65" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>inited</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac1efaa96dd2d76011d1129423db0b7f0" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>pCreateDebugReportCallbackEXT</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ac923c8931723699b850926abc01722ac" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>pDestroyDebugReportCallbackEXT</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1ae0fca75dfb39258cb6f304af6fbd4083" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>vkCreateDebugReportCallbackEXT</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1aac68635f78581d8bc631eae1d887313a" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>vkDestroyDebugReportCallbackEXT</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_loader_1a4ef8a837fbbfe62d5f4a76cf836566c7" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkLoader</scope><name>VlkLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

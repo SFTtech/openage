@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_renderer_impl" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiRendererImpl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="gui__renderer__impl_8h" local="no">gui_renderer_impl.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_gui_rendering_setup_routines" kindref="compound">GuiRenderingSetupRoutines</ref></type>
+        <definition>GuiRenderingSetupRoutines qtsdl::GuiRendererImpl::gui_rendering_setup_routines</definition>
+        <argsstring></argsstring>
+        <name>gui_rendering_setup_routines</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains rendering context Use <ref refid="classqtsdl_1_1_gui_rendering_ctx_activator" kindref="compound">GuiRenderingCtxActivator</ref> to enable it </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="117" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classqtsdl_1_1_event_handling_quick_window" kindref="compound">EventHandlingQuickWindow</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;EventHandlingQuickWindow&gt; qtsdl::GuiRendererImpl::window</definition>
+        <argsstring></argsstring>
+        <name>window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains scene graph of the GUI </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="122" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" prot="private" static="no" mutable="no">
+        <type>QQuickRenderControl</type>
+        <definition>QQuickRenderControl qtsdl::GuiRendererImpl::render_control</definition>
+        <argsstring></argsstring>
+        <name>render_control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Object for sending render command to Qt </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="127" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; QOpenGLFramebufferObject &gt;</type>
+        <definition>std::unique_ptr&lt;QOpenGLFramebufferObject&gt; qtsdl::GuiRendererImpl::fbo</definition>
+        <argsstring></argsstring>
+        <name>fbo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>FBO where the GUI is rendered </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="132" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a5847e3637b5a63f60874fac9a573b8f3" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; int &gt;</type>
+        <definition>std::atomic&lt;int&gt; qtsdl::GuiRendererImpl::new_fbo_width</definition>
+        <argsstring></argsstring>
+        <name>new_fbo_width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="134" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a87ad2c335957f9eb5a89f8edf24a2e11" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; int &gt;</type>
+        <definition>std::atomic&lt;int&gt; qtsdl::GuiRendererImpl::new_fbo_height</definition>
+        <argsstring></argsstring>
+        <name>new_fbo_height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="135" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; qtsdl::GuiRendererImpl::need_fbo_resize</definition>
+        <argsstring></argsstring>
+        <name>need_fbo_resize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="136" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; qtsdl::GuiRendererImpl::need_sync</definition>
+        <argsstring></argsstring>
+        <name>need_sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="138" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a5f7264da514815fd33c84ca24e4e6632" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; qtsdl::GuiRendererImpl::need_render</definition>
+        <argsstring></argsstring>
+        <name>need_render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="139" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiRendererImpl::gui_locked</definition>
+        <argsstring></argsstring>
+        <name>gui_locked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="141" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex qtsdl::GuiRendererImpl::gui_guard</definition>
+        <argsstring></argsstring>
+        <name>gui_guard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="142" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable qtsdl::GuiRendererImpl::gui_locked_cond</definition>
+        <argsstring></argsstring>
+        <name>gui_locked_cond</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="143" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiRendererImpl::renderer_waiting_on_cond</definition>
+        <argsstring></argsstring>
+        <name>renderer_waiting_on_cond</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="144" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1aff444c99b88cb4f669597ad3f74ccfe7" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRendererImpl::GuiRendererImpl</definition>
+        <argsstring>(SDL_Window *window)</argsstring>
+        <name>GuiRendererImpl</name>
+        <param>
+          <type>SDL_Window *</type>
+          <declname>window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="49" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="76" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a26bbabfbcf03198fc22b8b86af60e2c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiRendererImpl::~GuiRendererImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiRendererImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="50" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="131" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint qtsdl::GuiRendererImpl::render</definition>
+        <argsstring>()</argsstring>
+        <name>render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>texture ID where GUI was rendered </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="57" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="145" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::resize</definition>
+        <argsstring>(const QSize &amp;size)</argsstring>
+        <name>resize</name>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="59" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="244" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_event_handling_quick_window" kindref="compound">EventHandlingQuickWindow</ref> *</type>
+        <definition>EventHandlingQuickWindow * qtsdl::GuiRendererImpl::get_window</definition>
+        <argsstring>()</argsstring>
+        <name>get_window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="61" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::make_sure_render_thread_unlocked</definition>
+        <argsstring>()</argsstring>
+        <name>make_sure_render_thread_unlocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When render thread is locked waiting for the gui thread to finish its current event and go to the high-priority &apos;freeze&apos; event; but the gui thread can&apos;t finish the current event because it&apos;s going to lock the game-logic thread that will lock the render thread somehow.</para>
+<para>In this situation the gui thread should call this function to immediately process the &apos;freeze&apos; event handler inside current event and remove the event from the gui queue.</para>
+<para>&apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; is only set from the gui thread, so after the calling this function, we are fine for entire duration of the processing of the current event.</para>
+<para>If &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; is set, this function blocks until the render thread comes around to do the &apos;QQuickRenderControl::sync()&apos;. If it&apos;s not good enough, it&apos;s possible to implement two separate functions to set &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; to false and then back to true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="78" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="182" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiRendererImpl::make_sure_render_thread_wont_sync</definition>
+        <argsstring>()</argsstring>
+        <name>make_sure_render_thread_wont_sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assures that the render thread won&apos;t try to stop the gui thread for syncing.</para>
+<para>Must be called from the gui thread.</para>
+<para><simplesect kind="return"><para>true if need_sync was set to false (you should restore it with the <ref refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" kindref="member">demand_sync()</ref>) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="87" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="195" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::demand_sync</definition>
+        <argsstring>()</argsstring>
+        <name>demand_sync</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets &apos;<ref refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" kindref="member">GuiRendererImpl::need_sync</ref>&apos; to true.</para>
+<para>Must be called from the gui thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="94" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="215" bodyend="218"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classqtsdl_1_1_gui_renderer_impl" kindref="compound">GuiRendererImpl</ref> *</type>
+        <definition>GuiRendererImpl * qtsdl::GuiRendererImpl::impl</definition>
+        <argsstring>(GuiRenderer *renderer)</argsstring>
+        <name>impl</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="52" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classqtsdl_1_1_gui_renderer_impl_1aaabcf6524660f031e1406ef57bb3278e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::resized</definition>
+        <argsstring>(const QSize &amp;size)</argsstring>
+        <name>resized</name>
+        <param>
+          <type>const QSize &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="97" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool qtsdl::GuiRendererImpl::event</definition>
+        <argsstring>(QEvent *e) override</argsstring>
+        <name>event</name>
+        <param>
+          <type>QEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="100" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="220" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::process_freeze</definition>
+        <argsstring>(std::unique_lock&lt; std::mutex &gt; lck)</argsstring>
+        <name>process_freeze</name>
+        <param>
+          <type>std::unique_lock&lt; std::mutex &gt;</type>
+          <declname>lck</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="102" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="230" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::reinit_fbo_if_needed</definition>
+        <argsstring>()</argsstring>
+        <name>reinit_fbo_if_needed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If size changes, then create a new FBO for GUI rendering </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="111" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="119" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiRendererImpl::on_scene_changed</definition>
+        <argsstring>()</argsstring>
+        <name>on_scene_changed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="105" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.cpp" bodystart="113" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Passes the native graphic context to Qt. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2752">
+        <label>QObject</label>
+      </node>
+      <node id="2751">
+        <label>qtsdl::GuiRendererImpl</label>
+        <link refid="classqtsdl_1_1_gui_renderer_impl"/>
+        <childnode refid="2752" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2755">
+        <label>qtsdl::GuiRenderingSetupRoutines</label>
+        <link refid="classqtsdl_1_1_gui_rendering_setup_routines"/>
+      </node>
+      <node id="2754">
+        <label>QObject</label>
+      </node>
+      <node id="2753">
+        <label>qtsdl::GuiRendererImpl</label>
+        <link refid="classqtsdl_1_1_gui_renderer_impl"/>
+        <childnode refid="2754" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2755" relation="usage">
+          <edgelabel>-gui_rendering_setup_routines</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/gui_renderer_impl.h" line="45" column="1" bodyfile="libopenage/gui/guisys/private/gui_renderer_impl.h" bodystart="45" bodyend="145"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a9cbfe11160f7430b912b9dce3fb3063c" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>demand_sync</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1acf11f47c7c6294d8e939d60694d9733e" prot="private" virt="virtual"><scope>qtsdl::GuiRendererImpl</scope><name>event</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1adc0f595f0b1893a1d58a4da18b125d1d" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>fbo</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a6c76b7a4a79a481cf8962e268ae56bb4" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>get_window</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a3247502b5af985d02797d694765c2da7" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>gui_guard</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a788c86262679f57b5a47aa796175c7b5" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>gui_locked</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1aa17ab35a2d670e6e7d2d8a5f0f272205" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>gui_locked_cond</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a3c8b11cb05904e6cfedaf5a8564489e7" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>gui_rendering_setup_routines</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1aff444c99b88cb4f669597ad3f74ccfe7" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>GuiRendererImpl</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a84a47f6f426e8f5342b656f76c023d82" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>impl</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a69ad2da6645ab9bd5f6acb9875442782" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>make_sure_render_thread_unlocked</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a1c114484132e4b98d63a49a5224424ad" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>make_sure_render_thread_wont_sync</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1ad2e2d3c87a5dbd62f0e64d303b83329b" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>need_fbo_resize</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a5f7264da514815fd33c84ca24e4e6632" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>need_render</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1ab32b5a278265983f936c71bacb9b603c" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>need_sync</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a87ad2c335957f9eb5a89f8edf24a2e11" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>new_fbo_height</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a5847e3637b5a63f60874fac9a573b8f3" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>new_fbo_width</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a6dc0a432c6dae56ec3e2022389ffe29e" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>on_scene_changed</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a862caa0a5422a61ddfa59e0ee13f9405" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>process_freeze</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1aa388a8bb4fdb12a784481acf834803b7" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>reinit_fbo_if_needed</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a2d1f046c61fee8711895e27fba9fe6d0" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>render</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a104696d5e94aa8da0878bac31720ec11" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>render_control</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a3e84e4d872fa6ec870ad961e1105221c" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>renderer_waiting_on_cond</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a8ead67b97a0f2c134ec2d5a5a8f15d4c" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>resize</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1aaabcf6524660f031e1406ef57bb3278e" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>resized</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a3ede05eb980a486dac223990a4c2782f" prot="private" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>window</name></member>
+      <member refid="classqtsdl_1_1_gui_renderer_impl_1a26bbabfbcf03198fc22b8b86af60e2c5" prot="public" virt="non-virtual"><scope>qtsdl::GuiRendererImpl</scope><name>~GuiRendererImpl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

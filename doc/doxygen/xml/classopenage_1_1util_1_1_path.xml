@@ -1,0 +1,808 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_path" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Path</compoundname>
+    <includes refid="util_2path_8h" local="no">path.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" prot="public" static="no">
+        <type>std::string</type>
+        <definition>using openage::util::Path::part_t =  std::string</definition>
+        <argsstring></argsstring>
+        <name>part_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Storage type for a part of a path access. Basically this is the name of a file or directory. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="53" column="1" bodyfile="libopenage/util/path.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &gt;</type>
+        <definition>using openage::util::Path::parts_t =  std::vector&lt;part_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>parts_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Storage type for the filesystem access parts this is basically a list/of/elements/in/a/path. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="59" column="1" bodyfile="libopenage/util/path.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">fslike::FSLike</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;fslike::FSLike&gt; openage::util::Path::fsobj</definition>
+        <argsstring></argsstring>
+        <name>fsobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="166" column="1" bodyfile="libopenage/util/path.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref></type>
+        <definition>parts_t openage::util::Path::parts</definition>
+        <argsstring></argsstring>
+        <name>parts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="168" column="1" bodyfile="libopenage/util/path.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Path::Path</definition>
+        <argsstring>()</argsstring>
+        <name>Path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Nullary constructor, pls don&apos;t use. It only exists because Cython can&apos;t RAII. It should be just friend of cython. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="66" column="1" bodyfile="libopenage/util/path.cpp" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a42f3bcd766fbdb0a4de3ccd36fa65b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Path::Path</definition>
+        <argsstring>(py::Obj fslike, const parts_t &amp;parts={})</argsstring>
+        <name>Path</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1py_1aba3b73f5f4dff0e8b09683628705ea44" kindref="member">py::Obj</ref></type>
+          <declname>fslike</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct a path object from a python fslike object. This is called from Cython.</para>
+<para>You will probably never call that manually. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a94d1c79106d647738cc12de1dfedf4b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Path::Path</definition>
+        <argsstring>(const std::shared_ptr&lt; fslike::FSLike &gt; &amp;fslike, const parts_t &amp;parts={})</argsstring>
+        <name>Path</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">fslike::FSLike</ref> &gt; &amp;</type>
+          <declname>fslike</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct a path from a fslike pointer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="80" column="1" bodyfile="libopenage/util/path.cpp" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1acfbb432696700abc731097771deb4f94" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::util::Path::~Path</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::exists</definition>
+        <argsstring>() const</argsstring>
+        <name>exists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="87" column="1" bodyfile="libopenage/util/path.cpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::is_file</definition>
+        <argsstring>() const</argsstring>
+        <name>is_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="88" column="1" bodyfile="libopenage/util/path.cpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::is_dir</definition>
+        <argsstring>() const</argsstring>
+        <name>is_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="89" column="1" bodyfile="libopenage/util/path.cpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::writable</definition>
+        <argsstring>() const</argsstring>
+        <name>writable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="90" column="1" bodyfile="libopenage/util/path.cpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &gt;</type>
+        <definition>std::vector&lt; Path::part_t &gt; openage::util::Path::list</definition>
+        <argsstring>()</argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="91" column="1" bodyfile="libopenage/util/path.cpp" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &gt;</type>
+        <definition>std::vector&lt; Path &gt; openage::util::Path::iterdir</definition>
+        <argsstring>()</argsstring>
+        <name>iterdir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="92" column="1" bodyfile="libopenage/util/path.cpp" bodystart="96" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::mkdirs</definition>
+        <argsstring>()</argsstring>
+        <name>mkdirs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="93" column="1" bodyfile="libopenage/util/path.cpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open</definition>
+        <argsstring>(const std::string &amp;mode=&quot;r&quot;) const</argsstring>
+        <name>open</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mode</declname>
+          <defval>&quot;r&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="94" column="1" bodyfile="libopenage/util/path.cpp" bodystart="111" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open_r</definition>
+        <argsstring>() const</argsstring>
+        <name>open_r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="95" column="1" bodyfile="libopenage/util/path.cpp" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open_w</definition>
+        <argsstring>() const</argsstring>
+        <name>open_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="96" column="1" bodyfile="libopenage/util/path.cpp" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open_rw</definition>
+        <argsstring>() const</argsstring>
+        <name>open_rw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="97" column="1" bodyfile="libopenage/util/path.cpp" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open_a</definition>
+        <argsstring>() const</argsstring>
+        <name>open_a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="98" column="1" bodyfile="libopenage/util/path.cpp" bodystart="148" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::Path::open_ar</definition>
+        <argsstring>() const</argsstring>
+        <name>open_ar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="99" column="1" bodyfile="libopenage/util/path.cpp" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::resolve_native_path</definition>
+        <argsstring>(const std::string &amp;mode=&quot;r&quot;) const</argsstring>
+        <name>resolve_native_path</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mode</declname>
+          <defval>&quot;r&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resolve the native path by flattening all underlying filesystem objects (like unions). Returns the /native/path/on/disk. Throws up if there is no native path.</para>
+<para>This basically is the same as resolve_*().<ref refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" kindref="member">get_native_path()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="109" column="1" bodyfile="libopenage/util/path.cpp" bodystart="163" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::resolve_native_path_r</definition>
+        <argsstring>() const</argsstring>
+        <name>resolve_native_path_r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="111" column="1" bodyfile="libopenage/util/path.cpp" bodystart="176" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::resolve_native_path_w</definition>
+        <argsstring>() const</argsstring>
+        <name>resolve_native_path_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="112" column="1" bodyfile="libopenage/util/path.cpp" bodystart="188" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::rename</definition>
+        <argsstring>(const Path &amp;target_path)</argsstring>
+        <name>rename</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>target_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="114" column="1" bodyfile="libopenage/util/path.cpp" bodystart="200" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::rmdir</definition>
+        <argsstring>()</argsstring>
+        <name>rmdir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="115" column="1" bodyfile="libopenage/util/path.cpp" bodystart="211" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::touch</definition>
+        <argsstring>()</argsstring>
+        <name>touch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="116" column="1" bodyfile="libopenage/util/path.cpp" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::unlink</definition>
+        <argsstring>()</argsstring>
+        <name>unlink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="117" column="1" bodyfile="libopenage/util/path.cpp" bodystart="219" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Path::removerecursive</definition>
+        <argsstring>()</argsstring>
+        <name>removerecursive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="118" column="1" bodyfile="libopenage/util/path.cpp" bodystart="223" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::util::Path::get_mtime</definition>
+        <argsstring>() const</argsstring>
+        <name>get_mtime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="120" column="1" bodyfile="libopenage/util/path.cpp" bodystart="236" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::Path::get_filesize</definition>
+        <argsstring>() const</argsstring>
+        <name>get_filesize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="121" column="1" bodyfile="libopenage/util/path.cpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::get_parent</definition>
+        <argsstring>() const</argsstring>
+        <name>get_parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="130" column="1" bodyfile="libopenage/util/path.cpp" bodystart="247" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; openage::util::Path::get_name</definition>
+        <argsstring>() const</argsstring>
+        <name>get_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="131" column="1" bodyfile="libopenage/util/path.cpp" bodystart="252" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::get_suffix</definition>
+        <argsstring>() const</argsstring>
+        <name>get_suffix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="132" column="1" bodyfile="libopenage/util/path.cpp" bodystart="261" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::util::Path::get_suffixes</definition>
+        <argsstring>() const</argsstring>
+        <name>get_suffixes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="133" column="1" bodyfile="libopenage/util/path.cpp" bodystart="271" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::get_stem</definition>
+        <argsstring>() const</argsstring>
+        <name>get_stem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="134" column="1" bodyfile="libopenage/util/path.cpp" bodystart="282" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::joinpath</definition>
+        <argsstring>(const parts_t &amp;subpaths) const</argsstring>
+        <name>joinpath</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
+          <declname>subpaths</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="136" column="1" bodyfile="libopenage/util/path.cpp" bodystart="293" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::joinpath</definition>
+        <argsstring>(const part_t &amp;subpath) const</argsstring>
+        <name>joinpath</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &amp;</type>
+          <declname>subpath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="137" column="1" bodyfile="libopenage/util/path.cpp" bodystart="303" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::operator []</definition>
+        <argsstring>(const parts_t &amp;subpaths) const</argsstring>
+        <name>operator []</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
+          <declname>subpaths</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="138" column="1" bodyfile="libopenage/util/path.cpp" bodystart="307" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1af8e0c0f255b7df0bfd44cd19df8a6325" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::operator []</definition>
+        <argsstring>(const part_t &amp;subpath) const</argsstring>
+        <name>operator []</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &amp;</type>
+          <declname>subpath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="139" column="1" bodyfile="libopenage/util/path.cpp" bodystart="311" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::operator/</definition>
+        <argsstring>(const part_t &amp;subpath) const</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &amp;</type>
+          <declname>subpath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="140" column="1" bodyfile="libopenage/util/path.cpp" bodystart="315" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::with_name</definition>
+        <argsstring>(const part_t &amp;name) const</argsstring>
+        <name>with_name</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="142" column="1" bodyfile="libopenage/util/path.cpp" bodystart="319" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref></type>
+        <definition>Path openage::util::Path::with_suffix</definition>
+        <argsstring>(const part_t &amp;suffix) const</argsstring>
+        <name>with_suffix</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">part_t</ref> &amp;</type>
+          <declname>suffix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="143" column="1" bodyfile="libopenage/util/path.cpp" bodystart="323" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::operator==</definition>
+        <argsstring>(const Path &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="145" column="1" bodyfile="libopenage/util/path.cpp" bodystart="327" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a72180e179456cb7a19935e969c9753e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Path::operator !=</definition>
+        <argsstring>(const Path &amp;other) const</argsstring>
+        <name>operator !=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="146" column="1" bodyfile="libopenage/util/path.cpp" bodystart="334" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" kindref="compound">fslike::FSLike</ref> *</type>
+        <definition>fslike::FSLike * openage::util::Path::get_fsobj</definition>
+        <argsstring>() const</argsstring>
+        <name>get_fsobj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="148" column="1" bodyfile="libopenage/util/path.cpp" bodystart="339" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">parts_t</ref> &amp;</type>
+        <definition>const Path::parts_t &amp; openage::util::Path::get_parts</definition>
+        <argsstring>() const</argsstring>
+        <name>get_parts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="149" column="1" bodyfile="libopenage/util/path.cpp" bodystart="344" bodyend="346"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::Path::get_native_path</definition>
+        <argsstring>() const</argsstring>
+        <name>get_native_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the native path (something like /your/folder/with/file) for this path. returns emptystring (&quot;&quot;) if there is no native path.</para>
+<para>This does <emphasis>not</emphasis> minimize/flatten (= &quot;resolve&quot;) the path!</para>
+<para>You probably want to use <computeroutput>resolve_native_path</computeroutput> instead. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="162" column="1" bodyfile="libopenage/util/path.cpp" bodystart="158" bodyend="160"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classopenage_1_1util_1_1_path_1a2ec9a8258175592b62eb0df607badc6d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const Path &amp;path)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.h" line="170" column="1" bodyfile="libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>C++ pendant to the python util.fslike.path.Path</para>
+<para>Contains a filesystem-like object and path-parts.</para>
+<para>pxd: cppclass <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref>: ctypedef string part_t ctypedef vector[string] parts_t</para>
+<para><ref refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" kindref="member">Path()</ref> noexcept Path(PyObj, const vector[string]&amp;) except +</para>
+<para>FSLike *get_fsobj() except + const vector[string] &amp;<ref refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" kindref="member">get_parts()</ref> except + </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3590">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/path.h" line="46" column="1" bodyfile="libopenage/util/path.h" bodystart="46" bodyend="171"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_path_1ad250b77528d7feb294ead2006da92b4f" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>exists</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a288d8a3dd8a8a7a377f672d9c88b6ca2" prot="protected" virt="non-virtual"><scope>openage::util::Path</scope><name>fsobj</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aaa66710a132b598475a9f59cbcdfdd04" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_filesize</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a074a32ef7f82983bb7d9e04092e29329" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_fsobj</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1afda6d8962b8e347323e7f8b21c3fcf10" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_mtime</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a20819ad3bd985841f0538e3adac52cf6" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_name</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a53047699ec64680d09c2c7db87ae99c5" prot="private" virt="non-virtual"><scope>openage::util::Path</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a3fc6528c66f6d83e122e753f73511a3d" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_parent</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a16c0ed912bc74f019752253aff81de71" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_parts</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1afed5e82e9f515fc2d8e2cdc291edebca" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_stem</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1ad8cfd4845f049d7163308de4b6a0fba0" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_suffix</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1ab8fd090bfda0875ec3720abd1587ba33" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>get_suffixes</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a4ee310e473187eb5e37d402be315676f" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aacfbbb9dd2e0ec286b5581690f9a83aa" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a4b86af755731199df56f8755a273d40b" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>iterdir</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a21fb5a34dad3027d7c9fca721211a258" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>joinpath</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1af2aa900d03797c9f65b6ba484892139d" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>joinpath</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1afaf387508110553300e1d9578e71cb30" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a7abde99b6d12b1d6405083fe75c8cd7d" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1ab7d7932d536db76983f9770016f724f2" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a483f9f4a7f9758fb98d8d457d53e1616" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a5a01e1d52b588996b036fb52b81f3d8a" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a9fd12e527447a3bdfa57c61c49921b5f" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aa490b4ca4f053611b439d4b3956b2451" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a72180e179456cb7a19935e969c9753e2" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aedc1b758f39c3c73bc0c9674b196b93f" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>operator []</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1af8e0c0f255b7df0bfd44cd19df8a6325" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>operator []</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a00222178ee6ed18cd63bd075d629f936" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>operator/</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a2ec9a8258175592b62eb0df607badc6d" prot="protected" virt="non-virtual"><scope>openage::util::Path</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1afdfddfce491febb942d8c7d880557800" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>part_t</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a42a892625a98126a36cb9c12f4b017f8" prot="protected" virt="non-virtual"><scope>openage::util::Path</scope><name>parts</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>parts_t</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1ade26ce7a38a05b1e46dca7f839240988" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>Path</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a42f3bcd766fbdb0a4de3ccd36fa65b62" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>Path</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a94d1c79106d647738cc12de1dfedf4b5" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>Path</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aaa67568af9c376247302feac5244070a" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>removerecursive</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a432c6c98bd5e57ea0d9909ab8921169a" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a4ca4da6e9e2d8adadb02373ff2be8ebe" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>resolve_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a919083912ceb465d8b3c28e4766161fe" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>resolve_native_path_r</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a1175be01a6df63d066ca6f2d3e2c4d3c" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>resolve_native_path_w</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a2b50acc68a2ec93baae38dbc76698317" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a1d87cf48082a47a8154ed136b933b4c3" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a7792a326554efd7a7331477ee7deb733" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a6e86298c20b5fd4596b791de4115b8b9" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>with_name</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1aa7993e64af5227c5949074566deadbf6" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>with_suffix</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1a811160d3aa2dbbfc90ee8e540cb91024" prot="public" virt="non-virtual"><scope>openage::util::Path</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1_path_1acfbb432696700abc731097771deb4f94" prot="public" virt="virtual"><scope>openage::util::Path</scope><name>~Path</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

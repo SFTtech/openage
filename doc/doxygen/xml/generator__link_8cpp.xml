@@ -1,0 +1,476 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="generator__link_8cpp" kind="file" language="C++">
+    <compoundname>generator_link.cpp</compoundname>
+    <includes refid="generator__link_8h" local="yes">generator_link.h</includes>
+    <includes local="no">QtQml</includes>
+    <includes refid="gui__property__map__impl_8h" local="yes">guisys/link/gui_property_map_impl.h</includes>
+    <incdepgraph>
+      <node id="12552">
+        <label>list</label>
+      </node>
+      <node id="12545">
+        <label>atomic</label>
+      </node>
+      <node id="12520">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="12521" relation="include">
+        </childnode>
+        <childnode refid="12522" relation="include">
+        </childnode>
+        <childnode refid="12523" relation="include">
+        </childnode>
+        <childnode refid="12524" relation="include">
+        </childnode>
+        <childnode refid="12525" relation="include">
+        </childnode>
+        <childnode refid="12526" relation="include">
+        </childnode>
+        <childnode refid="12527" relation="include">
+        </childnode>
+        <childnode refid="12528" relation="include">
+        </childnode>
+      </node>
+      <node id="12549">
+        <label>functional</label>
+      </node>
+      <node id="12524">
+        <label>iomanip</label>
+      </node>
+      <node id="12525">
+        <label>limits</label>
+      </node>
+      <node id="12518">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="12519" relation="include">
+        </childnode>
+        <childnode refid="12520" relation="include">
+        </childnode>
+      </node>
+      <node id="12566">
+        <label>QObject</label>
+      </node>
+      <node id="12519">
+        <label>cstdint</label>
+      </node>
+      <node id="12557">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="12547">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="12548" relation="include">
+        </childnode>
+        <childnode refid="12549" relation="include">
+        </childnode>
+        <childnode refid="12524" relation="include">
+        </childnode>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12550" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12532" relation="include">
+        </childnode>
+      </node>
+      <node id="12523">
+        <label>cmath</label>
+      </node>
+      <node id="12564">
+        <label>cassert</label>
+      </node>
+      <node id="12536">
+        <label>stdexcept</label>
+      </node>
+      <node id="12567">
+        <label>QMetaType</label>
+      </node>
+      <node id="12571">
+        <label>../private/livereload/deferred_initial_constant_property_values.h</label>
+        <link refid="deferred__initial__constant__property__values_8h"/>
+        <childnode refid="12532" relation="include">
+        </childnode>
+        <childnode refid="12549" relation="include">
+        </childnode>
+      </node>
+      <node id="12551">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="12552" relation="include">
+        </childnode>
+        <childnode refid="12553" relation="include">
+        </childnode>
+        <childnode refid="12554" relation="include">
+        </childnode>
+      </node>
+      <node id="12548">
+        <label>cstdarg</label>
+      </node>
+      <node id="12531">
+        <label>string</label>
+      </node>
+      <node id="12540">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="12519" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12541" relation="include">
+        </childnode>
+        <childnode refid="12542" relation="include">
+        </childnode>
+        <childnode refid="12544" relation="include">
+        </childnode>
+        <childnode refid="12551" relation="include">
+        </childnode>
+        <childnode refid="12554" relation="include">
+        </childnode>
+      </node>
+      <node id="12542">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="12543" relation="include">
+        </childnode>
+      </node>
+      <node id="12544">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="12545" relation="include">
+        </childnode>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12527" relation="include">
+        </childnode>
+        <childnode refid="12537" relation="include">
+        </childnode>
+        <childnode refid="12546" relation="include">
+        </childnode>
+        <childnode refid="12547" relation="include">
+        </childnode>
+      </node>
+      <node id="12563">
+        <label>gui_item.h</label>
+        <link refid="gui__item_8h"/>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12564" relation="include">
+        </childnode>
+        <childnode refid="12549" relation="include">
+        </childnode>
+        <childnode refid="12527" relation="include">
+        </childnode>
+        <childnode refid="12556" relation="include">
+        </childnode>
+        <childnode refid="12565" relation="include">
+        </childnode>
+        <childnode refid="12566" relation="include">
+        </childnode>
+        <childnode refid="12567" relation="include">
+        </childnode>
+        <childnode refid="12568" relation="include">
+        </childnode>
+        <childnode refid="12569" relation="include">
+        </childnode>
+        <childnode refid="12570" relation="include">
+        </childnode>
+        <childnode refid="12571" relation="include">
+        </childnode>
+        <childnode refid="12572" relation="include">
+        </childnode>
+        <childnode refid="12573" relation="include">
+        </childnode>
+      </node>
+      <node id="12516">
+        <label>unordered_set</label>
+      </node>
+      <node id="12576">
+        <label>QtQml</label>
+      </node>
+      <node id="12526">
+        <label>ostream</label>
+      </node>
+      <node id="12573">
+        <label>gui_item_link.h</label>
+        <link refid="gui__item__link_8h"/>
+        <childnode refid="12527" relation="include">
+        </childnode>
+        <childnode refid="12572" relation="include">
+        </childnode>
+      </node>
+      <node id="12515">
+        <label>../gamestate/generator.h</label>
+        <link refid="generator_8h"/>
+        <childnode refid="12516" relation="include">
+        </childnode>
+        <childnode refid="12517" relation="include">
+        </childnode>
+        <childnode refid="12559" relation="include">
+        </childnode>
+      </node>
+      <node id="12529">
+        <label>limits.h</label>
+      </node>
+      <node id="12534">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="12535" relation="include">
+        </childnode>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12536" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12537" relation="include">
+        </childnode>
+        <childnode refid="12540" relation="include">
+        </childnode>
+      </node>
+      <node id="12559">
+        <label>../gui/guisys/public/gui_property_map.h</label>
+        <link refid="gui__property__map_8h"/>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12532" relation="include">
+        </childnode>
+      </node>
+      <node id="12528">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="12521" relation="include">
+        </childnode>
+        <childnode refid="12529" relation="include">
+        </childnode>
+        <childnode refid="12523" relation="include">
+        </childnode>
+        <childnode refid="12530" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12532" relation="include">
+        </childnode>
+        <childnode refid="12533" relation="include">
+        </childnode>
+        <childnode refid="12534" relation="include">
+        </childnode>
+        <childnode refid="12537" relation="include">
+        </childnode>
+      </node>
+      <node id="12558">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="12513">
+        <label>libopenage/gui/generator_link.cpp</label>
+        <link refid="generator__link_8cpp"/>
+        <childnode refid="12514" relation="include">
+        </childnode>
+        <childnode refid="12576" relation="include">
+        </childnode>
+        <childnode refid="12575" relation="include">
+        </childnode>
+      </node>
+      <node id="12556">
+        <label>typeinfo</label>
+      </node>
+      <node id="12561">
+        <label>tuple</label>
+      </node>
+      <node id="12569">
+        <label>QDebug</label>
+      </node>
+      <node id="12532">
+        <label>vector</label>
+      </node>
+      <node id="12538">
+        <label>ciso646</label>
+      </node>
+      <node id="12568">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="12565">
+        <label>utility</label>
+      </node>
+      <node id="12550">
+        <label>sstream</label>
+      </node>
+      <node id="12537">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="12538" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+        <childnode refid="12539" relation="include">
+        </childnode>
+      </node>
+      <node id="12514">
+        <label>generator_link.h</label>
+        <link refid="generator__link_8h"/>
+        <childnode refid="12515" relation="include">
+        </childnode>
+        <childnode refid="12560" relation="include">
+        </childnode>
+        <childnode refid="12574" relation="include">
+        </childnode>
+      </node>
+      <node id="12539">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="12539" relation="include">
+        </childnode>
+      </node>
+      <node id="12574">
+        <label>guisys/link/gui_item_list_model.h</label>
+        <link refid="gui__item__list__model_8h"/>
+        <childnode refid="12532" relation="include">
+        </childnode>
+        <childnode refid="12563" relation="include">
+        </childnode>
+        <childnode refid="12575" relation="include">
+        </childnode>
+        <childnode refid="12560" relation="include">
+        </childnode>
+      </node>
+      <node id="12546">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="12535" relation="include">
+        </childnode>
+        <childnode refid="12531" relation="include">
+        </childnode>
+      </node>
+      <node id="12575">
+        <label>gui_property_map_impl.h</label>
+        <link refid="gui__property__map__impl_8h"/>
+        <childnode refid="12566" relation="include">
+        </childnode>
+      </node>
+      <node id="12554">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="12555" relation="include">
+        </childnode>
+      </node>
+      <node id="12543">
+        <label>cstdlib</label>
+      </node>
+      <node id="12535">
+        <label>iostream</label>
+      </node>
+      <node id="12572">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12564" relation="include">
+        </childnode>
+      </node>
+      <node id="12522">
+        <label>climits</label>
+      </node>
+      <node id="12553">
+        <label>mutex</label>
+      </node>
+      <node id="12560">
+        <label>guisys/link/gui_list_model.h</label>
+        <link refid="gui__list__model_8h"/>
+        <childnode refid="12532" relation="include">
+        </childnode>
+        <childnode refid="12561" relation="include">
+        </childnode>
+        <childnode refid="12562" relation="include">
+        </childnode>
+        <childnode refid="12563" relation="include">
+        </childnode>
+      </node>
+      <node id="12517">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="12518" relation="include">
+        </childnode>
+        <childnode refid="12557" relation="include">
+        </childnode>
+        <childnode refid="12558" relation="include">
+        </childnode>
+        <childnode refid="12528" relation="include">
+        </childnode>
+      </node>
+      <node id="12562">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="12527">
+        <label>type_traits</label>
+      </node>
+      <node id="12541">
+        <label>config.h</label>
+      </node>
+      <node id="12521">
+        <label>algorithm</label>
+      </node>
+      <node id="12570">
+        <label>../private/game_logic_caller.h</label>
+        <link refid="game__logic__caller_8h"/>
+        <childnode refid="12549" relation="include">
+        </childnode>
+        <childnode refid="12566" relation="include">
+        </childnode>
+      </node>
+      <node id="12530">
+        <label>cstring</label>
+      </node>
+      <node id="12533">
+        <label>memory</label>
+      </node>
+      <node id="12555">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="12535" relation="include">
+        </childnode>
+        <childnode refid="12556" relation="include">
+        </childnode>
+        <childnode refid="12537" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1gui">openage::gui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="generator__link_8h" kindref="compound">generator_link.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtQml&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__property__map__impl_8h" kindref="compound">guisys/link/gui_property_map_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gui<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>registration<sp/>=<sp/>qmlRegisterType&lt;GeneratorLink&gt;(</highlight><highlight class="stringliteral">&quot;yay.sfttech.openage&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;GeneratorParameters&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1gui_1_1_generator_link_1af6c3069ee8314d5b4ac0df5954e36d63" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_generator_link_1af6c3069ee8314d5b4ac0df5954e36d63" kindref="member">GeneratorLink::GeneratorLink</ref>(QObject<sp/>*parent)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>GuiListModel{parent},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>GuiItemListModel{</highlight><highlight class="keyword">this</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(registration);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1gui_1_1_generator_link_1ab449400db5f69284b5de28ceb7bfb4d9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1gui_1_1_generator_link_1ab449400db5f69284b5de28ceb7bfb4d9" kindref="member">GeneratorLink::~GeneratorLink</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::gui</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/generator_link.cpp"/>
+  </compounddef>
+</doxygen>

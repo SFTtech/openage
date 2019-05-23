@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_gui_application_with_logger" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GuiApplicationWithLogger</compoundname>
+    <basecompoundref refid="classqtsdl_1_1_gui_application" prot="public" virt="non-virtual">qtsdl::GuiApplication</basecompoundref>
+    <includes refid="gui__application__with__logger_8h" local="no">gui_application_with_logger.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_application_with_logger_1a3c8f7676a2b7884da82e571cb6d17047" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiApplicationWithLogger::GuiApplicationWithLogger</definition>
+        <argsstring>()</argsstring>
+        <name>GuiApplicationWithLogger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="15" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_gui_application_with_logger_1a798636737357a5a22d4f06752978102d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::GuiApplicationWithLogger::~GuiApplicationWithLogger</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiApplicationWithLogger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="16" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.cpp" bodystart="23" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Houses gui logic event queue and attaches to game logger. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2492">
+        <label>qtsdl::GuiApplication</label>
+        <link refid="classqtsdl_1_1_gui_application"/>
+      </node>
+      <node id="2491">
+        <label>openage::gui::GuiApplicationWithLogger</label>
+        <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
+        <childnode refid="2492" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2494">
+        <label>qtsdl::GuiApplication</label>
+        <link refid="classqtsdl_1_1_gui_application"/>
+      </node>
+      <node id="2493">
+        <label>openage::gui::GuiApplicationWithLogger</label>
+        <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
+        <childnode refid="2494" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/integration/public/gui_application_with_logger.h" line="13" column="1" bodyfile="libopenage/gui/integration/public/gui_application_with_logger.h" bodystart="13" bodyend="17"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>GuiApplication</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>GuiApplication</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a3c8f7676a2b7884da82e571cb6d17047" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>GuiApplicationWithLogger</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>processEvents</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>~GuiApplication</name></member>
+      <member refid="classopenage_1_1gui_1_1_gui_application_with_logger_1a798636737357a5a22d4f06752978102d" prot="public" virt="non-virtual"><scope>openage::gui::GuiApplicationWithLogger</scope><name>~GuiApplicationWithLogger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

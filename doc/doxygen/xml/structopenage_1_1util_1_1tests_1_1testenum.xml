@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1tests_1_1testenum" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::tests::testenum</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_enum" prot="public" virt="non-virtual">openage::util::Enum&lt; testenum_value &gt;</basecompoundref>
+    <includes refid="enum__test_8h" local="no">enum_test.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref></type>
+        <definition>constexpr testenum_value openage::util::tests::testenum::foo</definition>
+        <argsstring></argsstring>
+        <name>foo</name>
+        <initializer>{{&quot;foo&quot;, 1}, &quot;foooooooooooooooooo&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum_test.h" line="47" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref></type>
+        <definition>constexpr testenum_value openage::util::tests::testenum::bar</definition>
+        <argsstring></argsstring>
+        <name>bar</name>
+        <initializer>{{&quot;bar&quot;, 2}, &quot;barrrrrrrrrrrrrrrrr&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum_test.h" line="48" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1util_1_1tests_1_1testenum_1a710bdc0435bf9ead133a05fdbf7c092e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::tests::testenum::testenum</definition>
+        <argsstring>()</argsstring>
+        <name>testenum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/enum_test.h" line="45" column="1" bodyfile="libopenage/util/enum_test.cpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>pxd:</para>
+<para>cppclass testenum(Enum[testenum_value]): <ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref> *value</para>
+<para>testenum foo &quot;::openage::util::tests::testenum::foo&quot; testenum bar &quot;::openage::util::tests::testenum::bar&quot; </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4388">
+        <label>openage::util::tests::testenum</label>
+        <link refid="structopenage_1_1util_1_1tests_1_1testenum"/>
+        <childnode refid="4389" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4389">
+        <label>openage::util::Enum&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4390">
+        <label>openage::util::tests::testenum</label>
+        <link refid="structopenage_1_1util_1_1tests_1_1testenum"/>
+        <childnode refid="4391" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4392" relation="usage">
+          <edgelabel>+bar</edgelabel>
+          <edgelabel>+foo</edgelabel>
+        </childnode>
+      </node>
+      <node id="4391">
+        <label>openage::util::Enum&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum"/>
+        <childnode refid="4392" relation="usage">
+          <edgelabel>#value</edgelabel>
+        </childnode>
+      </node>
+      <node id="4393">
+        <label>openage::util::EnumValue&lt; testenum_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="4392">
+        <label>openage::util::tests::testenum_value</label>
+        <link refid="structopenage_1_1util_1_1tests_1_1testenum__value"/>
+        <childnode refid="4393" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/enum_test.h" line="37" column="1" bodyfile="libopenage/util/enum_test.h" bodystart="37" bodyend="49"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>bar</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1aaefad1817b0a66a4d80eb90ccf8fa1b7" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>Enum</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a67a56834bdbd7aef19486a14b61cdba8" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>Enum</name></member>
+      <member refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>foo</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1aedee70eaf15269cf90225d2e3628e31c" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>get</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1aedce56a0c2cf6f835fe371537e4150d8" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1abfa660f3b5d7f6668b2a40f5f5b95ba3" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator -&gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1ad2bf0cdcee9b179d62b542e9f8811e1a" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator &gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a647ce80feed655c478a29a2b5fb26db7" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator &gt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a06a4d8b673fa27f5d873930171d10d1a" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator const testenum_value &amp;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1acb44dc8456c6a8c7fb1169a7a5f7c270" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a6343dd8d8acecbc4f73720bac4878a04" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator&lt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1abc185aa7b915efdfb5bcf8edec8b98e1" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a0613b8677f79eca71fb4787585829214" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>operator==</name></member>
+      <member refid="structopenage_1_1util_1_1tests_1_1testenum_1a710bdc0435bf9ead133a05fdbf7c092e" prot="public" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>testenum</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_1a8a96b1d10893e34cdb9583ef54a9c556" prot="protected" virt="non-virtual"><scope>openage::util::tests::testenum</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

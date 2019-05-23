@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__property__map__impl_8cpp" kind="file" language="C++">
+    <compoundname>gui_property_map_impl.cpp</compoundname>
+    <includes refid="gui__property__map__impl_8h" local="yes">gui_property_map_impl.h</includes>
+    <includes local="no">QDynamicPropertyChangeEvent</includes>
+    <includes local="no">QVariant</includes>
+    <includes refid="qtsdl__checked__static__cast_8h" local="yes">qtsdl_checked_static_cast.h</includes>
+    <incdepgraph>
+      <node id="12811">
+        <label>QObject</label>
+      </node>
+      <node id="12809">
+        <label>libopenage/gui/guisys/link/gui_property_map_impl.cpp</label>
+        <link refid="gui__property__map__impl_8cpp"/>
+        <childnode refid="12810" relation="include">
+        </childnode>
+        <childnode refid="12812" relation="include">
+        </childnode>
+        <childnode refid="12813" relation="include">
+        </childnode>
+        <childnode refid="12814" relation="include">
+        </childnode>
+      </node>
+      <node id="12815">
+        <label>cassert</label>
+      </node>
+      <node id="12810">
+        <label>gui_property_map_impl.h</label>
+        <link refid="gui__property__map__impl_8h"/>
+        <childnode refid="12811" relation="include">
+        </childnode>
+      </node>
+      <node id="12814">
+        <label>qtsdl_checked_static_cast.h</label>
+        <link refid="qtsdl__checked__static__cast_8h"/>
+        <childnode refid="12815" relation="include">
+        </childnode>
+      </node>
+      <node id="12812">
+        <label>QDynamicPropertyChangeEvent</label>
+      </node>
+      <node id="12813">
+        <label>QVariant</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gui__property__map__impl_8h" kindref="compound">gui_property_map_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDynamicPropertyChangeEvent&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QVariant&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qtsdl__checked__static__cast_8h" kindref="compound">qtsdl_checked_static_cast.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classqtsdl_1_1_gui_property_map_impl_1ae39a771d14c1000e2614e9b11270dacd" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_property_map_impl_1ae39a771d14c1000e2614e9b11270dacd" kindref="member">GuiPropertyMapImpl::GuiPropertyMapImpl</ref>()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject{}<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_property_map_impl_1afadd863ae9d3f4b0f8105e7dcb893568" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_property_map_impl_1afadd863ae9d3f4b0f8105e7dcb893568" kindref="member">GuiPropertyMapImpl::~GuiPropertyMapImpl</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_property_map_impl_1a80eccbbffe3ab324cd17a4edeae23649" kindref="member">GuiPropertyMapImpl::event</ref>(QEvent<sp/>*e)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;type()<sp/>==<sp/>QEvent::DynamicPropertyChange)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>property_name<sp/>=<sp/>checked_static_cast&lt;QDynamicPropertyChangeEvent*&gt;(e)-&gt;propertyName();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emit<sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_property_map_impl_1a2842145dde93db062bfcc6d8ba6e0d90" kindref="member">property_changed</ref>(property_name,<sp/>this-&gt;property(property_name));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;QObject::event(e);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/link/gui_property_map_impl.cpp"/>
+  </compounddef>
+</doxygen>

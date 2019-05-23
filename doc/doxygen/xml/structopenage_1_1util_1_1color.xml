@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1color" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::color</compoundname>
+    <includes refid="profiler_8h" local="no">profiler.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1color_1aaf002923665c35feb90c5934e41384e6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::color::r</definition>
+        <argsstring></argsstring>
+        <name>r</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="28" column="1" bodyfile="libopenage/util/profiler.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1color_1ae39114c96dc9e4c8bc0ccfbfcb70eed8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::color::g</definition>
+        <argsstring></argsstring>
+        <name>g</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="28" column="1" bodyfile="libopenage/util/profiler.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1color_1a370b7e06ff57c40a2aecf46e17ab866b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float openage::util::color::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/profiler.h" line="28" column="1" bodyfile="libopenage/util/profiler.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="784">
+        <label>openage::util::color</label>
+        <link refid="structopenage_1_1util_1_1color"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/profiler.h" line="27" column="1" bodyfile="libopenage/util/profiler.h" bodystart="27" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1color_1a370b7e06ff57c40a2aecf46e17ab866b" prot="public" virt="non-virtual"><scope>openage::util::color</scope><name>b</name></member>
+      <member refid="structopenage_1_1util_1_1color_1ae39114c96dc9e4c8bc0ccfbfcb70eed8" prot="public" virt="non-virtual"><scope>openage::util::color</scope><name>g</name></member>
+      <member refid="structopenage_1_1util_1_1color_1aaf002923665c35feb90c5934e41384e6" prot="public" virt="non-virtual"><scope>openage::util::color</scope><name>r</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

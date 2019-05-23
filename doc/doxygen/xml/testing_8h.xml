@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="testing_8h" kind="file" language="C++">
+    <compoundname>testing.h</compoundname>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includedby refid="coord__test_8cpp" local="yes">libopenage/coord/coord_test.cpp</includedby>
+    <includedby refid="container_8cpp" local="yes">libopenage/curve/tests/container.cpp</includedby>
+    <includedby refid="curve__types_8cpp" local="yes">libopenage/curve/tests/curve_types.cpp</includedby>
+    <includedby refid="datastructure_2tests_8cpp" local="yes">libopenage/datastructure/tests.cpp</includedby>
+    <includedby refid="event_2tests_8cpp" local="yes">libopenage/event/tests.cpp</includedby>
+    <includedby refid="text__to__event_8cpp" local="yes">libopenage/input/text_to_event.cpp</includedby>
+    <includedby refid="job_2tests_8cpp" local="yes">libopenage/job/tests.cpp</includedby>
+    <includedby refid="pathfinding_2tests_8cpp" local="yes">libopenage/pathfinding/tests.cpp</includedby>
+    <includedby refid="exctranslate__tests_8cpp" local="yes">libopenage/pyinterface/exctranslate_tests.cpp</includedby>
+    <includedby refid="pyobject__tests_8cpp" local="yes">libopenage/pyinterface/pyobject_tests.cpp</includedby>
+    <includedby refid="renderer_2font_2tests_8cpp" local="yes">libopenage/renderer/font/tests.cpp</includedby>
+    <includedby refid="rng__tests_8cpp" local="yes">libopenage/rng/rng_tests.cpp</includedby>
+    <includedby refid="testing_8cpp" local="yes">libopenage/testing/testing.cpp</includedby>
+    <includedby refid="testlist_8h" local="yes">libopenage/testing/testlist.h</includedby>
+    <includedby refid="constinit__vector_8cpp" local="yes">libopenage/util/constinit_vector.cpp</includedby>
+    <includedby refid="enum__test_8cpp" local="yes">libopenage/util/enum_test.cpp</includedby>
+    <includedby refid="fixed__point__test_8cpp" local="yes">libopenage/util/fixed_point_test.cpp</includedby>
+    <includedby refid="hash__test_8cpp" local="yes">libopenage/util/hash_test.cpp</includedby>
+    <includedby refid="init_8cpp" local="yes">libopenage/util/init.cpp</includedby>
+    <includedby refid="matrix__test_8cpp" local="yes">libopenage/util/matrix_test.cpp</includedby>
+    <includedby refid="misc__test_8cpp" local="yes">libopenage/util/misc_test.cpp</includedby>
+    <includedby refid="quaternion__test_8cpp" local="yes">libopenage/util/quaternion_test.cpp</includedby>
+    <includedby refid="vector__test_8cpp" local="yes">libopenage/util/vector_test.cpp</includedby>
+    <incdepgraph>
+      <node id="25124">
+        <label>list</label>
+      </node>
+      <node id="25114">
+        <label>atomic</label>
+      </node>
+      <node id="25120">
+        <label>iomanip</label>
+      </node>
+      <node id="25119">
+        <label>functional</label>
+      </node>
+      <node id="25109">
+        <label>cstdint</label>
+      </node>
+      <node id="25117">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="25118" relation="include">
+        </childnode>
+        <childnode refid="25119" relation="include">
+        </childnode>
+        <childnode refid="25120" relation="include">
+        </childnode>
+        <childnode refid="25102" relation="include">
+        </childnode>
+        <childnode refid="25121" relation="include">
+        </childnode>
+        <childnode refid="25104" relation="include">
+        </childnode>
+        <childnode refid="25122" relation="include">
+        </childnode>
+      </node>
+      <node id="25103">
+        <label>stdexcept</label>
+      </node>
+      <node id="25123">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="25124" relation="include">
+        </childnode>
+        <childnode refid="25125" relation="include">
+        </childnode>
+        <childnode refid="25126" relation="include">
+        </childnode>
+      </node>
+      <node id="25118">
+        <label>cstdarg</label>
+      </node>
+      <node id="25104">
+        <label>string</label>
+      </node>
+      <node id="25108">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="25109" relation="include">
+        </childnode>
+        <childnode refid="25104" relation="include">
+        </childnode>
+        <childnode refid="25110" relation="include">
+        </childnode>
+        <childnode refid="25111" relation="include">
+        </childnode>
+        <childnode refid="25113" relation="include">
+        </childnode>
+        <childnode refid="25123" relation="include">
+        </childnode>
+        <childnode refid="25126" relation="include">
+        </childnode>
+      </node>
+      <node id="25111">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="25112" relation="include">
+        </childnode>
+      </node>
+      <node id="25113">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="25114" relation="include">
+        </childnode>
+        <childnode refid="25102" relation="include">
+        </childnode>
+        <childnode refid="25115" relation="include">
+        </childnode>
+        <childnode refid="25105" relation="include">
+        </childnode>
+        <childnode refid="25116" relation="include">
+        </childnode>
+        <childnode refid="25117" relation="include">
+        </childnode>
+      </node>
+      <node id="25100">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="25101" relation="include">
+        </childnode>
+        <childnode refid="25102" relation="include">
+        </childnode>
+        <childnode refid="25103" relation="include">
+        </childnode>
+        <childnode refid="25104" relation="include">
+        </childnode>
+        <childnode refid="25105" relation="include">
+        </childnode>
+        <childnode refid="25108" relation="include">
+        </childnode>
+      </node>
+      <node id="25128">
+        <label>typeinfo</label>
+      </node>
+      <node id="25122">
+        <label>vector</label>
+      </node>
+      <node id="25106">
+        <label>ciso646</label>
+      </node>
+      <node id="25121">
+        <label>sstream</label>
+      </node>
+      <node id="25105">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="25106" relation="include">
+        </childnode>
+        <childnode refid="25104" relation="include">
+        </childnode>
+        <childnode refid="25107" relation="include">
+        </childnode>
+      </node>
+      <node id="25107">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="25107" relation="include">
+        </childnode>
+      </node>
+      <node id="25116">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="25101" relation="include">
+        </childnode>
+        <childnode refid="25104" relation="include">
+        </childnode>
+      </node>
+      <node id="25126">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="25127" relation="include">
+        </childnode>
+      </node>
+      <node id="25112">
+        <label>cstdlib</label>
+      </node>
+      <node id="25101">
+        <label>iostream</label>
+      </node>
+      <node id="25099">
+        <label>libopenage/testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="25100" relation="include">
+        </childnode>
+      </node>
+      <node id="25125">
+        <label>mutex</label>
+      </node>
+      <node id="25115">
+        <label>type_traits</label>
+      </node>
+      <node id="25110">
+        <label>config.h</label>
+      </node>
+      <node id="25102">
+        <label>memory</label>
+      </node>
+      <node id="25127">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="25101" relation="include">
+        </childnode>
+        <childnode refid="25128" relation="include">
+        </childnode>
+        <childnode refid="25105" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="25145">
+        <label>libopenage/util/enum_test.cpp</label>
+        <link refid="enum__test_8cpp"/>
+      </node>
+      <node id="25136">
+        <label>libopenage/job/tests.cpp</label>
+        <link refid="job_2tests_8cpp"/>
+      </node>
+      <node id="25148">
+        <label>libopenage/util/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="25132">
+        <label>libopenage/curve/tests/curve_types.cpp</label>
+        <link refid="curve__types_8cpp"/>
+      </node>
+      <node id="25139">
+        <label>libopenage/pyinterface/pyobject_tests.cpp</label>
+        <link refid="pyobject__tests_8cpp"/>
+      </node>
+      <node id="25140">
+        <label>libopenage/renderer/font/tests.cpp</label>
+        <link refid="renderer_2font_2tests_8cpp"/>
+      </node>
+      <node id="25144">
+        <label>libopenage/util/constinit_vector.cpp</label>
+        <link refid="constinit__vector_8cpp"/>
+      </node>
+      <node id="25151">
+        <label>libopenage/util/quaternion_test.cpp</label>
+        <link refid="quaternion__test_8cpp"/>
+      </node>
+      <node id="25152">
+        <label>libopenage/util/vector_test.cpp</label>
+        <link refid="vector__test_8cpp"/>
+      </node>
+      <node id="25146">
+        <label>libopenage/util/fixed_point_test.cpp</label>
+        <link refid="fixed__point__test_8cpp"/>
+      </node>
+      <node id="25143">
+        <label>libopenage/testing/testlist.h</label>
+        <link refid="testlist_8h"/>
+      </node>
+      <node id="25134">
+        <label>libopenage/event/tests.cpp</label>
+        <link refid="event_2tests_8cpp"/>
+      </node>
+      <node id="25142">
+        <label>libopenage/testing/testing.cpp</label>
+        <link refid="testing_8cpp"/>
+      </node>
+      <node id="25138">
+        <label>libopenage/pyinterface/exctranslate_tests.cpp</label>
+        <link refid="exctranslate__tests_8cpp"/>
+      </node>
+      <node id="25141">
+        <label>libopenage/rng/rng_tests.cpp</label>
+        <link refid="rng__tests_8cpp"/>
+      </node>
+      <node id="25137">
+        <label>libopenage/pathfinding/tests.cpp</label>
+        <link refid="pathfinding_2tests_8cpp"/>
+      </node>
+      <node id="25149">
+        <label>libopenage/util/matrix_test.cpp</label>
+        <link refid="matrix__test_8cpp"/>
+      </node>
+      <node id="25147">
+        <label>libopenage/util/hash_test.cpp</label>
+        <link refid="hash__test_8cpp"/>
+      </node>
+      <node id="25129">
+        <label>libopenage/testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="25130" relation="include">
+        </childnode>
+        <childnode refid="25131" relation="include">
+        </childnode>
+        <childnode refid="25132" relation="include">
+        </childnode>
+        <childnode refid="25133" relation="include">
+        </childnode>
+        <childnode refid="25134" relation="include">
+        </childnode>
+        <childnode refid="25135" relation="include">
+        </childnode>
+        <childnode refid="25136" relation="include">
+        </childnode>
+        <childnode refid="25137" relation="include">
+        </childnode>
+        <childnode refid="25138" relation="include">
+        </childnode>
+        <childnode refid="25139" relation="include">
+        </childnode>
+        <childnode refid="25140" relation="include">
+        </childnode>
+        <childnode refid="25141" relation="include">
+        </childnode>
+        <childnode refid="25142" relation="include">
+        </childnode>
+        <childnode refid="25143" relation="include">
+        </childnode>
+        <childnode refid="25144" relation="include">
+        </childnode>
+        <childnode refid="25145" relation="include">
+        </childnode>
+        <childnode refid="25146" relation="include">
+        </childnode>
+        <childnode refid="25147" relation="include">
+        </childnode>
+        <childnode refid="25148" relation="include">
+        </childnode>
+        <childnode refid="25149" relation="include">
+        </childnode>
+        <childnode refid="25150" relation="include">
+        </childnode>
+        <childnode refid="25151" relation="include">
+        </childnode>
+        <childnode refid="25152" relation="include">
+        </childnode>
+      </node>
+      <node id="25133">
+        <label>libopenage/datastructure/tests.cpp</label>
+        <link refid="datastructure_2tests_8cpp"/>
+      </node>
+      <node id="25135">
+        <label>libopenage/input/text_to_event.cpp</label>
+        <link refid="text__to__event_8cpp"/>
+      </node>
+      <node id="25130">
+        <label>libopenage/coord/coord_test.cpp</label>
+        <link refid="coord__test_8cpp"/>
+      </node>
+      <node id="25150">
+        <label>libopenage/util/misc_test.cpp</label>
+        <link refid="misc__test_8cpp"/>
+      </node>
+      <node id="25131">
+        <label>libopenage/curve/tests/container.cpp</label>
+        <link refid="container_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1testing_1_1_test_error" prot="public">openage::testing::TestError</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1testing">openage::testing</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="testing_8h_1a32253726c81e858197f39fbf0b56d17c" prot="public" static="no">
+        <name>TESTFAIL</name>
+        <initializer>::<ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">openage::testing::fail</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience macro, for usage in test functions:</para>
+<para>test_stuff() or TESTFAIL; </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="34" column="9" bodyfile="libopenage/testing/testing.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="testing_8h_1a8845e8951e253b5e94ada5be1e308503" prot="public" static="no">
+        <name>TESTFAILMSG</name>
+        <param><defname>...</defname></param>
+        <initializer>::<ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">openage::testing::fail</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err) &lt;&lt; __VA_ARGS__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>As above, but allows printing a message:</para>
+<para>test_stuff() or TESTFAIL(&quot;lolnope&quot;); </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="42" column="9" bodyfile="libopenage/testing/testing.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" prot="public" static="no">
+        <name>TESTEQUALS</name>
+        <param><defname>left</defname></param>
+        <param><defname>right</defname></param>
+        <initializer>do { \
+		try { \
+			auto &amp;&amp;test_result_left = (left); \
+			if (test_result_left != (right)) { \
+				<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;unexpected value: &quot; &lt;&lt; (test_result_left)); \
+			} \
+		} catch (::<ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">openage::testing::TestError</ref> &amp;e) { \
+			throw; \
+		} catch (::<ref refid="classopenage_1_1error_1_1_error" kindref="compound">openage::error::Error</ref> &amp;e) { \
+			<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;unexpected exception: &quot; &lt;&lt; e); \
+		} \
+	} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Asserts that the left expression equals the right expression, and that no exception is thrown. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="49" column="9" bodyfile="libopenage/testing/testing.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" prot="public" static="no">
+        <name>TESTEQUALS_FLOAT</name>
+        <param><defname>left</defname></param>
+        <param><defname>right</defname></param>
+        <param><defname>epsilon</defname></param>
+        <initializer>do { \
+		try { \
+			auto &amp;&amp;test_result_left = (left); \
+			if ((test_result_left &lt; (right - epsilon)) or \
+			    (test_result_left &gt; (right + epsilon))) { \
+				<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;unexpected value: &quot; &lt;&lt; (test_result_left)); \
+			} \
+		} catch (::<ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">openage::testing::TestError</ref> &amp;e) { \
+			throw; \
+		} catch (::<ref refid="classopenage_1_1error_1_1_error" kindref="compound">openage::error::Error</ref> &amp;e) { \
+			<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;unexpected exception: &quot; &lt;&lt; e); \
+		} \
+	} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Asserts that the left expression equals the right expression, within a margin of error epsilon, and that no exception is thrown. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="68" column="9" bodyfile="libopenage/testing/testing.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" prot="public" static="no">
+        <name>TESTTHROWS</name>
+        <param><defname>expression</defname></param>
+        <initializer>do { \
+		bool expr_has_thrown = false; \
+		try { \
+			expression; \
+		} catch (::<ref refid="classopenage_1_1error_1_1_error" kindref="compound">openage::error::Error</ref> &amp;e) { \
+			expr_has_thrown = true; \
+		} \
+		if (not expr_has_thrown) { \
+			<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;no exception&quot;); \
+		} \
+	} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Asserts that the expression throws an exception. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="87" column="9" bodyfile="libopenage/testing/testing.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" prot="public" static="no">
+        <name>TESTNOEXCEPT</name>
+        <param><defname>expression</defname></param>
+        <initializer>do { \
+		try { \
+			expression; \
+		} catch (::<ref refid="classopenage_1_1error_1_1_error" kindref="compound">openage::error::Error</ref> &amp;e) { \
+			<ref refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" kindref="member">TESTFAILMSG</ref>(&quot;unexpected exception&quot;); \
+		} \
+	} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assets that the expression throws no exception (mostly for void expressions). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/testing/testing.h" line="104" column="9" bodyfile="libopenage/testing/testing.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">testing<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1testing_1_1_test_error" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1testing_1_1_test_error" kindref="compound">TestError</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error_1ae0f4bcb1755332c4a26a998a88810072" kindref="member">Error::Error</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1testing_1ab47bedd0a44345aab4aadb8378800e45" kindref="member">fail</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">log::message</ref><sp/>&amp;msg);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" refkind="member"><highlight class="preprocessor">#define<sp/>TESTFAIL<sp/>::openage::testing::fail(MSG(err))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="testing_8h_1a8845e8951e253b5e94ada5be1e308503" refkind="member"><highlight class="preprocessor">#define<sp/>TESTFAILMSG(...)<sp/>::openage::testing::fail(MSG(err)<sp/>&lt;&lt;<sp/>__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" refkind="member"><highlight class="preprocessor">#define<sp/>TESTEQUALS(left,<sp/>right)<sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto<sp/>&amp;&amp;test_result_left<sp/>=<sp/>(left);<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(test_result_left<sp/>!=<sp/>(right))<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;unexpected<sp/>value:<sp/>&quot;<sp/>&lt;&lt;<sp/>(test_result_left));<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::testing::TestError<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::error::Error<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;unexpected<sp/>exception:<sp/>&quot;<sp/>&lt;&lt;<sp/>e);<sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="testing_8h_1ae531a534fa7f4028ddf113ae72caa6aa" refkind="member"><highlight class="preprocessor">#define<sp/>TESTEQUALS_FLOAT(left,<sp/>right,<sp/>epsilon)<sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto<sp/>&amp;&amp;test_result_left<sp/>=<sp/>(left);<sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>((test_result_left<sp/>&lt;<sp/>(right<sp/>-<sp/>epsilon))<sp/>or<sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(test_result_left<sp/>&gt;<sp/>(right<sp/>+<sp/>epsilon)))<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;unexpected<sp/>value:<sp/>&quot;<sp/>&lt;&lt;<sp/>(test_result_left));<sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::testing::TestError<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw;<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::error::Error<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;unexpected<sp/>exception:<sp/>&quot;<sp/>&lt;&lt;<sp/>e);<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="testing_8h_1ad3ad66a2f3c40aa0744570ab803b903f" refkind="member"><highlight class="preprocessor">#define<sp/>TESTTHROWS(expression)<sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>expr_has_thrown<sp/>=<sp/>false;<sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>expression;<sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::error::Error<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>expr_has_thrown<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(not<sp/>expr_has_thrown)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;no<sp/>exception&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="testing_8h_1a83874b641b589d0a696a6a1a6f8e9fd5" refkind="member"><highlight class="preprocessor">#define<sp/>TESTNOEXCEPT(expression)<sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>expression;<sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(::openage::error::Error<sp/>&amp;e)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TESTFAILMSG(&quot;unexpected<sp/>exception&quot;);<sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::testing</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/testing/testing.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,581 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="lookup_8h" kind="file" language="C++">
+    <compoundname>lookup.h</compoundname>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="texture__info_8h" local="yes">../resources/texture_info.h</includes>
+    <includes refid="mesh__data_8h" local="yes">../resources/mesh_data.h</includes>
+    <includedby refid="opengl_2geometry_8cpp" local="yes">libopenage/renderer/opengl/geometry.cpp</includedby>
+    <includedby refid="shader__program_8cpp" local="yes">libopenage/renderer/opengl/shader_program.cpp</includedby>
+    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">libopenage/renderer/opengl/texture.cpp</includedby>
+    <includedby refid="opengl_2texture__array_8cpp" local="yes">libopenage/renderer/opengl/texture_array.cpp</includedby>
+    <includedby refid="vertex__array_8cpp" local="yes">libopenage/renderer/opengl/vertex_array.cpp</includedby>
+    <incdepgraph>
+      <node id="21088">
+        <label>list</label>
+      </node>
+      <node id="21059">
+        <label>libopenage/renderer/opengl/lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="21060" relation="include">
+        </childnode>
+        <childnode refid="21061" relation="include">
+        </childnode>
+        <childnode refid="21108" relation="include">
+        </childnode>
+      </node>
+      <node id="21080">
+        <label>atomic</label>
+      </node>
+      <node id="21085">
+        <label>iomanip</label>
+      </node>
+      <node id="21065">
+        <label>functional</label>
+      </node>
+      <node id="21105">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+      </node>
+      <node id="21062">
+        <label>cstdint</label>
+      </node>
+      <node id="21108">
+        <label>../resources/mesh_data.h</label>
+        <link refid="mesh__data_8h"/>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21097" relation="include">
+        </childnode>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21078" relation="include">
+        </childnode>
+        <childnode refid="21109" relation="include">
+        </childnode>
+        <childnode refid="21099" relation="include">
+        </childnode>
+      </node>
+      <node id="21083">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="21084" relation="include">
+        </childnode>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21085" relation="include">
+        </childnode>
+        <childnode refid="21069" relation="include">
+        </childnode>
+        <childnode refid="21086" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+      </node>
+      <node id="21104">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="21067" relation="include">
+        </childnode>
+      </node>
+      <node id="21070">
+        <label>stdexcept</label>
+      </node>
+      <node id="21103">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="21087">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="21088" relation="include">
+        </childnode>
+        <childnode refid="21089" relation="include">
+        </childnode>
+        <childnode refid="21090" relation="include">
+        </childnode>
+      </node>
+      <node id="21084">
+        <label>cstdarg</label>
+      </node>
+      <node id="21071">
+        <label>string</label>
+      </node>
+      <node id="21075">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21076" relation="include">
+        </childnode>
+        <childnode refid="21077" relation="include">
+        </childnode>
+        <childnode refid="21079" relation="include">
+        </childnode>
+        <childnode refid="21087" relation="include">
+        </childnode>
+        <childnode refid="21090" relation="include">
+        </childnode>
+      </node>
+      <node id="21077">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="21078" relation="include">
+        </childnode>
+      </node>
+      <node id="21079">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="21080" relation="include">
+        </childnode>
+        <childnode refid="21069" relation="include">
+        </childnode>
+        <childnode refid="21081" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21082" relation="include">
+        </childnode>
+        <childnode refid="21083" relation="include">
+        </childnode>
+      </node>
+      <node id="21096">
+        <label>fstream</label>
+      </node>
+      <node id="21100">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21101" relation="include">
+        </childnode>
+        <childnode refid="21102" relation="include">
+        </childnode>
+      </node>
+      <node id="21067">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21069" relation="include">
+        </childnode>
+        <childnode refid="21070" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21075" relation="include">
+        </childnode>
+      </node>
+      <node id="21094">
+        <label>../../util/csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="21078" relation="include">
+        </childnode>
+        <childnode refid="21095" relation="include">
+        </childnode>
+        <childnode refid="21096" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21097" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21067" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21098" relation="include">
+        </childnode>
+        <childnode refid="21099" relation="include">
+        </childnode>
+      </node>
+      <node id="21064">
+        <label>../../datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21066" relation="include">
+        </childnode>
+        <childnode refid="21067" relation="include">
+        </childnode>
+      </node>
+      <node id="21092">
+        <label>typeinfo</label>
+      </node>
+      <node id="21109">
+        <label>optional</label>
+      </node>
+      <node id="21063">
+        <label>vector</label>
+      </node>
+      <node id="21073">
+        <label>ciso646</label>
+      </node>
+      <node id="21066">
+        <label>utility</label>
+      </node>
+      <node id="21086">
+        <label>sstream</label>
+      </node>
+      <node id="21072">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="21073" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21074" relation="include">
+        </childnode>
+      </node>
+      <node id="21106">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="21069" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21107" relation="include">
+        </childnode>
+        <childnode refid="21100" relation="include">
+        </childnode>
+      </node>
+      <node id="21074">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="21074" relation="include">
+        </childnode>
+      </node>
+      <node id="21060">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="21082">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+      </node>
+      <node id="21090">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="21091" relation="include">
+        </childnode>
+      </node>
+      <node id="21098">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="21107">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+      </node>
+      <node id="21078">
+        <label>cstdlib</label>
+      </node>
+      <node id="21068">
+        <label>iostream</label>
+      </node>
+      <node id="21097">
+        <label>unordered_map</label>
+      </node>
+      <node id="21102">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="21065" relation="include">
+        </childnode>
+        <childnode refid="21089" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+        <childnode refid="21103" relation="include">
+        </childnode>
+        <childnode refid="21104" relation="include">
+        </childnode>
+        <childnode refid="21105" relation="include">
+        </childnode>
+      </node>
+      <node id="21093">
+        <label>texture_subinfo.h</label>
+        <link refid="texture__subinfo_8h"/>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21094" relation="include">
+        </childnode>
+      </node>
+      <node id="21089">
+        <label>mutex</label>
+      </node>
+      <node id="21099">
+        <label>path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="21071" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21100" relation="include">
+        </childnode>
+        <childnode refid="21106" relation="include">
+        </childnode>
+        <childnode refid="21098" relation="include">
+        </childnode>
+      </node>
+      <node id="21061">
+        <label>../resources/texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="21062" relation="include">
+        </childnode>
+        <childnode refid="21063" relation="include">
+        </childnode>
+        <childnode refid="21064" relation="include">
+        </childnode>
+        <childnode refid="21093" relation="include">
+        </childnode>
+      </node>
+      <node id="21101">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="21081">
+        <label>type_traits</label>
+      </node>
+      <node id="21076">
+        <label>config.h</label>
+      </node>
+      <node id="21095">
+        <label>cstring</label>
+      </node>
+      <node id="21069">
+        <label>memory</label>
+      </node>
+      <node id="21091">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="21068" relation="include">
+        </childnode>
+        <childnode refid="21092" relation="include">
+        </childnode>
+        <childnode refid="21072" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21110">
+        <label>libopenage/renderer/opengl/lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="21111" relation="include">
+        </childnode>
+        <childnode refid="21112" relation="include">
+        </childnode>
+        <childnode refid="21113" relation="include">
+        </childnode>
+        <childnode refid="21114" relation="include">
+        </childnode>
+        <childnode refid="21115" relation="include">
+        </childnode>
+      </node>
+      <node id="21115">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="21112">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="21111">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="21114">
+        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <link refid="opengl_2texture__array_8cpp"/>
+      </node>
+      <node id="21113">
+        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <link refid="renderer_2opengl_2texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2018-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Lookup<sp/>tables<sp/>for<sp/>translating<sp/>between<sp/>OpenGL-specific<sp/>values<sp/>and<sp/>generic<sp/>renderer<sp/>values,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>as<sp/>well<sp/>as<sp/>mapping<sp/>things<sp/>like<sp/>type<sp/>sizes<sp/>within<sp/>OpenGL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../resources/texture_info.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../resources/mesh_data.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="namespaceopenage_1_1renderer_1_1opengl_1af985a42adb068819071031f365ba5cc8" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1af985a42adb068819071031f365ba5cc8" kindref="member">GL_PIXEL_FORMAT</ref><sp/>=<sp/>datastructure::create_const_map&lt;resources::pixel_format,<sp/>std::tuple&lt;GLint,<sp/>GLenum,<sp/>GLenum&gt;&gt;(</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>check<sp/>correctness<sp/>of<sp/>formats<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea73c959d144da660efa48a52e564aa633" kindref="member">resources::pixel_format::r16ui</ref>,<sp/>std::tuple(GL_R16UI,<sp/>GL_RED_INTEGER,<sp/>GL_UNSIGNED_INT)),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea939e20bb21f297a3c7be5d44d77904f5" kindref="member">resources::pixel_format::r32ui</ref>,<sp/>std::tuple(GL_R32UI,<sp/>GL_RED_INTEGER,<sp/>GL_UNSIGNED_INT)),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a" kindref="member">resources::pixel_format::rgb8</ref>,<sp/>std::tuple(GL_RGB8,<sp/>GL_RGB,<sp/>GL_UNSIGNED_BYTE)),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39" kindref="member">resources::pixel_format::bgr8</ref>,<sp/>std::tuple(GL_RGB8,<sp/>GL_BGR,<sp/>GL_UNSIGNED_BYTE)),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a" kindref="member">resources::pixel_format::rgba8</ref>,<sp/>std::tuple(GL_RGBA8,<sp/>GL_RGBA,<sp/>GL_UNSIGNED_BYTE)),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaeed8ba7e197acdfba86db426ce2233c" kindref="member">resources::pixel_format::rgba8ui</ref>,<sp/>std::tuple(GL_RGBA8UI,<sp/>GL_RGBA_INTEGER,<sp/>GL_UNSIGNED_BYTE)),</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70" kindref="member">resources::pixel_format::depth24</ref>,<sp/>std::tuple(GL_DEPTH_COMPONENT,<sp/>GL_DEPTH_COMPONENT,<sp/>GL_UNSIGNED_BYTE))</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceopenage_1_1renderer_1_1opengl_1a9105a627b5951e8d1fbcae421166407f" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a9105a627b5951e8d1fbcae421166407f" kindref="member">GL_SHADER_TYPE_SIZE</ref><sp/>=<sp/>datastructure::create_const_map&lt;GLenum,<sp/>size_t&gt;(</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT,<sp/>4),</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC2,<sp/>8),</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC3,<sp/>12),</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC4,<sp/>16),</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT,<sp/>4),</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC2,<sp/>8),</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC3,<sp/>12),</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC4,<sp/>16),</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT,<sp/>4),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC2,<sp/>8),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC3,<sp/>12),</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC4,<sp/>16),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL,<sp/>1),</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC2,<sp/>2),</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC3,<sp/>3),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC4,<sp/>4),</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT2,<sp/>16),</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT3,<sp/>36),</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT4,<sp/>64),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_1D,<sp/>4),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D,<sp/>4),</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_ARRAY,<sp/>4),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_3D,<sp/>4),</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_CUBE,<sp/>4)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="namespaceopenage_1_1renderer_1_1opengl_1a90b98ae7a652b647771a559e61cb5e56" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a90b98ae7a652b647771a559e61cb5e56" kindref="member">GLSL_TYPE_NAME</ref><sp/>=<sp/>datastructure::create_const_map&lt;GLenum,<sp/>const<sp/>char*&gt;(</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT,<sp/></highlight><highlight class="stringliteral">&quot;float&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC2,<sp/></highlight><highlight class="stringliteral">&quot;vec2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC3,<sp/></highlight><highlight class="stringliteral">&quot;vec3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC4,<sp/></highlight><highlight class="stringliteral">&quot;vec4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT,<sp/></highlight><highlight class="stringliteral">&quot;int&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC2,<sp/></highlight><highlight class="stringliteral">&quot;ivec2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC3,<sp/></highlight><highlight class="stringliteral">&quot;ivec3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_VEC4,<sp/></highlight><highlight class="stringliteral">&quot;ivec4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT,<sp/></highlight><highlight class="stringliteral">&quot;uint&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC2,<sp/></highlight><highlight class="stringliteral">&quot;uvec2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC3,<sp/></highlight><highlight class="stringliteral">&quot;uvec3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_VEC4,<sp/></highlight><highlight class="stringliteral">&quot;uvec4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL,<sp/></highlight><highlight class="stringliteral">&quot;bool&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC2,<sp/></highlight><highlight class="stringliteral">&quot;bvec2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC3,<sp/></highlight><highlight class="stringliteral">&quot;bvec3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_BOOL_VEC4,<sp/></highlight><highlight class="stringliteral">&quot;bvec4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT2,<sp/></highlight><highlight class="stringliteral">&quot;mat2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT3,<sp/></highlight><highlight class="stringliteral">&quot;mat3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT4,<sp/></highlight><highlight class="stringliteral">&quot;mat4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT2x3,<sp/></highlight><highlight class="stringliteral">&quot;mat2x3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT2x4,<sp/></highlight><highlight class="stringliteral">&quot;mat2x4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT3x2,<sp/></highlight><highlight class="stringliteral">&quot;mat3x2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT3x4,<sp/></highlight><highlight class="stringliteral">&quot;mat3x4&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT4x2,<sp/></highlight><highlight class="stringliteral">&quot;mat4x2&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT4x3,<sp/></highlight><highlight class="stringliteral">&quot;mat4x3&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_1D,<sp/></highlight><highlight class="stringliteral">&quot;sampler1D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D,<sp/></highlight><highlight class="stringliteral">&quot;sampler2D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_3D,<sp/></highlight><highlight class="stringliteral">&quot;sampler3D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_CUBE,<sp/></highlight><highlight class="stringliteral">&quot;samplerCube&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_1D_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;sampler1DShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_1D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;sampler1DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_1D_ARRAY_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;sampler1DArrayShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_ARRAY_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DArrayShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_MULTISAMPLE,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DMS&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_MULTISAMPLE_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DMSArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_CUBE_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;samplerCubeShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_BUFFER,<sp/></highlight><highlight class="stringliteral">&quot;samplerBuffer&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_RECT,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DRect&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_SAMPLER_2D_RECT_SHADOW,<sp/></highlight><highlight class="stringliteral">&quot;sampler2DRectShadow&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_1D,<sp/></highlight><highlight class="stringliteral">&quot;isampler1D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_2D,<sp/></highlight><highlight class="stringliteral">&quot;isampler2D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_3D,<sp/></highlight><highlight class="stringliteral">&quot;isampler3D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_CUBE,<sp/></highlight><highlight class="stringliteral">&quot;isamplerCube&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_1D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;isampler1DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_2D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;isampler2DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_2D_MULTISAMPLE,<sp/></highlight><highlight class="stringliteral">&quot;isampler2DMS&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_2D_MULTISAMPLE_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;isampler2DMSArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_BUFFER,<sp/></highlight><highlight class="stringliteral">&quot;isamplerBuffer&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_INT_SAMPLER_2D_RECT,<sp/></highlight><highlight class="stringliteral">&quot;isampler2DRect&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_1D,<sp/></highlight><highlight class="stringliteral">&quot;usampler1D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_2D,<sp/></highlight><highlight class="stringliteral">&quot;usampler2D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_3D,<sp/></highlight><highlight class="stringliteral">&quot;usampler3D&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_CUBE,<sp/></highlight><highlight class="stringliteral">&quot;usamplerCube&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_1D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;usampler2DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_2D_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;usampler2DArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE,<sp/></highlight><highlight class="stringliteral">&quot;usampler2DMS&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY,<sp/></highlight><highlight class="stringliteral">&quot;usampler2DMSArray&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_BUFFER,<sp/></highlight><highlight class="stringliteral">&quot;usamplerBuffer&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_UNSIGNED_INT_SAMPLER_2D_RECT,<sp/></highlight><highlight class="stringliteral">&quot;usampler2DRect&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="namespaceopenage_1_1renderer_1_1opengl_1a2367c8152b9e322f4177cb25dfd35359" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a2367c8152b9e322f4177cb25dfd35359" kindref="member">GL_VERT_IN_TYPE</ref><sp/>=<sp/>datastructure::create_const_map&lt;GLenum,<sp/>resources::vertex_input_t&gt;(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT,<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">resources::vertex_input_t::F32</ref>),</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC2,<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">resources::vertex_input_t::V2F32</ref>),</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_VEC3,<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">resources::vertex_input_t::V3F32</ref>),</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(GL_FLOAT_MAT3,<sp/><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">resources::vertex_input_t::M3F32</ref>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" kindref="member">GL_VERT_IN_ELEM_TYPE</ref><sp/>=<sp/>datastructure::create_const_map&lt;resources::vertex_input_t,<sp/>GLenum&gt;(</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">resources::vertex_input_t::F32</ref>,<sp/>GL_FLOAT),</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">resources::vertex_input_t::V2F32</ref>,<sp/>GL_FLOAT),</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">resources::vertex_input_t::V3F32</ref>,<sp/>GL_FLOAT),</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">resources::vertex_input_t::M3F32</ref>,<sp/>GL_FLOAT)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="namespaceopenage_1_1renderer_1_1opengl_1aa1c08cb649fac64ab09cba708fa5cdba" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1aa1c08cb649fac64ab09cba708fa5cdba" kindref="member">GL_PRIMITIVE</ref><sp/>=<sp/>datastructure::create_const_map&lt;resources::vertex_primitive_t,<sp/>GLenum&gt;(</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a70b71cabeeaf8c2bf473c896d5442ddb" kindref="member">resources::vertex_primitive_t::POINTS</ref>,<sp/>GL_POINTS),</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae585142391f356c60bcfe68279ec2727" kindref="member">resources::vertex_primitive_t::LINES</ref>,<sp/>GL_LINES),</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae64a4d2159ed46d077e21a505575c814" kindref="member">resources::vertex_primitive_t::LINE_STRIP</ref>,<sp/>GL_LINE_STRIP),</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7add3bfee8042d1b85c224f08b42a3fc2e" kindref="member">resources::vertex_primitive_t::TRIANGLES</ref>,<sp/>GL_TRIANGLES),</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a708de017e3b83ccba21dfc9f6367d46f" kindref="member">resources::vertex_primitive_t::TRIANGLE_STRIP</ref>,<sp/>GL_TRIANGLE_STRIP),</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7aa9f047dff7e4cd4d8d3bdeafc4029d47" kindref="member">resources::vertex_primitive_t::TRIANGLE_FAN</ref>,<sp/>GL_TRIANGLE_FAN)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="namespaceopenage_1_1renderer_1_1opengl_1a4ea3d4a79deb9b17eb3acb0e9ff12681" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a4ea3d4a79deb9b17eb3acb0e9ff12681" kindref="member">GL_INDEX_TYPE</ref><sp/>=<sp/>datastructure::create_const_map&lt;resources::index_t,<sp/>GLenum&gt;(</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8a6669348b484e3008dca2bfa8e85e40b5" kindref="member">resources::index_t::U8</ref>,<sp/>GL_UNSIGNED_BYTE),</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8aef9ef3ebca4d2b64b6ec83808bafa5f2" kindref="member">resources::index_t::U16</ref>,<sp/>GL_UNSIGNED_SHORT),</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8ac8bd5bedff8ef192d39a962afc0e19ee" kindref="member">resources::index_t::U32</ref>,<sp/>GL_UNSIGNED_INT)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/lookup.h"/>
+  </compounddef>
+</doxygen>

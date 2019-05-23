@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_game_logic_caller" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GameLogicCaller</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="game__logic__caller_8h" local="no">game_logic_caller.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GameLogicCaller::GameLogicCaller</definition>
+        <argsstring>()</argsstring>
+        <name>GameLogicCaller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="20" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GameLogicCaller::set_game_logic_callback</definition>
+        <argsstring>(GuiCallback *game_logic_callback)</argsstring>
+        <name>set_game_logic_callback</name>
+        <param>
+          <type><ref refid="classqtsdl_1_1_gui_callback" kindref="compound">GuiCallback</ref> *</type>
+          <declname>game_logic_callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set up signal to be able to run code in the game logic thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="25" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.cpp" bodystart="14" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GameLogicCaller::in_game_logic_thread</definition>
+        <argsstring>(const std::function&lt; void()&gt; &amp;f) const</argsstring>
+        <name>in_game_logic_thread</name>
+        <param>
+          <type>const std::function&lt; void()&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GameLogicCaller::in_game_logic_thread_blocking</definition>
+        <argsstring>(const std::function&lt; void()&gt; &amp;f) const</argsstring>
+        <name>in_game_logic_thread_blocking</name>
+        <param>
+          <type>const std::function&lt; void()&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="29" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Attaches to the GuiCallbackImpl. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1816">
+        <label>QObject</label>
+      </node>
+      <node id="1815">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="1816" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1818">
+        <label>QObject</label>
+      </node>
+      <node id="1817">
+        <label>qtsdl::GameLogicCaller</label>
+        <link refid="classqtsdl_1_1_game_logic_caller"/>
+        <childnode refid="1818" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/private/game_logic_caller.h" line="16" column="1" bodyfile="libopenage/gui/guisys/private/game_logic_caller.h" bodystart="16" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_game_logic_caller_1a950dc33e59918156220b6a2739879ca3" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>GameLogicCaller</name></member>
+      <member refid="classqtsdl_1_1_game_logic_caller_1a96a8f7f13ae01a96c456c440771624d3" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>in_game_logic_thread</name></member>
+      <member refid="classqtsdl_1_1_game_logic_caller_1a23d818cdeab46e8cf4c8fb345fc69405" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>in_game_logic_thread_blocking</name></member>
+      <member refid="classqtsdl_1_1_game_logic_caller_1a0101ff39e4fc7bcc9d3f33a6c53ff571" prot="public" virt="non-virtual"><scope>qtsdl::GameLogicCaller</scope><name>set_game_logic_callback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

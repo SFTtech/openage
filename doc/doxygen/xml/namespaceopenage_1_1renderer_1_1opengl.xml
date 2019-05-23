@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1renderer_1_1opengl" kind="namespace" language="C++">
+    <compoundname>openage::renderer::opengl</compoundname>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" prot="public">openage::renderer::opengl::gl_context_capabilities</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_buffer" prot="public">openage::renderer::opengl::GlBuffer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" prot="public">openage::renderer::opengl::GlContext</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_framebuffer" prot="public">openage::renderer::opengl::GlFramebuffer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_geometry" prot="public">openage::renderer::opengl::GlGeometry</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_renderer" prot="public">openage::renderer::opengl::GlRenderer</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_render_target" prot="public">openage::renderer::opengl::GlRenderTarget</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader" prot="public">openage::renderer::opengl::GlShader</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program" prot="public">openage::renderer::opengl::GlShaderProgram</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public">openage::renderer::opengl::GlSimpleObject</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d" prot="public">openage::renderer::opengl::GlTexture2d</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array" prot="public">openage::renderer::opengl::GlTexture2dArray</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1opengl_1_1_gl_uniform_input" prot="public">openage::renderer::opengl::GlUniformInput</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_vertex_array" prot="public">openage::renderer::opengl::GlVertexArray</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1opengl_1_1_gl_window" prot="public">openage::renderer::opengl::GlWindow</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2e" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>gl_render_target_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eaebf78b512222fe4dcd14e7d5060a15b0" prot="public">
+          <name>display</name>
+          <briefdescription>
+<para>The actual window. This is visible to the user after swapping front and back buffers. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1opengl_1ad1f4c31e62d9a587e7ac96e407166a2eac5e62798e528da9080811018cbb27cd3" prot="public">
+          <name>textures</name>
+          <briefdescription>
+<para>A bunch of textures. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of OpenGL render target. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/render_target.h" line="17" column="1" bodyfile="libopenage/renderer/opengl/render_target.h" bodystart="17" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" prot="public" static="yes" mutable="no">
+        <type>constexpr std::array&lt; std::pair&lt; int, int &gt;, 1 &gt;</type>
+        <definition>constexpr std::array&lt;std::pair&lt;int, int&gt;, 1&gt; openage::renderer::opengl::gl_versions</definition>
+        <argsstring></argsstring>
+        <name>gl_versions</name>
+        <initializer>= {{ { 3, 3 } }}</initializer>
+        <briefdescription>
+<para>The first element is the lowest version we need, last is highest version we support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.cpp" line="17" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1af985a42adb068819071031f365ba5cc8" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_PIXEL_FORMAT</definition>
+        <argsstring></argsstring>
+        <name>GL_PIXEL_FORMAT</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">resources::pixel_format</ref>, std::tuple&lt;GLint, GLenum, GLenum&gt;&gt;(
+	
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea73c959d144da660efa48a52e564aa633" kindref="member">resources::pixel_format::r16ui</ref>, std::tuple(GL_R16UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea939e20bb21f297a3c7be5d44d77904f5" kindref="member">resources::pixel_format::r32ui</ref>, std::tuple(GL_R32UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a" kindref="member">resources::pixel_format::rgb8</ref>, std::tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39" kindref="member">resources::pixel_format::bgr8</ref>, std::tuple(GL_RGB8, GL_BGR, GL_UNSIGNED_BYTE)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a" kindref="member">resources::pixel_format::rgba8</ref>, std::tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaeed8ba7e197acdfba86db426ce2233c" kindref="member">resources::pixel_format::rgba8ui</ref>, std::tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE)),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70" kindref="member">resources::pixel_format::depth24</ref>, std::tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE))
+)</initializer>
+        <briefdescription>
+<para>Input and output pixel formats from pixel_format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="19" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a9105a627b5951e8d1fbcae421166407f" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_SHADER_TYPE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>GL_SHADER_TYPE_SIZE</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;GLenum, size_t&gt;(
+	std::pair(GL_FLOAT, 4),
+	std::pair(GL_FLOAT_VEC2, 8),
+	std::pair(GL_FLOAT_VEC3, 12),
+	std::pair(GL_FLOAT_VEC4, 16),
+	std::pair(GL_INT, 4),
+	std::pair(GL_INT_VEC2, 8),
+	std::pair(GL_INT_VEC3, 12),
+	std::pair(GL_INT_VEC4, 16),
+	std::pair(GL_UNSIGNED_INT, 4),
+	std::pair(GL_UNSIGNED_INT_VEC2, 8),
+	std::pair(GL_UNSIGNED_INT_VEC3, 12),
+	std::pair(GL_UNSIGNED_INT_VEC4, 16),
+	std::pair(GL_BOOL, 1),
+	std::pair(GL_BOOL_VEC2, 2),
+	std::pair(GL_BOOL_VEC3, 3),
+	std::pair(GL_BOOL_VEC4, 4),
+	std::pair(GL_FLOAT_MAT2, 16),
+	std::pair(GL_FLOAT_MAT3, 36),
+	std::pair(GL_FLOAT_MAT4, 64),
+	std::pair(GL_SAMPLER_1D, 4),
+	std::pair(GL_SAMPLER_2D, 4),
+	std::pair(GL_SAMPLER_2D_ARRAY, 4),
+	std::pair(GL_SAMPLER_3D, 4),
+	std::pair(GL_SAMPLER_CUBE, 4)
+)</initializer>
+        <briefdescription>
+<para>Sizes of various uniform/vertex input types in shaders. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="31" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a90b98ae7a652b647771a559e61cb5e56" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GLSL_TYPE_NAME</definition>
+        <argsstring></argsstring>
+        <name>GLSL_TYPE_NAME</name>
+        <briefdescription>
+<para>GL types with corresponding GLSL type strings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="59" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a2367c8152b9e322f4177cb25dfd35359" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_VERT_IN_TYPE</definition>
+        <argsstring></argsstring>
+        <name>GL_VERT_IN_TYPE</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;GLenum, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">resources::vertex_input_t</ref>&gt;(
+	std::pair(GL_FLOAT, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">resources::vertex_input_t::F32</ref>),
+	std::pair(GL_FLOAT_VEC2, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">resources::vertex_input_t::V2F32</ref>),
+	std::pair(GL_FLOAT_VEC3, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">resources::vertex_input_t::V3F32</ref>),
+	std::pair(GL_FLOAT_MAT3, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">resources::vertex_input_t::M3F32</ref>)
+)</initializer>
+        <briefdescription>
+<para>Generic vertex input types from GL types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="124" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a96240e46c046c93700788844c906a684" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_VERT_IN_ELEM_TYPE</definition>
+        <argsstring></argsstring>
+        <name>GL_VERT_IN_ELEM_TYPE</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">resources::vertex_input_t</ref>, GLenum&gt;(
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">resources::vertex_input_t::F32</ref>, GL_FLOAT),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">resources::vertex_input_t::V2F32</ref>, GL_FLOAT),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">resources::vertex_input_t::V3F32</ref>, GL_FLOAT),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">resources::vertex_input_t::M3F32</ref>, GL_FLOAT)
+)</initializer>
+        <briefdescription>
+<para>The type of a single element in a per-vertex attribute. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="132" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1aa1c08cb649fac64ab09cba708fa5cdba" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_PRIMITIVE</definition>
+        <argsstring></argsstring>
+        <name>GL_PRIMITIVE</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">resources::vertex_primitive_t</ref>, GLenum&gt;(
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a70b71cabeeaf8c2bf473c896d5442ddb" kindref="member">resources::vertex_primitive_t::POINTS</ref>, GL_POINTS),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae585142391f356c60bcfe68279ec2727" kindref="member">resources::vertex_primitive_t::LINES</ref>, GL_LINES),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae64a4d2159ed46d077e21a505575c814" kindref="member">resources::vertex_primitive_t::LINE_STRIP</ref>, GL_LINE_STRIP),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7add3bfee8042d1b85c224f08b42a3fc2e" kindref="member">resources::vertex_primitive_t::TRIANGLES</ref>, GL_TRIANGLES),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a708de017e3b83ccba21dfc9f6367d46f" kindref="member">resources::vertex_primitive_t::TRIANGLE_STRIP</ref>, GL_TRIANGLE_STRIP),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7aa9f047dff7e4cd4d8d3bdeafc4029d47" kindref="member">resources::vertex_primitive_t::TRIANGLE_FAN</ref>, GL_TRIANGLE_FAN)
+)</initializer>
+        <briefdescription>
+<para>Mapping from generic primitive types to GL types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="140" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1a4ea3d4a79deb9b17eb3acb0e9ff12681" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::GL_INDEX_TYPE</definition>
+        <argsstring></argsstring>
+        <name>GL_INDEX_TYPE</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">resources::index_t</ref>, GLenum&gt;(
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8a6669348b484e3008dca2bfa8e85e40b5" kindref="member">resources::index_t::U8</ref>, GL_UNSIGNED_BYTE),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8aef9ef3ebca4d2b64b6ec83808bafa5f2" kindref="member">resources::index_t::U16</ref>, GL_UNSIGNED_SHORT),
+	std::pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8ac8bd5bedff8ef192d39a962afc0e19ee" kindref="member">resources::index_t::U32</ref>, GL_UNSIGNED_INT)
+)</initializer>
+        <briefdescription>
+<para>Mapping from generic index types to GL types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/lookup.h" line="150" column="1" bodyfile="libopenage/renderer/opengl/lookup.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1opengl_1aa5bd688a2e55a9c7ba1377e213383de8" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::opengl::gl_shdr_type</definition>
+        <argsstring></argsstring>
+        <name>gl_shdr_type</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" kindref="member">resources::shader_stage_t</ref>, GLenum&gt;(
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a" kindref="member">resources::shader_stage_t::vertex</ref>, GL_VERTEX_SHADER),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7baed7daeb157cd9b31e53896ad3c771a26" kindref="member">resources::shader_stage_t::geometry</ref>, GL_GEOMETRY_SHADER),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba7dd430baa39d2873520d0338acb98741" kindref="member">resources::shader_stage_t::tesselation_control</ref>, GL_TESS_CONTROL_SHADER),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7bad711cc63370ae664a464b9efd08f6248" kindref="member">resources::shader_stage_t::tesselation_evaluation</ref>, GL_TESS_EVALUATION_SHADER),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1" kindref="member">resources::shader_stage_t::fragment</ref>, GL_FRAGMENT_SHADER)
+)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader.cpp" line="12" column="1" bodyfile="libopenage/renderer/opengl/shader.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref></type>
+        <definition>static gl_context_capabilities openage::renderer::opengl::find_capabilities</definition>
+        <argsstring>()</argsstring>
+        <name>find_capabilities</name>
+        <briefdescription>
+<para>Finds out the supported graphics functions and OpenGL version of the device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/context.cpp" line="20" column="1" bodyfile="libopenage/renderer/opengl/context.cpp" bodystart="20" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1opengl_1a870cc53f47bfd0a6398f23667fa2d2e3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void openage::renderer::opengl::check_program_status</definition>
+        <argsstring>(GLuint program, GLenum what_to_check)</argsstring>
+        <name>check_program_status</name>
+        <param>
+          <type>GLuint</type>
+          <declname>program</declname>
+        </param>
+        <param>
+          <type>GLenum</type>
+          <declname>what_to_check</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/shader_program.cpp" line="22" column="1" bodyfile="libopenage/renderer/opengl/shader_program.cpp" bodystart="22" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/opengl/buffer.cpp" line="10" column="1"/>
+  </compounddef>
+</doxygen>

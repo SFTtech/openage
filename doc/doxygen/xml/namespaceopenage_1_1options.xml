@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1options" kind="namespace" language="C++">
+    <compoundname>openage::options</compoundname>
+    <innerclass refid="classopenage_1_1options_1_1_option_action" prot="public">openage::options::OptionAction</innerclass>
+    <innerclass refid="classopenage_1_1options_1_1_option_hud" prot="public">openage::options::OptionHud</innerclass>
+    <innerclass refid="classopenage_1_1options_1_1_option_node" prot="public">openage::options::OptionNode</innerclass>
+    <innerclass refid="classopenage_1_1options_1_1_option_value" prot="public">openage::options::OptionValue</innerclass>
+    <innerclass refid="classopenage_1_1options_1_1_var" prot="public">openage::options::Var</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>option_type</name>
+        <enumvalue id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba5c3e61d27b2bdaf4ddb98aadc356e863" prot="public">
+          <name>bool_type</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba06d324fffd90570dc177e7d1aabcb4dd" prot="public">
+          <name>int_type</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6baaaacacbe6cfde1582c36c02ebed184cc" prot="public">
+          <name>double_type</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba4771e2c3115bb1af6ce17d9d35a0eb48" prot="public">
+          <name>string_type</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6ba3fadbef32f2af0461d092b953ce0e72a" prot="public">
+          <name>list_type</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>list of possible value types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="20" column="1" bodyfile="libopenage/options.h" bodystart="20" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1options_1a53e5aeb32d312633e9f30394a4c21014" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref> &gt;</type>
+        <definition>using openage::options::option_list = typedef std::vector&lt;OptionValue&gt;</definition>
+        <argsstring></argsstring>
+        <name>option_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set the container used for lists </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="33" column="1" bodyfile="libopenage/options.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1options_1a7019eef55db7ca0045a6480fe0bb22dd" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref>()&gt;</type>
+        <definition>using openage::options::opt_func_t = typedef std::function&lt;OptionValue()&gt;</definition>
+        <argsstring></argsstring>
+        <name>opt_func_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.h" line="133" column="1" bodyfile="libopenage/options.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1options_1acc91ecb90435dec115544c5433fa8020" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1options_1_1_option_value" kindref="compound">OptionValue</ref></type>
+        <definition>OptionValue openage::options::parse</definition>
+        <argsstring>(option_type t, std::string s)</argsstring>
+        <name>parse</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1options_1a3cbca62dedbecd636ba228e5fe3ada6b" kindref="member">option_type</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/options.cpp" line="200" column="1" bodyfile="libopenage/options.cpp" bodystart="200" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/options.cpp" line="6" column="1"/>
+  </compounddef>
+</doxygen>

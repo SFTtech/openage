@@ -1,0 +1,528 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_resource_bundle" kind="class" language="C++" prot="public">
+    <compoundname>openage::ResourceBundle</compoundname>
+    <includes refid="gamestate_2resource_8h" local="no">resource.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_resource_bundle_1adeecaef5472b2532d8e3936c70a31bfb" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::ResourceBundle::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of resources </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="183" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_resource_bundle_1ab483e70a2c807bea9aa02904937aacf7" prot="private" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* openage::ResourceBundle::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="185" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1acc8ae3310aa9478c9b4fee2cabc8134e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceBundle::ResourceBundle</definition>
+        <argsstring>()</argsstring>
+        <name>ResourceBundle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="114" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a9aed45067a845a35390dab904a02b6a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceBundle::ResourceBundle</definition>
+        <argsstring>(const Resources &amp;resources)</argsstring>
+        <name>ResourceBundle</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resources" kindref="compound">Resources</ref> &amp;</type>
+          <declname>resources</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="116" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a48222b8eb33c2e7ce24b6c701565886c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>openage::ResourceBundle::~ResourceBundle</definition>
+        <argsstring>()</argsstring>
+        <name>~ResourceBundle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="118" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1ae32a1960fab5da16d2d7ef99f4e75a62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceBundle::ResourceBundle</definition>
+        <argsstring>(const ResourceBundle &amp;other)</argsstring>
+        <name>ResourceBundle</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="120" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="31" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aec4c3c3cae1b78ff42a0bc533929e51c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref></type>
+        <definition>ResourceBundle openage::ResourceBundle::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="122" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1ac99801ab1a730da1a79d8a5af724883d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ResourceBundle::operator&gt;</definition>
+        <argsstring>(const ResourceBundle &amp;other) const</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="124" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="64" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a3e0e5c5058ae2c4c849046e742f4dbfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ResourceBundle::operator&gt;=</definition>
+        <argsstring>(const ResourceBundle &amp;other) const</argsstring>
+        <name>operator&gt;=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="125" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="79" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1ab24e1b8ab616d226477816e87867b31c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+        <definition>ResourceBundle &amp; openage::ResourceBundle::operator+=</definition>
+        <argsstring>(const ResourceBundle &amp;other)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="127" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="94" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a51a3b5d9d8aa585e4cfa608b210b3bb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+        <definition>ResourceBundle &amp; openage::ResourceBundle::operator-=</definition>
+        <argsstring>(const ResourceBundle &amp;other)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="128" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="102" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a5b739a0b75f2312f9cccbb4245123e7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+        <definition>ResourceBundle &amp; openage::ResourceBundle::operator *=</definition>
+        <argsstring>(const double a)</argsstring>
+        <name>operator *=</name>
+        <param>
+          <type>const double</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="130" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="110" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1af55bef2ec5af88dfb6c15c3986f1713d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+        <definition>ResourceBundle &amp; openage::ResourceBundle::round</definition>
+        <argsstring>()</argsstring>
+        <name>round</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Round each value to the nearest integer. Returns itself. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="136" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="117" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a386ff157dd71560a8c9b1578fe5386e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ResourceBundle::has</definition>
+        <argsstring>(const ResourceBundle &amp;amount) const</argsstring>
+        <name>has</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="138" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a03b246717e5e1cdda55af218b77b9266" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ResourceBundle::has</definition>
+        <argsstring>(const ResourceBundle &amp;amount1, const ResourceBundle &amp;amount2) const</argsstring>
+        <name>has</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="140" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="128" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1ae324ee7f007981e5f9629f6ed30b8641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::ResourceBundle::deduct</definition>
+        <argsstring>(const ResourceBundle &amp;amount)</argsstring>
+        <name>deduct</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If amount can&apos;t be deducted return false, else deduct the given amount and return true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="146" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="148" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1abcf791052fb02e45b61749da6346f03d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceBundle::set</definition>
+        <argsstring>(const ResourceBundle &amp;amount)</argsstring>
+        <name>set</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="148" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="156" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aa6aa8b88cbacb1e21f047ef7247ecf26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceBundle::set_all</definition>
+        <argsstring>(const double amount)</argsstring>
+        <name>set_all</name>
+        <param>
+          <type>const double</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="150" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="163" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aa3e1dfb21fe065f769a21a13f667984b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceBundle::limit</definition>
+        <argsstring>(const ResourceBundle &amp;limits)</argsstring>
+        <name>limit</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>limits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="152" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="169" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aaf9f38269b98a935be89d2ff103bb5b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double &amp;</type>
+        <definition>double&amp; openage::ResourceBundle::operator[]</definition>
+        <argsstring>(const game_resource res)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="154" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a158817fd3098139f34ca5f19b79ec3fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double &amp;</type>
+        <definition>double&amp; openage::ResourceBundle::operator[]</definition>
+        <argsstring>(const int id)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="155" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::ResourceBundle::get</definition>
+        <argsstring>(const game_resource res) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const <ref refid="namespaceopenage_1ac7b51147f1e8648805708ec7c3fd328d" kindref="member">game_resource</ref></type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="159" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="159" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aa41f19565a11c94bca002ed114ddd545" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::ResourceBundle::get</definition>
+        <argsstring>(const int id) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="160" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::ResourceBundle::sum</definition>
+        <argsstring>() const</argsstring>
+        <name>sum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the sum of all the resources. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="165" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="177" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a959823d5e32e130b0a93163dee2be9fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::ResourceBundle::get_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of resources </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="170" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1ae58d0ab2f1fff41933dcb08f6032f2cd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::ResourceBundle::ResourceBundle</definition>
+        <argsstring>(const int count)</argsstring>
+        <name>ResourceBundle</name>
+        <param>
+          <type>const int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="174" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aa924f0f6be55a8f92daa10f7701b144d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceBundle::expand</definition>
+        <argsstring>(const ResourceBundle &amp;other)</argsstring>
+        <name>expand</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="176" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1aaccccdfd6566848f735e6c21d8f771ff" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::ResourceBundle::expand</definition>
+        <argsstring>(const int count)</argsstring>
+        <name>expand</name>
+        <param>
+          <type>const int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="178" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="49" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_resource_bundle_1a7c6e69b4cd066ccceb01e89687057090" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int openage::ResourceBundle::min_count</definition>
+        <argsstring>(const ResourceBundle &amp;other)</argsstring>
+        <name>min_count</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_resource_bundle" kindref="compound">ResourceBundle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gamestate/resource.h" line="187" column="1" bodyfile="libopenage/gamestate/resource.cpp" bodystart="185" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A set of amounts of game resources.</para>
+<para>Can be also used to store other information about the resources.</para>
+<para>TODO change amounts from doubles to integers </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4103">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gamestate/resource.h" line="110" column="1" bodyfile="libopenage/gamestate/resource.h" bodystart="110" bodyend="189"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_resource_bundle_1aec4c3c3cae1b78ff42a0bc533929e51c" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>clone</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1adeecaef5472b2532d8e3936c70a31bfb" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>count</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ae324ee7f007981e5f9629f6ed30b8641" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>deduct</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aa924f0f6be55a8f92daa10f7701b144d" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>expand</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aaccccdfd6566848f735e6c21d8f771ff" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>expand</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a85c59861409e505a3c5fb020a73ef1c2" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>get</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aa41f19565a11c94bca002ed114ddd545" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>get</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a959823d5e32e130b0a93163dee2be9fc" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>get_count</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a386ff157dd71560a8c9b1578fe5386e6" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>has</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a03b246717e5e1cdda55af218b77b9266" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>has</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aa3e1dfb21fe065f769a21a13f667984b" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>limit</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a7c6e69b4cd066ccceb01e89687057090" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>min_count</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a5b739a0b75f2312f9cccbb4245123e7e" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator *=</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ab24e1b8ab616d226477816e87867b31c" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator+=</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a51a3b5d9d8aa585e4cfa608b210b3bb7" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator-=</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ac99801ab1a730da1a79d8a5af724883d" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator&gt;</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a3e0e5c5058ae2c4c849046e742f4dbfc" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator&gt;=</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aaf9f38269b98a935be89d2ff103bb5b7" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator[]</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a158817fd3098139f34ca5f19b79ec3fe" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>operator[]</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1acc8ae3310aa9478c9b4fee2cabc8134e" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>ResourceBundle</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a9aed45067a845a35390dab904a02b6a9" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>ResourceBundle</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ae32a1960fab5da16d2d7ef99f4e75a62" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>ResourceBundle</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ae58d0ab2f1fff41933dcb08f6032f2cd" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>ResourceBundle</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1af55bef2ec5af88dfb6c15c3986f1713d" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>round</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1abcf791052fb02e45b61749da6346f03d" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>set</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1aa6aa8b88cbacb1e21f047ef7247ecf26" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>set_all</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a76ff3bbdb074f255cd4b2a80d82e2a00" prot="public" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>sum</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1ab483e70a2c807bea9aa02904937aacf7" prot="private" virt="non-virtual"><scope>openage::ResourceBundle</scope><name>value</name></member>
+      <member refid="classopenage_1_1_resource_bundle_1a48222b8eb33c2e7ce24b6c701565886c" prot="public" virt="virtual"><scope>openage::ResourceBundle</scope><name>~ResourceBundle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1tile__range" kind="struct" language="C++" prot="public">
+    <compoundname>openage::tile_range</compoundname>
+    <includes refid="terrain__object_8h" local="no">terrain_object.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::tile_range::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <initializer>{0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="36" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1tile" kindref="compound">coord::tile</ref></type>
+        <definition>coord::tile openage::tile_range::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <initializer>{0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="37" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+        <definition>coord::phys3 openage::tile_range::draw</definition>
+        <argsstring></argsstring>
+        <name>draw</name>
+        <initializer>{0, 0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/terrain/terrain_object.h" line="38" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A rectangle or square of tiles which is the minimim space to fit the units foundation or radius the end tile will have ne and se values greater or equal to the start tile </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4514">
+        <label>CoordNeSeUpAbsolute&lt; phys_t, phys3, phys3_delta &gt;</label>
+      </node>
+      <node id="4513">
+        <label>openage::coord::phys3</label>
+        <link refid="structopenage_1_1coord_1_1phys3"/>
+        <childnode refid="4514" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4516">
+        <label>CoordNeSeAbsolute&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+      <node id="4515">
+        <label>openage::coord::tile</label>
+        <link refid="structopenage_1_1coord_1_1tile"/>
+        <childnode refid="4516" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4512">
+        <label>openage::tile_range</label>
+        <link refid="structopenage_1_1tile__range"/>
+        <childnode refid="4513" relation="usage">
+          <edgelabel>+draw</edgelabel>
+        </childnode>
+        <childnode refid="4515" relation="usage">
+          <edgelabel>+start</edgelabel>
+          <edgelabel>+end</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/terrain/terrain_object.h" line="35" column="1" bodyfile="libopenage/terrain/terrain_object.h" bodystart="35" bodyend="39"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" prot="public" virt="non-virtual"><scope>openage::tile_range</scope><name>draw</name></member>
+      <member refid="structopenage_1_1tile__range_1aab99b1acbf7af695f7a278406d817e03" prot="public" virt="non-virtual"><scope>openage::tile_range</scope><name>end</name></member>
+      <member refid="structopenage_1_1tile__range_1a76c81aec9133e3c6146b52178696716c" prot="public" virt="non-virtual"><scope>openage::tile_range</scope><name>start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

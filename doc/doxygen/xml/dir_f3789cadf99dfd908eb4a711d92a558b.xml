@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_f3789cadf99dfd908eb4a711d92a558b" kind="dir">
+    <compoundname>libopenage/rng</compoundname>
+    <innerfile refid="global__rng_8cpp">global_rng.cpp</innerfile>
+    <innerfile refid="global__rng_8h">global_rng.h</innerfile>
+    <innerfile refid="rng_8cpp">rng.cpp</innerfile>
+    <innerfile refid="rng_8h">rng.h</innerfile>
+    <innerfile refid="rng__tests_8cpp">rng_tests.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/rng/"/>
+  </compounddef>
+</doxygen>

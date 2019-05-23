@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlTexture2d</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_texture2d" prot="public" virt="non-virtual">openage::renderer::Texture2d</basecompoundref>
+    <basecompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public" virt="non-virtual">openage::renderer::opengl::GlSimpleObject</basecompoundref>
+    <includes refid="renderer_2opengl_2texture_8h" local="no">texture.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1a3286e15ce8350323b9e4b537e9d1f451" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlTexture2d::GlTexture2d</definition>
+        <argsstring>(const resources::Texture2dData &amp;)</argsstring>
+        <name>GlTexture2d</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> &amp;</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+<para>Constructs a texture and fills it with the given data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture.h" line="18" column="1" bodyfile="libopenage/renderer/opengl/texture.cpp" bodystart="22" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1a7e4529503f4281577f066ba954f029a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlTexture2d::GlTexture2d</definition>
+        <argsstring>(resources::Texture2dInfo const &amp;)</argsstring>
+        <name>GlTexture2d</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref> const &amp;</type>
+          <defname>info</defname>
+        </param>
+        <briefdescription>
+<para>Constructs an empty texture with the given parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture.h" line="21" column="1" bodyfile="libopenage/renderer/opengl/texture.cpp" bodystart="54" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref></type>
+        <definition>resources::Texture2dData openage::renderer::opengl::GlTexture2d::into_data</definition>
+        <argsstring>() override</argsstring>
+        <name>into_data</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_texture2d_1ab205bc4ec25fba3abedaff0098619793">into_data</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copies this texture&apos;s data from graphics hardware into a CPU-accessible Texture2dData buffer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture.h" line="23" column="1" bodyfile="libopenage/renderer/opengl/texture.cpp" bodystart="83" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlTexture2d::upload</definition>
+        <argsstring>(resources::Texture2dData const &amp;) override</argsstring>
+        <name>upload</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_texture2d_1a0ecc8b475df90ca4708703ebbfd124a2">upload</reimplements>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Uploads the provided data into the GPU texture storage. The format has to match the format this <ref refid="classopenage_1_1_texture" kindref="compound">Texture</ref> was originally created with. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture.h" line="25" column="1" bodyfile="libopenage/renderer/opengl/texture.cpp" bodystart="95" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A handle to an OpenGL texture. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2431">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2430">
+        <label>openage::renderer::Texture2d</label>
+        <link refid="classopenage_1_1renderer_1_1_texture2d"/>
+      </node>
+      <node id="2429">
+        <label>openage::renderer::opengl::GlTexture2d</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d"/>
+        <childnode refid="2430" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2431" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2435">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2433">
+        <label>openage::renderer::Texture2d</label>
+        <link refid="classopenage_1_1renderer_1_1_texture2d"/>
+        <childnode refid="2434" relation="usage">
+          <edgelabel>#info</edgelabel>
+        </childnode>
+      </node>
+      <node id="2432">
+        <label>openage::renderer::opengl::GlTexture2d</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d"/>
+        <childnode refid="2433" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2435" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2434">
+        <label>openage::renderer::resources::Texture2dInfo</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/texture.h" line="15" column="1" bodyfile="libopenage/renderer/opengl/texture.h" bodystart="15" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>delete_fun</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>get_handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_1a02024a11741bb5cd5dd9bb89fc5f34eb" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>get_info</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad01a0a9dfceabcf5ea48a6af86a805ed" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a9cb29e026e6097138f0e6d20d22eb6b9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a24d175d087077438ddf0667d4f0bb210" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1a3286e15ce8350323b9e4b537e9d1f451" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>GlTexture2d</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1a7e4529503f4281577f066ba954f029a4" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>GlTexture2d</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_1ac747ef01febbb6e1f1931f8e07537204" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>info</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1ab2038754e208bb1929a244dbf29f2b6b" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>into_data</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a19018330cb67b7f63271764b883ff19a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aa5c241e2d89ec1043b3540c6beb8a3a2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_1a8a3430c44dbbd2229acf5cf995a908f3" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>Texture2d</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_1aa521e75b491d72b51afade86d6c18ad4" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>upload</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a52d36fe37bbca9529578795d1042530d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>~GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_1a5479bcbacf4833ef3414443803d6f022" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2d</scope><name>~Texture2d</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

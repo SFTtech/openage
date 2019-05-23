@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="context_8cpp" kind="file" language="C++">
+    <compoundname>context.cpp</compoundname>
+    <includes refid="context_8h" local="yes">context.h</includes>
+    <includes local="no">array</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="log_8h" local="yes">../../log/log.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <incdepgraph>
+      <node id="20924">
+        <label>list</label>
+      </node>
+      <node id="20913">
+        <label>atomic</label>
+      </node>
+      <node id="20920">
+        <label>iomanip</label>
+      </node>
+      <node id="20919">
+        <label>functional</label>
+      </node>
+      <node id="20908">
+        <label>cstdint</label>
+      </node>
+      <node id="20917">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20918" relation="include">
+        </childnode>
+        <childnode refid="20919" relation="include">
+        </childnode>
+        <childnode refid="20920" relation="include">
+        </childnode>
+        <childnode refid="20914" relation="include">
+        </childnode>
+        <childnode refid="20921" relation="include">
+        </childnode>
+        <childnode refid="20905" relation="include">
+        </childnode>
+        <childnode refid="20922" relation="include">
+        </childnode>
+      </node>
+      <node id="20927">
+        <label>stdexcept</label>
+      </node>
+      <node id="20923">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20924" relation="include">
+        </childnode>
+        <childnode refid="20925" relation="include">
+        </childnode>
+        <childnode refid="20899" relation="include">
+        </childnode>
+      </node>
+      <node id="20918">
+        <label>cstdarg</label>
+      </node>
+      <node id="20905">
+        <label>string</label>
+      </node>
+      <node id="20907">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20908" relation="include">
+        </childnode>
+        <childnode refid="20905" relation="include">
+        </childnode>
+        <childnode refid="20909" relation="include">
+        </childnode>
+        <childnode refid="20910" relation="include">
+        </childnode>
+        <childnode refid="20912" relation="include">
+        </childnode>
+        <childnode refid="20923" relation="include">
+        </childnode>
+        <childnode refid="20899" relation="include">
+        </childnode>
+      </node>
+      <node id="20910">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20911" relation="include">
+        </childnode>
+      </node>
+      <node id="20912">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20913" relation="include">
+        </childnode>
+        <childnode refid="20914" relation="include">
+        </childnode>
+        <childnode refid="20915" relation="include">
+        </childnode>
+        <childnode refid="20903" relation="include">
+        </childnode>
+        <childnode refid="20916" relation="include">
+        </childnode>
+        <childnode refid="20917" relation="include">
+        </childnode>
+      </node>
+      <node id="20894">
+        <label>context.h</label>
+        <link refid="context_8h"/>
+        <childnode refid="20895" relation="include">
+        </childnode>
+      </node>
+      <node id="20926">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20901" relation="include">
+        </childnode>
+        <childnode refid="20914" relation="include">
+        </childnode>
+        <childnode refid="20927" relation="include">
+        </childnode>
+        <childnode refid="20905" relation="include">
+        </childnode>
+        <childnode refid="20903" relation="include">
+        </childnode>
+        <childnode refid="20907" relation="include">
+        </childnode>
+      </node>
+      <node id="20895">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="20902">
+        <label>typeinfo</label>
+      </node>
+      <node id="20922">
+        <label>vector</label>
+      </node>
+      <node id="20898">
+        <label>../../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="20899" relation="include">
+        </childnode>
+        <childnode refid="20907" relation="include">
+        </childnode>
+      </node>
+      <node id="20904">
+        <label>ciso646</label>
+      </node>
+      <node id="20896">
+        <label>array</label>
+      </node>
+      <node id="20921">
+        <label>sstream</label>
+      </node>
+      <node id="20903">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20904" relation="include">
+        </childnode>
+        <childnode refid="20905" relation="include">
+        </childnode>
+        <childnode refid="20906" relation="include">
+        </childnode>
+      </node>
+      <node id="20906">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20906" relation="include">
+        </childnode>
+      </node>
+      <node id="20897">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="20916">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20901" relation="include">
+        </childnode>
+        <childnode refid="20905" relation="include">
+        </childnode>
+      </node>
+      <node id="20899">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20900" relation="include">
+        </childnode>
+      </node>
+      <node id="20911">
+        <label>cstdlib</label>
+      </node>
+      <node id="20901">
+        <label>iostream</label>
+      </node>
+      <node id="20925">
+        <label>mutex</label>
+      </node>
+      <node id="20915">
+        <label>type_traits</label>
+      </node>
+      <node id="20909">
+        <label>config.h</label>
+      </node>
+      <node id="20893">
+        <label>libopenage/renderer/opengl/context.cpp</label>
+        <link refid="context_8cpp"/>
+        <childnode refid="20894" relation="include">
+        </childnode>
+        <childnode refid="20896" relation="include">
+        </childnode>
+        <childnode refid="20897" relation="include">
+        </childnode>
+        <childnode refid="20898" relation="include">
+        </childnode>
+        <childnode refid="20926" relation="include">
+        </childnode>
+      </node>
+      <node id="20914">
+        <label>memory</label>
+      </node>
+      <node id="20900">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20901" relation="include">
+        </childnode>
+        <childnode refid="20902" relation="include">
+        </childnode>
+        <childnode refid="20903" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1opengl">openage::renderer::opengl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="context_8h" kindref="compound">context.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">opengl<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>std::array&lt;std::pair&lt;int,<sp/>int&gt;,<sp/>1&gt;<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref><sp/>=<sp/>{{<sp/>{<sp/>3,<sp/>3<sp/>}<sp/>}};<sp/></highlight><highlight class="comment">//<sp/>for<sp/>now<sp/>we<sp/>don&apos;t<sp/>need<sp/>any<sp/>higher<sp/>versions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" refkind="member"><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref><sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" kindref="member">find_capabilities</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>really<sp/>hacky.<sp/>We<sp/>try<sp/>to<sp/>create<sp/>a<sp/>context<sp/>starting<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>lowest<sp/>GL<sp/>version<sp/>and<sp/>retry<sp/>until<sp/>one<sp/>version<sp/>is<sp/>not<sp/>supported<sp/>and<sp/>fails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>no<sp/>other<sp/>way<sp/>to<sp/>do<sp/>this.<sp/>(https://gamedev.stackexchange.com/a/28457)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_Window<sp/>*test_window<sp/>=<sp/>SDL_CreateWindow(</highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">,<sp/>0,<sp/>0,<sp/>2,<sp/>2,<sp/>SDL_WINDOW_OPENGL<sp/>|<sp/>SDL_WINDOW_HIDDEN);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_window<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>creating<sp/>window<sp/>for<sp/>OpenGL<sp/>context<sp/>testing.<sp/>SDL<sp/>Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError());</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>each<sp/>version<sp/>for<sp/>availability</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,<sp/>SDL_GL_CONTEXT_PROFILE_CORE);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL,<sp/>1);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,<sp/>1);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,<sp/>24);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GLContext<sp/>test_context;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i_ver<sp/>=<sp/>0;<sp/>i_ver<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>.size();<sp/>++i_ver)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[i_ver].first);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[i_ver].second);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test_context<sp/>=<sp/>SDL_GL_CreateContext(test_window);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_context<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i_ver<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;OpenGL<sp/>version<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[0].first<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[0].second</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>available.<sp/>It<sp/>is<sp/>the<sp/>minimal<sp/>required<sp/>version.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[i_ver<sp/>-<sp/>1].first);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a0adf6c549e016db9b38f7384cf6f9619" kindref="member">gl_versions</ref>[i_ver<sp/>-<sp/>1].second);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_DeleteContext(test_context);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>test_context<sp/>=<sp/>SDL_GL_CreateContext(test_window);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_context<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>OpenGL<sp/>context<sp/>which<sp/>previously<sp/>succeeded.<sp/>This<sp/>should<sp/>not<sp/>happen!<sp/>SDL<sp/>Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError());</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_MakeCurrent(test_window,<sp/>test_context);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref><sp/>caps{};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>GLint<sp/>temp;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAX_TEXTURE_SIZE,<sp/>&amp;temp);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>caps.max_texture_size<sp/>=<sp/>temp;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>maybe<sp/>GL_MAX_TEXTURE_IMAGE_UNITS<sp/>or<sp/>maybe<sp/>GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lol<sp/>opengl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS,<sp/>&amp;temp);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>caps.max_texture_slots<sp/>=<sp/>temp;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAX_VERTEX_ATTRIBS,<sp/>&amp;temp);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>caps.max_vertex_attributes<sp/>=<sp/>temp;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS,<sp/>&amp;temp);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>caps.max_uniform_buffer_bindings<sp/>=<sp/>temp;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MAJOR_VERSION,<sp/>&amp;caps.major_version);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>glGetIntegerv(GL_MINOR_VERSION,<sp/>&amp;caps.minor_version);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_DeleteContext(test_context);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_DestroyWindow(test_window);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>caps;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" kindref="member">GlContext::GlContext</ref>(SDL_Window<sp/>*window)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1opengl_1a9c2d5be08671cd8ffbd6c4ce668f1007" kindref="member">find_capabilities</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,<sp/>SDL_GL_CONTEXT_PROFILE_CORE);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL,<sp/>1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,<sp/>1);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,<sp/>24);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" kindref="member">major_version</ref>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" kindref="member">minor_version</ref>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref><sp/>=<sp/>SDL_GL_CreateContext(window);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;OpenGL<sp/>context<sp/>creation<sp/>failed.<sp/>SDL<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>SDL_GetError());</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>still<sp/>have<sp/>to<sp/>verify<sp/>that<sp/>our<sp/>version<sp/>of<sp/>libepoxy<sp/>supports<sp/>this<sp/>version<sp/>of<sp/>OpenGL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>epoxy_glv<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" kindref="member">major_version</ref><sp/>*<sp/>10<sp/>+<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" kindref="member">minor_version</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!epoxy_is_desktop_gl()<sp/>||<sp/>epoxy_gl_version()<sp/>&lt;<sp/>epoxy_glv)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>used<sp/>version<sp/>of<sp/>libepoxy<sp/>does<sp/>not<sp/>support<sp/>OpenGL<sp/>version<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" kindref="member">major_version</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" kindref="member">minor_version</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(info)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Created<sp/>OpenGL<sp/>context<sp/>version<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a3b96d24d6f42acf7f4c4327290bc5c63" kindref="member">major_version</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1a98189e6fb61a793e9bab03e46424b68d" kindref="member">minor_version</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>quote<sp/>the<sp/>standard<sp/>doc:<sp/>&apos;The<sp/>value<sp/>gives<sp/>a<sp/>rough<sp/>estimate<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>largest<sp/>texture<sp/>that<sp/>the<sp/>GL<sp/>can<sp/>handle&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-&gt;<sp/>wat?<sp/><sp/>anyways,<sp/>we<sp/>need<sp/>at<sp/>least<sp/>1024x1024.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Maximum<sp/>supported<sp/>texture<sp/>size:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" kindref="member">max_texture_size</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" kindref="member">max_texture_size</ref><sp/>&lt;<sp/>1024)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Maximum<sp/>supported<sp/>texture<sp/>size<sp/>is<sp/>too<sp/>small:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1add6399143fa06a6b21bd359cfd307c38" kindref="member">max_texture_size</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Maximum<sp/>supported<sp/>texture<sp/>units:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" kindref="member">max_texture_slots</ref>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" kindref="member">max_texture_slots</ref><sp/>&lt;<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Your<sp/>GPU<sp/>doesn&apos;t<sp/>have<sp/>enough<sp/>texture<sp/>units:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>.<ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities_1aea3866d2f9963acdc3b62da665ada04e" kindref="member">max_texture_slots</ref>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a3f5d6f6ae168beaf0a9db7cbe14c0f21" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a3f5d6f6ae168beaf0a9db7cbe14c0f21" kindref="member">GlContext::~GlContext</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_DeleteContext(this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1ad5b91fc5dacc5b0ec53a6d126748ef7f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4414e2e8f56e36f6c4095886735bd03c" kindref="member">GlContext::GlContext</ref>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref><sp/>&amp;&amp;other)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>gl_context(other.gl_context)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>,<sp/>capabilities(other.capabilities)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>other.gl_context<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a854eda8c6c825ebd569960d03eae603d" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref>&amp;<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1ab90fd5c8528f5366562494b5a27e58bd" kindref="member">GlContext::operator=</ref>(<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context" kindref="compound">GlContext</ref><sp/>&amp;&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref><sp/>=<sp/>other.gl_context;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref><sp/>=<sp/>other.capabilities;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>other.gl_context<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a72bffd9f2bb8e89418366ff39ac4498e" refkind="member"><highlight class="normal">SDL_GLContext<sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a72bffd9f2bb8e89418366ff39ac4498e" kindref="member">GlContext::get_raw_context</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4e097de81c4190eb28d1b0a040df5323" kindref="member">gl_context</ref>;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1aa495f18ed15219f0e5b771db1d3a937b" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1renderer_1_1opengl_1_1gl__context__capabilities" kindref="compound">gl_context_capabilities</ref><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1aa495f18ed15219f0e5b771db1d3a937b" kindref="member">GlContext::get_capabilities</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a9dc2df370be5f90f01f38febda93a26c" kindref="member">capabilities</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a22414f75ba491ef266e3453259825a50" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a22414f75ba491ef266e3453259825a50" kindref="member">GlContext::check_error</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>GLenum<sp/>error_state<sp/>=<sp/>glGetError();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error_state<sp/>!=<sp/>GL_NO_ERROR)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg<sp/>=<sp/>[=]<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>generate<sp/>error<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error_state)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_ENUM:</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>unacceptable<sp/>value<sp/>is<sp/>specified<sp/>for<sp/>an<sp/>enumerated<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>offending<sp/>command<sp/>is<sp/>ignored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>has<sp/>no<sp/>other<sp/>side<sp/>effect<sp/>than<sp/>to<sp/>set<sp/>the<sp/>error<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_INVALID_ENUM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_VALUE:</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>numeric<sp/>argument<sp/>is<sp/>out<sp/>of<sp/>range.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>offending<sp/>command<sp/>is<sp/>ignored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>has<sp/>no<sp/>other<sp/>side<sp/>effect<sp/>than<sp/>to<sp/>set<sp/>the<sp/>error<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_INVALID_VALUE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_OPERATION:</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>specified<sp/>operation<sp/>is<sp/>not<sp/>allowed<sp/>in<sp/>the<sp/>current<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>offending<sp/>command<sp/>is<sp/>ignored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>has<sp/>no<sp/>other<sp/>side<sp/>effect<sp/>than<sp/>to<sp/>set<sp/>the<sp/>error<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_INVALID_OPERATION&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_INVALID_FRAMEBUFFER_OPERATION:</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>framebuffer<sp/>object<sp/>is<sp/>not<sp/>complete.<sp/>The<sp/>offending<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>ignored<sp/>and<sp/>has<sp/>no<sp/>other<sp/>side<sp/>effect<sp/>than<sp/>to<sp/>set<sp/>the<sp/>error<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_INVALID_FRAMEBUFFER_OPERATION&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_OUT_OF_MEMORY:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>not<sp/>enough<sp/>memory<sp/>left<sp/>to<sp/>execute<sp/>the<sp/>command.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>state<sp/>of<sp/>the<sp/>GL<sp/>is<sp/>undefined,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>except<sp/>for<sp/>the<sp/>state<sp/>of<sp/>the<sp/>error<sp/>flags,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>after<sp/>this<sp/>error<sp/>is<sp/>recorded.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_OUT_OF_MEMORY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_STACK_UNDERFLOW:</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>attempt<sp/>has<sp/>been<sp/>made<sp/>to<sp/>perform<sp/>an<sp/>operation<sp/>that<sp/>would</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cause<sp/>an<sp/>internal<sp/>stack<sp/>to<sp/>underflow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_STACK_UNDERFLOW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GL_STACK_OVERFLOW:</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>attempt<sp/>has<sp/>been<sp/>made<sp/>to<sp/>perform<sp/>an<sp/>operation<sp/>that<sp/>would</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cause<sp/>an<sp/>internal<sp/>stack<sp/>to<sp/>overflow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;GL_STACK_OVERFLOW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unknown<sp/>error<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}();</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;An<sp/>OpenGL<sp/>error<sp/>has<sp/>occured.\n\t&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>error_state<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;):<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4ff9a4533dfa23d25d2e2c53bc94350e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_context_1a4ff9a4533dfa23d25d2e2c53bc94350e" kindref="member">GlContext::set_vsync</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>on)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(on)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>to<sp/>use<sp/>swap<sp/>control<sp/>tearing<sp/>(adaptive<sp/>vsync)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(SDL_GL_SetSwapInterval(-1)<sp/>==<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>otherwise<sp/>fall<sp/>back<sp/>to<sp/>standard<sp/>vsync</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetSwapInterval(1);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_GL_SetSwapInterval(0);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::opengl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/opengl/context.cpp"/>
+  </compounddef>
+</doxygen>

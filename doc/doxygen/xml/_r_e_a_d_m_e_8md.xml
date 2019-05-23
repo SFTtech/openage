@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Vulkan<sp/>renderer</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">An<sp/>experimental,<sp/>mostly<sp/>unimplemented<sp/>Vulkan<sp/>renderer.<sp/>Can<sp/>draw<sp/>one<sp/>triangle<sp/>at<sp/>best.</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/README.md"/>
+  </compounddef>
+</doxygen>

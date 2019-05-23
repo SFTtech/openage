@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="continuous_8cpp" kind="file" language="C++">
+    <compoundname>continuous.cpp</compoundname>
+    <includes refid="continuous_8h" local="yes">continuous.h</includes>
+    <incdepgraph>
+      <node id="4433">
+        <label>list</label>
+      </node>
+      <node id="4443">
+        <label>eventclass.h</label>
+        <link refid="eventclass_8h"/>
+        <childnode refid="4400" relation="include">
+        </childnode>
+        <childnode refid="4444" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4440" relation="include">
+        </childnode>
+      </node>
+      <node id="4426">
+        <label>atomic</label>
+      </node>
+      <node id="4402">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4403" relation="include">
+        </childnode>
+        <childnode refid="4404" relation="include">
+        </childnode>
+        <childnode refid="4405" relation="include">
+        </childnode>
+        <childnode refid="4406" relation="include">
+        </childnode>
+        <childnode refid="4407" relation="include">
+        </childnode>
+        <childnode refid="4408" relation="include">
+        </childnode>
+        <childnode refid="4397" relation="include">
+        </childnode>
+        <childnode refid="4409" relation="include">
+        </childnode>
+      </node>
+      <node id="4430">
+        <label>functional</label>
+      </node>
+      <node id="4406">
+        <label>iomanip</label>
+      </node>
+      <node id="4407">
+        <label>limits</label>
+      </node>
+      <node id="4441">
+        <label>eventqueue.h</label>
+        <link refid="eventqueue_8h"/>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4442" relation="include">
+        </childnode>
+        <childnode refid="4443" relation="include">
+        </childnode>
+        <childnode refid="4445" relation="include">
+        </childnode>
+        <childnode refid="4400" relation="include">
+        </childnode>
+      </node>
+      <node id="4439">
+        <label>../event/loop.h</label>
+        <link refid="event_2loop_8h"/>
+        <childnode refid="4430" relation="include">
+        </childnode>
+        <childnode refid="4433" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4440" relation="include">
+        </childnode>
+        <childnode refid="4400" relation="include">
+        </childnode>
+        <childnode refid="4441" relation="include">
+        </childnode>
+        <childnode refid="4447" relation="include">
+        </childnode>
+        <childnode refid="4448" relation="include">
+        </childnode>
+        <childnode refid="4449" relation="include">
+        </childnode>
+      </node>
+      <node id="4401">
+        <label>cstdint</label>
+      </node>
+      <node id="4428">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="4429" relation="include">
+        </childnode>
+        <childnode refid="4430" relation="include">
+        </childnode>
+        <childnode refid="4406" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4431" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4413" relation="include">
+        </childnode>
+      </node>
+      <node id="4405">
+        <label>cmath</label>
+      </node>
+      <node id="4447">
+        <label>eventfilter.h</label>
+        <link refid="eventfilter_8h"/>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4430" relation="include">
+        </childnode>
+        <childnode refid="4399" relation="include">
+        </childnode>
+      </node>
+      <node id="4417">
+        <label>stdexcept</label>
+      </node>
+      <node id="4400">
+        <label>../curve/curve.h</label>
+        <link refid="curve_8h"/>
+        <childnode refid="4401" relation="include">
+        </childnode>
+        <childnode refid="4402" relation="include">
+        </childnode>
+      </node>
+      <node id="4398">
+        <label>value_container.h</label>
+        <link refid="value__container_8h"/>
+        <childnode refid="4399" relation="include">
+        </childnode>
+        <childnode refid="4438" relation="include">
+        </childnode>
+        <childnode refid="4405" relation="include">
+        </childnode>
+      </node>
+      <node id="4432">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="4433" relation="include">
+        </childnode>
+        <childnode refid="4434" relation="include">
+        </childnode>
+        <childnode refid="4435" relation="include">
+        </childnode>
+      </node>
+      <node id="4429">
+        <label>cstdarg</label>
+      </node>
+      <node id="4412">
+        <label>string</label>
+      </node>
+      <node id="4421">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4401" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4422" relation="include">
+        </childnode>
+        <childnode refid="4423" relation="include">
+        </childnode>
+        <childnode refid="4425" relation="include">
+        </childnode>
+        <childnode refid="4432" relation="include">
+        </childnode>
+        <childnode refid="4435" relation="include">
+        </childnode>
+      </node>
+      <node id="4423">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="4424" relation="include">
+        </childnode>
+      </node>
+      <node id="4425">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="4426" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4397" relation="include">
+        </childnode>
+        <childnode refid="4418" relation="include">
+        </childnode>
+        <childnode refid="4427" relation="include">
+        </childnode>
+        <childnode refid="4428" relation="include">
+        </childnode>
+      </node>
+      <node id="4442">
+        <label>unordered_set</label>
+      </node>
+      <node id="4408">
+        <label>ostream</label>
+      </node>
+      <node id="4396">
+        <label>continuous.h</label>
+        <link refid="continuous_8h"/>
+        <childnode refid="4397" relation="include">
+        </childnode>
+        <childnode refid="4398" relation="include">
+        </childnode>
+        <childnode refid="4449" relation="include">
+        </childnode>
+      </node>
+      <node id="4410">
+        <label>limits.h</label>
+      </node>
+      <node id="4415">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4416" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4417" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4418" relation="include">
+        </childnode>
+        <childnode refid="4421" relation="include">
+        </childnode>
+      </node>
+      <node id="4409">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4403" relation="include">
+        </childnode>
+        <childnode refid="4410" relation="include">
+        </childnode>
+        <childnode refid="4405" relation="include">
+        </childnode>
+        <childnode refid="4411" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4413" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4415" relation="include">
+        </childnode>
+        <childnode refid="4418" relation="include">
+        </childnode>
+      </node>
+      <node id="4444">
+        <label>any</label>
+      </node>
+      <node id="4437">
+        <label>typeinfo</label>
+      </node>
+      <node id="4445">
+        <label>eventstore.h</label>
+        <link refid="eventstore_8h"/>
+        <childnode refid="4446" relation="include">
+        </childnode>
+        <childnode refid="4409" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4440" relation="include">
+        </childnode>
+      </node>
+      <node id="4438">
+        <label>keyframe_container.h</label>
+        <link refid="keyframe__container_8h"/>
+        <childnode refid="4416" relation="include">
+        </childnode>
+        <childnode refid="4407" relation="include">
+        </childnode>
+        <childnode refid="4433" relation="include">
+        </childnode>
+        <childnode refid="4400" relation="include">
+        </childnode>
+        <childnode refid="4439" relation="include">
+        </childnode>
+        <childnode refid="4415" relation="include">
+        </childnode>
+      </node>
+      <node id="4399">
+        <label>../event/eventtarget.h</label>
+        <link refid="eventtarget_8h"/>
+        <childnode refid="4400" relation="include">
+        </childnode>
+        <childnode refid="4430" relation="include">
+        </childnode>
+        <childnode refid="4433" relation="include">
+        </childnode>
+        <childnode refid="4414" relation="include">
+        </childnode>
+      </node>
+      <node id="4413">
+        <label>vector</label>
+      </node>
+      <node id="4449">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="4435" relation="include">
+        </childnode>
+        <childnode refid="4421" relation="include">
+        </childnode>
+      </node>
+      <node id="4419">
+        <label>ciso646</label>
+      </node>
+      <node id="4431">
+        <label>sstream</label>
+      </node>
+      <node id="4418">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="4419" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+        <childnode refid="4420" relation="include">
+        </childnode>
+      </node>
+      <node id="4420">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="4420" relation="include">
+        </childnode>
+      </node>
+      <node id="4427">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4416" relation="include">
+        </childnode>
+        <childnode refid="4412" relation="include">
+        </childnode>
+      </node>
+      <node id="4435">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="4436" relation="include">
+        </childnode>
+      </node>
+      <node id="4424">
+        <label>cstdlib</label>
+      </node>
+      <node id="4448">
+        <label>event.h</label>
+        <link refid="event_2event_8h"/>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4443" relation="include">
+        </childnode>
+        <childnode refid="4400" relation="include">
+        </childnode>
+      </node>
+      <node id="4416">
+        <label>iostream</label>
+      </node>
+      <node id="4446">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="4414" relation="include">
+        </childnode>
+        <childnode refid="4430" relation="include">
+        </childnode>
+        <childnode refid="4397" relation="include">
+        </childnode>
+        <childnode refid="4442" relation="include">
+        </childnode>
+        <childnode refid="4418" relation="include">
+        </childnode>
+        <childnode refid="4415" relation="include">
+        </childnode>
+      </node>
+      <node id="4440">
+        <label>unordered_map</label>
+      </node>
+      <node id="4404">
+        <label>climits</label>
+      </node>
+      <node id="4434">
+        <label>mutex</label>
+      </node>
+      <node id="4397">
+        <label>type_traits</label>
+      </node>
+      <node id="4422">
+        <label>config.h</label>
+      </node>
+      <node id="4403">
+        <label>algorithm</label>
+      </node>
+      <node id="4411">
+        <label>cstring</label>
+      </node>
+      <node id="4414">
+        <label>memory</label>
+      </node>
+      <node id="4436">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4416" relation="include">
+        </childnode>
+        <childnode refid="4437" relation="include">
+        </childnode>
+        <childnode refid="4418" relation="include">
+        </childnode>
+      </node>
+      <node id="4395">
+        <label>libopenage/curve/continuous.cpp</label>
+        <link refid="continuous_8cpp"/>
+        <childnode refid="4396" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1curve">openage::curve</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="continuous_8h" kindref="compound">continuous.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="namespaceopenage_1_1curve" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1curve" kindref="compound">openage::curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>file<sp/>is<sp/>intended<sp/>to<sp/>be<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>openage::curve</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/curve/continuous.cpp"/>
+  </compounddef>
+</doxygen>

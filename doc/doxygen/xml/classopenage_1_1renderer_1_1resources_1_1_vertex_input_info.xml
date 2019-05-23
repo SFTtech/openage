@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::resources::VertexInputInfo</compoundname>
+    <includes refid="mesh__data_8h" local="no">mesh_data.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac512843d39139e54c1d7f94c7ffff2f4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref> &gt;</type>
+        <definition>std::vector&lt;vertex_input_t&gt; openage::renderer::resources::VertexInputInfo::inputs</definition>
+        <argsstring></argsstring>
+        <name>inputs</name>
+        <briefdescription>
+<para>What kind of data the vertices contain and how it is laid out in memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="97" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a25777981ba7e0b61f05057aa46d13e2e" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt;</type>
+        <definition>std::optional&lt;std::unordered_map&lt;size_t, size_t&gt; &gt; openage::renderer::resources::VertexInputInfo::shader_input_map</definition>
+        <argsstring></argsstring>
+        <name>shader_input_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An optional attribute specifying how vertex inputs in the mesh map to vertex inputs in a given shader, for example to reorder inputs of the form (pos, uv) into a shader that takes in (uv, pos) inputs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="102" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4341539ce916999fff622c87be27c263" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
+        <definition>vertex_layout_t openage::renderer::resources::VertexInputInfo::layout</definition>
+        <argsstring></argsstring>
+        <name>layout</name>
+        <briefdescription>
+<para>How the vertices are laid out in the data buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="105" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1abc3d84a9d1e0aec615037acd32efa4a5" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
+        <definition>vertex_primitive_t openage::renderer::resources::VertexInputInfo::primitive</definition>
+        <argsstring></argsstring>
+        <name>primitive</name>
+        <briefdescription>
+<para>The primitive type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="108" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1afbb070a581eb6af7094eb621d14294af" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">index_t</ref> &gt;</type>
+        <definition>std::optional&lt;index_t&gt; openage::renderer::resources::VertexInputInfo::index_type</definition>
+        <argsstring></argsstring>
+        <name>index_type</name>
+        <briefdescription>
+<para>The type of indices if they exist. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="111" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a308ed14c9ec5b78f99e722838f6c2692" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::VertexInputInfo::VertexInputInfo</definition>
+        <argsstring>(std::vector&lt; vertex_input_t &gt;, vertex_layout_t, vertex_primitive_t)</argsstring>
+        <name>VertexInputInfo</name>
+        <param>
+          <type>std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref> &gt;</type>
+          <defname>inputs</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
+          <defname>layout</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
+          <defname>primitive</defname>
+        </param>
+        <briefdescription>
+<para>Initialize an input info for array rendering. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="62" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4d8947d3bdc86e93912ef4befc82a8ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::resources::VertexInputInfo::VertexInputInfo</definition>
+        <argsstring>(std::vector&lt; vertex_input_t &gt;, vertex_layout_t, vertex_primitive_t, index_t)</argsstring>
+        <name>VertexInputInfo</name>
+        <param>
+          <type>std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref> &gt;</type>
+          <defname>inputs</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
+          <defname>layout</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
+          <defname>primitive</defname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">index_t</ref></type>
+          <defname>index_type</defname>
+        </param>
+        <briefdescription>
+<para>Initialize an input info for indexed rendering. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="65" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::resources::VertexInputInfo::add_shader_input_map</definition>
+        <argsstring>(std::unordered_map&lt; size_t, size_t &gt; &amp;&amp;)</argsstring>
+        <name>add_shader_input_map</name>
+        <param>
+          <type>std::unordered_map&lt; size_t, size_t &gt; &amp;&amp;</type>
+          <defname>in_map</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a mesh-&gt;shader input mapping to the info. By default, attributes are mapped one-to-one according to their order in the input vector, e.g. (vec2 pos, vec2 uv) maps into (0: vec2 pos, 1: vec2 uv) in the shader. However, if a shader skips indices in the layout or takes its inputs in a different order, this can be specified using the map. The map entries must have the format (index_in_vector, index_in_shader) and will overwrite the default mapping. If an entry for a given index in the vector is missing, that attribute and its data will be skipped. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="74" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="50" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ae8514f8a1d3cbc486739b284e9aa6363" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; vertex_input_t &gt; &amp; openage::renderer::resources::VertexInputInfo::get_inputs</definition>
+        <argsstring>() const</argsstring>
+        <name>get_inputs</name>
+        <briefdescription>
+<para>Returns the list of per-vertex inputs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="77" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aadb7fe23f4de138d41db62cf561dd30f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt; const  &amp;</type>
+        <definition>std::optional&lt; std::unordered_map&lt; size_t, size_t &gt; &gt; const  &amp; openage::renderer::resources::VertexInputInfo::get_shader_input_map</definition>
+        <argsstring>() const</argsstring>
+        <name>get_shader_input_map</name>
+        <briefdescription>
+<para>Returns the shader input map or an empty optional if it&apos;s not present. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="80" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ab4e8c28446f4ace83ef39b2e8404213c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" kindref="member">vertex_layout_t</ref></type>
+        <definition>vertex_layout_t openage::renderer::resources::VertexInputInfo::get_layout</definition>
+        <argsstring>() const</argsstring>
+        <name>get_layout</name>
+        <briefdescription>
+<para>Returns the layout of vertices in memory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="83" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::VertexInputInfo::vert_size</definition>
+        <argsstring>() const</argsstring>
+        <name>vert_size</name>
+        <briefdescription>
+<para>Returns the size of a single vertex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="86" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="60" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a5fee3c6c1055d24831ff1d3f70f84ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" kindref="member">vertex_primitive_t</ref></type>
+        <definition>vertex_primitive_t openage::renderer::resources::VertexInputInfo::get_primitive</definition>
+        <argsstring>() const</argsstring>
+        <name>get_primitive</name>
+        <briefdescription>
+<para>Returns the primitive interpretation mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="89" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac7d92ae6a61fdb107af66136ef469fef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" kindref="member">index_t</ref> &gt;</type>
+        <definition>std::optional&lt; index_t &gt; openage::renderer::resources::VertexInputInfo::get_index_type</definition>
+        <argsstring>() const</argsstring>
+        <name>get_index_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the type of indices used for indexed drawing, which may not be present if array drawing is used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="93" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Information about vertex input data - which components a vertex contains and how vertices are laid out in memory. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4934">
+        <label>openage::renderer::resources::VertexInputInfo</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/resources/mesh_data.h" line="59" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="59" bodyend="112"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aefd82002b1835beb566cc1d3c13ee46d" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>add_shader_input_map</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac7d92ae6a61fdb107af66136ef469fef" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_index_type</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ae8514f8a1d3cbc486739b284e9aa6363" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_inputs</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ab4e8c28446f4ace83ef39b2e8404213c" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_layout</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a5fee3c6c1055d24831ff1d3f70f84ce6" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_primitive</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1aadb7fe23f4de138d41db62cf561dd30f" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>get_shader_input_map</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1afbb070a581eb6af7094eb621d14294af" prot="private" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>index_type</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1ac512843d39139e54c1d7f94c7ffff2f4" prot="private" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>inputs</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4341539ce916999fff622c87be27c263" prot="private" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>layout</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1abc3d84a9d1e0aec615037acd32efa4a5" prot="private" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>primitive</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a25777981ba7e0b61f05057aa46d13e2e" prot="private" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>shader_input_map</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a32cc6408584ff4eecd6d43565eed9864" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>vert_size</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a308ed14c9ec5b78f99e722838f6c2692" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>VertexInputInfo</name></member>
+      <member refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info_1a4d8947d3bdc86e93912ef4befc82a8ef" prot="public" virt="non-virtual"><scope>openage::renderer::resources::VertexInputInfo</scope><name>VertexInputInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

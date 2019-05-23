@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer" kind="class" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::VlkRenderer</compoundname>
+    <includes refid="vulkan_2renderer_8h" local="no">renderer.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" prot="private" static="no" mutable="no">
+        <type>VkInstance</type>
+        <definition>VkInstance openage::renderer::vulkan::VlkRenderer::instance</definition>
+        <argsstring></argsstring>
+        <name>instance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/renderer.h" line="19" column="1" bodyfile="libopenage/renderer/vulkan/renderer.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" prot="private" static="no" mutable="no">
+        <type>VkSurfaceKHR</type>
+        <definition>VkSurfaceKHR openage::renderer::vulkan::VlkRenderer::surface</definition>
+        <argsstring></argsstring>
+        <name>surface</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/renderer.h" line="21" column="1" bodyfile="libopenage/renderer/vulkan/renderer.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a1d6c65604305a3193079ff8026a20c9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::vulkan::VlkRenderer::VlkRenderer</definition>
+        <argsstring>(VkInstance instance, VkSurfaceKHR surface)</argsstring>
+        <name>VlkRenderer</name>
+        <param>
+          <type>VkInstance</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type>VkSurfaceKHR</type>
+          <declname>surface</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/renderer.h" line="24" column="1" bodyfile="libopenage/renderer/vulkan/renderer.h" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::vulkan::VlkRenderer::do_the_thing</definition>
+        <argsstring>(util::Path &amp;dir)</argsstring>
+        <name>do_the_thing</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+<para>Testing function that draws a triangle. Not part of the final renderer implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>RENDERPASS</para>
+<para>RENDERPASS </para>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/renderer.h" line="29" column="1" bodyfile="libopenage/renderer/vulkan/renderer.cpp" bodystart="20" bodyend="311"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A renderer using the Vulkan API. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4956">
+        <label>openage::renderer::vulkan::VlkRenderer</label>
+        <link refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/renderer.h" line="18" column="1" bodyfile="libopenage/renderer/vulkan/renderer.h" bodystart="18" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a15177acc1d4eb10a786e021ea8eb0207" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkRenderer</scope><name>do_the_thing</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1aaf6e22301e773a2fad9130ae145578c1" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkRenderer</scope><name>instance</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1ad05869503faae400ed15e68f930e4c77" prot="private" virt="non-virtual"><scope>openage::renderer::vulkan::VlkRenderer</scope><name>surface</name></member>
+      <member refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_renderer_1a1d6c65604305a3193079ff8026a20c9f" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::VlkRenderer</scope><name>VlkRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="terrain__outline_8cpp" kind="file" language="C++">
+    <compoundname>terrain_outline.cpp</compoundname>
+    <includes local="no">cmath</includes>
+    <includes refid="math_8h" local="no">math.h</includes>
+    <includes local="no">memory</includes>
+    <includes refid="texture_8h" local="yes">../texture.h</includes>
+    <includes refid="terrain__outline_8h" local="yes">terrain_outline.h</includes>
+    <incdepgraph>
+      <node id="24872">
+        <label>list</label>
+      </node>
+      <node id="24865">
+        <label>atomic</label>
+      </node>
+      <node id="24843">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="24844" relation="include">
+        </childnode>
+        <childnode refid="24845" relation="include">
+        </childnode>
+        <childnode refid="24832" relation="include">
+        </childnode>
+        <childnode refid="24846" relation="include">
+        </childnode>
+        <childnode refid="24847" relation="include">
+        </childnode>
+        <childnode refid="24848" relation="include">
+        </childnode>
+        <childnode refid="24849" relation="include">
+        </childnode>
+        <childnode refid="24850" relation="include">
+        </childnode>
+      </node>
+      <node id="24869">
+        <label>functional</label>
+      </node>
+      <node id="24846">
+        <label>iomanip</label>
+      </node>
+      <node id="24833">
+        <label>math.h</label>
+        <link refid="math_8h"/>
+        <childnode refid="24832" relation="include">
+        </childnode>
+      </node>
+      <node id="24847">
+        <label>limits</label>
+      </node>
+      <node id="24841">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="24842" relation="include">
+        </childnode>
+        <childnode refid="24843" relation="include">
+        </childnode>
+      </node>
+      <node id="24835">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="24836" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24838" relation="include">
+        </childnode>
+        <childnode refid="24839" relation="include">
+        </childnode>
+        <childnode refid="24877" relation="include">
+        </childnode>
+        <childnode refid="24880" relation="include">
+        </childnode>
+        <childnode refid="24881" relation="include">
+        </childnode>
+        <childnode refid="24883" relation="include">
+        </childnode>
+      </node>
+      <node id="24889">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="24869" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+      </node>
+      <node id="24842">
+        <label>cstdint</label>
+      </node>
+      <node id="24878">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="24867">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="24868" relation="include">
+        </childnode>
+        <childnode refid="24869" relation="include">
+        </childnode>
+        <childnode refid="24846" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24870" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+      </node>
+      <node id="24888">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="24854" relation="include">
+        </childnode>
+      </node>
+      <node id="24832">
+        <label>cmath</label>
+      </node>
+      <node id="24856">
+        <label>stdexcept</label>
+      </node>
+      <node id="24887">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="24893">
+        <label>terrain_outline.h</label>
+        <link refid="terrain__outline_8h"/>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24877" relation="include">
+        </childnode>
+      </node>
+      <node id="24871">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="24872" relation="include">
+        </childnode>
+        <childnode refid="24873" relation="include">
+        </childnode>
+        <childnode refid="24874" relation="include">
+        </childnode>
+      </node>
+      <node id="24868">
+        <label>cstdarg</label>
+      </node>
+      <node id="24853">
+        <label>string</label>
+      </node>
+      <node id="24860">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="24842" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24861" relation="include">
+        </childnode>
+        <childnode refid="24862" relation="include">
+        </childnode>
+        <childnode refid="24864" relation="include">
+        </childnode>
+        <childnode refid="24871" relation="include">
+        </childnode>
+        <childnode refid="24874" relation="include">
+        </childnode>
+      </node>
+      <node id="24862">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="24863" relation="include">
+        </childnode>
+      </node>
+      <node id="24864">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="24865" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24849" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+        <childnode refid="24866" relation="include">
+        </childnode>
+        <childnode refid="24867" relation="include">
+        </childnode>
+      </node>
+      <node id="24831">
+        <label>libopenage/terrain/terrain_outline.cpp</label>
+        <link refid="terrain__outline_8cpp"/>
+        <childnode refid="24832" relation="include">
+        </childnode>
+        <childnode refid="24833" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24835" relation="include">
+        </childnode>
+        <childnode refid="24893" relation="include">
+        </childnode>
+      </node>
+      <node id="24848">
+        <label>ostream</label>
+      </node>
+      <node id="24884">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="24842" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+        <childnode refid="24885" relation="include">
+        </childnode>
+        <childnode refid="24886" relation="include">
+        </childnode>
+      </node>
+      <node id="24851">
+        <label>limits.h</label>
+      </node>
+      <node id="24854">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="24855" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24856" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+        <childnode refid="24860" relation="include">
+        </childnode>
+      </node>
+      <node id="24850">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="24844" relation="include">
+        </childnode>
+        <childnode refid="24851" relation="include">
+        </childnode>
+        <childnode refid="24832" relation="include">
+        </childnode>
+        <childnode refid="24852" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24854" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+      </node>
+      <node id="24879">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="24876">
+        <label>typeinfo</label>
+      </node>
+      <node id="24840">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="24837">
+        <label>vector</label>
+      </node>
+      <node id="24858">
+        <label>ciso646</label>
+      </node>
+      <node id="24880">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="24836" relation="include">
+        </childnode>
+      </node>
+      <node id="24870">
+        <label>sstream</label>
+      </node>
+      <node id="24857">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="24858" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24859" relation="include">
+        </childnode>
+      </node>
+      <node id="24890">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="24834" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+        <childnode refid="24891" relation="include">
+        </childnode>
+        <childnode refid="24884" relation="include">
+        </childnode>
+      </node>
+      <node id="24859">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="24859" relation="include">
+        </childnode>
+      </node>
+      <node id="24836">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="24866">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="24855" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+      </node>
+      <node id="24874">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="24875" relation="include">
+        </childnode>
+      </node>
+      <node id="24839">
+        <label>coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="24840" relation="include">
+        </childnode>
+        <childnode refid="24841" relation="include">
+        </childnode>
+      </node>
+      <node id="24892">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="24838">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="24891">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="24855" relation="include">
+        </childnode>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+      </node>
+      <node id="24863">
+        <label>cstdlib</label>
+      </node>
+      <node id="24855">
+        <label>iostream</label>
+      </node>
+      <node id="24881">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="24882" relation="include">
+        </childnode>
+        <childnode refid="24836" relation="include">
+        </childnode>
+      </node>
+      <node id="24886">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="24869" relation="include">
+        </childnode>
+        <childnode refid="24873" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+        <childnode refid="24887" relation="include">
+        </childnode>
+        <childnode refid="24888" relation="include">
+        </childnode>
+        <childnode refid="24889" relation="include">
+        </childnode>
+      </node>
+      <node id="24845">
+        <label>climits</label>
+      </node>
+      <node id="24873">
+        <label>mutex</label>
+      </node>
+      <node id="24883">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="24853" relation="include">
+        </childnode>
+        <childnode refid="24837" relation="include">
+        </childnode>
+        <childnode refid="24884" relation="include">
+        </childnode>
+        <childnode refid="24890" relation="include">
+        </childnode>
+        <childnode refid="24892" relation="include">
+        </childnode>
+      </node>
+      <node id="24877">
+        <label>coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="24841" relation="include">
+        </childnode>
+        <childnode refid="24878" relation="include">
+        </childnode>
+        <childnode refid="24879" relation="include">
+        </childnode>
+        <childnode refid="24850" relation="include">
+        </childnode>
+      </node>
+      <node id="24885">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="24849">
+        <label>type_traits</label>
+      </node>
+      <node id="24861">
+        <label>config.h</label>
+      </node>
+      <node id="24844">
+        <label>algorithm</label>
+      </node>
+      <node id="24852">
+        <label>cstring</label>
+      </node>
+      <node id="24834">
+        <label>memory</label>
+      </node>
+      <node id="24882">
+        <label>initializer_list</label>
+      </node>
+      <node id="24875">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="24855" relation="include">
+        </childnode>
+        <childnode refid="24876" relation="include">
+        </childnode>
+        <childnode refid="24857" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2015<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="math_8h" kindref="compound">math.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../texture.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="terrain__outline_8h" kindref="compound">terrain_outline.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" refkind="member"><highlight class="normal">std::shared_ptr&lt;Texture&gt;<sp/><ref refid="namespaceopenage_1a8f7c4c46ae7b03cd0cc8ceae47ae7139" kindref="member">square_outline</ref>(<ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref><sp/>foundation_size)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>(foundation_size.ne<sp/>+<sp/>foundation_size.se)<sp/>*<sp/>48;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>(foundation_size.ne<sp/>+<sp/>foundation_size.se)<sp/>*<sp/>24;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>image_data<sp/>=<sp/>std::make_unique&lt;uint32_t[]&gt;(width<sp/>*<sp/>height);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>width;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>height;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w_percent<sp/>=<sp/>(float)<sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">abs</ref>(i<sp/>-<sp/>(width<sp/>/<sp/>2))<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>(width<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>h_percent<sp/>=<sp/>(float)<sp/><ref refid="namespacestd_1a6af851cc1249a970adde4dc422ff824a" kindref="member">abs</ref>(j<sp/>-<sp/>(height<sp/>/<sp/>2))<sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>(height<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>draw<sp/>line<sp/>where<sp/>(w_percent<sp/>+<sp/>h_percent)<sp/>==<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>line<sp/>variable<sp/>is<sp/>in<sp/>range<sp/>0.0<sp/>to<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref><sp/>=<sp/>1.0f<sp/>-<sp/>fabs(1.0f<sp/>-<sp/>fabs(h_percent<sp/>+<sp/>w_percent));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>inten<sp/>=<sp/>255<sp/>*<sp/>pow(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>,<sp/>16<sp/>*<sp/>width/96);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>image_data[i<sp/>+<sp/>j<sp/>*<sp/>width]<sp/>=<sp/>(inten<sp/>&lt;&lt;<sp/>24)<sp/>|<sp/>(inten<sp/>&lt;&lt;<sp/>16)<sp/>|<sp/>(inten<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>inten;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Texture&gt;(width,<sp/>height,<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(image_data));</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" refkind="member"><highlight class="normal">std::shared_ptr&lt;Texture&gt;<sp/><ref refid="namespaceopenage_1ae2e68c0049a3b6c5671c8006c6a74f84" kindref="member">radial_outline</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>radius)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>additional<sp/>pixels<sp/>around<sp/>the<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>border<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>image<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width<sp/>=<sp/>border<sp/>+<sp/>radius<sp/>*<sp/>96<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>border<sp/>+<sp/>radius<sp/>*<sp/>48<sp/>*<sp/>2;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>half_width<sp/>=<sp/>width<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>half_height<sp/>=<sp/>height<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>image_data<sp/>=<sp/>std::make_unique&lt;uint32_t[]&gt;(width<sp/>*<sp/>height);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>width;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>height;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>w_percent<sp/>=<sp/>(float)<sp/>(border+i-half_width)<sp/>/<sp/>(float)<sp/>(half_width-border);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>h_percent<sp/>=<sp/>(float)<sp/>(border/2+j-half_height)<sp/>/<sp/>(float)<sp/>(half_height-border/2);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>line<sp/>drawn<sp/>where<sp/>distance<sp/>to<sp/>image<sp/>center<sp/>==<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>line<sp/>variable<sp/>is<sp/>in<sp/>range<sp/>0.0<sp/>to<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref><sp/>=<sp/>1.0f<sp/>-<sp/>fabs(1.0f<sp/>-<sp/><ref refid="namespacestd_1a8058d6b15a78f7a977945ee4d62de903" kindref="member">std::hypot</ref>(w_percent,<sp/>h_percent));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>inten<sp/>=<sp/>255<sp/>*<sp/>pow(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>,<sp/>32<sp/>*<sp/>width/96);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>image_data[i<sp/>+<sp/>j<sp/>*<sp/>width]<sp/>=<sp/>(inten<sp/>&lt;&lt;<sp/>24)<sp/>|<sp/>(inten<sp/>&lt;&lt;<sp/>16)<sp/>|<sp/>(inten<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>inten;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;Texture&gt;(width,<sp/>height,<sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(image_data));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/terrain/terrain_outline.cpp"/>
+  </compounddef>
+</doxygen>

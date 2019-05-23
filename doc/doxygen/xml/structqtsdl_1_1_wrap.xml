@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structqtsdl_1_1_wrap" kind="struct" language="C++" prot="public">
+    <compoundname>qtsdl::Wrap</compoundname>
+    <includes refid="gui__item__link_8h" local="no">gui_item_link.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename U</type>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>If the core &apos;MyClass&apos; has a shell &apos;MyClassLink&apos; then &apos;Wrap&lt;MyClass&gt;&apos; must have a &apos;using Type = MyClassLink&apos; </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4973">
+        <label>qtsdl::Wrap&lt; U &gt;</label>
+        <link refid="structqtsdl_1_1_wrap"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item_link.h" line="26" column="1" bodyfile="libopenage/gui/guisys/link/gui_item_link.h" bodystart="26" bodyend="27"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

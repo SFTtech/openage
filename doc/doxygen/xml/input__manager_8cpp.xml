@@ -1,0 +1,817 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="input__manager_8cpp" kind="file" language="C++">
+    <compoundname>input_manager.cpp</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">array</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="input_2action_8h" local="yes">action.h</includes>
+    <includes refid="input__manager_8h" local="yes">input_manager.h</includes>
+    <includes refid="text__to__event_8h" local="yes">text_to_event.h</includes>
+    <incdepgraph>
+      <node id="15681">
+        <label>list</label>
+      </node>
+      <node id="15670">
+        <label>atomic</label>
+      </node>
+      <node id="15688">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="15653" relation="include">
+        </childnode>
+        <childnode refid="15689" relation="include">
+        </childnode>
+        <childnode refid="15690" relation="include">
+        </childnode>
+        <childnode refid="15677" relation="include">
+        </childnode>
+        <childnode refid="15691" relation="include">
+        </childnode>
+        <childnode refid="15692" relation="include">
+        </childnode>
+        <childnode refid="15672" relation="include">
+        </childnode>
+        <childnode refid="15693" relation="include">
+        </childnode>
+      </node>
+      <node id="15677">
+        <label>iomanip</label>
+      </node>
+      <node id="15676">
+        <label>functional</label>
+      </node>
+      <node id="15691">
+        <label>limits</label>
+      </node>
+      <node id="15687">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="15665" relation="include">
+        </childnode>
+        <childnode refid="15688" relation="include">
+        </childnode>
+      </node>
+      <node id="15701">
+        <label>input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="15676" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15700" relation="include">
+        </childnode>
+        <childnode refid="15702" relation="include">
+        </childnode>
+        <childnode refid="15683" relation="include">
+        </childnode>
+        <childnode refid="15698" relation="include">
+        </childnode>
+        <childnode refid="15703" relation="include">
+        </childnode>
+      </node>
+      <node id="15665">
+        <label>cstdint</label>
+      </node>
+      <node id="15674">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15675" relation="include">
+        </childnode>
+        <childnode refid="15676" relation="include">
+        </childnode>
+        <childnode refid="15677" relation="include">
+        </childnode>
+        <childnode refid="15671" relation="include">
+        </childnode>
+        <childnode refid="15678" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15679" relation="include">
+        </childnode>
+      </node>
+      <node id="15690">
+        <label>cmath</label>
+      </node>
+      <node id="15697">
+        <label>stdexcept</label>
+      </node>
+      <node id="15680">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15681" relation="include">
+        </childnode>
+        <childnode refid="15682" relation="include">
+        </childnode>
+        <childnode refid="15656" relation="include">
+        </childnode>
+      </node>
+      <node id="15675">
+        <label>cstdarg</label>
+      </node>
+      <node id="15662">
+        <label>string</label>
+      </node>
+      <node id="15664">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15665" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15666" relation="include">
+        </childnode>
+        <childnode refid="15667" relation="include">
+        </childnode>
+        <childnode refid="15669" relation="include">
+        </childnode>
+        <childnode refid="15680" relation="include">
+        </childnode>
+        <childnode refid="15656" relation="include">
+        </childnode>
+      </node>
+      <node id="15667">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15668" relation="include">
+        </childnode>
+      </node>
+      <node id="15669">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15670" relation="include">
+        </childnode>
+        <childnode refid="15671" relation="include">
+        </childnode>
+        <childnode refid="15672" relation="include">
+        </childnode>
+        <childnode refid="15660" relation="include">
+        </childnode>
+        <childnode refid="15673" relation="include">
+        </childnode>
+        <childnode refid="15674" relation="include">
+        </childnode>
+      </node>
+      <node id="15699">
+        <label>unordered_set</label>
+      </node>
+      <node id="15702">
+        <label>../handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="15700" relation="include">
+        </childnode>
+        <childnode refid="15685" relation="include">
+        </childnode>
+      </node>
+      <node id="15692">
+        <label>ostream</label>
+      </node>
+      <node id="15694">
+        <label>limits.h</label>
+      </node>
+      <node id="15696">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15658" relation="include">
+        </childnode>
+        <childnode refid="15671" relation="include">
+        </childnode>
+        <childnode refid="15697" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15660" relation="include">
+        </childnode>
+        <childnode refid="15664" relation="include">
+        </childnode>
+      </node>
+      <node id="15693">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="15653" relation="include">
+        </childnode>
+        <childnode refid="15694" relation="include">
+        </childnode>
+        <childnode refid="15690" relation="include">
+        </childnode>
+        <childnode refid="15695" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15679" relation="include">
+        </childnode>
+        <childnode refid="15671" relation="include">
+        </childnode>
+        <childnode refid="15696" relation="include">
+        </childnode>
+        <childnode refid="15660" relation="include">
+        </childnode>
+      </node>
+      <node id="15703">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="15676" relation="include">
+        </childnode>
+        <childnode refid="15704" relation="include">
+        </childnode>
+        <childnode refid="15684" relation="include">
+        </childnode>
+        <childnode refid="15679" relation="include">
+        </childnode>
+        <childnode refid="15683" relation="include">
+        </childnode>
+        <childnode refid="15698" relation="include">
+        </childnode>
+      </node>
+      <node id="15700">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="15659">
+        <label>typeinfo</label>
+      </node>
+      <node id="15686">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="15704">
+        <label>stack</label>
+      </node>
+      <node id="15679">
+        <label>vector</label>
+      </node>
+      <node id="15655">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="15656" relation="include">
+        </childnode>
+        <childnode refid="15664" relation="include">
+        </childnode>
+      </node>
+      <node id="15661">
+        <label>ciso646</label>
+      </node>
+      <node id="15683">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="15676" relation="include">
+        </childnode>
+        <childnode refid="15684" relation="include">
+        </childnode>
+        <childnode refid="15679" relation="include">
+        </childnode>
+        <childnode refid="15685" relation="include">
+        </childnode>
+        <childnode refid="15698" relation="include">
+        </childnode>
+      </node>
+      <node id="15654">
+        <label>array</label>
+      </node>
+      <node id="15678">
+        <label>sstream</label>
+      </node>
+      <node id="15660">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15661" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15663" relation="include">
+        </childnode>
+      </node>
+      <node id="15663">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15663" relation="include">
+        </childnode>
+      </node>
+      <node id="15673">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15658" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+      </node>
+      <node id="15656">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15657" relation="include">
+        </childnode>
+      </node>
+      <node id="15685">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="15686" relation="include">
+        </childnode>
+        <childnode refid="15687" relation="include">
+        </childnode>
+      </node>
+      <node id="15668">
+        <label>cstdlib</label>
+      </node>
+      <node id="15658">
+        <label>iostream</label>
+      </node>
+      <node id="15684">
+        <label>unordered_map</label>
+      </node>
+      <node id="15689">
+        <label>climits</label>
+      </node>
+      <node id="15682">
+        <label>mutex</label>
+      </node>
+      <node id="15698">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="15684" relation="include">
+        </childnode>
+        <childnode refid="15699" relation="include">
+        </childnode>
+        <childnode refid="15679" relation="include">
+        </childnode>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15700" relation="include">
+        </childnode>
+      </node>
+      <node id="15672">
+        <label>type_traits</label>
+      </node>
+      <node id="15666">
+        <label>config.h</label>
+      </node>
+      <node id="15652">
+        <label>libopenage/input/input_manager.cpp</label>
+        <link refid="input__manager_8cpp"/>
+        <childnode refid="15653" relation="include">
+        </childnode>
+        <childnode refid="15654" relation="include">
+        </childnode>
+        <childnode refid="15655" relation="include">
+        </childnode>
+        <childnode refid="15683" relation="include">
+        </childnode>
+        <childnode refid="15701" relation="include">
+        </childnode>
+        <childnode refid="15705" relation="include">
+        </childnode>
+      </node>
+      <node id="15653">
+        <label>algorithm</label>
+      </node>
+      <node id="15695">
+        <label>cstring</label>
+      </node>
+      <node id="15671">
+        <label>memory</label>
+      </node>
+      <node id="15657">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15658" relation="include">
+        </childnode>
+        <childnode refid="15659" relation="include">
+        </childnode>
+        <childnode refid="15660" relation="include">
+        </childnode>
+      </node>
+      <node id="15705">
+        <label>text_to_event.h</label>
+        <link refid="text__to__event_8h"/>
+        <childnode refid="15662" relation="include">
+        </childnode>
+        <childnode refid="15698" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1input">openage::input</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input_2action_8h" kindref="compound">action.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="input__manager_8h" kindref="compound">input_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="text__to__event_8h" kindref="compound">text_to_event.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">input<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classopenage_1_1input_1_1_input_manager_1a00f4f3f2347c90e118d83a6204646810" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_input_manager_1a00f4f3f2347c90e118d83a6204646810" kindref="member">InputManager::InputManager</ref>(<ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">ActionManager</ref><sp/>*action_manager)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>action_manager{<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>global_context{</highlight><highlight class="keyword">this</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>relative_mode{</highlight><highlight class="keyword">false</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;global_context.register_to(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">std::string<sp/>mod_set_string(<ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(it)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5adfbfc9cc7a235560f04cb1a5faf1ec3e" kindref="member">modifier::ALT</ref>:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ALT<sp/>+<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a32f7eee2581c72a5561c21df3013a89a" kindref="member">modifier::CTRL</ref>:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;CTRL<sp/>+<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a46afff2b309b8b16a46d812172a9235c" kindref="member">modifier::SHIFT</ref>:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;SHIFT<sp/>+<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">std::string<sp/>event_as_string(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Event&amp;<sp/>event)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>event.as_utf8().empty())<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mod_set_string(event.mod)<sp/>+<sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal">.as_utf8();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.cc.eclass<sp/>==<sp/><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc" kindref="member">event_class::MOUSE_WHEEL</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event.cc.code<sp/>==<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mod_set_string(event.mod)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;Wheel<sp/>down&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mod_set_string(event.mod)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;Wheel<sp/>up&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mod_set_string(event.mod)<sp/>+<sp/>SDL_GetKeyName(event.cc.code);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>ns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1input_1_1_input_manager_1a368dbccb090d17ca142b1bfde0763011" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a368dbccb090d17ca142b1bfde0763011" kindref="member">InputManager::get_bind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;action_str)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/>action<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a743f9d44332f84adb3eca195732ed09d" kindref="member">get</ref>(action_str);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a252869fbc85be3b450eb290794352ba4" kindref="member">is</ref>(</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">,<sp/>action))<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.find(action);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(it-&gt;second.cc.eclass)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a3421ce503e9731d435babad896b7aef8" kindref="member">event_class::MOUSE_BUTTON</ref><sp/>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" kindref="member">mouse_bind_to_string</ref>(it-&gt;second);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a5f7856b6bcb3430acde17c87c700a4bc" kindref="member">event_class::MOUSE_WHEEL</ref><sp/>:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ae8d78a246ac5d178588ef79b9e380b89" kindref="member">wheel_bind_to_string</ref>(it-&gt;second);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f44a9836b240db76767fe04584a36b4" kindref="member">key_bind_to_string</ref>(it-&gt;second);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classopenage_1_1input_1_1_input_manager_1af93e6ca8bded1892c1c9d83332468e2d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1af93e6ca8bded1892c1c9d83332468e2d" kindref="member">InputManager::set_bind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;bind_str,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>action_str)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1input_1afc78129c41b8dce77d2b9c52d7619d74" kindref="member">action_t</ref><sp/>action<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a743f9d44332f84adb3eca195732ed09d" kindref="member">get</ref>(action_str);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a252869fbc85be3b450eb290794352ba4" kindref="member">is</ref>(</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">,<sp/>action))<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1a910f68a5c426735a2b353eefa6229348" kindref="member">text_to_event</ref>(bind_str);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.find(action);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.erase(it);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>.emplace(std::make_pair(action,<sp/>ev));</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>error)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1input_1_1_input_manager_1a2f44a9836b240db76767fe04584a36b4" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2f44a9836b240db76767fe04584a36b4" kindref="member">InputManager::key_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>key_str<sp/>=<sp/>std::string(SDL_GetKeyName(ev.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" kindref="member">code</ref>));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>ev.<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.end();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ev.<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.find(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5adfbfc9cc7a235560f04cb1a5faf1ec3e" kindref="member">modifier::ALT</ref>)<sp/>!=<sp/>end)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Alt<sp/>&quot;</highlight><highlight class="normal">+key_str;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ev.<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.find(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a46afff2b309b8b16a46d812172a9235c" kindref="member">modifier::SHIFT</ref>)<sp/>!=<sp/>end)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Shift<sp/>&quot;</highlight><highlight class="normal">+key_str;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ev.<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>.find(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5a32f7eee2581c72a5561c21df3013a89a" kindref="member">modifier::CTRL</ref>)<sp/>!=<sp/>end)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Ctrl<sp/>&quot;</highlight><highlight class="normal">+key_str;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>key_str;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a0ba02d8e086457a659747b154facab7a" kindref="member">InputManager::mouse_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;MOUSE<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacestd_1a26aa0f4be3a77ac5cc3ce0cabb545042" kindref="member">std::to_string</ref>(ev.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" kindref="member">code</ref>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classopenage_1_1input_1_1_input_manager_1ae8d78a246ac5d178588ef79b9e380b89" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ae8d78a246ac5d178588ef79b9e380b89" kindref="member">InputManager::wheel_bind_to_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;WHEEL<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ev.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a48b950f4719c5452ce1feb6f48b83495" kindref="member">code</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>base<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;UP&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>-1:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>base<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;DOWN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classopenage_1_1input_1_1_input_manager_1a06819b1b5f717d9fbf45bc098e7fd457" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>&amp;<ref refid="classopenage_1_1input_1_1_input_manager_1a06819b1b5f717d9fbf45bc098e7fd457" kindref="member">InputManager::get_global_context</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" kindref="member">global_context</ref>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>&amp;<ref refid="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" kindref="member">InputManager::get_top_context</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>global<sp/>input<sp/>context</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>no<sp/>override<sp/>is<sp/>pushed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" kindref="member">global_context</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.back();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classopenage_1_1input_1_1_input_manager_1a2ece2b2ad4a08c15fb00a39b0f553d3c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2ece2b2ad4a08c15fb00a39b0f553d3c" kindref="member">InputManager::push_context</ref>(<ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>*context)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>push<sp/>the<sp/>context<sp/>to<sp/>the<sp/>top</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.push_back(context);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>context-&gt;<ref refid="classopenage_1_1input_1_1_input_context_1a0a5d3374a164faf57483d7555f0b84b5" kindref="member">register_to</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="classopenage_1_1input_1_1_input_manager_1a469024c2b2ac7769e0fa578c73fde160" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a469024c2b2ac7769e0fa578c73fde160" kindref="member">InputManager::remove_context</ref>(<ref refid="classopenage_1_1input_1_1_input_context" kindref="compound">InputContext</ref><sp/>*context)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.begin();<sp/>it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.end();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((*it)<sp/>==<sp/>context)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.erase(it);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;<ref refid="classopenage_1_1input_1_1_input_context_1a12ae83daa8c6bfefef320a07377a9246" kindref="member">unregister</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" kindref="member">InputManager::ignored</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter<sp/>duplicate<sp/>utf8<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>these<sp/>are<sp/>ignored<sp/>unless<sp/>the<sp/>top<sp/>mode<sp/>enables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>utf8<sp/>mode,<sp/>in<sp/>which<sp/>case<sp/>regular<sp/>char<sp/>codes<sp/>are<sp/>ignored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((e.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a164160fc35b66ea9f4bf6ba5211c48e5" kindref="member">has_class</ref>(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a027acd3aa6b1dd7f26119d3cf0f9a063" kindref="member">event_class::CHAR</ref>)<sp/>||</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a164160fc35b66ea9f4bf6ba5211c48e5" kindref="member">has_class</ref>(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1" kindref="member">event_class::UTF8</ref>))<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a9ccb8754431247dd05c56c445bda15bc" kindref="member">get_top_context</ref>().<ref refid="classopenage_1_1input_1_1_input_context_1a190c561c895ffc95c2f3092e47509737" kindref="member">utf8_mode</ref><sp/>!=<sp/>e.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>.<ref refid="classopenage_1_1input_1_1_class_code_1a164160fc35b66ea9f4bf6ba5211c48e5" kindref="member">has_class</ref>(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849aeb7ee0fb585e2ac64fdc086466c474b1" kindref="member">event_class::UTF8</ref>));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">InputManager::trigger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" kindref="member">ignored</ref>(e))<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>arg<sp/>passed<sp/>to<sp/>receivers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1input_1_1action__arg__t" kindref="compound">action_arg_t</ref><sp/>arg{e,<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" kindref="member">mouse_position</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" kindref="member">mouse_motion</ref>,<sp/>{}};</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e<sp/>==<sp/>it.second)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arg.hints.emplace_back(it.first);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>context<sp/>list<sp/>on<sp/>top<sp/>of<sp/>the<sp/>stack<sp/>(most<sp/>recent<sp/>bound<sp/>first)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.rbegin();<sp/>it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ad194b272e597069d93b43e0568562a4a" kindref="member">contexts</ref>.rend();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((*it)-&gt;execute_if_bound(arg))<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>no<sp/>local<sp/>keybinds<sp/>were<sp/>bound,<sp/>check<sp/>the<sp/>global<sp/>keybinds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1acc8f950721bd51f8d211f538cd6678eb" kindref="member">global_context</ref>.<ref refid="classopenage_1_1input_1_1_input_context_1a97804df5309a2fd7773b02568c8ca461" kindref="member">execute_if_bound</ref>(arg);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">InputManager::set_state</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>&amp;ev,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_down)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a564ccab7ee30da3ebaf97beb1fa2fcc0" kindref="member">ignored</ref>(ev))<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>key<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a928b8699a9d8af1fda4c14f02c97bef6" kindref="member">keymod</ref><sp/>=<sp/>ev.<ref refid="classopenage_1_1input_1_1_event_1abf335431803174eb2f1d5bc90970dceb" kindref="member">mod</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_down<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" kindref="member">states</ref>[ev.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>];</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" kindref="member">states</ref>[ev.<ref refid="classopenage_1_1input_1_1_event_1af6758c0f24529defde0e1a4788c86ff7" kindref="member">cc</ref>]<sp/>=<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>key<sp/>going<sp/>from<sp/>pressed<sp/>to<sp/>unpressed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>automatically<sp/>trigger<sp/>event<sp/>handling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_down<sp/>&amp;&amp;<sp/>!<ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(ev);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="classopenage_1_1input_1_1_input_manager_1a4fd1b0eb5adbdb5a04ebb22cd01a42e2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a4fd1b0eb5adbdb5a04ebb22cd01a42e2" kindref="member">InputManager::set_mouse</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>last_position<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" kindref="member">mouse_position</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" kindref="member">mouse_position</ref><sp/>=<sp/><ref refid="structopenage_1_1coord_1_1input" kindref="compound">coord::input</ref>{<ref refid="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" kindref="member">coord::pixel_t</ref>{x},<sp/><ref refid="namespaceopenage_1_1coord_1abc18a61f4e6b5729e9025de5228e36ac" kindref="member">coord::pixel_t</ref>{y}};</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" kindref="member">mouse_motion</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1bd243d2391930be3db6bf5aa21d55f1" kindref="member">mouse_position</ref><sp/>-<sp/>last_position;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="classopenage_1_1input_1_1_input_manager_1aa51d0f61b2b3d3859067fa75e187d39d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aa51d0f61b2b3d3859067fa75e187d39d" kindref="member">InputManager::set_motion</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" kindref="member">mouse_motion</ref>.x<sp/>=<sp/>x;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1accb3a89fd672e0821f2c71330396f12a" kindref="member">mouse_motion</ref>.y<sp/>=<sp/>y;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" kindref="member">InputManager::set_relative</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>mode)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" kindref="member">relative_mode</ref><sp/>==<sp/>mode)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>change<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" kindref="member">relative_mode</ref><sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" kindref="member">relative_mode</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_SetRelativeMouseMode(SDL_TRUE);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_SetRelativeMouseMode(SDL_FALSE);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="classopenage_1_1input_1_1_input_manager_1aee8d9369313ee81d552ea4fe97f6165c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1aee8d9369313ee81d552ea4fe97f6165c" kindref="member">InputManager::is_mouse_at_edge</ref>(<ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7a" kindref="member">Edge</ref><sp/>edge,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>window_size)<sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_GetMouseState(&amp;x,<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Border<sp/>width<sp/>to<sp/>consider<sp/>screen<sp/>edges<sp/>for<sp/>scrolling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>AoE<sp/>II<sp/>appears<sp/>to<sp/>be<sp/>approx<sp/>10px.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>make<sp/>configurable<sp/>through<sp/>cvar.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>edge_offset<sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aa684d325a7303f52e64011467ff5c5758" kindref="member">Edge::LEFT</ref><sp/>&amp;&amp;<sp/>x<sp/>&lt;=<sp/>edge_offset)<sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aa21507b40c80068eda19865706fdc2403" kindref="member">Edge::RIGHT</ref><sp/>&amp;&amp;<sp/>x<sp/>&gt;=<sp/>window_size<sp/>-<sp/>edge_offset<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aafbaedde498cdead4f2780217646e9ba1" kindref="member">Edge::UP</ref><sp/>&amp;&amp;<sp/>y<sp/>&lt;=<sp/>edge_offset)<sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge<sp/>==<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a349bf2aa6ba3a9aa0c7d76119ddd6c7aac4e0e4e3118472beeb2ae75827450f1f" kindref="member">Edge::DOWN</ref><sp/>&amp;&amp;<sp/>y<sp/>&gt;=<sp/>window_size<sp/>-<sp/>edge_offset<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">InputManager::is_down</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref><sp/>&amp;cc)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" kindref="member">states</ref>.find(cc);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a187c1ea8c13125527e02d9c25f716bea" kindref="member">states</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="classopenage_1_1input_1_1_input_manager_1a4b46e70d0aeb78687f2cc12d331f4088" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">InputManager::is_down</ref>(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849" kindref="member">event_class</ref><sp/>ec,<sp/><ref refid="namespaceopenage_1_1input_1aae287ba8846c11563c4b17a98e220b54" kindref="member">code_t</ref><sp/>code)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>(<ref refid="classopenage_1_1input_1_1_class_code" kindref="compound">ClassCode</ref>(ec,<sp/>code));</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="classopenage_1_1input_1_1_input_manager_1aaadc3f3ef245e361c4179a082b22d690" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">InputManager::is_down</ref>(SDL_Keycode<sp/>k)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a60531d6140e41fbff6d48d6811077aab" kindref="member">is_down</ref>(<ref refid="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" kindref="member">sdl_key</ref>(k).cc);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="classopenage_1_1input_1_1_input_manager_1a03c93e707ca0ace2d8d6d3621f09ee52" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a03c93e707ca0ace2d8d6d3621f09ee52" kindref="member">InputManager::is_mod_down</ref>(<ref refid="namespaceopenage_1_1input_1acb13cdff06ccc41195e6e020d7d185d5" kindref="member">modifier</ref><sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a928b8699a9d8af1fda4c14f02c97bef6" kindref="member">keymod</ref>.count(mod)<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="classopenage_1_1input_1_1_input_manager_1a3f1fe3ab63277870db07fb817a91696b" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1_1input_1a35fb62561b5dee35b84bc9a228b04ab1" kindref="member">modset_t</ref><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a3f1fe3ab63277870db07fb817a91696b" kindref="member">InputManager::get_mod</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>SDL_Keymod<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref><sp/>=<sp/>SDL_GetModState();</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1input_1a440ec4f21ee7c8cf0a64ecb96e4fca91" kindref="member">sdl_mod</ref>(<ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classopenage_1_1input_1_1_input_manager_1a2e46dfc175d1fd66e92a8644d994e6ab" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1input_1_1_input_manager_1a2e46dfc175d1fd66e92a8644d994e6ab" kindref="member">InputManager::on_input</ref>(SDL_Event<sp/>*e)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>top<sp/>level<sp/>input<sp/>handler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(e-&gt;type)<sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_KEYUP:<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_Keycode<sp/>code<sp/>=<sp/>reinterpret_cast&lt;SDL_KeyboardEvent<sp/>*&gt;(e)-&gt;keysym.sym;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" kindref="member">sdl_key</ref>(code,<sp/>SDL_GetModState());</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">set_state</ref>(ev,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_KEYUP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_KEYDOWN:<sp/>{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SDL_Keycode<sp/>code<sp/>=<sp/>reinterpret_cast&lt;SDL_KeyboardEvent<sp/>*&gt;(e)-&gt;keysym.sym;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">set_state</ref>(<ref refid="namespaceopenage_1_1input_1aad63294ea2a94dc1723869be3c8d1670" kindref="member">sdl_key</ref>(code,<sp/>SDL_GetModState()),<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_KEYDOWN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_TEXTINPUT:<sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(<ref refid="namespaceopenage_1_1input_1a66c182e7a6c17284f918dd401d6fded3" kindref="member">utf8</ref>(e-&gt;text.text));</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_TEXTINPUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEBUTTONUP:<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" kindref="member">set_relative</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(<ref refid="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" kindref="member">sdl_mouse_up_down</ref>(e-&gt;button.button,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>SDL_GetModState()));</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" kindref="member">sdl_mouse</ref>(e-&gt;button.button,<sp/>SDL_GetModState());</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">set_state</ref>(ev,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_MOUSEBUTTONUP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEBUTTONDOWN:<sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>set<sp/>which<sp/>buttons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;button.button<sp/>==<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1abedf603b902412de66c56b0eb8aed4da" kindref="member">set_relative</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(<ref refid="namespaceopenage_1_1input_1ad3082ad89eabf77fdae7da9f72f26910" kindref="member">sdl_mouse_up_down</ref>(e-&gt;button.button,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>SDL_GetModState()));</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1abae2435eecb13af4c06e9449299ceb41" kindref="member">sdl_mouse</ref>(e-&gt;button.button,<sp/>SDL_GetModState());</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa49cac4e6c67e66aecd9c9deac412ffb" kindref="member">set_state</ref>(ev,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_MOUSEBUTTONDOWN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEMOTION:<sp/>{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1ee3af7567756b2a65a7da5d51d7b682" kindref="member">relative_mode</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa51d0f61b2b3d3859067fa75e187d39d" kindref="member">set_motion</ref>(e-&gt;motion.xrel,<sp/>e-&gt;motion.yrel);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a4fd1b0eb5adbdb5a04ebb22cd01a42e2" kindref="member">set_mouse</ref>(e-&gt;button.x,<sp/>e-&gt;button.y);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>must<sp/>occur<sp/>after<sp/>setting<sp/>mouse<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev(<ref refid="namespaceopenage_1_1input_1a278a7af94e412aa285e58d870c64a849a6a52684199a74ef0bd3415fe6a76da4f" kindref="member">event_class::MOUSE_MOTION</ref>,<sp/>0,<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a3f1fe3ab63277870db07fb817a91696b" kindref="member">get_mod</ref>());</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(ev);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_MOUSEMOTION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SDL_MOUSEWHEEL:<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1input_1_1_event" kindref="compound">Event</ref><sp/>ev<sp/>=<sp/><ref refid="namespaceopenage_1_1input_1ab6f0345d20c07a72034dc85a73d1cdf1" kindref="member">sdl_wheel</ref>(e-&gt;wheel.y,<sp/>SDL_GetModState());</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1ac8c7b7b7db15158d7b1cdab7ee41bd1d" kindref="member">trigger</ref>(ev);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>case<sp/>SDL_MOUSEWHEEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>switch<sp/>(e-&gt;type)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1input_1_1_input_manager_1ac5b6bbe740edcca81b63996a22472a53" kindref="member">InputManager::active_binds</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;action_t,<sp/>action_func_t&gt;<sp/>&amp;ctx_actions)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>result;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>this<sp/>only<sp/>checks<sp/>the<sp/>by_type<sp/>mappings,<sp/>the<sp/>others<sp/>are<sp/>missing!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;action<sp/>:<sp/>ctx_actions)<sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>keyboard_key;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;key<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a2f7d393c9007363a3bbbb8b1b10f4193" kindref="member">keys</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key.first<sp/>==<sp/>action.first)<sp/>{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keyboard_key<sp/>=<sp/>event_as_string(key.second);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>only<sp/>possible<sp/>if<sp/>the<sp/>action<sp/>is<sp/>registered,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>then<sp/>this-&gt;input_manager<sp/>!=<sp/>nullptr.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>try<sp/>to<sp/>purge<sp/>the<sp/>action<sp/>manager<sp/>access<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>get_name<sp/>takes<sp/>O(n)<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>action_type_str<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" kindref="member">get_action_manager</ref>()-&gt;<ref refid="classopenage_1_1input_1_1_action_manager_1a44e53d5edb2092424df17b709b743358" kindref="member">get_name</ref>(action.first);</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(keyboard_key<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>action_type_str);</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412" refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1input_1_1_action_manager" kindref="compound">ActionManager</ref><sp/>*<ref refid="classopenage_1_1input_1_1_input_manager_1aa0777d6b8ecc513c2a90ae8273d1938c" kindref="member">InputManager::get_action_manager</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1input_1_1_input_manager_1a1da9c726ba40f3d3ee10324fce8a2fb0" kindref="member">action_manager</ref>;</highlight></codeline>
+<codeline lineno="414"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::input</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/input/input_manager.cpp"/>
+  </compounddef>
+</doxygen>

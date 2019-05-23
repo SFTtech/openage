@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_class" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::event::EventClass</compoundname>
+    <derivedcompoundref refid="classopenage_1_1event_1_1_dependency_event_class" prot="public" virt="non-virtual">openage::event::DependencyEventClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1_dependency_immediately_event_class" prot="public" virt="non-virtual">openage::event::DependencyImmediatelyEventClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1_once_event_class" prot="public" virt="non-virtual">openage::event::OnceEventClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1_repeat_event_class" prot="public" virt="non-virtual">openage::event::RepeatEventClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class" prot="public" virt="non-virtual">openage::event::tests::EventTypeTestClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1tests_1_1_test_event_class" prot="public" virt="non-virtual">openage::event::tests::TestEventClass</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two" prot="public" virt="non-virtual">openage::event::tests::TestEventClassTwo</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1event_1_1_trigger_event_class" prot="public" virt="non-virtual">openage::event::TriggerEventClass</derivedcompoundref>
+    <includes refid="eventclass_8h" local="no">eventclass.h</includes>
+    <innerclass refid="classopenage_1_1event_1_1_event_class_1_1param__map" prot="public">openage::event::EventClass::param_map</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>trigger_type</name>
+        <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a46e158d5ce615a4f0057515b9a242188" prot="public">
+          <name>DEPENDENCY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Such events are emitted when a modification is done on a target. The execution time is calculated from the modification time and custom code. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a66ce7f5b73a0a164407078b598f45e09" prot="public">
+          <name>DEPENDENCY_IMMEDIATELY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Like DEPENDENCY, but does not use a recalculated time, instead uses the change-time only. Behaves exactly like DEPENDENCY, if the DEPENDENCY-event is in the same execution frame. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717ab8cd801b107a9a8f62c5b61ea5646620" prot="public">
+          <name>TRIGGER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Will be executed when the target trigger() function is called. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717a5be68175be14dfaa080165456c2e9555" prot="public">
+          <name>REPEAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Will be triggered unconditionally at the set time, &quot;at&quot; is the time that was set as return of predict_invoke_time. This event will be issued again until predict_invoke_time returns <ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>. To execute Something only once (i.E. triggered somewhere from the logic and not based on time, use ONCE </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717aa32d16355630f112473d1ae254519c24" prot="public">
+          <name>ONCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Will be triggered only once, but until it is triggered the time, when this should happen can be recalculated again and again using the predict_invoke_time method. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Available types for the event class: These decide when an event of this event class will be executed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="32" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="32" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" kindref="member">trigger_type</ref></type>
+        <definition>const trigger_type openage::event::EventClass::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The event type this event class represents. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="135" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::event::EventClass::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>String identifier for this event class. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="186" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventClass::EventClass</definition>
+        <argsstring>(const std::string &amp;name, const trigger_type &amp;type)</argsstring>
+        <name>EventClass</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" kindref="member">trigger_type</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor to be constructed with the unique identifier </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="128" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::event::EventClass::~EventClass</definition>
+        <argsstring>()=default</argsstring>
+        <name>~EventClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="130" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; openage::event::EventClass::id</definition>
+        <argsstring>()</argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return a unique identifier. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="140" column="1" bodyfile="libopenage/event/eventclass.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::event::EventClass::setup_event</definition>
+        <argsstring>(const std::shared_ptr&lt; Event &gt; &amp;event, const std::shared_ptr&lt; State &gt; &amp;state)=0</argsstring>
+        <name>setup_event</name>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a096aec2cf4cef743c6abc12e4a99240f">setup_event</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1a40a7e1ee67df51d9bc9ffb297b13d9dd">setup_event</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a031ec32c576b33298fdb75dee692de8b">setup_event</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two_1a1d8b2054cc30b622db08b26bc12e9b46">setup_event</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1acadce4dd71ef75305e148c0a98b42163">setup_event</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a3f85b39bd4cd0b45ec66c681f5a3553e">setup_event</reimplementedby>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event" kindref="compound">Event</ref> &gt; &amp;</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called for each event that is created for this <ref refid="classopenage_1_1event_1_1_event_class" kindref="compound">EventClass</ref>. The job of the setup function is to add all dependencies with other event targets found in state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="147" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::event::EventClass::invoke</definition>
+        <argsstring>(Loop &amp;loop, const std::shared_ptr&lt; EventTarget &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;state, const curve::time_t &amp;time, const param_map &amp;params)=0</argsstring>
+        <name>invoke</name>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a215ab77e1d0c301cf5ee7c79da4ffd4a">invoke</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1a6d3145302d7a6910d0e8e30d42380cc5">invoke</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1aa56d9723c3d16a001d71bca91fd08c70">invoke</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two_1af47dbc011710ba5e6986493b63dead0e">invoke</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1ac71424a13be1323a33f6f538a4d8a3e7">invoke</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a0fa6b84fb64f30f1edd75d465876a2b3">invoke</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref> &amp;</type>
+          <declname>loop</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map" kindref="compound">param_map</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method implements the effects of the event. It will be called at the time that was determined by <computeroutput>predict_invoke_time</computeroutput>.</para>
+<para>Called from the <ref refid="classopenage_1_1event_1_1_loop" kindref="compound">Loop</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="156" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref></type>
+        <definition>virtual curve::time_t openage::event::EventClass::predict_invoke_time</definition>
+        <argsstring>(const std::shared_ptr&lt; EventTarget &gt; &amp;target, const std::shared_ptr&lt; State &gt; &amp;state, const curve::time_t &amp;at)=0</argsstring>
+        <name>predict_invoke_time</name>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall_1a3e60c155c12ea17e0c149b3eca114f70">predict_invoke_time</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_1aa7b77dcf1f1c8665b824c670aab81f88">predict_invoke_time</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two_1aaaeabcec80a4ee92ce170b3ff509afea">predict_invoke_time</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class_1a5321e145f5eea940554f18a71aa1b639">predict_invoke_time</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel_1a81a50b0cb9bf2c5148a355f02829c992">predict_invoke_time</reimplementedby>
+        <reimplementedby refid="classopenage_1_1event_1_1demo_1_1_reset_game_1a33a2a9a5f92a673b2cef91dac21eab78">predict_invoke_time</reimplementedby>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_event_target" kindref="compound">EventTarget</ref> &gt; &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1event_1_1_state" kindref="compound">State</ref> &gt; &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceopenage_1_1curve_1af909cf1de79df6389fd9431b7424b48a" kindref="member">curve::time_t</ref> &amp;</type>
+          <declname>at</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Is called to calculate the execution time for an event of this eventclass. This is called whenever one of the set up dependencies was changed, or when a REPEAT event was executed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the target the event was created for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the state this shall work on </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>at</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the time when the change happened, from there on it shall be calculated onwards</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If the event is obsolete, return &lt;time_t&gt;<ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">min()</ref>.</para>
+<para>If the time is lower than the previous time, then dependencies may not be resolved perfectly anymore (if other events have already been calculated before that). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="178" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A eventclass has to be implemented for every type of event that exists. It determines what the event means and how it is handled. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1431">
+        <label>openage::event::demo::BallReflectPanel</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_panel"/>
+        <childnode refid="1430" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1439">
+        <label>openage::event::tests::TestEventClassTwo</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_event_class_two"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1429">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+      <node id="1433">
+        <label>openage::event::DependencyImmediatelyEventClass</label>
+        <link refid="classopenage_1_1event_1_1_dependency_immediately_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1436">
+        <label>openage::event::RepeatEventClass</label>
+        <link refid="classopenage_1_1event_1_1_repeat_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1438">
+        <label>openage::event::tests::TestEventClass</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_test_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1434">
+        <label>openage::event::OnceEventClass</label>
+        <link refid="classopenage_1_1event_1_1_once_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1435">
+        <label>openage::event::demo::ResetGame</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_reset_game"/>
+        <childnode refid="1434" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1440">
+        <label>openage::event::TriggerEventClass</label>
+        <link refid="classopenage_1_1event_1_1_trigger_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1430">
+        <label>openage::event::DependencyEventClass</label>
+        <link refid="classopenage_1_1event_1_1_dependency_event_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1432">
+        <label>openage::event::demo::BallReflectWall</label>
+        <link refid="classopenage_1_1event_1_1demo_1_1_ball_reflect_wall"/>
+        <childnode refid="1430" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1437">
+        <label>openage::event::tests::EventTypeTestClass</label>
+        <link refid="classopenage_1_1event_1_1tests_1_1_event_type_test_class"/>
+        <childnode refid="1429" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1441">
+        <label>openage::event::EventClass</label>
+        <link refid="classopenage_1_1event_1_1_event_class"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventclass.h" line="26" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="26" bodyend="187"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_class_1a449b3d84bef5678e9311af50be21514e" prot="private" virt="non-virtual"><scope>openage::event::EventClass</scope><name>_id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1ab0c2bcad30599b017efabe0078d8f1f8" prot="public" virt="non-virtual"><scope>openage::event::EventClass</scope><name>EventClass</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1af88d224fea9820027ac3ebfb314537d0" prot="public" virt="non-virtual"><scope>openage::event::EventClass</scope><name>id</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1abb3503ac98625390fa0c1a122f14394c" prot="public" virt="pure-virtual"><scope>openage::event::EventClass</scope><name>invoke</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a0e0d15e8a433ef4a08a5b8a4fccae41b" prot="public" virt="pure-virtual"><scope>openage::event::EventClass</scope><name>predict_invoke_time</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1ac9808ee0d7a2f5cdbd1c8eb85e2e5d6e" prot="public" virt="pure-virtual"><scope>openage::event::EventClass</scope><name>setup_event</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a911de25538d1280c375a90ed694bb717" prot="public" virt="non-virtual"><scope>openage::event::EventClass</scope><name>trigger_type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a8a540e9ae9989e2fdeaa9139e00370fa" prot="public" virt="non-virtual"><scope>openage::event::EventClass</scope><name>type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1a852a361912677c956069048d2fa2d025" prot="public" virt="virtual"><scope>openage::event::EventClass</scope><name>~EventClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1log_1_1level__value" kind="struct" language="C++" prot="public">
+    <compoundname>openage::log::level_value</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1_enum_value" prot="public" virt="non-virtual">openage::util::EnumValue&lt; level_value &gt;</basecompoundref>
+    <includes refid="level_8h" local="no">level.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1log_1_1level__value_1ae527ab57e5bd77e5bbf77f89ecbbd02c" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* openage::log::level_value::colorcode</definition>
+        <argsstring></argsstring>
+        <name>colorcode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/level.h" line="21" column="1" bodyfile="libopenage/log/level.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Data associated with a log level.</para>
+<para>pxd:</para>
+<para>cppclass level_value(EnumValue[level_value, int]): const char *colorcode </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3057">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="3056">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="3057" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3059">
+        <label>openage::util::EnumValue&lt; level_value &gt;</label>
+        <link refid="classopenage_1_1util_1_1_enum_value"/>
+      </node>
+      <node id="3058">
+        <label>openage::log::level_value</label>
+        <link refid="structopenage_1_1log_1_1level__value"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/log/level.h" line="20" column="1" bodyfile="libopenage/log/level.h" bodystart="20" bodyend="22"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1log_1_1level__value_1ae527ab57e5bd77e5bbf77f89ecbbd02c" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>colorcode</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a978ad618fe479fcae09d959346fcb623" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>EnumValue</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ad6ba970c60f26a001d569a2eb2d34242" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>name</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1aac09469400ad13bdfba4926dd02d3164" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>numeric</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ad3945ffef23580f7a64757b886c2e2ce" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator !=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1ab3e1f8bcc46314730c71ae5af29dd306" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator &gt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1afcd1b51f6b424f2752c26122f426d49b" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator &gt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1adbb6e103305a98ca4ffd7ede8f3a527c" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator&lt;</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a9bb6a21bf004e58196e4bda16b7e849a" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator&lt;=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a1dab353da4486a9c8c60bd8e14ee98d0" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1util_1_1_enum_value_1a0796e1f8a1fa21cc20f1ad2c7da69415" prot="public" virt="non-virtual"><scope>openage::log::level_value</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

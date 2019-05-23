@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__input_8cpp" kind="file" language="C++">
+    <compoundname>gui_input.cpp</compoundname>
+    <includes refid="gui__input_8h" local="yes">../public/gui_input.h</includes>
+    <includes refid="gui__input__impl_8h" local="yes">../private/gui_input_impl.h</includes>
+    <incdepgraph>
+      <node id="13541">
+        <label>atomic</label>
+      </node>
+      <node id="13542">
+        <label>QObject</label>
+      </node>
+      <node id="13537">
+        <label>../public/gui_input.h</label>
+        <link refid="gui__input_8h"/>
+        <childnode refid="13538" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13536">
+        <label>libopenage/gui/guisys/public/gui_input.cpp</label>
+        <link refid="gui__input_8cpp"/>
+        <childnode refid="13537" relation="include">
+        </childnode>
+        <childnode refid="13540" relation="include">
+        </childnode>
+      </node>
+      <node id="13539">
+        <label>SDL2/SDL_events.h</label>
+      </node>
+      <node id="13540">
+        <label>../private/gui_input_impl.h</label>
+        <link refid="gui__input__impl_8h"/>
+        <childnode refid="13541" relation="include">
+        </childnode>
+        <childnode refid="13542" relation="include">
+        </childnode>
+        <childnode refid="13539" relation="include">
+        </childnode>
+      </node>
+      <node id="13538">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_input.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_input_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_gui_input_1a41491a3956d49de96946dadf5d5b55e1" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_input_1a41491a3956d49de96946dadf5d5b55e1" kindref="member">GuiInput:: GuiInput</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer,<sp/><ref refid="classqtsdl_1_1_gui_event_queue" kindref="compound">GuiEventQueue</ref><sp/>*game_logic_updater)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>impl{std::make_unique&lt;GuiInputImpl&gt;(renderer,<sp/>game_logic_updater)}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_input_1aa170b7bbb3f930640f1e163100817c47" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_input_1aa170b7bbb3f930640f1e163100817c47" kindref="member">GuiInput::~GuiInput</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classqtsdl_1_1_gui_input_1ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_input_1ae7fdec19c83d1cd4dd0bb2d06fa1a8ae" kindref="member">GuiInput::process</ref>(SDL_Event<sp/>*event)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_input_1a9d9dffc99f3fe645ceaf0c62c5527da3" kindref="member">impl</ref>-&gt;process(event);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_input.cpp"/>
+  </compounddef>
+</doxygen>

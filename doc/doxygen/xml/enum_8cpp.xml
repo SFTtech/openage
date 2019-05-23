@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="enum_8cpp" kind="file" language="C++">
+    <compoundname>enum.cpp</compoundname>
+    <includes refid="enum_8h" local="yes">enum.h</includes>
+    <incdepgraph>
+      <node id="28327">
+        <label>string</label>
+      </node>
+      <node id="28324">
+        <label>typeinfo</label>
+      </node>
+      <node id="28326">
+        <label>ciso646</label>
+      </node>
+      <node id="28321">
+        <label>libopenage/util/enum.cpp</label>
+        <link refid="enum_8cpp"/>
+        <childnode refid="28322" relation="include">
+        </childnode>
+      </node>
+      <node id="28325">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28326" relation="include">
+        </childnode>
+        <childnode refid="28327" relation="include">
+        </childnode>
+        <childnode refid="28328" relation="include">
+        </childnode>
+      </node>
+      <node id="28328">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28328" relation="include">
+        </childnode>
+      </node>
+      <node id="28323">
+        <label>iostream</label>
+      </node>
+      <node id="28322">
+        <label>enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="28323" relation="include">
+        </childnode>
+        <childnode refid="28324" relation="include">
+        </childnode>
+        <childnode refid="28325" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="enum_8h" kindref="compound">enum.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Enum<sp/>is<sp/>all<sp/>templated,<sp/>so<sp/>there&apos;s<sp/>nothing<sp/>to<sp/>implement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/enum.cpp"/>
+  </compounddef>
+</doxygen>

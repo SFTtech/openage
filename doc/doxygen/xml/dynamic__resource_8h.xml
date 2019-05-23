@@ -1,0 +1,675 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dynamic__resource_8h" kind="file" language="C++">
+    <compoundname>dynamic_resource.h</compoundname>
+    <includes local="no">atomic</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">tuple</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includes refid="category_8h" local="yes">category.h</includes>
+    <includes refid="dynamic__loader_8h" local="yes">dynamic_loader.h</includes>
+    <includes refid="format_8h" local="yes">format.h</includes>
+    <includes refid="audio_2resource_8h" local="yes">resource.h</includes>
+    <includes refid="audio_2types_8h" local="yes">types.h</includes>
+    <includes refid="concurrent__queue_8h" local="yes">../datastructure/concurrent_queue.h</includes>
+    <includes refid="job_8h" local="yes">../job/job.h</includes>
+    <includes refid="job__group_8h" local="yes">../job/job_group.h</includes>
+    <includes refid="util_2path_8h" local="yes">../util/path.h</includes>
+    <includedby refid="dynamic__resource_8cpp" local="yes">libopenage/audio/dynamic_resource.cpp</includedby>
+    <includedby refid="audio_2resource_8cpp" local="yes">libopenage/audio/resource.cpp</includedby>
+    <incdepgraph>
+      <node id="635">
+        <label>list</label>
+      </node>
+      <node id="597">
+        <label>atomic</label>
+      </node>
+      <node id="632">
+        <label>iomanip</label>
+      </node>
+      <node id="609">
+        <label>functional</label>
+      </node>
+      <node id="648">
+        <label>queue</label>
+      </node>
+      <node id="643">
+        <label>resource.h</label>
+        <link refid="audio_2resource_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="602" relation="include">
+        </childnode>
+        <childnode refid="644" relation="include">
+        </childnode>
+        <childnode refid="608" relation="include">
+        </childnode>
+      </node>
+      <node id="639">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+      </node>
+      <node id="612">
+        <label>cstdint</label>
+      </node>
+      <node id="646">
+        <label>../datastructure/concurrent_queue.h</label>
+        <link refid="concurrent__queue_8h"/>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+      </node>
+      <node id="630">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="631" relation="include">
+        </childnode>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="632" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="633" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+      </node>
+      <node id="655">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="622" relation="include">
+        </childnode>
+      </node>
+      <node id="659">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="652" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="620">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="621" relation="include">
+        </childnode>
+      </node>
+      <node id="602">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="603" relation="include">
+        </childnode>
+      </node>
+      <node id="622">
+        <label>stdexcept</label>
+      </node>
+      <node id="619">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="634">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="635" relation="include">
+        </childnode>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="636" relation="include">
+        </childnode>
+      </node>
+      <node id="631">
+        <label>cstdarg</label>
+      </node>
+      <node id="605">
+        <label>string</label>
+      </node>
+      <node id="623">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="612" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="624" relation="include">
+        </childnode>
+        <childnode refid="625" relation="include">
+        </childnode>
+        <childnode refid="627" relation="include">
+        </childnode>
+        <childnode refid="634" relation="include">
+        </childnode>
+        <childnode refid="636" relation="include">
+        </childnode>
+      </node>
+      <node id="625">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="626" relation="include">
+        </childnode>
+      </node>
+      <node id="627">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="597" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="628" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+        <childnode refid="629" relation="include">
+        </childnode>
+        <childnode refid="630" relation="include">
+        </childnode>
+      </node>
+      <node id="651">
+        <label>exception</label>
+      </node>
+      <node id="654">
+        <label>stddef.h</label>
+      </node>
+      <node id="607">
+        <label>ostream</label>
+      </node>
+      <node id="611">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="612" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="613" relation="include">
+        </childnode>
+        <childnode refid="614" relation="include">
+        </childnode>
+      </node>
+      <node id="608">
+        <label>types.h</label>
+        <link refid="audio_2types_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+      </node>
+      <node id="604">
+        <label>dynamic_loader.h</label>
+        <link refid="dynamic__loader_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="606" relation="include">
+        </childnode>
+        <childnode refid="608" relation="include">
+        </childnode>
+        <childnode refid="610" relation="include">
+        </childnode>
+      </node>
+      <node id="644">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="610" relation="include">
+        </childnode>
+        <childnode refid="602" relation="include">
+        </childnode>
+        <childnode refid="606" relation="include">
+        </childnode>
+        <childnode refid="645" relation="include">
+        </childnode>
+      </node>
+      <node id="621">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="603" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="622" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+        <childnode refid="623" relation="include">
+        </childnode>
+      </node>
+      <node id="661">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="597" relation="include">
+        </childnode>
+        <childnode refid="647" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="648" relation="include">
+        </childnode>
+        <childnode refid="649" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+      </node>
+      <node id="647">
+        <label>condition_variable</label>
+      </node>
+      <node id="638">
+        <label>typeinfo</label>
+      </node>
+      <node id="658">
+        <label>../job/job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="621" relation="include">
+        </childnode>
+        <childnode refid="659" relation="include">
+        </childnode>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="660" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+        <childnode refid="661" relation="include">
+        </childnode>
+      </node>
+      <node id="599">
+        <label>tuple</label>
+      </node>
+      <node id="606">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="607" relation="include">
+        </childnode>
+      </node>
+      <node id="596">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="597" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="599" relation="include">
+        </childnode>
+        <childnode refid="600" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="602" relation="include">
+        </childnode>
+        <childnode refid="604" relation="include">
+        </childnode>
+        <childnode refid="606" relation="include">
+        </childnode>
+        <childnode refid="643" relation="include">
+        </childnode>
+        <childnode refid="608" relation="include">
+        </childnode>
+        <childnode refid="646" relation="include">
+        </childnode>
+        <childnode refid="650" relation="include">
+        </childnode>
+        <childnode refid="658" relation="include">
+        </childnode>
+        <childnode refid="610" relation="include">
+        </childnode>
+      </node>
+      <node id="657">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+      </node>
+      <node id="601">
+        <label>vector</label>
+      </node>
+      <node id="617">
+        <label>ciso646</label>
+      </node>
+      <node id="652">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="597" relation="include">
+        </childnode>
+        <childnode refid="651" relation="include">
+        </childnode>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="653" relation="include">
+        </childnode>
+        <childnode refid="621" relation="include">
+        </childnode>
+        <childnode refid="655" relation="include">
+        </childnode>
+        <childnode refid="656" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="633">
+        <label>sstream</label>
+      </node>
+      <node id="616">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="617" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="618" relation="include">
+        </childnode>
+      </node>
+      <node id="640">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="641" relation="include">
+        </childnode>
+        <childnode refid="611" relation="include">
+        </childnode>
+      </node>
+      <node id="618">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="618" relation="include">
+        </childnode>
+      </node>
+      <node id="629">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="603" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+      </node>
+      <node id="636">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="637" relation="include">
+        </childnode>
+      </node>
+      <node id="642">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="641">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="603" relation="include">
+        </childnode>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+      </node>
+      <node id="626">
+        <label>cstdlib</label>
+      </node>
+      <node id="603">
+        <label>iostream</label>
+      </node>
+      <node id="650">
+        <label>../job/job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="651" relation="include">
+        </childnode>
+        <childnode refid="598" relation="include">
+        </childnode>
+        <childnode refid="652" relation="include">
+        </childnode>
+      </node>
+      <node id="600">
+        <label>unordered_map</label>
+      </node>
+      <node id="660">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="652" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="614">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="615" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+        <childnode refid="619" relation="include">
+        </childnode>
+        <childnode refid="620" relation="include">
+        </childnode>
+        <childnode refid="639" relation="include">
+        </childnode>
+      </node>
+      <node id="615">
+        <label>mutex</label>
+      </node>
+      <node id="653">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="654" relation="include">
+        </childnode>
+      </node>
+      <node id="649">
+        <label>thread</label>
+      </node>
+      <node id="610">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="605" relation="include">
+        </childnode>
+        <childnode refid="601" relation="include">
+        </childnode>
+        <childnode refid="611" relation="include">
+        </childnode>
+        <childnode refid="640" relation="include">
+        </childnode>
+        <childnode refid="642" relation="include">
+        </childnode>
+      </node>
+      <node id="613">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="628">
+        <label>type_traits</label>
+      </node>
+      <node id="624">
+        <label>config.h</label>
+      </node>
+      <node id="645">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="607" relation="include">
+        </childnode>
+      </node>
+      <node id="656">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="609" relation="include">
+        </childnode>
+        <childnode refid="657" relation="include">
+        </childnode>
+      </node>
+      <node id="598">
+        <label>memory</label>
+      </node>
+      <node id="637">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="603" relation="include">
+        </childnode>
+        <childnode refid="638" relation="include">
+        </childnode>
+        <childnode refid="616" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="664">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="663">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="662">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="663" relation="include">
+        </childnode>
+        <childnode refid="664" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structopenage_1_1audio_1_1chunk__info__t" prot="public">openage::audio::chunk_info_t</innerclass>
+    <innerclass refid="classopenage_1_1audio_1_1_dynamic_resource" prot="public">openage::audio::DynamicResource</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1audio">openage::audio</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;tuple&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="category_8h" kindref="compound">category.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dynamic__loader_8h" kindref="compound">dynamic_loader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="format_8h" kindref="compound">format.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio_2resource_8h" kindref="compound">resource.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audio_2types_8h" kindref="compound">types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../datastructure/concurrent_queue.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../job/job.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../job/job_group.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/path.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">audio<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structopenage_1_1audio_1_1chunk__info__t" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenage_1_1audio_1_1chunk__info__t" kindref="compound">chunk_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="28" refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" kindref="member">state_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27aba2b45bdc11e2a4a6e86aab2ac693cbb" kindref="member">EMPTY</ref>,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27af9f6955ebca09a484157c05f80acd65e" kindref="member">LOADING</ref>,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27a2baa69eafc7204f3bd8648eba580c489" kindref="member">READY</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;state_t&gt;<sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1aa6b571d065a12504c13760da870db08b" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;int16_t[]&gt;<sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a7728761a793ca0d396acc2d39652ec73" kindref="member">buffer</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a0008ea8f475a6ca6ed476c6ea4fedb10" kindref="member">chunk_info_t</ref>(<ref refid="structopenage_1_1audio_1_1chunk__info__t_1a85132b53a08a06ef901432b2f27d9d27" kindref="member">chunk_info_t::state_t</ref><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a8c50391414193ae31ae32932523af14a" kindref="member">state</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1chunk__info__t_1a2f0650c5224912a8e46d0067c6749b0a" kindref="member">~chunk_info_t</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classopenage_1_1audio_1_1_dynamic_resource" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1audio_1_1_dynamic_resource" kindref="compound">DynamicResource</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_resource" kindref="compound">Resource</ref><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a890bf6e35b0070abdfa414e29931e989" kindref="member">DynamicResource</ref>(<ref refid="classopenage_1_1audio_1_1_audio_manager" kindref="compound">AudioManager</ref><sp/>*<ref refid="classopenage_1_1audio_1_1_resource_1a05e15aae63b9f88794f0831e2f78d2b8" kindref="member">manager</ref>,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1ad0ada74763a06b76c42d3a351597e060" kindref="member">category_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_resource_1ab7db7cc389407c6750dd54cb5056d113" kindref="member">category</ref>,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/>&amp;<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" kindref="member">path</ref>,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" kindref="member">format</ref>=<ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6dba4c2223596711a6a941bc19e8067ceef9" kindref="member">format_t::OPUS</ref>,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" kindref="member">preload_amount</ref>=<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" kindref="member">DEFAULT_PRELOAD_AMOUNT</ref>,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>=<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" kindref="member">DEFAULT_CHUNK_SIZE</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" kindref="member">max_chunks</ref>=<ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" kindref="member">DEFAULT_MAX_CHUNKS</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a16a62693a4a1ba7a75fccd0af800b8e1" kindref="member">~DynamicResource</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ac1ffb9fa48d2665e4452b644fbcb972c" kindref="member">use</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a88db624f8f5f392e8845719c37327904" kindref="member">stop_using</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1audio_1_1audio__chunk__t" kindref="compound">audio_chunk_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a92355342f8790b7d89431544dd0c5ac0" kindref="member">get_data</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_length)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a14623118dce385ac89884b64ba1bf2fb" kindref="member">start_preloading</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_index);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a9541b40c31cd35aba1e736383e8c6424" kindref="member">load_chunk_async</ref>(std::shared_ptr&lt;chunk_info_t&gt;<sp/>chunk_info,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>resource_chunk_offset);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="95" refid="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1abfb8be155bc1aaf1c05a844392270944" kindref="member">DEFAULT_PRELOAD_AMOUNT</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ab96a7e4c17a44bd4d9db5ec06da7fef6" kindref="member">DEFAULT_CHUNK_SIZE</ref><sp/>=<sp/>9600*2;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa6dd6578a51743c1f7f6c0aded04893a" kindref="member">DEFAULT_MAX_CHUNKS</ref><sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105" refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a0c2bf4230af8628c0cc935e3423d1dec" kindref="member">path</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1audio_1a6c4cc7d963b9dece05e3b8052a6cb6db" kindref="member">format_t</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a789eef710edfc5a36b4df9386d0ee66a" kindref="member">format</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a56e2cfe07cbba866ed569a1e2eae8fd7" kindref="member">preload_amount</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a4be06e6c433c2a0d5abe16ba54dee776" kindref="member">chunk_size</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1ac5c0b05d6a5be490e6d7c118b6a05573" kindref="member">max_chunks</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic_int<sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a2873543dbba4390b877cea5e450a73c3" kindref="member">use_count</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;DynamicLoader&gt;<sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a58fa55d1a4d87c504bc845b6cee3891d" kindref="member">loader</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_concurrent_queue" kindref="compound">datastructure::ConcurrentQueue&lt;std::shared_ptr&lt;chunk_info_t&gt;</ref>&gt;<sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa24fa55269987d6e21ab834bb7f55235" kindref="member">decay_queue</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;size_t,std::shared_ptr&lt;chunk_info_t&gt;&gt;<sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1a5811b807c73e3c4a63d306820dbc1aee" kindref="member">chunks</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_job_group" kindref="compound">job::JobGroup</ref><sp/><ref refid="classopenage_1_1audio_1_1_dynamic_resource_1aa86801a493cfb693e6f358c14e083d9c" kindref="member">loading_job_group</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="libopenage/audio/dynamic_resource.h"/>
+  </compounddef>
+</doxygen>

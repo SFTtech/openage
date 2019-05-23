@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1path_1_1tests" kind="namespace" language="C++">
+    <compoundname>openage::path::tests</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1ae71248e3b41e24e07f376124cfe95f41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_0</definition>
+        <argsstring>()</argsstring>
+        <name>node_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tests setting up basic nodes that point to a previous node. Tests that direction is set correctly and that factor is set correctly. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="17" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="17" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1afb103e74376eeb1339fe6204a3f649fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_cost_to_0</definition>
+        <argsstring>()</argsstring>
+        <name>node_cost_to_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tests Node-&gt;cost_to. The testing is done on 2 unrelated nodes (They have no previous node) to test the basic cost without adding the cost from node-&gt;factor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="93" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="93" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a0907c94ce28302c57452c65f7e218d48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_cost_to_1</definition>
+        <argsstring>()</argsstring>
+        <name>node_cost_to_1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tests Node-&gt;cost_to. The testing is done on the neighbor nodes to test how the directional factor effects the cost. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="132" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="132" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a58a788eb28351a5ceec44ce2b152d3a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_generate_backtrace_0</definition>
+        <argsstring>()</argsstring>
+        <name>node_generate_backtrace_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function does a basic test of generating a backtrace from the last node in a path. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="169" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="169" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a7279af6fded008ace86db25db0e7079d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_get_neighbors_0</definition>
+        <argsstring>()</argsstring>
+        <name>node_get_neighbors_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tests Node-&gt;get_neighbors and how the scale effects the neighbors given. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="191" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="191" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a324ebb21684cd1e29b46c01160ad4287" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::path::tests::always_passable</definition>
+        <argsstring>(const coord::phys3 &amp;)</argsstring>
+        <name>always_passable</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a helper passable function that alwalys returns true. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="259" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="259" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1acebd36a125f535d815cd34536e4f1f1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::path::tests::not_passable</definition>
+        <argsstring>(const coord::phys3 &amp;)</argsstring>
+        <name>not_passable</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a helper passable function that always returns false. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="266" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="266" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1ab0beb56de41e9380fbf8abf6b50759af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::path::tests::sometimes_passable</definition>
+        <argsstring>(const coord::phys3 &amp;pos)</argsstring>
+        <name>sometimes_passable</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a helper passable function that only returns true when pos.ne == 20. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="274" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="274" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a22de95f3450a22cac036677b4e01ad63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::node_passable_line_0</definition>
+        <argsstring>()</argsstring>
+        <name>node_passable_line_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function tests passable_line. Tests with always false, always true, and position dependant functions being passed in as args. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="286" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="286" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1path_1_1tests_1a5d1515cb353ed8a23c4d644dc3642e73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::path::tests::path_node</definition>
+        <argsstring>()</argsstring>
+        <name>path_node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Top level node test. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/pathfinding/tests.cpp" line="305" column="1" bodyfile="libopenage/pathfinding/tests.cpp" bodystart="305" bodyend="312"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/pathfinding/tests.cpp" line="11" column="1"/>
+  </compounddef>
+</doxygen>

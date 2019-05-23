@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_item_origin" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiItemOrigin</compoundname>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item" prot="public" virt="non-virtual">qtsdl::GuiItem&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classqtsdl_1_1_gui_item_interface" prot="public" virt="non-virtual">qtsdl::GuiItemInterface&lt; T &gt;</derivedcompoundref>
+    <includes refid="gui__item_8h" local="no">gui_item.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_origin_1a43709c5aa9a03fdc13528f08551adf2f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class GuiItemMethods</definition>
+        <argsstring></argsstring>
+        <name>GuiItemMethods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="129" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classqtsdl_1_1_gui_item_origin_1a3d4fc768ba657ca0a2a2c4edc573c6d0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename</type>
+          </param>
+        </templateparamlist>
+        <type>friend class</type>
+        <definition>friend class GuiItemCoreInstantiator</definition>
+        <argsstring></argsstring>
+        <name>GuiItemCoreInstantiator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="132" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_item_origin_1af359424505ff487e07fab719186a0c7b" prot="private" static="no" mutable="no">
+        <type><ref refid="classqtsdl_1_1_persistent_core_holder" kindref="compound">PersistentCoreHolder</ref>&lt; typename <ref refid="structqtsdl_1_1_unwrap" kindref="compound">Unwrap</ref>&lt; T &gt;::Type &gt; *</type>
+        <definition>PersistentCoreHolder&lt;typename Unwrap&lt;T&gt;::Type&gt;* qtsdl::GuiItemOrigin&lt; T &gt;::holder</definition>
+        <argsstring></argsstring>
+        <name>holder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementation object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/link/gui_item.h" line="137" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2696">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+      </node>
+      <node id="2697">
+        <label>qtsdl::GuiItem&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item"/>
+        <childnode refid="2696" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2698">
+        <label>qtsdl::GuiItemListModel&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_list_model"/>
+        <childnode refid="2697" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2699">
+        <label>qtsdl::GuiItemInterface&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_interface"/>
+        <childnode refid="2696" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2701">
+        <label>qtsdl::PersistentCoreHolder&lt; typename qtsdl::Unwrap&lt; T &gt;::Type &gt;</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder"/>
+        <childnode refid="2702" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2702">
+        <label>qtsdl::PersistentCoreHolderBase</label>
+        <link refid="classqtsdl_1_1_persistent_core_holder_base"/>
+      </node>
+      <node id="2700">
+        <label>qtsdl::GuiItemOrigin&lt; T &gt;</label>
+        <link refid="classqtsdl_1_1_gui_item_origin"/>
+        <childnode refid="2701" relation="usage">
+          <edgelabel>-holder</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/link/gui_item.h" line="127" column="1" bodyfile="libopenage/gui/guisys/link/gui_item.h" bodystart="127" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_item_origin_1a3d4fc768ba657ca0a2a2c4edc573c6d0" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemOrigin</scope><name>GuiItemCoreInstantiator</name></member>
+      <member refid="classqtsdl_1_1_gui_item_origin_1a43709c5aa9a03fdc13528f08551adf2f" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemOrigin</scope><name>GuiItemMethods</name></member>
+      <member refid="classqtsdl_1_1_gui_item_origin_1af359424505ff487e07fab719186a0c7b" prot="private" virt="non-virtual"><scope>qtsdl::GuiItemOrigin</scope><name>holder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

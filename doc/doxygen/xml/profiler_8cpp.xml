@@ -1,0 +1,1206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="profiler_8cpp" kind="file" language="C++">
+    <compoundname>profiler.cpp</compoundname>
+    <includes refid="profiler_8h" local="yes">profiler.h</includes>
+    <includes refid="engine_8h" local="yes">../engine.h</includes>
+    <includes refid="misc_8h" local="yes">misc.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes local="no">iostream</includes>
+    <incdepgraph>
+      <node id="31387">
+        <label>list</label>
+      </node>
+      <node id="31378">
+        <label>atomic</label>
+      </node>
+      <node id="31412">
+        <label>coord/coordmanager.h</label>
+        <link refid="coordmanager_8h"/>
+        <childnode refid="31413" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+        <childnode refid="31427" relation="include">
+        </childnode>
+      </node>
+      <node id="31420">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="31415" relation="include">
+        </childnode>
+        <childnode refid="31421" relation="include">
+        </childnode>
+        <childnode refid="31417" relation="include">
+        </childnode>
+        <childnode refid="31384" relation="include">
+        </childnode>
+        <childnode refid="31422" relation="include">
+        </childnode>
+        <childnode refid="31410" relation="include">
+        </childnode>
+        <childnode refid="31379" relation="include">
+        </childnode>
+        <childnode refid="31414" relation="include">
+        </childnode>
+      </node>
+      <node id="31384">
+        <label>iomanip</label>
+      </node>
+      <node id="31383">
+        <label>functional</label>
+      </node>
+      <node id="31436">
+        <label>queue</label>
+      </node>
+      <node id="31422">
+        <label>limits</label>
+      </node>
+      <node id="31419">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+        <childnode refid="31420" relation="include">
+        </childnode>
+      </node>
+      <node id="31432">
+        <label>guisys/public/gui_singleton_items_info.h</label>
+        <link refid="gui__singleton__items__info_8h"/>
+      </node>
+      <node id="31393">
+        <label>hash_functions.h</label>
+        <link refid="hash__functions_8h"/>
+        <childnode refid="31394" relation="include">
+        </childnode>
+        <childnode refid="31392" relation="include">
+        </childnode>
+      </node>
+      <node id="31405">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+      </node>
+      <node id="31364">
+        <label>QObject</label>
+      </node>
+      <node id="31450">
+        <label>input/input_manager.h</label>
+        <link refid="input__manager_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31363" relation="include">
+        </childnode>
+        <childnode refid="31433" relation="include">
+        </childnode>
+        <childnode refid="31451" relation="include">
+        </childnode>
+        <childnode refid="31452" relation="include">
+        </childnode>
+        <childnode refid="31454" relation="include">
+        </childnode>
+      </node>
+      <node id="31361">
+        <label>cstdint</label>
+      </node>
+      <node id="31423">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="31429">
+        <label>stdlib.h</label>
+      </node>
+      <node id="31467">
+        <label>screenshot.h</label>
+        <link refid="screenshot_8h"/>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31468" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+      </node>
+      <node id="31381">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="31382" relation="include">
+        </childnode>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31384" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31385" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+      </node>
+      <node id="31439">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="31404" relation="include">
+        </childnode>
+      </node>
+      <node id="31438">
+        <label>abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31439" relation="include">
+        </childnode>
+        <childnode refid="31440" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+      </node>
+      <node id="31402">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="31403" relation="include">
+        </childnode>
+      </node>
+      <node id="31392">
+        <label>category.h</label>
+        <link refid="category_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+      </node>
+      <node id="31417">
+        <label>cmath</label>
+      </node>
+      <node id="31404">
+        <label>stdexcept</label>
+      </node>
+      <node id="31401">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="31461">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+      </node>
+      <node id="31463">
+        <label>ability.h</label>
+        <link refid="ability_8h"/>
+        <childnode refid="31464" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31379" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31413" relation="include">
+        </childnode>
+        <childnode refid="31465" relation="include">
+        </childnode>
+      </node>
+      <node id="31386">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="31387" relation="include">
+        </childnode>
+        <childnode refid="31388" relation="include">
+        </childnode>
+        <childnode refid="31366" relation="include">
+        </childnode>
+      </node>
+      <node id="31382">
+        <label>cstdarg</label>
+      </node>
+      <node id="31359">
+        <label>string</label>
+      </node>
+      <node id="31373">
+        <label>message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31374" relation="include">
+        </childnode>
+        <childnode refid="31375" relation="include">
+        </childnode>
+        <childnode refid="31377" relation="include">
+        </childnode>
+        <childnode refid="31386" relation="include">
+        </childnode>
+        <childnode refid="31366" relation="include">
+        </childnode>
+      </node>
+      <node id="31375">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="31376" relation="include">
+        </childnode>
+      </node>
+      <node id="31377">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="31378" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31379" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+        <childnode refid="31380" relation="include">
+        </childnode>
+        <childnode refid="31381" relation="include">
+        </childnode>
+      </node>
+      <node id="31457">
+        <label>util/variable.h</label>
+        <link refid="variable_8h"/>
+      </node>
+      <node id="31453">
+        <label>unordered_set</label>
+      </node>
+      <node id="31428">
+        <label>cvar/cvar.h</label>
+        <link refid="cvar_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31429" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31430" relation="include">
+        </childnode>
+        <childnode refid="31400" relation="include">
+        </childnode>
+        <childnode refid="31397" relation="include">
+        </childnode>
+      </node>
+      <node id="31433">
+        <label>handlers.h</label>
+        <link refid="handlers_8h"/>
+        <childnode refid="31363" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+      </node>
+      <node id="31441">
+        <label>exception</label>
+      </node>
+      <node id="31443">
+        <label>stddef.h</label>
+      </node>
+      <node id="31390">
+        <label>fstream</label>
+      </node>
+      <node id="31410">
+        <label>ostream</label>
+      </node>
+      <node id="31431">
+        <label>gui/engine_info.h</label>
+        <link refid="engine__info_8h"/>
+        <childnode refid="31397" relation="include">
+        </childnode>
+        <childnode refid="31432" relation="include">
+        </childnode>
+      </node>
+      <node id="31434">
+        <label>job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="31378" relation="include">
+        </childnode>
+        <childnode refid="31435" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31388" relation="include">
+        </childnode>
+        <childnode refid="31436" relation="include">
+        </childnode>
+        <childnode refid="31437" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31438" relation="include">
+        </childnode>
+        <childnode refid="31446" relation="include">
+        </childnode>
+        <childnode refid="31447" relation="include">
+        </childnode>
+        <childnode refid="31448" relation="include">
+        </childnode>
+        <childnode refid="31444" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+      </node>
+      <node id="31398">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31399" relation="include">
+        </childnode>
+        <childnode refid="31400" relation="include">
+        </childnode>
+      </node>
+      <node id="31416">
+        <label>limits.h</label>
+      </node>
+      <node id="31396">
+        <label>resource_def.h</label>
+        <link refid="resource__def_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31397" relation="include">
+        </childnode>
+        <childnode refid="31392" relation="include">
+        </childnode>
+        <childnode refid="31409" relation="include">
+        </childnode>
+        <childnode refid="31411" relation="include">
+        </childnode>
+      </node>
+      <node id="31403">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31404" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+        <childnode refid="31373" relation="include">
+        </childnode>
+      </node>
+      <node id="31414">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="31415" relation="include">
+        </childnode>
+        <childnode refid="31416" relation="include">
+        </childnode>
+        <childnode refid="31417" relation="include">
+        </childnode>
+        <childnode refid="31418" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31403" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+      </node>
+      <node id="31454">
+        <label>input_context.h</label>
+        <link refid="input__context_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31455" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31451" relation="include">
+        </childnode>
+        <childnode refid="31452" relation="include">
+        </childnode>
+      </node>
+      <node id="31424">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="31449">
+        <label>worker.h</label>
+        <link refid="worker_8h"/>
+        <childnode refid="31378" relation="include">
+        </childnode>
+        <childnode refid="31435" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31436" relation="include">
+        </childnode>
+        <childnode refid="31437" relation="include">
+        </childnode>
+        <childnode refid="31444" relation="include">
+        </childnode>
+      </node>
+      <node id="31363">
+        <label>SDL2/SDL.h</label>
+      </node>
+      <node id="31458">
+        <label>util/externalprofiler.h</label>
+        <link refid="externalprofiler_8h"/>
+      </node>
+      <node id="31435">
+        <label>condition_variable</label>
+      </node>
+      <node id="31369">
+        <label>typeinfo</label>
+      </node>
+      <node id="31391">
+        <label>audio/audio_manager.h</label>
+        <link refid="audio__manager_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31363" relation="include">
+        </childnode>
+        <childnode refid="31392" relation="include">
+        </childnode>
+        <childnode refid="31393" relation="include">
+        </childnode>
+        <childnode refid="31395" relation="include">
+        </childnode>
+        <childnode refid="31396" relation="include">
+        </childnode>
+      </node>
+      <node id="31395">
+        <label>sound.h</label>
+        <link refid="sound_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31392" relation="include">
+        </childnode>
+      </node>
+      <node id="31464">
+        <label>bitset</label>
+      </node>
+      <node id="31447">
+        <label>job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31403" relation="include">
+        </childnode>
+        <childnode refid="31438" relation="include">
+        </childnode>
+        <childnode refid="31446" relation="include">
+        </childnode>
+        <childnode refid="31448" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+        <childnode refid="31449" relation="include">
+        </childnode>
+      </node>
+      <node id="31426">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="31394">
+        <label>tuple</label>
+      </node>
+      <node id="31468">
+        <label>ctime</label>
+      </node>
+      <node id="31360">
+        <label>../engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31363" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31364" relation="include">
+        </childnode>
+        <childnode refid="31365" relation="include">
+        </childnode>
+        <childnode refid="31389" relation="include">
+        </childnode>
+        <childnode refid="31391" relation="include">
+        </childnode>
+        <childnode refid="31412" relation="include">
+        </childnode>
+        <childnode refid="31413" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+        <childnode refid="31428" relation="include">
+        </childnode>
+        <childnode refid="31431" relation="include">
+        </childnode>
+        <childnode refid="31433" relation="include">
+        </childnode>
+        <childnode refid="31434" relation="include">
+        </childnode>
+        <childnode refid="31450" relation="include">
+        </childnode>
+        <childnode refid="31451" relation="include">
+        </childnode>
+        <childnode refid="31456" relation="include">
+        </childnode>
+        <childnode refid="31458" relation="include">
+        </childnode>
+        <childnode refid="31459" relation="include">
+        </childnode>
+        <childnode refid="31397" relation="include">
+        </childnode>
+        <childnode refid="31354" relation="include">
+        </childnode>
+        <childnode refid="31462" relation="include">
+        </childnode>
+        <childnode refid="31381" relation="include">
+        </childnode>
+        <childnode refid="31467" relation="include">
+        </childnode>
+      </node>
+      <node id="31409">
+        <label>format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="31410" relation="include">
+        </childnode>
+      </node>
+      <node id="31466">
+        <label>unit_container.h</label>
+        <link refid="unit__container_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31427" relation="include">
+        </childnode>
+        <childnode refid="31433" relation="include">
+        </childnode>
+        <childnode refid="31461" relation="include">
+        </childnode>
+      </node>
+      <node id="31445">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+      </node>
+      <node id="31455">
+        <label>stack</label>
+      </node>
+      <node id="31358">
+        <label>vector</label>
+      </node>
+      <node id="31365">
+        <label>log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="31366" relation="include">
+        </childnode>
+        <childnode refid="31373" relation="include">
+        </childnode>
+      </node>
+      <node id="31353">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+        <childnode refid="31354" relation="include">
+        </childnode>
+        <childnode refid="31360" relation="include">
+        </childnode>
+        <childnode refid="31414" relation="include">
+        </childnode>
+        <childnode refid="31356" relation="include">
+        </childnode>
+        <childnode refid="31469" relation="include">
+        </childnode>
+        <childnode refid="31368" relation="include">
+        </childnode>
+      </node>
+      <node id="31371">
+        <label>ciso646</label>
+      </node>
+      <node id="31451">
+        <label>action.h</label>
+        <link refid="input_2action_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+        <childnode refid="31452" relation="include">
+        </childnode>
+      </node>
+      <node id="31440">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="31378" relation="include">
+        </childnode>
+        <childnode refid="31441" relation="include">
+        </childnode>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31442" relation="include">
+        </childnode>
+        <childnode refid="31403" relation="include">
+        </childnode>
+        <childnode refid="31439" relation="include">
+        </childnode>
+        <childnode refid="31444" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+      </node>
+      <node id="31430">
+        <label>utility</label>
+      </node>
+      <node id="31355">
+        <label>array</label>
+      </node>
+      <node id="31385">
+        <label>sstream</label>
+      </node>
+      <node id="31370">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="31371" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31372" relation="include">
+        </childnode>
+      </node>
+      <node id="31406">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31407" relation="include">
+        </childnode>
+        <childnode refid="31398" relation="include">
+        </childnode>
+      </node>
+      <node id="31372">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="31372" relation="include">
+        </childnode>
+      </node>
+      <node id="31469">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="31465">
+        <label>../gamestate/resource.h</label>
+        <link refid="gamestate_2resource_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+      </node>
+      <node id="31380">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+      </node>
+      <node id="31366">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="31367" relation="include">
+        </childnode>
+      </node>
+      <node id="31425">
+        <label>pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="31426" relation="include">
+        </childnode>
+        <childnode refid="31419" relation="include">
+        </childnode>
+      </node>
+      <node id="31408">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="31407">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+      </node>
+      <node id="31376">
+        <label>cstdlib</label>
+      </node>
+      <node id="31368">
+        <label>iostream</label>
+      </node>
+      <node id="31456">
+        <label>options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31457" relation="include">
+        </childnode>
+      </node>
+      <node id="31462">
+        <label>unit/selection.h</label>
+        <link refid="selection_8h"/>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31425" relation="include">
+        </childnode>
+        <childnode refid="31433" relation="include">
+        </childnode>
+        <childnode refid="31463" relation="include">
+        </childnode>
+        <childnode refid="31466" relation="include">
+        </childnode>
+      </node>
+      <node id="31446">
+        <label>job.h</label>
+        <link refid="job_8h"/>
+        <childnode refid="31441" relation="include">
+        </childnode>
+        <childnode refid="31362" relation="include">
+        </childnode>
+        <childnode refid="31440" relation="include">
+        </childnode>
+      </node>
+      <node id="31357">
+        <label>unordered_map</label>
+      </node>
+      <node id="31448">
+        <label>job_state.h</label>
+        <link refid="job__state_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31440" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+      </node>
+      <node id="31400">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31388" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+        <childnode refid="31401" relation="include">
+        </childnode>
+        <childnode refid="31402" relation="include">
+        </childnode>
+        <childnode refid="31405" relation="include">
+        </childnode>
+      </node>
+      <node id="31421">
+        <label>climits</label>
+      </node>
+      <node id="31388">
+        <label>mutex</label>
+      </node>
+      <node id="31356">
+        <label>chrono</label>
+      </node>
+      <node id="31442">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="31443" relation="include">
+        </childnode>
+      </node>
+      <node id="31437">
+        <label>thread</label>
+      </node>
+      <node id="31397">
+        <label>../util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31398" relation="include">
+        </childnode>
+        <childnode refid="31406" relation="include">
+        </childnode>
+        <childnode refid="31408" relation="include">
+        </childnode>
+      </node>
+      <node id="31452">
+        <label>event.h</label>
+        <link refid="input_2event_8h"/>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31453" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+        <childnode refid="31363" relation="include">
+        </childnode>
+      </node>
+      <node id="31427">
+        <label>tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="31419" relation="include">
+        </childnode>
+        <childnode refid="31423" relation="include">
+        </childnode>
+        <childnode refid="31424" relation="include">
+        </childnode>
+        <childnode refid="31414" relation="include">
+        </childnode>
+      </node>
+      <node id="31399">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="31354">
+        <label>profiler.h</label>
+        <link refid="profiler_8h"/>
+        <childnode refid="31355" relation="include">
+        </childnode>
+        <childnode refid="31356" relation="include">
+        </childnode>
+        <childnode refid="31357" relation="include">
+        </childnode>
+        <childnode refid="31358" relation="include">
+        </childnode>
+        <childnode refid="31359" relation="include">
+        </childnode>
+      </node>
+      <node id="31379">
+        <label>type_traits</label>
+      </node>
+      <node id="31374">
+        <label>config.h</label>
+      </node>
+      <node id="31411">
+        <label>loader_policy.h</label>
+        <link refid="loader__policy_8h"/>
+        <childnode refid="31410" relation="include">
+        </childnode>
+      </node>
+      <node id="31415">
+        <label>algorithm</label>
+      </node>
+      <node id="31444">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="31383" relation="include">
+        </childnode>
+        <childnode refid="31445" relation="include">
+        </childnode>
+      </node>
+      <node id="31413">
+        <label>phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="31414" relation="include">
+        </childnode>
+        <childnode refid="31419" relation="include">
+        </childnode>
+        <childnode refid="31423" relation="include">
+        </childnode>
+        <childnode refid="31424" relation="include">
+        </childnode>
+      </node>
+      <node id="31418">
+        <label>cstring</label>
+      </node>
+      <node id="31389">
+        <label>log/file_logsink.h</label>
+        <link refid="file__logsink_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+        <childnode refid="31390" relation="include">
+        </childnode>
+        <childnode refid="31386" relation="include">
+        </childnode>
+      </node>
+      <node id="31460">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="31361" relation="include">
+        </childnode>
+        <childnode refid="31461" relation="include">
+        </childnode>
+      </node>
+      <node id="31362">
+        <label>memory</label>
+      </node>
+      <node id="31459">
+        <label>util/fps.h</label>
+        <link refid="fps_8h"/>
+        <childnode refid="31460" relation="include">
+        </childnode>
+      </node>
+      <node id="31367">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="31368" relation="include">
+        </childnode>
+        <childnode refid="31369" relation="include">
+        </childnode>
+        <childnode refid="31370" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="profiler_8h" kindref="compound">profiler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="misc_8h" kindref="compound">misc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1util_1_1_profiler_1a487b0c0c995c4892df0e21cd8dba4867" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_profiler_1a487b0c0c995c4892df0e21cd8dba4867" kindref="member">Profiler::Profiler</ref>(<ref refid="classopenage_1_1_engine" kindref="compound">Engine</ref><sp/>*engine)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>engine{<ref refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" kindref="member">engine</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classopenage_1_1util_1_1_profiler_1a1b4a2302000a4c497762567ce5d63379" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_profiler_1a1b4a2302000a4c497762567ce5d63379" kindref="member">Profiler::~Profiler</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a68f01b02f0824fe2e41e508a75946793" kindref="member">unregister_all</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" kindref="member">Profiler::register_component</ref>(std::string<sp/>com,<sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>component_color)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">registered</ref>(com))<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1component__time__data" kindref="compound">component_time_data</ref><sp/>cdt;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>cdt.<ref refid="structopenage_1_1util_1_1component__time__data_1a4e8bbecb3c7e62985f375861bf8a1975" kindref="member">display_name</ref><sp/>=<sp/>com;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>cdt.<ref refid="structopenage_1_1util_1_1component__time__data_1a17b1a84c5a4eb1384d1764ead8e340a6" kindref="member">drawing_color</ref><sp/>=<sp/>component_color;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref><sp/>:<sp/>cdt.<ref refid="structopenage_1_1util_1_1component__time__data_1af51464d99ea5b74885687da92e5b8fb7" kindref="member">history</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com]<sp/>=<sp/>cdt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1util_1_1_profiler_1aa2cd0e4084f70dec7bff926afbc7e0de" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1aa2cd0e4084f70dec7bff926afbc7e0de" kindref="member">Profiler::unregister_component</ref>(std::string<sp/>com)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">registered</ref>(com))<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>.erase(com);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classopenage_1_1util_1_1_profiler_1a68f01b02f0824fe2e41e508a75946793" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a68f01b02f0824fe2e41e508a75946793" kindref="member">Profiler::unregister_all</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref><sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>com<sp/>:<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1aa2cd0e4084f70dec7bff926afbc7e0de" kindref="member">unregister_component</ref>(com);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" refkind="member"><highlight class="normal">std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">Profiler::registered_components</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;pair<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>registered_components.push_back(pair.first);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classopenage_1_1util_1_1_profiler_1a25d95a667ba6b5d369e545ba517d8e46" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a25d95a667ba6b5d369e545ba517d8e46" kindref="member">Profiler::start_measure</ref>(std::string<sp/>com,<sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>component_color)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">engine_in_debug_mode</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">registered</ref>(com))<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a376d760c88323c5d4f32db08e302a4de" kindref="member">register_component</ref>(com,<sp/>component_color);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].start<sp/>=<sp/>std::chrono::high_resolution_clock::now();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classopenage_1_1util_1_1_profiler_1abb98ec218690fbc79d31967924118c45" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1abb98ec218690fbc79d31967924118c45" kindref="member">Profiler::end_measure</ref>(std::string<sp/>com)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">engine_in_debug_mode</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">registered</ref>(com))<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::chrono::high_resolution_clock::time_point<sp/>end<sp/>=<sp/>std::chrono::high_resolution_clock::now();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].duration<sp/>=<sp/>end<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].start;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" kindref="member">Profiler::draw_component_performance</ref>(std::string<sp/>com)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1color" kindref="compound">color</ref><sp/>rgb<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].drawing_color;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>glColor4f(rgb.<ref refid="structopenage_1_1util_1_1color_1aaf002923665c35feb90c5934e41384e6" kindref="member">r</ref>,<sp/>rgb.<ref refid="structopenage_1_1util_1_1color_1ae39114c96dc9e4c8bc0ccfbfcb70eed8" kindref="member">g</ref>,<sp/>rgb.<ref refid="structopenage_1_1util_1_1color_1a370b7e06ff57c40a2aecf46e17ab866b" kindref="member">b</ref>,<sp/>1.0);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>glLineWidth(1.0);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>glBegin(GL_LINE_STRIP);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x_offset<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>offset_factor<sp/>=<sp/>(float)<ref refid="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" kindref="member">PROFILER_CANVAS_WIDTH</ref><sp/>/<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>percentage_factor<sp/>=<sp/>(float)<ref refid="profiler_8h_1aad748908ce3390c721a67a4982ce4582" kindref="member">PROFILER_CANVAS_HEIGHT</ref><sp/>/<sp/>100.0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref>;<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>(i,<sp/><ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref>)<sp/>!=<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref>-1,<sp/><ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref>);<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" kindref="member">mod</ref>(i,<sp/><ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>percentage<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].history.at(i);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glVertex3f(<ref refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" kindref="member">PROFILER_CANVAS_POSITION_X</ref><sp/>+<sp/>x_offset,<sp/><ref refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" kindref="member">PROFILER_CANVAS_POSITION_Y</ref><sp/>+<sp/>percentage<sp/>*<sp/>percentage_factor,<sp/>0.0);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_offset<sp/>+=<sp/>offset_factor;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>glEnd();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>color</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>glColor4f(1.0,<sp/>1.0,<sp/>1.0,<sp/>1.0);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classopenage_1_1util_1_1_profiler_1a4d1465e4955c40e6e09aac72f35a9591" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" kindref="member">Profiler::show</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>debug_mode)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(debug_mode)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" kindref="member">show</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad69d504b61ea40f0194c6368edfa6c70" kindref="member">Profiler::show</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" kindref="member">draw_canvas</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" kindref="member">draw_legend</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>com<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1afe6ad0c0a72b3ef9a321aec98a5bb9fe" kindref="member">draw_component_performance</ref>(com.first);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a3509dd5174942a14f4a07f8fcd2449cd" kindref="member">Profiler::registered</ref>(std::string<sp/>com)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>.find(com)<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>.end();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classopenage_1_1util_1_1_profiler_1ad1b1231b26528425f7d0ebc2f446159d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ad1b1231b26528425f7d0ebc2f446159d" kindref="member">Profiler::size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>.size();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classopenage_1_1util_1_1_profiler_1a0d8b52ef4078807189fd457e658270cb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a0d8b52ef4078807189fd457e658270cb" kindref="member">Profiler::start_frame_measure</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">engine_in_debug_mode</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3967792a25b22d16b1a8f3e08ba1a7e5" kindref="member">frame_start</ref><sp/>=<sp/>std::chrono::high_resolution_clock::now();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classopenage_1_1util_1_1_profiler_1aaf65afbb05a6aa408a7aff89e74e93dd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1aaf65afbb05a6aa408a7aff89e74e93dd" kindref="member">Profiler::end_frame_measure</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">engine_in_debug_mode</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>frame_end<sp/>=<sp/>std::chrono::high_resolution_clock::now();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1aa601a0879677712ff6109f7ec7a8783c" kindref="member">frame_duration</ref><sp/>=<sp/>frame_end<sp/>-<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3967792a25b22d16b1a8f3e08ba1a7e5" kindref="member">frame_start</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>com<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a93cf3b3b79fc2f3be34a2e1b095198a6" kindref="member">registered_components</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>percentage<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1ab4c94527899682bba7316093e447ab71" kindref="member">duration_to_percentage</ref>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].duration);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a3f1ff9c750b0d66d99528e043effa51d" kindref="member">append_to_history</ref>(com,<sp/>percentage);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref>++;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1af93273980b931c6d16282cadca5f82f8" kindref="member">Profiler::draw_canvas</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>glColor4f(0.2,<sp/>0.2,<sp/>0.2,<sp/><ref refid="profiler_8h_1a7f1b8c6294cc28eecd7ceb67589bc96d" kindref="member">PROFILER_CANVAS_ALPHA</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>glRecti(<ref refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" kindref="member">PROFILER_CANVAS_POSITION_X</ref>,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" kindref="member">PROFILER_CANVAS_POSITION_Y</ref>,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" kindref="member">PROFILER_CANVAS_POSITION_X</ref><sp/>+<sp/><ref refid="profiler_8h_1a3671a990e9ab75795b0880ecb54499fe" kindref="member">PROFILER_CANVAS_WIDTH</ref>,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" kindref="member">PROFILER_CANVAS_POSITION_Y</ref><sp/>+<sp/><ref refid="profiler_8h_1aad748908ce3390c721a67a4982ce4582" kindref="member">PROFILER_CANVAS_HEIGHT</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a888378de2be112d90babd8adced6d0a8" kindref="member">Profiler::draw_legend</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>com<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glColor4f(com.second.drawing_color.r,<sp/>com.second.drawing_color.g,<sp/>com.second.drawing_color.b,<sp/>1.0);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box_x<sp/>=<sp/><ref refid="profiler_8h_1adb6783511efb61d8a0797aee06eafa49" kindref="member">PROFILER_CANVAS_POSITION_X</ref><sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>box_y<sp/>=<sp/><ref refid="profiler_8h_1a71195ff55854fa48e547fb54881bd502" kindref="member">PROFILER_CANVAS_POSITION_Y</ref><sp/>-<sp/><ref refid="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" kindref="member">PROFILER_COM_BOX_HEIGHT</ref><sp/>-<sp/>2<sp/>-<sp/>offset;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glRecti(box_x,<sp/>box_y,<sp/>box_x<sp/>+<sp/><ref refid="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" kindref="member">PROFILER_COM_BOX_WIDTH</ref>,<sp/>box_y<sp/>+<sp/><ref refid="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" kindref="member">PROFILER_COM_BOX_HEIGHT</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glColor4f(0.2,<sp/>0.2,<sp/>0.2,<sp/>1);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref><sp/>position<sp/>=<sp/><ref refid="structopenage_1_1coord_1_1viewport" kindref="compound">coord::viewport</ref>{box_x<sp/>+<sp/><ref refid="profiler_8h_1a2a1874ba0a7fea178ef7231c5acfb522" kindref="member">PROFILER_COM_BOX_WIDTH</ref><sp/>+<sp/>2,<sp/>box_y<sp/>+<sp/>2};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" kindref="member">engine</ref>-&gt;<ref refid="classopenage_1_1_engine_1aa1639975d663d41b17b3fabf59d8e237" kindref="member">render_text</ref>(position,<sp/>12,<sp/></highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>com.second.display_name.c_str());</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>+=<sp/><ref refid="profiler_8h_1ac66b295b706317dd1cbff994283d15c5" kindref="member">PROFILER_COM_BOX_HEIGHT</ref><sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classopenage_1_1util_1_1_profiler_1ab4c94527899682bba7316093e447ab71" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1ab4c94527899682bba7316093e447ab71" kindref="member">Profiler::duration_to_percentage</ref>(std::chrono::high_resolution_clock::duration<sp/>duration)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dur<sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(duration).count();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref><sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1aa601a0879677712ff6109f7ec7a8783c" kindref="member">frame_duration</ref>).count();</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>percentage<sp/>=<sp/>dur<sp/>/<sp/><ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref><sp/>*<sp/>100;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>percentage;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classopenage_1_1util_1_1_profiler_1a3f1ff9c750b0d66d99528e043effa51d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a3f1ff9c750b0d66d99528e043effa51d" kindref="member">Profiler::append_to_history</ref>(std::string<sp/>com,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>percentage)<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref><sp/>==<sp/><ref refid="profiler_8h_1a17bd26b0591a14808e271356317939b0" kindref="member">MAX_DURATION_HISTORY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a37eccc0748dcf963d488148de2d21dfd" kindref="member">components</ref>[com].history[this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4a07663732da0468849defb19fdf8bb2" kindref="member">insert_pos</ref>]<sp/>=<sp/>percentage;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_profiler_1a51bbae0c82ca9330a3cb558a8a13f2d0" kindref="member">Profiler::engine_in_debug_mode</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1util_1_1_profiler_1a4c42e5af90b798a2d6542c73ac21767e" kindref="member">engine</ref>-&gt;<ref refid="classopenage_1_1_engine_1acaf343ec070a13eb8ba0a8a6ebd491e2" kindref="member">drawing_debug_overlay</ref>.<ref refid="classopenage_1_1util_1_1_variable_1a2a5e67f8f00e6d539210f496513633b5" kindref="member">value</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/profiler.cpp"/>
+  </compounddef>
+</doxygen>

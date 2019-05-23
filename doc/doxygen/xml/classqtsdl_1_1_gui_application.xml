@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classqtsdl_1_1_gui_application" kind="class" language="C++" prot="public">
+    <compoundname>qtsdl::GuiApplication</compoundname>
+    <derivedcompoundref refid="classopenage_1_1gui_1_1_gui_application_with_logger" prot="public" virt="non-virtual">openage::gui::GuiApplicationWithLogger</derivedcompoundref>
+    <includes refid="gui__application_8h" local="no">gui_application.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GuiApplicationImpl&gt; qtsdl::GuiApplication::application</definition>
+        <argsstring></argsstring>
+        <name>application</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_application.h" line="23" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiApplication::GuiApplication</definition>
+        <argsstring>()</argsstring>
+        <name>GuiApplication</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_application.h" line="16" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiApplication::GuiApplication</definition>
+        <argsstring>(std::shared_ptr&lt; GuiApplicationImpl &gt; application)</argsstring>
+        <name>GuiApplication</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classqtsdl_1_1_gui_application_impl" kindref="compound">GuiApplicationImpl</ref> &gt;</type>
+          <declname>application</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_application.h" line="17" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>qtsdl::GuiApplication::~GuiApplication</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiApplication</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_application.h" line="18" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="19" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void qtsdl::GuiApplication::processEvents</definition>
+        <argsstring>()</argsstring>
+        <name>processEvents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/guisys/public/gui_application.h" line="20" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Houses gui logic event queue. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2486">
+        <label>qtsdl::GuiApplication</label>
+        <link refid="classqtsdl_1_1_gui_application"/>
+      </node>
+      <node id="2487">
+        <label>openage::gui::GuiApplicationWithLogger</label>
+        <link refid="classopenage_1_1gui_1_1_gui_application_with_logger"/>
+        <childnode refid="2486" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2488">
+        <label>qtsdl::GuiApplication</label>
+        <link refid="classqtsdl_1_1_gui_application"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/guisys/public/gui_application.h" line="14" column="1" bodyfile="libopenage/gui/guisys/public/gui_application.h" bodystart="14" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" prot="private" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>application</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" prot="public" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>GuiApplication</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" prot="public" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>GuiApplication</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" prot="public" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>processEvents</name></member>
+      <member refid="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" prot="public" virt="non-virtual"><scope>qtsdl::GuiApplication</scope><name>~GuiApplication</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

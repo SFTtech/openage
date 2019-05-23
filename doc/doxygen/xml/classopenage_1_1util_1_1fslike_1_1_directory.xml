@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1fslike_1_1_directory" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::fslike::Directory</compoundname>
+    <basecompoundref refid="classopenage_1_1util_1_1fslike_1_1_f_s_like" prot="public" virt="non-virtual">openage::util::fslike::FSLike</basecompoundref>
+    <includes refid="directory_8h" local="no">directory.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::fslike::Directory::basepath</definition>
+        <argsstring></argsstring>
+        <name>basepath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="60" column="1" bodyfile="libopenage/util/fslike/directory.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a2bef103b4ee6cf8dda2c55ada35ae060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::fslike::Directory::Directory</definition>
+        <argsstring>(const std::string &amp;basepath, bool create_if_missing=false)</argsstring>
+        <name>Directory</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>basepath</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>create_if_missing</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="26" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="45" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a36e4b63f3b31b1de2370ebe081484159" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::is_file</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>is_file</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adf2810f95545a0ad3ff943031c2dc5be">is_file</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="28" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="78" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ac5dced8dddac80ad98b3804a64a36af0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::is_dir</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>is_dir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3482e633a1c66d185899bc827b535500">is_dir</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="29" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="91" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1aa05f20e2d1e377421774d2360d54d237" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::writable</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>writable</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a881da38b6c5fc9d6e2b11144ee53feb4">writable</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="30" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="104" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a34049b9a977a33a7173bb90ab96df65f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="classopenage_1_1util_1_1_path_1a01b9e1b6d2f1e72e14265f1b23e102c2" kindref="member">Path::part_t</ref> &gt;</type>
+        <definition>std::vector&lt; Path::part_t &gt; openage::util::fslike::Directory::list</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>list</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a9106c192b17224d429822edd0ffd6ecd">list</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="31" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="123" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::mkdirs</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>mkdirs</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a0b9f9850507320cc4d3dc4393a4e7195">mkdirs</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="32" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="148" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a85129377f5f8b133c45ea585b42b6e4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Directory::open_r</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_r</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abf13ccd935fb36f6d3eb78b296abb3a8">open_r</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="33" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="185" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a30009d2a2d94139e2688d07b5df1de8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Directory::open_w</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_w</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a489ac2d07d76709781f16eb2d405f1fe">open_w</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="34" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="193" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ab5decb9af0d2373df3a4c6acade814e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Directory::open_rw</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_rw</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2aded78ac99255c9f770434bbd6d94c3">open_rw</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="35" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="201" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ac4207abf1b91ac361bba198c58709555" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Directory::open_a</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_a</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8b0ccf47acfb5ab6755bfce2f791f2b3">open_a</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="36" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="209" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1af22803a261b1e56ddf1b3046f34c4914" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref></type>
+        <definition>File openage::util::fslike::Directory::open_ar</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>open_ar</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a4b5616d9717e5301c7a02c0ec817ec4d">open_ar</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="37" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="217" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1aa1f011f4012ff1e02ecfdd5df30b7e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::fslike::Directory::get_native_path</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_native_path</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a46e98d2f10ea90e0c3bdf10cd7c3a55c">get_native_path</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="39" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="225" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ad63db9e7e3a5f49a93f47d7904f2de33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::rename</definition>
+        <argsstring>(const Path::parts_t &amp;parts, const Path::parts_t &amp;target_parts) override</argsstring>
+        <name>rename</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1ac309157d7ca897b70ad1bd2422278a76">rename</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>target_parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="40" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="230" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ad25337a6884cc2a497b1f142e4f01225" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::rmdir</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>rmdir</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a059fb6fed999bf853991bc33ed85f039">rmdir</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="42" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="238" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1ab5d2482157fe89058a2a763141c4d9e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::touch</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>touch</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a60b98d35f3dd77e2c25bc39bb495c274">touch</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="43" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="243" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1aea004e3d87864f6f13e2c5d79fc67d2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool openage::util::fslike::Directory::unlink</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>unlink</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1acf305e89dcfa13a3bfac108943793bfe">unlink</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="44" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="272" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a4edc467134f448398dbe7cf5ad4dcc11" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int openage::util::fslike::Directory::get_mtime</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_mtime</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a3a5e4bbcf3223072add552c6cbb3cef4">get_mtime</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="46" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="277" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a071636c64e89976aaa350083c66b6a4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::fslike::Directory::get_filesize</definition>
+        <argsstring>(const Path::parts_t &amp;parts) override</argsstring>
+        <name>get_filesize</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a08ae94dab451787650b27a828ddd6d01">get_filesize</reimplements>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="47" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="295" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1aae57b59ff2e61cbb96d44ffe58f1f72b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::util::fslike::Directory::repr</definition>
+        <argsstring>(std::ostream &amp;) override</argsstring>
+        <name>repr</name>
+        <reimplements refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1af59ec3100e97086edd094242f700e454">repr</reimplements>
+        <param>
+          <type>std::ostream &amp;</type>
+          <defname>stream</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="49" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="307" bodyend="310"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::fslike::Directory::resolve</definition>
+        <argsstring>(const Path::parts_t &amp;parts) const</argsstring>
+        <name>resolve</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>resolve the path to an actually usable one. basically basepath + &quot;/&quot;.join(parts) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="56" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="59" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::tuple&lt; struct stat, int &gt;</type>
+        <definition>std::tuple&lt; struct stat, int &gt; openage::util::fslike::Directory::do_stat</definition>
+        <argsstring>(const Path::parts_t &amp;parts) const</argsstring>
+        <name>do_stat</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>parts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fslike/directory.h" line="58" column="1" bodyfile="libopenage/util/fslike/directory.cpp" bodystart="69" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Filesystem-like object which uses native libc calls. It is used to directly access your real filesystem that the kernel mounted for you. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1111">
+        <label>openage::util::fslike::FSLike</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
+        <childnode refid="1112" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1110">
+        <label>openage::util::fslike::Directory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_directory"/>
+        <childnode refid="1111" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1112">
+        <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1114">
+        <label>openage::util::fslike::FSLike</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_f_s_like"/>
+        <childnode refid="1115" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1113">
+        <label>openage::util::fslike::Directory</label>
+        <link refid="classopenage_1_1util_1_1fslike_1_1_directory"/>
+        <childnode refid="1114" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1115">
+        <label>std::enable_shared_from_this&lt; FSLike &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/fslike/directory.h" line="24" column="1" bodyfile="libopenage/util/fslike/directory.h" bodystart="24" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5f0417c9e573584edfedfe386f05c2f" prot="protected" virt="non-virtual"><scope>openage::util::fslike::Directory</scope><name>basepath</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2bef103b4ee6cf8dda2c55ada35ae060" prot="public" virt="non-virtual"><scope>openage::util::fslike::Directory</scope><name>Directory</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a2c5d51674da6c9c62ae8753f3a8a6cd0" prot="protected" virt="non-virtual"><scope>openage::util::fslike::Directory</scope><name>do_stat</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a360e94675cb97c2efa393d03be02b46c" prot="public" virt="non-virtual"><scope>openage::util::fslike::Directory</scope><name>FSLike</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a071636c64e89976aaa350083c66b6a4a" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>get_filesize</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a4edc467134f448398dbe7cf5ad4dcc11" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>get_mtime</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa1f011f4012ff1e02ecfdd5df30b7e84" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>get_native_path</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac5dced8dddac80ad98b3804a64a36af0" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>is_dir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a36e4b63f3b31b1de2370ebe081484159" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>is_file</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a8d65a4b885c3b6669added656e4b9d6f" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>is_python_native</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a34049b9a977a33a7173bb90ab96df65f" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>list</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a441128dffdf9ebc274a4c1c5461ed05a" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>mkdirs</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ac4207abf1b91ac361bba198c58709555" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>open_a</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1af22803a261b1e56ddf1b3046f34c4914" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>open_ar</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a85129377f5f8b133c45ea585b42b6e4e" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>open_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5decb9af0d2373df3a4c6acade814e3" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>open_rw</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a30009d2a2d94139e2688d07b5df1de8a" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>open_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad63db9e7e3a5f49a93f47d7904f2de33" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>rename</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1aae57b59ff2e61cbb96d44ffe58f1f72b" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>repr</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1a7dab02972c0d0fa8ef5b3fd387966855" prot="protected" virt="non-virtual"><scope>openage::util::fslike::Directory</scope><name>resolve</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a5dd908fc01d858dd0ad6d796cfa4caa6" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>resolve_r</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1a2624d82034fe926a371f978b1d572f93" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>resolve_w</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ad25337a6884cc2a497b1f142e4f01225" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>rmdir</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1adcba7ad7135736cf7f7c105ef2a4473d" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>root</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1ab5d2482157fe89058a2a763141c4d9e9" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>touch</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1aea004e3d87864f6f13e2c5d79fc67d2e" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>unlink</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_directory_1aa05f20e2d1e377421774d2360d54d237" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>writable</name></member>
+      <member refid="classopenage_1_1util_1_1fslike_1_1_f_s_like_1abb03f19eab3eb3794c6d2fea224880fd" prot="public" virt="virtual"><scope>openage::util::fslike::Directory</scope><name>~FSLike</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

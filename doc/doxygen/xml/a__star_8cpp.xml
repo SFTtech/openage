@@ -1,0 +1,761 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="a__star_8cpp" kind="file" language="C++">
+    <compoundname>a_star.cpp</compoundname>
+    <includes refid="a__star_8h" local="yes">a_star.h</includes>
+    <includes local="no">cmath</includes>
+    <includes refid="pairing__heap_8h" local="yes">../datastructure/pairing_heap.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <includes refid="terrain_8h" local="yes">../terrain/terrain.h</includes>
+    <includes refid="terrain__object_8h" local="yes">../terrain/terrain_object.h</includes>
+    <includes refid="strings_8h" local="yes">../util/strings.h</includes>
+    <includes refid="pathfinding_2path_8h" local="yes">path.h</includes>
+    <includes refid="heuristics_8h" local="yes">heuristics.h</includes>
+    <incdepgraph>
+      <node id="18441">
+        <label>list</label>
+      </node>
+      <node id="18433">
+        <label>atomic</label>
+      </node>
+      <node id="18447">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="18416" relation="include">
+        </childnode>
+        <childnode refid="18448" relation="include">
+        </childnode>
+        <childnode refid="18418" relation="include">
+        </childnode>
+        <childnode refid="18438" relation="include">
+        </childnode>
+        <childnode refid="18449" relation="include">
+        </childnode>
+        <childnode refid="18450" relation="include">
+        </childnode>
+        <childnode refid="18434" relation="include">
+        </childnode>
+        <childnode refid="18415" relation="include">
+        </childnode>
+      </node>
+      <node id="18438">
+        <label>iomanip</label>
+      </node>
+      <node id="18411">
+        <label>functional</label>
+      </node>
+      <node id="18449">
+        <label>limits</label>
+      </node>
+      <node id="18410">
+        <label>path.h</label>
+        <link refid="pathfinding_2path_8h"/>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18412" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18414" relation="include">
+        </childnode>
+        <childnode refid="18453" relation="include">
+        </childnode>
+        <childnode refid="18454" relation="include">
+        </childnode>
+        <childnode refid="18415" relation="include">
+        </childnode>
+      </node>
+      <node id="18446">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="18428" relation="include">
+        </childnode>
+        <childnode refid="18447" relation="include">
+        </childnode>
+      </node>
+      <node id="18474">
+        <label>../texture.h</label>
+        <link refid="texture_8h"/>
+        <childnode refid="18475" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18476" relation="include">
+        </childnode>
+        <childnode refid="18472" relation="include">
+        </childnode>
+        <childnode refid="18453" relation="include">
+        </childnode>
+        <childnode refid="18477" relation="include">
+        </childnode>
+        <childnode refid="18478" relation="include">
+        </childnode>
+        <childnode refid="18461" relation="include">
+        </childnode>
+      </node>
+      <node id="18467">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+      </node>
+      <node id="18428">
+        <label>cstdint</label>
+      </node>
+      <node id="18451">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="18436">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="18437" relation="include">
+        </childnode>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18438" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18439" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+      </node>
+      <node id="18466">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="18421" relation="include">
+        </childnode>
+      </node>
+      <node id="18418">
+        <label>cmath</label>
+      </node>
+      <node id="18423">
+        <label>stdexcept</label>
+      </node>
+      <node id="18465">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="18460">
+        <label>../assetmanager.h</label>
+        <link refid="assetmanager_8h"/>
+        <childnode refid="18429" relation="include">
+        </childnode>
+        <childnode refid="18412" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18461" relation="include">
+        </childnode>
+      </node>
+      <node id="18440">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="18441" relation="include">
+        </childnode>
+        <childnode refid="18442" relation="include">
+        </childnode>
+        <childnode refid="18443" relation="include">
+        </childnode>
+      </node>
+      <node id="18437">
+        <label>cstdarg</label>
+      </node>
+      <node id="18420">
+        <label>string</label>
+      </node>
+      <node id="18427">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="18428" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18429" relation="include">
+        </childnode>
+        <childnode refid="18430" relation="include">
+        </childnode>
+        <childnode refid="18432" relation="include">
+        </childnode>
+        <childnode refid="18440" relation="include">
+        </childnode>
+        <childnode refid="18443" relation="include">
+        </childnode>
+      </node>
+      <node id="18430">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="18431" relation="include">
+        </childnode>
+      </node>
+      <node id="18432">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="18433" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18434" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+        <childnode refid="18435" relation="include">
+        </childnode>
+        <childnode refid="18436" relation="include">
+        </childnode>
+      </node>
+      <node id="18455">
+        <label>unordered_set</label>
+      </node>
+      <node id="18406">
+        <label>libopenage/pathfinding/a_star.cpp</label>
+        <link refid="a__star_8cpp"/>
+        <childnode refid="18407" relation="include">
+        </childnode>
+        <childnode refid="18418" relation="include">
+        </childnode>
+        <childnode refid="18454" relation="include">
+        </childnode>
+        <childnode refid="18456" relation="include">
+        </childnode>
+        <childnode refid="18457" relation="include">
+        </childnode>
+        <childnode refid="18480" relation="include">
+        </childnode>
+        <childnode refid="18436" relation="include">
+        </childnode>
+        <childnode refid="18410" relation="include">
+        </childnode>
+        <childnode refid="18409" relation="include">
+        </childnode>
+      </node>
+      <node id="18458">
+        <label>stddef.h</label>
+      </node>
+      <node id="18450">
+        <label>ostream</label>
+      </node>
+      <node id="18480">
+        <label>../terrain/terrain_object.h</label>
+        <link refid="terrain__object_8h"/>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18458" relation="include">
+        </childnode>
+        <childnode refid="18453" relation="include">
+        </childnode>
+        <childnode refid="18414" relation="include">
+        </childnode>
+      </node>
+      <node id="18462">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="18428" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18463" relation="include">
+        </childnode>
+        <childnode refid="18464" relation="include">
+        </childnode>
+      </node>
+      <node id="18417">
+        <label>limits.h</label>
+      </node>
+      <node id="18421">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="18422" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18423" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+        <childnode refid="18427" relation="include">
+        </childnode>
+      </node>
+      <node id="18415">
+        <label>../util/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="18416" relation="include">
+        </childnode>
+        <childnode refid="18417" relation="include">
+        </childnode>
+        <childnode refid="18418" relation="include">
+        </childnode>
+        <childnode refid="18419" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18421" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+      </node>
+      <node id="18452">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="18445">
+        <label>typeinfo</label>
+      </node>
+      <node id="18407">
+        <label>a_star.h</label>
+        <link refid="a__star_8h"/>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18409" relation="include">
+        </childnode>
+        <childnode refid="18410" relation="include">
+        </childnode>
+      </node>
+      <node id="18473">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="18413">
+        <label>vector</label>
+      </node>
+      <node id="18456">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="18443" relation="include">
+        </childnode>
+        <childnode refid="18427" relation="include">
+        </childnode>
+      </node>
+      <node id="18425">
+        <label>ciso646</label>
+      </node>
+      <node id="18477">
+        <label>shader/program.h</label>
+        <link refid="program_8h"/>
+        <childnode refid="18475" relation="include">
+        </childnode>
+      </node>
+      <node id="18439">
+        <label>sstream</label>
+      </node>
+      <node id="18424">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="18425" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18426" relation="include">
+        </childnode>
+      </node>
+      <node id="18468">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18469" relation="include">
+        </childnode>
+        <childnode refid="18462" relation="include">
+        </childnode>
+      </node>
+      <node id="18426">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="18426" relation="include">
+        </childnode>
+      </node>
+      <node id="18475">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="18435">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="18422" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+      </node>
+      <node id="18443">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="18444" relation="include">
+        </childnode>
+      </node>
+      <node id="18472">
+        <label>../coord/pixel.h</label>
+        <link refid="pixel_8h"/>
+        <childnode refid="18473" relation="include">
+        </childnode>
+        <childnode refid="18446" relation="include">
+        </childnode>
+      </node>
+      <node id="18470">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="18476">
+        <label>gamedata/texture.gen.h</label>
+      </node>
+      <node id="18469">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="18422" relation="include">
+        </childnode>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+      </node>
+      <node id="18431">
+        <label>cstdlib</label>
+      </node>
+      <node id="18422">
+        <label>iostream</label>
+      </node>
+      <node id="18478">
+        <label>shader/shader.h</label>
+        <link refid="shader_2shader_8h"/>
+        <childnode refid="18479" relation="include">
+        </childnode>
+        <childnode refid="18475" relation="include">
+        </childnode>
+      </node>
+      <node id="18454">
+        <label>../datastructure/pairing_heap.h</label>
+        <link refid="pairing__heap_8h"/>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18434" relation="include">
+        </childnode>
+        <childnode refid="18455" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+        <childnode refid="18421" relation="include">
+        </childnode>
+      </node>
+      <node id="18412">
+        <label>unordered_map</label>
+      </node>
+      <node id="18464">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18442" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+        <childnode refid="18465" relation="include">
+        </childnode>
+        <childnode refid="18466" relation="include">
+        </childnode>
+        <childnode refid="18467" relation="include">
+        </childnode>
+      </node>
+      <node id="18448">
+        <label>climits</label>
+      </node>
+      <node id="18442">
+        <label>mutex</label>
+      </node>
+      <node id="18471">
+        <label>../coord/chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="18446" relation="include">
+        </childnode>
+        <childnode refid="18451" relation="include">
+        </childnode>
+        <childnode refid="18452" relation="include">
+        </childnode>
+      </node>
+      <node id="18461">
+        <label>util/path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="18420" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18462" relation="include">
+        </childnode>
+        <childnode refid="18468" relation="include">
+        </childnode>
+        <childnode refid="18470" relation="include">
+        </childnode>
+      </node>
+      <node id="18453">
+        <label>../coord/tile.h</label>
+        <link refid="tile_8h"/>
+        <childnode refid="18446" relation="include">
+        </childnode>
+        <childnode refid="18451" relation="include">
+        </childnode>
+        <childnode refid="18452" relation="include">
+        </childnode>
+        <childnode refid="18415" relation="include">
+        </childnode>
+      </node>
+      <node id="18463">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="18434">
+        <label>type_traits</label>
+      </node>
+      <node id="18459">
+        <label>set</label>
+      </node>
+      <node id="18429">
+        <label>config.h</label>
+      </node>
+      <node id="18409">
+        <label>heuristics.h</label>
+        <link refid="heuristics_8h"/>
+        <childnode refid="18410" relation="include">
+        </childnode>
+      </node>
+      <node id="18416">
+        <label>algorithm</label>
+      </node>
+      <node id="18414">
+        <label>../coord/phys.h</label>
+        <link refid="phys_8h"/>
+        <childnode refid="18415" relation="include">
+        </childnode>
+        <childnode refid="18446" relation="include">
+        </childnode>
+        <childnode refid="18451" relation="include">
+        </childnode>
+        <childnode refid="18452" relation="include">
+        </childnode>
+      </node>
+      <node id="18419">
+        <label>cstring</label>
+      </node>
+      <node id="18457">
+        <label>../terrain/terrain.h</label>
+        <link refid="terrain_8h"/>
+        <childnode refid="18411" relation="include">
+        </childnode>
+        <childnode refid="18408" relation="include">
+        </childnode>
+        <childnode refid="18458" relation="include">
+        </childnode>
+        <childnode refid="18459" relation="include">
+        </childnode>
+        <childnode refid="18412" relation="include">
+        </childnode>
+        <childnode refid="18413" relation="include">
+        </childnode>
+        <childnode refid="18460" relation="include">
+        </childnode>
+        <childnode refid="18471" relation="include">
+        </childnode>
+        <childnode refid="18414" relation="include">
+        </childnode>
+        <childnode refid="18472" relation="include">
+        </childnode>
+        <childnode refid="18453" relation="include">
+        </childnode>
+        <childnode refid="18474" relation="include">
+        </childnode>
+        <childnode refid="18415" relation="include">
+        </childnode>
+      </node>
+      <node id="18408">
+        <label>memory</label>
+      </node>
+      <node id="18479">
+        <label>initializer_list</label>
+      </node>
+      <node id="18444">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="18422" relation="include">
+        </childnode>
+        <childnode refid="18445" relation="include">
+        </childnode>
+        <childnode refid="18424" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1path">openage::path</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This file implements the A* search algorithm for openage.</para>
+<para>Literature: Hart, Peter E., Nils J. Nilsson, and Bertram Raphael. &quot;A formal basis for
+the heuristic determination of minimum cost paths.&quot; Systems Science and Cybernetics, IEEE Transactions on 4, no. 2 (1968): 100-107. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2014-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="a__star_8h" kindref="compound">a_star.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../datastructure/pairing_heap.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../terrain/terrain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../terrain/terrain_object.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../util/strings.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pathfinding_2path_8h" kindref="compound">path.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="heuristics_8h" kindref="compound">heuristics.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="27" refid="namespaceopenage_1_1path" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">path<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1a4699fb2dbfd8178b2234b9fbb935179f" kindref="member">to_point</ref>(<ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>start,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>end,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>passable)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>valid_end<sp/>=<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;point)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1a64affc7c4a103a4ffabfd72c454962cf" kindref="member">euclidean_squared_cost</ref>(point,<sp/>end)<sp/>&lt;<sp/><ref refid="namespaceopenage_1_1path_1a7e49ca629b6fed008584d7752dc98e9a" kindref="member">path_grid_size</ref>.<ref refid="classopenage_1_1util_1_1_fixed_point_1a07a0fa1c13f5aff3f184a2d82574e7e7" kindref="member">to_float</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>heuristic<sp/>=<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;point)<sp/>-&gt;<sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1a18aa96b43da6809c7796eaa4214a3420" kindref="member">euclidean_cost</ref>(point,<sp/>end);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" kindref="member">a_star</ref>(start,<sp/>valid_end,<sp/>heuristic,<sp/>passable);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1a248264f0c87ce0cc7cf00adaf5312934" kindref="member">to_object</ref>(<ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref><sp/>*to_move,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1_terrain_object" kindref="compound">openage::TerrainObject</ref><sp/>*end,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">coord::phys_t</ref><sp/>rad)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>start<sp/>=<sp/>to_move-&gt;<ref refid="classopenage_1_1_terrain_object_1adf9b18542dda79a323947f5d8707346b" kindref="member">pos</ref>.<ref refid="structopenage_1_1tile__range_1a66f28f55fc7cb96a713d76b15d855a0e" kindref="member">draw</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>valid_end<sp/>=<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;pos)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>end-&gt;<ref refid="classopenage_1_1_terrain_object_1a6ef3514689565c74e503570d0ba7adbb" kindref="member">from_edge</ref>(pos)<sp/>&lt;<sp/>rad;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>heuristic<sp/>=<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;pos)<sp/>-&gt;<sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(end-&gt;<ref refid="classopenage_1_1_terrain_object_1a6ef3514689565c74e503570d0ba7adbb" kindref="member">from_edge</ref>(pos)<sp/>-<sp/>to_move-&gt;<ref refid="classopenage_1_1_terrain_object_1a6b82e5577be0620a320954e13d0f5f08" kindref="member">min_axis</ref>()<sp/>/<sp/>2L).to_float();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" kindref="member">a_star</ref>(start,<sp/>valid_end,<sp/>heuristic,<sp/>to_move-&gt;<ref refid="classopenage_1_1_terrain_object_1af86e4e2bf2ac48fc1b37cc436a50c5a1" kindref="member">passable</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1a4382f59f9523f9dd89a6689336cc353a" kindref="member">find_nearest</ref>(<ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>start,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>valid_end,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>passable)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>Dijkstra<sp/>(hueristic<sp/>=<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>zero<sp/>=<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)<sp/>-&gt;<sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>.0f;<sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" kindref="member">a_star</ref>(start,<sp/>valid_end,<sp/>zero,<sp/>passable);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1path_1_1_path" kindref="compound">Path</ref><sp/><ref refid="namespaceopenage_1_1path_1acafe3c2e0b6cef7750a14663eab6c883" kindref="member">a_star</ref>(<ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>start,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>valid_end,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;<ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>heuristic,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref><sp/>&amp;)&gt;<sp/>passable)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>path<sp/>node<sp/>storage,<sp/>always<sp/>provides<sp/>cheapest<sp/>next<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_pairing_heap" kindref="compound">heap_t</ref><sp/>node_candidates;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>list<sp/>of<sp/>known<sp/>tiles<sp/>and<sp/>corresponding<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1a2889597504b5f2d6987d132f1e5682f6" kindref="member">nodemap_t</ref><sp/>visited_tiles;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>starting<sp/>node</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>start_node<sp/>=<sp/>std::make_shared&lt;Node&gt;(start,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>.0f,<sp/>heuristic(start));</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>visited_tiles[start_node-&gt;position]<sp/>=<sp/>start_node;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a75e9e7602b59aeee47a2fd84a10c8f74" kindref="member">push</ref>(start_node);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>start_node-&gt;heap_node<sp/>=<sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a75e9e7602b59aeee47a2fd84a10c8f74" kindref="member">push</ref>(start_node);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>track<sp/>the<sp/>closest<sp/>we<sp/>can<sp/>get<sp/>to<sp/>the<sp/>end<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>when<sp/>no<sp/>path<sp/>is<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>closest_node<sp/>=<sp/>start_node;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>while<sp/>there<sp/>are<sp/>candidates<sp/>to<sp/>visit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(not<sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a7a529d5ee64fa5002f6487d3821df5f6" kindref="member">empty</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>best_candidate<sp/>=<sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1ac6bcfcb890dd8d546b1b4c466cf09009" kindref="member">pop</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>best_candidate-&gt;was_best<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>node<sp/>to<sp/>terminate<sp/>the<sp/>search<sp/>was<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(valid_end(best_candidate-&gt;position))<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;path<sp/>cost<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1_float_fixed" kindref="compound">util::FloatFixed&lt;3, 8&gt;</ref>{closest_node-&gt;future_cost});</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>best_candidate-&gt;generate_backtrace();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>closest<sp/>node<sp/>for<sp/>cases<sp/>when<sp/>target<sp/>cannot<sp/>be<sp/>reached</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(best_candidate-&gt;heuristic_cost<sp/>&lt;<sp/>closest_node-&gt;heuristic_cost)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>closest_node<sp/>=<sp/>best_candidate;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>evaluate<sp/>all<sp/>neighbors<sp/>of<sp/>the<sp/>current<sp/>candidate<sp/>for<sp/>further<sp/>progress</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1_1path_1adf2b15337cb3eec1712f18c17c75c325" kindref="member">node_pt</ref><sp/>neighbor<sp/>:<sp/>best_candidate-&gt;get_neighbors(visited_tiles))<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(neighbor-&gt;was_best)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not<sp/><ref refid="namespaceopenage_1_1path_1a2752186f11f3e1a26c7a72c647e7ccdd" kindref="member">passable_line</ref>(best_candidate,<sp/>neighbor,<sp/>passable))<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>not_visited<sp/>=<sp/>(visited_tiles.count(neighbor-&gt;position)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1path_1aeb0eaee59cf635000d9a737312cd4215" kindref="member">cost_t</ref><sp/>new_past_cost<sp/>=<sp/>best_candidate-&gt;past_cost<sp/>+<sp/>best_candidate-&gt;cost_to(*neighbor);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>new<sp/>cost<sp/>is<sp/>better<sp/>than<sp/>the<sp/>previous<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not_visited<sp/>or<sp/>new_past_cost<sp/>&lt;<sp/>neighbor-&gt;past_cost)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not_visited)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>heuristic<sp/>only<sp/>once<sp/>per<sp/>node</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neighbor-&gt;heuristic_cost<sp/>=<sp/>heuristic(neighbor-&gt;position);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(neighbor-&gt;heuristic_cost<sp/>&gt;<sp/>closest_node-&gt;heuristic_cost<sp/>*<sp/>3)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>dont<sp/>search<sp/>forever...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>new<sp/>cost<sp/>knowledge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neighbor-&gt;past_cost<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>new_past_cost;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neighbor-&gt;future_cost<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>neighbor-&gt;past_cost<sp/>+<sp/>neighbor-&gt;heuristic_cost;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neighbor-&gt;path_predecessor<sp/>=<sp/>best_candidate;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(not_visited)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>neighbor-&gt;heap_node<sp/>=<sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1a75e9e7602b59aeee47a2fd84a10c8f74" kindref="member">push</ref>(neighbor);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visited_tiles[neighbor-&gt;position]<sp/>=<sp/>neighbor;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node_candidates.<ref refid="classopenage_1_1datastructure_1_1_pairing_heap_1ab94d37206816a45bcfe49f8631cc82a9" kindref="member">decrease</ref>(neighbor-&gt;heap_node);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(dbg)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;incomplete<sp/>path<sp/>cost<sp/>is<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1_float_fixed" kindref="compound">util::FloatFixed&lt;3, 8&gt;</ref>{closest_node-&gt;future_cost});</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>closest_node-&gt;generate_backtrace();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::path</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/pathfinding/a_star.cpp"/>
+  </compounddef>
+</doxygen>

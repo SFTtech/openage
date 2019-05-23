@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="timing_8cpp" kind="file" language="C++">
+    <compoundname>timing.cpp</compoundname>
+    <includes refid="timing_8h" local="yes">timing.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">cstring</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <incdepgraph>
+      <node id="33017">
+        <label>list</label>
+      </node>
+      <node id="33007">
+        <label>atomic</label>
+      </node>
+      <node id="33013">
+        <label>iomanip</label>
+      </node>
+      <node id="33012">
+        <label>functional</label>
+      </node>
+      <node id="32991">
+        <label>cstdint</label>
+      </node>
+      <node id="33010">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="33011" relation="include">
+        </childnode>
+        <childnode refid="33012" relation="include">
+        </childnode>
+        <childnode refid="33013" relation="include">
+        </childnode>
+        <childnode refid="32996" relation="include">
+        </childnode>
+        <childnode refid="33014" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="33015" relation="include">
+        </childnode>
+      </node>
+      <node id="32997">
+        <label>stdexcept</label>
+      </node>
+      <node id="32990">
+        <label>timing.h</label>
+        <link refid="timing_8h"/>
+        <childnode refid="32991" relation="include">
+        </childnode>
+      </node>
+      <node id="33016">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="33017" relation="include">
+        </childnode>
+        <childnode refid="33018" relation="include">
+        </childnode>
+        <childnode refid="33019" relation="include">
+        </childnode>
+      </node>
+      <node id="33011">
+        <label>cstdarg</label>
+      </node>
+      <node id="32998">
+        <label>string</label>
+      </node>
+      <node id="33002">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="32991" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="33003" relation="include">
+        </childnode>
+        <childnode refid="33004" relation="include">
+        </childnode>
+        <childnode refid="33006" relation="include">
+        </childnode>
+        <childnode refid="33016" relation="include">
+        </childnode>
+        <childnode refid="33019" relation="include">
+        </childnode>
+      </node>
+      <node id="33004">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="33005" relation="include">
+        </childnode>
+      </node>
+      <node id="33006">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="33007" relation="include">
+        </childnode>
+        <childnode refid="32996" relation="include">
+        </childnode>
+        <childnode refid="33008" relation="include">
+        </childnode>
+        <childnode refid="32999" relation="include">
+        </childnode>
+        <childnode refid="33009" relation="include">
+        </childnode>
+        <childnode refid="33010" relation="include">
+        </childnode>
+      </node>
+      <node id="32994">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="32995" relation="include">
+        </childnode>
+        <childnode refid="32996" relation="include">
+        </childnode>
+        <childnode refid="32997" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="32999" relation="include">
+        </childnode>
+        <childnode refid="33002" relation="include">
+        </childnode>
+      </node>
+      <node id="32989">
+        <label>libopenage/util/timing.cpp</label>
+        <link refid="timing_8cpp"/>
+        <childnode refid="32990" relation="include">
+        </childnode>
+        <childnode refid="32992" relation="include">
+        </childnode>
+        <childnode refid="32993" relation="include">
+        </childnode>
+        <childnode refid="32994" relation="include">
+        </childnode>
+      </node>
+      <node id="33021">
+        <label>typeinfo</label>
+      </node>
+      <node id="33015">
+        <label>vector</label>
+      </node>
+      <node id="33000">
+        <label>ciso646</label>
+      </node>
+      <node id="33014">
+        <label>sstream</label>
+      </node>
+      <node id="32999">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="33000" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="33001" relation="include">
+        </childnode>
+      </node>
+      <node id="33001">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="33001" relation="include">
+        </childnode>
+      </node>
+      <node id="33009">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="32995" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+      </node>
+      <node id="33019">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="33020" relation="include">
+        </childnode>
+      </node>
+      <node id="33005">
+        <label>cstdlib</label>
+      </node>
+      <node id="32995">
+        <label>iostream</label>
+      </node>
+      <node id="33018">
+        <label>mutex</label>
+      </node>
+      <node id="32992">
+        <label>chrono</label>
+      </node>
+      <node id="33008">
+        <label>type_traits</label>
+      </node>
+      <node id="33003">
+        <label>config.h</label>
+      </node>
+      <node id="32993">
+        <label>cstring</label>
+      </node>
+      <node id="32996">
+        <label>memory</label>
+      </node>
+      <node id="33020">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="32995" relation="include">
+        </childnode>
+        <childnode refid="33021" relation="include">
+        </childnode>
+        <childnode refid="32999" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1timing">openage::timing</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timing_8h" kindref="compound">timing.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="11" refid="namespaceopenage_1_1timing" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">timing<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="namespaceopenage_1_1timing_1aea51f4c8e71a8c326e3dd9dcc05c00eb" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/><ref refid="namespaceopenage_1_1timing_1aea51f4c8e71a8c326e3dd9dcc05c00eb" kindref="member">get_real_time</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::system_clock::time_point<sp/>t;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/>std::chrono::system_clock::now();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ns<sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;(t.time_since_epoch()).count();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;time_nsec_t&gt;(ns);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" refkind="member"><highlight class="normal"><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref><sp/><ref refid="namespaceopenage_1_1timing_1a7d40886347e44f74660d8f9f00b24b95" kindref="member">get_monotonic_time</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::steady_clock::time_point<sp/>t;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>t<sp/>=<sp/>std::chrono::steady_clock::now();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ns<sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;(t.time_since_epoch()).count();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>static_cast&lt;time_nsec_t&gt;(ns);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::timing</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/timing.cpp"/>
+  </compounddef>
+</doxygen>

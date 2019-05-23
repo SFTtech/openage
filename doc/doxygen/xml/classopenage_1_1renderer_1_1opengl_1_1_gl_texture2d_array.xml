@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>openage::renderer::opengl::GlTexture2dArray</compoundname>
+    <basecompoundref refid="classopenage_1_1renderer_1_1_texture2d_array" prot="public" virt="non-virtual">openage::renderer::Texture2dArray</basecompoundref>
+    <basecompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object" prot="public" virt="non-virtual">openage::renderer::opengl::GlSimpleObject</basecompoundref>
+    <includes refid="opengl_2texture__array_8h" local="no">texture_array.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1ab296a089313fa437f6fec95bc78f006a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::opengl::GlTexture2dArray::n_layers</definition>
+        <argsstring></argsstring>
+        <name>n_layers</name>
+        <briefdescription>
+<para>The number of layers (elements) in the array, AKA the depth. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture_array.h" line="34" column="1" bodyfile="libopenage/renderer/opengl/texture_array.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a780b276d8b13fa2b8e2e1258e32e4199" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray</definition>
+        <argsstring>(const std::vector&lt; resources::Texture2dData &gt; &amp;)</argsstring>
+        <name>GlTexture2dArray</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> &gt; &amp;</type>
+          <defname>data</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs an array of the same number of layers as the size of the given vector, and fills the layers with the corresponding vector element. The texture formats in all vector elements must be the same as defined by Textur2dInfo::operator==. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture_array.h" line="24" column="1" bodyfile="libopenage/renderer/opengl/texture_array.cpp" bodystart="22" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a6bbd8697f7a898d594e85d3c6c158f12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::renderer::opengl::GlTexture2dArray::GlTexture2dArray</definition>
+        <argsstring>(size_t n_layers, resources::Texture2dInfo const &amp;layer_info)</argsstring>
+        <name>GlTexture2dArray</name>
+        <param>
+          <type>size_t</type>
+          <declname>n_layers</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" kindref="compound">resources::Texture2dInfo</ref> const &amp;</type>
+          <declname>layer_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructs an array of ln_layers empty layers, with the per-layer texture format specified in layer_info. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture_array.h" line="28" column="1" bodyfile="libopenage/renderer/opengl/texture_array.cpp" bodystart="45" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::renderer::opengl::GlTexture2dArray::upload</definition>
+        <argsstring>(size_t layer, resources::Texture2dData const &amp;) override</argsstring>
+        <name>upload</name>
+        <reimplements refid="classopenage_1_1renderer_1_1_texture2d_array_1a3ca94c755d0a68c00a1c3c93a549a938">upload</reimplements>
+        <param>
+          <type>size_t</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" kindref="compound">resources::Texture2dData</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Uploads the given texture data into the specified layer. <computeroutput>layer</computeroutput> must be strictly less than the size of the array and the data format must match the format this array was originally created with. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/opengl/texture_array.h" line="30" column="1" bodyfile="libopenage/renderer/opengl/texture_array.cpp" bodystart="79" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An OpenGL array of 2D textures. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2438">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2436">
+        <label>openage::renderer::opengl::GlTexture2dArray</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array"/>
+        <childnode refid="2437" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2438" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2437">
+        <label>openage::renderer::Texture2dArray</label>
+        <link refid="classopenage_1_1renderer_1_1_texture2d_array"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2442">
+        <label>openage::renderer::opengl::GlSimpleObject</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object"/>
+      </node>
+      <node id="2439">
+        <label>openage::renderer::opengl::GlTexture2dArray</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array"/>
+        <childnode refid="2440" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2442" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2440">
+        <label>openage::renderer::Texture2dArray</label>
+        <link refid="classopenage_1_1renderer_1_1_texture2d_array"/>
+        <childnode refid="2441" relation="usage">
+          <edgelabel>#layer_info</edgelabel>
+        </childnode>
+      </node>
+      <node id="2441">
+        <label>openage::renderer::resources::Texture2dInfo</label>
+        <link refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/opengl/texture_array.h" line="18" column="1" bodyfile="libopenage/renderer/opengl/texture_array.h" bodystart="18" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a6d235dc3bdf1323a5b3bfad20df78ef6" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>delete_fun</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aeae2150c26a186110686373ad37cecf5" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>get_handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_array_1a67346f78f3693e422f03dc2c711b1c07" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>get_info</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad01a0a9dfceabcf5ea48a6af86a805ed" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a9cb29e026e6097138f0e6d20d22eb6b9" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a24d175d087077438ddf0667d4f0bb210" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a780b276d8b13fa2b8e2e1258e32e4199" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>GlTexture2dArray</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a6bbd8697f7a898d594e85d3c6c158f12" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>GlTexture2dArray</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1ad59150afddeb64a473f500edee2f63f5" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>handle</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_array_1a3f54828c980df5c3f6d0668c5f3fef0e" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>layer_info</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1ab296a089313fa437f6fec95bc78f006a" prot="private" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>n_layers</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a19018330cb67b7f63271764b883ff19a" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1aa5c241e2d89ec1043b3540c6beb8a3a2" prot="public" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>operator=</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_array_1ab2d8a3b070655aec009e73c68ee57c4d" prot="protected" virt="non-virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>Texture2dArray</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_texture2d_array_1a2c8d96d2ec74e7ab4b744aebb19cf31d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>upload</name></member>
+      <member refid="classopenage_1_1renderer_1_1opengl_1_1_gl_simple_object_1a52d36fe37bbca9529578795d1042530d" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>~GlSimpleObject</name></member>
+      <member refid="classopenage_1_1renderer_1_1_texture2d_array_1a2794026428225d9625362cc70a52ec15" prot="public" virt="virtual"><scope>openage::renderer::opengl::GlTexture2dArray</scope><name>~Texture2dArray</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

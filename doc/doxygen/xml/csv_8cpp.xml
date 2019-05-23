@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="csv_8cpp" kind="file" language="C++">
+    <compoundname>csv.cpp</compoundname>
+    <includes refid="csv_8h" local="yes">csv.h</includes>
+    <includes local="no">cstring</includes>
+    <includes refid="file_8h" local="yes">file.h</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includes refid="log_8h" local="yes">../log/log.h</includes>
+    <incdepgraph>
+      <node id="28184">
+        <label>list</label>
+      </node>
+      <node id="28175">
+        <label>atomic</label>
+      </node>
+      <node id="28181">
+        <label>iomanip</label>
+      </node>
+      <node id="28180">
+        <label>functional</label>
+      </node>
+      <node id="28196">
+        <label>setup.h</label>
+        <link refid="setup_8h"/>
+        <childnode refid="28180" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+      </node>
+      <node id="28171">
+        <label>cstdint</label>
+      </node>
+      <node id="28178">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="28179" relation="include">
+        </childnode>
+        <childnode refid="28180" relation="include">
+        </childnode>
+        <childnode refid="28181" relation="include">
+        </childnode>
+        <childnode refid="28165" relation="include">
+        </childnode>
+        <childnode refid="28182" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28162" relation="include">
+        </childnode>
+      </node>
+      <node id="28195">
+        <label>exctranslate.h</label>
+        <link refid="exctranslate_8h"/>
+        <childnode refid="28163" relation="include">
+        </childnode>
+      </node>
+      <node id="28166">
+        <label>stdexcept</label>
+      </node>
+      <node id="28194">
+        <label>../util/language.h</label>
+        <link refid="language_8h"/>
+      </node>
+      <node id="28183">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="28184" relation="include">
+        </childnode>
+        <childnode refid="28185" relation="include">
+        </childnode>
+        <childnode refid="28186" relation="include">
+        </childnode>
+      </node>
+      <node id="28155">
+        <label>libopenage/util/csv.cpp</label>
+        <link refid="csv_8cpp"/>
+        <childnode refid="28156" relation="include">
+        </childnode>
+        <childnode refid="28158" relation="include">
+        </childnode>
+        <childnode refid="28197" relation="include">
+        </childnode>
+        <childnode refid="28163" relation="include">
+        </childnode>
+        <childnode refid="28199" relation="include">
+        </childnode>
+      </node>
+      <node id="28179">
+        <label>cstdarg</label>
+      </node>
+      <node id="28160">
+        <label>string</label>
+      </node>
+      <node id="28170">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="28171" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28172" relation="include">
+        </childnode>
+        <childnode refid="28173" relation="include">
+        </childnode>
+        <childnode refid="28174" relation="include">
+        </childnode>
+        <childnode refid="28183" relation="include">
+        </childnode>
+        <childnode refid="28186" relation="include">
+        </childnode>
+      </node>
+      <node id="28173">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="28157" relation="include">
+        </childnode>
+      </node>
+      <node id="28174">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="28175" relation="include">
+        </childnode>
+        <childnode refid="28165" relation="include">
+        </childnode>
+        <childnode refid="28176" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+        <childnode refid="28177" relation="include">
+        </childnode>
+        <childnode refid="28178" relation="include">
+        </childnode>
+      </node>
+      <node id="28159">
+        <label>fstream</label>
+      </node>
+      <node id="28191">
+        <label>../pyinterface/pyobject.h</label>
+        <link refid="pyobject_8h"/>
+        <childnode refid="28171" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28162" relation="include">
+        </childnode>
+        <childnode refid="28192" relation="include">
+        </childnode>
+        <childnode refid="28193" relation="include">
+        </childnode>
+      </node>
+      <node id="28163">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="28164" relation="include">
+        </childnode>
+        <childnode refid="28165" relation="include">
+        </childnode>
+        <childnode refid="28166" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+        <childnode refid="28170" relation="include">
+        </childnode>
+      </node>
+      <node id="28156">
+        <label>csv.h</label>
+        <link refid="csv_8h"/>
+        <childnode refid="28157" relation="include">
+        </childnode>
+        <childnode refid="28158" relation="include">
+        </childnode>
+        <childnode refid="28159" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28161" relation="include">
+        </childnode>
+        <childnode refid="28162" relation="include">
+        </childnode>
+        <childnode refid="28163" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+        <childnode refid="28189" relation="include">
+        </childnode>
+        <childnode refid="28190" relation="include">
+        </childnode>
+      </node>
+      <node id="28188">
+        <label>typeinfo</label>
+      </node>
+      <node id="28162">
+        <label>vector</label>
+      </node>
+      <node id="28199">
+        <label>../log/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="28186" relation="include">
+        </childnode>
+        <childnode refid="28170" relation="include">
+        </childnode>
+      </node>
+      <node id="28168">
+        <label>ciso646</label>
+      </node>
+      <node id="28182">
+        <label>sstream</label>
+      </node>
+      <node id="28167">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28168" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28169" relation="include">
+        </childnode>
+      </node>
+      <node id="28197">
+        <label>file.h</label>
+        <link refid="file_8h"/>
+        <childnode refid="28165" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28162" relation="include">
+        </childnode>
+        <childnode refid="28198" relation="include">
+        </childnode>
+        <childnode refid="28191" relation="include">
+        </childnode>
+      </node>
+      <node id="28169">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28169" relation="include">
+        </childnode>
+      </node>
+      <node id="28177">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="28164" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+      </node>
+      <node id="28186">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="28187" relation="include">
+        </childnode>
+      </node>
+      <node id="28189">
+        <label>fslike/native.h</label>
+        <link refid="fslike_2native_8h"/>
+      </node>
+      <node id="28198">
+        <label>filelike/filelike.h</label>
+        <link refid="filelike_8h"/>
+        <childnode refid="28164" relation="include">
+        </childnode>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+      </node>
+      <node id="28157">
+        <label>cstdlib</label>
+      </node>
+      <node id="28164">
+        <label>iostream</label>
+      </node>
+      <node id="28161">
+        <label>unordered_map</label>
+      </node>
+      <node id="28193">
+        <label>functional.h</label>
+        <link refid="functional_8h"/>
+        <childnode refid="28180" relation="include">
+        </childnode>
+        <childnode refid="28185" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+        <childnode refid="28194" relation="include">
+        </childnode>
+        <childnode refid="28195" relation="include">
+        </childnode>
+        <childnode refid="28196" relation="include">
+        </childnode>
+      </node>
+      <node id="28185">
+        <label>mutex</label>
+      </node>
+      <node id="28190">
+        <label>path.h</label>
+        <link refid="util_2path_8h"/>
+        <childnode refid="28160" relation="include">
+        </childnode>
+        <childnode refid="28162" relation="include">
+        </childnode>
+        <childnode refid="28191" relation="include">
+        </childnode>
+        <childnode refid="28197" relation="include">
+        </childnode>
+        <childnode refid="28189" relation="include">
+        </childnode>
+      </node>
+      <node id="28192">
+        <label>defs.h</label>
+        <link refid="defs_8h"/>
+      </node>
+      <node id="28176">
+        <label>type_traits</label>
+      </node>
+      <node id="28172">
+        <label>config.h</label>
+      </node>
+      <node id="28158">
+        <label>cstring</label>
+      </node>
+      <node id="28165">
+        <label>memory</label>
+      </node>
+      <node id="28187">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="28164" relation="include">
+        </childnode>
+        <childnode refid="28188" relation="include">
+        </childnode>
+        <childnode refid="28167" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2013-2017<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="csv_8h" kindref="compound">csv.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="file_8h" kindref="compound">file.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../log/log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1util_1_1_c_s_v_collection_1aae99478db7d16d650eff5dd34a2194ca" kindref="member">CSVCollection::CSVCollection</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref><sp/>&amp;entryfile_path)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>file<sp/>=<sp/>entryfile_path.<ref refid="classopenage_1_1util_1_1_path_1a5b429e300ae4a048dbbd1a733bc1452a" kindref="member">open</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1a49606be7356624568932ec81c0d429f4" kindref="member">DBG</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loading<sp/>csv<sp/>collection:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>file);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>file<sp/>format<sp/>is<sp/>defined<sp/>in:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>openage/convert/dataformat/data_definition.py</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>example:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>###<sp/>some/folder/and/filename.docx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#<sp/>irrelevant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>#<sp/>comments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data,stuff,moar,bla</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>store<sp/>the<sp/>currently<sp/>read<sp/>file<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>current_file;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref><sp/>:<sp/>file.get_lines())<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>new<sp/>file<sp/>starts:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal"><sp/>and</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>[1]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal"><sp/>and</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>[2]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal"><sp/>and</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>[3]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remove<sp/>the<sp/>&quot;###<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_file<sp/>=<sp/>(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>.erase(0,<sp/>4));</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>a<sp/>vector<sp/>to<sp/>put<sp/>lines<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" kindref="member">data</ref>.emplace(current_file,<sp/>std::vector&lt;std::string&gt;{});</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>.empty()<sp/>or<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="compiler_8h_1a217a0bd562b98ae8c2ffce44935351e1" kindref="member">likely</ref>(current_file.size()<sp/>&gt;<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>line<sp/>to<sp/>the<sp/>current<sp/>file<sp/>linelist</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" kindref="member">data</ref>.at(current_file).push_back(<ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="message_8h_1a735563036dced0b7d6cc98f97ea4978b" kindref="member">ERR</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;csv<sp/>collection<sp/>content<sp/>encountered<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;without<sp/>known<sp/>target<sp/>in<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>entryfile_path</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>linedata:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20a6438c669e0d0de98e6929c2cc0fac474" kindref="member">line</ref></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log</ref>(<ref refid="message_8h_1ae1103fea1e1b3c41ca3322d5389f7162" kindref="member">INFO</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Loaded<sp/>multi-csv<sp/>file:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>this-&gt;<ref refid="classopenage_1_1util_1_1_c_s_v_collection_1ae98e255e27b3a106aca1d24f591a8538" kindref="member">data</ref>.size()<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>sub-files&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::util</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/csv.cpp"/>
+  </compounddef>
+</doxygen>

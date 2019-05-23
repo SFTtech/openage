@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="constinit__vector_8cpp" kind="file" language="C++">
+    <compoundname>constinit_vector.cpp</compoundname>
+    <includes refid="constinit__vector_8h" local="yes">constinit_vector.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="28140">
+        <label>list</label>
+      </node>
+      <node id="28130">
+        <label>atomic</label>
+      </node>
+      <node id="28136">
+        <label>iomanip</label>
+      </node>
+      <node id="28135">
+        <label>functional</label>
+      </node>
+      <node id="28125">
+        <label>cstdint</label>
+      </node>
+      <node id="28133">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="28134" relation="include">
+        </childnode>
+        <childnode refid="28135" relation="include">
+        </childnode>
+        <childnode refid="28136" relation="include">
+        </childnode>
+        <childnode refid="28115" relation="include">
+        </childnode>
+        <childnode refid="28137" relation="include">
+        </childnode>
+        <childnode refid="28118" relation="include">
+        </childnode>
+        <childnode refid="28138" relation="include">
+        </childnode>
+      </node>
+      <node id="28123">
+        <label>stdexcept</label>
+      </node>
+      <node id="28112">
+        <label>libopenage/util/constinit_vector.cpp</label>
+        <link refid="constinit__vector_8cpp"/>
+        <childnode refid="28113" relation="include">
+        </childnode>
+        <childnode refid="28120" relation="include">
+        </childnode>
+      </node>
+      <node id="28139">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="28140" relation="include">
+        </childnode>
+        <childnode refid="28141" relation="include">
+        </childnode>
+        <childnode refid="28142" relation="include">
+        </childnode>
+      </node>
+      <node id="28134">
+        <label>cstdarg</label>
+      </node>
+      <node id="28118">
+        <label>string</label>
+      </node>
+      <node id="28124">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="28125" relation="include">
+        </childnode>
+        <childnode refid="28118" relation="include">
+        </childnode>
+        <childnode refid="28126" relation="include">
+        </childnode>
+        <childnode refid="28127" relation="include">
+        </childnode>
+        <childnode refid="28129" relation="include">
+        </childnode>
+        <childnode refid="28139" relation="include">
+        </childnode>
+        <childnode refid="28142" relation="include">
+        </childnode>
+      </node>
+      <node id="28127">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="28128" relation="include">
+        </childnode>
+      </node>
+      <node id="28129">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="28130" relation="include">
+        </childnode>
+        <childnode refid="28115" relation="include">
+        </childnode>
+        <childnode refid="28131" relation="include">
+        </childnode>
+        <childnode refid="28116" relation="include">
+        </childnode>
+        <childnode refid="28132" relation="include">
+        </childnode>
+        <childnode refid="28133" relation="include">
+        </childnode>
+      </node>
+      <node id="28121">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="28122" relation="include">
+        </childnode>
+        <childnode refid="28115" relation="include">
+        </childnode>
+        <childnode refid="28123" relation="include">
+        </childnode>
+        <childnode refid="28118" relation="include">
+        </childnode>
+        <childnode refid="28116" relation="include">
+        </childnode>
+        <childnode refid="28124" relation="include">
+        </childnode>
+      </node>
+      <node id="28144">
+        <label>typeinfo</label>
+      </node>
+      <node id="28113">
+        <label>constinit_vector.h</label>
+        <link refid="constinit__vector_8h"/>
+        <childnode refid="28114" relation="include">
+        </childnode>
+        <childnode refid="28115" relation="include">
+        </childnode>
+        <childnode refid="28116" relation="include">
+        </childnode>
+      </node>
+      <node id="28138">
+        <label>vector</label>
+      </node>
+      <node id="28117">
+        <label>ciso646</label>
+      </node>
+      <node id="28137">
+        <label>sstream</label>
+      </node>
+      <node id="28116">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28117" relation="include">
+        </childnode>
+        <childnode refid="28118" relation="include">
+        </childnode>
+        <childnode refid="28119" relation="include">
+        </childnode>
+      </node>
+      <node id="28119">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28119" relation="include">
+        </childnode>
+      </node>
+      <node id="28132">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="28122" relation="include">
+        </childnode>
+        <childnode refid="28118" relation="include">
+        </childnode>
+      </node>
+      <node id="28142">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="28143" relation="include">
+        </childnode>
+      </node>
+      <node id="28128">
+        <label>cstdlib</label>
+      </node>
+      <node id="28122">
+        <label>iostream</label>
+      </node>
+      <node id="28120">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="28121" relation="include">
+        </childnode>
+      </node>
+      <node id="28141">
+        <label>mutex</label>
+      </node>
+      <node id="28131">
+        <label>type_traits</label>
+      </node>
+      <node id="28126">
+        <label>config.h</label>
+      </node>
+      <node id="28114">
+        <label>algorithm</label>
+      </node>
+      <node id="28115">
+        <label>memory</label>
+      </node>
+      <node id="28143">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="28122" relation="include">
+        </childnode>
+        <childnode refid="28144" relation="include">
+        </childnode>
+        <childnode refid="28116" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int val</definition>
+        <argsstring></argsstring>
+        <name>val</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/constinit_vector.cpp" line="17" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" prot="private" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* ref</definition>
+        <argsstring></argsstring>
+        <name>ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/constinit_vector.cpp" line="47" column="1" bodyfile="libopenage/util/constinit_vector.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="constinit__vector_8h" kindref="compound">constinit_vector.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="9" refid="namespaceopenage_1_1util_1_1tests" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>no<sp/>linkage<sp/>for<sp/>this<sp/>test<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">S<sp/>{</highlight></codeline>
+<codeline lineno="17" refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="constinit__vector_8cpp_1aa0ccb5ee6d882ee3605ff47745c6467b" kindref="member">val</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">T<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>T(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>{<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(this-&gt;<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>)<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>~T()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;ref)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(this-&gt;<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>)<sp/>-=<sp/>1;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>T(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)<sp/>:<sp/><ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>{other.ref}<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this-&gt;<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>)<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;operator<sp/>=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;ref<sp/>=<sp/>other.ref;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*this-&gt;<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>)<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47" refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*<ref refid="constinit__vector_8cpp_1aad68795cb6d982f4dda0a4b91a8c1577" kindref="member">ref</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="namespaceopenage_1_1util_1_1tests_1a3359212608be8fda4cff896436a66165" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a3359212608be8fda4cff896436a66165" kindref="member">constinit_vector</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;S&gt;</ref><sp/>sv;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>1337;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sv.<ref refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" kindref="member">push_back</ref>(S{i});</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>sv.<ref refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" kindref="member">size</ref>()<sp/>==<sp/>1337<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>sv[235].val<sp/>==<sp/>235<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>refctr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>scope<sp/>to<sp/>test<sp/>whether<sp/>tv<sp/>gets<sp/>correctly<sp/>de-inited.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_const_init_vector" kindref="compound">ConstInitVector&lt;T&gt;</ref><sp/>tv;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>1337;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tv.<ref refid="classopenage_1_1util_1_1_const_init_vector_1adc94bd8cdd68e1076a95dbebe26d98a2" kindref="member">push_back</ref>(T(&amp;refctr));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>refctr<sp/>==<sp/>1337<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>sv.<ref refid="classopenage_1_1util_1_1_const_init_vector_1a2453ffb8432511227127c0e6df561a43" kindref="member">size</ref>()<sp/>==<sp/>1337<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>refctr<sp/>==<sp/>0<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/constinit_vector.cpp"/>
+  </compounddef>
+</doxygen>

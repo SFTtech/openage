@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__application_8cpp" kind="file" language="C++">
+    <compoundname>gui_application.cpp</compoundname>
+    <includes refid="gui__application_8h" local="yes">../public/gui_application.h</includes>
+    <includes refid="gui__application__impl_8h" local="yes">../private/gui_application_impl.h</includes>
+    <incdepgraph>
+      <node id="13462">
+        <label>libopenage/gui/guisys/public/gui_application.cpp</label>
+        <link refid="gui__application_8cpp"/>
+        <childnode refid="13463" relation="include">
+        </childnode>
+        <childnode refid="13465" relation="include">
+        </childnode>
+      </node>
+      <node id="13463">
+        <label>../public/gui_application.h</label>
+        <link refid="gui__application_8h"/>
+        <childnode refid="13464" relation="include">
+        </childnode>
+      </node>
+      <node id="13465">
+        <label>../private/gui_application_impl.h</label>
+        <link refid="gui__application__impl_8h"/>
+        <childnode refid="13466" relation="include">
+        </childnode>
+        <childnode refid="13464" relation="include">
+        </childnode>
+        <childnode refid="13467" relation="include">
+        </childnode>
+      </node>
+      <node id="13467">
+        <label>QGuiApplication</label>
+      </node>
+      <node id="13466">
+        <label>thread</label>
+      </node>
+      <node id="13464">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_application.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_application_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" kindref="member">GuiApplication::GuiApplication</ref>()</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>application{<ref refid="classqtsdl_1_1_gui_application_impl_1a308e0db71a4597564981f7d4c0416df8" kindref="member">GuiApplicationImpl::get</ref>()}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_application_1a37173fe64399e3a89d48f1aa48013983" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_1a1f5acf1ea9275619815f0918d9090507" kindref="member">GuiApplication::GuiApplication</ref>(std::shared_ptr&lt;GuiApplicationImpl&gt;<sp/>application)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>application{<ref refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" kindref="member">application</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_application_1a789cd7ebd07275da73088b85037a5ee6" kindref="member">GuiApplication::~GuiApplication</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classqtsdl_1_1_gui_application_1a5113252d9ce0ffef22cf7472a124a56b" kindref="member">GuiApplication::processEvents</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classqtsdl_1_1_gui_application_1a7f4f8661ca9e6ef23a639d3bdf6e6d6d" kindref="member">application</ref>-&gt;processEvents();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_application.cpp"/>
+  </compounddef>
+</doxygen>

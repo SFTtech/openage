@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_unit_reference" kind="class" language="C++" prot="public">
+    <compoundname>openage::UnitReference</compoundname>
+    <includes refid="unit__container_8h" local="no">unit_container.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_reference_1accccaa53b2f44fcef0f75b5c4e63eb86" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="structopenage_1_1reference__data" kindref="compound">reference_data</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;reference_data&gt; openage::UnitReference::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The default copy constructor and assignment will just copy the shared pointer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="68" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_reference_1a66dbb3dede44d1484b0ea746d3e5512f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitReference::UnitReference</definition>
+        <argsstring>()</argsstring>
+        <name>UnitReference</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create an invalid reference </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="52" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_reference_1a039cf3cb30deba04c2324360744f8944" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitReference::UnitReference</definition>
+        <argsstring>(const UnitContainer *c, id_t id, Unit *)</argsstring>
+        <name>UnitReference</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit_container" kindref="compound">UnitContainer</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1a45c89654e0c3113ca40c482f47aa0401" kindref="member">id_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>u</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>create referece by unit id </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="57" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_reference_1a55afff48cc1901715f3c29383969d2ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitReference::is_valid</definition>
+        <argsstring>() const</argsstring>
+        <name>is_valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="59" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        <definition>Unit * openage::UnitReference::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_container.h" line="60" column="1" bodyfile="libopenage/unit/unit_container.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Reference to a single unit, which may have been removed from the game, check <ref refid="classopenage_1_1_unit_reference_1a55afff48cc1901715f3c29383969d2ac" kindref="member">is_valid()</ref> before calling <ref refid="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" kindref="member">get()</ref> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4758">
+        <label>openage::UnitReference</label>
+        <link refid="classopenage_1_1_unit_reference"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/unit_container.h" line="46" column="1" bodyfile="libopenage/unit/unit_container.h" bodystart="46" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_reference_1accccaa53b2f44fcef0f75b5c4e63eb86" prot="private" virt="non-virtual"><scope>openage::UnitReference</scope><name>data</name></member>
+      <member refid="classopenage_1_1_unit_reference_1a6303ff3facc18acf10aa335ee9d318d8" prot="public" virt="non-virtual"><scope>openage::UnitReference</scope><name>get</name></member>
+      <member refid="classopenage_1_1_unit_reference_1a55afff48cc1901715f3c29383969d2ac" prot="public" virt="non-virtual"><scope>openage::UnitReference</scope><name>is_valid</name></member>
+      <member refid="classopenage_1_1_unit_reference_1a66dbb3dede44d1484b0ea746d3e5512f" prot="public" virt="non-virtual"><scope>openage::UnitReference</scope><name>UnitReference</name></member>
+      <member refid="classopenage_1_1_unit_reference_1a039cf3cb30deba04c2324360744f8944" prot="public" virt="non-virtual"><scope>openage::UnitReference</scope><name>UnitReference</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

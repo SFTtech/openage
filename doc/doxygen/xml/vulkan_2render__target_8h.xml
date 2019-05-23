@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="vulkan_2render__target_8h" kind="file" language="C++">
+    <compoundname>render_target.h</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes refid="renderer_8h" local="yes">../renderer.h</includes>
+    <includes refid="graphics__device_8h" local="yes">graphics_device.h</includes>
+    <includedby refid="vulkan_2renderer_8cpp" local="yes">libopenage/renderer/vulkan/renderer.cpp</includedby>
+    <incdepgraph>
+      <node id="21242">
+        <label>graphics_device.h</label>
+        <link refid="graphics__device_8h"/>
+        <childnode refid="21243" relation="include">
+        </childnode>
+        <childnode refid="21240" relation="include">
+        </childnode>
+        <childnode refid="21244" relation="include">
+        </childnode>
+      </node>
+      <node id="21243">
+        <label>optional</label>
+      </node>
+      <node id="21240">
+        <label>vector</label>
+      </node>
+      <node id="21244">
+        <label>vulkan/vulkan.h</label>
+      </node>
+      <node id="21239">
+        <label>../renderer.h</label>
+        <link refid="renderer_8h"/>
+        <childnode refid="21240" relation="include">
+        </childnode>
+        <childnode refid="21241" relation="include">
+        </childnode>
+      </node>
+      <node id="21238">
+        <label>algorithm</label>
+      </node>
+      <node id="21237">
+        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <link refid="vulkan_2render__target_8h"/>
+        <childnode refid="21238" relation="include">
+        </childnode>
+        <childnode refid="21239" relation="include">
+        </childnode>
+        <childnode refid="21242" relation="include">
+        </childnode>
+      </node>
+      <node id="21241">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21246">
+        <label>libopenage/renderer/vulkan/renderer.cpp</label>
+        <link refid="vulkan_2renderer_8cpp"/>
+      </node>
+      <node id="21245">
+        <label>libopenage/renderer/vulkan/render_target.h</label>
+        <link refid="vulkan_2render__target_8h"/>
+        <childnode refid="21246" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" prot="public">openage::renderer::vulkan::VlkDrawableDisplay</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer" prot="public">openage::renderer::vulkan::VlkFramebuffer</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer_1_1vulkan">openage::renderer::vulkan</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2017-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../renderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="graphics__device_8h" kindref="compound">graphics_device.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">vulkan<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display" kindref="compound">VlkDrawableDisplay</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>shared_ptr?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkDevice<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" kindref="member">device</ref>;</highlight></codeline>
+<codeline lineno="22" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a3c1ff8b52e6e79b4cf87015ac43d2b48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkSwapchainKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a3c1ff8b52e6e79b4cf87015ac43d2b48" kindref="member">swapchain</ref>;</highlight></codeline>
+<codeline lineno="23" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkFormat<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>;</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkExtent2D<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" kindref="member">extent</ref>;</highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac8abd0f9fec7d297486c98a61c3fbf8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkImage&gt;<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac8abd0f9fec7d297486c98a61c3fbf8a" kindref="member">images</ref>;</highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a6d3748506abbdaa6fe3a26bbae7d459e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkImageView&gt;<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a6d3748506abbdaa6fe3a26bbae7d459e" kindref="member">image_views</ref>;</highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1add9c86e8e37d8896297bcbdea71d430b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkFramebuffer&gt;<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1add9c86e8e37d8896297bcbdea71d430b" kindref="member">framebuffers</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkSurfaceFormatKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" kindref="member">choose_best_surface_format</ref>(std::vector&lt;VkSurfaceFormatKHR&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>formats)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>implementation<sp/>doesn&apos;t<sp/>have<sp/>preferred<sp/>formats,<sp/>choose<sp/>our<sp/>own</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(formats.size()<sp/>==<sp/>1</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>formats[0].format<sp/>==<sp/>VK_FORMAT_UNDEFINED)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/>VK_FORMAT_B8G8R8A8_UNORM,<sp/>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR<sp/>};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>if<sp/>one<sp/>of<sp/>the<sp/>preferred<sp/>formats<sp/>is<sp/>good,<sp/>choose<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>fmt<sp/>:<sp/>formats)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fmt.format<sp/>==<sp/>VK_FORMAT_B8G8R8_UNORM</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>fmt.colorSpace<sp/>==<sp/>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>select<sp/>any<sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>formats[0];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkPresentModeKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" kindref="member">choose_best_present_mode</ref>(std::vector&lt;VkPresentModeKHR&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/>modes)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkPresentModeKHR<sp/>ret<sp/>=<sp/>VK_PRESENT_MODE_MAILBOX_KHR;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>mode<sp/>:<sp/>modes)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>VK_PRESENT_MODE_MAILBOX_KHR)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mode;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>VK_PRESENT_MODE_FIFO_KHR)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>VK_PRESENT_MODE_FIFO_RELAXED_KHR</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>ret<sp/>!=<sp/>VK_PRESENT_MODE_FIFO_KHR)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>VK_PRESENT_MODE_IMMEDIATE_KHR</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>ret<sp/>!=<sp/>VK_PRESENT_MODE_FIFO_KHR</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>ret<sp/>!=<sp/>VK_PRESENT_MODE_FIFO_RELAXED_KHR)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1ac140c8357daa5298ed6f04821a936ccb" kindref="member">VlkDrawableDisplay</ref>(VkDevice<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" kindref="member">device</ref>,<sp/><ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details" kindref="compound">SurfaceSupportDetails</ref><sp/>details)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" kindref="member">device</ref>(<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1abd9f2aecfe469096f02687e8be86099c" kindref="member">device</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSurfaceFormatKHR<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref><sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a1b0aa9ee7a9a9c4e4f83b32d6a323ac6" kindref="member">choose_best_surface_format</ref>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1aaefeff507544037c69f9fc051dfdd8cc" kindref="member">surface_formats</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;format<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>.format;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkPresentModeKHR<sp/>mode<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a06ee6c4eec41f38c25728524bd39b5c7" kindref="member">choose_best_present_mode</ref>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ada7bd8161140f5b9672440dac0597792" kindref="member">present_modes</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentExtent.width<sp/>!=<sp/><ref refid="namespaceopenage_1_1console_1_1tests_1a46ebd3333dc9196558ac9aced828d117" kindref="member">std::numeric_limits&lt;uint32_t&gt;::max</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;extent<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentExtent;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>choose<sp/>a<sp/>size<sp/>from<sp/>this-&gt;size<sp/>in<sp/>this<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Window<sp/>manager<sp/>does<sp/>not<sp/>provide<sp/>a<sp/>window<sp/>size.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>img_count<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.minImageCount<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.maxImageCount<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img_count<sp/>=<sp/><ref refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" kindref="member">std::max</ref>(img_count,<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.maxImageCount);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkSwapchainCreateInfoKHR<sp/>cr_swap<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.surface<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1ae9e3479803424a88c16a4a2e4c1e8f2a" kindref="member">surface</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.minImageCount<sp/>=<sp/>img_count;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageFormat<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageColorSpace<sp/>=<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>.colorSpace;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.presentMode<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>why<sp/>doesn&apos;t<sp/>validation<sp/>work?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageExtent<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a0be5b64a0795218b3629e72cdc22b864" kindref="member">extent</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageArrayLayers<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>VK_IMAGE_USAGE_TRANSFER_DST_BIT<sp/>if<sp/>not<sp/>drawing<sp/>directly<sp/>(postprocess)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageUsage<sp/>=<sp/>VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" kindref="member">maybe_present_fam</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>have<sp/>to<sp/>share<sp/>the<sp/>swapchain<sp/>between<sp/>different<sp/>queues<sp/>in<sp/>this<sp/>case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageSharingMode<sp/>=<sp/>VK_SHARING_MODE_CONCURRENT;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.queueFamilyIndexCount<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::array&lt;uint32_t,<sp/>2&gt;<sp/>q_fams<sp/>=<sp/>{{<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a41e1a959fd2b57dcc983272257f7e7db" kindref="member">graphics_fam</ref>,<sp/>*details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1abec4072097f24dca4501ba283ea31f09" kindref="member">maybe_present_fam</ref><sp/>}};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.pQueueFamilyIndices<sp/>=<sp/>q_fams.data();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>only<sp/>one<sp/>queue<sp/>can<sp/>access<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.imageSharingMode<sp/>=<sp/>VK_SHARING_MODE_EXCLUSIVE;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.preTransform<sp/>=<sp/>details.<ref refid="structopenage_1_1renderer_1_1vulkan_1_1_surface_support_details_1a7e95fa38cc3f1233434eda8f96e0b3af" kindref="member">surface_caps</ref>.currentTransform;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.compositeAlpha<sp/>=<sp/>VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Discard<sp/>pixels<sp/>which<sp/>are<sp/>not<sp/>visible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.clipped<sp/>=<sp/>VK_TRUE;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_swap.oldSwapchain<sp/>=<sp/>VK_NULL_HANDLE;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateSwapchainKHR,<sp/>this-&gt;device,<sp/>&amp;cr_swap,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;this-&gt;swapchain);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;images<sp/>=<sp/><ref refid="util_8h_1a856371a624dd7d99cc9da19f0d7889f0" kindref="member">vk_do_ritual</ref>(vkGetSwapchainImagesKHR,<sp/>this-&gt;device,<sp/>this-&gt;swapchain);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>move<sp/>out?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>img<sp/>:<sp/>this-&gt;images)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkImageViewCreateInfo<sp/>cr_view<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.sType<sp/>=<sp/>VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.image<sp/>=<sp/>img;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.viewType<sp/>=<sp/>VK_IMAGE_VIEW_TYPE_2D;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.format<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1aa2478995da6597324844aee4763a4595" kindref="member">format</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.components.r<sp/>=<sp/>VK_COMPONENT_SWIZZLE_IDENTITY;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.components.g<sp/>=<sp/>VK_COMPONENT_SWIZZLE_IDENTITY;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.components.b<sp/>=<sp/>VK_COMPONENT_SWIZZLE_IDENTITY;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.components.a<sp/>=<sp/>VK_COMPONENT_SWIZZLE_IDENTITY;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.subresourceRange.aspectMask<sp/>=<sp/>VK_IMAGE_ASPECT_COLOR_BIT;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.subresourceRange.baseMipLevel<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.subresourceRange.levelCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.subresourceRange.baseArrayLayer<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cr_view.subresourceRange.layerCount<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VkImageView<sp/>view;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a6be5ebed2b0abfd022e22c9ca2dab4b6" kindref="member">VK_CALL_CHECKED</ref>(vkCreateImageView,<sp/>this-&gt;device,<sp/>&amp;cr_view,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;view);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;image_views.push_back(view);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a53d560e04eaa3886ef7993c6607746ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_drawable_display_1a53d560e04eaa3886ef7993c6607746ea" kindref="member">~VlkDrawableDisplay</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vkDestroySwapchainKHR(this-&gt;device,<sp/>this-&gt;swapchain,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer" kindref="compound">VlkFramebuffer</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_render_target" kindref="compound">RenderTarget</ref><sp/>{</highlight></codeline>
+<codeline lineno="156" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1ae9ce15e3ffbaad22a69508e3dc55532e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;VkImageView&gt;<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1ae9ce15e3ffbaad22a69508e3dc55532e" kindref="member">attachments</ref>;</highlight></codeline>
+<codeline lineno="157" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a219b0b7bd2924bd78f97254c2dcc1334" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkFramebuffer<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a219b0b7bd2924bd78f97254c2dcc1334" kindref="member">framebuffer</ref>;</highlight></codeline>
+<codeline lineno="158" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a7b8a7cf26948c475c3e4fd115ee86ab1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>VkViewport<sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a7b8a7cf26948c475c3e4fd115ee86ab1" kindref="member">viewport</ref>;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="161" refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a2d7826f7fd466ceb1f37a7421227b699" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1vulkan_1_1_vlk_framebuffer_1a2d7826f7fd466ceb1f37a7421227b699" kindref="member">VlkFramebuffer</ref>(VkRenderPass<sp/></highlight><highlight class="comment">/*pass*/</highlight><highlight class="normal">,<sp/>std::vector&lt;VkImageView&gt;<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;<sp/></highlight><highlight class="comment">/*attachments*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer::vulkan</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/vulkan/render_target.h"/>
+  </compounddef>
+</doxygen>

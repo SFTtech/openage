@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1main__arguments" kind="struct" language="C++" prot="public">
+    <compoundname>openage::main_arguments</compoundname>
+    <includes refid="main_8h" local="no">main.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::main_arguments::root_path</definition>
+        <argsstring></argsstring>
+        <name>root_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/main.h" line="28" column="1" bodyfile="libopenage/main.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t openage::main_arguments::fps_limit</definition>
+        <argsstring></argsstring>
+        <name>fps_limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/main.h" line="29" column="1" bodyfile="libopenage/main.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::main_arguments::gl_debug</definition>
+        <argsstring></argsstring>
+        <name>gl_debug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/main.h" line="30" column="1" bodyfile="libopenage/main.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Used for passing arguments to run_game.</para>
+<para>pxd:</para>
+<para>cppclass <ref refid="structopenage_1_1main__arguments" kindref="compound">main_arguments</ref>: Path root_path int32_t fps_limit bool gl_debug </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3166">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="3165">
+        <label>openage::main_arguments</label>
+        <link refid="structopenage_1_1main__arguments"/>
+        <childnode refid="3166" relation="usage">
+          <edgelabel>+root_path</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/main.h" line="27" column="1" bodyfile="libopenage/main.h" bodystart="27" bodyend="31"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1main__arguments_1ac3a1bf5ee31060159d6fcf590c931a5d" prot="public" virt="non-virtual"><scope>openage::main_arguments</scope><name>fps_limit</name></member>
+      <member refid="structopenage_1_1main__arguments_1a67dc5127ba5bf3931c425699b2043c87" prot="public" virt="non-virtual"><scope>openage::main_arguments</scope><name>gl_debug</name></member>
+      <member refid="structopenage_1_1main__arguments_1a7c445704c2f214b3534f5a468b4dd966" prot="public" virt="non-virtual"><scope>openage::main_arguments</scope><name>root_path</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

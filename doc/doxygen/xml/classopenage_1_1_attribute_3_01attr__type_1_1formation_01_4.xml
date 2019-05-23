@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4" kind="class" language="C++" prot="public">
+    <compoundname>openage::Attribute&lt; attr_type::formation &gt;</compoundname>
+    <basecompoundref refid="classopenage_1_1_unshared_attribute_container" prot="public" virt="non-virtual">openage::UnsharedAttributeContainer</basecompoundref>
+    <includes refid="attribute_8h" local="no">attribute.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1a21b809b777ef4cafae2bd0d79ffa03e0" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6ed" kindref="member">attack_stance</ref></type>
+        <definition>attack_stance openage::Attribute&lt; attr_type::formation &gt;::stance</definition>
+        <argsstring></argsstring>
+        <name>stance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="363" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1a8ef595f8c7a5b7c05d586da4265dedf9" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a0093da9e88fad4b564ffa3c2fed20f20" kindref="member">attack_formation</ref></type>
+        <definition>attack_formation openage::Attribute&lt; attr_type::formation &gt;::formation</definition>
+        <argsstring></argsstring>
+        <name>formation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="364" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1adc51844d9a0cb3b49d51a5832f26bac8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::formation &gt;::Attribute</definition>
+        <argsstring>()</argsstring>
+        <name>Attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="349" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="349" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1ac73c43e1a8ce2f6fc28b741ac3c182cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::Attribute&lt; attr_type::formation &gt;::Attribute</definition>
+        <argsstring>(attack_stance stance)</argsstring>
+        <name>Attribute</name>
+        <param>
+          <type><ref refid="namespaceopenage_1a54fa9238a7f977d8d12d4b8422f3c6ed" kindref="member">attack_stance</ref></type>
+          <declname>stance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="353" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="353" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1ac498ff8daa929890738cf6d637d077e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;AttributeContainer&gt; openage::Attribute&lt; attr_type::formation &gt;::copy</definition>
+        <argsstring>() const override</argsstring>
+        <name>copy</name>
+        <reimplements refid="classopenage_1_1_attribute_container_1a4afeb54d518cbf1b693c60444527f888">copy</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produces an copy of the attribute. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/attribute.h" line="359" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="359" bodyend="361"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The attack stance and formation TODO store patrol and follow command information </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="428">
+        <label>openage::Attribute&lt; attr_type::formation &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4"/>
+        <childnode refid="429" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="429">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="430" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="430">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="431">
+        <label>openage::Attribute&lt; attr_type::formation &gt;</label>
+        <link refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4"/>
+        <childnode refid="432" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="432">
+        <label>openage::UnsharedAttributeContainer</label>
+        <link refid="classopenage_1_1_unshared_attribute_container"/>
+        <childnode refid="433" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="433">
+        <label>openage::AttributeContainer</label>
+        <link refid="classopenage_1_1_attribute_container"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/attribute.h" line="346" column="1" bodyfile="libopenage/unit/attribute.h" bodystart="346" bodyend="365"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1adc51844d9a0cb3b49d51a5832f26bac8" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1ac73c43e1a8ce2f6fc28b741ac3c182cd" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>Attribute</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a49a2b11ed50d81125bb4fe0c5d61f6ce" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1af4a0e46d2f27646163281c7ecc27865d" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>AttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1ac498ff8daa929890738cf6d637d077e1" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>copy</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1a8ef595f8c7a5b7c05d586da4265dedf9" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>formation</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a37a9c89f4d60700087ac55df3bbf38d9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>shared</name></member>
+      <member refid="classopenage_1_1_attribute_3_01attr__type_1_1formation_01_4_1a21b809b777ef4cafae2bd0d79ffa03e0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>stance</name></member>
+      <member refid="classopenage_1_1_attribute_container_1a646482939fc5fcdad2e71c63b6e854b0" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>type</name></member>
+      <member refid="classopenage_1_1_unshared_attribute_container_1a4b609bc0e8a94749f0810e3e3228a8d6" prot="public" virt="non-virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>UnsharedAttributeContainer</name></member>
+      <member refid="classopenage_1_1_attribute_container_1ad8d0846852317e84c72ef466640bb8c9" prot="public" virt="virtual"><scope>openage::Attribute&lt; attr_type::formation &gt;</scope><name>~AttributeContainer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

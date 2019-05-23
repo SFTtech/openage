@@ -1,0 +1,563 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="constexpr__map_8h" kind="file" language="C++">
+    <compoundname>constexpr_map.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes local="no">utility</includes>
+    <includes refid="error_2error_8h" local="yes">../error/error.h</includes>
+    <includedby refid="datastructure_2tests_8cpp" local="yes">libopenage/datastructure/tests.cpp</includedby>
+    <includedby refid="texture__info_8h" local="yes">libopenage/renderer/resources/texture_info.h</includedby>
+    <includedby refid="opengl_2geometry_8cpp" local="yes">libopenage/renderer/opengl/geometry.cpp</includedby>
+    <includedby refid="renderer_2opengl_2shader_8cpp" local="yes">libopenage/renderer/opengl/shader.cpp</includedby>
+    <includedby refid="shader__program_8cpp" local="yes">libopenage/renderer/opengl/shader_program.cpp</includedby>
+    <includedby refid="renderer_2opengl_2texture_8cpp" local="yes">libopenage/renderer/opengl/texture.cpp</includedby>
+    <includedby refid="opengl_2texture__array_8cpp" local="yes">libopenage/renderer/opengl/texture_array.cpp</includedby>
+    <includedby refid="vertex__array_8cpp" local="yes">libopenage/renderer/opengl/vertex_array.cpp</includedby>
+    <includedby refid="mesh__data_8cpp" local="yes">libopenage/renderer/resources/mesh_data.cpp</includedby>
+    <incdepgraph>
+      <node id="5750">
+        <label>list</label>
+      </node>
+      <node id="5741">
+        <label>atomic</label>
+      </node>
+      <node id="5746">
+        <label>iomanip</label>
+      </node>
+      <node id="5725">
+        <label>functional</label>
+      </node>
+      <node id="5736">
+        <label>cstdint</label>
+      </node>
+      <node id="5744">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="5745" relation="include">
+        </childnode>
+        <childnode refid="5725" relation="include">
+        </childnode>
+        <childnode refid="5746" relation="include">
+        </childnode>
+        <childnode refid="5729" relation="include">
+        </childnode>
+        <childnode refid="5747" relation="include">
+        </childnode>
+        <childnode refid="5731" relation="include">
+        </childnode>
+        <childnode refid="5748" relation="include">
+        </childnode>
+      </node>
+      <node id="5730">
+        <label>stdexcept</label>
+      </node>
+      <node id="5749">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="5750" relation="include">
+        </childnode>
+        <childnode refid="5751" relation="include">
+        </childnode>
+        <childnode refid="5752" relation="include">
+        </childnode>
+      </node>
+      <node id="5745">
+        <label>cstdarg</label>
+      </node>
+      <node id="5731">
+        <label>string</label>
+      </node>
+      <node id="5735">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="5736" relation="include">
+        </childnode>
+        <childnode refid="5731" relation="include">
+        </childnode>
+        <childnode refid="5737" relation="include">
+        </childnode>
+        <childnode refid="5738" relation="include">
+        </childnode>
+        <childnode refid="5740" relation="include">
+        </childnode>
+        <childnode refid="5749" relation="include">
+        </childnode>
+        <childnode refid="5752" relation="include">
+        </childnode>
+      </node>
+      <node id="5738">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="5739" relation="include">
+        </childnode>
+      </node>
+      <node id="5740">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="5741" relation="include">
+        </childnode>
+        <childnode refid="5729" relation="include">
+        </childnode>
+        <childnode refid="5742" relation="include">
+        </childnode>
+        <childnode refid="5732" relation="include">
+        </childnode>
+        <childnode refid="5743" relation="include">
+        </childnode>
+        <childnode refid="5744" relation="include">
+        </childnode>
+      </node>
+      <node id="5727">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="5728" relation="include">
+        </childnode>
+        <childnode refid="5729" relation="include">
+        </childnode>
+        <childnode refid="5730" relation="include">
+        </childnode>
+        <childnode refid="5731" relation="include">
+        </childnode>
+        <childnode refid="5732" relation="include">
+        </childnode>
+        <childnode refid="5735" relation="include">
+        </childnode>
+      </node>
+      <node id="5724">
+        <label>libopenage/datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="5725" relation="include">
+        </childnode>
+        <childnode refid="5726" relation="include">
+        </childnode>
+        <childnode refid="5727" relation="include">
+        </childnode>
+      </node>
+      <node id="5754">
+        <label>typeinfo</label>
+      </node>
+      <node id="5748">
+        <label>vector</label>
+      </node>
+      <node id="5733">
+        <label>ciso646</label>
+      </node>
+      <node id="5726">
+        <label>utility</label>
+      </node>
+      <node id="5747">
+        <label>sstream</label>
+      </node>
+      <node id="5732">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="5733" relation="include">
+        </childnode>
+        <childnode refid="5731" relation="include">
+        </childnode>
+        <childnode refid="5734" relation="include">
+        </childnode>
+      </node>
+      <node id="5734">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="5734" relation="include">
+        </childnode>
+      </node>
+      <node id="5743">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="5728" relation="include">
+        </childnode>
+        <childnode refid="5731" relation="include">
+        </childnode>
+      </node>
+      <node id="5752">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="5753" relation="include">
+        </childnode>
+      </node>
+      <node id="5739">
+        <label>cstdlib</label>
+      </node>
+      <node id="5728">
+        <label>iostream</label>
+      </node>
+      <node id="5751">
+        <label>mutex</label>
+      </node>
+      <node id="5742">
+        <label>type_traits</label>
+      </node>
+      <node id="5737">
+        <label>config.h</label>
+      </node>
+      <node id="5729">
+        <label>memory</label>
+      </node>
+      <node id="5753">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="5728" relation="include">
+        </childnode>
+        <childnode refid="5754" relation="include">
+        </childnode>
+        <childnode refid="5732" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5777">
+        <label>libopenage/renderer/opengl/lookup.h</label>
+        <link refid="lookup_8h"/>
+        <childnode refid="5778" relation="include">
+        </childnode>
+        <childnode refid="5769" relation="include">
+        </childnode>
+        <childnode refid="5767" relation="include">
+        </childnode>
+        <childnode refid="5768" relation="include">
+        </childnode>
+        <childnode refid="5779" relation="include">
+        </childnode>
+      </node>
+      <node id="5762">
+        <label>libopenage/renderer/opengl/render_target.h</label>
+        <link refid="opengl_2render__target_8h"/>
+        <childnode refid="5763" relation="include">
+        </childnode>
+        <childnode refid="5764" relation="include">
+        </childnode>
+        <childnode refid="5767" relation="include">
+        </childnode>
+        <childnode refid="5768" relation="include">
+        </childnode>
+      </node>
+      <node id="5771">
+        <label>libopenage/renderer/tests.cpp</label>
+        <link refid="renderer_2tests_8cpp"/>
+      </node>
+      <node id="5758">
+        <label>libopenage/renderer/resources/texture_data.h</label>
+        <link refid="texture__data_8h"/>
+        <childnode refid="5759" relation="include">
+        </childnode>
+        <childnode refid="5770" relation="include">
+        </childnode>
+        <childnode refid="5767" relation="include">
+        </childnode>
+        <childnode refid="5773" relation="include">
+        </childnode>
+        <childnode refid="5774" relation="include">
+        </childnode>
+        <childnode refid="5768" relation="include">
+        </childnode>
+        <childnode refid="5776" relation="include">
+        </childnode>
+        <childnode refid="5771" relation="include">
+        </childnode>
+      </node>
+      <node id="5765">
+        <label>libopenage/renderer/opengl/renderer.cpp</label>
+        <link refid="opengl_2renderer_8cpp"/>
+      </node>
+      <node id="5766">
+        <label>libopenage/renderer/opengl/window.cpp</label>
+        <link refid="opengl_2window_8cpp"/>
+      </node>
+      <node id="5774">
+        <label>libopenage/renderer/opengl/texture_array.h</label>
+        <link refid="opengl_2texture__array_8h"/>
+        <childnode refid="5768" relation="include">
+        </childnode>
+      </node>
+      <node id="5781">
+        <label>libopenage/renderer/opengl/shader.cpp</label>
+        <link refid="renderer_2opengl_2shader_8cpp"/>
+      </node>
+      <node id="5761">
+        <label>libopenage/renderer/opengl/framebuffer.cpp</label>
+        <link refid="framebuffer_8cpp"/>
+      </node>
+      <node id="5772">
+        <label>libopenage/renderer/texture.cpp</label>
+        <link refid="renderer_2texture_8cpp"/>
+      </node>
+      <node id="5763">
+        <label>libopenage/renderer/opengl/render_target.cpp</label>
+        <link refid="render__target_8cpp"/>
+      </node>
+      <node id="5770">
+        <label>libopenage/renderer/texture.h</label>
+        <link refid="renderer_2texture_8h"/>
+        <childnode refid="5759" relation="include">
+        </childnode>
+        <childnode refid="5771" relation="include">
+        </childnode>
+        <childnode refid="5772" relation="include">
+        </childnode>
+      </node>
+      <node id="5782">
+        <label>libopenage/renderer/resources/mesh_data.cpp</label>
+        <link refid="mesh__data_8cpp"/>
+      </node>
+      <node id="5773">
+        <label>libopenage/renderer/texture_array.h</label>
+        <link refid="texture__array_8h"/>
+        <childnode refid="5774" relation="include">
+        </childnode>
+        <childnode refid="5775" relation="include">
+        </childnode>
+      </node>
+      <node id="5760">
+        <label>libopenage/renderer/opengl/framebuffer.h</label>
+        <link refid="framebuffer_8h"/>
+        <childnode refid="5761" relation="include">
+        </childnode>
+        <childnode refid="5762" relation="include">
+        </childnode>
+      </node>
+      <node id="5759">
+        <label>libopenage/renderer/opengl/texture.h</label>
+        <link refid="renderer_2opengl_2texture_8h"/>
+        <childnode refid="5760" relation="include">
+        </childnode>
+        <childnode refid="5762" relation="include">
+        </childnode>
+        <childnode refid="5765" relation="include">
+        </childnode>
+        <childnode refid="5769" relation="include">
+        </childnode>
+        <childnode refid="5767" relation="include">
+        </childnode>
+      </node>
+      <node id="5780">
+        <label>libopenage/renderer/resources/texture_info.cpp</label>
+        <link refid="texture__info_8cpp"/>
+      </node>
+      <node id="5755">
+        <label>libopenage/datastructure/constexpr_map.h</label>
+        <link refid="constexpr__map_8h"/>
+        <childnode refid="5756" relation="include">
+        </childnode>
+        <childnode refid="5757" relation="include">
+        </childnode>
+        <childnode refid="5778" relation="include">
+        </childnode>
+        <childnode refid="5781" relation="include">
+        </childnode>
+        <childnode refid="5769" relation="include">
+        </childnode>
+        <childnode refid="5767" relation="include">
+        </childnode>
+        <childnode refid="5768" relation="include">
+        </childnode>
+        <childnode refid="5779" relation="include">
+        </childnode>
+        <childnode refid="5782" relation="include">
+        </childnode>
+      </node>
+      <node id="5779">
+        <label>libopenage/renderer/opengl/vertex_array.cpp</label>
+        <link refid="vertex__array_8cpp"/>
+      </node>
+      <node id="5769">
+        <label>libopenage/renderer/opengl/shader_program.cpp</label>
+        <link refid="shader__program_8cpp"/>
+      </node>
+      <node id="5778">
+        <label>libopenage/renderer/opengl/geometry.cpp</label>
+        <link refid="opengl_2geometry_8cpp"/>
+      </node>
+      <node id="5756">
+        <label>libopenage/datastructure/tests.cpp</label>
+        <link refid="datastructure_2tests_8cpp"/>
+      </node>
+      <node id="5776">
+        <label>libopenage/renderer/resources/texture_data.cpp</label>
+        <link refid="texture__data_8cpp"/>
+      </node>
+      <node id="5775">
+        <label>libopenage/renderer/texture_array.cpp</label>
+        <link refid="texture__array_8cpp"/>
+      </node>
+      <node id="5757">
+        <label>libopenage/renderer/resources/texture_info.h</label>
+        <link refid="texture__info_8h"/>
+        <childnode refid="5758" relation="include">
+        </childnode>
+        <childnode refid="5777" relation="include">
+        </childnode>
+        <childnode refid="5780" relation="include">
+        </childnode>
+      </node>
+      <node id="5768">
+        <label>libopenage/renderer/opengl/texture_array.cpp</label>
+        <link refid="opengl_2texture__array_8cpp"/>
+      </node>
+      <node id="5764">
+        <label>libopenage/renderer/opengl/renderer.h</label>
+        <link refid="opengl_2renderer_8h"/>
+        <childnode refid="5765" relation="include">
+        </childnode>
+        <childnode refid="5766" relation="include">
+        </childnode>
+      </node>
+      <node id="5767">
+        <label>libopenage/renderer/opengl/texture.cpp</label>
+        <link refid="renderer_2opengl_2texture_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1datastructure_1_1_const_map_entry" prot="public">openage::datastructure::ConstMapEntry</innerclass>
+    <innerclass refid="classopenage_1_1datastructure_1_1_const_map" prot="public">openage::datastructure::ConstMap</innerclass>
+    <innerclass refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4" prot="public">openage::datastructure::ConstMap&lt; K, V, 0 &gt;</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1datastructure">openage::datastructure</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">datastructure<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>K,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="18" refid="classopenage_1_1datastructure_1_1_const_map_entry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map_entry" kindref="compound">ConstMapEntry</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20" refid="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a5887805c3ee8147c2c670a009e3b996b" kindref="member">ConstMapEntry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>{<ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>},</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>{<ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1aabed35fecedcd55f2b65b03b5052577e" kindref="member">ConstMapEntry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::pair&lt;K,<sp/>V&gt;<sp/>&amp;pair)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>{pair.first},</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>{pair.second}<sp/>{}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classopenage_1_1datastructure_1_1_const_map_entry_1a6161ce62836b2cde51618070c6eca08c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a6161ce62836b2cde51618070c6eca08c" kindref="member">ConstMapEntry</ref>(std::pair&lt;K,<sp/>V&gt;<sp/>&amp;&amp;pair)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>{<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(pair.first)},</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>{<ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(pair.second)}<sp/>{}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1a110df29fe1b231e85eabc973c1756835" kindref="member">key</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>V<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry_1af79949fb94220bb113093d848b17f142" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>K,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos&gt;</highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1datastructure_1_1_const_map" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Head,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">...<sp/>Tail&gt;</highlight></codeline>
+<codeline lineno="63" refid="classopenage_1_1datastructure_1_1_const_map_1aee73d4e17e38feb41141d985d82082e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1aee73d4e17e38feb41141d985d82082e0" kindref="member">ConstMap</ref>(Head<sp/>head,<sp/>Tail...<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>{head},</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>{<ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>...}<sp/>{}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classopenage_1_1datastructure_1_1_const_map_1ae822962367b642bfa68c99e252d291c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1ae822962367b642bfa68c99e252d291c7" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" kindref="member">verify_no_duplicates</ref>(),<sp/>pos;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classopenage_1_1datastructure_1_1_const_map_1a3caa562639c438a7c2bc63ad69d34f49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a3caa562639c438a7c2bc63ad69d34f49" kindref="member">contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" kindref="member">verify_no_duplicates</ref>(),<sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" kindref="member">has_entry</ref>(key);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" kindref="member">verify_no_duplicates</ref>(),<sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" kindref="member">fetch</ref>(key);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classopenage_1_1datastructure_1_1_const_map_1ad8f8c677660172db066e684daf334754" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_1ad8f8c677660172db066e684daf334754" kindref="member">operator []</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1ab6ec9131d56e40ca60eb7d6a62d28fff" kindref="member">get</ref>(key);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100" refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a163e5f98b29263a0d11d6f4ed8978dbb" kindref="member">has_entry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>.key<sp/>==<sp/>key)<sp/>or<sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>.has_entry(key);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" kindref="member">is_unique</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>not<sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>.has_entry(this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>.key);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" kindref="member">all_are_unique</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a27798ebcadd576dcbf80e83173a84983" kindref="member">is_unique</ref>()<sp/>and<sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>.all_are_unique();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a377a571e8a6eef221c6afd80c41f4ff0" kindref="member">verify_no_duplicates</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1ade3ec69b783f998f0da241d4bcdec1e1" kindref="member">all_are_unique</ref>()<sp/>?</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>a<sp/>duplicate<sp/>key<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a31591e877042691c20fc2ac1d6101a3c" kindref="member">fetch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>found<sp/>the<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>.key<sp/>==<sp/>key)<sp/>?</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>.value</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>else<sp/>try<sp/>the<sp/>lookup<sp/>on<sp/>the<sp/>remaining<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;tail.fetch(key);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_entry" kindref="compound">ConstMapEntry&lt;K, V&gt;</ref><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a145666bbad8588137c89f01cdbd67752" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/>pos<sp/>-<sp/>1&gt;<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_1a59f99daf1ea8470168ddae0856917186" kindref="member">tail</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classopenage_1_1datastructure_1_1_const_map_1aad5ae1836ffe3c7edde4660643b5e07e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/>pos<sp/>+<sp/>1&gt;;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>K,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V&gt;</highlight></codeline>
+<codeline lineno="169" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/>0&gt;<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="171" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1afe6ebe1a55a48a3d27273132995c41e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1afe6ebe1a55a48a3d27273132995c41e7" kindref="member">ConstMap</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a13807dfdf4291a14b9fd792a72024f56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a13807dfdf4291a14b9fd792a72024f56" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1abffc9a3cce9c15bbd5bc4b95bf38b0ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1abffc9a3cce9c15bbd5bc4b95bf38b0ad" kindref="member">contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="192" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1aaaf8e7ec3a8856c8c76b9937240251ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1aaaf8e7ec3a8856c8c76b9937240251ed" kindref="member">all_are_unique</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1ac4346a17fb866c53e6498a92365c8bcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1ac4346a17fb866c53e6498a92365c8bcd" kindref="member">has_entry</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>V<sp/>&amp;<ref refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a4b11884cafe37ad0456c2557eaa22169" kindref="member">fetch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>reach<sp/>here<sp/>recursively,<sp/>the<sp/>key<sp/>was<sp/>not<sp/>found<sp/>along<sp/>the<sp/>way<sp/>and<sp/>so<sp/>isn&apos;t<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>key<sp/>is<sp/>not<sp/>in<sp/>the<sp/>map.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classopenage_1_1datastructure_1_1_const_map_3_01_k_00_01_v_00_010_01_4_1a2b57cb2015c9462110d7e102ae880e2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/>1&gt;;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>K,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>V,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Entries&gt;</highlight></codeline>
+<codeline lineno="226" refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" refkind="member"><highlight class="normal">constexpr<sp/><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Entries)&gt;<sp/><ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">create_const_map</ref>(Entries&amp;&amp;...<sp/>entry)<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1datastructure_1_1_const_map" kindref="compound">ConstMap</ref>&lt;K,<sp/>V,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(entry)&gt;(<ref refid="classopenage_1_1datastructure_1_1_const_map_entry" kindref="compound">ConstMapEntry&lt;K, V&gt;</ref>{std::forward&lt;Entries&gt;(entry)}...);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::datastructure</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/datastructure/constexpr_map.h"/>
+  </compounddef>
+</doxygen>

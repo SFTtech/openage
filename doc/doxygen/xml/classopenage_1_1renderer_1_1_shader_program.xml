@@ -1,0 +1,694 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1renderer_1_1_shader_program" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::renderer::ShaderProgram</compoundname>
+    <derivedcompoundref refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program" prot="public" virt="non-virtual">openage::renderer::opengl::GlShaderProgram</derivedcompoundref>
+    <includes refid="shader__program_8h" local="no">shader_program.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a163d2ac1e773640fa98d3394e4d54087" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::renderer::ShaderProgram::~ShaderProgram</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ShaderProgram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="23" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="26" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, int32_t val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="28" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ace920cff0ddac348df64589d5dd65e15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, uint32_t val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="32" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ac6549848a570989183b4b4aad8e28760" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, float val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="36" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ac6f09354128bf60fbc6496e068c0e1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, double val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="40" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a54f4f8c5b183cee951ba8907a813bcd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Eigen::Vector2f const &amp;val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>Eigen::Vector2f const &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="44" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab9738e5488390ab104453de449ba7444" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Eigen::Vector3f const &amp;val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>Eigen::Vector3f const &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="48" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1acf5fbb3328c63da7b645fa08f818c467" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Eigen::Vector4f const &amp;val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>Eigen::Vector4f const &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="52" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a87ccfe4e0351057379871371ed0e928a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Texture2d const *val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> const *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="56" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a1de758ad1a110cd48a774d88a11582bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Texture2d *val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="60" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a083cfce2ba6018afe512911c55457fde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, Eigen::Matrix4f const &amp;val)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>Eigen::Matrix4f const &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="64" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ad7648faf2a3e82a63a95076d3ed98d33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *, const char *unif, T)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>T</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="69" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a7ba29dd859811e2c5e6019f6fa962e8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool openage::renderer::ShaderProgram::has_uniform</definition>
+        <argsstring>(const char *unif)=0</argsstring>
+        <name>has_uniform</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aea8b57a81d42b380e63a35497e9004e4">has_uniform</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the shader program contains a uniform variable with the given name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;UniformInput&gt; openage::renderer::ShaderProgram::new_uniform_input</definition>
+        <argsstring>(Ts... vals)</argsstring>
+        <name>new_uniform_input</name>
+        <param>
+          <type>Ts...</type>
+          <declname>vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new uniform input (a binding of uniform names to values) for this shader and optionally sets some uniform values. To do that, just pass two arguments -<itemizedlist>
+<listitem><para>a string literal and the value for that uniform for any uniform you want to set. For example new_uniform_input(&quot;color&quot;, { 0.5, 0.5, 0.5, 1.0 }, &quot;num&quot;, 5) will set &quot;color&quot; to { 0.5, 0.5, 0.5, 0.5 } and &quot;num&quot; to 5. Types are important here and a type mismatch between the uniform variable and the input might result in an error. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="83" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a40d140c46c04de019b5081c5276bf201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::renderer::ShaderProgram::update_uniform_input</definition>
+        <argsstring>(UniformInput *input, const char *unif, T val, Ts... vals)</argsstring>
+        <name>update_uniform_input</name>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>unif</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>Ts...</type>
+          <declname>vals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Updates the given uniform input with new uniform values similarly to new_uniform_input. For example, update_uniform_input(in, &quot;awesome&quot;, true) will set the &quot;awesome&quot; uniform in addition to whatever values were in the uniform input before. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="93" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="93" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ad9c2c7e1dfa281b4109ef966309193b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="setup_8cpp_1a96dd93a55be2a0953e454b56d83f65da" kindref="member">std::map</ref>&lt; size_t, <ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">resources::vertex_input_t</ref> &gt;</type>
+        <definition>virtual std::map&lt;size_t, resources::vertex_input_t&gt; openage::renderer::ShaderProgram::vertex_attributes</definition>
+        <argsstring>() const =0</argsstring>
+        <name>vertex_attributes</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9a35d65a5b9222e45bb82d4d7f5c4af4">vertex_attributes</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a list of <emphasis>active</emphasis> vertex attributes in the shader program. Active attributes are those which have an effect on the shader output, meaning they are included in the output calculation and are not unused. Inactive attributes may or may not be present in the list - in particular, in the OpenGL implementation they will most likely be missing. The returned value is a map from the attribute location to its type. Locations need not be consecutive. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="104" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1af13b539d6a4bc6b66152bdcd53a50815" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt;UniformInput&gt; openage::renderer::ShaderProgram::new_unif_in</definition>
+        <argsstring>()=0</argsstring>
+        <name>new_unif_in</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1aa5b47b1078193b018446825b5bee10a6">new_unif_in</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="108" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a83b741d600d5487dae1678b20901bf1b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_i32</definition>
+        <argsstring>(UniformInput *, const char *, int32_t)=0</argsstring>
+        <name>set_i32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a06cac47db0c579b51be9ac4649dc1c53">set_i32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>int32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="109" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ab8c73f6f9a7309f03b6af9fa50fb5a3f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_u32</definition>
+        <argsstring>(UniformInput *, const char *, uint32_t)=0</argsstring>
+        <name>set_u32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a0a1f0bc1b71441622f0def25f9f9da75">set_u32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="110" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a38e446978eda3822674dd5c00e2004c6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_f32</definition>
+        <argsstring>(UniformInput *, const char *, float)=0</argsstring>
+        <name>set_f32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac4f75b2618cef42e6c899fb6a07e0962">set_f32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>float</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a02a78a00855ac5db139ef1430408660e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_f64</definition>
+        <argsstring>(UniformInput *, const char *, double)=0</argsstring>
+        <name>set_f64</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1afb9b54743349d81a09d78c7737d34cf8">set_f64</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>double</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a003661a1e233c8352a6a21f02df46f47" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_v2f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector2f const &amp;)=0</argsstring>
+        <name>set_v2f32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a9359707c420fd0a161a5896e77a6e550">set_v2f32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>Eigen::Vector2f const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a11f73da7683311faf4689d02e05e684e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_v3f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector3f const &amp;)=0</argsstring>
+        <name>set_v3f32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a17b135a0127d7a818e166b9affa66bb1">set_v3f32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>Eigen::Vector3f const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a169361a2c5857643e5c8b8890b5e7592" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_v4f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Vector4f const &amp;)=0</argsstring>
+        <name>set_v4f32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a506af6aebdc55843bc6f2b60c24276c9">set_v4f32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>Eigen::Vector4f const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="115" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1ae05f6d0029d2c7f2cb796647d5bc988e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_m4f32</definition>
+        <argsstring>(UniformInput *, const char *, Eigen::Matrix4f const &amp;)=0</argsstring>
+        <name>set_m4f32</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1a4849d33ea8bf0da94f320e1f6bc4a0d7">set_m4f32</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type>Eigen::Matrix4f const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="116" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::renderer::ShaderProgram::set_tex</definition>
+        <argsstring>(UniformInput *, const char *, Texture2d const *)=0</argsstring>
+        <name>set_tex</name>
+        <reimplementedby refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program_1ac57749f4580137a2dea2c7ffa38ce4d6">set_tex</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_uniform_input" kindref="compound">UniformInput</ref> *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1renderer_1_1_texture2d" kindref="compound">Texture2d</ref> const *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/shader_program.h" line="117" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4145">
+        <label>openage::renderer::ShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1_shader_program"/>
+      </node>
+      <node id="4146">
+        <label>openage::renderer::opengl::GlShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1opengl_1_1_gl_shader_program"/>
+        <childnode refid="4145" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4147">
+        <label>openage::renderer::ShaderProgram</label>
+        <link refid="classopenage_1_1renderer_1_1_shader_program"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/shader_program.h" line="21" column="1" bodyfile="libopenage/renderer/shader_program.h" bodystart="21" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a7ba29dd859811e2c5e6019f6fa962e8f" prot="public" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>has_uniform</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1af13b539d6a4bc6b66152bdcd53a50815" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>new_unif_in</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ab6dd8cc82461a8dd2e08087264f658bd" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>new_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a38e446978eda3822674dd5c00e2004c6" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a02a78a00855ac5db139ef1430408660e" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_f64</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a83b741d600d5487dae1678b20901bf1b" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_i32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ae05f6d0029d2c7f2cb796647d5bc988e" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_m4f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a6b84ff62ba2ea6dbf8890536fb7c876d" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_tex</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ab8c73f6f9a7309f03b6af9fa50fb5a3f" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_u32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a003661a1e233c8352a6a21f02df46f47" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_v2f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a11f73da7683311faf4689d02e05e684e" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_v3f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a169361a2c5857643e5c8b8890b5e7592" prot="protected" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>set_v4f32</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a52b69e9c86264d23b4af619137e30f04" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a22b85381e5d375532a5a16113f10ad59" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ace920cff0ddac348df64589d5dd65e15" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ac6549848a570989183b4b4aad8e28760" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ac6f09354128bf60fbc6496e068c0e1f9" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a54f4f8c5b183cee951ba8907a813bcd0" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ab9738e5488390ab104453de449ba7444" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1acf5fbb3328c63da7b645fa08f818c467" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a87ccfe4e0351057379871371ed0e928a" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a1de758ad1a110cd48a774d88a11582bf" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a083cfce2ba6018afe512911c55457fde" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ad7648faf2a3e82a63a95076d3ed98d33" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a40d140c46c04de019b5081c5276bf201" prot="public" virt="non-virtual"><scope>openage::renderer::ShaderProgram</scope><name>update_uniform_input</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1ad9c2c7e1dfa281b4109ef966309193b4" prot="public" virt="pure-virtual"><scope>openage::renderer::ShaderProgram</scope><name>vertex_attributes</name></member>
+      <member refid="classopenage_1_1renderer_1_1_shader_program_1a163d2ac1e773640fa98d3394e4d54087" prot="public" virt="virtual"><scope>openage::renderer::ShaderProgram</scope><name>~ShaderProgram</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

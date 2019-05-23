@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="glyph__atlas_8cpp" kind="file" language="C++">
+    <compoundname>glyph_atlas.cpp</compoundname>
+    <includes refid="glyph__atlas_8h" local="yes">glyph_atlas.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">typeindex</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">epoxy/gl.h</includes>
+    <includes refid="error_2error_8h" local="yes">../../error/error.h</includes>
+    <includes refid="hash_8h" local="yes">../../util/hash.h</includes>
+    <incdepgraph>
+      <node id="20654">
+        <label>list</label>
+      </node>
+      <node id="20645">
+        <label>atomic</label>
+      </node>
+      <node id="20651">
+        <label>iomanip</label>
+      </node>
+      <node id="20650">
+        <label>functional</label>
+      </node>
+      <node id="20626">
+        <label>font.h</label>
+        <link refid="font_8h"/>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20628" relation="include">
+        </childnode>
+        <childnode refid="20625" relation="include">
+        </childnode>
+        <childnode refid="20629" relation="include">
+        </childnode>
+        <childnode refid="20632" relation="include">
+        </childnode>
+      </node>
+      <node id="20641">
+        <label>cstdint</label>
+      </node>
+      <node id="20648">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="20649" relation="include">
+        </childnode>
+        <childnode refid="20650" relation="include">
+        </childnode>
+        <childnode refid="20651" relation="include">
+        </childnode>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20652" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20625" relation="include">
+        </childnode>
+      </node>
+      <node id="20629">
+        <label>../../util/hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="20630" relation="include">
+        </childnode>
+        <childnode refid="20631" relation="include">
+        </childnode>
+      </node>
+      <node id="20636">
+        <label>stdexcept</label>
+      </node>
+      <node id="20653">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="20654" relation="include">
+        </childnode>
+        <childnode refid="20655" relation="include">
+        </childnode>
+        <childnode refid="20656" relation="include">
+        </childnode>
+      </node>
+      <node id="20649">
+        <label>cstdarg</label>
+      </node>
+      <node id="20627">
+        <label>string</label>
+      </node>
+      <node id="20640">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="20641" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20642" relation="include">
+        </childnode>
+        <childnode refid="20643" relation="include">
+        </childnode>
+        <childnode refid="20644" relation="include">
+        </childnode>
+        <childnode refid="20653" relation="include">
+        </childnode>
+        <childnode refid="20656" relation="include">
+        </childnode>
+      </node>
+      <node id="20643">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="20630" relation="include">
+        </childnode>
+      </node>
+      <node id="20644">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="20645" relation="include">
+        </childnode>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20646" relation="include">
+        </childnode>
+        <childnode refid="20637" relation="include">
+        </childnode>
+        <childnode refid="20647" relation="include">
+        </childnode>
+        <childnode refid="20648" relation="include">
+        </childnode>
+      </node>
+      <node id="20634">
+        <label>../../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="20635" relation="include">
+        </childnode>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20636" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20637" relation="include">
+        </childnode>
+        <childnode refid="20640" relation="include">
+        </childnode>
+      </node>
+      <node id="20658">
+        <label>typeinfo</label>
+      </node>
+      <node id="20625">
+        <label>vector</label>
+      </node>
+      <node id="20638">
+        <label>ciso646</label>
+      </node>
+      <node id="20631">
+        <label>array</label>
+      </node>
+      <node id="20652">
+        <label>sstream</label>
+      </node>
+      <node id="20637">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="20638" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20639" relation="include">
+        </childnode>
+      </node>
+      <node id="20621">
+        <label>libopenage/renderer/font/glyph_atlas.cpp</label>
+        <link refid="glyph__atlas_8cpp"/>
+        <childnode refid="20622" relation="include">
+        </childnode>
+        <childnode refid="20659" relation="include">
+        </childnode>
+        <childnode refid="20650" relation="include">
+        </childnode>
+        <childnode refid="20628" relation="include">
+        </childnode>
+        <childnode refid="20660" relation="include">
+        </childnode>
+        <childnode refid="20661" relation="include">
+        </childnode>
+        <childnode refid="20634" relation="include">
+        </childnode>
+        <childnode refid="20629" relation="include">
+        </childnode>
+      </node>
+      <node id="20633">
+        <label>ft2build.h</label>
+      </node>
+      <node id="20639">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="20639" relation="include">
+        </childnode>
+      </node>
+      <node id="20661">
+        <label>epoxy/gl.h</label>
+      </node>
+      <node id="20647">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="20635" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+      </node>
+      <node id="20656">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="20657" relation="include">
+        </childnode>
+      </node>
+      <node id="20630">
+        <label>cstdlib</label>
+      </node>
+      <node id="20635">
+        <label>iostream</label>
+      </node>
+      <node id="20624">
+        <label>unordered_map</label>
+      </node>
+      <node id="20655">
+        <label>mutex</label>
+      </node>
+      <node id="20646">
+        <label>type_traits</label>
+      </node>
+      <node id="20642">
+        <label>config.h</label>
+      </node>
+      <node id="20622">
+        <label>glyph_atlas.h</label>
+        <link refid="glyph__atlas_8h"/>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20624" relation="include">
+        </childnode>
+        <childnode refid="20625" relation="include">
+        </childnode>
+        <childnode refid="20626" relation="include">
+        </childnode>
+      </node>
+      <node id="20632">
+        <label>font_manager.h</label>
+        <link refid="font__manager_8h"/>
+        <childnode refid="20633" relation="include">
+        </childnode>
+        <childnode refid="20623" relation="include">
+        </childnode>
+        <childnode refid="20627" relation="include">
+        </childnode>
+        <childnode refid="20624" relation="include">
+        </childnode>
+        <childnode refid="20634" relation="include">
+        </childnode>
+      </node>
+      <node id="20659">
+        <label>algorithm</label>
+      </node>
+      <node id="20660">
+        <label>cstring</label>
+      </node>
+      <node id="20623">
+        <label>memory</label>
+      </node>
+      <node id="20628">
+        <label>typeindex</label>
+      </node>
+      <node id="20657">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="20635" relation="include">
+        </childnode>
+        <childnode refid="20658" relation="include">
+        </childnode>
+        <childnode refid="20637" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1renderer">openage::renderer</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glyph__atlas_8h" kindref="compound">glyph_atlas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;epoxy/gl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../error/error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../../util/hash.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">renderer<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3877fca5afd9bb460330220bdc9d7623" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3877fca5afd9bb460330220bdc9d7623" kindref="member">GlyphAtlas::Shelf::Shelf</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y_position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>y_position{<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" kindref="member">y_position</ref>},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>{<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>{<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>remaining_width{<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>}<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a3091c32cf65e6e0e463e1b89cb1e83c7" kindref="member">GlyphAtlas::Shelf::check_fits</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_height)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(required_width<sp/>&gt;<sp/>this-&gt;remaining_width<sp/>||<sp/>required_height<sp/>&gt;<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1abe91f123bbdf8af590b6f6ebe266d6fc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1abe91f123bbdf8af590b6f6ebe266d6fc" kindref="member">GlyphAtlas::Shelf::reserve</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="comment">/*<sp/>required_height*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x_position<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref><sp/>-<sp/>this-&gt;remaining_width;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;remaining_width<sp/>-=<sp/>required_width;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x_position;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classopenage_1_1renderer_1_1_glyph_atlas_1a5ead730efc92a30d19f57760e7b962ba" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a5ead730efc92a30d19f57760e7b962ba" kindref="member">GlyphAtlas::GlyphAtlas</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>{<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>},</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>height{height},</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>is_dirty{</highlight><highlight class="keyword">false</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>dirty_area{width,<sp/>height,<sp/>0,<sp/>0},</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>texture_id{0}<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;buffer<sp/>=<sp/>std::unique_ptr&lt;unsigned<sp/>char&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[this-&gt;width<sp/>*<sp/>this-&gt;height]);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(this-&gt;buffer.get(),<sp/>0,<sp/>this-&gt;width<sp/>*<sp/>this-&gt;height);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>glGenTextures(1,<sp/>&amp;this-&gt;texture_id);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindTexture(GL_TEXTURE_2D,<sp/>this-&gt;texture_id);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_WRAP_S,<sp/>GL_CLAMP);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_WRAP_T,<sp/>GL_CLAMP);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MAG_FILTER,<sp/>GL_LINEAR);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexParameteri(GL_TEXTURE_2D,<sp/>GL_TEXTURE_MIN_FILTER,<sp/>GL_LINEAR);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>glTexImage2D(GL_TEXTURE_2D,<sp/>0,<sp/>GL_RED,<sp/>this-&gt;width,<sp/>this-&gt;height,<sp/>0,<sp/>GL_RED,<sp/>GL_UNSIGNED_BYTE,<sp/>this-&gt;buffer.get());</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classopenage_1_1renderer_1_1_glyph_atlas_1afe4401951e1bd4d55e0e89b93396e6f9" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1afe4401951e1bd4d55e0e89b93396e6f9" kindref="member">GlyphAtlas::~GlyphAtlas</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a4c3d2bbedd6b707afe09cf99478c9fab" kindref="member">texture_id</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glDeleteTextures(1,<sp/>&amp;this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a4c3d2bbedd6b707afe09cf99478c9fab" kindref="member">texture_id</ref>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae2dd04418a0db610c8c007993ecfdd22" kindref="member">GlyphAtlas::bind</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>unit)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>glActiveTexture(GL_TEXTURE0<sp/>+<sp/>unit);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>glBindTexture(GL_TEXTURE_2D,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a4c3d2bbedd6b707afe09cf99478c9fab" kindref="member">texture_id</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a649e1861549010c4ac1edc2a03e83c68" kindref="member">is_dirty</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>update<sp/>the<sp/>entire<sp/>width<sp/>of<sp/>the<sp/>atlas<sp/>because<sp/>of<sp/>our<sp/>buffer<sp/>memory<sp/>alignment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glTexSubImage2D(GL_TEXTURE_2D,<sp/>0,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a03c5c6eddef4b261cd75b5552b3e646d" kindref="member">y1</ref>,<sp/>this-&gt;width,<sp/>this-&gt;dirty_area.y2<sp/>-<sp/>this-&gt;dirty_area.y1,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GL_RED,<sp/>GL_UNSIGNED_BYTE,<sp/>this-&gt;buffer.get()<sp/>+<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref><sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a03c5c6eddef4b261cd75b5552b3e646d" kindref="member">y1</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a649e1861549010c4ac1edc2a03e83c68" kindref="member">is_dirty</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref><sp/>=<sp/>{this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ae5ac0cf0b966e3636c0f9a950e3f1870" kindref="member">GlyphAtlas::get</ref>(<ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>,<sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>codepoint)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>key<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" kindref="member">get_cache_key</ref>(font,<sp/>codepoint);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ab8215c1c1fa6ae54b17311cbaf5fe82b" kindref="member">glyphs</ref>.find(key);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ab8215c1c1fa6ae54b17311cbaf5fe82b" kindref="member">glyphs</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref><sp/>glyph;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;unsigned<sp/>char[]&gt;<sp/>image<sp/>=<sp/><ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>-&gt;load_glyph(codepoint,<sp/>glyph);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" kindref="member">set</ref>(key,<sp/>glyph,<sp/>image.get());</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a936adb09a68c1fc46e9572cd2866d961" kindref="member">GlyphAtlas::get_cache_key</ref>(<ref refid="classopenage_1_1renderer_1_1_font" kindref="compound">Font</ref><sp/>*<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>,<sp/><ref refid="namespaceopenage_1_1renderer_1ad1ef0d75510a667bb392b7f7f464b435" kindref="member">codepoint_t</ref><sp/>codepoint)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/>std::hash&lt;std::type_index&gt;()(std::type_index(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="classopenage_1_1renderer_1_1_glyph_atlas" kindref="compound">openage::renderer::GlyphAtlas</ref>)));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">openage::util::hash_combine</ref>(<ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>,<sp/>std::hash&lt;font_description&gt;()(<ref refid="namespaceopenage_1_1renderer_1_1tests_1aa4bbd5ddb9f2591224c8b05fff9d945c" kindref="member">font</ref>-&gt;description));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref><sp/>=<sp/><ref refid="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" kindref="member">openage::util::hash_combine</ref>(<ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>,<sp/>std::hash&lt;codepoint_t&gt;()(codepoint));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" kindref="member">hash</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" refkind="member"><highlight class="normal"><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" kindref="member">GlyphAtlas::set</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph" kindref="compound">Glyph</ref><sp/>&amp;glyph,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*image)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Give<sp/>the<sp/>glyphs<sp/>a<sp/>1px<sp/>padding<sp/>in<sp/>the<sp/>atlas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_width<sp/>=<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>required_height<sp/>=<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a1e6b92f493cd85c845a3f7c58e73fa1b" kindref="member">shelves</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a1e6b92f493cd85c845a3f7c58e73fa1b" kindref="member">shelves</ref>.emplace_back(0,<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>,<sp/>required_height);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;shelf<sp/>:<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a1e6b92f493cd85c845a3f7c58e73fa1b" kindref="member">shelves</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(shelf.check_fits(required_width,<sp/>required_height))<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x_pos<sp/>=<sp/>shelf.reserve(required_width,<sp/>required_height);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y_pos<sp/>=<sp/>shelf.y_position;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>new<sp/>entry<sp/>and<sp/>insert<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry" kindref="compound">GlyphAtlas::Entry</ref><sp/>entry;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a06efbd8aa9ee41a146ec356bfdf35738" kindref="member">glyph</ref><sp/>=<sp/>glyph;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a457e86b3986812bd34943238add9757c" kindref="member">u0</ref><sp/>=<sp/>static_cast&lt;float&gt;(x_pos)/this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a2b2b3254c17b062bbf7ee88e88a0eff7" kindref="member">v0</ref><sp/>=<sp/>static_cast&lt;float&gt;(y_pos)/this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a586fafa40a3ee81a42dac115dad313e4" kindref="member">u1</ref><sp/>=<sp/>static_cast&lt;float&gt;(x_pos<sp/>+<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref>)/this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_entry_1a644926ad6a6fe0cfbb73aff7b7a7cba5" kindref="member">v1</ref><sp/>=<sp/>static_cast&lt;float&gt;(y_pos<sp/>+<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>)/this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a52a1a6002fd59ee150bc95717b874333" kindref="member">buffer</ref>.get()<sp/>+<sp/>((y_pos<sp/>+<sp/>i)<sp/>*<sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref><sp/>+<sp/>x_pos),</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>image<sp/>+<sp/>(i<sp/>*<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref>),</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" kindref="member">update_dirty_area</ref>(x_pos,<sp/>y_pos,<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ae6feb8b9429ea0e1994ab7e622e4cefe" kindref="member">width</ref>,<sp/>glyph.<ref refid="classopenage_1_1renderer_1_1_glyph_1ad31d3bc3c576f0bb200b6087f7830720" kindref="member">height</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1ab8215c1c1fa6ae54b17311cbaf5fe82b" kindref="member">glyphs</ref>.emplace(key,<sp/>entry);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>entry;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf" kindref="compound">GlyphAtlas::Shelf</ref><sp/>last_shelf<sp/>=<sp/>this-&gt;shelves.back();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref><sp/>&gt;<sp/>(last_shelf.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" kindref="member">y_position</ref><sp/>+<sp/>last_shelf.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" kindref="member">height</ref><sp/>+<sp/>required_height))<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;shelves.emplace_back(last_shelf.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a554369c5f6dea980330521aa04589126" kindref="member">y_position</ref><sp/>+<sp/>last_shelf.<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1_1_shelf_1a5a9a34d8091181208f8d5b9a32efc4c5" kindref="member">height</ref>,<sp/>this-&gt;width,<sp/>required_height);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa029b621d32aec3deda5ba7231e42a33" kindref="member">set</ref>(key,<sp/>glyph,<sp/>image);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>figure<sp/>out<sp/>a<sp/>clean<sp/>way<sp/>to<sp/>resize<sp/>the<sp/>atlas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1error_1_1_error" kindref="compound">Error</ref>(<ref refid="message_8h_1a8adfad4f54eb306fbb8aaa1b159608a5" kindref="member">MSG</ref>(err)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>enough<sp/>space<sp/>in<sp/>the<sp/>atlas&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aa24165b0ea4cee5ea03cec1e0609499c" kindref="member">GlyphAtlas::update_dirty_area</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a649e1861549010c4ac1edc2a03e83c68" kindref="member">is_dirty</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref><sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::min</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a2fb201b9372b565c35baeff0ea27e90c" kindref="member">x1</ref>,<sp/>x),</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a34591a1d8ee5da3f16f56554590d5e16" kindref="member">std::min</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1a03c5c6eddef4b261cd75b5552b3e646d" kindref="member">y1</ref>,<sp/>y),</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" kindref="member">std::max</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1ab129f3e096e3ac26c8a30c6c4b61c9bf" kindref="member">x2</ref>,<sp/>x<sp/>+<sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1aefccdcf9e9d8e549d3a0747de1ecdc5f" kindref="member">width</ref>),</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacestd_1a1c0bc145caf5f0b2af8d16d29d952180" kindref="member">std::max</ref>(this-&gt;<ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a84c78b01c4cbce989831cf2822f58e74" kindref="member">dirty_area</ref>.<ref refid="structopenage_1_1renderer_1_1_glyph_atlas_1_1dirty__rect_1ad7c02afbf4a178faa77234d0d9b36f5b" kindref="member">y2</ref>,<sp/>y<sp/>+<sp/><ref refid="classopenage_1_1renderer_1_1_glyph_atlas_1a48a8755d31f5b2c6a6656f1fb03752d0" kindref="member">height</ref>)};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::renderer</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/renderer/font/glyph_atlas.cpp"/>
+  </compounddef>
+</doxygen>

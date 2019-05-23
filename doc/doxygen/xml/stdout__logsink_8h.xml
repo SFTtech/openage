@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="stdout__logsink_8h" kind="file" language="C++">
+    <compoundname>stdout_logsink.h</compoundname>
+    <includes refid="logsink_8h" local="yes">logsink.h</includes>
+    <includedby refid="log_8cpp" local="yes">libopenage/log/log.cpp</includedby>
+    <includedby refid="logsource_8cpp" local="yes">libopenage/log/logsource.cpp</includedby>
+    <includedby refid="stdout__logsink_8cpp" local="yes">libopenage/log/stdout_logsink.cpp</includedby>
+    <incdepgraph>
+      <node id="18306">
+        <label>list</label>
+      </node>
+      <node id="18305">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="18306" relation="include">
+        </childnode>
+        <childnode refid="18307" relation="include">
+        </childnode>
+        <childnode refid="18308" relation="include">
+        </childnode>
+      </node>
+      <node id="18314">
+        <label>string</label>
+      </node>
+      <node id="18311">
+        <label>typeinfo</label>
+      </node>
+      <node id="18313">
+        <label>ciso646</label>
+      </node>
+      <node id="18312">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="18313" relation="include">
+        </childnode>
+        <childnode refid="18314" relation="include">
+        </childnode>
+        <childnode refid="18315" relation="include">
+        </childnode>
+      </node>
+      <node id="18315">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="18315" relation="include">
+        </childnode>
+      </node>
+      <node id="18308">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="18309" relation="include">
+        </childnode>
+      </node>
+      <node id="18310">
+        <label>iostream</label>
+      </node>
+      <node id="18307">
+        <label>mutex</label>
+      </node>
+      <node id="18304">
+        <label>libopenage/log/stdout_logsink.h</label>
+        <link refid="stdout__logsink_8h"/>
+        <childnode refid="18305" relation="include">
+        </childnode>
+      </node>
+      <node id="18309">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="18310" relation="include">
+        </childnode>
+        <childnode refid="18311" relation="include">
+        </childnode>
+        <childnode refid="18312" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18317">
+        <label>libopenage/log/log.cpp</label>
+        <link refid="log_8cpp"/>
+      </node>
+      <node id="18318">
+        <label>libopenage/log/logsource.cpp</label>
+        <link refid="logsource_8cpp"/>
+      </node>
+      <node id="18319">
+        <label>libopenage/log/stdout_logsink.cpp</label>
+        <link refid="stdout__logsink_8cpp"/>
+      </node>
+      <node id="18316">
+        <label>libopenage/log/stdout_logsink.h</label>
+        <link refid="stdout__logsink_8h"/>
+        <childnode refid="18317" relation="include">
+        </childnode>
+        <childnode refid="18318" relation="include">
+        </childnode>
+        <childnode refid="18319" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1log_1_1_std_out_sink" prot="public">openage::log::StdOutSink</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logsink_8h" kindref="compound">logsink.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classopenage_1_1log_1_1_std_out_sink" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1log_1_1_std_out_sink" kindref="compound">StdOutSink</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_log_sink" kindref="compound">LogSink</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1log_1_1_std_out_sink_1ac123af4d90db8c0f43e2a3bc6e754b85" kindref="member">StdOutSink</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1log_1_1_std_out_sink_1a4d3e8a8a430304e81ba004a45b58df0c" kindref="member">output_log_message</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref><sp/>&amp;msg,<sp/><ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref><sp/>*source)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="classopenage_1_1log_1_1_std_out_sink" kindref="compound">StdOutSink</ref><sp/>&amp;<ref refid="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" kindref="member">global_stdoutsink</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/log/stdout_logsink.h"/>
+  </compounddef>
+</doxygen>

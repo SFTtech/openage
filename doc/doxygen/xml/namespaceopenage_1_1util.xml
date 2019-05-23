@@ -1,0 +1,2030 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1util" kind="namespace" language="C++">
+    <compoundname>openage::util</compoundname>
+    <innerclass refid="classopenage_1_1util_1_1_cachable_o_s_stream" prot="public">openage::util::CachableOSStream</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1col" prot="public">openage::util::col</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1color" prot="public">openage::util::color</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1component__time__data" prot="public">openage::util::component_time_data</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_const_init_vector" prot="public">openage::util::ConstInitVector</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1csv__subdata" prot="public">openage::util::csv_subdata</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_c_s_v_collection" prot="public">openage::util::CSVCollection</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_enum" prot="public">openage::util::Enum</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_enum_value" prot="public">openage::util::EnumValue</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_external_o_string_stream" prot="public">openage::util::ExternalOStringStream</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_external_profiler" prot="public">openage::util::ExternalProfiler</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_external_string_buf" prot="public">openage::util::ExternalStringBuf</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_f_d" prot="public">openage::util::FD</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_file" prot="public">openage::util::File</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_fixed_point" prot="public">openage::util::FixedPoint</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1_float_fixed" prot="public">openage::util::FloatFixed</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_formatter" prot="public">openage::util::Formatter</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_frame_counter" prot="public">openage::util::FrameCounter</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_f_string" prot="public">openage::util::FString</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_function_ptr" prot="public">openage::util::FunctionPtr</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1less" prot="public">openage::util::less</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_matrix" prot="public">openage::util::Matrix</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_on_de_init" prot="public">openage::util::OnDeInit</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_on_init" prot="public">openage::util::OnInit</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_path" prot="public">openage::util::Path</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_profiler" prot="public">openage::util::Profiler</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_quaternion" prot="public">openage::util::Quaternion</innerclass>
+    <innerclass refid="structopenage_1_1util_1_1_shared_ptr_less" prot="public">openage::util::SharedPtrLess</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_siphash" prot="public">openage::util::Siphash</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_string_formatter" prot="public">openage::util::StringFormatter</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_timer" prot="public">openage::util::Timer</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1utf8__decoder" prot="public">openage::util::utf8_decoder</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_variable" prot="public">openage::util::Variable</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_variable_base" prot="public">openage::util::VariableBase</innerclass>
+    <innerclass refid="classopenage_1_1util_1_1_vector" prot="public">openage::util::Vector</innerclass>
+    <innernamespace refid="namespaceopenage_1_1util_1_1compress">openage::util::compress</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1constexpr__">openage::util::constexpr_</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1filelike">openage::util::filelike</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1fslike">openage::util::fslike</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1aa62f335908f8f5e68345cb3386ab94c6" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 2, 2, T &gt;</type>
+        <definition>using openage::util::Matrix2t = typedef Matrix&lt;2, 2, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix2t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="273" column="1" bodyfile="libopenage/util/matrix.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a748106aeb16275c1ebf6f0f9276381cd" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 3, 3, T &gt;</type>
+        <definition>using openage::util::Matrix3t = typedef Matrix&lt;3, 3, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix3t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="276" column="1" bodyfile="libopenage/util/matrix.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1ae5976ba79c39027e28f3f02458e93e38" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 4, 4, T &gt;</type>
+        <definition>using openage::util::Matrix4t = typedef Matrix&lt;4, 4, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix4t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="279" column="1" bodyfile="libopenage/util/matrix.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1af077ef0b2ea660c4044917c60c4f0385" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>M</declname>
+            <defname>M</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, float &gt;</type>
+        <definition>using openage::util::Matrixf = typedef Matrix&lt;M, N, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrixf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="282" column="1" bodyfile="libopenage/util/matrix.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a21feb2f799e75fd645e0d663ec4712f9" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>M</declname>
+            <defname>M</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, double &gt;</type>
+        <definition>using openage::util::Matrixd = typedef Matrix&lt;M, N, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrixd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="285" column="1" bodyfile="libopenage/util/matrix.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a00694c43ac6582c643b2591d420ce472" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 2, 2, float &gt;</type>
+        <definition>using openage::util::Matrix2f = typedef Matrix&lt;2, 2, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix2f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="287" column="1" bodyfile="libopenage/util/matrix.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1aaa417153128f83c6b7ee0b42efc418aa" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 3, 3, float &gt;</type>
+        <definition>using openage::util::Matrix3f = typedef Matrix&lt;3, 3, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix3f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="288" column="1" bodyfile="libopenage/util/matrix.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1afd42b418dc20fcb64677b2f75ecd97b8" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 4, 4, float &gt;</type>
+        <definition>using openage::util::Matrix4f = typedef Matrix&lt;4, 4, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix4f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="289" column="1" bodyfile="libopenage/util/matrix.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a94d988fc19451e9042116f14432ec1b6" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 2, 2, double &gt;</type>
+        <definition>using openage::util::Matrix2d = typedef Matrix&lt;2, 2, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix2d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="291" column="1" bodyfile="libopenage/util/matrix.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a157c43b340256c0f1124074fae7aa807" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 3, 3, double &gt;</type>
+        <definition>using openage::util::Matrix3d = typedef Matrix&lt;3, 3, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix3d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="292" column="1" bodyfile="libopenage/util/matrix.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a06158fd9e1e05c74de527f554486f2b6" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; 4, 4, double &gt;</type>
+        <definition>using openage::util::Matrix4d = typedef Matrix&lt;4, 4, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Matrix4d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="293" column="1" bodyfile="libopenage/util/matrix.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1ac0edd3e6d8ddf01c639814c3f2cb83fc" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref>&lt; float &gt;</type>
+        <definition>using openage::util::Quaternionf = typedef Quaternion&lt;float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Quaternionf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="435" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1ad6fb313e7100659b50538dadeb6fb0f3" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_quaternion" kindref="compound">Quaternion</ref>&lt; double &gt;</type>
+        <definition>using openage::util::Quaterniond = typedef Quaternion&lt;double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Quaterniond</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/quaternion.h" line="436" column="1" bodyfile="libopenage/util/quaternion.h" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>using openage::util::codepoint_t = typedef int32_t</definition>
+        <argsstring></argsstring>
+        <name>codepoint_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/unicode.h" line="15" column="1" bodyfile="libopenage/util/unicode.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a3b7551617f7e81afd786778a18a6e115" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 2, T &gt;</type>
+        <definition>using openage::util::Vector2t = typedef Vector&lt;2, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector2t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="207" column="1" bodyfile="libopenage/util/vector.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a2ae1eb4098bce6a746a8b5474bf76d12" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 3, T &gt;</type>
+        <definition>using openage::util::Vector3t = typedef Vector&lt;3, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector3t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="210" column="1" bodyfile="libopenage/util/vector.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1ab85260365ee607e213b044335a3c4ac2" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+            <defval>float</defval>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 4, T &gt;</type>
+        <definition>using openage::util::Vector4t = typedef Vector&lt;4, T&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector4t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="213" column="1" bodyfile="libopenage/util/vector.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a412362dd7eb21295a62e2c22031ac77c" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; N, float &gt;</type>
+        <definition>using openage::util::Vectorf = typedef Vector&lt;N, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vectorf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="216" column="1" bodyfile="libopenage/util/vector.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a333446966cecccc963bdaa41f5395339" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; N, double &gt;</type>
+        <definition>using openage::util::Vectord = typedef Vector&lt;N, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vectord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="219" column="1" bodyfile="libopenage/util/vector.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a285db29af032ad3b2a79f810faaf65d3" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 2, float &gt;</type>
+        <definition>using openage::util::Vector2f = typedef Vector&lt;2, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector2f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="221" column="1" bodyfile="libopenage/util/vector.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1ab7bb49fe673b7a4d72fb6fb91aba44c8" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 3, float &gt;</type>
+        <definition>using openage::util::Vector3f = typedef Vector&lt;3, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector3f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="222" column="1" bodyfile="libopenage/util/vector.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1af3c02e2c02d3b68c87d58b867e609bbf" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 4, float &gt;</type>
+        <definition>using openage::util::Vector4f = typedef Vector&lt;4, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector4f</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="223" column="1" bodyfile="libopenage/util/vector.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1a5759baf587738b4365920f5b944b0088" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 2, double &gt;</type>
+        <definition>using openage::util::Vector2d = typedef Vector&lt;2, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector2d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="225" column="1" bodyfile="libopenage/util/vector.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1aaa92edd0399f568ff984de550f094c9d" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 3, double &gt;</type>
+        <definition>using openage::util::Vector3d = typedef Vector&lt;3, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector3d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="226" column="1" bodyfile="libopenage/util/vector.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceopenage_1_1util_1af8c841be325b73ea41a31e63bc2013dd" prot="public" static="no">
+        <type><ref refid="classopenage_1_1util_1_1_vector" kindref="compound">Vector</ref>&lt; 4, double &gt;</type>
+        <definition>using openage::util::Vector4d = typedef Vector&lt;4, double&gt;</definition>
+        <argsstring></argsstring>
+        <name>Vector4d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/vector.h" line="227" column="1" bodyfile="libopenage/util/vector.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1a5f6ab09d105c3dfecc8de7dfd7be7ca2" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string openage::util::empty_string</definition>
+        <argsstring></argsstring>
+        <name>empty_string</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>global empty string, sometimes needed as return value in some <computeroutput>std::string &amp;function()</computeroutput> return values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.cpp" line="8" column="1" bodyfile="libopenage/util/misc.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1a90bf47b9ae769862b60096e171e3204b" prot="public" static="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::util::uint64_s</definition>
+        <argsstring></argsstring>
+        <name>uint64_s</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="94" column="1" bodyfile="libopenage/util/misc.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1util_1abd7c6427c843cb61f0892c36a58dabbf" prot="public" static="no" mutable="no">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char* openage::util::HEX_DIGITS</definition>
+        <argsstring></argsstring>
+        <name>HEX_DIGITS</name>
+        <initializer>= &quot;0123456789abcdef&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/repr.cpp" line="9" column="1" bodyfile="libopenage/util/repr.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1util_1ac6f34c002692bc844cd70de03e10bc5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Container</type>
+          </param>
+          <param>
+            <type>class Function</type>
+          </param>
+        </templateparamlist>
+        <type>Function</type>
+        <definition>Function openage::util::for_each</definition>
+        <argsstring>(Container &amp;&amp;container, Function &amp;&amp;func)</argsstring>
+        <name>for_each</name>
+        <param>
+          <type>Container &amp;&amp;</type>
+          <declname>container</declname>
+        </param>
+        <param>
+          <type>Function &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>std::for_each except just on containers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/algorithm.h" line="17" column="1" bodyfile="libopenage/util/algorithm.h" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a1f21bbbe0a2bfda459aa086ee71f1abd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Container</type>
+          </param>
+          <param>
+            <type>class Function</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::remove_from</definition>
+        <argsstring>(Container &amp;container, Function &amp;&amp;func)</argsstring>
+        <name>remove_from</name>
+        <param>
+          <type>Container &amp;</type>
+          <declname>container</declname>
+        </param>
+        <param>
+          <type>Function &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Filters items from a container which satisfy a certain predicate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/algorithm.h" line="28" column="1" bodyfile="libopenage/util/algorithm.h" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aebed129b2a0773520cdd8d40b0f70318" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::demangle</definition>
+        <argsstring>(const char *symbol)</argsstring>
+        <name>demangle</name>
+        <param>
+          <type>const char *</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Demangles a symbol name.</para>
+<para>On failure, the mangled symbol name is returned. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.cpp" line="25" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="25" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1abe26c67b0463cb53c33b0659ebb89370" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::addr_to_string</definition>
+        <argsstring>(const void *addr)</argsstring>
+        <name>addr_to_string</name>
+        <param>
+          <type>const void *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.cpp" line="46" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1ac6219374623d05b075782ea1adb09c0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>OAAPI std::string openage::util::symbol_name</definition>
+        <argsstring>(const void *addr, bool require_exact_addr, bool no_pure_addrs)</argsstring>
+        <name>symbol_name</name>
+        <param>
+          <type>const void *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>require_exact_addr</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>no_pure_addrs</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the (demangled) symbol name for a given address.</para>
+<para>If no exact match can be found, if require_exact_addr == true (default): if no_pure_addrs == false (default): a pure hex address string is returned else: an empty string is returned if require_exact_addr == false: name of closest symbol + offset hex string is returned</para>
+<para>pxd: string symbol_name(const void *addr) except + </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.cpp" line="98" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="98" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1ae411a50a0e24d32ab564979b2df6ed24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::is_symbol</definition>
+        <argsstring>(const void *addr)</argsstring>
+        <name>is_symbol</name>
+        <param>
+          <type>const void *</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the address is the (exact) address of a symbol. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/compiler.cpp" line="136" column="1" bodyfile="libopenage/util/compiler.cpp" bodystart="136" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a16ef0fe69558a29af4a8d568f2b5b518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename lineformat</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; lineformat &gt;</type>
+        <definition>std::vector&lt;lineformat&gt; openage::util::read_csv_file</definition>
+        <argsstring>(const Path &amp;path)</argsstring>
+        <name>read_csv_file</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read a single csv file. call the destination struct .<ref refid="namespaceopenage_1_1rng_1_1tests_1a7c865b312f955cab3ff9ea078fd0cc95" kindref="member">fill()</ref> method for actually storing line data </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/csv.h" line="182" column="1" bodyfile="libopenage/util/csv.h" bodystart="182" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1abe7e29a3d1ac620fb9d0eb6830be84cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; openage::util::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const File &amp;file)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_file" kindref="compound">File</ref> &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/file.cpp" line="122" column="1" bodyfile="libopenage/util/file.cpp" bodystart="122" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1afe036a1f307dd739bb4855cb0b799f38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt;(amount+(std::is_signed&lt; T &gt;::value ? 1 :0)&lt; sizeof(T) *CHAR_BIT), T &gt;::type</type>
+        <definition>static constexpr std::enable_if&lt;(amount + (std::is_signed&lt;T&gt;::value ? 1 : 0) &lt; sizeof(T) * CHAR_BIT), T&gt;::type openage::util::safe_shiftleft</definition>
+        <argsstring>(T value)</argsstring>
+        <name>safe_shiftleft</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper function that performs a left shift without causing undefined behavior. regular left-shift is undefined if amount &gt;= bitwidth, or amount &gt;= bitwidth - 1 for signed integers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="28" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a1f37c9c7cfd9dbe87e3ce104476bbda4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt;(amount &gt;=sizeof(T) *CHAR_BIT), T &gt;::type</type>
+        <definition>static constexpr std::enable_if&lt;(amount &gt;= sizeof(T) * CHAR_BIT), T&gt;::type openage::util::safe_shiftright</definition>
+        <argsstring>(T value)</argsstring>
+        <name>safe_shiftright</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper function that performs a right shift without causing undefined behavior. right-shift is usually undefined if amount &gt;= bit size. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="43" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aa341b7244c12ea3496bdcd56e226d791" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt;(amount&lt; sizeof(T) *CHAR_BIT), T &gt;::type</type>
+        <definition>static constexpr std::enable_if&lt;(amount &lt; sizeof(T) * CHAR_BIT), T&gt;::type openage::util::safe_shiftright</definition>
+        <argsstring>(T value)</argsstring>
+        <name>safe_shiftright</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="50" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a101479979c88a661de76a6e70fb2978b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt;(amount&lt; 0), T &gt;::type</type>
+        <definition>static constexpr std::enable_if&lt;(amount &lt; 0), T&gt;::type openage::util::safe_shift</definition>
+        <argsstring>(T value)</argsstring>
+        <name>safe_shift</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper function that performs either a safe shift-right (amount &gt; 0), or a safe shift-left (amount &lt; 0). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="62" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="62" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a5346916e27392c8a141e10890f42925e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr std::enable_if&lt;(amount &gt;=0), T &gt;::type</type>
+        <definition>static constexpr std::enable_if&lt;(amount &gt;= 0), T&gt;::type openage::util::safe_shift</definition>
+        <argsstring>(T value)</argsstring>
+        <name>safe_shift</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="70" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a4202ea3aad51da9bcef0572898fc7175" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::operator+</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; &amp;lhs, const FixedPoint&lt; I, F &gt; &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="406" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="406" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a4e4ab8c3700eebbe1f3367ea7aa4de17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::operator+</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; &amp;lhs, const double &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> + double </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="414" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="414" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a976790c1ec88a9cce32a887ca49526db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::operator -</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; &amp;lhs, const FixedPoint&lt; I, F &gt; &amp;rhs)</argsstring>
+        <name>operator -</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="422" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="422" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a0691ea67643c9ec3e8ef552a45583a81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::operator -</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; &amp;lhs, const double &amp;rhs)</argsstring>
+        <name>operator -</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> - double </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="430" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="430" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aa3949bf1d23f5c8446474135851399fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+          <param>
+            <type>typename N</type>
+          </param>
+        </templateparamlist>
+        <type>std::enable_if&lt; std::is_arithmetic&lt; N &gt;::value, <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt; &gt;::type constexpr</type>
+        <definition>std::enable_if&lt;std::is_arithmetic&lt;N&gt;::value, FixedPoint&lt;I, F&gt; &gt;::type constexpr openage::util::operator *</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; lhs, const N &amp;rhs)</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const N &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> * N </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="440" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="440" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a4e6ea5affdccd958479d0eba1b74ce0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename I</type>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>F</declname>
+            <defname>F</defname>
+          </param>
+          <param>
+            <type>typename N</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+        <definition>constexpr FixedPoint&lt;I, F&gt; openage::util::operator/</definition>
+        <argsstring>(const FixedPoint&lt; I, F &gt; lhs, const N &amp;rhs)</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref>&lt; I, F &gt;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const N &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_fixed_point" kindref="compound">FixedPoint</ref> / N </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/fixed_point.h" line="459" column="1" bodyfile="libopenage/util/fixed_point.h" bodystart="459" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a5cfc0e84830b5945b5731d2148eea3b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::hash_combine</definition>
+        <argsstring>(size_t hash1, size_t hash2)</argsstring>
+        <name>hash_combine</name>
+        <param>
+          <type>size_t</type>
+          <declname>hash1</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>hash2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a hash value as a combination of two other hashes. Can be called incrementally to create hash value from several variables. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.cpp" line="12" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a3cb605abe74b26763ac7340c3785656a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::hash</definition>
+        <argsstring>(const uint64_t key[2], const uint8_t *data, size_t len_data)</argsstring>
+        <name>hash</name>
+        <param>
+          <type>const uint64_t</type>
+          <declname>key</declname>
+          <array>[2]</array>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classopenage_1_1util_1_1_siphash" kindref="compound">Siphash</ref> implementation</para>
+<para><ulink url="https://131002.net/siphash/">https://131002.net/siphash/</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/hash.cpp" line="36" column="1" bodyfile="libopenage/util/hash.cpp" bodystart="36" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a8cb190d6ba8c160e1453ff4379dd2dcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::ignore_result</definition>
+        <argsstring>(T)</argsstring>
+        <name>ignore_result</name>
+        <param>
+          <type>T</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wrapping a function call with ignore_result makes it more clear to readers, compilers and linters that you are, in fact, ignoring the function&apos;s return value on purpose. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/language.h" line="38" column="1" bodyfile="libopenage/util/language.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1af3f37a72fc7fc649b471cff17733f7ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>M</declname>
+            <defname>M</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, T &gt;</type>
+        <definition>Matrix&lt;M, N, T&gt; openage::util::operator *</definition>
+        <argsstring>(T a, const Matrix&lt; M, N, T &gt; &amp;mat)</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>T</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, T &gt; &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar multiplication with swapped arguments </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="258" column="1" bodyfile="libopenage/util/matrix.h" bodystart="258" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a759079d1391952faee3b693dba78382c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>size_t</type>
+            <declname>M</declname>
+            <defname>M</defname>
+          </param>
+          <param>
+            <type>size_t</type>
+            <declname>N</declname>
+            <defname>N</defname>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, T &gt;</type>
+        <definition>Matrix&lt;M, N, T&gt; openage::util::operator *</definition>
+        <argsstring>(int64_t a, const Matrix&lt; M, N, T &gt; &amp;mat)</argsstring>
+        <name>operator *</name>
+        <param>
+          <type>int64_t</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_matrix" kindref="compound">Matrix</ref>&lt; M, N, T &gt; &amp;</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scalar multiplication with swapped arguments for int. This was just added because otherwise the above float-multiplication function might not match to the template deduction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/matrix.h" line="268" column="1" bodyfile="libopenage/util/matrix.h" bodystart="268" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a7e483e123bf554b630319eb3dd012c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::mod</definition>
+        <argsstring>(T x, T m)</argsstring>
+        <name>mod</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>modulo operation that guarantees to return positive values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="32" column="1" bodyfile="libopenage/util/misc.h" bodystart="32" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aebb1428f079400b957bd2ce2fb8ad583" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>unsigned int</type>
+            <declname>modulo</declname>
+            <defname>modulo</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::mod</definition>
+        <argsstring>(T x)</argsstring>
+        <name>mod</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>compiletime defined modulo function. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="47" column="1" bodyfile="libopenage/util/misc.h" bodystart="47" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a656c9d55c02d291f899cdae14b356d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>amount</declname>
+            <defname>amount</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::rol</definition>
+        <argsstring>(T x)</argsstring>
+        <name>rol</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>compiletime defined rotate left function </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="63" column="1" bodyfile="libopenage/util/misc.h" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a34ba6f7abd32acb48dfc6ad6efdc1bc8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>constexpr T</type>
+        <definition>constexpr T openage::util::div</definition>
+        <argsstring>(T x, T m)</argsstring>
+        <name>div</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>implements the &apos;correct&apos; version of the division operator, which always rounds to -inf </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="75" column="1" bodyfile="libopenage/util/misc.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a69b6ecf2b5119f11c33d2b5b89cec86c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::util::array8_to_uint64</definition>
+        <argsstring>(const uint8_t *start, size_t count, bool big_endian=false)</argsstring>
+        <name>array8_to_uint64</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>big_endian</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a C-style array of uint8_t to a uint64_t. Uses little-endianness as default. Fills the remaining bytes with zeroes.</para>
+<para>e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0123456700000000 e.g (little-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0000000067452301</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to start of the input data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>big_endian</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endianness of byte array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Input data as a 64 bit number. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="111" column="1" bodyfile="libopenage/util/misc.h" bodystart="111" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1ae9d6c19aadc0f6a1d502f42852172de0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; openage::util::uint64_to_array8</definition>
+        <argsstring>(const uint64_t value, bool big_endian=false)</argsstring>
+        <name>uint64_to_array8</name>
+        <param>
+          <type>const uint64_t</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>big_endian</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a uint64_t to an array of uint8_t. Uses little-endianness as default.</para>
+<para>e.g (big-endian): 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef} e.g (little-endian): 0x0123456789abcdef -&gt; {0xef, 0xcd, 0xab, 0x89, 0x67, 0x45, 0x23, 0x01}</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>64 bit number to convert. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>big_endian</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endianness of byte array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Input data as a 8 bit number array. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="145" column="1" bodyfile="libopenage/util/misc.h" bodystart="145" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1abab1bbea3efd69cf8087a807b5b5f8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::util::array64_size</definition>
+        <argsstring>(size_t count)</argsstring>
+        <name>array64_size</name>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the number of uint64-elements that result from converting a count-sized uint8_t array.</para>
+<para>Used to determine the size for <ref refid="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" kindref="member">array8_to_array64()</ref></para>
+<para><simplesect kind="return"><para>ceil(count/8) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="170" column="1" bodyfile="libopenage/util/misc.h" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aa30219231e1ac7a89ef5d1fb44894e9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt;uint64_t&gt; openage::util::array8_to_array64</definition>
+        <argsstring>(const uint8_t *start, size_t count, bool big_endian=false)</argsstring>
+        <name>array8_to_array64</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>big_endian</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a C-style array of uint8_t to a std::vector of uint64_t. Uses little-endianness as default. Fills the remaining bytes of the last uint64_t with zeroes.</para>
+<para>e.g (big-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0123456700000000 e.g (little-endian): {0x01, 0x23, 0x45, 0x67} -&gt; 0x0000000067452301</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start of the input data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to convert. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>big_endian</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endianness of byte array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Input data as a 64 bit number vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="190" column="1" bodyfile="libopenage/util/misc.h" bodystart="190" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1af9f52b617e7434a421cd5f9de448b600" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; openage::util::array64_to_array8</definition>
+        <argsstring>(const uint64_t *start, size_t count, bool big_endian=false)</argsstring>
+        <name>array64_to_array8</name>
+        <param>
+          <type>const uint64_t *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>big_endian</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a C-style array of uint64_t to a std::vector of uint8_t. Uses little-endianness as default.</para>
+<para>e.g (big-endian): 0x0123456789abcdef -&gt; {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef} e.g (little-endian): 0x0123456789abcdef -&gt; {0xef, 0xcd, 0xab, 0x89, 0x67, 0x45, 0x23, 0x01}</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the input data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of uint64_t to convert. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>big_endian</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Endianness of byte array. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Input data as a 8 bit number vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="222" column="1" bodyfile="libopenage/util/misc.h" bodystart="222" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1af88424f642ef1ba4e6b2eb1c05ad8e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::vector_extend</definition>
+        <argsstring>(std::vector&lt; T &gt; &amp;vec, const std::vector&lt; T &gt; &amp;ext)</argsstring>
+        <name>vector_extend</name>
+        <param>
+          <type>std::vector&lt; T &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; T &gt; &amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Extend a vector with elements, without destroying source one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="239" column="1" bodyfile="libopenage/util/misc.h" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a9fb1a345070c4a9dd714eb2e8ac2951c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::vector_extend</definition>
+        <argsstring>(std::vector&lt; T &gt; &amp;vec, std::vector&lt; T &gt; &amp;&amp;ext)</argsstring>
+        <name>vector_extend</name>
+        <param>
+          <type>std::vector&lt; T &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; T &gt; &amp;&amp;</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="249" column="1" bodyfile="libopenage/util/misc.h" bodystart="249" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1acd8f5a72ed6227f640eda13229878c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::vector_remove_swap_end</definition>
+        <argsstring>(std::vector&lt; T &gt; &amp;vec, size_t idx)</argsstring>
+        <name>vector_remove_swap_end</name>
+        <param>
+          <type>std::vector&lt; T &gt; &amp;</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove the given element index in the vector. May swap with the end element for efficient removing.</para>
+<para>If the element is not in the vector, do nothing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/misc.h" line="268" column="1" bodyfile="libopenage/util/misc.h" bodystart="268" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a72bef8f3b092e74cf890a38611b9bbc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::gl_check_error</definition>
+        <argsstring>()</argsstring>
+        <name>gl_check_error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>query the current opengl context for any errors.</para>
+<para>raises exceptions on any error. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/opengl.cpp" line="12" column="1" bodyfile="libopenage/util/opengl.cpp" bodystart="12" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aa9a3ed91bb7f5c0fa51acf99e8bcba64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::path_normalizer</definition>
+        <argsstring>(Path::parts_t &amp;output, const Path::parts_t &amp;input)</argsstring>
+        <name>path_normalizer</name>
+        <param>
+          <type><ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path_1a45bb33ddb21332a423a5788fc9ee8462" kindref="member">Path::parts_t</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Strip out ../ etc </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.cpp" line="21" column="1" bodyfile="libopenage/util/path.cpp" bodystart="21" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aae7cd67becf8e8e8e0be8e54a12624d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; openage::util::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const Path &amp;path)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.cpp" line="349" column="1" bodyfile="libopenage/util/path.cpp" bodystart="349" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a664e0be1f5d2f4d1e1a624f6f4a5f0c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::filename</definition>
+        <argsstring>(const std::string &amp;fullpath)</argsstring>
+        <name>filename</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fullpath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>get the filename (last part) of a given path </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.cpp" line="364" column="1" bodyfile="libopenage/util/path.cpp" bodystart="364" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a954be5116f7af5633dbbc50bac26b0a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::dirname</definition>
+        <argsstring>(const std::string &amp;fullpath)</argsstring>
+        <name>dirname</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fullpath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>return the head (dirname) part of a path. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/path.cpp" line="374" column="1" bodyfile="libopenage/util/path.cpp" bodystart="374" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a7bc4421a5f0f57f3a0aba3f96eb8d19c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::repr</definition>
+        <argsstring>(const std::string &amp;arg)</argsstring>
+        <name>repr</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>method that behaves similar to python&apos;s &quot;repr&quot;. puts the string in quotes and escapes all sorts of stuff inside. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/repr.cpp" line="12" column="1" bodyfile="libopenage/util/repr.cpp" bodystart="12" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a5546877ed3bcad568ab21989a40ec088" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string openage::util::sformat</definition>
+        <argsstring>(const char *fmt,...)</argsstring>
+        <name>sformat</name>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>printf-style to-string formatting. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="20" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="20" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a042594ac67e652c429fba1eeb1bec6fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>std::string size_t openage::util::vsformat</definition>
+        <argsstring>(const char *fmt, va_list ap, std::string &amp;output)</argsstring>
+        <name>vsformat</name>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>ap</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>printf-style valist-to-string formatting; the result is appended to output. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="32" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="32" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a854794aef09b81dbec641eca208a66d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; char[]&gt;</type>
+        <definition>std::unique_ptr&lt; char[]&gt; openage::util::copy_string</definition>
+        <argsstring>(const char *s)</argsstring>
+        <name>copy_string</name>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copies the given string to the returned unique_ptr, including 0 byte. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="64" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1abeb6a94572d93a14498661545b8332ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::rstrip</definition>
+        <argsstring>(char *s)</argsstring>
+        <name>rstrip</name>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of whitespace characters on the right of the string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="72" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="72" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aae9cd09351bc11ad2c9fcf701786340a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::string_matches_pattern</definition>
+        <argsstring>(const char *str, const char *pattern)</argsstring>
+        <name>string_matches_pattern</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>pattern</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns true if str matches the basic globbing pattern in the pattern, &apos;*&apos; matches any number of characters, while all other characters are interpreted as literal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="92" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="92" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1af74fec80080f6c627e5539bb20493ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::util::split</definition>
+        <argsstring>(const std::string &amp;txt, char delimiter)</argsstring>
+        <name>split</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>txt</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Split a string at a delimiter into a vector. Internally, uses the above iterator splitter. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="136" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="136" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aa7f8fe5c3426ea9e4968ef9aa21660ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; openage::util::split_escape</definition>
+        <argsstring>(const std::string &amp;txt, char delim, size_t size_hint)</argsstring>
+        <name>split_escape</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>txt</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delim</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size_hint</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Split a string at a delimiter into a vector. size_hint is to give a predicted size of the vector already.</para>
+<para>tokenizes txt by splitting it up to substrings at the deliminiters. &quot;\n&quot; is evaluated to &apos;<linebreak/>
+&apos;; all other &apos;\X&apos; escape sequences are evaluated to literal X, including the deliminiter. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.cpp" line="144" column="1" bodyfile="libopenage/util/strings.cpp" bodystart="144" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a08c4ca36b7f1f7b60da3629f01635167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>unsigned</type>
+            <declname>decimals</declname>
+            <defname>decimals</defname>
+          </param>
+          <param>
+            <type>unsigned</type>
+            <declname>w</declname>
+            <defname>w</defname>
+          </param>
+        </templateparamlist>
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; openage::util::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, FloatFixed&lt; decimals, w &gt; f)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1util_1_1_float_fixed" kindref="compound">FloatFixed</ref>&lt; decimals, w &gt;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.h" line="34" column="1" bodyfile="libopenage/util/strings.h" bodystart="34" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1abfc839970f77edd26fe675758a6ca1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ret_t</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void openage::util::split</definition>
+        <argsstring>(const std::string &amp;txt, char delimiter, ret_t result)</argsstring>
+        <name>split</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>txt</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delimiter</declname>
+        </param>
+        <param>
+          <type>ret_t</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Split a string at a delimiter, push the result back in an iterator. Why doesn&apos;t the fucking standard library have std::string::split(delimiter)? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/strings.h" line="88" column="1" bodyfile="libopenage/util/strings.h" bodystart="88" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1ac99f61e1d0c06d9b83650a71cff2f02f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::get_current_thread_id</definition>
+        <argsstring>()</argsstring>
+        <name>get_current_thread_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the unique identifier of the current thread.</para>
+<para>For compilers with support for thread_local storage, the function also guarantees to return strictly monotonically increasing identifier (no collision). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/thread_id.cpp" line="44" column="1" bodyfile="libopenage/util/thread_id.cpp" bodystart="44" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a3e9f9bfa57d843330bd6d4bf85397433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::utf8_decode</definition>
+        <argsstring>(const unsigned char *s, size_t len, int32_t *outbuf)</argsstring>
+        <name>utf8_decode</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1util_1a3d73b80bcbf615e6330df0017584f673" kindref="member">codepoint_t</ref> *</type>
+          <declname>outbuf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>decodes a UTF-8 character string of given length</para>
+<para>the results are written to outbuf. no leading 0 is written to outbuf (nor is one expected at s). outbuf MUST be large enough to hold all characters. to ensure that outbuf is large enough, it SHOULD have a size of at least len.</para>
+<para>the number of actual unicode characters is returned. it might be anywhere in the range [len/4; len].</para>
+<para>in case of decoding errors, the special unicode character 0xfffd is written.</para>
+<para>code logic gratefully borrowed from rxvt-unicode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/unicode.cpp" line="72" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="72" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1aed7ef0b5ccf0d22a6329396d9a59f671" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::utf8_encode</definition>
+        <argsstring>(int cp, char *outbuf)</argsstring>
+        <name>utf8_encode</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>outbuf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>encodes one Unicode codepoint to a null-terminated UTF-8 character string. due to the nature of UTF-8, the result string is at most 4 bytes long. on error, the empty string is returned.</para>
+<para>cp the codepoint outbuf a output char buffer. outbuf[0] to outbuf[4] MUST be writeable. outbuf[0] will ALWAYS be written to. returns the number of non-NULL bytes that have been written, i.e. strlen(outbuf) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/unicode.cpp" line="120" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="120" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a5519d25810f698275993214ce79016c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::util::utf8_last_char_size</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>utf8_last_char_size</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>computes the length of the last character in a given UTF-8 string.</para>
+<para>str the UTF-8 string returns the length of the last character in bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/unicode.cpp" line="154" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="154" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1util_1a82a1e7bf14b6f49be2d5fe4ec89f920e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::utf8_pop_back</definition>
+        <argsstring>(std::string &amp;str)</argsstring>
+        <name>utf8_pop_back</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pops back (deletes) the last UTF-8 character in a std::string. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/unicode.cpp" line="167" column="1" bodyfile="libopenage/util/unicode.cpp" bodystart="167" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/console/draw.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>

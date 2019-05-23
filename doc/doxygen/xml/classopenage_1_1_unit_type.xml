@@ -1,0 +1,682 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1_unit_type" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>openage::UnitType</compoundname>
+    <derivedcompoundref refid="classopenage_1_1_building_producer" prot="public" virt="non-virtual">openage::BuildingProducer</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_nyan_type" prot="public" virt="non-virtual">openage::NyanType</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_object_producer" prot="public" virt="non-virtual">openage::ObjectProducer</derivedcompoundref>
+    <derivedcompoundref refid="classopenage_1_1_projectile_producer" prot="public" virt="non-virtual">openage::ProjectileProducer</derivedcompoundref>
+    <includes refid="type__pair_8h" local="no">type_pair.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1aa4ebd4bf26056af59a16dae3f36e2ad0" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitType::class_id</definition>
+        <argsstring></argsstring>
+        <name>class_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/type_pair.h" line="20" column="1" bodyfile="libopenage/unit/type_pair.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1ac02e32dd084360403fef22da25a351d2" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int openage::UnitType::unit_type_id</definition>
+        <argsstring></argsstring>
+        <name>unit_type_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/type_pair.h" line="21" column="1" bodyfile="libopenage/unit/type_pair.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a8aefb19903db17d9f07cea64ecba76bf" prot="public" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+        <definition>const Player&amp; openage::UnitType::owner</definition>
+        <argsstring></argsstring>
+        <name>owner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the player who owns this unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="143" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a9cd05602a6b909ef27928c1b73a0f747" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classopenage_1_1_unit_reference" kindref="compound">UnitReference</ref> &gt;</type>
+        <definition>std::vector&lt;UnitReference&gt; openage::UnitType::instances</definition>
+        <argsstring></argsstring>
+        <name>instances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>all instances of units made from this unit type this could allow all units of a type to be upgraded </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="149" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a1585d5b6235d2d90cf2de4736f1a7e54" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classopenage_1_1_unit_ability" kindref="compound">UnitAbility</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;UnitAbility&gt; &gt; openage::UnitType::type_abilities</definition>
+        <argsstring></argsstring>
+        <name>type_abilities</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>abilities given to all instances </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="154" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a4603ca3746b1c118bd2c082f5e8ba3b1" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_attributes" kindref="compound">Attributes</ref></type>
+        <definition>Attributes openage::UnitType::default_attributes</definition>
+        <argsstring></argsstring>
+        <name>default_attributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>default attributes which get copied to new units </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="159" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" prot="public" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1_resource_cost" kindref="compound">ResourceCost</ref></type>
+        <definition>ResourceCost openage::UnitType::cost</definition>
+        <argsstring></argsstring>
+        <name>cost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The cost of the unit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="164" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::UnitType::have_limit</definition>
+        <argsstring></argsstring>
+        <name>have_limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The max number of units of this type that a player can have at an instance. Use negative values for special cases. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="170" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1af3dc1ba3b4f6cc2418ebbc9375461e49" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::UnitType::had_limit</definition>
+        <argsstring></argsstring>
+        <name>had_limit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The max number of units of this type that a player can create. Use negative values for special cases. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="176" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1aaf36044630d13a601a4245e34419df90" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1a905fde9cff5779781eb779ca95d80cf1" kindref="member">graphic_set</ref></type>
+        <definition>graphic_set openage::UnitType::graphics</definition>
+        <argsstring></argsstring>
+        <name>graphics</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The set of graphics used for this type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="181" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a6cb4b86a37f31b2994d197f43da03ab5" prot="public" static="no" mutable="no">
+        <type><ref refid="structopenage_1_1coord_1_1tile__delta" kindref="compound">coord::tile_delta</ref></type>
+        <definition>coord::tile_delta openage::UnitType::foundation_size</definition>
+        <argsstring></argsstring>
+        <name>foundation_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the square dimensions of the placement </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="186" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1_unit_type_1a8f429cad1b7e5c9daedf836bdc8cd1a7" prot="public" static="no" mutable="no">
+        <type>gamedata::unit_classes</type>
+        <definition>gamedata::unit_classes openage::UnitType::unit_class</definition>
+        <argsstring></argsstring>
+        <name>unit_class</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>raw game data class of this unit instance </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="191" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a6ae0e2415e9082dbbfb4210343ac9f27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitType::UnitType</definition>
+        <argsstring>()</argsstring>
+        <name>UnitType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/type_pair.h" line="12" column="1" bodyfile="libopenage/unit/type_pair.cpp" bodystart="7" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1abced3a6bfc5e322ed0ae58a699cd1e80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitType::match</definition>
+        <argsstring>(class Unit *)</argsstring>
+        <name>match</name>
+        <param>
+          <type>class <ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the unit must have either same class or id as this </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/type_pair.h" line="17" column="1" bodyfile="libopenage/unit/type_pair.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a7bae1065ae7cd93f3b45cabd4cf47a5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::UnitType::UnitType</definition>
+        <argsstring>(const Player &amp;owner)</argsstring>
+        <name>UnitType</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="61" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a29b9bcea7d358a295c45dcd5e0e6cda5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual openage::UnitType::~UnitType</definition>
+        <argsstring>()</argsstring>
+        <name>~UnitType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="62" column="1" bodyfile="libopenage/unit/unit_type.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int openage::UnitType::id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>id</name>
+        <reimplementedby refid="classopenage_1_1_object_producer_1a66b6b1d9646e72d79338e2db10c9bc1c">id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_building_producer_1a98e04052b3c7522684bf1cd2e9c7e56f">id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_projectile_producer_1a680a3cc3e75719a92ca5e529f840cef5">id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_nyan_type_1af95692295537f3525bf7343cb0887b44">id</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the unique id of this unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int openage::UnitType::parent_id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>parent_id</name>
+        <reimplementedby refid="classopenage_1_1_object_producer_1af27e32c01dc789879de5207b39ebf405">parent_id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_building_producer_1abedd0698d6855aad38be7f795956c813">parent_id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_projectile_producer_1ac8b3e0a4998857470cae7fb38c618bd0">parent_id</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_nyan_type_1a82c113bb1212048d1dee4b5aac83c8ec">parent_id</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the parent id of this unit type which is used for village base and gather types </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="73" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1afadac353590f8c7d7a590f41420fa32c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string openage::UnitType::name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <reimplementedby refid="classopenage_1_1_object_producer_1a117c84d489aab55d5bf5e91915f1fe65">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_building_producer_1a34118b90f3c4558ae8e783b3d8c84e33">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_projectile_producer_1afd4025733132150438a1c2e116e61427">name</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_nyan_type_1a305c61d06b1dcca1719a1802b78a6b5a">name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>gets the name of the unit type being produced </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a810c763e421cd95a9c64ab4c3e351140" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void openage::UnitType::initialise</definition>
+        <argsstring>(Unit *, Player &amp;)=0</argsstring>
+        <name>initialise</name>
+        <reimplementedby refid="classopenage_1_1_object_producer_1aee34f7883059625ffd3fb4bd5a43371f">initialise</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_movable_producer_1a3fc2ee02406d37a4106d51fee9d3c1c0">initialise</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_living_producer_1ab1a0ef8e72b2db575f6c7b4fcdc09466">initialise</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_building_producer_1a8ee32ab40420fb82cea96603d01fc553">initialise</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_projectile_producer_1aa865d0028f76dfeb134b32c24dc63619">initialise</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_nyan_type_1ad058ecef5e52cd4da37dc7d2f10e4255">initialise</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize units attributes to this type spec</para>
+<para>This can be called using existing units to modify type Ensure that the unit has been placed before seting the units type</para>
+<para>TODO: make const </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a05d515d0c9b380bd9cb426b3bf3852f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void openage::UnitType::reinitialise</definition>
+        <argsstring>(Unit *, Player &amp;)</argsstring>
+        <name>reinitialise</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>unit</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_player" kindref="compound">Player</ref> &amp;</type>
+          <defname>player</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize units shared attributes only to this type spec</para>
+<para>This can be called using existing units to modify type if the type Ensure that the unit has been placed before seting the units type</para>
+<para>TODO define if pure vitrual or not / should be in nyan? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="98" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a51facc71929fe2d425bc6bec06e0dc48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>virtual TerrainObject* openage::UnitType::place</definition>
+        <argsstring>(Unit *, std::shared_ptr&lt; Terrain &gt;, coord::phys3) const =0</argsstring>
+        <name>place</name>
+        <reimplementedby refid="classopenage_1_1_object_producer_1a6063c50f0e551a3a5a1a4c08f555bf0e">place</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_movable_producer_1ace952d53d7717d9db843391f49fbf76b">place</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_living_producer_1af454fa0fd996b30d44590a2e00a4380b">place</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_building_producer_1a4ed90b69cb9398ae0cc40625a1fa36d3">place</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_projectile_producer_1a02c2dedff8bebf9d036393d8e35b37b3">place</reimplementedby>
+        <reimplementedby refid="classopenage_1_1_nyan_type_1ae2f61064a00875267824a0bdfba63085">place</reimplementedby>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classopenage_1_1_terrain" kindref="compound">Terrain</ref> &gt;</type>
+        </param>
+        <param>
+          <type><ref refid="structopenage_1_1coord_1_1phys3" kindref="compound">coord::phys3</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>set unit in place <ndash/> return if placement was successful</para>
+<para>This should be used when initially creating a unit or when a unit is ungarrsioned from a building or object TODO: make const </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a791ffeb70d0ca577cfcccb3de4273d3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitType::operator==</definition>
+        <argsstring>(const UnitType &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>compare if two types are the same </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="112" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a9a87307b27ad4747ebd54e4f5f5cb6ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::UnitType::operator!=</definition>
+        <argsstring>(const UnitType &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="113" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1aa0d238ca5c0cb6b4b328e77dc12abc11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_texture" kindref="compound">UnitTexture</ref> *</type>
+        <definition>UnitTexture * openage::UnitType::default_texture</definition>
+        <argsstring>()</argsstring>
+        <name>default_texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get a default texture for HUD drawing </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="118" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> *</type>
+        <definition>TerrainObject * openage::UnitType::place_beside</definition>
+        <argsstring>(Unit *, TerrainObject const *) const</argsstring>
+        <name>place_beside</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <defname>u</defname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> const *</type>
+          <defname>other</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>similar to place but places adjacent to an existing object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="123" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="59" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1acf200f0f7321ae1e074bae39bc437b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitType::copy_attributes</definition>
+        <argsstring>(Unit *unit) const</argsstring>
+        <name>copy_attributes</name>
+        <param>
+          <type><ref refid="classopenage_1_1_unit" kindref="compound">Unit</ref> *</type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>copy attributes of this unit type to a new unit instance </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="128" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1ad468f1258da7e164a0bc175ebdd11b2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::UnitType::upgrade</definition>
+        <argsstring>(const std::shared_ptr&lt; AttributeContainer &gt; &amp;attr)</argsstring>
+        <name>upgrade</name>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="classopenage_1_1_attribute_container" kindref="compound">AttributeContainer</ref> &gt; &amp;</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>upgrades one attribute of this unit type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="133" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1_unit_type_1a31d2ff66a69c6fb5d2f1cd699abd63a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> *</type>
+        <definition>UnitType * openage::UnitType::parent_type</definition>
+        <argsstring>() const</argsstring>
+        <name>parent_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns type matching <ref refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f" kindref="member">parent_id()</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/unit/unit_type.h" line="138" column="1" bodyfile="libopenage/unit/unit_type.cpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>units in aoc have a class and a type</para>
+<para><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> has to main roles:</para>
+<para>initialise(unit, player) should be called on a unit to give it a type and the required attributes, abilities and initial actions of that type</para>
+<para>place(unit, terrain, initial position) is called to customise how the unit gets added to the world <ndash/> used to setup the <ref refid="classopenage_1_1_terrain_object" kindref="compound">TerrainObject</ref> location</para>
+<para><ref refid="classopenage_1_1_unit_type" kindref="compound">UnitType</ref> is connected to a player to allow independent tech levels </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4849">
+        <label>openage::MovableProducer</label>
+        <link refid="classopenage_1_1_movable_producer"/>
+        <childnode refid="4848" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4846">
+        <label>openage::BuildingProducer</label>
+        <link refid="classopenage_1_1_building_producer"/>
+        <childnode refid="4845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4850">
+        <label>openage::LivingProducer</label>
+        <link refid="classopenage_1_1_living_producer"/>
+        <childnode refid="4849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4848">
+        <label>openage::ObjectProducer</label>
+        <link refid="classopenage_1_1_object_producer"/>
+        <childnode refid="4845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4845">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+      </node>
+      <node id="4851">
+        <label>openage::ProjectileProducer</label>
+        <link refid="classopenage_1_1_projectile_producer"/>
+        <childnode refid="4845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4847">
+        <label>openage::NyanType</label>
+        <link refid="classopenage_1_1_nyan_type"/>
+        <childnode refid="4845" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4862">
+        <label>openage::TeamScore</label>
+        <link refid="classopenage_1_1_team_score"/>
+        <childnode refid="4860" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4861" relation="usage">
+          <edgelabel>-team</edgelabel>
+        </childnode>
+      </node>
+      <node id="4859">
+        <label>openage::PlayerScore</label>
+        <link refid="classopenage_1_1_player_score"/>
+        <childnode refid="4860" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4858" relation="usage">
+          <edgelabel>-player</edgelabel>
+        </childnode>
+      </node>
+      <node id="4860">
+        <label>openage::Score</label>
+        <link refid="classopenage_1_1_score"/>
+      </node>
+      <node id="4852">
+        <label>openage::UnitType</label>
+        <link refid="classopenage_1_1_unit_type"/>
+        <childnode refid="4853" relation="usage">
+          <edgelabel>+foundation_size</edgelabel>
+        </childnode>
+        <childnode refid="4855" relation="usage">
+          <edgelabel>+default_attributes</edgelabel>
+        </childnode>
+        <childnode refid="4856" relation="usage">
+          <edgelabel>+cost</edgelabel>
+        </childnode>
+        <childnode refid="4858" relation="usage">
+          <edgelabel>+owner</edgelabel>
+        </childnode>
+      </node>
+      <node id="4861">
+        <label>openage::Team</label>
+        <link refid="classopenage_1_1_team"/>
+        <childnode refid="4862" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+      </node>
+      <node id="4864">
+        <label>openage::Civilisation</label>
+        <link refid="classopenage_1_1_civilisation"/>
+      </node>
+      <node id="4855">
+        <label>openage::Attributes</label>
+        <link refid="classopenage_1_1_attributes"/>
+      </node>
+      <node id="4858">
+        <label>openage::Player</label>
+        <link refid="classopenage_1_1_player"/>
+        <childnode refid="4859" relation="usage">
+          <edgelabel>+score</edgelabel>
+        </childnode>
+        <childnode refid="4861" relation="usage">
+          <edgelabel>+team</edgelabel>
+        </childnode>
+        <childnode refid="4857" relation="usage">
+          <edgelabel>-resources_capacity</edgelabel>
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+        <childnode refid="4863" relation="usage">
+          <edgelabel>+population</edgelabel>
+        </childnode>
+        <childnode refid="4864" relation="usage">
+          <edgelabel>+civ</edgelabel>
+        </childnode>
+      </node>
+      <node id="4853">
+        <label>openage::coord::tile_delta</label>
+        <link refid="structopenage_1_1coord_1_1tile__delta"/>
+        <childnode refid="4854" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4857">
+        <label>openage::ResourceBundle</label>
+        <link refid="classopenage_1_1_resource_bundle"/>
+      </node>
+      <node id="4863">
+        <label>openage::PopulationTracker</label>
+        <link refid="classopenage_1_1_population_tracker"/>
+      </node>
+      <node id="4856">
+        <label>openage::ResourceCost</label>
+        <link refid="classopenage_1_1_resource_cost"/>
+        <childnode refid="4857" relation="usage">
+          <edgelabel>-resources</edgelabel>
+        </childnode>
+      </node>
+      <node id="4854">
+        <label>CoordNeSeRelative&lt; tile_t, tile, tile_delta &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/unit/type_pair.h" line="10" column="1" bodyfile="libopenage/unit/type_pair.h" bodystart="10" bodyend="22"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1_unit_type_1aa4ebd4bf26056af59a16dae3f36e2ad0" prot="private" virt="non-virtual"><scope>openage::UnitType</scope><name>class_id</name></member>
+      <member refid="classopenage_1_1_unit_type_1acf200f0f7321ae1e074bae39bc437b53" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>copy_attributes</name></member>
+      <member refid="classopenage_1_1_unit_type_1a19960affc865b0f5d5c9aab5524831ee" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>cost</name></member>
+      <member refid="classopenage_1_1_unit_type_1a4603ca3746b1c118bd2c082f5e8ba3b1" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>default_attributes</name></member>
+      <member refid="classopenage_1_1_unit_type_1aa0d238ca5c0cb6b4b328e77dc12abc11" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>default_texture</name></member>
+      <member refid="classopenage_1_1_unit_type_1a6cb4b86a37f31b2994d197f43da03ab5" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>foundation_size</name></member>
+      <member refid="classopenage_1_1_unit_type_1aaf36044630d13a601a4245e34419df90" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>graphics</name></member>
+      <member refid="classopenage_1_1_unit_type_1af3dc1ba3b4f6cc2418ebbc9375461e49" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>had_limit</name></member>
+      <member refid="classopenage_1_1_unit_type_1a5ba08dd8da748f9a303a0f9f1266c112" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>have_limit</name></member>
+      <member refid="classopenage_1_1_unit_type_1ad295b572c0aa0399a04133dc61fb8a4b" prot="public" virt="pure-virtual"><scope>openage::UnitType</scope><name>id</name></member>
+      <member refid="classopenage_1_1_unit_type_1a810c763e421cd95a9c64ab4c3e351140" prot="public" virt="pure-virtual"><scope>openage::UnitType</scope><name>initialise</name></member>
+      <member refid="classopenage_1_1_unit_type_1a9cd05602a6b909ef27928c1b73a0f747" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>instances</name></member>
+      <member refid="classopenage_1_1_unit_type_1abced3a6bfc5e322ed0ae58a699cd1e80" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>match</name></member>
+      <member refid="classopenage_1_1_unit_type_1afadac353590f8c7d7a590f41420fa32c" prot="public" virt="pure-virtual"><scope>openage::UnitType</scope><name>name</name></member>
+      <member refid="classopenage_1_1_unit_type_1a9a87307b27ad4747ebd54e4f5f5cb6ee" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>operator!=</name></member>
+      <member refid="classopenage_1_1_unit_type_1a791ffeb70d0ca577cfcccb3de4273d3a" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>operator==</name></member>
+      <member refid="classopenage_1_1_unit_type_1a8aefb19903db17d9f07cea64ecba76bf" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>owner</name></member>
+      <member refid="classopenage_1_1_unit_type_1a69f5e92f70063ab01c3096de2d98479f" prot="public" virt="pure-virtual"><scope>openage::UnitType</scope><name>parent_id</name></member>
+      <member refid="classopenage_1_1_unit_type_1a31d2ff66a69c6fb5d2f1cd699abd63a7" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>parent_type</name></member>
+      <member refid="classopenage_1_1_unit_type_1a51facc71929fe2d425bc6bec06e0dc48" prot="public" virt="pure-virtual"><scope>openage::UnitType</scope><name>place</name></member>
+      <member refid="classopenage_1_1_unit_type_1a0649efd34fdb53589135167493f66633" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>place_beside</name></member>
+      <member refid="classopenage_1_1_unit_type_1a05d515d0c9b380bd9cb426b3bf3852f8" prot="public" virt="virtual"><scope>openage::UnitType</scope><name>reinitialise</name></member>
+      <member refid="classopenage_1_1_unit_type_1a1585d5b6235d2d90cf2de4736f1a7e54" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>type_abilities</name></member>
+      <member refid="classopenage_1_1_unit_type_1a8f429cad1b7e5c9daedf836bdc8cd1a7" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>unit_class</name></member>
+      <member refid="classopenage_1_1_unit_type_1ac02e32dd084360403fef22da25a351d2" prot="private" virt="non-virtual"><scope>openage::UnitType</scope><name>unit_type_id</name></member>
+      <member refid="classopenage_1_1_unit_type_1a6ae0e2415e9082dbbfb4210343ac9f27" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>UnitType</name></member>
+      <member refid="classopenage_1_1_unit_type_1a7bae1065ae7cd93f3b45cabd4cf47a5f" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>UnitType</name></member>
+      <member refid="classopenage_1_1_unit_type_1ad468f1258da7e164a0bc175ebdd11b2a" prot="public" virt="non-virtual"><scope>openage::UnitType</scope><name>upgrade</name></member>
+      <member refid="classopenage_1_1_unit_type_1a29b9bcea7d358a295c45dcd5e0e6cda5" prot="public" virt="virtual"><scope>openage::UnitType</scope><name>~UnitType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

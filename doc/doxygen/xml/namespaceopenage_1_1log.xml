@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1log" kind="namespace" language="C++">
+    <compoundname>openage::log</compoundname>
+    <innerclass refid="classopenage_1_1log_1_1_file_sink" prot="public">openage::log::FileSink</innerclass>
+    <innerclass refid="structopenage_1_1log_1_1level" prot="public">openage::log::level</innerclass>
+    <innerclass refid="structopenage_1_1log_1_1level__value" prot="public">openage::log::level_value</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_log_sink" prot="public">openage::log::LogSink</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_log_sink_list" prot="public">openage::log::LogSinkList</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_log_source" prot="public">openage::log::LogSource</innerclass>
+    <innerclass refid="structopenage_1_1log_1_1message" prot="public">openage::log::message</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_message_builder" prot="public">openage::log::MessageBuilder</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_named_log_source" prot="public">openage::log::NamedLogSource</innerclass>
+    <innerclass refid="classopenage_1_1log_1_1_std_out_sink" prot="public">openage::log::StdOutSink</innerclass>
+    <innernamespace refid="namespaceopenage_1_1log_1_1tests">openage::log::tests</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1log_1a4a8298d6cabc1d52a88e4a967b376892" prot="public" static="yes" mutable="no">
+        <type>constexpr <ref refid="structopenage_1_1log_1_1level__value" kindref="compound">level_value</ref></type>
+        <definition>constexpr level_value openage::log::undefined</definition>
+        <argsstring></argsstring>
+        <name>undefined</name>
+        <initializer>{{&quot;UNDEFINED&quot;, 999}, &quot;5&quot;}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/level.cpp" line="9" column="1" bodyfile="libopenage/log/level.cpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::log::log</definition>
+        <argsstring>(const message &amp;msg)</argsstring>
+        <name>log</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience method that makes use of the &apos;general&apos; <ref refid="classopenage_1_1log_1_1_log_source" kindref="compound">LogSource</ref>.</para>
+<para>Invokes <ref refid="namespaceopenage_1_1log_1a3fbb0c225d01e222648ec28a43507188" kindref="member">general_source()</ref>-&gt;log(msg). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/log.cpp" line="13" column="1" bodyfile="libopenage/log/log.cpp" bodystart="13" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1ac8660073c35f9900e8c1169f2899b7d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OAAPI void openage::log::set_level</definition>
+        <argsstring>(level lvl)</argsstring>
+        <name>set_level</name>
+        <param>
+          <type><ref refid="structopenage_1_1log_1_1level" kindref="compound">level</ref></type>
+          <declname>lvl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the log level of the global stdout sink.</para>
+<para>pxd: void <ref refid="namespaceopenage_1_1log_1ac8660073c35f9900e8c1169f2899b7d2" kindref="member">set_level(level lvl)</ref> except + </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/log.cpp" line="18" column="1" bodyfile="libopenage/log/log.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1ae4bb73b8b2616017522132a64c52c756" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::log::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const message &amp;msg)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structopenage_1_1log_1_1message" kindref="compound">message</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>prints message to a stream (with color codes and everything!) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/message.cpp" line="51" column="1" bodyfile="libopenage/log/message.cpp" bodystart="51" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a3fbb0c225d01e222648ec28a43507188" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1log_1_1_named_log_source" kindref="compound">NamedLogSource</ref> &amp;</type>
+        <definition>NamedLogSource &amp; openage::log::general_source</definition>
+        <argsstring>()</argsstring>
+        <name>general_source</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a reference to a general named log source, for use by <ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log::log()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/named_logsource.cpp" line="19" column="1" bodyfile="libopenage/log/named_logsource.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1log_1a3d2885be9c3a09b9ff7ee8764b2e5f39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classopenage_1_1log_1_1_std_out_sink" kindref="compound">StdOutSink</ref> &amp;</type>
+        <definition>StdOutSink &amp; openage::log::global_stdoutsink</definition>
+        <argsstring>()</argsstring>
+        <name>global_stdoutsink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a reference to the global stdout logsink object; Initializes the object if needed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/log/stdout_logsink.cpp" line="64" column="1" bodyfile="libopenage/log/stdout_logsink.cpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/log/file_logsink.cpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

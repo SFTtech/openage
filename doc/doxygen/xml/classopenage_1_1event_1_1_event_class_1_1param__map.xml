@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1event_1_1_event_class_1_1param__map" kind="class" language="C++" prot="public">
+    <compoundname>openage::event::EventClass::param_map</compoundname>
+    <includes refid="eventclass_8h" local="no">eventclass.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::any &gt;</type>
+        <definition>using openage::event::EventClass::param_map::map_t =  std::unordered_map&lt;std::string, std::any&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="74" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" kindref="member">map_t</ref></type>
+        <definition>const map_t openage::event::EventClass::param_map::map</definition>
+        <argsstring></argsstring>
+        <name>map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data storage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="122" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a5d82dce19e49568304b224f68d882959" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventClass::param_map::param_map</definition>
+        <argsstring>()</argsstring>
+        <name>param_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="76" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a0e607d95c4a66149da4d720793b06e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventClass::param_map::param_map</definition>
+        <argsstring>(std::initializer_list&lt; map_t::value_type &gt; l)</argsstring>
+        <name>param_map</name>
+        <param>
+          <type>std::initializer_list&lt; map_t::value_type &gt;</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="77" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a65087770e8a4464f4bbff75a239d9030" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::event::EventClass::param_map::param_map</definition>
+        <argsstring>(const map_t &amp;map)</argsstring>
+        <name>param_map</name>
+        <param>
+          <type>const <ref refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" kindref="member">map_t</ref> &amp;</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="78" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a01b87e6f9de36ce10f991c0cbddcd384" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T openage::event::EventClass::param_map::get</definition>
+        <argsstring>(const std::string &amp;key, const T &amp;defaultval=T()) const</argsstring>
+        <name>get</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>defaultval</declname>
+          <defval>T()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the value, if it exists and is the right type. defaultval if not. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="85" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="85" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1a4c7f73fe4acc0ed28e06ef69f07ef26e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::event::EventClass::param_map::contains</definition>
+        <argsstring>(const std::string &amp;key) const</argsstring>
+        <name>contains</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the map contains the given key. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="97" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="97" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1aeaf58d316c8416ac8d8597b6f635973d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Type</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool openage::event::EventClass::param_map::check_type</definition>
+        <argsstring>(const std::string &amp;key) const</argsstring>
+        <name>check_type</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the type of a map entry is correct. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="105" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="105" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classopenage_1_1event_1_1_event_class_1_1param__map_1ac901f54cef25e8428e745320ff733bc0" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool openage::event::EventClass::param_map::check_type</definition>
+        <argsstring>(const map_t::const_iterator &amp;it) const</argsstring>
+        <name>check_type</name>
+        <param>
+          <type>const map_t::const_iterator &amp;</type>
+          <declname>it</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/event/eventclass.h" line="115" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="115" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Storage for parameters for an event class. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3586">
+        <label>openage::event::EventClass::param_map</label>
+        <link refid="classopenage_1_1event_1_1_event_class_1_1param__map"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/event/eventclass.h" line="72" column="1" bodyfile="libopenage/event/eventclass.h" bodystart="72" bodyend="123"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1aeaf58d316c8416ac8d8597b6f635973d" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>check_type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1ac901f54cef25e8428e745320ff733bc0" prot="private" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>check_type</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a4c7f73fe4acc0ed28e06ef69f07ef26e" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>contains</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a01b87e6f9de36ce10f991c0cbddcd384" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>get</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5672a18eac9bdb2d8fcfb3f7fab706f7" prot="private" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>map</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a405ca4465e16d812c6741d54ec49b4fd" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>map_t</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a5d82dce19e49568304b224f68d882959" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>param_map</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a0e607d95c4a66149da4d720793b06e1e" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>param_map</name></member>
+      <member refid="classopenage_1_1event_1_1_event_class_1_1param__map_1a65087770e8a4464f4bbff75a239d9030" prot="public" virt="non-virtual"><scope>openage::event::EventClass::param_map</scope><name>param_map</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

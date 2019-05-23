@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1rng" kind="namespace" language="C++">
+    <compoundname>openage::rng</compoundname>
+    <innerclass refid="classopenage_1_1rng_1_1_r_n_g" prot="public">openage::rng::RNG</innerclass>
+    <innernamespace refid="namespaceopenage_1_1rng_1_1tests">openage::rng::tests</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1rng_1a30037f3422443d178167adf0e31acc05" prot="public" static="yes" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex openage::rng::rand_mutex</definition>
+        <argsstring></argsstring>
+        <name>rand_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="10" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1rng_1a02d68ac1512d65be1f7ab591f925b734" prot="public" static="yes" mutable="no">
+        <type><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref></type>
+        <definition>RNG openage::rng::global_rand_gen(global_seed())</definition>
+        <argsstring>(global_seed())</argsstring>
+        <name>global_rand_gen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="11" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1rng_1ade4748f2ea78310c4c2d84f1ce7d1990" prot="public" static="yes" mutable="no">
+        <type>const std::array&lt; uint8_t, 16 &gt;</type>
+        <definition>const std::array&lt;uint8_t, 16&gt; openage::rng::seed_key</definition>
+        <argsstring></argsstring>
+        <name>seed_key</name>
+        <initializer>{{
+	0xba, 0xda, 0x55, 0x00, 0x5e, 0xed, 0x00, 0x00,
+	0xab, 0xcd, 0xef, 0x12, 0x34, 0x56, 0x78, 0x90
+}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="27" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a595e7ab593687bbb092d69186c65c45a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::global_seed</definition>
+        <argsstring>()</argsstring>
+        <name>global_seed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the value of the global seed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="13" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1ac3379af641e8c899794429fd6e8fa70a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::random</definition>
+        <argsstring>()</argsstring>
+        <name>random</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a random number from the global rng. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="18" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a398e36f7942536cd461ca212dfee6cb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::random_range</definition>
+        <argsstring>(uint64_t lower, uint64_t upper)</argsstring>
+        <name>random_range</name>
+        <param>
+          <type>uint64_t</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>upper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a random number n [lower, upper) from the global rng. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="23" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1aadfcdd4f8b418047382e29828d81b157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::rng::real</definition>
+        <argsstring>()</argsstring>
+        <name>real</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a double in [0, 1) from the global rng. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="28" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a459eb99bb9ad49587a1cbb0bb3de8750" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double openage::rng::real_range</definition>
+        <argsstring>(double lower, double upper)</argsstring>
+        <name>real_range</name>
+        <param>
+          <type>double</type>
+          <declname>lower</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>upper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a double in [lower, upper) from the global rng. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/global_rng.cpp" line="33" column="1" bodyfile="libopenage/rng/global_rng.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1af7d90437e58aaa4fe1d816ad7b62dc07" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t openage::rng::do_rng</definition>
+        <argsstring>(uint64_t &amp;s0, uint64_t &amp;s1)</argsstring>
+        <name>do_rng</name>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>s0</declname>
+        </param>
+        <param>
+          <type>uint64_t &amp;</type>
+          <declname>s1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="82" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="82" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1acffdd6abc0140eac8c12d879172f8566" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class Lambda</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void openage::rng::act_fill</definition>
+        <argsstring>(T *dat, uint64_t *state, size_t len, const Lambda &amp;op)</argsstring>
+        <name>act_fill</name>
+        <param>
+          <type>T *</type>
+          <declname>dat</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>const Lambda &amp;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="100" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="100" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1acb0200a44ab02cc735041096cad88fbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; openage::rng::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;ostream, const RNG &amp;inrng)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>ostream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref> &amp;</type>
+          <declname>inrng</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Writes the rng state to a stream <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if writing data fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="179" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1ace26b663b1fa6bbbaeec1f5903bbc70c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::istream &amp;</type>
+        <definition>std::istream &amp; openage::rng::operator &gt;&gt;</definition>
+        <argsstring>(std::istream &amp;instream, RNG &amp;inrng)</argsstring>
+        <name>operator &gt;&gt;</name>
+        <param>
+          <type>std::istream &amp;</type>
+          <declname>instream</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref> &amp;</type>
+          <declname>inrng</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the rng from a stream <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>Error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if reading from the stream fails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="185" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="185" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a924b85bc82578378e68818dab9a247b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t openage::rng::try_random_device</definition>
+        <argsstring>()</argsstring>
+        <name>try_random_device</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="191" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="191" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a4bdd2cc5c7f7f5d81ff514287f65eef0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t openage::rng::time_seed</definition>
+        <argsstring>(bool randomize)</argsstring>
+        <name>time_seed</name>
+        <param>
+          <type>bool</type>
+          <declname>randomize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="207" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="207" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1adde6a014119705e9ea92a28bae96f385" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::time_seed</definition>
+        <argsstring>()</argsstring>
+        <name>time_seed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a seed based on time since epoch </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="217" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1rng_1a510f1a8aa7487e18b60b1844cd2af86a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t openage::rng::random_seed</definition>
+        <argsstring>()</argsstring>
+        <name>random_seed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a seed based on time since epoch as well as data from std::random_device if available </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/rng/rng.cpp" line="222" column="1" bodyfile="libopenage/rng/rng.cpp" bodystart="222" bodyend="224"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains an easy to use and fast random number generator.</para>
+<para>This was never designed or intended as a cryptographic-quality, <ref refid="classopenage_1_1rng_1_1_r_n_g" kindref="compound">RNG</ref>, so don&apos;t use it as one. If you do, I&apos;ll tell my mom. </para>
+    </detaileddescription>
+    <location file="libopenage/gamestate/generator.h" line="20" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1renderer_1_1resources" kind="namespace" language="C++">
+    <compoundname>openage::renderer::resources</compoundname>
+    <innerclass refid="classopenage_1_1renderer_1_1resources_1_1_mesh_data" prot="public">openage::renderer::resources::MeshData</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1resources_1_1_shader_source" prot="public">openage::renderer::resources::ShaderSource</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_data" prot="public">openage::renderer::resources::Texture2dData</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1resources_1_1_texture2d_info" prot="public">openage::renderer::resources::Texture2dInfo</innerclass>
+    <innerclass refid="structopenage_1_1renderer_1_1resources_1_1_texture2d_sub_info" prot="public">openage::renderer::resources::Texture2dSubInfo</innerclass>
+    <innerclass refid="classopenage_1_1renderer_1_1resources_1_1_vertex_input_info" prot="public">openage::renderer::resources::VertexInputInfo</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>vertex_input_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" prot="public">
+          <name>F32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" prot="public">
+          <name>V2F32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" prot="public">
+          <name>V3F32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" prot="public">
+          <name>M3F32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of a single per-vertex input to the shader program. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="19" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="19" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>vertex_primitive_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a70b71cabeeaf8c2bf473c896d5442ddb" prot="public">
+          <name>POINTS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae585142391f356c60bcfe68279ec2727" prot="public">
+          <name>LINES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7ae64a4d2159ed46d077e21a505575c814" prot="public">
+          <name>LINE_STRIP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7add3bfee8042d1b85c224f08b42a3fc2e" prot="public">
+          <name>TRIANGLES</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7a708de017e3b83ccba21dfc9f6367d46f" prot="public">
+          <name>TRIANGLE_STRIP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a3d2603af7637716eccfdfa718f01bcb7aa9f047dff7e4cd4d8d3bdeafc4029d47" prot="public">
+          <name>TRIANGLE_FAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The primitive type that the vertices in a mesh combine into. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="27" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="27" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>index_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8a6669348b484e3008dca2bfa8e85e40b5" prot="public">
+          <name>U8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8aef9ef3ebca4d2b64b6ec83808bafa5f2" prot="public">
+          <name>U16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a54d05175ef647265b520f9e562bb34f8ac8bd5bedff8ef192d39a962afc0e19ee" prot="public">
+          <name>U32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of indices used for indexed rendering. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="37" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50c" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>vertex_layout_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50ca4cc854cc056515cc2befbc91f30d07b0" prot="public">
+          <name>AOS</name>
+          <briefdescription>
+<para>Array of structs. XYZUV, XYZUV, XYZUV. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1ade052cbaea4982f40bd7b1e8305de50cabe5a791366c5f2810d7dd6132dc0f06c" prot="public">
+          <name>SOA</name>
+          <briefdescription>
+<para>Struct of arrays. XYZXYZXYZ, UVUVUV. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.h" line="50" column="1" bodyfile="libopenage/renderer/resources/mesh_data.h" bodystart="50" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96c" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>shader_lang_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca456a0fa1787219ce8c6ba1e6cf2108f6" prot="public">
+          <name>glsl</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a4d61ee75465eff5bc5c4ce640faff96ca281026d966626615768589fa301ae6af" prot="public">
+          <name>spirv</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The source language of a shader. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="15" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>shader_stage_t</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba2b5bc093b09bd81f51de433bde9d202a" prot="public">
+          <name>vertex</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7baed7daeb157cd9b31e53896ad3c771a26" prot="public">
+          <name>geometry</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba7dd430baa39d2873520d0338acb98741" prot="public">
+          <name>tesselation_control</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7bad711cc63370ae664a464b9efd08f6248" prot="public">
+          <name>tesselation_evaluation</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a2462ec4f102aa1b93c1676dbbadb0a7ba02e918fc72837d7c2689be88684dceb1" prot="public">
+          <name>fragment</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Shader stages present in modern graphics pipelines. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/shader_source.h" line="21" column="1" bodyfile="libopenage/renderer/resources/shader_source.h" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>pixel_format</name>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea73c959d144da660efa48a52e564aa633" prot="public">
+          <name>r16ui</name>
+          <briefdescription>
+<para>16 bits per pixel, unsigned integer, single channel </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea939e20bb21f297a3c7be5d44d77904f5" prot="public">
+          <name>r32ui</name>
+          <briefdescription>
+<para>32 bits per pixel, unsigned integer, single channel </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea0d16d8a03c4a015e24dca17617722c4a" prot="public">
+          <name>rgb8</name>
+          <briefdescription>
+<para>24 bits per pixel, float, RGB order </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426ea17ba96e730d343bfe8c3dfa6c7d3bf39" prot="public">
+          <name>bgr8</name>
+          <briefdescription>
+<para>24 bits per pixel, float, BGR order </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaa2a83ca2f1d2294b7382d933c03cfc70" prot="public">
+          <name>depth24</name>
+          <briefdescription>
+<para>24 bits per pixel, depth texture </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaffcf7617521c42b49e1e2929a725e6a" prot="public">
+          <name>rgba8</name>
+          <briefdescription>
+<para>32 bits per pixel, float, alpha channel, RGBA order </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426eaaeed8ba7e197acdfba86db426ce2233c" prot="public">
+          <name>rgba8ui</name>
+          <briefdescription>
+<para>32 bits per pixel, unsigned integer, alpha channel, RGBA order </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>How the pixels are represented in a texture. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="18" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="18" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a977e4848365083e50e14907e94ceb00e" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::resources::vin_size</definition>
+        <argsstring></argsstring>
+        <name>vin_size</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref>, size_t&gt;(
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">vertex_input_t::F32</ref>, 4),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">vertex_input_t::V2F32</ref>, 8),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">vertex_input_t::V3F32</ref>, 12),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">vertex_input_t::M3F32</ref>, 36)
+)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.cpp" line="17" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a51463bbd68af13770e97e0867de4d6d6" prot="public" static="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto openage::renderer::resources::vin_count</definition>
+        <argsstring></argsstring>
+        <name>vin_count</name>
+        <initializer>= <ref refid="namespaceopenage_1_1datastructure_1ae593f8bdacc9b189c6918bc7b3597b80" kindref="member">datastructure::create_const_map</ref>&lt;<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref>, size_t&gt;(
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a44ad4ef5a76e6aa6fb3e3fa079a54fda" kindref="member">vertex_input_t::F32</ref>, 1),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a9caf3b2ab8218762f7e8b6fdcb0435df" kindref="member">vertex_input_t::V2F32</ref>, 2),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3a8fd68a94a1f6849a73eb91859e615b42" kindref="member">vertex_input_t::V3F32</ref>, 3),
+	std::make_pair(<ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3ad4b32b9d0206bc9af315653197281946" kindref="member">vertex_input_t::M3F32</ref>, 9)
+)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.cpp" line="24" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1renderer_1_1resources_1a735d6d55173355397ad37c31956361ee" prot="public" static="yes" mutable="no">
+        <type>constexpr const std::array&lt; float, 16 &gt;</type>
+        <definition>constexpr const std::array&lt;float, 16&gt; openage::renderer::resources::QUAD_DATA</definition>
+        <argsstring></argsstring>
+        <name>QUAD_DATA</name>
+        <initializer>= { {
+		-1.0f, 1.0f, 0.0f, 1.0f,
+		-1.0f, -1.0f, 0.0f, 0.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, -1.0f, 1.0f, 0.0f
+	} }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Vertices of a quadrilateral filling the whole screen. Format: (pos, tex_coords) = (x, y, u, v) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.cpp" line="116" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1a11c3247d50ab63967293c59f92c47368" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::vertex_input_size</definition>
+        <argsstring>(vertex_input_t)</argsstring>
+        <name>vertex_input_size</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref></type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Returns the size in bytes of a per-vertex input. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.cpp" line="31" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1ae21e0e1ee561f05a999f3f4f680ea2af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t openage::renderer::resources::vertex_input_count</definition>
+        <argsstring>(vertex_input_t in)</argsstring>
+        <name>vertex_input_count</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a342b8db8dc29b5bddbb3b4ae987d1ff3" kindref="member">vertex_input_t</ref></type>
+          <defname>in</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of elements of the underlying type in a given per-vertex input type. For example, V3F32 has 3 float elements, so the value is 3. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/mesh_data.cpp" line="35" column="1" bodyfile="libopenage/renderer/resources/mesh_data.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1a62ad4c6594b8ad6f357a9e5b18575bc4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>static constexpr size_t openage::renderer::resources::guess_row_alignment</definition>
+        <argsstring>(size_t width, pixel_format fmt, size_t row_size)</argsstring>
+        <name>guess_row_alignment</name>
+        <param>
+          <type>size_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>row_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tries to guess the alignment of image rows based on image parameters. Kinda black magic and might not actually work. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>in pixels of the image </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of pixels in the image </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>row_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the actual size in bytes of an image row, including padding </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_data.cpp" line="22" column="1" bodyfile="libopenage/renderer/resources/texture_data.cpp" bodystart="22" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1renderer_1_1resources_1aa8bc42c345504717eba7d38b39d278c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t openage::renderer::resources::pixel_size</definition>
+        <argsstring>(pixel_format fmt)</argsstring>
+        <name>pixel_size</name>
+        <param>
+          <type><ref refid="namespaceopenage_1_1renderer_1_1resources_1a9c043ffb36fb67c86e45c74d0e83426e" kindref="member">pixel_format</ref></type>
+          <declname>fmt</declname>
+        </param>
+        <briefdescription>
+<para>Returns the size in bytes of a single pixel of the specified format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/resources/texture_info.h" line="36" column="1" bodyfile="libopenage/renderer/resources/texture_info.h" bodystart="36" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/renderer/renderer.h" line="12" column="1"/>
+  </compounddef>
+</doxygen>

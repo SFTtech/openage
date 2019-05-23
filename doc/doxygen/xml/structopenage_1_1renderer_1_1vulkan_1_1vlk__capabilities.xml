@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities" kind="struct" language="C++" prot="public">
+    <compoundname>openage::renderer::vulkan::vlk_capabilities</compoundname>
+    <includes refid="windowvk_8h" local="no">windowvk.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" prot="public" static="no" mutable="no">
+        <type>std::set&lt; std::string &gt;</type>
+        <definition>std::set&lt;std::string&gt; openage::renderer::vulkan::vlk_capabilities::layers</definition>
+        <argsstring></argsstring>
+        <name>layers</name>
+        <briefdescription>
+<para>Names of available layers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/windowvk.h" line="22" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" prot="public" static="no" mutable="no">
+        <type>std::set&lt; std::string &gt;</type>
+        <definition>std::set&lt;std::string&gt; openage::renderer::vulkan::vlk_capabilities::extensions</definition>
+        <argsstring></argsstring>
+        <name>extensions</name>
+        <briefdescription>
+<para>Names of available extensions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/renderer/vulkan/windowvk.h" line="25" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4944">
+        <label>openage::renderer::vulkan::vlk_capabilities</label>
+        <link refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/renderer/vulkan/windowvk.h" line="20" column="1" bodyfile="libopenage/renderer/vulkan/windowvk.h" bodystart="20" bodyend="26"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1a9d640873c88ca19b45dc9eddea954a89" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::vlk_capabilities</scope><name>extensions</name></member>
+      <member refid="structopenage_1_1renderer_1_1vulkan_1_1vlk__capabilities_1afbf76debda568a1cca8deabb182cfb17" prot="public" virt="non-virtual"><scope>openage::renderer::vulkan::vlk_capabilities</scope><name>layers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

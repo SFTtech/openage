@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1util_1_1_timer" kind="class" language="C++" prot="public">
+    <compoundname>openage::util::Timer</compoundname>
+    <includes refid="timer_8h" local="no">timer.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool openage::util::Timer::stopped</definition>
+        <argsstring></argsstring>
+        <name>stopped</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="17" column="1" bodyfile="libopenage/util/timer.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1a6760907a1df87074b0586a28fc295b8d" prot="private" static="no" mutable="no">
+        <type>union openage::util::Timer::@0</type>
+        <definition>union openage::util::Timer::@0 openage::util::Timer::@1</definition>
+        <argsstring></argsstring>
+        <name>@1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="28" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::util::Timer::stoppedat</definition>
+        <argsstring></argsstring>
+        <name>stoppedat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>while paused, stores the current timer value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="22" column="1" bodyfile="libopenage/util/timer.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::util::Timer::starttime</definition>
+        <argsstring></argsstring>
+        <name>starttime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>while running, stores the time the timer is counting from </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="27" column="1" bodyfile="libopenage/util/timer.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a1b3d27ae06020bc54ea6cb6f0d7bc72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::util::Timer::Timer</definition>
+        <argsstring>(bool stopped=true)</argsstring>
+        <name>Timer</name>
+        <param>
+          <type>bool</type>
+          <declname>stopped</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>creates the timer, in either stopped or running state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="34" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Timer::reset</definition>
+        <argsstring>(bool stopped=true)</argsstring>
+        <name>reset</name>
+        <param>
+          <type>bool</type>
+          <declname>stopped</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>resets the timer, in either stopped or running state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="39" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="14" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Timer::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>stops/pauses the timer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="44" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="23" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::util::Timer::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>starts/unpauses the timer. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="49" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="30" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::util::Timer::getval</definition>
+        <argsstring>() const</argsstring>
+        <name>getval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reads the current timer value, in nanoseconds. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="54" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceopenage_1aab633747a9b25e86119eec83106fb2ae" kindref="member">time_nsec_t</ref></type>
+        <definition>time_nsec_t openage::util::Timer::getandresetval</definition>
+        <argsstring>()</argsstring>
+        <name>getandresetval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>reads the current timer value, in nanoseconds, and resets the timer to zero (preserving started/stopped state). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="60" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="45" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::util::Timer::isstopped</definition>
+        <argsstring>() const</argsstring>
+        <name>isstopped</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns whether the timer is currently running. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/timer.h" line="65" column="1" bodyfile="libopenage/util/timer.cpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Time measurement class. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4520">
+        <label>openage::util::Timer</label>
+        <link refid="classopenage_1_1util_1_1_timer"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/timer.h" line="16" column="1" bodyfile="libopenage/util/timer.h" bodystart="16" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1util_1_1_timer_1a0f4aca6841c138900f29816c0d7decf3" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>getandresetval</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1ad764a82c4de3f85c379ccc39c068f229" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>getval</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1a011d29aec6b28ecbe4d94f3b8ae34585" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>isstopped</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1a98712fa513953c1c85c886ac379b2612" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>reset</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1afe1b5aca34f4b4151c6b85bafcd5dfd2" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>start</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1aa028be3079032818529e4cfe118fc83e" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>starttime</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1aec63a1026df32a5f119d2138a01e40e2" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>stop</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1a84ee223dd753e666b908e5fe4d4c353c" prot="private" virt="non-virtual"><scope>openage::util::Timer</scope><name>stopped</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1a43df5a0e11dab998615b0efb63208e8e" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>stoppedat</name></member>
+      <member refid="classopenage_1_1util_1_1_timer_1a1b3d27ae06020bc54ea6cb6f0d7bc72d" prot="public" virt="non-virtual"><scope>openage::util::Timer</scope><name>Timer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

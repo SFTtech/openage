@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_game_saver_signals" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::GameSaverSignals</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="game__saver_8h" local="no">game_saver.h</includes>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classopenage_1_1gui_1_1_game_saver_signals_1a827fc3ebe24390d59e6a18781318d184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void openage::gui::GameSaverSignals::error_message</definition>
+        <argsstring>(const QString &amp;error)</argsstring>
+        <name>error_message</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/game_saver.h" line="49" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2042">
+        <label>QObject</label>
+      </node>
+      <node id="2041">
+        <label>openage::gui::GameSaverSignals</label>
+        <link refid="classopenage_1_1gui_1_1_game_saver_signals"/>
+        <childnode refid="2042" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2044">
+        <label>QObject</label>
+      </node>
+      <node id="2043">
+        <label>openage::gui::GameSaverSignals</label>
+        <link refid="classopenage_1_1gui_1_1_game_saver_signals"/>
+        <childnode refid="2044" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/game_saver.h" line="44" column="1" bodyfile="libopenage/gui/game_saver.h" bodystart="44" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_game_saver_signals_1a827fc3ebe24390d59e6a18781318d184" prot="public" virt="non-virtual"><scope>openage::gui::GameSaverSignals</scope><name>error_message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

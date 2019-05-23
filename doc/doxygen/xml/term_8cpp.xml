@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="term_8cpp" kind="file" language="C++">
+    <compoundname>term.cpp</compoundname>
+    <includes refid="term_8h" local="yes">term.h</includes>
+    <incdepgraph>
+      <node id="4128">
+        <label>list</label>
+      </node>
+      <node id="4121">
+        <label>atomic</label>
+      </node>
+      <node id="4096">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="4097" relation="include">
+        </childnode>
+        <childnode refid="4098" relation="include">
+        </childnode>
+        <childnode refid="4099" relation="include">
+        </childnode>
+        <childnode refid="4100" relation="include">
+        </childnode>
+        <childnode refid="4101" relation="include">
+        </childnode>
+        <childnode refid="4102" relation="include">
+        </childnode>
+        <childnode refid="4103" relation="include">
+        </childnode>
+        <childnode refid="4104" relation="include">
+        </childnode>
+      </node>
+      <node id="4125">
+        <label>functional</label>
+      </node>
+      <node id="4100">
+        <label>iomanip</label>
+      </node>
+      <node id="4101">
+        <label>limits</label>
+      </node>
+      <node id="4094">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="4095" relation="include">
+        </childnode>
+        <childnode refid="4096" relation="include">
+        </childnode>
+      </node>
+      <node id="4095">
+        <label>cstdint</label>
+      </node>
+      <node id="4123">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="4124" relation="include">
+        </childnode>
+        <childnode refid="4125" relation="include">
+        </childnode>
+        <childnode refid="4100" relation="include">
+        </childnode>
+        <childnode refid="4109" relation="include">
+        </childnode>
+        <childnode refid="4126" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+        <childnode refid="4108" relation="include">
+        </childnode>
+      </node>
+      <node id="4092">
+        <label>term.h</label>
+        <link refid="term_8h"/>
+        <childnode refid="4093" relation="include">
+        </childnode>
+        <childnode refid="4094" relation="include">
+        </childnode>
+      </node>
+      <node id="4099">
+        <label>cmath</label>
+      </node>
+      <node id="4112">
+        <label>stdexcept</label>
+      </node>
+      <node id="4127">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="4128" relation="include">
+        </childnode>
+        <childnode refid="4129" relation="include">
+        </childnode>
+        <childnode refid="4130" relation="include">
+        </childnode>
+      </node>
+      <node id="4124">
+        <label>cstdarg</label>
+      </node>
+      <node id="4107">
+        <label>string</label>
+      </node>
+      <node id="4116">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="4095" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+        <childnode refid="4117" relation="include">
+        </childnode>
+        <childnode refid="4118" relation="include">
+        </childnode>
+        <childnode refid="4120" relation="include">
+        </childnode>
+        <childnode refid="4127" relation="include">
+        </childnode>
+        <childnode refid="4130" relation="include">
+        </childnode>
+      </node>
+      <node id="4118">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="4119" relation="include">
+        </childnode>
+      </node>
+      <node id="4120">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="4121" relation="include">
+        </childnode>
+        <childnode refid="4109" relation="include">
+        </childnode>
+        <childnode refid="4103" relation="include">
+        </childnode>
+        <childnode refid="4113" relation="include">
+        </childnode>
+        <childnode refid="4122" relation="include">
+        </childnode>
+        <childnode refid="4123" relation="include">
+        </childnode>
+      </node>
+      <node id="4102">
+        <label>ostream</label>
+      </node>
+      <node id="4105">
+        <label>limits.h</label>
+      </node>
+      <node id="4110">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="4111" relation="include">
+        </childnode>
+        <childnode refid="4109" relation="include">
+        </childnode>
+        <childnode refid="4112" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+        <childnode refid="4113" relation="include">
+        </childnode>
+        <childnode refid="4116" relation="include">
+        </childnode>
+      </node>
+      <node id="4104">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="4097" relation="include">
+        </childnode>
+        <childnode refid="4105" relation="include">
+        </childnode>
+        <childnode refid="4099" relation="include">
+        </childnode>
+        <childnode refid="4106" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+        <childnode refid="4108" relation="include">
+        </childnode>
+        <childnode refid="4109" relation="include">
+        </childnode>
+        <childnode refid="4110" relation="include">
+        </childnode>
+        <childnode refid="4113" relation="include">
+        </childnode>
+      </node>
+      <node id="4132">
+        <label>typeinfo</label>
+      </node>
+      <node id="4093">
+        <label>coord_xy.gen.h</label>
+      </node>
+      <node id="4108">
+        <label>vector</label>
+      </node>
+      <node id="4114">
+        <label>ciso646</label>
+      </node>
+      <node id="4126">
+        <label>sstream</label>
+      </node>
+      <node id="4113">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="4114" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+        <childnode refid="4115" relation="include">
+        </childnode>
+      </node>
+      <node id="4115">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="4115" relation="include">
+        </childnode>
+      </node>
+      <node id="4122">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="4111" relation="include">
+        </childnode>
+        <childnode refid="4107" relation="include">
+        </childnode>
+      </node>
+      <node id="4130">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="4131" relation="include">
+        </childnode>
+      </node>
+      <node id="4119">
+        <label>cstdlib</label>
+      </node>
+      <node id="4111">
+        <label>iostream</label>
+      </node>
+      <node id="4098">
+        <label>climits</label>
+      </node>
+      <node id="4129">
+        <label>mutex</label>
+      </node>
+      <node id="4103">
+        <label>type_traits</label>
+      </node>
+      <node id="4117">
+        <label>config.h</label>
+      </node>
+      <node id="4091">
+        <label>libopenage/coord/term.cpp</label>
+        <link refid="term_8cpp"/>
+        <childnode refid="4092" relation="include">
+        </childnode>
+      </node>
+      <node id="4097">
+        <label>algorithm</label>
+      </node>
+      <node id="4106">
+        <label>cstring</label>
+      </node>
+      <node id="4109">
+        <label>memory</label>
+      </node>
+      <node id="4131">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="4111" relation="include">
+        </childnode>
+        <childnode refid="4132" relation="include">
+        </childnode>
+        <childnode refid="4113" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="term_8h" kindref="compound">term.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" kindref="member">coord</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/coord/term.cpp"/>
+  </compounddef>
+</doxygen>

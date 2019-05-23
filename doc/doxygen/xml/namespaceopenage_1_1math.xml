@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="namespaceopenage_1_1math" kind="namespace" language="C++">
+    <compoundname>openage::math</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a399148f49999888978ed1c2636bca57b" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::E</definition>
+        <argsstring></argsstring>
+        <name>E</name>
+        <initializer>= 2.71828182845904523536</initializer>
+        <briefdescription>
+<para>e </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="10" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1ac7fae94a4debc0d647e37a511e4fc493" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::LOG2E</definition>
+        <argsstring></argsstring>
+        <name>LOG2E</name>
+        <initializer>= 1.44269504088896340736</initializer>
+        <briefdescription>
+<para>log_2 e </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="11" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1ab2a6b606dad173018bc2840898eae49e" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::LOG10E</definition>
+        <argsstring></argsstring>
+        <name>LOG10E</name>
+        <initializer>= 0.434294481903251827651</initializer>
+        <briefdescription>
+<para>log_10 e </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="12" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a1b139be1e6ba2be12c77002298c35e7f" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::LN2</definition>
+        <argsstring></argsstring>
+        <name>LN2</name>
+        <initializer>= 0.693147180559945309417</initializer>
+        <briefdescription>
+<para>log_e 2 </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="13" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a97e56c32ae54799f19b45cd98934209f" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::LN10</definition>
+        <argsstring></argsstring>
+        <name>LN10</name>
+        <initializer>= 2.30258509299404568402</initializer>
+        <briefdescription>
+<para>log_e 10 </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="14" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a2fa23a3c6b5e149587e859cb261ef4cd" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::PI</definition>
+        <argsstring></argsstring>
+        <name>PI</name>
+        <initializer>= 3.14159265358979323846</initializer>
+        <briefdescription>
+<para>pi </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="15" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a2109930a3334729232d166cdd372c3af" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::PI_2</definition>
+        <argsstring></argsstring>
+        <name>PI_2</name>
+        <initializer>= 1.57079632679489661923</initializer>
+        <briefdescription>
+<para>pi/2 </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="16" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a9ed0886c6314bc7ea7d850d0c52cbc47" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::PI_4</definition>
+        <argsstring></argsstring>
+        <name>PI_4</name>
+        <initializer>= 0.785398163397448309616</initializer>
+        <briefdescription>
+<para>pi/4 </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="17" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a3cf46ecc6a97a0260c993da19c30db86" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::INV_PI</definition>
+        <argsstring></argsstring>
+        <name>INV_PI</name>
+        <initializer>= 0.318309886183790671538</initializer>
+        <briefdescription>
+<para>1/pi </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="18" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a1d21a4f60c5de2ddc1f06d624c7718fd" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::INV2_PI</definition>
+        <argsstring></argsstring>
+        <name>INV2_PI</name>
+        <initializer>= 0.636619772367581343076</initializer>
+        <briefdescription>
+<para>2/pi </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="19" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a21fca9f6f3db982f2e36ad184971142e" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::INV2_SQRT_PI</definition>
+        <argsstring></argsstring>
+        <name>INV2_SQRT_PI</name>
+        <initializer>= 1.12837916709551257390</initializer>
+        <briefdescription>
+<para>2/sqrt(pi) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="20" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a2ed907ecfe2bd347184b6100e767ae8d" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::TAU</definition>
+        <argsstring></argsstring>
+        <name>TAU</name>
+        <initializer>= 6.28318530717958647693</initializer>
+        <briefdescription>
+<para>2*pi </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="21" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a0df5751ac53fb97b63d8639da08b2639" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::DEGSPERRAD</definition>
+        <argsstring></argsstring>
+        <name>DEGSPERRAD</name>
+        <initializer>= 0.017453292519943295769</initializer>
+        <briefdescription>
+<para>tau/360 </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="22" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a053cbd823bc5508663aa2f4b3e47e1ef" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::RADSPERDEG</definition>
+        <argsstring></argsstring>
+        <name>RADSPERDEG</name>
+        <initializer>= 57.29577951308232087679</initializer>
+        <briefdescription>
+<para>360/tau </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="23" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1abecc765205f02e10a37559da609bd428" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::SQRT_2</definition>
+        <argsstring></argsstring>
+        <name>SQRT_2</name>
+        <initializer>= 1.41421356237309504880</initializer>
+        <briefdescription>
+<para>sqrt(2) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="24" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1ae4eb5e824c70f742bad48bceda489c6f" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::INV_SQRT_2</definition>
+        <argsstring></argsstring>
+        <name>INV_SQRT_2</name>
+        <initializer>= 0.707106781186547524401</initializer>
+        <briefdescription>
+<para>1/sqrt(2) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="25" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1ad47e40900e132034d0e626563de66a85" prot="public" static="no" mutable="no">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int openage::math::UINT_INF</definition>
+        <argsstring></argsstring>
+        <name>UINT_INF</name>
+        <initializer>= std::numeric_limits&lt;unsigned int&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="27" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1a76c5523b3fe8aa5f19ea61ba9f0d3043" prot="public" static="no" mutable="no">
+        <type>constexpr int</type>
+        <definition>constexpr int openage::math::INT_INF</definition>
+        <argsstring></argsstring>
+        <name>INT_INF</name>
+        <initializer>= std::numeric_limits&lt;int&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="28" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceopenage_1_1math_1ad9eeb53dc7ad24b525923f7eeca9f37a" prot="public" static="no" mutable="no">
+        <type>constexpr double</type>
+        <definition>constexpr double openage::math::DOUBLE_INF</definition>
+        <argsstring></argsstring>
+        <name>DOUBLE_INF</name>
+        <initializer>= std::numeric_limits&lt;double&gt;::max()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math_constants.h" line="29" column="1" bodyfile="libopenage/util/math_constants.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceopenage_1_1math_1a6a3e29669397f64ce4aaedda4d844064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T openage::math::square</definition>
+        <argsstring>(T arg)</argsstring>
+        <name>square</name>
+        <param>
+          <type>T</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math.h" line="11" column="1" bodyfile="libopenage/util/math.h" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceopenage_1_1math_1a29c55215e73408c49f2654261fd73d8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T openage::math::hypot3</definition>
+        <argsstring>(T x, T y, T z)</argsstring>
+        <name>hypot3</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/math.h" line="17" column="1" bodyfile="libopenage/util/math.h" bodystart="17" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/math.h" line="8" column="1"/>
+  </compounddef>
+</doxygen>

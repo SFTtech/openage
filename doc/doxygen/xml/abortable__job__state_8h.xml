@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="abortable__job__state_8h" kind="file" language="C++">
+    <compoundname>abortable_job_state.h</compoundname>
+    <includes local="no">functional</includes>
+    <includes refid="job__aborted__exception_8h" local="yes">job_aborted_exception.h</includes>
+    <includes refid="typed__job__state__base_8h" local="yes">typed_job_state_base.h</includes>
+    <includes refid="job_2types_8h" local="yes">types.h</includes>
+    <includedby refid="job__group_8h" local="yes">libopenage/job/job_group.h</includedby>
+    <includedby refid="job__manager_8h" local="yes">libopenage/job/job_manager.h</includedby>
+    <incdepgraph>
+      <node id="15865">
+        <label>list</label>
+      </node>
+      <node id="15840">
+        <label>atomic</label>
+      </node>
+      <node id="15861">
+        <label>iomanip</label>
+      </node>
+      <node id="15836">
+        <label>functional</label>
+      </node>
+      <node id="15852">
+        <label>cstdint</label>
+      </node>
+      <node id="15859">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="15860" relation="include">
+        </childnode>
+        <childnode refid="15836" relation="include">
+        </childnode>
+        <childnode refid="15861" relation="include">
+        </childnode>
+        <childnode refid="15846" relation="include">
+        </childnode>
+        <childnode refid="15862" relation="include">
+        </childnode>
+        <childnode refid="15847" relation="include">
+        </childnode>
+        <childnode refid="15863" relation="include">
+        </childnode>
+      </node>
+      <node id="15837">
+        <label>job_aborted_exception.h</label>
+        <link refid="job__aborted__exception_8h"/>
+        <childnode refid="15838" relation="include">
+        </childnode>
+      </node>
+      <node id="15835">
+        <label>libopenage/job/abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="15836" relation="include">
+        </childnode>
+        <childnode refid="15837" relation="include">
+        </childnode>
+        <childnode refid="15839" relation="include">
+        </childnode>
+        <childnode refid="15871" relation="include">
+        </childnode>
+      </node>
+      <node id="15838">
+        <label>stdexcept</label>
+      </node>
+      <node id="15864">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="15865" relation="include">
+        </childnode>
+        <childnode refid="15866" relation="include">
+        </childnode>
+        <childnode refid="15867" relation="include">
+        </childnode>
+      </node>
+      <node id="15860">
+        <label>cstdarg</label>
+      </node>
+      <node id="15847">
+        <label>string</label>
+      </node>
+      <node id="15851">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="15852" relation="include">
+        </childnode>
+        <childnode refid="15847" relation="include">
+        </childnode>
+        <childnode refid="15853" relation="include">
+        </childnode>
+        <childnode refid="15854" relation="include">
+        </childnode>
+        <childnode refid="15856" relation="include">
+        </childnode>
+        <childnode refid="15864" relation="include">
+        </childnode>
+        <childnode refid="15867" relation="include">
+        </childnode>
+      </node>
+      <node id="15854">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="15855" relation="include">
+        </childnode>
+      </node>
+      <node id="15856">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="15840" relation="include">
+        </childnode>
+        <childnode refid="15846" relation="include">
+        </childnode>
+        <childnode refid="15857" relation="include">
+        </childnode>
+        <childnode refid="15848" relation="include">
+        </childnode>
+        <childnode refid="15858" relation="include">
+        </childnode>
+        <childnode refid="15859" relation="include">
+        </childnode>
+      </node>
+      <node id="15841">
+        <label>exception</label>
+      </node>
+      <node id="15843">
+        <label>stddef.h</label>
+      </node>
+      <node id="15844">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="15845" relation="include">
+        </childnode>
+        <childnode refid="15846" relation="include">
+        </childnode>
+        <childnode refid="15838" relation="include">
+        </childnode>
+        <childnode refid="15847" relation="include">
+        </childnode>
+        <childnode refid="15848" relation="include">
+        </childnode>
+        <childnode refid="15851" relation="include">
+        </childnode>
+      </node>
+      <node id="15869">
+        <label>typeinfo</label>
+      </node>
+      <node id="15871">
+        <label>types.h</label>
+        <link refid="job_2types_8h"/>
+        <childnode refid="15836" relation="include">
+        </childnode>
+      </node>
+      <node id="15863">
+        <label>vector</label>
+      </node>
+      <node id="15849">
+        <label>ciso646</label>
+      </node>
+      <node id="15839">
+        <label>typed_job_state_base.h</label>
+        <link refid="typed__job__state__base_8h"/>
+        <childnode refid="15840" relation="include">
+        </childnode>
+        <childnode refid="15841" relation="include">
+        </childnode>
+        <childnode refid="15836" relation="include">
+        </childnode>
+        <childnode refid="15842" relation="include">
+        </childnode>
+        <childnode refid="15844" relation="include">
+        </childnode>
+        <childnode refid="15837" relation="include">
+        </childnode>
+        <childnode refid="15870" relation="include">
+        </childnode>
+        <childnode refid="15871" relation="include">
+        </childnode>
+      </node>
+      <node id="15862">
+        <label>sstream</label>
+      </node>
+      <node id="15848">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="15849" relation="include">
+        </childnode>
+        <childnode refid="15847" relation="include">
+        </childnode>
+        <childnode refid="15850" relation="include">
+        </childnode>
+      </node>
+      <node id="15850">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="15850" relation="include">
+        </childnode>
+      </node>
+      <node id="15858">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="15845" relation="include">
+        </childnode>
+        <childnode refid="15847" relation="include">
+        </childnode>
+      </node>
+      <node id="15867">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="15868" relation="include">
+        </childnode>
+      </node>
+      <node id="15855">
+        <label>cstdlib</label>
+      </node>
+      <node id="15845">
+        <label>iostream</label>
+      </node>
+      <node id="15866">
+        <label>mutex</label>
+      </node>
+      <node id="15842">
+        <label>../util/thread_id.h</label>
+        <link refid="thread__id_8h"/>
+        <childnode refid="15843" relation="include">
+        </childnode>
+      </node>
+      <node id="15857">
+        <label>type_traits</label>
+      </node>
+      <node id="15853">
+        <label>config.h</label>
+      </node>
+      <node id="15870">
+        <label>job_state_base.h</label>
+        <link refid="job__state__base_8h"/>
+        <childnode refid="15836" relation="include">
+        </childnode>
+        <childnode refid="15871" relation="include">
+        </childnode>
+      </node>
+      <node id="15846">
+        <label>memory</label>
+      </node>
+      <node id="15868">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="15845" relation="include">
+        </childnode>
+        <childnode refid="15869" relation="include">
+        </childnode>
+        <childnode refid="15848" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15876">
+        <label>libopenage/audio/resource.cpp</label>
+        <link refid="audio_2resource_8cpp"/>
+      </node>
+      <node id="15900">
+        <label>libopenage/job/tests.cpp</label>
+        <link refid="job_2tests_8cpp"/>
+      </node>
+      <node id="15891">
+        <label>libopenage/terrain/terrain.cpp</label>
+        <link refid="terrain_8cpp"/>
+      </node>
+      <node id="15897">
+        <label>libopenage/unit/unit.cpp</label>
+        <link refid="unit_8cpp"/>
+      </node>
+      <node id="15895">
+        <label>libopenage/unit/producer.cpp</label>
+        <link refid="producer_8cpp"/>
+      </node>
+      <node id="15872">
+        <label>libopenage/job/abortable_job_state.h</label>
+        <link refid="abortable__job__state_8h"/>
+        <childnode refid="15873" relation="include">
+        </childnode>
+        <childnode refid="15877" relation="include">
+        </childnode>
+      </node>
+      <node id="15883">
+        <label>libopenage/game_renderer.cpp</label>
+        <link refid="game__renderer_8cpp"/>
+      </node>
+      <node id="15901">
+        <label>libopenage/job/worker.cpp</label>
+        <link refid="worker_8cpp"/>
+      </node>
+      <node id="15885">
+        <label>libopenage/gamestate/game_spec.cpp</label>
+        <link refid="game__spec_8cpp"/>
+      </node>
+      <node id="15890">
+        <label>libopenage/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="15903">
+        <label>libopenage/job/job_group.cpp</label>
+        <link refid="job__group_8cpp"/>
+      </node>
+      <node id="15889">
+        <label>libopenage/gui/gui.cpp</label>
+        <link refid="gui_2gui_8cpp"/>
+      </node>
+      <node id="15877">
+        <label>libopenage/job/job_manager.h</label>
+        <link refid="job__manager_8h"/>
+        <childnode refid="15878" relation="include">
+        </childnode>
+        <childnode refid="15875" relation="include">
+        </childnode>
+        <childnode refid="15899" relation="include">
+        </childnode>
+        <childnode refid="15900" relation="include">
+        </childnode>
+        <childnode refid="15901" relation="include">
+        </childnode>
+        <childnode refid="15902" relation="include">
+        </childnode>
+      </node>
+      <node id="15875">
+        <label>libopenage/audio/dynamic_resource.cpp</label>
+        <link refid="dynamic__resource_8cpp"/>
+      </node>
+      <node id="15879">
+        <label>libopenage/console/console.cpp</label>
+        <link refid="console_8cpp"/>
+      </node>
+      <node id="15894">
+        <label>libopenage/unit/action.cpp</label>
+        <link refid="unit_2action_8cpp"/>
+      </node>
+      <node id="15896">
+        <label>libopenage/unit/selection.cpp</label>
+        <link refid="selection_8cpp"/>
+      </node>
+      <node id="15886">
+        <label>libopenage/gui/engine_link.cpp</label>
+        <link refid="engine__link_8cpp"/>
+      </node>
+      <node id="15873">
+        <label>libopenage/job/job_group.h</label>
+        <link refid="job__group_8h"/>
+        <childnode refid="15874" relation="include">
+        </childnode>
+        <childnode refid="15877" relation="include">
+        </childnode>
+        <childnode refid="15903" relation="include">
+        </childnode>
+      </node>
+      <node id="15881">
+        <label>libopenage/engine.cpp</label>
+        <link refid="engine_8cpp"/>
+      </node>
+      <node id="15878">
+        <label>libopenage/engine.h</label>
+        <link refid="engine_8h"/>
+        <childnode refid="15875" relation="include">
+        </childnode>
+        <childnode refid="15876" relation="include">
+        </childnode>
+        <childnode refid="15879" relation="include">
+        </childnode>
+        <childnode refid="15880" relation="include">
+        </childnode>
+        <childnode refid="15881" relation="include">
+        </childnode>
+        <childnode refid="15882" relation="include">
+        </childnode>
+        <childnode refid="15883" relation="include">
+        </childnode>
+        <childnode refid="15884" relation="include">
+        </childnode>
+        <childnode refid="15885" relation="include">
+        </childnode>
+        <childnode refid="15886" relation="include">
+        </childnode>
+        <childnode refid="15887" relation="include">
+        </childnode>
+        <childnode refid="15888" relation="include">
+        </childnode>
+        <childnode refid="15889" relation="include">
+        </childnode>
+        <childnode refid="15890" relation="include">
+        </childnode>
+        <childnode refid="15891" relation="include">
+        </childnode>
+        <childnode refid="15892" relation="include">
+        </childnode>
+        <childnode refid="15893" relation="include">
+        </childnode>
+        <childnode refid="15894" relation="include">
+        </childnode>
+        <childnode refid="15895" relation="include">
+        </childnode>
+        <childnode refid="15896" relation="include">
+        </childnode>
+        <childnode refid="15897" relation="include">
+        </childnode>
+        <childnode refid="15898" relation="include">
+        </childnode>
+      </node>
+      <node id="15874">
+        <label>libopenage/audio/dynamic_resource.h</label>
+        <link refid="dynamic__resource_8h"/>
+        <childnode refid="15875" relation="include">
+        </childnode>
+        <childnode refid="15876" relation="include">
+        </childnode>
+      </node>
+      <node id="15893">
+        <label>libopenage/terrain/terrain_object.cpp</label>
+        <link refid="terrain__object_8cpp"/>
+      </node>
+      <node id="15898">
+        <label>libopenage/util/profiler.cpp</label>
+        <link refid="profiler_8cpp"/>
+      </node>
+      <node id="15892">
+        <label>libopenage/terrain/terrain_chunk.cpp</label>
+        <link refid="terrain__chunk_8cpp"/>
+      </node>
+      <node id="15902">
+        <label>libopenage/screenshot.cpp</label>
+        <link refid="screenshot_8cpp"/>
+      </node>
+      <node id="15887">
+        <label>libopenage/gui/game_control_link.cpp</label>
+        <link refid="game__control__link_8cpp"/>
+      </node>
+      <node id="15899">
+        <label>libopenage/job/job_manager.cpp</label>
+        <link refid="job__manager_8cpp"/>
+      </node>
+      <node id="15884">
+        <label>libopenage/gamestate/game_main.cpp</label>
+        <link refid="game__main_8cpp"/>
+      </node>
+      <node id="15880">
+        <label>libopenage/console/draw.cpp</label>
+        <link refid="draw_8cpp"/>
+      </node>
+      <node id="15888">
+        <label>libopenage/gui/game_main_link.cpp</label>
+        <link refid="game__main__link_8cpp"/>
+      </node>
+      <node id="15882">
+        <label>libopenage/game_control.cpp</label>
+        <link refid="game__control_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classopenage_1_1job_1_1_abortable_job_state" prot="public">openage::job::AbortableJobState</innerclass>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1job">openage::job</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="job__aborted__exception_8h" kindref="compound">job_aborted_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="typed__job__state__base_8h" kindref="compound">typed_job_state_base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="job_2types_8h" kindref="compound">types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">job<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="21" refid="classopenage_1_1job_1_1_abortable_job_state" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classopenage_1_1job_1_1_abortable_job_state" kindref="compound">AbortableJobState</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_typed_job_state_base" kindref="compound">TypedJobStateBase</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24" refid="classopenage_1_1job_1_1_abortable_job_state_1aa1e5073d1a7bb84868ad38bf1efdebb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1job_1aae93538aa9f8440cd9bbd3fe67d88e75" kindref="member">abortable_function_t&lt;T&gt;</ref><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classopenage_1_1job_1_1_abortable_job_state_1a84df7b62e9bbcf9894e7965e9809c935" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_abortable_job_state_1a84df7b62e9bbcf9894e7965e9809c935" kindref="member">AbortableJobState</ref>(<ref refid="namespaceopenage_1_1job_1aae93538aa9f8440cd9bbd3fe67d88e75" kindref="member">abortable_function_t&lt;T&gt;</ref><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceopenage_1_1job_1a9e457e59ab065783dbb679ab82cfdfa4" kindref="member">callback_function_t&lt;T&gt;</ref><sp/><ref refid="classopenage_1_1job_1_1_typed_job_state_base_1a830096838fa28692b52e346b3b3e7294" kindref="member">callback</ref>)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1job_1_1_typed_job_state_base" kindref="compound">TypedJobStateBase</ref>&lt;T&gt;{<ref refid="classopenage_1_1job_1_1_typed_job_state_base_1a830096838fa28692b52e346b3b3e7294" kindref="member">callback</ref>},</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">{</highlight><highlight class="keyword">function</highlight><highlight class="normal">}<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_abortable_job_state_1a74f34776b673c208e5ad3ef12778660d" kindref="member">~AbortableJobState</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="classopenage_1_1job_1_1_abortable_job_state_1abbf6faad72065feb6dcf3691cbbe52b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>T<sp/><ref refid="classopenage_1_1job_1_1_abortable_job_state_1abbf6faad72065feb6dcf3691cbbe52b5" kindref="member">execute_and_get</ref>(<ref refid="namespaceopenage_1_1job_1aa67062d8c4a001038067eb490177604b" kindref="member">should_abort_t</ref><sp/>should_abort)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>abort<sp/>is<sp/>a<sp/>function,<sp/>that<sp/>can<sp/>be<sp/>used<sp/>to<sp/>abort<sp/>a<sp/>running<sp/>job.<sp/>It<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>passed<sp/>to<sp/>the<sp/>executing<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>abort<sp/>=<sp/>[]()<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classopenage_1_1job_1_1_job_aborted_exception" kindref="compound">JobAbortedException</ref>{};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should_abort<sp/>is<sp/>a<sp/>function,<sp/>that<sp/>returns,<sp/>whether<sp/>a<sp/>running<sp/>job</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>be<sp/>aborted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1a7278b1c0b8d94d06da155b0b693b2828a3734a903022249b3010be1897042568e" kindref="member">std::move</ref>(this-&gt;</highlight><highlight class="keyword">function</highlight><highlight class="normal">(should_abort,<sp/>abort));</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::job</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/job/abortable_job_state.h"/>
+  </compounddef>
+</doxygen>

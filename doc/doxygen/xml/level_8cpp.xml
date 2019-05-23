@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="level_8cpp" kind="file" language="C++">
+    <compoundname>level.cpp</compoundname>
+    <includes refid="level_8h" local="yes">level.h</includes>
+    <incdepgraph>
+      <node id="16738">
+        <label>libopenage/log/level.cpp</label>
+        <link refid="level_8cpp"/>
+        <childnode refid="16739" relation="include">
+        </childnode>
+      </node>
+      <node id="16745">
+        <label>string</label>
+      </node>
+      <node id="16742">
+        <label>typeinfo</label>
+      </node>
+      <node id="16744">
+        <label>ciso646</label>
+      </node>
+      <node id="16743">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="16744" relation="include">
+        </childnode>
+        <childnode refid="16745" relation="include">
+        </childnode>
+        <childnode refid="16746" relation="include">
+        </childnode>
+      </node>
+      <node id="16746">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="16746" relation="include">
+        </childnode>
+      </node>
+      <node id="16739">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="16740" relation="include">
+        </childnode>
+      </node>
+      <node id="16741">
+        <label>iostream</label>
+      </node>
+      <node id="16740">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="16741" relation="include">
+        </childnode>
+        <childnode refid="16742" relation="include">
+        </childnode>
+        <childnode refid="16743" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1log">openage::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="level_8h" kindref="compound">level.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1log_1a0eff614e7d6e818746700ed9d29e583f" kindref="member">log</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespaceopenage_1_1log_1a4a8298d6cabc1d52a88e4a967b376892" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structopenage_1_1log_1_1level__value" kindref="compound">level_value</ref><sp/><ref refid="namespaceopenage_1_1log_1a4a8298d6cabc1d52a88e4a967b376892" kindref="member">undefined</ref><sp/>{{</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">,<sp/>999},<sp/></highlight><highlight class="stringliteral">&quot;5&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="structopenage_1_1log_1_1level_1aa1696d178fd623f05fbc9db281ddc8cc" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1log_1_1level_1aa1696d178fd623f05fbc9db281ddc8cc" kindref="member">level::level</ref>()<sp/>:<sp/>Enum{<ref refid="namespaceopenage_1_1log_1a4a8298d6cabc1d52a88e4a967b376892" kindref="member">undefined</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>openage::log</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/log/level.cpp"/>
+  </compounddef>
+</doxygen>

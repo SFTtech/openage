@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1console_1_1buf__char" kind="struct" language="C++" prot="public">
+    <compoundname>openage::console::buf_char</compoundname>
+    <includes refid="buf_8h" local="no">buf.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openage::console::buf_char::cp</definition>
+        <argsstring></argsstring>
+        <name>cp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>unicode codepoint of the character </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="67" column="1" bodyfile="libopenage/console/buf.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1a205c87e5042f1bdeb3bb60580196620d" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
+        <definition>chrcol_t openage::console::buf_char::fgcol</definition>
+        <argsstring></argsstring>
+        <name>fgcol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>(256-col) color of the character </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="71" column="1" bodyfile="libopenage/console/buf.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1ad268cc5e0d42a2c6c533805f2749c3ac" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
+        <definition>chrcol_t openage::console::buf_char::bgcol</definition>
+        <argsstring></argsstring>
+        <name>bgcol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>(256-col) background color </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="75" column="1" bodyfile="libopenage/console/buf.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1console_1_1buf__char_1a4488bd83177a49837fcc93128d18c5cb" prot="public" static="no" mutable="no">
+        <type><ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+        <definition>chrflags_t openage::console::buf_char::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>flags of the character </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="79" column="1" bodyfile="libopenage/console/buf.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenage_1_1console_1_1buf__char_1a97f99f1590d7076806f604323717db26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::buf_char::buf_char</definition>
+        <argsstring>(int cp, chrcol_t fgcol, chrcol_t bgcol, chrflags_t flags)</argsstring>
+        <name>buf_char</name>
+        <param>
+          <type>int</type>
+          <declname>cp</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
+          <declname>fgcol</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1console_1a539b2831ec0229a23f97127d1f5ef9f6" kindref="member">chrcol_t</ref></type>
+          <declname>bgcol</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceopenage_1_1console_1a479e54c460cae4bbd6f585ca55324d24" kindref="member">chrflags_t</ref></type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default copy constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="54" column="1" bodyfile="libopenage/console/buf.h" bodystart="54" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1console_1_1buf__char_1a72ce6ba25fcb6dbf3bc955c6f572a8be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::console::buf_char::buf_char</definition>
+        <argsstring>()=default</argsstring>
+        <name>buf_char</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::console::buf_char::operator==</definition>
+        <argsstring>(const buf_char &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="81" column="1" bodyfile="libopenage/console/buf.h" bodystart="81" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenage_1_1console_1_1buf__char_1af6110aabcc1548de5f95fce1ca4838aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openage::console::buf_char::operator !=</definition>
+        <argsstring>(const buf_char &amp;other) const</argsstring>
+        <name>operator !=</name>
+        <param>
+          <type>const <ref refid="structopenage_1_1console_1_1buf__char" kindref="compound">buf_char</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/console/buf.h" line="89" column="1" bodyfile="libopenage/console/buf.h" bodystart="89" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>a single character in the buffer </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="578">
+        <label>openage::console::buf_char</label>
+        <link refid="structopenage_1_1console_1_1buf__char"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/console/buf.h" line="50" column="1" bodyfile="libopenage/console/buf.h" bodystart="50" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1console_1_1buf__char_1ad268cc5e0d42a2c6c533805f2749c3ac" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>bgcol</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1a97f99f1590d7076806f604323717db26" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>buf_char</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1a72ce6ba25fcb6dbf3bc955c6f572a8be" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>buf_char</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1a4b4588eb3c49f45c281f67a95ec58973" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>cp</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1a205c87e5042f1bdeb3bb60580196620d" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>fgcol</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1a4488bd83177a49837fcc93128d18c5cb" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>flags</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1af6110aabcc1548de5f95fce1ca4838aa" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>operator !=</name></member>
+      <member refid="structopenage_1_1console_1_1buf__char_1ad5cefd7a1f326dc098b3142f04c63b80" prot="public" virt="non-virtual"><scope>openage::console::buf_char</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

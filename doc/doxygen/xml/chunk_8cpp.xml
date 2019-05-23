@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="chunk_8cpp" kind="file" language="C++">
+    <compoundname>chunk.cpp</compoundname>
+    <includes refid="chunk_8h" local="yes">chunk.h</includes>
+    <incdepgraph>
+      <node id="3228">
+        <label>list</label>
+      </node>
+      <node id="3221">
+        <label>atomic</label>
+      </node>
+      <node id="3196">
+        <label>../util/fixed_point.h</label>
+        <link refid="fixed__point_8h"/>
+        <childnode refid="3197" relation="include">
+        </childnode>
+        <childnode refid="3198" relation="include">
+        </childnode>
+        <childnode refid="3199" relation="include">
+        </childnode>
+        <childnode refid="3200" relation="include">
+        </childnode>
+        <childnode refid="3201" relation="include">
+        </childnode>
+        <childnode refid="3202" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+        <childnode refid="3204" relation="include">
+        </childnode>
+      </node>
+      <node id="3225">
+        <label>functional</label>
+      </node>
+      <node id="3200">
+        <label>iomanip</label>
+      </node>
+      <node id="3201">
+        <label>limits</label>
+      </node>
+      <node id="3194">
+        <label>declarations.h</label>
+        <link refid="declarations_8h"/>
+        <childnode refid="3195" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+      </node>
+      <node id="3195">
+        <label>cstdint</label>
+      </node>
+      <node id="3233">
+        <label>coord_nese.gen.h</label>
+      </node>
+      <node id="3223">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="3224" relation="include">
+        </childnode>
+        <childnode refid="3225" relation="include">
+        </childnode>
+        <childnode refid="3200" relation="include">
+        </childnode>
+        <childnode refid="3209" relation="include">
+        </childnode>
+        <childnode refid="3226" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3208" relation="include">
+        </childnode>
+      </node>
+      <node id="3199">
+        <label>cmath</label>
+      </node>
+      <node id="3212">
+        <label>stdexcept</label>
+      </node>
+      <node id="3227">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="3228" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3230" relation="include">
+        </childnode>
+      </node>
+      <node id="3224">
+        <label>cstdarg</label>
+      </node>
+      <node id="3207">
+        <label>string</label>
+      </node>
+      <node id="3216">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="3195" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3217" relation="include">
+        </childnode>
+        <childnode refid="3218" relation="include">
+        </childnode>
+        <childnode refid="3220" relation="include">
+        </childnode>
+        <childnode refid="3227" relation="include">
+        </childnode>
+        <childnode refid="3230" relation="include">
+        </childnode>
+      </node>
+      <node id="3218">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="3219" relation="include">
+        </childnode>
+      </node>
+      <node id="3220">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="3221" relation="include">
+        </childnode>
+        <childnode refid="3209" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+        <childnode refid="3222" relation="include">
+        </childnode>
+        <childnode refid="3223" relation="include">
+        </childnode>
+      </node>
+      <node id="3202">
+        <label>ostream</label>
+      </node>
+      <node id="3205">
+        <label>limits.h</label>
+      </node>
+      <node id="3210">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3209" relation="include">
+        </childnode>
+        <childnode refid="3212" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+        <childnode refid="3216" relation="include">
+        </childnode>
+      </node>
+      <node id="3204">
+        <label>misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="3197" relation="include">
+        </childnode>
+        <childnode refid="3205" relation="include">
+        </childnode>
+        <childnode refid="3199" relation="include">
+        </childnode>
+        <childnode refid="3206" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3208" relation="include">
+        </childnode>
+        <childnode refid="3209" relation="include">
+        </childnode>
+        <childnode refid="3210" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+      </node>
+      <node id="3234">
+        <label>coord_neseup.gen.h</label>
+      </node>
+      <node id="3232">
+        <label>typeinfo</label>
+      </node>
+      <node id="3208">
+        <label>vector</label>
+      </node>
+      <node id="3214">
+        <label>ciso646</label>
+      </node>
+      <node id="3226">
+        <label>sstream</label>
+      </node>
+      <node id="3213">
+        <label>../util/compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="3214" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3215" relation="include">
+        </childnode>
+      </node>
+      <node id="3215">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="3215" relation="include">
+        </childnode>
+      </node>
+      <node id="3222">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+      </node>
+      <node id="3230">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="3231" relation="include">
+        </childnode>
+      </node>
+      <node id="3219">
+        <label>cstdlib</label>
+      </node>
+      <node id="3211">
+        <label>iostream</label>
+      </node>
+      <node id="3198">
+        <label>climits</label>
+      </node>
+      <node id="3229">
+        <label>mutex</label>
+      </node>
+      <node id="3193">
+        <label>chunk.h</label>
+        <link refid="chunk_8h"/>
+        <childnode refid="3194" relation="include">
+        </childnode>
+        <childnode refid="3233" relation="include">
+        </childnode>
+        <childnode refid="3234" relation="include">
+        </childnode>
+      </node>
+      <node id="3192">
+        <label>libopenage/coord/chunk.cpp</label>
+        <link refid="chunk_8cpp"/>
+        <childnode refid="3193" relation="include">
+        </childnode>
+      </node>
+      <node id="3203">
+        <label>type_traits</label>
+      </node>
+      <node id="3217">
+        <label>config.h</label>
+      </node>
+      <node id="3197">
+        <label>algorithm</label>
+      </node>
+      <node id="3206">
+        <label>cstring</label>
+      </node>
+      <node id="3209">
+        <label>memory</label>
+      </node>
+      <node id="3231">
+        <label>../util/enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3232" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1coord">openage::coord</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2016-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="chunk_8h" kindref="compound">chunk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="6" refid="namespaceopenage_1_1coord" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage_1_1coord_1_1tests_1ab5f6aa805a24bd58eb365e5af294d807" kindref="member">coord</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openage::coord</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/coord/chunk.cpp"/>
+  </compounddef>
+</doxygen>

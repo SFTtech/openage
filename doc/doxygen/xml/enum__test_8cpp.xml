@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="enum__test_8cpp" kind="file" language="C++">
+    <compoundname>enum_test.cpp</compoundname>
+    <includes refid="enum__test_8h" local="yes">enum_test.h</includes>
+    <includes refid="testing_8h" local="yes">../testing/testing.h</includes>
+    <incdepgraph>
+      <node id="28736">
+        <label>list</label>
+      </node>
+      <node id="28726">
+        <label>atomic</label>
+      </node>
+      <node id="28732">
+        <label>iomanip</label>
+      </node>
+      <node id="28731">
+        <label>functional</label>
+      </node>
+      <node id="28707">
+        <label>libopenage/util/enum_test.cpp</label>
+        <link refid="enum__test_8cpp"/>
+        <childnode refid="28708" relation="include">
+        </childnode>
+        <childnode refid="28716" relation="include">
+        </childnode>
+      </node>
+      <node id="28721">
+        <label>cstdint</label>
+      </node>
+      <node id="28729">
+        <label>strings.h</label>
+        <link refid="strings_8h"/>
+        <childnode refid="28730" relation="include">
+        </childnode>
+        <childnode refid="28731" relation="include">
+        </childnode>
+        <childnode refid="28732" relation="include">
+        </childnode>
+        <childnode refid="28718" relation="include">
+        </childnode>
+        <childnode refid="28733" relation="include">
+        </childnode>
+        <childnode refid="28714" relation="include">
+        </childnode>
+        <childnode refid="28734" relation="include">
+        </childnode>
+      </node>
+      <node id="28719">
+        <label>stdexcept</label>
+      </node>
+      <node id="28735">
+        <label>logsink.h</label>
+        <link refid="logsink_8h"/>
+        <childnode refid="28736" relation="include">
+        </childnode>
+        <childnode refid="28737" relation="include">
+        </childnode>
+        <childnode refid="28738" relation="include">
+        </childnode>
+      </node>
+      <node id="28730">
+        <label>cstdarg</label>
+      </node>
+      <node id="28714">
+        <label>string</label>
+      </node>
+      <node id="28720">
+        <label>../log/message.h</label>
+        <link refid="message_8h"/>
+        <childnode refid="28721" relation="include">
+        </childnode>
+        <childnode refid="28714" relation="include">
+        </childnode>
+        <childnode refid="28722" relation="include">
+        </childnode>
+        <childnode refid="28723" relation="include">
+        </childnode>
+        <childnode refid="28725" relation="include">
+        </childnode>
+        <childnode refid="28735" relation="include">
+        </childnode>
+        <childnode refid="28738" relation="include">
+        </childnode>
+      </node>
+      <node id="28723">
+        <label>../util/constexpr.h</label>
+        <link refid="constexpr_8h"/>
+        <childnode refid="28724" relation="include">
+        </childnode>
+      </node>
+      <node id="28725">
+        <label>../util/stringformatter.h</label>
+        <link refid="stringformatter_8h"/>
+        <childnode refid="28726" relation="include">
+        </childnode>
+        <childnode refid="28718" relation="include">
+        </childnode>
+        <childnode refid="28727" relation="include">
+        </childnode>
+        <childnode refid="28712" relation="include">
+        </childnode>
+        <childnode refid="28728" relation="include">
+        </childnode>
+        <childnode refid="28729" relation="include">
+        </childnode>
+      </node>
+      <node id="28708">
+        <label>enum_test.h</label>
+        <link refid="enum__test_8h"/>
+        <childnode refid="28709" relation="include">
+        </childnode>
+      </node>
+      <node id="28717">
+        <label>../error/error.h</label>
+        <link refid="error_2error_8h"/>
+        <childnode refid="28710" relation="include">
+        </childnode>
+        <childnode refid="28718" relation="include">
+        </childnode>
+        <childnode refid="28719" relation="include">
+        </childnode>
+        <childnode refid="28714" relation="include">
+        </childnode>
+        <childnode refid="28712" relation="include">
+        </childnode>
+        <childnode refid="28720" relation="include">
+        </childnode>
+      </node>
+      <node id="28711">
+        <label>typeinfo</label>
+      </node>
+      <node id="28734">
+        <label>vector</label>
+      </node>
+      <node id="28713">
+        <label>ciso646</label>
+      </node>
+      <node id="28733">
+        <label>sstream</label>
+      </node>
+      <node id="28712">
+        <label>compiler.h</label>
+        <link refid="compiler_8h"/>
+        <childnode refid="28713" relation="include">
+        </childnode>
+        <childnode refid="28714" relation="include">
+        </childnode>
+        <childnode refid="28715" relation="include">
+        </childnode>
+      </node>
+      <node id="28715">
+        <label>signal.h</label>
+        <link refid="signal_8h"/>
+        <childnode refid="28715" relation="include">
+        </childnode>
+      </node>
+      <node id="28728">
+        <label>externalsstream.h</label>
+        <link refid="externalsstream_8h"/>
+        <childnode refid="28710" relation="include">
+        </childnode>
+        <childnode refid="28714" relation="include">
+        </childnode>
+      </node>
+      <node id="28738">
+        <label>level.h</label>
+        <link refid="level_8h"/>
+        <childnode refid="28709" relation="include">
+        </childnode>
+      </node>
+      <node id="28724">
+        <label>cstdlib</label>
+      </node>
+      <node id="28710">
+        <label>iostream</label>
+      </node>
+      <node id="28716">
+        <label>../testing/testing.h</label>
+        <link refid="testing_8h"/>
+        <childnode refid="28717" relation="include">
+        </childnode>
+      </node>
+      <node id="28737">
+        <label>mutex</label>
+      </node>
+      <node id="28727">
+        <label>type_traits</label>
+      </node>
+      <node id="28722">
+        <label>config.h</label>
+      </node>
+      <node id="28718">
+        <label>memory</label>
+      </node>
+      <node id="28709">
+        <label>enum.h</label>
+        <link refid="enum_8h"/>
+        <childnode refid="28710" relation="include">
+        </childnode>
+        <childnode refid="28711" relation="include">
+        </childnode>
+        <childnode refid="28712" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceopenage">openage</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util">openage::util</innernamespace>
+    <innernamespace refid="namespaceopenage_1_1util_1_1tests">openage::util::tests</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2018<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="enum__test_8h" kindref="compound">enum_test.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../testing/testing.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenage" kindref="compound">openage</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">util<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">tests<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespaceopenage_1_1util_1_1tests_1a6f54051ead3baf22b21d6142f78cbbc3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum__value" kindref="compound">testenum_value</ref><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a6f54051ead3baf22b21d6142f78cbbc3" kindref="member">undefined</ref><sp/>{{</highlight><highlight class="stringliteral">&quot;UNDEFINED&quot;</highlight><highlight class="normal">,<sp/>0},<sp/></highlight><highlight class="stringliteral">&quot;undefined<sp/>test<sp/>string&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="13" refid="structopenage_1_1util_1_1tests_1_1testenum_1a710bdc0435bf9ead133a05fdbf7c092e" refkind="member"><highlight class="normal"><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1a710bdc0435bf9ead133a05fdbf7c092e" kindref="member">testenum::testenum</ref>()<sp/>:<sp/><ref refid="classopenage_1_1util_1_1_enum" kindref="compound">Enum</ref>{<ref refid="namespaceopenage_1_1util_1_1tests_1a6f54051ead3baf22b21d6142f78cbbc3" kindref="member">undefined</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceopenage_1_1util_1_1tests_1a8204af61a6e9e5a470475054b1536357" kindref="member">enum_</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum" kindref="compound">testenum</ref><sp/>tv0<sp/>=<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" kindref="member">testenum::foo</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>tv0<sp/>==<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" kindref="member">testenum::foo</ref><sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>tv0<sp/>!=<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" kindref="member">testenum::bar</ref><sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum" kindref="compound">testenum</ref><sp/>tv1<sp/>=<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1a1aa6f28caad69a1248f8aca6aa57b324" kindref="member">testenum::bar</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>tv0<sp/>==<sp/>tv1<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>tv1<sp/>=<sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum_1afbb125ce389d27f805fbc94c6a14b3b7" kindref="member">testenum::foo</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>tv0<sp/>==<sp/>tv1<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>tv0<sp/>!=<sp/>tv1<sp/>and<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(tv0-&gt;get_stuff(),<sp/>std::string(</highlight><highlight class="stringliteral">&quot;foooooooooooooooooo&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(tv0-&gt;stuff,<sp/>std::string(</highlight><highlight class="stringliteral">&quot;foooooooooooooooooo&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;default<sp/>value&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structopenage_1_1util_1_1tests_1_1testenum" kindref="compound">testenum</ref><sp/>tv2;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(tv2-&gt;stuff,<sp/>std::string(</highlight><highlight class="stringliteral">&quot;undefined<sp/>test<sp/>string&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>tv2<sp/>!=<sp/>tv0<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>tv2<sp/>!=<sp/>tv1<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>tv2<sp/>==<sp/>tv2<sp/>or<sp/><ref refid="testing_8h_1a32253726c81e858197f39fbf0b56d17c" kindref="member">TESTFAIL</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classopenage_1_1util_1_1_f_string" kindref="compound">FString</ref><sp/>fstr;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>fstr<sp/>&lt;&lt;<sp/>tv0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(fstr.<ref refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" kindref="member">buffer</ref>,<sp/></highlight><highlight class="stringliteral">&quot;openage::util::tests::testenum_value::foo&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>fstr.<ref refid="classopenage_1_1util_1_1_f_string_1a262d81155e6d17ead2d4851faf6bec03" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>fstr<sp/>&lt;&lt;<sp/>tv2;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testing_8h_1a57b089ad5d574fad716e3b140c80d0e5" kindref="member">TESTEQUALS</ref>(fstr.<ref refid="classopenage_1_1util_1_1_f_string_1a925ea72c490734799429c31848defd61" kindref="member">buffer</ref>,<sp/></highlight><highlight class="stringliteral">&quot;openage::util::tests::testenum_value::UNDEFINED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}}}<sp/></highlight><highlight class="comment">//<sp/>openage::util::tests</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/util/enum_test.cpp"/>
+  </compounddef>
+</doxygen>

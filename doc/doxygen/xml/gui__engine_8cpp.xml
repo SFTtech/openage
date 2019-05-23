@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="gui__engine_8cpp" kind="file" language="C++">
+    <compoundname>gui_engine.cpp</compoundname>
+    <includes refid="gui__engine_8h" local="yes">../public/gui_engine.h</includes>
+    <includes refid="gui__engine__impl_8h" local="yes">../private/gui_engine_impl.h</includes>
+    <incdepgraph>
+      <node id="13483">
+        <label>../link/qml_engine_with_singleton_items_info.h</label>
+        <link refid="qml__engine__with__singleton__items__info_8h"/>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13484" relation="include">
+        </childnode>
+        <childnode refid="13485" relation="include">
+        </childnode>
+      </node>
+      <node id="13489">
+        <label>QObject</label>
+      </node>
+      <node id="13487">
+        <label>livereload/recursive_directory_watcher.h</label>
+        <link refid="recursive__directory__watcher_8h"/>
+        <childnode refid="13488" relation="include">
+        </childnode>
+        <childnode refid="13489" relation="include">
+        </childnode>
+        <childnode refid="13490" relation="include">
+        </childnode>
+      </node>
+      <node id="13482">
+        <label>../private/gui_engine_impl.h</label>
+        <link refid="gui__engine__impl_8h"/>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13481" relation="include">
+        </childnode>
+        <childnode refid="13483" relation="include">
+        </childnode>
+        <childnode refid="13487" relation="include">
+        </childnode>
+      </node>
+      <node id="13479">
+        <label>../public/gui_engine.h</label>
+        <link refid="gui__engine_8h"/>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13481" relation="include">
+        </childnode>
+      </node>
+      <node id="13484">
+        <label>QQmlEngine</label>
+      </node>
+      <node id="13485">
+        <label>../private/gui_image_provider_impl.h</label>
+        <link refid="gui__image__provider__impl_8h"/>
+        <childnode refid="13480" relation="include">
+        </childnode>
+        <childnode refid="13481" relation="include">
+        </childnode>
+        <childnode refid="13486" relation="include">
+        </childnode>
+      </node>
+      <node id="13488">
+        <label>future</label>
+      </node>
+      <node id="13481">
+        <label>vector</label>
+      </node>
+      <node id="13478">
+        <label>libopenage/gui/guisys/public/gui_engine.cpp</label>
+        <link refid="gui__engine_8cpp"/>
+        <childnode refid="13479" relation="include">
+        </childnode>
+        <childnode refid="13482" relation="include">
+        </childnode>
+      </node>
+      <node id="13486">
+        <label>QQuickImageProvider</label>
+      </node>
+      <node id="13490">
+        <label>QStringList</label>
+      </node>
+      <node id="13480">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceqtsdl">qtsdl</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2016<sp/>the<sp/>openage<sp/>authors.<sp/>See<sp/>copying.md<sp/>for<sp/>legal<sp/>info.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../public/gui_engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../private/gui_engine_impl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceqtsdl" kindref="compound">qtsdl</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classqtsdl_1_1_gui_engine_1ab7fa0c6752ac0f0adc5634be593facdf" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_engine_1ab7fa0c6752ac0f0adc5634be593facdf" kindref="member">GuiEngine::GuiEngine</ref>(<ref refid="classqtsdl_1_1_gui_renderer" kindref="compound">GuiRenderer</ref><sp/>*renderer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;GuiImageProvider*&gt;<sp/>&amp;image_providers,<sp/><ref refid="classqtsdl_1_1_gui_singleton_items_info" kindref="compound">GuiSingletonItemsInfo</ref><sp/>*singleton_items_info)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>impl{std::make_unique&lt;GuiEngineImpl&gt;(renderer,<sp/>image_providers,<sp/>singleton_items_info)}<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classqtsdl_1_1_gui_engine_1a239558965efcb73bf1f69d939b69e0e1" refkind="member"><highlight class="normal"><ref refid="classqtsdl_1_1_gui_engine_1a239558965efcb73bf1f69d939b69e0e1" kindref="member">GuiEngine::~GuiEngine</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>qtsdl</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="libopenage/gui/guisys/public/gui_engine.cpp"/>
+  </compounddef>
+</doxygen>

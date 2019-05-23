@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal" kind="struct" language="C++" prot="public">
+    <compoundname>openage::util::constexpr_::truncated_string_literal</compoundname>
+    <includes refid="constexpr_8h" local="no">constexpr.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1ac55b8849ba71aa1dd2eb6b6b0b97bf0c" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* openage::util::constexpr_::truncated_string_literal::literal</definition>
+        <argsstring></argsstring>
+        <name>literal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/constexpr.h" line="49" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1a8377276ec3801cd8a5bc89f72ac5c590" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t openage::util::constexpr_::truncated_string_literal::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/util/constexpr.h" line="50" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores a string literal plus a &quot;length specifier&quot;.</para>
+<para>Due to the nature of C strings, parts can only be cut off at the start of the string; this struct represents a string literal that has parts cut off at its end.</para>
+<para>length represents the remaining length of the string; Functions using an object of this type SHALL NOT access memory locations beyond &amp;literal[length]. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4595">
+        <label>openage::util::constexpr_::truncated_string_literal</label>
+        <link refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal"/>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/util/constexpr.h" line="48" column="1" bodyfile="libopenage/util/constexpr.h" bodystart="48" bodyend="51"/>
+    <listofallmembers>
+      <member refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1a8377276ec3801cd8a5bc89f72ac5c590" prot="public" virt="non-virtual"><scope>openage::util::constexpr_::truncated_string_literal</scope><name>length</name></member>
+      <member refid="structopenage_1_1util_1_1constexpr___1_1truncated__string__literal_1ac55b8849ba71aa1dd2eb6b6b0b97bf0c" prot="public" virt="non-virtual"><scope>openage::util::constexpr_::truncated_string_literal</scope><name>literal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

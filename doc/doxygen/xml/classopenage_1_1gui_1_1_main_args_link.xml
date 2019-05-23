@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classopenage_1_1gui_1_1_main_args_link" kind="class" language="C++" prot="public">
+    <compoundname>openage::gui::MainArgsLink</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="main__args__link_8h" local="no">main_args_link.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classopenage_1_1gui_1_1_main_args_link_1a718d28a7b61d9bef2f95bd932e364c03" prot="public" static="no" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">openage::util::Path</ref></type>
+        <definition>openage::util::Path openage::gui::MainArgsLink::assetDir</definition>
+        <argsstring></argsstring>
+        <name>assetDir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" prot="private" static="no" mutable="no">
+        <type><ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref></type>
+        <definition>util::Path openage::gui::MainArgsLink::asset_dir</definition>
+        <argsstring></argsstring>
+        <name>asset_dir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/main_args_link.h" line="33" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_main_args_link_1afae5cee025cfda20b2440abcbb01cef9" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openage::gui::MainArgsLink::MainArgsLink</definition>
+        <argsstring>(QObject *parent, const util::Path &amp;asset_dir)</argsstring>
+        <name>MainArgsLink</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classopenage_1_1util_1_1_path" kindref="compound">util::Path</ref> &amp;</type>
+          <declname>asset_dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/main_args_link.h" line="24" column="1" bodyfile="libopenage/gui/main_args_link.cpp" bodystart="22" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_main_args_link_1acb2c14a5198daecdc30c44aa2e4ddfec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual openage::gui::MainArgsLink::~MainArgsLink</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MainArgsLink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/main_args_link.h" line="25" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classopenage_1_1gui_1_1_main_args_link_1a27313ca71bc497664ab7a4ade01323e4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QObject *</type>
+        <definition>QObject * openage::gui::MainArgsLink::provider</definition>
+        <argsstring>(QQmlEngine *, QJSEngine *)</argsstring>
+        <name>provider</name>
+        <param>
+          <type>QQmlEngine *</type>
+          <defname>engine</defname>
+        </param>
+        <param>
+          <type>QJSEngine *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates the <ref refid="classopenage_1_1gui_1_1_main_args_link" kindref="compound">MainArgsLink</ref> object which is then used within QML. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libopenage/gui/main_args_link.h" line="30" column="1" bodyfile="libopenage/gui/main_args_link.cpp" bodystart="30" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Used to make arguments of the game available in QML. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3168">
+        <label>QObject</label>
+      </node>
+      <node id="3167">
+        <label>openage::gui::MainArgsLink</label>
+        <link refid="classopenage_1_1gui_1_1_main_args_link"/>
+        <childnode refid="3168" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3171">
+        <label>openage::util::Path</label>
+        <link refid="classopenage_1_1util_1_1_path"/>
+      </node>
+      <node id="3170">
+        <label>QObject</label>
+      </node>
+      <node id="3169">
+        <label>openage::gui::MainArgsLink</label>
+        <link refid="classopenage_1_1gui_1_1_main_args_link"/>
+        <childnode refid="3170" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3171" relation="usage">
+          <edgelabel>-asset_dir</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="libopenage/gui/main_args_link.h" line="18" column="1" bodyfile="libopenage/gui/main_args_link.h" bodystart="18" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classopenage_1_1gui_1_1_main_args_link_1a1cf957c791561ed7c63915adc6ea20e7" prot="private" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>asset_dir</name></member>
+      <member refid="classopenage_1_1gui_1_1_main_args_link_1a718d28a7b61d9bef2f95bd932e364c03" prot="public" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>assetDir</name></member>
+      <member refid="classopenage_1_1gui_1_1_main_args_link_1afae5cee025cfda20b2440abcbb01cef9" prot="public" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>MainArgsLink</name></member>
+      <member refid="classopenage_1_1gui_1_1_main_args_link_1a27313ca71bc497664ab7a4ade01323e4" prot="public" virt="non-virtual"><scope>openage::gui::MainArgsLink</scope><name>provider</name></member>
+      <member refid="classopenage_1_1gui_1_1_main_args_link_1acb2c14a5198daecdc30c44aa2e4ddfec" prot="public" virt="virtual"><scope>openage::gui::MainArgsLink</scope><name>~MainArgsLink</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

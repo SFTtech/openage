@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_a25237b91464ed624c167f154229e196" kind="dir">
+    <compoundname>libopenage/util</compoundname>
+    <innerdir refid="dir_ba3d381123465cb5dd7373109ded0835">libopenage/util/compress</innerdir>
+    <innerdir refid="dir_08f007f8ad7650aeb247b9a033bf8b2f">libopenage/util/filelike</innerdir>
+    <innerdir refid="dir_41e3defe94721b47a761b9a8863212b0">libopenage/util/fslike</innerdir>
+    <innerdir refid="dir_5327f161809840a3cb1fbad9bbb545fa">libopenage/util/macro</innerdir>
+    <innerfile refid="algorithm_8h">algorithm.h</innerfile>
+    <innerfile refid="util_2color_8cpp">color.cpp</innerfile>
+    <innerfile refid="util_2color_8h">color.h</innerfile>
+    <innerfile refid="compiler_8cpp">compiler.cpp</innerfile>
+    <innerfile refid="compiler_8h">compiler.h</innerfile>
+    <innerfile refid="constexpr_8h">constexpr.h</innerfile>
+    <innerfile refid="constinit__vector_8cpp">constinit_vector.cpp</innerfile>
+    <innerfile refid="constinit__vector_8h">constinit_vector.h</innerfile>
+    <innerfile refid="csv_8cpp">csv.cpp</innerfile>
+    <innerfile refid="csv_8h">csv.h</innerfile>
+    <innerfile refid="enum_8cpp">enum.cpp</innerfile>
+    <innerfile refid="enum_8h">enum.h</innerfile>
+    <innerfile refid="enum__test_8cpp">enum_test.cpp</innerfile>
+    <innerfile refid="enum__test_8h">enum_test.h</innerfile>
+    <innerfile refid="externalprofiler_8cpp">externalprofiler.cpp</innerfile>
+    <innerfile refid="externalprofiler_8h">externalprofiler.h</innerfile>
+    <innerfile refid="externalsstream_8cpp">externalsstream.cpp</innerfile>
+    <innerfile refid="externalsstream_8h">externalsstream.h</innerfile>
+    <innerfile refid="fds_8cpp">fds.cpp</innerfile>
+    <innerfile refid="fds_8h">fds.h</innerfile>
+    <innerfile refid="file_8cpp">file.cpp</innerfile>
+    <innerfile refid="file_8h">file.h</innerfile>
+    <innerfile refid="fixed__point_8cpp">fixed_point.cpp</innerfile>
+    <innerfile refid="fixed__point_8h">fixed_point.h</innerfile>
+    <innerfile refid="fixed__point__test_8cpp">fixed_point_test.cpp</innerfile>
+    <innerfile refid="fps_8cpp">fps.cpp</innerfile>
+    <innerfile refid="fps_8h">fps.h</innerfile>
+    <innerfile refid="hash_8cpp">hash.cpp</innerfile>
+    <innerfile refid="hash_8h">hash.h</innerfile>
+    <innerfile refid="hash__test_8cpp">hash_test.cpp</innerfile>
+    <innerfile refid="init_8cpp">init.cpp</innerfile>
+    <innerfile refid="init_8h">init.h</innerfile>
+    <innerfile refid="language_8cpp">language.cpp</innerfile>
+    <innerfile refid="language_8h">language.h</innerfile>
+    <innerfile refid="math_8h">math.h</innerfile>
+    <innerfile refid="math__constants_8h">math_constants.h</innerfile>
+    <innerfile refid="matrix_8cpp">matrix.cpp</innerfile>
+    <innerfile refid="matrix_8h">matrix.h</innerfile>
+    <innerfile refid="matrix__test_8cpp">matrix_test.cpp</innerfile>
+    <innerfile refid="misc_8cpp">misc.cpp</innerfile>
+    <innerfile refid="misc_8h">misc.h</innerfile>
+    <innerfile refid="misc__test_8cpp">misc_test.cpp</innerfile>
+    <innerfile refid="opengl_8cpp">opengl.cpp</innerfile>
+    <innerfile refid="opengl_8h">opengl.h</innerfile>
+    <innerfile refid="os_8cpp">os.cpp</innerfile>
+    <innerfile refid="os_8h">os.h</innerfile>
+    <innerfile refid="util_2path_8cpp">path.cpp</innerfile>
+    <innerfile refid="util_2path_8h">path.h</innerfile>
+    <innerfile refid="profiler_8cpp">profiler.cpp</innerfile>
+    <innerfile refid="profiler_8h">profiler.h</innerfile>
+    <innerfile refid="pty_8h">pty.h</innerfile>
+    <innerfile refid="quaternion_8cpp">quaternion.cpp</innerfile>
+    <innerfile refid="quaternion_8h">quaternion.h</innerfile>
+    <innerfile refid="quaternion__test_8cpp">quaternion_test.cpp</innerfile>
+    <innerfile refid="repr_8cpp">repr.cpp</innerfile>
+    <innerfile refid="repr_8h">repr.h</innerfile>
+    <innerfile refid="signal_8h">signal.h</innerfile>
+    <innerfile refid="stringformatter_8cpp">stringformatter.cpp</innerfile>
+    <innerfile refid="stringformatter_8h">stringformatter.h</innerfile>
+    <innerfile refid="strings_8cpp">strings.cpp</innerfile>
+    <innerfile refid="strings_8h">strings.h</innerfile>
+    <innerfile refid="subprocess_8cpp">subprocess.cpp</innerfile>
+    <innerfile refid="subprocess_8h">subprocess.h</innerfile>
+    <innerfile refid="thread__id_8cpp">thread_id.cpp</innerfile>
+    <innerfile refid="thread__id_8h">thread_id.h</innerfile>
+    <innerfile refid="timer_8cpp">timer.cpp</innerfile>
+    <innerfile refid="timer_8h">timer.h</innerfile>
+    <innerfile refid="timing_8cpp">timing.cpp</innerfile>
+    <innerfile refid="timing_8h">timing.h</innerfile>
+    <innerfile refid="unicode_8cpp">unicode.cpp</innerfile>
+    <innerfile refid="unicode_8h">unicode.h</innerfile>
+    <innerfile refid="variable_8h">variable.h</innerfile>
+    <innerfile refid="vector_8cpp">vector.cpp</innerfile>
+    <innerfile refid="vector_8h">vector.h</innerfile>
+    <innerfile refid="vector__test_8cpp">vector_test.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libopenage/util/"/>
+  </compounddef>
+</doxygen>
